@@ -1,0 +1,49 @@
+﻿#if URP
+using UnityEngine.Rendering.Universal;
+#endif
+
+using UnityEditor.Rendering;
+using UnityEditor;
+
+namespace SCPE
+{
+#if URP
+    [VolumeComponentEditor(typeof(HueShift3D))]
+    sealed class HueShift3DEditor : VolumeComponentEditor
+    {
+        SerializedDataParameter intensity;
+        SerializedDataParameter speed;
+        SerializedDataParameter size;
+        SerializedDataParameter geoInfluence;
+
+        private bool isSetup;
+
+        public override void OnEnable()
+        {
+            base.OnEnable();
+
+            var o = new PropertyFetcher<HueShift3D>(serializedObject);
+            isSetup = AutoSetup.ValidEffectSetup<HueShift3DRenderer>();
+
+            intensity = Unpack(o.Find(x => x.intensity));
+            speed = Unpack(o.Find(x => x.speed));
+            size = Unpack(o.Find(x => x.size));
+            geoInfluence = Unpack(o.Find(x => x.geoInfluence));
+        }
+
+        public override void OnInspectorGUI()
+        {
+            SCPE_GUI.DisplayDocumentationButton("hue-shift-3d");
+
+            SCPE_GUI.DisplaySetupWarning<HueShift3DRenderer>(ref isSetup);
+
+            PropertyField(intensity);
+            PropertyField(speed);
+            PropertyField(size);
+
+            PropertyField(geoInfluence);
+            if (HueShift3D.isOrtho) EditorGUILayout.HelpBox("Not available for orthographic cameras", MessageType.None);
+        }
+    }
+}
+#endif
