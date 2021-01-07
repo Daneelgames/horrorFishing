@@ -9,4 +9,10 @@ public class CitySpawner : MonoBehaviour
     public List<HealthController> npcsToSpawn = new List<HealthController>();
     public GameObject gameObjectToSpawn;
     public Interactable itemToSpawn;
+
+    [ContextMenu("SpawnGameObjectToSpawn")]
+    void SpawnGameObjectToSpawn()
+    {
+        Instantiate(gameObjectToSpawn, transform.position, transform.rotation);
+    }
 }

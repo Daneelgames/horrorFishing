@@ -979,7 +979,9 @@ public class SpawnController : MonoBehaviour
 
     public void MobHearNoise(Vector3 noiseSource, float noiseDistance)
     {
-        if (lg.generating) return;
+        print("mob hear noise lg generating " + LevelGenerator.instance.generating);
+        
+        if (LevelGenerator.instance.generating) return;
         
         if (GLNetworkWrapper.instance && GLNetworkWrapper.instance.coopIsActive)
         {

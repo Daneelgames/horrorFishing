@@ -83,9 +83,10 @@ public class LevelStreamer : MonoBehaviour
                     
                     /*
                     if ((closestPlayer.transform.position - streamingObjects[i].transform.position).magnitude <
-                        streamingObjects[i].streamingDistance)*/
-                    if ((closestPlayer.transform.position - streamingObjects[i].transform.position).magnitude <
                         MouseLook.instance.mainCamera.farClipPlane)
+                        */
+                    if ((closestPlayer.transform.position - streamingObjects[i].transform.position).magnitude <
+                        streamingObjects[i].streamingDistance)
                     {
                         if (!streamingObjects[i].streamObjectAboveAnimator)
                         {
