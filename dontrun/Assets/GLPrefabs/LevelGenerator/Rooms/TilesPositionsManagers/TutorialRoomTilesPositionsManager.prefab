@@ -1,0 +1,122 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2894405233013151064
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2151565152071505016}
+  - component: {fileID: 5147683083298168542}
+  m_Layer: 0
+  m_Name: TutorialRoomTilesPositionsManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2151565152071505016
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2894405233013151064}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5147683083298168542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2894405233013151064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a3b26036f802d74297afac0b074577a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomToGetReferences: {fileID: 0}
+  roomReference:
+    m_AssetGUID: 0723f32f8b2ff7d4f99f6d2ec5e1b262
+  tilesLocalPositions:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 6.5}
+  - {x: 0, y: 0, z: 13}
+  - {x: 6.5, y: 0, z: 13}
+  - {x: 13, y: 0, z: 13}
+  - {x: 6.5, y: 0, z: 6.5}
+  - {x: 13, y: 0, z: 6.5}
+  - {x: 6.5, y: 0, z: 0}
+  - {x: 13, y: 0, z: 0}
+  - {x: 13, y: 0, z: -6.5}
+  - {x: 13, y: 0, z: -13}
+  - {x: 6.5, y: 0, z: -13}
+  - {x: 6.5, y: 0, z: -6.5}
+  - {x: 0, y: 0, z: -6.5}
+  - {x: 0, y: 0, z: -13}
+  - {x: -6.5, y: 0, z: -13}
+  - {x: -6.5, y: 0, z: -6.5}
+  - {x: -13, y: 0, z: -13}
+  - {x: -13, y: 0, z: -6.5}
+  - {x: -13, y: 0, z: 0}
+  - {x: -6.5, y: 0, z: 0}
+  - {x: -6.5, y: 0, z: 6.5}
+  - {x: -13, y: 0, z: 6.5}
+  - {x: -13, y: 0, z: 13}
+  - {x: -6.5, y: 0, z: 13}
+  - {x: 0, y: 0, z: 19.5}
+  - {x: 0, y: 0, z: -19.5}
+  - {x: 0, y: 0, z: -26}
+  - {x: -6.5, y: 0, z: -19.5}
+  - {x: -6.5, y: 0, z: -26}
+  - {x: -6.5, y: 0, z: -32.5}
+  - {x: 0, y: 0, z: -32.5}
+  - {x: 6.5, y: 0, z: -32.5}
+  - {x: 6.5, y: 0, z: -26}
+  - {x: 6.5, y: 0, z: -19.5}
+  - {x: -6.5, y: 0, z: -39}
+  - {x: 0, y: 0, z: -78}
+  - {x: 6.5, y: 0, z: -39}
+  - {x: 0, y: 0, z: -39}
+  - {x: 0, y: 0, z: -52}
+  - {x: 0, y: 0, z: -45.5}
+  - {x: 0, y: 0, z: -65}
+  - {x: 0, y: 0, z: -58.5}
+  - {x: 0, y: 0, z: -71.5}
+  - {x: 0, y: 0, z: -84.5}
+  - {x: 0, y: 0, z: 39}
+  - {x: 0, y: 0, z: 45.5}
+  - {x: 0, y: 0, z: 26}
+  - {x: 0, y: 0, z: 32.5}
+  - {x: 6.5, y: 0, z: 45.5}
+  - {x: 13, y: 0, z: 45.5}
+  - {x: 19.5, y: 0, z: 45.5}
+  - {x: 26, y: 0, z: 45.5}
+  - {x: 39, y: 0, z: 45.5}
+  - {x: 32.5, y: 0, z: 45.5}
+  - {x: 45.5, y: 0, z: 45.5}
+  - {x: 45.5, y: 0, z: 65}
+  - {x: 45.5, y: 0, z: 26}
+  - {x: 45.5, y: 0, z: 58.5}
+  - {x: 45.5, y: 0, z: 52}
+  - {x: 45.5, y: 0, z: 39}
+  - {x: 45.5, y: 0, z: 32.5}
+  - {x: 52, y: 0, z: 65}
+  - {x: 58.5, y: 0, z: 65}
+  - {x: 65, y: 0, z: 65}
+  - {x: 52, y: 0, z: 26}
+  - {x: 58.5, y: 0, z: 26}
+  - {x: 65, y: 0, z: 26}
+  - {x: 65, y: 0, z: 52}
+  - {x: 65, y: 0, z: 39}
+  - {x: 65, y: 0, z: 58.5}
+  - {x: 65, y: 0, z: 32.5}
+  - {x: 65, y: 0, z: 45.5}
