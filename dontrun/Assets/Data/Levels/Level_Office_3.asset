@@ -1,0 +1,230 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db0fb8e32398a274c887e0117fd3185d, type: 3}
+  m_Name: Level_Office_3
+  m_EditorClassIdentifier: 
+  dynamicDifficulty: 1
+  startRoomTilesPositionsManager: {fileID: 545559083437154582, guid: 00a9fcb691a42fa4380b19fbd22effef,
+    type: 3}
+  fogDistance: 30
+  ambientIndex: 0
+  renderProfile: {fileID: 0}
+  roomTilesPositionsManagers:
+  - {fileID: 7286635776522907492, guid: 0e30458ccd588a343acce4f87ef94008, type: 3}
+  - {fileID: 3178652960344584446, guid: b9e9b03a0bc392d4e959ac247253d22c, type: 3}
+  - {fileID: 7934965380456405241, guid: 8aefd51cca8215248b4696beb3d025a9, type: 3}
+  - {fileID: 3911315532158444409, guid: af30440231fd04341a725332c53c586a, type: 3}
+  - {fileID: 7845186468425619668, guid: 007ffdc6ae342ab46a4ee398abcbdb1a, type: 3}
+  - {fileID: 6999973496319536691, guid: 67224d5951ddc0b41b9687c71117ddf8, type: 3}
+  - {fileID: 3711587041471728960, guid: c95b4730bee6f054db1b5e5da96fdfa4, type: 3}
+  - {fileID: 4497325059655357916, guid: de652843b4d028841b09c98535c4ed88, type: 3}
+  - {fileID: 2748764882481894722, guid: d90df51897a5b544fb40cdc2b6b8110f, type: 3}
+  - {fileID: 2643851983065798344, guid: 1ea55bb402a8c0541a34828e9829512e, type: 3}
+  - {fileID: 4673681366711716388, guid: 48e1c2e78b9c60a4eb976d5a1dcd2531, type: 3}
+  roomsAmount: 6
+  maximumHorizontalRoomPos: 15
+  maximumVerticalRoomPos: 7
+  width: 18
+  lenght: 12
+  steps: 15
+  mainTileIndex: 2
+  roomTileIndex: 0
+  lightRate: 0.1
+  mainLightColor: 0
+  padlocksAmount: 4
+  keysToSpawn: 3
+  lockedDoorsAmount: 3
+  meatHoles: 0
+  mainItemsInMeatHoles: 0
+  propsRate: 0.75
+  propsAdressables:
+  - m_AssetGUID: 817fd99fb2bec5548812cbe52b3744bb
+    m_SubObjectName: 
+  - m_AssetGUID: 47d69f85039935b4cbc3b14cd789e90a
+    m_SubObjectName: 
+  - m_AssetGUID: 2e2c9f4df01d8d9409af2e30b4bed005
+    m_SubObjectName: 
+  - m_AssetGUID: a9ddebb3f29fc664fa73b13860c4ded2
+    m_SubObjectName: 
+  - m_AssetGUID: 8384660fca5691f44811b9125af29ac2
+    m_SubObjectName: 
+  - m_AssetGUID: 68168ac602f20fe46b58187bd0764e9e
+    m_SubObjectName: 
+  - m_AssetGUID: f1b5ab3a183d4a2418dc3d6d3a7250ec
+    m_SubObjectName: 
+  - m_AssetGUID: 66fbbbd91d038514eb3b4ca5aeb797d9
+    m_SubObjectName: 
+  - m_AssetGUID: 927efcf78f184744187fba5c94d09eb9
+    m_SubObjectName: 
+  - m_AssetGUID: c64cc070d526c2440a99d5e23ea87fdd
+    m_SubObjectName: 
+  - m_AssetGUID: d4bc743226481a74782809a809bc2c51
+    m_SubObjectName: 
+  - m_AssetGUID: d8579b8295661df469bd64bb453bedbd
+    m_SubObjectName: 
+  - m_AssetGUID: d2fc1410e9927a443b6eff7741ecd788
+    m_SubObjectName: 
+  - m_AssetGUID: 219c83b40d3c14e41ad36dbbb26609f6
+    m_SubObjectName: 
+  - m_AssetGUID: 026c818b2960c8f4aac3f729b6255a09
+    m_SubObjectName: 
+  - m_AssetGUID: b9eff85b6134f5e4087ae9df980bfa38
+    m_SubObjectName: 
+  - m_AssetGUID: c3ae3f4998804fa4abeee455c934fb79
+    m_SubObjectName: 
+  - m_AssetGUID: 46532e66ef574bf46beacbf93d73dceb
+    m_SubObjectName: 
+  - m_AssetGUID: e9ec0f72f97666348a90abcb31e733e2
+    m_SubObjectName: 
+  - m_AssetGUID: b13c98c2ad85d514ca31e5061835a3ec
+    m_SubObjectName: 
+  - m_AssetGUID: 49cdda5399adb544b8a3503ae5613562
+    m_SubObjectName: 
+  - m_AssetGUID: 81d13747fe2e73441917bb48dbd895b0
+    m_SubObjectName: 
+  - m_AssetGUID: 9c04dd9842e884948ae04a45c2bbb65f
+    m_SubObjectName: 
+  roomsPropsReferences: []
+  roomPropsRate: 0.75
+  goldToSpawn: 30
+  regenTilesAmount: 1
+  vendingMachinesAmount: 1
+  bonefiresAmount: 0
+  vendingMachinePrefab: {fileID: 3564572446048450256, guid: da07f50a28f8a084eb0afcb5648e4a60,
+    type: 3}
+  vendingMachinePrefabForCarl: {fileID: 7176355795789331040, guid: a86cf24254ec11a4ab0b9c0c8618971a,
+    type: 3}
+  sheNpcPrefab: {fileID: 7373026956329896518, guid: 0e19b35cdd0f7f54897193666687b65e,
+    type: 3}
+  sheNpcPrefabFontain: {fileID: 7852369168455357542, guid: 67371643bb1c4f84ab2ff124242549f3,
+    type: 3}
+  sheNpcPrefabEye: {fileID: 7373026956329896518, guid: 0e19b35cdd0f7f54897193666687b65e,
+    type: 3}
+  sheAmount: 1
+  keyNpcPrefabs:
+  - {fileID: 7521144537928723319, guid: 9d299ab0f06a4a54e917e73033993107, type: 3}
+  keyNpcAmount: 1
+  notesAmount: 5
+  noteHintsAmount: 3
+  deadWeaponRate: 0.33
+  npcWeaponRate: 0.5
+  maximumMobsAttackingPlayer: 1
+  mobsLevel: 1
+  trapsAmount: 10
+  trapDoorsAmount: 5
+  wallTrapsMax: 3
+  ceilingTrapsMax: 7
+  wallBlockersMax: 20
+  eyeEatersAmount: 2
+  currentBoss: -1
+  treetersAmount: 0
+  meatTrapsAmount: 0
+  itemsMimicsAmount: 0
+  mobsAmount: 3
+  mobSpawnDelay: 190
+  mobsPool: 03000000040000000000000007000000
+  npcAmount: 2
+  npcsPool:
+  - {fileID: 2667804902607230998, guid: 767dc5957791f5944b5581c48bca5bf7, type: 3}
+  - {fileID: 2667804902607230998, guid: 8b1b4f5c26f06274dbb0c4df31107c1a, type: 3}
+  - {fileID: 1017843355593262303, guid: c5fb9cee28de124408cd674eed98e8a1, type: 3}
+  ammoSpawn:
+  - value: {fileID: 11400000, guid: 54519ac3a50d48842be9f70f71cd2a81, type: 2}
+    reduceByPlayerOwnedAmmo: 1
+    minCount: 18
+    maxCount: 18
+    weaponSpawned: 0
+    playerHaveWeapon: 0
+  - value: {fileID: 11400000, guid: 15cbe8e402086b44ba52a3df9d6c9931, type: 2}
+    reduceByPlayerOwnedAmmo: 1
+    minCount: 6
+    maxCount: 6
+    weaponSpawned: 0
+    playerHaveWeapon: 0
+  - value: {fileID: 11400000, guid: c83a45db695384a43b8204f24453a0a7, type: 2}
+    reduceByPlayerOwnedAmmo: 1
+    minCount: 7
+    maxCount: 7
+    weaponSpawned: 0
+    playerHaveWeapon: 0
+  spawnGroups:
+  - groupChance: 100
+    minCount: 4
+    maxCount: 4
+    weapons: []
+    simpleItems:
+    - item: {fileID: 11400000, guid: 79054bc63294c5841b02ce35318f565d, type: 2}
+      minCount: 1
+      maxCount: 1
+      spawnWeight: 1
+    - item: {fileID: 11400000, guid: f6baaf7ab32d1604f9d7eae63c5a7735, type: 2}
+      minCount: 1
+      maxCount: 1
+      spawnWeight: 1
+    - item: {fileID: 11400000, guid: 88f1fec405adfde4aa8cfc9e315cb92e, type: 2}
+      minCount: 1
+      maxCount: 1
+      spawnWeight: 1
+    - item: {fileID: 11400000, guid: 2099f543bbce2f74bbc01979a5fc6650, type: 2}
+      minCount: 1
+      maxCount: 1
+      spawnWeight: 1
+    - item: {fileID: 11400000, guid: 95c3f760159aec44c80ce874e9800574, type: 2}
+      minCount: 1
+      maxCount: 1
+      spawnWeight: 1
+    - item: {fileID: 11400000, guid: d3413bceb0f3d9546ab300d84be9a47e, type: 2}
+      minCount: 1
+      maxCount: 1
+      spawnWeight: 1
+    - item: {fileID: 11400000, guid: 9ffdec8e1de60ce48b437ca1d0ca5ce9, type: 2}
+      minCount: 1
+      maxCount: 1
+      spawnWeight: 1
+    - item: {fileID: 11400000, guid: ce512570d86656c45b66e9f18bc753ba, type: 2}
+      minCount: 1
+      maxCount: 1
+      spawnWeight: 1
+  - groupChance: 100
+    minCount: 2
+    maxCount: 2
+    weapons:
+    - weapon: {fileID: 11400000, guid: a837edc8dfb280d439b5ea49df9817cf, type: 2}
+      minCount: 1
+      maxCount: 1
+      playerHaveThis: 0
+      spawnWeight: 1
+    - weapon: {fileID: 11400000, guid: b3990b082704e2c49b816eaaef0ea79f, type: 2}
+      minCount: 1
+      maxCount: 1
+      playerHaveThis: 0
+      spawnWeight: 1
+    - weapon: {fileID: 11400000, guid: 8c6c65152543a6c4691ddf43924d191b, type: 2}
+      minCount: 1
+      maxCount: 1
+      playerHaveThis: 0
+      spawnWeight: 1
+    - weapon: {fileID: 11400000, guid: 7eaad3885006e66428f4f6c4836adb27, type: 2}
+      minCount: 1
+      maxCount: 1
+      playerHaveThis: 0
+      spawnWeight: 1
+    simpleItems: []
+  - groupChance: 100
+    minCount: 2
+    maxCount: 2
+    weapons: []
+    simpleItems:
+    - item: {fileID: 11400000, guid: fc380e04f67f27744853e879b6f66e47, type: 2}
+      minCount: 1
+      maxCount: 1
+      spawnWeight: 1

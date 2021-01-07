@@ -1,0 +1,257 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db0fb8e32398a274c887e0117fd3185d, type: 3}
+  m_Name: ProcLevel
+  m_EditorClassIdentifier: 
+  dynamicDifficulty: 1
+  startRoomTilesPositionsManager: {fileID: 1133575929401197350, guid: 8d197839a2b62b24db8c0f0218117745,
+    type: 3}
+  fogDistance: 45
+  ambientIndex: 4
+  renderProfile: {fileID: 0}
+  roomTilesPositionsManagers:
+  - {fileID: 8532122104213535759, guid: 6ae71a57ba963b74b8f71736a012e5b2, type: 3}
+  - {fileID: 2108648018724295158, guid: b8a3af637eed392408746c2fdd3aeb1c, type: 3}
+  - {fileID: 8564979798907557741, guid: cd5ef011e0bfbd241b30e4c41913a8fe, type: 3}
+  - {fileID: 6871561922140481505, guid: f4c5073ae45e5604db4891b12e17940f, type: 3}
+  roomsAmount: 4
+  maximumHorizontalRoomPos: 10
+  maximumVerticalRoomPos: 10
+  width: 13
+  lenght: 13
+  steps: 3
+  mainTileIndex: 6
+  roomTileIndex: 3
+  lightRate: 0.1
+  mainLightColor: 5
+  padlocksAmount: 5
+  keysToSpawn: 5
+  lockedDoorsAmount: 2
+  meatHoles: 3
+  mainItemsInMeatHoles: 1
+  propsRate: 0.75
+  propsAdressables:
+  - m_AssetGUID: 1089b8d391cdc80448aa5590830ada4c
+    m_SubObjectName: 
+  - m_AssetGUID: 254ea316e8bf37448a6d10bf5d560de8
+    m_SubObjectName: 
+  - m_AssetGUID: 192feeaf690dd1a46852e7e40c19ac3f
+    m_SubObjectName: 
+  - m_AssetGUID: 2c4a7d7bc1488b444aaaf589d6055d12
+    m_SubObjectName: 
+  - m_AssetGUID: 4fea7c581c25b2549840b24d4ba749ef
+    m_SubObjectName: 
+  - m_AssetGUID: e1ae10fffece9a0408d2cfb9ef74f56c
+    m_SubObjectName: 
+  - m_AssetGUID: e1ae10fffece9a0408d2cfb9ef74f56c
+    m_SubObjectName: 
+  - m_AssetGUID: e1ae10fffece9a0408d2cfb9ef74f56c
+    m_SubObjectName: 
+  - m_AssetGUID: e1ae10fffece9a0408d2cfb9ef74f56c
+    m_SubObjectName: 
+  - m_AssetGUID: e1ae10fffece9a0408d2cfb9ef74f56c
+    m_SubObjectName: 
+  - m_AssetGUID: e9972e716cc9a14498f69355dfd0088a
+    m_SubObjectName: 
+  - m_AssetGUID: 5307ed53b467c984db060131c83dc4df
+    m_SubObjectName: 
+  - m_AssetGUID: 3ccc4d27290a188468100fb18e8be13a
+    m_SubObjectName: 
+  - m_AssetGUID: e1825795ae4248d41b28019ad23cb2f5
+    m_SubObjectName: 
+  - m_AssetGUID: 3d720acb241bcee41a09b58fdef5fda6
+    m_SubObjectName: 
+  - m_AssetGUID: 4f90f88abbe369243bca33a01ead724d
+    m_SubObjectName: 
+  roomsPropsReferences:
+  - m_AssetGUID: ef71df9426d635c45bcdb5f7d8ab317b
+    m_SubObjectName: 
+  - m_AssetGUID: b110703daedd71445b006ed3656828ee
+    m_SubObjectName: 
+  - m_AssetGUID: a9d305fe19bc8724095260209d0c5121
+    m_SubObjectName: 
+  - m_AssetGUID: 4ef1e89b83dba2a4caf9c34f74b24e44
+    m_SubObjectName: 
+  - m_AssetGUID: db3ba229d1c166e498d4a4db3c6d92f4
+    m_SubObjectName: 
+  - m_AssetGUID: e731f78a33366844b8629db602f0244d
+    m_SubObjectName: 
+  - m_AssetGUID: 5d5c3d70f3bf941488af012c4b7f7c90
+    m_SubObjectName: 
+  roomPropsRate: 1
+  goldToSpawn: 42
+  regenTilesAmount: 1
+  vendingMachinesAmount: 1
+  prisonersAmount: 0
+  bonefiresAmount: 2
+  vendingMachinePrefab: {fileID: 3564572446048450256, guid: da07f50a28f8a084eb0afcb5648e4a60,
+    type: 3}
+  vendingMachinePrefabForCarl: {fileID: 7176355795789331040, guid: a86cf24254ec11a4ab0b9c0c8618971a,
+    type: 3}
+  sheNpcPrefab: {fileID: 7852369168455357542, guid: 67371643bb1c4f84ab2ff124242549f3,
+    type: 3}
+  sheNpcPrefabFontain: {fileID: 7852369168455357542, guid: 67371643bb1c4f84ab2ff124242549f3,
+    type: 3}
+  sheNpcPrefabEye: {fileID: 7373026956329896518, guid: 0e19b35cdd0f7f54897193666687b65e,
+    type: 3}
+  sheAmount: 2
+  keyNpcPrefabs:
+  - {fileID: 7521144537928723319, guid: 9d299ab0f06a4a54e917e73033993107, type: 3}
+  keyNpcAmount: 0
+  notesAmount: 3
+  noteHintsAmount: 3
+  deadWeaponRate: 0.75
+  npcWeaponRate: 0.5
+  maximumMobsAttackingPlayer: 3
+  mobsLevel: 3
+  trapsAmount: 5
+  trapDoorsAmount: 1
+  wallTrapsMax: 0
+  ceilingTrapsMax: 7
+  wallBlockersMax: 5
+  eyeEatersAmount: 0
+  currentBoss: -1
+  treetersAmount: 2
+  meatTrapsAmount: 4
+  itemsMimicsAmount: 1
+  mrWindowMax: 0
+  mobsAmount: 1
+  mobSpawnDelay: 150
+  mobsPool: 030000000600000008000000
+  arenaMonsterWaves: []
+  npcAmount: 2
+  npcsPool:
+  - {fileID: 2667804902607230998, guid: 767dc5957791f5944b5581c48bca5bf7, type: 3}
+  - {fileID: 2667804902607230998, guid: 8b1b4f5c26f06274dbb0c4df31107c1a, type: 3}
+  - {fileID: 1017843355593262303, guid: c5fb9cee28de124408cd674eed98e8a1, type: 3}
+  ammoSpawn:
+  - value: {fileID: 11400000, guid: 54519ac3a50d48842be9f70f71cd2a81, type: 2}
+    reduceByPlayerOwnedAmmo: 1
+    minCount: 18
+    maxCount: 18
+    weaponSpawned: 1
+    playerHaveWeapon: 0
+  - value: {fileID: 11400000, guid: 15cbe8e402086b44ba52a3df9d6c9931, type: 2}
+    reduceByPlayerOwnedAmmo: 1
+    minCount: 12
+    maxCount: 12
+    weaponSpawned: 1
+    playerHaveWeapon: 0
+  - value: {fileID: 11400000, guid: c09fc43a589523849bdf00ee0a134a38, type: 2}
+    reduceByPlayerOwnedAmmo: 1
+    minCount: 30
+    maxCount: 30
+    weaponSpawned: 1
+    playerHaveWeapon: 0
+  - value: {fileID: 11400000, guid: c83a45db695384a43b8204f24453a0a7, type: 2}
+    reduceByPlayerOwnedAmmo: 1
+    minCount: 6
+    maxCount: 6
+    weaponSpawned: 1
+    playerHaveWeapon: 0
+  - value: {fileID: 11400000, guid: 5be3331d5ac39eb4fb797c4dbef134bf, type: 2}
+    reduceByPlayerOwnedAmmo: 1
+    minCount: 5
+    maxCount: 5
+    weaponSpawned: 1
+    playerHaveWeapon: 0
+  spawnGroups:
+  - groupChance: 100
+    minCount: 6
+    maxCount: 6
+    weapons: []
+    simpleItems:
+    - item: {fileID: 11400000, guid: 88f1fec405adfde4aa8cfc9e315cb92e, type: 2}
+      minCount: 1
+      maxCount: 1
+      spawnWeight: 1
+    - item: {fileID: 11400000, guid: 95c3f760159aec44c80ce874e9800574, type: 2}
+      minCount: 1
+      maxCount: 1
+      spawnWeight: 1
+    - item: {fileID: 11400000, guid: 2099f543bbce2f74bbc01979a5fc6650, type: 2}
+      minCount: 1
+      maxCount: 1
+      spawnWeight: 1
+    - item: {fileID: 11400000, guid: d3413bceb0f3d9546ab300d84be9a47e, type: 2}
+      minCount: 1
+      maxCount: 1
+      spawnWeight: 1
+    - item: {fileID: 11400000, guid: f6baaf7ab32d1604f9d7eae63c5a7735, type: 2}
+      minCount: 1
+      maxCount: 1
+      spawnWeight: 1
+    - item: {fileID: 11400000, guid: 9ffdec8e1de60ce48b437ca1d0ca5ce9, type: 2}
+      minCount: 1
+      maxCount: 1
+      spawnWeight: 1
+    - item: {fileID: 11400000, guid: 79054bc63294c5841b02ce35318f565d, type: 2}
+      minCount: 1
+      maxCount: 1
+      spawnWeight: 1
+    - item: {fileID: 11400000, guid: ce512570d86656c45b66e9f18bc753ba, type: 2}
+      minCount: 1
+      maxCount: 1
+      spawnWeight: 1
+    - item: {fileID: 11400000, guid: 78e50f866f803a14aa549c91401bda5c, type: 2}
+      minCount: 1
+      maxCount: 1
+      spawnWeight: 1
+  - groupChance: 100
+    minCount: 2
+    maxCount: 2
+    weapons: []
+    simpleItems:
+    - item: {fileID: 11400000, guid: fc380e04f67f27744853e879b6f66e47, type: 2}
+      minCount: 1
+      maxCount: 1
+      spawnWeight: 1
+  - groupChance: 100
+    minCount: 3
+    maxCount: 3
+    weapons:
+    - weapon: {fileID: 11400000, guid: a837edc8dfb280d439b5ea49df9817cf, type: 2}
+      minCount: 1
+      maxCount: 1
+      playerHaveThis: 0
+      spawnWeight: 1
+    - weapon: {fileID: 11400000, guid: 3a1bc2c6369ea5a4c92d2f0f18bc7db1, type: 2}
+      minCount: 1
+      maxCount: 1
+      playerHaveThis: 0
+      spawnWeight: 1
+    - weapon: {fileID: 11400000, guid: a0b69bd27230f954087358a964348cc4, type: 2}
+      minCount: 1
+      maxCount: 1
+      playerHaveThis: 0
+      spawnWeight: 1
+    - weapon: {fileID: 11400000, guid: bf220e0cbbaa7d6479fc70db0d507051, type: 2}
+      minCount: 1
+      maxCount: 1
+      playerHaveThis: 0
+      spawnWeight: 1
+    - weapon: {fileID: 11400000, guid: 7eaad3885006e66428f4f6c4836adb27, type: 2}
+      minCount: 1
+      maxCount: 1
+      playerHaveThis: 0
+      spawnWeight: 1
+    simpleItems: []
+  - groupChance: 100
+    minCount: 1
+    maxCount: 1
+    weapons:
+    - weapon: {fileID: 11400000, guid: e5f283269491a3845a877cd8913f4824, type: 2}
+      minCount: 1
+      maxCount: 1
+      playerHaveThis: 0
+      spawnWeight: 1
+    simpleItems: []

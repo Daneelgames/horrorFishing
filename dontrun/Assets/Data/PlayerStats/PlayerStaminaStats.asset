@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf931f0415f149a2bc1d5fd415d5a962, type: 3}
+  m_Name: PlayerStaminaStats
+  m_EditorClassIdentifier: 
+  idleRegen: 19
+  walkRegen: 10
+  runRegenCurrent: -9
+  runRegen: -9
+  boostedRunRegen: -6
+  tiredRegen: 10
+  dashCostCurrent: 20
+  dashCost: 20
+  boostedDashCost: 10
+  currentValue: 100
+  maxValue: 100
+  minValue: -10

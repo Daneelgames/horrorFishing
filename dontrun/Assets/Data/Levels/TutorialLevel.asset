@@ -1,0 +1,177 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db0fb8e32398a274c887e0117fd3185d, type: 3}
+  m_Name: TutorialLevel
+  m_EditorClassIdentifier: 
+  dynamicDifficulty: 0
+  startRoomTilesPositionsManager: {fileID: 5147683083298168542, guid: 3e3abf58dd1ae46478553f4e30385bc9,
+    type: 3}
+  fogDistance: 30
+  ambientIndex: 0
+  renderProfile: {fileID: 0}
+  roomTilesPositionsManagers:
+  - {fileID: 6090311185344683657, guid: 7c488b3ae1ab9194cb96de061bd02613, type: 3}
+  - {fileID: 2725681300306737459, guid: c9b8ad80819d42d49a35a1214af0232f, type: 3}
+  - {fileID: 3178652960344584446, guid: b9e9b03a0bc392d4e959ac247253d22c, type: 3}
+  roomsAmount: 1
+  maximumHorizontalRoomPos: 5
+  maximumVerticalRoomPos: 7
+  width: 13
+  lenght: 15
+  steps: 5
+  mainTileIndex: 1
+  roomTileIndex: 0
+  lightRate: 0.5
+  mainLightColor: 0
+  padlocksAmount: 1
+  keysToSpawn: 0
+  lockedDoorsAmount: 0
+  meatHoles: 0
+  mainItemsInMeatHoles: 0
+  propsRate: 1
+  propsAdressables:
+  - m_AssetGUID: 817fd99fb2bec5548812cbe52b3744bb
+    m_SubObjectName: 
+  - m_AssetGUID: 47d69f85039935b4cbc3b14cd789e90a
+    m_SubObjectName: 
+  - m_AssetGUID: 2e2c9f4df01d8d9409af2e30b4bed005
+    m_SubObjectName: 
+  - m_AssetGUID: a9ddebb3f29fc664fa73b13860c4ded2
+    m_SubObjectName: 
+  - m_AssetGUID: 68168ac602f20fe46b58187bd0764e9e
+    m_SubObjectName: 
+  - m_AssetGUID: f1b5ab3a183d4a2418dc3d6d3a7250ec
+    m_SubObjectName: 
+  - m_AssetGUID: 66fbbbd91d038514eb3b4ca5aeb797d9
+    m_SubObjectName: 
+  - m_AssetGUID: 927efcf78f184744187fba5c94d09eb9
+    m_SubObjectName: 
+  - m_AssetGUID: c64cc070d526c2440a99d5e23ea87fdd
+    m_SubObjectName: 
+  - m_AssetGUID: d4bc743226481a74782809a809bc2c51
+    m_SubObjectName: 
+  - m_AssetGUID: d8579b8295661df469bd64bb453bedbd
+    m_SubObjectName: 
+  - m_AssetGUID: d2fc1410e9927a443b6eff7741ecd788
+    m_SubObjectName: 
+  - m_AssetGUID: 219c83b40d3c14e41ad36dbbb26609f6
+    m_SubObjectName: 
+  - m_AssetGUID: 026c818b2960c8f4aac3f729b6255a09
+    m_SubObjectName: 
+  - m_AssetGUID: b9eff85b6134f5e4087ae9df980bfa38
+    m_SubObjectName: 
+  - m_AssetGUID: c3ae3f4998804fa4abeee455c934fb79
+    m_SubObjectName: 
+  - m_AssetGUID: 46532e66ef574bf46beacbf93d73dceb
+    m_SubObjectName: 
+  - m_AssetGUID: e9ec0f72f97666348a90abcb31e733e2
+    m_SubObjectName: 
+  - m_AssetGUID: b13c98c2ad85d514ca31e5061835a3ec
+    m_SubObjectName: 
+  - m_AssetGUID: 8384660fca5691f44811b9125af29ac2
+    m_SubObjectName: 
+  - m_AssetGUID: 49cdda5399adb544b8a3503ae5613562
+    m_SubObjectName: 
+  - m_AssetGUID: 81d13747fe2e73441917bb48dbd895b0
+    m_SubObjectName: 
+  - m_AssetGUID: 9c04dd9842e884948ae04a45c2bbb65f
+    m_SubObjectName: 
+  roomsPropsReferences:
+  - m_AssetGUID: 817fd99fb2bec5548812cbe52b3744bb
+    m_SubObjectName: 
+  - m_AssetGUID: 47d69f85039935b4cbc3b14cd789e90a
+    m_SubObjectName: 
+  - m_AssetGUID: 2e2c9f4df01d8d9409af2e30b4bed005
+    m_SubObjectName: 
+  - m_AssetGUID: a9ddebb3f29fc664fa73b13860c4ded2
+    m_SubObjectName: 
+  - m_AssetGUID: 8384660fca5691f44811b9125af29ac2
+    m_SubObjectName: 
+  - m_AssetGUID: 68168ac602f20fe46b58187bd0764e9e
+    m_SubObjectName: 
+  - m_AssetGUID: f1b5ab3a183d4a2418dc3d6d3a7250ec
+    m_SubObjectName: 
+  - m_AssetGUID: 66fbbbd91d038514eb3b4ca5aeb797d9
+    m_SubObjectName: 
+  - m_AssetGUID: 927efcf78f184744187fba5c94d09eb9
+    m_SubObjectName: 
+  - m_AssetGUID: c64cc070d526c2440a99d5e23ea87fdd
+    m_SubObjectName: 
+  - m_AssetGUID: d4bc743226481a74782809a809bc2c51
+    m_SubObjectName: 
+  - m_AssetGUID: d8579b8295661df469bd64bb453bedbd
+    m_SubObjectName: 
+  - m_AssetGUID: d2fc1410e9927a443b6eff7741ecd788
+    m_SubObjectName: 
+  - m_AssetGUID: 219c83b40d3c14e41ad36dbbb26609f6
+    m_SubObjectName: 
+  - m_AssetGUID: 026c818b2960c8f4aac3f729b6255a09
+    m_SubObjectName: 
+  - m_AssetGUID: b9eff85b6134f5e4087ae9df980bfa38
+    m_SubObjectName: 
+  - m_AssetGUID: c3ae3f4998804fa4abeee455c934fb79
+    m_SubObjectName: 
+  - m_AssetGUID: 46532e66ef574bf46beacbf93d73dceb
+    m_SubObjectName: 
+  - m_AssetGUID: e9ec0f72f97666348a90abcb31e733e2
+    m_SubObjectName: 
+  - m_AssetGUID: b13c98c2ad85d514ca31e5061835a3ec
+    m_SubObjectName: 
+  - m_AssetGUID: 49cdda5399adb544b8a3503ae5613562
+    m_SubObjectName: 
+  - m_AssetGUID: 81d13747fe2e73441917bb48dbd895b0
+    m_SubObjectName: 
+  - m_AssetGUID: 9c04dd9842e884948ae04a45c2bbb65f
+    m_SubObjectName: 
+  roomPropsRate: 1
+  goldToSpawn: 10
+  regenTilesAmount: 1
+  vendingMachinesAmount: 1
+  prisonersAmount: 0
+  bonefiresAmount: 0
+  vendingMachinePrefab: {fileID: 6249750019664611742, guid: 41811fdfd5a7dc244be6dbd08819f349,
+    type: 3}
+  vendingMachinePrefabForCarl: {fileID: 7176355795789331040, guid: a86cf24254ec11a4ab0b9c0c8618971a,
+    type: 3}
+  sheNpcPrefab: {fileID: 0}
+  sheNpcPrefabFontain: {fileID: 7852369168455357542, guid: 67371643bb1c4f84ab2ff124242549f3,
+    type: 3}
+  sheNpcPrefabEye: {fileID: 7373026956329896518, guid: 0e19b35cdd0f7f54897193666687b65e,
+    type: 3}
+  sheAmount: 1
+  keyNpcPrefabs: []
+  keyNpcAmount: 0
+  notesAmount: 0
+  noteHintsAmount: 3
+  deadWeaponRate: 0.25
+  npcWeaponRate: 0.5
+  maximumMobsAttackingPlayer: 1
+  mobsLevel: 0
+  trapsAmount: 0
+  trapDoorsAmount: 0
+  wallTrapsMax: 0
+  ceilingTrapsMax: 0
+  wallBlockersMax: 0
+  eyeEatersAmount: 0
+  currentBoss: -1
+  treetersAmount: 0
+  meatTrapsAmount: 0
+  itemsMimicsAmount: 0
+  mrWindowMax: 0
+  mobsAmount: 1
+  mobSpawnDelay: 150
+  mobsPool: 03000000
+  arenaMonsterWaves: []
+  npcAmount: 0
+  npcsPool: []
+  ammoSpawn: []
+  spawnGroups: []

@@ -1,0 +1,645 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2097e75cc1de3d34fab0059078fe43f0, type: 3}
+  m_Name: WeaponDataDefaultShield
+  m_EditorClassIdentifier: 
+  firstNames:
+  - text:
+    - Mighty
+    - "\u041C\u043E\u0433\u0443\u0447\u0438\u0439"
+    - El cazador
+    - "M\xE4chtiger"
+    - Masticatore
+    - Poderoso
+  - text:
+    - Handsome
+    - "\u0421\u0438\u043C\u043F\u043E\u0442\u043D\u044B\u0439"
+    - El apuesto
+    - "H\xFCbscher"
+    - Azzannatore
+    - Bonito
+  - text:
+    - Pretty
+    - "\u041A\u0440\u0430\u0441\u0438\u0432\u044B\u0439"
+    - El tierno
+    - "Sch\xF6ner"
+    - Naso
+    - Concursor
+  - text:
+    - Toothy
+    - "\u0417\u0443\u0431\u0430\u0441\u0442\u044B\u0439"
+    - El caballero
+    - Zahnhafter
+    - Barra
+    - Cavalheiro
+  - text:
+    - Dumbass
+    - "\u0422\u0443\u043F\u043E\u0440\u044B\u043B\u044B\u0439"
+    - El sobador
+    - Dumbkopf
+    - Bullo
+    - Imbecil
+  - text:
+    - Sleepy
+    - "\u0421\u043E\u043D\u043D\u044B\u0439"
+    - El durmiente
+    - "Schl\xE4frig"
+    - Uomo
+    - Sonolento
+  - text:
+    - Red
+    - "\u041A\u0440\u0430\u0441\u043D\u044B\u0439"
+    - El amante
+    - Rot
+    - Buttafuori
+    - Vermelho
+  - text:
+    - Big
+    - "\u0411\u043E\u043B\u044C\u0448\u043E\u0439"
+    - El gigante
+    - "Gro\xDFer"
+    - Johnny
+    - Pesado
+  - text:
+    - Heavy
+    - "\u0422\u044F\u0436\u0435\u043B\u044B\u0439"
+    - El fumador
+    - Schwerer
+    - Harry
+    - Rindo
+  - text:
+    - Laughing
+    - "\u0420\u0436\u0443\u0449\u0438\u0439"
+    - Larry el
+    - Lachender
+    - Lachender
+    - Lachender
+  - text:
+    - Grumpy
+    - "\u0412\u043E\u0440\u0447\u043B\u0438\u0432\u044B\u0439"
+    - Carl el
+    - Grumpiger
+    - Brontolone
+    - Mal-humorado
+  - text:
+    - Dirty
+    - "\u0413\u0440\u044F\u0437\u043D\u044B\u0439"
+    - El sucio
+    - Schmutziger
+    - Attaccabrighe
+    - Sujo
+  - text:
+    - Smelly
+    - "\u0412\u043E\u043D\u044E\u0447\u0438\u0439"
+    - "El se\xF1or"
+    - Stinkender
+    - Stinkender
+    - Stinkender
+  - text:
+    - Chatty
+    - "\u0411\u043E\u043B\u0442\u043B\u0438\u0432\u044B\u0439"
+    - El hablador
+    - "Gespr\xE4chshafter"
+    - Ragazzo
+    - Malcheiroso
+  - text:
+    - Horny
+    - "\u0412\u043E\u0437\u0431\u0443\u0436\u0434\u0435\u043D\u043D\u044B\u0439"
+    - El cachondo
+    - Aufgegeilter
+    - Carl
+    - Excitado
+  - text:
+    - Gambling
+    - "\u0410\u0437\u0430\u0440\u0442\u043D\u044B\u0439"
+    - Clackson el
+    - "Gl\xFCcksspiel"
+    - Brontolone
+    - conversador
+  lastNames:
+  - text:
+    - Chomper
+    - "\u0413\u0440\u044B\u0437\u0443\u043B\u044C"
+    - Bandido
+    - Schnapper
+    - Potente
+    - Bandido
+  - text:
+    - Biter
+    - "\u041A\u0443\u0441\u0430\u043A\u0430"
+    - Venoso
+    - "Bei\xDFer"
+    - Bello
+    - Mordedor
+  - text:
+    - Nose
+    - "\u041D\u043E\u0441"
+    - fantasma
+    - Nase
+    - Carino
+    - Assustador
+  - text:
+    - Slash
+    - "\u0423\u0434\u0430\u0440"
+    - desaparecido
+    - Stechender
+    - Sorridente
+    - Golpeador
+  - text:
+    - Chomper
+    - "\u0420\u0443\u0431\u0430\u043A\u0430"
+    - brabucon
+    - Mobber
+    - Idiota
+    - Idiota
+  - text:
+    - Bully
+    - "\u0417\u0430\u0431\u0438\u044F\u043A\u0430"
+    - leproso
+    - Mobber
+    - Assonnato
+    - Homen
+  - text:
+    - Man
+    - "\u041C\u0443\u0436\u0438\u043A"
+    - disfuncional
+    - Mann
+    - Rosso
+    - "Seguran\xE7a"
+  - text:
+    - Bouncer
+    - "\u0412\u044B\u0448\u0438\u0431\u0430\u043B\u0430"
+    - "epil\xE9ptico"
+    - "T\xFCrsteher"
+    - Grosso
+    - Grunhido
+  - text:
+    - Grunt
+    - "\u0413\u0440\u043E\u043C\u0438\u043B\u0430"
+    - abusador
+    - "Schl\xE4ger"
+    - Pesante
+    - Johnny
+  - text:
+    - Johnny
+    - "\u0414\u0436\u043E\u043D\u043D\u0438"
+    - de la noche
+    - Johnny
+    - Sghignazzante
+    - Harry
+  - text:
+    - Harry
+    - "\u0413\u0430\u0440\u0440\u0438"
+    - inocente
+    - Harry
+    - Scontroso
+    - Grump
+  - text:
+    - Grump
+    - "\u0412\u043E\u0440\u0447\u0443\u043D"
+    - luchador
+    - Grumpiger
+    - Sorridente
+    - Golpeador
+  - text:
+    - Brawler
+    - "\u0414\u0440\u0430\u0447\u0443\u043D"
+    - "gatillo f\xE1cil"
+    - "K\xE4mpfer"
+    - Sporco
+    - Gritador
+  - text:
+    - Dude
+    - "\u0427\u0443\u0432\u0430\u043A"
+    - santo
+    - Typ
+    - Puzzolente
+    - Mano
+  - text:
+    - Bustler
+    - "\u0422\u043E\u0440\u043E\u043F\u044B\u0433\u0430"
+    - Carl
+    - Unruhiger Geist
+    - Chiaccherone
+    - Afetado
+  - text:
+    - CARL
+    - "\u041A\u0410\u0420\u041B"
+    - Riendose
+    - CARL
+    - Arrapato
+    - Carl
+  - text:
+    - Clackson
+    - "\u041A\u043B\u0430\u043A\u0441\u043E\u043D"
+    - juego
+    - Clackson
+    - Agitato
+    - Clackson
+  howWasMade:
+  - text:
+    - Was made during the fire.
+    - "\u0411\u044B\u043B \u0441\u0434\u0435\u043B\u0430\u043D \u0432\u043E \u0432\u0440\u0435\u043C\u044F
+      \u043F\u043E\u0436\u0430\u0440\u0430."
+    - Fue creado durante el Fuego.
+    - "Wurde w\xE4hren des Feuer gebaut"
+    - "\xC8 stato fatto durante il fuoco."
+    - "Foi feito durante o inc\xEAndio."
+  - text:
+    - Was made from frayed bones.
+    - "\u0411\u044B\u043B \u0441\u0434\u0435\u043B\u0430\u043D \u0438\u0437 \u043F\u0435\u0440\u0435\u0442\u0435\u0440\u0442\u044B\u0445
+      \u043A\u043E\u0441\u0442\u0435\u0439."
+    - "Fue creado de huesos ra\xEDdos."
+    - Wurde mit ausgefranzten Knochen gerfertigt
+    - "\xC8 fatto con ossa fritte."
+    - Foi feito de ossos desgastados.
+  - text:
+    - Was made with love.
+    - "\u0411\u044B\u043B \u0441\u0434\u0435\u043B\u0430\u043D \u0441 \u043B\u044E\u0431\u043E\u0432\u044C\u044E."
+    - Fue creado con amor.
+    - Wurde mit Liebe gefertigt
+    - "\xC8 fatto con amore."
+    - Foi feito com amor.
+  - text:
+    - Was hastily done.
+    - "\u0411\u044B\u043B \u0441\u0434\u0435\u043B\u0430\u043D \u043D\u0430\u0441\u043F\u0435\u0445."
+    - Fue creado a toda prisa.
+    - Wurde hastig gefertigt
+    - "\xC8 fatto di fretta."
+    - "Foi feito \xE0s pressas."
+  - text:
+    - Can bite.
+    - "\u041E\u043D \u043C\u043E\u0436\u0435\u0442 \u043A\u0443\u0441\u0430\u0442\u044C\u0441\u044F."
+    - Puede morder.
+    - "Kann bei\xDFen."
+    - "\xC8 coperto di piccole dita. Molto grazioso!"
+    - "Ele est\xE1 coberto de dedos pequenos. Muito bonitinho!"
+  - text:
+    - He loves hot baths.
+    - "\u041E\u043D \u043B\u044E\u0431\u0438\u0442 \u0433\u043E\u0440\u044F\u0447\u0438\u0435
+      \u0432\u0430\u043D\u043D\u044B."
+    - He loves hot baths.
+    - He loves hot baths.
+    - Sento il battito del suo cuore con la mia mano.
+    - "Sinto a batida do cora\xE7\xE3o com a m\xE3o."
+  - text:
+    - He's covered in small fingers. Very cute!
+    - "\u041F\u043E\u043A\u0440\u044B\u0442 \u043C\u0430\u043B\u0435\u043D\u044C\u043A\u0438\u043C\u0438
+      \u043F\u0430\u043B\u044C\u0447\u0438\u043A\u0430\u043C\u0438. \u041E\u0447\u0435\u043D\u044C
+      \u043C\u0438\u043B\u043E!"
+    - "Esta cubierto con peque\xF1os deditos. \xA1Muy mono!"
+    - "Ist in kleinen Fingern eingedeckt. Sehr S\xFC\xDF!"
+    - "\xC8 appiccicoso."
+    - "Ele \xE9 pegajoso."
+  - text:
+    - I feel the beat of its heart with my hand.
+    - "\u041E\u0449\u0443\u0449\u0430\u044E \u0431\u0438\u0435\u043D\u0438\u0435
+      \u0435\u0433\u043E \u0441\u0435\u0440\u0434\u0446\u0430 \u0441\u0432\u043E\u0435\u0439
+      \u0440\u0443\u043A\u043E\u0439."
+    - "Puedo sentir c\xF3mo palpita su coraz\xF3n en mi mano."
+    - "Ich sp\xFCre seinen Herzschlag in meiner Hand"
+    - Sembra che voglia uccidermi.
+    - Ele parece querer me matar.
+  - text:
+    - He is sticky.
+    - "\u041E\u043D \u043B\u0438\u043F\u043A\u0438\u0439."
+    - 'Es pegajoso. '
+    - Er ist kleblrig
+    - Odora di pino e trifoglio.
+    - Ele cheira a pinheiro e trevo.
+  - text:
+    - He seems to want to kill me.
+    - "\u041A\u0430\u0436\u0435\u0442\u0441\u044F, \u043E\u043D \u0445\u043E\u0447\u0435\u0442
+      \u0443\u0431\u0438\u0442\u044C \u043C\u0435\u043D\u044F."
+    - Parece que me quiere matar.
+    - "Er scheint micht t\xF6ten zu wollen"
+    - Gli piace ridacchiare.
+    - Ele gosta de rir.
+  - text:
+    - He smells like pine and clover.
+    - "\u041E\u043D \u043F\u0430\u0445\u043D\u0435\u0442 \u0445\u0432\u043E\u0435\u0439
+      \u0438 \u043A\u043B\u0435\u0432\u0435\u0440\u043E\u043C."
+    - Huele a pino y trebol.
+    - Er richt nacht Kiefer und Klee
+    - Lui ama i bagni caldi.
+    - Ele parece querer me matar.
+  - text:
+    - He likes to giggle.
+    - "\u0415\u043C\u0443 \u043D\u0440\u0430\u0432\u0438\u0442\u0441\u044F \u0445\u0438\u0445\u0438\u043A\u0430\u0442\u044C."
+    - Le gustan las risillas.
+    - Er mag es zu Kichern
+    - "Pu\xF2 mordere."
+    - Pode morder.
+  previousOwnerDeath:
+  - text:
+    - The previous owner died while shaving.
+    - "\u041F\u0440\u0435\u0434\u044B\u0434\u0443\u0449\u0438\u0439 \u0432\u043B\u0430\u0434\u0435\u043B\u0435\u0446
+      \u0443\u043C\u0435\u0440 \u0432\u043E \u0432\u0440\u0435\u043C\u044F \u0431\u0440\u0438\u0442\u044C\u044F."
+    - El amo anterior murio mientras se afeitaba.
+    - "Der vorherige Besitzer starb w\xE4hrend er sich rasierte."
+    - "Il possessore precedente \xE8 morto mentre si radeva."
+    - O dono anterior morreu durante o barbear.
+  - text:
+    - The previous owner was fond of boomerangs.
+    - "\u041F\u0440\u0435\u0434\u044B\u0434\u0443\u0449\u0438\u0439 \u0432\u043B\u0430\u0434\u0435\u043B\u0435\u0446
+      \u0443\u0432\u043B\u0435\u043A\u0430\u043B\u0441\u044F \u0431\u0443\u043C\u0435\u0440\u0430\u043D\u0433\u0430\u043C\u0438."
+    - "El amo anterior era aficionado a los b\xFAmerans."
+    - Der vorherige Besitzer mochte Boomerangs.
+    - Il possessore precedente andava pazzo per i boomerang.
+    - O dono anterior gostava de bumerangues.
+  - text:
+    - The previous owner is an alcoholic.
+    - "\u041F\u0440\u0435\u0434\u044B\u0434\u0443\u0449\u0438\u0439 \u0432\u043B\u0430\u0434\u0435\u043B\u0435\u0446
+      - \u0430\u043B\u043A\u0430\u0448."
+    - "El amo anterior es un alcoh\xF3lico."
+    - Der vorherige Besitzer ist ein Alokoholiker.
+    - "Il possessore precedente \xE8 un alcolizzato."
+    - "O dono anterior \xE9 alco\xF3latra."
+  - text:
+    - The previous owner could not pick it up.
+    - "\u041F\u0440\u0435\u0434\u044B\u0434\u0443\u0449\u0438\u0439 \u0432\u043B\u0430\u0434\u0435\u043B\u0435\u0446
+      \u043D\u0435 \u043C\u043E\u0433 \u0435\u0433\u043E \u043F\u043E\u0434\u043D\u044F\u0442\u044C."
+    - El amo anterior no pudo cogerlo.
+    - Der vorherige Besitzer konnte ihn nicht aufheben
+    - Il possessore precedente non poteva raccoglierlo.
+    - "O dono anterior n\xE3o p\xF4de busc\xE1-lo."
+  - text:
+    - The previous owner was a sad clown.
+    - "\u041F\u0440\u0435\u0434\u044B\u0434\u0443\u0449\u0438\u0439 \u0432\u043B\u0430\u0434\u0435\u043B\u0435\u0446
+      - \u0433\u0440\u0443\u0441\u0442\u043D\u044B\u0439 \u043A\u043B\u043E\u0443\u043D."
+    - El amo anterior era un payaso triste.
+    - Der vorherige Besitzer war ein trauriger Clown
+    - Il possessore precedente era un clown triste.
+    - "O dono anterior era um palha\xE7o triste."
+  - text:
+    - The previous owner's head fell off.
+    - "\u0423 \u043F\u0440\u0435\u0434\u044B\u0434\u0443\u0449\u0435\u0433\u043E
+      \u0432\u043B\u0430\u0434\u0435\u043B\u044C\u0446\u0430 \u043E\u0442\u0432\u0430\u043B\u0438\u043B\u0430\u0441\u044C
+      \u0433\u043E\u043B\u043E\u0432\u0430."
+    - "La cabeza del amo anterior se cay\xF3."
+    - Der Kopf des vorherigen Besitzers fiel ab.
+    - "La testa del possessore precedente \xE8 caduta."
+    - "A cabe\xE7a do dono anterior caiu."
+  - text:
+    - The previous owner was a juggler.
+    - "\u041F\u0440\u0435\u0434\u044B\u0434\u0443\u0449\u0438\u0439 \u0432\u043B\u0430\u0434\u0435\u043B\u0435\u0446
+      \u0431\u044B\u043B \u0436\u043E\u043D\u0433\u043B\u0435\u0440\u043E\u043C."
+    - El amo anterior era un malabarista.
+    - Der vorherige Besitzer war ein Jongleur
+    - Il possessore precedente era un giocoliere.
+    - O dono anterior era um malabarista.
+  - text:
+    - The previous owner loved children.
+    - "\u041F\u0440\u0435\u0434\u044B\u0434\u0443\u0449\u0438\u0439 \u0432\u043B\u0430\u0434\u0435\u043B\u0435\u0446
+      \u043B\u044E\u0431\u0438\u043B \u0434\u0435\u0442\u0435\u0439."
+    - "Al amo anterior le encantaban los ni\xF1os."
+    - Der vorherige Besitzer liebte Kinder
+    - Il possessore precedente amava i bambini.
+    - "O dono anterior adorava crian\xE7as."
+  - text:
+    - The previous owner tried to gobble it up.
+    - "\u041F\u0440\u0435\u0434\u044B\u0434\u0443\u0449\u0438\u0439 \u0432\u043B\u0430\u0434\u0435\u043B\u0435\u0446
+      \u043F\u044B\u0442\u0430\u043B\u0441\u044F \u0435\u0433\u043E \u0441\u043E\u0436\u0440\u0430\u0442\u044C."
+    - El amo anterior intento engullirlo.
+    - Der vorherige Besitzer hat es versucht zu verschlucken
+    - '" Il possessore precedente ha provato a divorarlo."'
+    - "O dono anterior tentou devor\xE1-lo."
+  - text:
+    - The previous owner didn't like doors.
+    - "\u041F\u0440\u0435\u0434\u044B\u0434\u0443\u0449\u0438\u0439 \u0432\u043B\u0430\u0434\u0435\u043B\u0435\u0446
+      \u043D\u0435 \u043B\u044E\u0431\u0438\u043B \u0434\u0432\u0435\u0440\u0438."
+    - Al amo anterior no le gustaban las puertas.
+    - "Der vorherige Besitzer mochte keine T\xFCren"
+    - Al possessore precedente non piacevano le porte.
+    - "O dono anterior n\xE3o gostava de portas."
+  - text:
+    - The previous owner was eaten by demon squirels.
+    - "\u041F\u0440\u0435\u0434\u044B\u0434\u0443\u0449\u0435\u0433\u043E \u0432\u043B\u0430\u0434\u0435\u043B\u044C\u0446\u0430
+      \u0441\u044A\u0435\u043B\u0438 \u0431\u0435\u043B\u043A\u0438-\u0434\u0435\u043C\u043E\u043D\u044B."
+    - "El amo anteior fue engullido por ardillas demon\xEDacas."
+    - "Der vorherige Bestitzer wurde von demonischen Eichh\xF6rnchen gegessen"
+    - "Il possessore precedente \xE8 stato mangiato da scoiattoli demoniaci."
+    - "O dono anterior foi comido por esquilos demon\xEDacos."
+  - text:
+    - The previous owner liked to put his hands into weird holes.
+    - "\u041F\u0440\u0435\u0434\u044B\u0434\u0443\u0449\u0438\u0439 \u0432\u043B\u0430\u0434\u0435\u043B\u0435\u0446
+      \u043B\u044E\u0431\u0438\u043B \u0441\u043E\u0432\u0430\u0442\u044C \u0440\u0443\u043A\u0438
+      \u0432 \u0441\u0442\u0440\u0430\u0448\u043D\u044B\u0435 \u0434\u044B\u0440\u043A\u0438."
+    - "Al amo anterior le gustaba poner sus manos en agujeros extra\xF1os."
+    - "Der vorherige Besitzer mochte es seine H\xE4nde in seltsame L\xF6cher zu stecken."
+    - Al possessore precedente piaceva mettere le sue mani dentro strani buchi.
+    - "O dono anterior gostava de colocar as m\xE3os em buracos estranhos."
+  - text:
+    - The previous owner was a hobo in disguise.
+    - "\u041F\u0440\u0435\u0434\u044B\u0434\u0443\u0449\u0438\u0439 \u0432\u043B\u0430\u0434\u0435\u043B\u0435\u0446
+      \u0431\u044B\u043B \u0431\u043E\u043C\u0436\u043E\u043C \u043F\u043E\u0434
+      \u043F\u0440\u0438\u043A\u0440\u044B\u0442\u0438\u0435\u043C."
+    - El amo anterior era un vagabundo disfrazado.
+    - Der vorherige Besitzer war ein verkleideter Obdachloser.
+    - Il possessore precedente era un vagabondo travestito.
+    - "O dono anterior era um vagabundo disfar\xE7ado."
+  - text:
+    - The previous owner forgot how to breathe.
+    - "\u041F\u0440\u0435\u0434\u044B\u0434\u0443\u0449\u0438\u0439 \u0432\u043B\u0430\u0434\u0435\u043B\u0435\u0446
+      \u0437\u0430\u0431\u044B\u043B \u043A\u0430\u043A \u0434\u044B\u0448\u0430\u0442\u044C."
+    - "El amo anterior olvid\xF3 como respirar."
+    - "Der vorherige Besitzer verga\xDF wie man atmet."
+    - "Il possessore precedente si \xE8 dimenticato come respirare."
+    - O dono anterior esqueceu como respirar.
+  - text:
+    - The previous owner mistakenly put flammables in the trash.
+    - "\u0423 \u043F\u0440\u0435\u0434\u044B\u0434\u0443\u0449\u0435\u0439 \u0432\u043B\u0430\u0434\u0435\u043B\u0438\u0446\u044B
+      \u0432 \u0440\u0443\u043A\u0430\u0445 \u0432\u0437\u043E\u0440\u0432\u0430\u043B\u0441\u044F
+      \u043E\u0441\u0432\u0435\u0436\u0438\u0442\u0435\u043B\u044C \u0432\u043E\u0437\u0434\u0443\u0445\u0430."
+    - "El amo anterior sin querer tir\xF3 objetos inflamables a la basura."
+    - "Der voherige Besitzer hat versehentlich brennbares in den M\xFClleimer geworfen"
+    - Il possessore precedente ha, per sbaglio, buttato oggetti infiammabili nel
+      secchio.
+    - "O dono anterior por engano colocou materiais inflam\xE1veis no lixo."
+  effect:
+  - text:
+    - Poisonous
+    - "\u042F\u0434\u043E\u0432\u0438\u0442\u044B\u0439"
+    - Venenoso
+    - Giftig
+    - Velenoso
+    - Venenoso
+  - text:
+    - The fire burns in his veins
+    - "\u041E\u0433\u043E\u043D\u044C \u0433\u043E\u0440\u0438\u0442 \u0432 \u0435\u0433\u043E
+      \u0436\u0438\u043B\u0430\u0445"
+    - "El fuego quema a trav\xE9s de sus venas."
+    - Das Feuer brennt in seinen Venen
+    - Il fuoco brucia nelle sue vene
+    - O fogo queima em suas veias
+  - text:
+    - He is greedy for blood
+    - "\u041E\u043D \u0436\u0430\u0434\u043D\u044B\u0439 \u0434\u043E \u043A\u0440\u043E\u0432\u0438"
+    - Codicia sangre.
+    - Er ist blutlustig
+    - "\xC8 avido di sangue"
+    - "Ele \xE9 ganancioso por sangue"
+  - text:
+    - He's all rusty inside
+    - "\u041E\u043D \u0432\u043D\u0443\u0442\u0440\u0438 \u0432\u0435\u0441\u044C
+      \u0440\u0436\u0430\u0432\u044B\u0439"
+    - "Est\xE1 oxidado"
+    - Er ist innerlich verrostet
+    - "\xC8 tutto arrugginito all'interno"
+    - "Ele est\xE1 todo enferrujado por dentro"
+  - text:
+    - Flowers grow in his veins
+    - "\u0412 \u0435\u0433\u043E \u0436\u0438\u043B\u0430\u0445 \u0440\u0430\u0441\u0442\u0443\u0442
+      \u0446\u0432\u0435\u0442\u044B"
+    - Flores crecen en sus venas.
+    - Blumen wachen in seinen Venen
+    - Fiori crescono nelle sue vene
+    - Flores crescem em suas veias
+  - text:
+    - He is hungry for gold
+    - "\u041E\u043D \u0445\u043E\u0447\u0435\u0442 \u0436\u0440\u0430\u0442\u044C
+      \u0437\u043E\u043B\u043E\u0442\u043E"
+    - "Est\xE1 hambriento de oro."
+    - Er ist hungrig nach Gold
+    - Ha fame di oro.
+    - Ele tem fome de ouro
+  randomPhrases:
+  - text:
+    - Looking for a friend? Beware, I can harm not only your enemies ...
+    - "\u0418\u0449\u0435\u0448\u044C \u0434\u0440\u0443\u0433\u0430? \u041E\u0441\u0442\u043E\u0440\u043E\u0436\u043D\u0435\u0435,
+      \u044F \u043C\u043E\u0433\u0443 \u043D\u0430\u0432\u0440\u0435\u0434\u0438\u0442\u044C
+      \u043D\u0435 \u0442\u043E\u043B\u044C\u043A\u043E \u0442\u0432\u043E\u0438\u043C
+      \u0432\u0440\u0430\u0433\u0430\u043C..."
+    - "\xBFBuscando una amiga? Ten cuidado, yo no solo puedo hacer da\xF1o a tus
+      enemigos..."
+    - Suchst du einen Freund? Vorsicht, ich kann nicht nur deinen Feinden schaden
+      ...
+    - Cerchi un amico? Stai attento, posso far male non soltanto ai tuoi nemici...
+    - "Procurando um amigo? Cuidado, eu posso prejudicar n\xE3o apenas seus inimigos
+      ..."
+  - text:
+    - If you attack yourself, you will get my effect instantly!
+    - "\u0415\u0441\u043B\u0438 \u0430\u0442\u0430\u043A\u0443\u0435\u0448\u044C
+      \u0441\u0435\u0431\u044F - \u043F\u043E\u043B\u0443\u0447\u0438\u0448\u044C
+      \u044D\u0444\u0444\u0435\u043A\u0442 \u043E\u0440\u0443\u0436\u0438\u044F \u0441\u0440\u0430\u0437\u0443,
+      \u0431\u0435\u0437 \u043D\u0430\u043A\u043E\u043F\u043B\u0435\u043D\u0438\u044F!"
+    - "Si te atacas a ti mismo, obtendras el efecto del arma immediatamente, \xA1Sin
+      acumulaci\xF3n!"
+    - "Wenn du dich selbst attackierst, bekommst du sofort den Effekt ohne Anh\xE4fung"
+    - Se attacchi te stesso, otterrai l'effetto della tua arma immediatamente, senza
+      che prima si accumuli!
+    - "Se voc\xEA se atacar, obter\xE1 o efeito de uma arma imediatamente, sem acumula\xE7\xE3o!"
+  - text:
+    - Please don't leave me alone ...
+    - "\u041F\u043E\u0436\u0430\u043B\u0443\u0439\u0441\u0442\u0430, \u043D\u0430
+      \u043E\u0441\u0442\u0430\u0432\u043B\u044F\u0439 \u043C\u0435\u043D\u044F \u0432
+      \u043E\u0434\u0438\u043D\u043E\u0447\u0435\u0441\u0442\u0432\u0435..."
+    - Por favor no me dejes solo...
+    - Bitte lass mich nicht allein...
+    - Ti prego, non lasciarmi solo...
+    - "Por favor, n\xE3o me deixe sozinho..."
+  - text:
+    - Feed me... I can be useful to you
+    - "\u041D\u0430\u043A\u043E\u0440\u043C\u0438 \u043C\u0435\u043D\u044F... \u042F
+      \u043C\u043E\u0433\u0443 \u0431\u044B\u0442\u044C \u043F\u043E\u043B\u0435\u0437\u0435\u043D"
+    - "Alim\xE9ntame... Puedo ser de utilidad para ti."
+    - "F\xFCttere mich... Ich kann dir n\xFCtzlich sein"
+    - Dammi da mangiare... posso esserti utile
+    - "Alimente-me ... Eu posso ser \xFAtil para voc\xEA"
+  - text:
+    - You know you can attack yourself, right? Press "H", it's fun!
+    - "\u0422\u044B \u0436\u0435 \u0437\u043D\u0430\u0435\u0448\u044C, \u0447\u0442\u043E
+      \u043C\u043E\u0436\u0435\u0448\u044C \u0430\u0442\u0430\u043A\u043E\u0432\u0430\u0442\u044C
+      \u0441\u0435\u0431\u044F, \u0432\u0435\u0440\u043D\u043E? \u041F\u043E\u043F\u0440\u043E\u0431\u0443\u0439
+      \u0436\u043C\u0430\u043A\u043D\u0443\u0442\u044C 'H', \u044D\u0442\u043E \u0432\u0435\u0441\u0435\u043B\u043E!"
+    - "\xBFSabes que te puedes atacar a ti mismo, verdad? Pulsa 'H' para probarlo,
+      es divertido!"
+    - "Wusstet du das du dich selbst angreifen kannst? Versuch die \"H\" Taste zu
+      Dr\xFCcken, es ist lustig!"
+    - "Sapevi che puoi attaccare te stesso, giusto?  Prova a premere \"H\", \xE8
+      divertente!"
+    - "Voc\xEA sabe que pode se atacar, certo? Tente acertar 'H', \xE9 divertido!"
+  - text:
+    - "Nah, I don\u2019t want to go anywhere. Well, if only ..."
+    - "\u041D\u0435, \u044F \u043D\u0438\u043A\u0443\u0434\u0430 \u043D\u0435 \u0445\u043E\u0447\u0443
+      \u0438\u0434\u0442\u0438. \u041D\u0443, \u0435\u0441\u043B\u0438 \u0442\u043E\u043B\u044C\u043A\u043E..."
+    - Nah, no quiero ir a ningun sitio. Bueno, solo si...
+    - Ne, Ich will nirgendwo hingen, Es sei denn...
+    - Nah, non voglio andare da nessuna parte. Be', se solo...
+    - "N\xE3o, eu n\xE3o quero ir a lugar algum. Bem, se ao menos ..."
+  - text:
+    - Did you see that? Someone's behind you
+    - "\u0422\u044B \u044D\u0442\u043E \u0432\u0438\u0434\u0435\u043B? \u041A\u0442\u043E-\u0442\u043E
+      \u0443 \u0442\u0435\u0431\u044F \u0437\u0430 \u0441\u043F\u0438\u043D\u043E\u0439"
+    - "\xBFHas visto eso? Hay alguien detr\xE1s de ti."
+    - Siehst du dass? Jemand ist hinter dir
+    - "Lo hai visto? C'\xE8 qualcuno dietro di te"
+    - "Voc\xEA viu aquilo? Algu\xE9m est\xE1 atr\xE1s de voc\xEA"
+  - text:
+    - Once I saw a gun contaminated with insane meat. He pounced on everyone like
+      a madman!
+    - "\u041E\u0434\u043D\u0430\u0436\u0434\u044B \u044F \u0432\u0438\u0434\u0435\u043B
+      \u0440\u0443\u0436\u044C\u0435, \u0437\u0430\u0440\u0430\u0436\u0435\u043D\u043D\u043E\u0435
+      \u043E\u0431\u0435\u0437\u0443\u043C\u0438\u0432\u0448\u0438\u043C \u043C\u044F\u0441\u043E\u043C.
+      \u041E\u043D \u043D\u0430\u0431\u0440\u0430\u0441\u044B\u0432\u0430\u043B\u0441\u044F
+      \u043D\u0430 \u0432\u0441\u0435\u0445, \u0441\u043B\u043E\u0432\u043D\u043E
+      \u0431\u0435\u0437\u0443\u043C\u0435\u0446!"
+    - Una vez vi un arma contaminada con carne loca. Atacaba a todo el mundo como
+      loca!
+    - EInmal habe ich eine Waffe mit kontaminierten Fleisch gesehen. Sie sprang auf 
+      jedern wie ein Irrer!
+    - "Una volta ho visto una pistola contaminata da carne insana. Si \xE8 avventata
+      su tutti come una pazza."
+    - Uma vez vi uma arma contaminada com carne insana. Ele atacou todo mundo como
+      um louco!
+  - text:
+    - Have you ever been devoured by a key? You're still lucky he he he
+    - "\u0422\u0435\u0431\u044F \u0435\u0449\u0435 \u043D\u0438 \u0440\u0430\u0437\u0443
+      \u043D\u0435 \u0441\u0436\u0438\u0440\u0430\u043B \u043A\u043B\u044E\u0447?
+      \u041F\u043E\u043A\u0430 \u0447\u0442\u043E \u0442\u0435\u0431\u0435 \u0432\u0435\u0437\u0435\u0442
+      \u0445\u0435-\u0445\u0435-\u0445\u0435"
+    - "\xBFAlguna vez has sido devorado por una llave? A\xFAn eres suertudo he he
+      he"
+    - "Wurdest du jemals von einem Schl\xFCssel verschluckt? Du hast noch Gl\xFCck
+      he he he"
+    - Sei mai stato divorato da una chiave? Sei ancora fortunato he he he
+    - "Voc\xEA j\xE1 foi devorado por uma chave? Voc\xEA ainda tem sorte hehehe"
+  - text:
+    - If you use me to attack someone, they'll be affected by my status effect! Well,
+      you'll be affected too, but it won't be as bad... he he he
+    - "\u0415\u0441\u043B\u0438 \u0442\u044B \u0430\u0442\u0430\u043A\u0443\u0435\u0448\u044C
+      \u043C\u043D\u043E\u0439 \u0432\u0440\u0430\u0433\u0430 - \u044F \u0441\u0440\u0430\u0437\u0443
+      \u0436\u0435 \u0437\u0430\u0440\u0430\u0436\u0443 \u0435\u0433\u043E \u0441\u0432\u043E\u0438\u043C
+      \u044D\u0444\u0444\u0435\u043A\u0442\u043E\u043C! \u041D\u0443, \u0438 \u0442\u0435\u0431\u044F
+      \u043D\u0435\u043C\u043D\u043E\u0433\u043E, \u043D\u043E \u044D\u0442\u043E
+      \u043D\u0435 \u0442\u0430\u043A \u043E\u043F\u0430\u0441\u043D\u043E \u0445\u0435-\u0445\u0435-\u0445\u0435"
+    - "Si atacas a un enemigo conmigo, le afectar\xE9 immediatamente con mi efecto!
+      Bueno, te afectar\xE9 a ti tambi\xE9n un poco, pero no ser\xE1 igual de peligroso
+      he he he"
+    - "Wenn du mit mir einen  Gegner angreifst, werde ich ihn mit meinen Effekt beinfullsen.
+      Naja, es wird dich auch betreffen, aber es wird nicht so gef\xE4hrlich he he
+      he"
+    - "Se attacchi un nemico con me, lo affligger\xF2 immediatamente con il mio effetto!
+      Be', anche tu sarai affetto un pochino, ma non sar\xE0 cos\xEC pericoloso he
+      he he"
+    - "Se voc\xEA atacar um inimigo por mim, eu o afetarei imediatamente com o meu
+      efeito! Bem, eu vou te afetar um pouco, mas n\xE3o vai ser t\xE3o perigoso
+      hehehe"
+  specialEffect:
+    text:
+    - Reduces incoming damage by half
+    - "\u0421\u043D\u0438\u0436\u0430\u0435\u0442 \u0432\u0445\u043E\u0434\u044F\u0449\u0438\u0439
+      \u0443\u0440\u043E\u043D \u0432\u0434\u0432\u043E\u0435"
+    - "Reduce el da\xF1o entrante a la mitad"
+    - "Reduziert den ankommenden Schaden um die H\xE4lfte"
+    - Reduces incoming damage by half
+    - Reduces incoming damage by half

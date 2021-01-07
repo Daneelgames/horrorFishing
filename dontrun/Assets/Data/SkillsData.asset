@@ -1,0 +1,622 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6082d661d2ddabb499fd098c803da9e3, type: 3}
+  m_Name: SkillsData
+  m_EditorClassIdentifier: 
+  skills:
+  - skillIndex: 0
+    skill: 5
+    image: {fileID: 21300000, guid: fb931140692e9d140b5b31870d283fdd, type: 3}
+    info: Mole. Meat Mole digs secret passages throughout the gut. Sometimes he grabs
+      you and drags you somewhere.
+    infoRu: "\u041A\u0440\u043E\u0442. \u041C\u044F\u0441\u043D\u043E\u0439 \u041A\u0440\u043E\u0442
+      \u0440\u043E\u0435\u0442 \u043F\u043E\u0442\u0430\u0439\u043D\u044B\u0435 \u0445\u043E\u0434\u044B
+      \u043F\u043E \u0432\u0441\u0435\u0439 \u041A\u0438\u0448\u043A\u0435. \u0418\u043D\u043E\u0433\u0434\u0430
+      \u043E\u043D \u0445\u0432\u0430\u0442\u0430\u0435\u0442 \u0432\u0430\u0441
+      \u0438 \u0443\u0442\u0430\u0441\u043A\u0438\u0432\u0430\u0435\u0442 \u043A\u0443\u0434\u0430-\u0442\u043E."
+    infoESP: "El topo. El topo de carne cava pasadizos secretos a trav\xE9s de La
+      Entra\xF1a. A veces te toma y te deja en otro lugar."
+    infoGER: "Maulwurf. Der Maulwurf gr\xE4bt Geheimg\xE4nge durch den Magen. Manchmal
+      schnappt er dich und nimmt dich mit durch den Magen"
+    infoIT: Talpa. La Talpa di carne scava passaggi segreti nell'Intestino. A volte
+      ti prende e ti porta da qualche parte.
+    infoSPBR: "Toupeira. A Toupeira da Carne escava passagens secretas por todo o
+      intestino. \xC0s vezes ele agarra voc\xEA e arrasta voc\xEA para algum lugar."
+    coopOnly: 0
+    soloOnly: 0
+  - skillIndex: 1
+    skill: 7
+    image: {fileID: 21300000, guid: 281a680857716ff4cb63a10add96d004, type: 3}
+    info: "Golden Brain. A piece of gold stuck to your head. It looked good at first,
+      but gold quickly grew in your brain, taking control of your vision and the
+      vestibular apparatus. You\u2019re not feeling very well, but your attacks doing
+      50% more damage to your enemies!"
+    infoRu: "\u0417\u043E\u043B\u043E\u0442\u043E\u0439 \u041C\u043E\u0437\u0433.
+      \u041A\u0443\u0441\u043E\u0447\u0435\u043A \u0437\u043E\u043B\u043E\u0442\u0430
+      \u043F\u0440\u0438\u043B\u0438\u043F \u043A \u0442\u0432\u043E\u0435\u0439
+      \u0433\u043E\u043B\u043E\u0432\u0435. \u0421\u043D\u0430\u0447\u0430\u043B\u0430
+      \u0441\u043C\u043E\u0442\u0440\u0435\u043B\u043E\u0441\u044C \u043D\u0435\u043F\u043B\u043E\u0445\u043E,
+      \u043D\u043E \u0437\u043E\u043B\u043E\u0442\u043E \u0431\u044B\u0441\u0442\u0440\u043E
+      \u0440\u0430\u0437\u0440\u043E\u0441\u043B\u043E\u0441\u044C \u043F\u043E \u0442\u0432\u043E\u0435\u043C\u0443
+      \u043C\u043E\u0437\u0433\u0443, \u0432\u0437\u044F\u0432 \u043F\u043E\u0434
+      \u043A\u043E\u043D\u0442\u0440\u043E\u043B\u044C \u0442\u0432\u043E\u0435 \u0437\u0440\u0435\u043D\u0438\u0435
+      \u0438 \u0432\u0435\u0441\u0442\u0438\u0431\u0443\u043B\u044F\u0440\u043D\u044B\u0439
+      \u0430\u043F\u043F\u0430\u0440\u0430\u0442. \u0427\u0443\u0432\u0441\u0442\u0432\u0443\u0435\u0448\u044C
+      \u0441\u0435\u0431\u044F \u043D\u0435 \u043E\u0447\u0435\u043D\u044C, \u043D\u043E
+      \u0430\u0442\u0430\u043A\u0438 \u0442\u0432\u043E\u0438 \u043D\u0430\u043D\u043E\u0441\u044F\u0442
+      \u0432\u0440\u0430\u0433\u0430\u043C \u043D\u0430 50% \u0431\u043E\u043B\u044C\u0448\u0435
+      \u0443\u0440\u043E\u043D\u0430!"
+    infoESP: "Cerebro de oro. Un trozo de oro pegado a tu cabeza. Se ve\xEDa bien
+      al principio, pero el oro se expandi\xF3 r\xE1pidamente en tu cerebro, tomando
+      control de tu visi\xF3n y del aparato vestibular. No te sientes muy bien. \xA1Pero
+      tus ataques inflingen 50% m\xE1s de da\xF1o a tus enemigos!"
+    infoGER: "Goldhirn. Ein st\xFCck Gold steckt in deinem Kopf. Es sah zuerst gut
+      aus, aber wuchs schnell in deinem Hirn, und \xFCbernahm Kontrolle \xFCber deine
+      Sicht und deonen vestibularen Apparatus. Du f\xFChlst dich nicht gut, aber
+      dein Angriff teilt 50 % mehr schaden deinen Gegnern zu"
+    infoIT: "Cervello d'oro. Un pezzo d'oro \xE8 bloccato sulla tua testa. Sembrava
+      bello all'inizio, ma ora l'oro \xE9 cresciuto velocemente dentro il tuo cervello,
+      prendendo controllo della tua vista e il tuo apparato vestibolare. Non ti senti
+      molto bene, ma i tuoi attacchi fanno il 50% in pi\xFA di danno ai tuoi nemici!"
+    infoSPBR: "C\xE9rebro de ouro. Um peda\xE7o de ouro preso \xE0 sua cabe\xE7a.
+      Parecia bom no come\xE7o, mas o ouro cresceu rapidamente em seu c\xE9rebro,
+      assumindo o controle de sua vis\xE3o e do aparelho vestibular. Voc\xEA n\xE3o
+      est\xE1 se sentindo muito bem, mas seus ataques causam 50% mais dano a seus
+      inimigos!"
+    coopOnly: 0
+    soloOnly: 0
+  - skillIndex: 2
+    skill: 3
+    image: {fileID: 21300000, guid: 02e50883d1a33354390bf310ae472369, type: 3}
+    info: Thief. Toys just roll into your pockets.
+    infoRu: "\u0412\u043E\u0440. \u0418\u0433\u0440\u0443\u0448\u043A\u0438 \u043F\u0440\u043E\u0441\u0442\u043E
+      \u043A\u0430\u0442\u044F\u0442\u0441\u044F \u0432 \u0442\u0432\u043E\u0438
+      \u043A\u0430\u0440\u043C\u0430\u043D\u044B."
+    infoESP: "Ladr\xF3n. Los juguetes simplemente ruedan a tus bolsillos."
+    infoGER: Dieb. Spielzeuge rollen einfach in deine Hosentasche
+    infoIT: Ladro. Dei giochi si muovono dentro le tue tasche.
+    infoSPBR: Ladrao. Os brinquedos rolam nos bolsos.
+    coopOnly: 0
+    soloOnly: 0
+  - skillIndex: 3
+    skill: 0
+    image: {fileID: 21300000, guid: 6b353d44e05caff4b8cea52db5ca1e68, type: 3}
+    info: Third Lung. You can run longer.
+    infoRu: "\u0422\u0440\u0435\u0442\u044C\u0435 \u043B\u0435\u0433\u043A\u043E\u0435.
+      \u0422\u044B \u043C\u043E\u0436\u0435\u0448\u044C \u0434\u043E\u043B\u044C\u0448\u0435
+      \u0431\u0435\u0433\u0430\u0442\u044C."
+    infoESP: "Tercer pulm\xF3n. Puedes correr por m\xE1s tiempo."
+    infoGER: "Dritte Lunge. Du kannst l\xE4nger rennen"
+    infoIT: "Terzo polmone. Puoi correre di pi\xF9."
+    infoSPBR: "Terceiro Pulm\xE3o. Voc\xEA pode correr mais tempo."
+    coopOnly: 0
+    soloOnly: 0
+  - skillIndex: 4
+    skill: 1
+    image: {fileID: 21300000, guid: f86684b6945879648ab8e7c90ebbbc2c, type: 3}
+    info: Pulp. You can dash more often.
+    infoRu: "\u041F\u0430\u043B\u043F. \u0422\u044B \u043C\u043E\u0436\u0435\u0448\u044C
+      \u0447\u0430\u0449\u0435 \u043F\u0440\u044B\u0433\u0430\u0442\u044C."
+    infoESP: "Pulpa. Puedes esquivar m\xE1s seguido."
+    infoGER: "Pupla. Du kannst \xF6fter rennen."
+    infoIT: "Polpa. Puoi correre pi\xF9 velocemente."
+    infoSPBR: "Polpa. Voc\xEA pode correr com mais frequ\xEAncia."
+    coopOnly: 0
+    soloOnly: 0
+  - skillIndex: 5
+    skill: 2
+    image: {fileID: 21300000, guid: 5457a3901c31fa1439b26598dadf79ea, type: 3}
+    info: Marv. You run faster.
+    infoRu: "\u041C\u0430\u0440\u0432. \u0422\u044B \u0431\u044B\u0441\u0442\u0440\u0435\u0435
+      \u0431\u0435\u0433\u0430\u0435\u0448\u044C."
+    infoESP: "Marv. Corres m\xE1s r\xE1pido."
+    infoGER: Mav. Du rennst schneller
+    infoIT: "Marv. Corri pi\xF9 velocemente."
+    infoSPBR: "Marv. Voc\xEA corre mais r\xE1pido."
+    coopOnly: 0
+    soloOnly: 0
+  - skillIndex: 6
+    skill: 4
+    image: {fileID: 21300000, guid: 7fdce051789967b43a5ab01cf655a9bb, type: 3}
+    info: Autumn Spring. Some attacks inflict fire.
+    infoRu: "\u041E\u0441\u0435\u043D\u043D\u044F\u044F \u0412\u0435\u0441\u043D\u0430.
+      \u0422\u0432\u043E\u0438 \u0430\u0442\u0430\u043A\u0438 \u043C\u043E\u0433\u0443\u0442
+      \u043F\u043E\u0434\u0436\u0435\u0447\u044C."
+    infoESP: "Oto\xF1o de primavera. Algunos ataques inflingen fuego."
+    infoGER: "Herbsfr\xFChling, Deine Angriffe verursachen Feuer"
+    infoIT: Mezza stagione. Alcuni attacchi fanno andare i nemici a fuoco.
+    infoSPBR: "Primavera de outono. Alguns ataques causam inc\xEAndio."
+    coopOnly: 0
+    soloOnly: 0
+  - skillIndex: 7
+    skill: 6
+    image: {fileID: 21300000, guid: b563335cb884ac54bb70b3fcb98367d1, type: 3}
+    info: Milk. You see more things. But sometimes they are not what they seem.
+    infoRu: "\u041C\u043E\u043B\u043E\u043A\u043E. \u0422\u044B \u0432\u0438\u0434\u0438\u0448\u044C
+      \u0431\u043E\u043B\u044C\u0448\u0435 \u0432\u0435\u0449\u0435\u0439. \u041D\u043E
+      \u0438\u043D\u043E\u0433\u0434\u0430 \u043E\u043D\u0438 - \u043D\u0435 \u0442\u043E,
+      \u0447\u0435\u043C \u043A\u0430\u0436\u0443\u0442\u0441\u044F."
+    infoESP: Leche. Las cosas no son lo que parecen.
+    infoGER: Milch. Dinge sind nicht das, was sie scheinen zu sein.
+    infoIT: Latte. Le cose non sono come appaiono.
+    infoSPBR: "Leite. As coisas n\xE3o s\xE3o como parecem."
+    coopOnly: 0
+    soloOnly: 1
+  - skillIndex: 8
+    skill: 9
+    image: {fileID: 21300000, guid: 969ce5b1c60e9dd409cc9abc683529ad, type: 3}
+    info: Huge Chin. You can destroy wooden doors and meat by dashing in them. But
+      you feel pain doing so.
+    infoRu: "\u0417\u0434\u043E\u0440\u043E\u0432\u0435\u043D\u043D\u044B\u0439 \u041F\u043E\u0434\u0431\u043E\u0440\u043E\u0434\u043E\u043A.
+      \u0422\u044B \u043C\u043E\u0436\u0435\u0448\u044C \u0443\u043D\u0438\u0447\u0442\u043E\u0436\u0430\u0442\u044C
+      \u0434\u0435\u0440\u0435\u0432\u044F\u043D\u043D\u044B\u0435 \u0434\u0432\u0435\u0440\u0438
+      \u0438 \u043C\u044F\u0441\u043E, \u043F\u0440\u044B\u0433\u0430\u044F \u0432
+      \u043D\u0438\u0445. \u041F\u0440\u0438 \u044D\u0442\u043E\u043C \u0442\u0435\u0431\u0435
+      \u0438 \u0441\u0430\u043C\u043E\u043C\u0443 \u0431\u043E\u043B\u044C\u043D\u043E."
+    infoESP: Barbilla enorme. Puedes destruir puertas y carne esquivando hacia ellas.
+    infoGER: "Riesenkinn. Du kannst Fleisch und T\xFCren zerst\xF6ren indem du reinrennst."
+    infoIT: Grande mento. Puoi distruggere le porte e la carne correndo contro di
+      loro.
+    infoSPBR: "Queixo enorme. Voc\xEA pode destruir portas e carne correndo nelas."
+    coopOnly: 0
+    soloOnly: 0
+  - skillIndex: 9
+    skill: 8
+    image: {fileID: 21300000, guid: a11a385ee9de07f438fc3c59d209cd58, type: 3}
+    info: Cigarette Burn. Your skin is decorated with the scars and burns of childhood.
+      You are used to pain, so you absorb some part of it.
+    infoRu: "\u0421\u0438\u0433\u0430\u0440\u0435\u0442\u043D\u044B\u0439 \u043E\u0436\u043E\u0433.
+      \u0421 \u0434\u0435\u0442\u0441\u0442\u0432\u0430, \u0442\u0432\u043E\u044F
+      \u043A\u043E\u0436\u0430 \u0443\u043A\u0440\u0430\u0448\u0435\u043D\u0430 \u043E\u0436\u043E\u0433\u0430\u043C\u0438
+      \u0438 \u0448\u0440\u0430\u043C\u0430\u043C\u0438. \u0422\u044B \u043F\u0440\u0438\u0432\u044B\u043A
+      \u043A \u0431\u043E\u043B\u0438 \u0438 \u043F\u043E\u0433\u043B\u043E\u0449\u0430\u0435\u0448\u044C
+      \u0435\u0435 \u0447\u0430\u0441\u0442\u044C."
+    infoESP: "Quemadura de cigarrillo. Tu piel est\xE1 decorada con cicatrizes y
+      quemaduras de tu ni\xF1ez. Est\xE1s acostumbrado al dolor, por lo que absorbes
+      algo de ello. "
+    infoGER: "Zigarettenverbrennung. Deine Haut is geschm\xFCckt mtoit den Narben
+      und Verbrennungen deiner Kindheit. Du bist Schmerz gewoghnt, daher absorbierst
+      du einen Teil davon."
+    infoIT: "Bruciature da sigarette. La tua pelle \xE8 decorata con le cicatrici
+      e le bruciature della tua infanzia. Sei abituato al dolore, quindi ne assorbi
+      una parte."
+    infoSPBR: "Queimadura de cigarro. Sua pele est\xE1 decorada com as cicatrizes
+      e queimaduras da inf\xE2ncia. Voc\xEA est\xE1 acostumado \xE0 dor e absorve
+      parte dela."
+    coopOnly: 0
+    soloOnly: 0
+  - skillIndex: 10
+    skill: 10
+    image: {fileID: 21300000, guid: 1677c3f9e3204354082a608732715562, type: 3}
+    info: 9 Legs. Move in any direction with higher speed.
+    infoRu: "\u0414\u0435\u0432\u044F\u0442\u0438\u043D\u043E\u0433\u0438\u0439.
+      \u0422\u044B \u0431\u044B\u0441\u0442\u0440\u0435\u0435 \u0445\u043E\u0434\u0438\u0448\u044C
+      \u0432\u043E \u0432\u0441\u0435 \u0441\u0442\u043E\u0440\u043E\u043D\u044B."
+    infoESP: "9 Piernas. Te mueves en cualquier direcci\xF3n con velocidad normal."
+    infoGER: 9 Beine. Bewege dich in jede Richting mit normaler Geschwindigkeit.
+    infoIT: "9 gambe. Ti muovi in ogni direzione a velocit\xE0 normale."
+    infoSPBR: "9 pernas. Mova-se em qualquer dire\xE7\xE3o com velocidade normal."
+    coopOnly: 0
+    soloOnly: 0
+  - skillIndex: 11
+    skill: 11
+    image: {fileID: 21300000, guid: dcabee044ba8fb048889c6b4807d5ce3, type: 3}
+    info: Prostetic Arms. You don't lower your weapon while running.
+    infoRu: "\u0420\u0443\u0447\u043D\u044B\u0435 \u043F\u0440\u043E\u0442\u0435\u0437\u044B.
+      \u0422\u044B \u043D\u0435 \u043E\u043F\u0443\u0441\u043A\u0430\u0435\u0448\u044C
+      \u0441\u0432\u043E\u0435 \u043E\u0440\u0443\u0436\u0438\u0435 \u0432\u043E
+      \u0432\u0440\u0435\u043C\u044F \u0431\u0435\u0433\u0430."
+    infoESP: "Brazos prost\xE9ticos. No bajas tu arma mientras corres."
+    infoGER: "Armprothesen. Du senkst nicht deine Waffe w\xE4hrend du rennst"
+    infoIT: Braccio prostetico. Non abbassi le tue armi quando corri.
+    infoSPBR: "Bra\xE7os prot\xE9ticos. Voc\xEA n\xE3o abaixa sua arma enquanto corre."
+    coopOnly: 0
+    soloOnly: 0
+  - skillIndex: 12
+    skill: 12
+    image: {fileID: 21300000, guid: 32fbf98100a038c42a362b7d17849e80, type: 3}
+    info: Gun Lover. You polish your stuff to shine, so it breaks less easily.
+    infoRu: "\u041B\u044E\u0431\u043E\u0432\u043D\u0438\u043A \u041F\u0443\u0448\u043A\u0438.
+      \u0422\u044B \u043F\u043E\u043B\u0438\u0440\u0443\u0435\u0448\u044C \u0441\u0432\u043E\u0435
+      \u0431\u0430\u0440\u0430\u0445\u043B\u043E \u0434\u043E \u0431\u043B\u0435\u0441\u043A\u0430,
+      \u0442\u0430\u043A \u0447\u0442\u043E \u043E\u043D\u043E \u0440\u0435\u0436\u0435
+      \u043B\u043E\u043C\u0430\u0435\u0442\u0441\u044F."
+    infoESP: Amante de las armas. Pules tus armas para que brillen, por lo que se
+      desgastan menos.
+    infoGER: "Waffenliebhaber. Du polierest deine Waffe zum Gl\xE4nzen, damit sie
+      schwerer kaputt gehen."
+    infoIT: "Amante delle armi. Pulisci le tue cose per farle brillare, cos\xEC si
+      rompono meno facilmente."
+    infoSPBR: "Amante de armas. Voc\xEA lustra seu material para brilhar, para que
+      ele se quebre menos facilmente."
+    coopOnly: 0
+    soloOnly: 0
+  - skillIndex: 13
+    skill: 13
+    image: {fileID: 21300000, guid: 900ea3fb453bd88469807ff0c2d00d13, type: 3}
+    info: Generous Heart. Each time you lose gold, you restore a little health.
+    infoRu: "\u0429\u0435\u0434\u0440\u043E\u0435 \u0421\u0435\u0440\u0434\u0446\u0435.
+      \u041A\u0430\u0436\u0434\u044B\u0439 \u0440\u0430\u0437, \u0442\u0435\u0440\u044F\u044F
+      \u0437\u043E\u043B\u043E\u0442\u043E, \u0442\u044B \u0432\u043E\u0441\u0441\u0442\u0430\u043D\u0430\u0432\u043B\u0438\u0432\u0430\u0435\u0448\u044C
+      \u043D\u0435\u043C\u043D\u043E\u0433\u043E \u0437\u0434\u043E\u0440\u043E\u0432\u044C\u044F."
+    infoESP: "Coraz\xF3n generoso. Cada vez que pierdes oro, recuperas un poco de
+      salud."
+    infoGER: "Gro\xDFz\xFCgies Herz. Jedes Mal wenn du Gold verliest, stellst du
+      ein wenig Leben her."
+    infoIT: Cuore generoso. Ogni volta che perdi dell'oro, recuperi della vita.
+    infoSPBR: "Cora\xE7\xE3o Generoso. Cada vez que voc\xEA perde ouro, restaura
+      um pouco de sa\xFAde."
+    coopOnly: 0
+    soloOnly: 0
+  - skillIndex: 14
+    skill: 14
+    image: {fileID: 21300000, guid: 9bbce0a5e4fd60145951c85952608786, type: 3}
+    info: Blood and Sweat. Ammo is pouring from your fresh wounds.
+    infoRu: "\u041A\u0440\u043E\u0432\u044C \u0438 \u041F\u043E\u0442. \u0418\u0437
+      \u0442\u0432\u043E\u0438\u0445 \u0441\u0432\u0435\u0436\u0438\u0445 \u0440\u0430\u043D
+      \u0441\u044B\u043F\u044F\u0442\u0441\u044F \u043F\u0430\u0442\u0440\u043E\u043D\u044B."
+    infoESP: "Sudor y sangre. Munici\xF3n cae desde tus heridas."
+    infoGER: "Blut und Schwei\xDF. Munition f\xE4llt aus deinen Wunden"
+    infoIT: Sangue e Sudore. Munizioni escono dalle tue ferite fresche.
+    infoSPBR: "Sangue e suor. Sua Muni\xE7\xE3o est\xE1 saindo de suas frescas feridas."
+    coopOnly: 0
+    soloOnly: 0
+  - skillIndex: 15
+    skill: 15
+    image: {fileID: 21300000, guid: 97c821e1b31a2934cbf2fae5d3b16483, type: 3}
+    info: Let it die! When you suffer - ALL SUFFER
+    infoRu: "\u041F\u0443\u0441\u0442\u044C \u0432\u0441\u0435 \u0441\u0434\u043E\u0445\u043D\u0443\u0442!
+      \u041A\u043E\u0433\u0434\u0430 \u0432\u044B \u0441\u0442\u0440\u0430\u0434\u0430\u0435\u0442\u0435
+      - \u0412\u0421\u0415 \u0421\u0422\u0420\u0410\u0414\u0410\u0415\u0422"
+    infoESP: "Dejarlo Morir! Cuando t\xFA sufres... TODOS SUFREN."
+    infoGER: Lass Es Sterben! Wenn du leidest - LEIDEN ALLE
+    infoIT: Lascialo Morire! Quando tu soffri - TUTTI SOFFRONO.
+    infoSPBR: "Deixe-o Morrer! Quando voc\xEA sofre - TUDO SOFRE!!!"
+    coopOnly: 0
+    soloOnly: 0
+  - skillIndex: 16
+    skill: 16
+    image: {fileID: 21300000, guid: 1cbc69a81c8d90246b4fc45e1c7af8a4, type: 3}
+    info: Golden Shooter. If there are no ammo, you shoot gold.
+    infoRu: "\u0417\u043E\u043B\u043E\u0442\u043E\u0439 \u0421\u0442\u0440\u0435\u043B\u043E\u043A.
+      \u0415\u0441\u043B\u0438 \u043D\u0435\u0442 \u043F\u0430\u0442\u0440\u043E\u043D\u043E\u0432,
+      \u0442\u044B \u0441\u0442\u0440\u0435\u043B\u044F\u0435\u0448\u044C \u0437\u043E\u043B\u043E\u0442\u043E\u043C."
+    infoESP: "Disparo \xE1ureo. Si no tienes munici\xF3n, disparas oro."
+    infoGER: "Goldener Sch\xFCter. Wenn du keine Muntion mehr hast, schie\xDFt du
+      mit Gold"
+    infoIT: Pistolero Dorato. Se finisci le munizioni, sparerai oro.
+    infoSPBR: "Atirador dourado Se n\xE3o houver muni\xE7\xE3o, voc\xEA atira em
+      ouro."
+    coopOnly: 0
+    soloOnly: 0
+  - skillIndex: 17
+    skill: 18
+    image: {fileID: 21300000, guid: 5908f3a1132ec174cbf3d98af11451e6, type: 3}
+    info: Nervous Hunk. You have a bad time closing wooden doors, but at the same
+      time enemies around take damage
+    infoRu: "\u041D\u0435\u0440\u0432\u043D\u044B\u0439 \u041A\u0430\u0447\u043E\u043A.
+      \u0422\u0435\u0431\u0435 \u043F\u043B\u043E\u0445\u043E \u0434\u0430\u0435\u0442\u0441\u044F
+      \u0437\u0430\u043A\u0440\u044B\u0442\u0438\u0435 \u0434\u0435\u0440\u0435\u0432\u044F\u043D\u043D\u044B\u0445
+      \u0434\u0432\u0435\u0440\u0435\u0439, \u043D\u043E \u0432\u0440\u0430\u0433\u0438
+      \u0440\u044F\u0434\u043E\u043C \u043F\u0440\u0438 \u044D\u0442\u043E\u043C
+      \u043F\u043E\u043B\u0443\u0447\u0430\u044E\u0442 \u0443\u0440\u043E\u043D"
+    infoESP: "Trozo nervioso. Tienes un mal rato cerrando puertas de madera, pero
+      al mismo tiempo los enemigos alrededor tuyo reciben da\xF1o"
+    infoGER: "Nev\xF6ser Koloss. Du hast schwierikeiten Holzt\xFCren zu schlie\xDFen,
+      aber gleichzeitig nehem Gegner in deiner N\xE4he schaden"
+    infoIT: Forzuto nervoso. Hai un brutto momento nel chiudere le porte, ma allo
+      stesso tempo i nemici attorno prendono danno
+    infoSPBR: "P\xE3o Nervoso. Voc\xEA n\xE3o consegue fechar as portas de madeira,
+      mas ao mesmo tempo os inimigos ao redor sofrem danos"
+    coopOnly: 0
+    soloOnly: 0
+  - skillIndex: 18
+    skill: 19
+    image: {fileID: 21300000, guid: a2846f01340ca6a41af928ba8080df57, type: 3}
+    info: Pipe Lover. Thy pipe blows are stronger
+    infoRu: "\u0422\u0440\u0443\u0431\u043D\u044B\u0439 \u041B\u044E\u0431\u043E\u0432\u043D\u0438\u043A.
+      \u0422\u0432\u043E\u0438 \u0443\u0434\u0430\u0440\u044B \u0442\u0440\u0443\u0431\u043E\u0439
+      \u0441\u0438\u043B\u044C\u043D\u0435\u0435"
+    infoESP: Amante de las Tuberias. Los golpes de tus tuberias son mas fuertes
+    infoGER: "Rohrliebhaber. Deine Rohrhiebe sind st\xE4ker."
+    infoIT: "Amante dei Tubi. I colpi con il tubo sono pi\xF9 forti"
+    infoSPBR: "Tubo Amoroso. Os teus golpes de cano s\xE3o mais fortes"
+    coopOnly: 0
+    soloOnly: 0
+  - skillIndex: 19
+    skill: 20
+    image: {fileID: 21300000, guid: f3f4d5ec0067e864ab63250d84667949, type: 3}
+    info: Knives Fetish. You hit harder with a knife
+    infoRu: "\u0424\u0435\u0442\u0438\u0448 \u041F\u043E \u041D\u043E\u0436\u0430\u043C.
+      \u0422\u044B \u0441\u0438\u043B\u044C\u043D\u0435\u0435 \u0431\u044C\u0435\u0448\u044C
+      \u043D\u043E\u0436\u043E\u043C"
+    infoESP: Fetiche de los Cuchillos. Golpeas mas fuerte con un cuchillo
+    infoGER: "Messefetish. Du triffst h\xE4rter mit einem Messer."
+    infoIT: "Feticismo per il Coltello. Colpisci pi\xF9 forte con un coltello"
+    infoSPBR: "Fetiche por Facas. Voc\xEA bate mais forte com uma faca"
+    coopOnly: 0
+    soloOnly: 0
+  - skillIndex: 20
+    skill: 21
+    image: {fileID: 21300000, guid: 9ca72155a6f6ed441b8a562e2fde21a7, type: 3}
+    info: Torrance. You are a maniac with an axe
+    infoRu: "\u0422\u043E\u0440\u0440\u0435\u043D\u0441. \u0422\u044B - \u043C\u0430\u043D\u044C\u044F\u043A
+      \u0441 \u0442\u043E\u043F\u043E\u0440\u043E\u043C"
+    infoESP: Torrance. Eres un maniatico con el hacha
+    infoGER: Torrance. Du bist ein Wahnsinniger mit einer Axt.
+    infoIT: Torrance. Sei un maniaco con l'ascia
+    infoSPBR: "Torrance. Voc\xEA \xE9 um man\xEDaco com um machado"
+    coopOnly: 0
+    soloOnly: 0
+  - skillIndex: 21
+    skill: 22
+    image: {fileID: 21300000, guid: f4194566b6c4d1d4887d4a4fe77f2f34, type: 3}
+    info: Mobster. More powerful pistols
+    infoRu: "\u0411\u0430\u043D\u0434\u044E\u0433\u0430. \u0411\u043E\u043B\u0435\u0435
+      \u043C\u043E\u0449\u043D\u044B\u0435 \u043F\u0438\u0441\u0442\u043E\u043B\u0435\u0442\u044B"
+    infoESP: Gangster. Pistolas mas poderosas
+    infoGER: "Mobster. St\xE4rkere Pistolen."
+    infoIT: "Mafioso. Pistole pi\xF9 potenti"
+    infoSPBR: Gangster. Pistolas mais poderosas
+    coopOnly: 0
+    soloOnly: 0
+  - skillIndex: 22
+    skill: 23
+    image: {fileID: 21300000, guid: 79aa6f41a7b1051419db25db545fecf4, type: 3}
+    info: Bad Cop. Revolvers are your passion
+    infoRu: "\u041F\u043B\u043E\u0445\u043E\u0439 \u041A\u043E\u043F. \u0420\u0435\u0432\u043E\u043B\u044C\u0432\u0435\u0440\u044B
+      - \u0442\u0432\u043E\u044F \u0441\u0442\u0440\u0430\u0441\u0442\u044C"
+    infoESP: Poli Malo. Los revolvers son tu passion
+    infoGER: Bad Cop. Revolver sind deine Vorliebe.
+    infoIT: Poliziotto Cattivo. Le Rivoltelle sono la tua passione
+    infoSPBR: "Mau policial. Rev\xF3lveres s\xE3o sua paix\xE3o"
+    coopOnly: 0
+    soloOnly: 0
+  - skillIndex: 23
+    skill: 24
+    image: {fileID: 21300000, guid: 32dcf0b3e3ce66840add4918218c22f3, type: 3}
+    info: Spook with a boom. Shotguns are even more powerful!
+    infoRu: "\u0416\u0443\u0442\u044C \u0441 \u0420\u0443\u0436\u044C\u0435\u043C.
+      \u0414\u0440\u043E\u0431\u043E\u0432\u0438\u043A\u0438 \u0435\u0449\u0435 \u043C\u043E\u0449\u043D\u0435\u0435!"
+    infoESP: Susto con un boom. Las escopetas son aun mas poderosas!
+    infoGER: "Schreck mit einem Knall. Schrotflinten sind viel st\xE4rker!"
+    infoIT: "Cagotto col Botto. Gli shotgun sono ancora pi\xF9 potenti."
+    infoSPBR: "Assustar com um boom. As espingardas s\xE3o ainda mais poderosas!"
+    coopOnly: 0
+    soloOnly: 0
+  - skillIndex: 24
+    skill: 25
+    image: {fileID: 21300000, guid: 735b9343423aa36449399aa305ef5f4f, type: 3}
+    info: Stylish. Your Tommy shoots like God
+    infoRu: "\u0421\u0442\u0438\u043B\u044F\u0433\u0430. \u0422\u0432\u043E\u0439
+      \u0422\u043E\u043C\u043C\u0438 \u0441\u0442\u0440\u0435\u043B\u044F\u0435\u0442
+      \u043A\u0430\u043A \u0411\u043E\u0436\u0435\u043D\u044C\u043A\u0430"
+    infoESP: Elegante. Tu Tommy dispara como un Dios
+    infoGER: "Stylisch. Deine Tommy verschie\xDFt Gold."
+    infoIT: Raffinato. Il tuo Tommy spara da Dio
+    infoSPBR: Elegante. Seu Tommy atira como Deus
+    coopOnly: 0
+    soloOnly: 0
+  - skillIndex: 25
+    skill: 26
+    image: {fileID: 21300000, guid: 0a7619411c4f1ad45b7ec685ef309933, type: 3}
+    info: Plumber. You dash on every attack and do more damage!
+    infoRu: "\u0421\u0430\u043D\u0442\u0435\u0445\u043D\u0438\u043A. \u0422\u044B
+      \u043F\u0440\u044B\u0433\u0430\u0435\u0448\u044C \u043F\u0440\u0438 \u043A\u0430\u0436\u0434\u043E\u0439
+      \u0430\u0442\u0430\u043A\u0435 \u0438 \u043D\u0430\u043D\u043E\u0441\u0438\u0448\u044C
+      \u0431\u043E\u043B\u044C\u0448\u0435 \u0443\u0440\u043E\u043D\u0430!"
+    infoESP: "Fontanero. Esquivas cada vez que atacas y haces mas da\xF1o!"
+    infoGER: Klempner. Du sprintest bei jeder Attack und verursachst mehr Schaden!
+    infoIT: "Idraulico. Schivi ad ogni attacco e fai pi\xF9 danno!"
+    infoSPBR: "Encanador. Voc\xEA corre em todos os ataques e causa mais dano!"
+    coopOnly: 0
+    soloOnly: 0
+  - skillIndex: 26
+    skill: 27
+    image: {fileID: 21300000, guid: cffb8a939eb1b384b8431059cb78cca1, type: 3}
+    info: 60 fingers. Two extra fingers grow on each of your fingers. The chances
+      to disarm traps are higher
+    infoRu: "60 \u043F\u0430\u043B\u044C\u0446\u0435\u0432. \u041D\u0430 \u043A\u0430\u0436\u0434\u043E\u043C
+      \u0442\u0432\u043E\u0435\u043C \u043F\u0430\u043B\u044C\u0446\u0435 \u0440\u0430\u0441\u0442\u0443\u0442
+      \u0434\u0432\u0430 \u0434\u043E\u043F\u043E\u043B\u043D\u0438\u0442\u0435\u043B\u044C\u043D\u044B\u0445.
+      \u0428\u0430\u043D\u0441 \u043E\u0431\u0435\u0437\u0432\u0440\u0435\u0434\u0438\u0442\u044C
+      \u043B\u043E\u0432\u0443\u0448\u043A\u0443 \u0432\u044B\u0448\u0435"
+    infoESP: 60 Dedos. Dos dedos extra crecen en cada uno de tus dedos. Tus possibilidades
+      de desarmar una trampa aumentan.
+    infoGER: "60 Finger. Dir wachsen zwei extra Finger. Die Chancen eine Falle zu
+      entsch\xE4rfen sind h\xF6her."
+    infoIT: "60 dita. Due dita extra crescono su ognuna delle tue dita. Le probabilit\xE0
+      di disinnescare una trappola sono aumentate."
+    infoSPBR: "60 dedos. Dois dedos extras crescem em cada um deles. As chances de
+      desarmar uma armadilha s\xE3o maiores."
+    coopOnly: 0
+    soloOnly: 0
+  - skillIndex: 27
+    skill: 28
+    image: {fileID: 21300000, guid: 7ad8de5110c84674abe507689033c988, type: 3}
+    info: Nose with teeth. A giant meaty nose has grown on your nose. It will not
+      bite you, but it is dangerous for others
+    infoRu: "\u041D\u043E\u0441 \u0441 \u0437\u0443\u0431\u0430\u043C\u0438. \u041D\u0430
+      \u0442\u0432\u043E\u0435\u043C \u043D\u043E\u0441\u0435 \u0432\u044B\u0440\u043E\u0441
+      \u0433\u0438\u0433\u0430\u043D\u0442\u0441\u043A\u0438\u0439 \u043C\u044F\u0441\u043D\u043E\u0439
+      \u043D\u043E\u0441. \u0422\u0435\u0431\u044F \u043D\u0435 \u0443\u043A\u0443\u0441\u0438\u0442,
+      \u043D\u043E \u0434\u043B\u044F \u043E\u0441\u0442\u0430\u043B\u044C\u043D\u044B\u0445
+      \u043E\u043F\u0430\u0441\u0435\u043D"
+    infoESP: Nariz con dientes. Una enorme y carnosa nariz crece sobre tu nariz
+    infoGER: "Nase mit Z\xE4hnen. Eine riesige fleischige Nase ist auf Ihrer Nase
+      gewachsen. Es wird dich nicht bei\xDFen, aber es ist gef\xE4hrlich f\xFCr andere"
+    infoIT: "Naso con i denti. Un gigantesco naso carnoso \xE8 cresciuto sul tuo
+      naso."
+    infoSPBR: Nariz com dentes. Um nariz gigante de carne cresceu em seu nariz.
+    coopOnly: 0
+    soloOnly: 0
+  - skillIndex: 28
+    skill: 29
+    image: {fileID: 21300000, guid: 88c430f88fc78734884510f806e30452, type: 3}
+    info: In love with traps. You value and respect traps. You know that each one
+      is unique.
+    infoRu: "\u0412\u043B\u044E\u0431\u043B\u0435\u043D\u043D\u044B\u0439 \u0432
+      \u043B\u043E\u0432\u0443\u0448\u043A\u0438. \u0422\u044B \u0446\u0435\u043D\u0438\u0448\u044C
+      \u0438 \u0443\u0432\u0430\u0436\u0430\u0435\u0448\u044C \u043B\u043E\u0432\u0443\u0448\u043A\u0438.
+      \u0422\u044B \u0437\u043D\u0430\u0435\u0448\u044C, \u0447\u0442\u043E \u043A\u0430\u0436\u0434\u0430\u044F
+      - \u0443\u043D\u0438\u043A\u0430\u043B\u044C\u043D\u0430."
+    infoESP: Enamorado con las trampas. Aprecias y respetas las trampas. Sabes bien
+      que cada una es unica.
+    infoGER: "Verliebt in Fallen. Sie sch\xE4tzen und respektieren Fallen. Sie wissen,
+      dass jeder einzigartig ist."
+    infoIT: "Innamorato delle trappole. Valorizzi e rispetti le trappole. Sai che
+      ognuna \xE8 unica."
+    infoSPBR: "Apaixonado por armadilhas. Voc\xEA valoriza e respeita as armadilhas.
+      Voc\xEA sabe que cada um \xE9 \xFAnico."
+    coopOnly: 0
+    soloOnly: 0
+  - skillIndex: 29
+    skill: 30
+    image: {fileID: 21300000, guid: 8e451085a50ab5a4cae458d9f3fd1203, type: 3}
+    info: Pretty boy. Meat falls in love with you more.
+    infoRu: "\u041A\u0440\u0430\u0441\u0430\u0432\u0447\u0438\u043A. \u041C\u044F\u0441\u043E
+      \u0432\u043B\u044E\u0431\u043B\u044F\u0435\u0442\u0441\u044F \u0432 \u0442\u0435\u0431\u044F
+      \u0441\u0438\u043B\u044C\u043D\u0435\u0435."
+    infoESP: Chico tierno. La carne se enamora de ti aun mas.
+    infoGER: "H\xFCbscher Junge. Fleisch verliebt sich mehr in dich."
+    infoIT: "Ragazzo carini. La carne si innamora ancora di pi\xF9 con te."
+    infoSPBR: "Rapaz bonito. A carne se apaixona por voc\xEA mais."
+    coopOnly: 0
+    soloOnly: 0
+  - skillIndex: 30
+    skill: 31
+    image: {fileID: 21300000, guid: 0d1c20ffbc4c7cc45ae5c7b1294b29e0, type: 3}
+    info: Soft feet. Your legs are covered with purulent blisters with a thick film.
+      Your legs smell even worse than before, but your steps are twice as quiet
+    infoRu: "\u041C\u044F\u0433\u043A\u0438\u0435 \u043D\u043E\u0433\u0438. \u0422\u0432\u043E\u0438
+      \u043D\u043E\u0433\u0438 \u043F\u043E\u043A\u0440\u044B\u0442\u044B \u0433\u043D\u043E\u0439\u043D\u044B\u043C\u0438
+      \u043F\u0443\u0437\u044B\u0440\u044F\u043C\u0438 \u0441 \u0442\u043E\u043B\u0441\u0442\u043E\u0439
+      \u043F\u043B\u0435\u043D\u043A\u043E\u0439. \u041D\u043E\u0433\u0438 \u043F\u0430\u0445\u043D\u0443\u0442
+      \u0435\u0449\u0435 \u0445\u0443\u0436\u0435 \u0447\u0435\u043C \u0440\u0430\u043D\u044C\u0448\u0435,
+      \u0437\u0430\u0442\u043E \u0442\u0432\u043E\u0438 \u0448\u0430\u0433\u0438
+      \u0432 \u0434\u0432\u0430 \u0440\u0430\u0437\u0430 \u0442\u0438\u0448\u0435"
+    infoESP: Pies suaves. Tus piernas estan cubiertas de ampollas creando una densa
+      y purulenta capa. Tus piernas huelen incluso peor que antes, pero tus pasos
+      son el doble de silenciosos.
+    infoGER: "Weiche F\xFC\xDFe. Ihre Beine sind mit eitrigen Blasen mit einem dicken
+      Film bedeckt. Ihre Beine riechen noch schlimmer als zuvor, aber Ihre Schritte
+      sind doppelt so leise"
+    infoIT: "Piede soffice. Le tue gambe sono ricoperte da vesciche purulenti con
+      uno strato spesso. Le tue gambe puzzano anche peggio di prima, ma i tuoi passi
+      sono il doppio pi\xF9 quieti."
+    infoSPBR: "P\xE9s macios. Suas pernas est\xE3o cobertas com bolhas purulentas
+      com uma pel\xEDcula espessa. Suas pernas t\xEAm um cheiro ainda pior do que
+      antes, mas seus passos s\xE3o duas vezes mais silenciosos"
+    coopOnly: 0
+    soloOnly: 0
+  - skillIndex: 31
+    skill: 32
+    image: {fileID: 21300000, guid: 675a05d85965278469aafae8963c1f7c, type: 3}
+    info: Steel back. You carry more stuff without slowing down.
+    infoRu: "\u0421\u0442\u0430\u043B\u044C\u043D\u0430\u044F \u0441\u043F\u0438\u043D\u0430.
+      \u0422\u044B \u0442\u0430\u0441\u043A\u0430\u0435\u0448\u044C \u0431\u043E\u043B\u044C\u0448\u0435
+      \u043F\u0440\u0435\u0434\u043C\u0435\u0442\u043E\u0432 \u043D\u0435 \u0437\u0430\u043C\u0435\u0434\u043B\u044F\u044F\u0441\u044C."
+    infoESP: Espalda de acero. Puedes llevar mas cosas sin realentizarte.
+    infoGER: "Stahl zur\xFCck. Sie tragen mehr Zeug, ohne langsamer zu werden."
+    infoIT: "Schiena d'acciaio. Puoi portare pi\xF9 roba senza rallentare."
+    infoSPBR: "Parte traseira de a\xE7o. Voc\xEA carrega mais coisas sem diminuir
+      a velocidade."
+    coopOnly: 0
+    soloOnly: 0
+  - skillIndex: 32
+    skill: 33
+    image: {fileID: 21300000, guid: 8be9a94bb441193428f54d4802296cdc, type: 3}
+    info: Upset Belly. You are slowly starving to low health, but all eaten food
+      heals you 2 times better!
+    infoRu: "\u0413\u0440\u0443\u0441\u0442\u043D\u043E\u0435 \u041F\u0443\u0437\u043E.
+      \u041D\u0435\u0443\u0442\u043E\u043B\u0438\u043C\u044B\u0439 \u0433\u043E\u043B\u043E\u0434
+      \u043C\u0435\u0434\u043B\u0435\u043D\u043D\u043E \u0441\u043D\u0438\u0436\u0430\u0435\u0442
+      \u0442\u0432\u043E\u0435 \u0437\u0434\u043E\u0440\u043E\u0432\u044C\u0435 \u0434\u043E
+      \u043C\u0438\u043D\u0438\u043C\u0443\u043C\u0430, \u043D\u043E \u0432\u0441\u044F
+      \u0435\u0434\u0430 \u043B\u0435\u0447\u0438\u0442 \u0432 2 \u0440\u0430\u0437\u0430
+      \u0441\u0438\u043B\u044C\u043D\u0435\u0435!"
+    infoESP: "Triste vientre. El hambre insaciable reduce lentamente su salud al
+      m\xEDnimo, \xA1pero todos los alimentos curan el doble!"
+    infoGER: "Trauriger Bauch. Uners\xE4ttlicher Hunger senkt langsam Ihre Gesundheit
+      auf ein Minimum, aber alle Lebensmittel heilen doppelt so stark!"
+    infoIT: Pancia triste. La fame insaziabile abbassa lentamente la tua salute al
+      minimo, ma tutto il cibo guarisce il doppio!
+    infoSPBR: "Sad Belly. A fome insaci\xE1vel reduz lentamente a sua sa\xFAde ao
+      m\xEDnimo, mas todos os alimentos curam o dobro!"
+    coopOnly: 0
+    soloOnly: 0
+  - skillIndex: 33
+    skill: 34
+    image: {fileID: 21300000, guid: 1d0ebca9add4d4248a68e6433a5d5e82, type: 3}
+    info: The Night of The Deadly Meat. There are fewer of them, but...
+    infoRu: "\u041D\u043E\u0447\u044C \u0421\u043C\u0435\u0440\u0442\u043E\u043D\u043E\u0441\u043D\u043E\u0433\u043E
+      \u041C\u044F\u0441\u0430. \u0418\u0445 \u043C\u0435\u043D\u044C\u0448\u0435,
+      \u043D\u043E..."
+    infoESP: La noche de la carne mortal. Hay menos de ellos, pero ...
+    infoGER: "Die Nacht des t\xF6dlichen Fleisches. Es gibt weniger von ihnen, aber
+      ..."
+    infoIT: La notte della carne mortale. Ce ne sono meno, ma ...
+    infoSPBR: "A noite da carne mortal. H\xE1 menos deles, mas ..."
+    coopOnly: 0
+    soloOnly: 0
+  - skillIndex: 34
+    skill: 35
+    image: {fileID: 21300000, guid: 2bd00a37322e7bd42aa0e627a09b94f1, type: 3}
+    info: Max Imagination. If you have stamina, time will slow down when you jump
+    infoRu: "\u041C\u0430\u043A\u0441 \u0412\u043E\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435.
+      \u0415\u0441\u043B\u0438 \u0435\u0441\u0442\u044C \u0441\u0442\u0430\u043C\u0438\u043D\u0430,
+      \u0442\u044B \u0431\u0443\u0434\u0435\u0448\u044C \u0437\u0430\u043C\u0435\u0434\u043B\u044F\u0442\u044C
+      \u0432\u0440\u0435\u043C\u044F \u043F\u0440\u0438 \u043F\u0440\u044B\u0436\u043A\u0435"
+    infoESP: "Imaginaci\xF3n m\xE1xima. Si tienes resistencia, el tiempo se ralentizar\xE1
+      cuando saltes."
+    infoGER: Max Imagination. Wenn Sie Ausdauer haben, verlangsamt sich die Zeit
+      beim Springen
+    infoIT: "Massima immaginazione. Se hai resistenza, il tempo rallenter\xE0 quando
+      salti"
+    infoSPBR: "Imagina\xE7\xE3o m\xE1xima. Se voc\xEA tem resist\xEAncia, o tempo
+      vai diminuir quando voc\xEA pula"
+    coopOnly: 0
+    soloOnly: 1
+  - skillIndex: 35
+    skill: 36
+    image: {fileID: 21300000, guid: 000c624f0d9630042a39bb5c1eb66aec, type: 3}
+    info: The Wall Eater. You eat the nearest wall every time you eat something.
+    infoRu: "\u041F\u043E\u0436\u0438\u0440\u0430\u0442\u0435\u043B\u044C \u0421\u0442\u0435\u043D.
+      \u0422\u044B \u0441\u044A\u0435\u0434\u0430\u0435\u0448\u044C \u0431\u043B\u0438\u0436\u0430\u0439\u0448\u0443\u044E
+      \u0441\u0442\u0435\u043D\u0443 \u043A\u0430\u0436\u0434\u044B\u0439 \u0440\u0430\u0437
+      \u043F\u043E\u0441\u043B\u0435 \u0435\u0434\u044B."
+    infoESP: "El Wall Eater. Te comes la pared m\xE1s cercana cada vez que comes
+      algo."
+    infoGER: "Der Mauerfresser. Sie essen jedes Mal die n\xE4chste Wand, wenn Sie
+      etwas essen."
+    infoIT: "The Wall Eater. Mangi il muro pi\xF9 vicino ogni volta che mangi qualcosa."
+    infoSPBR: "The Wall Eater. Voc\xEA come a parede mais pr\xF3xima sempre que come
+      algo."
+    coopOnly: 0
+    soloOnly: 0
+  - skillIndex: 35
+    skill: 37
+    image: {fileID: 21300000, guid: 17ce4ac3ad0d2de4990e11b347095d2e, type: 3}
+    info: Traitorous bastard. You feel good when you attack your Meat Bro
+    infoRu: "\u0412\u0435\u0440\u043E\u043B\u043E\u043C\u043D\u0430\u044F \u0441\u0432\u043E\u043B\u043E\u0447\u0443\u0433\u0430.
+      \u0422\u0435\u0431\u0435 \u0445\u043E\u0440\u043E\u0448\u043E, \u043A\u043E\u0433\u0434\u0430
+      \u0442\u044B \u0430\u0442\u0430\u043A\u0443\u0435\u0448\u044C \u0441\u0432\u043E\u0435\u0433\u043E
+      \u043C\u044F\u0441\u043D\u043E\u0433\u043E \u0431\u0440\u0430\u0442\u0430\u043D\u0430"
+    infoESP: Bastardo traidor. Te sientes bien cuando atacas a tu carne hermano
+    infoGER: "Verr\xE4terischer Bastard. Sie f\xFChlen sich gut, wenn Sie Ihren Fleischbruder
+      angreifen"
+    infoIT: Bastardo traditore. Ti senti bene quando attacchi il tuo fratello di
+      carne
+    infoSPBR: "Bastardo traidor. Voc\xEA se sente bem quando voc\xEA ataca seu irm\xE3o
+      de carne"
+    coopOnly: 1
+    soloOnly: 0
