@@ -1,0 +1,235 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-1876996304948262336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16ad07a78750c7644b710e19e1a23d4a, type: 3}
+  m_Name: Black_off_wall broken
+  m_EditorClassIdentifier: 
+  isSelected: 0
+  rect:
+    serializedVersion: 2
+    x: 1521.8654
+    y: 6.8181763
+    width: 521.3481
+    height: 515.93164
+  guiRect:
+    serializedVersion: 2
+    x: 1536
+    y: 0
+    width: 512
+    height: 512
+  debugMode: 0
+  dragRectHeight:
+    serializedVersion: 2
+    x: 2468.514
+    y: 831.35974
+    width: 64
+    height: 16
+  dragRectWidth:
+    serializedVersion: 2
+    x: 2740.514
+    y: 559.35974
+    width: 16
+    height: 64
+  dragRectPos:
+    serializedVersion: 2
+    x: 2484.514
+    y: 575.35974
+    width: 32
+    height: 32
+  textureGroups:
+  - name: Albedo
+    texture: {fileID: 2800000, guid: 92fafb63859c6ad4c8ab50e548cc5c42, type: 3}
+  modelGroups:
+  - name: Column
+    meshes:
+    - {fileID: 2159237283749499624, guid: 036959dad0424b442af833773821efd9, type: 3}
+    - {fileID: -8866198225833410990, guid: 036959dad0424b442af833773821efd9, type: 3}
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 892d1a7aeb4cc284dbf62e69e125db52, type: 3}
+  m_Name: OfficeTileAtlas
+  m_EditorClassIdentifier: 
+  textureQuads:
+  - {fileID: 7908781186115311905}
+  - {fileID: 787528964343053091}
+  - {fileID: 6070470724376410358}
+  - {fileID: -1876996304948262336}
+  selectedTextureQuad: {fileID: 7908781186115311905}
+  showTextures: 1
+  exportSettings: {fileID: 11400000, guid: b397a98e84dd17d4cad7bb4a40cec303, type: 2}
+  textureAtlasSize: {x: 4049, y: 4049}
+  textureGroupRegistration:
+  - name: Albedo
+--- !u!114 &787528964343053091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16ad07a78750c7644b710e19e1a23d4a, type: 3}
+  m_Name: DoorwayBlack
+  m_EditorClassIdentifier: 
+  isSelected: 0
+  rect:
+    serializedVersion: 2
+    x: 524.13806
+    y: 0.8695679
+    width: 521.3481
+    height: 515.93164
+  guiRect:
+    serializedVersion: 2
+    x: 512
+    y: 0
+    width: 512
+    height: 512
+  debugMode: 0
+  dragRectHeight:
+    serializedVersion: 2
+    x: 1444.5139
+    y: 831.35974
+    width: 64
+    height: 16
+  dragRectWidth:
+    serializedVersion: 2
+    x: 1716.5139
+    y: 559.35974
+    width: 16
+    height: 64
+  dragRectPos:
+    serializedVersion: 2
+    x: 1460.5139
+    y: 575.35974
+    width: 32
+    height: 32
+  textureGroups:
+  - name: Albedo
+    texture: {fileID: 2800000, guid: 584f828cd4d55dc4ebcc76f8beedafb1, type: 3}
+  modelGroups:
+  - name: Column
+    meshes:
+    - {fileID: -6043630251644407740, guid: f0ca344accbc00b4da84daafe5afdb22, type: 3}
+    - {fileID: -3096905587511235524, guid: f0ca344accbc00b4da84daafe5afdb22, type: 3}
+--- !u!114 &6070470724376410358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16ad07a78750c7644b710e19e1a23d4a, type: 3}
+  m_Name: Black_off_wall 1
+  m_EditorClassIdentifier: 
+  isSelected: 0
+  rect:
+    serializedVersion: 2
+    x: 1033.229
+    y: 0
+    width: 521.3481
+    height: 515.93164
+  guiRect:
+    serializedVersion: 2
+    x: 1024
+    y: 0
+    width: 512
+    height: 512
+  debugMode: 0
+  dragRectHeight:
+    serializedVersion: 2
+    x: 1956.5139
+    y: 831.35974
+    width: 64
+    height: 16
+  dragRectWidth:
+    serializedVersion: 2
+    x: 2228.514
+    y: 559.35974
+    width: 16
+    height: 64
+  dragRectPos:
+    serializedVersion: 2
+    x: 1972.5139
+    y: 575.35974
+    width: 32
+    height: 32
+  textureGroups:
+  - name: Albedo
+    texture: {fileID: 2800000, guid: 87ec3629ead023c42be391c81ae8df82, type: 3}
+  modelGroups:
+  - name: Column
+    meshes:
+    - {fileID: 2349923392674682527, guid: c60ab813f2cabdc45bcbd08fec78122e, type: 3}
+--- !u!114 &7908781186115311905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16ad07a78750c7644b710e19e1a23d4a, type: 3}
+  m_Name: ColumnBlack
+  m_EditorClassIdentifier: 
+  isSelected: 1
+  rect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 521.3481
+    height: 515.93164
+  guiRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 512
+    height: 512
+  debugMode: 0
+  dragRectHeight:
+    serializedVersion: 2
+    x: 932.514
+    y: 831.35974
+    width: 64
+    height: 16
+  dragRectWidth:
+    serializedVersion: 2
+    x: 1204.5139
+    y: 559.35974
+    width: 16
+    height: 64
+  dragRectPos:
+    serializedVersion: 2
+    x: 948.514
+    y: 575.35974
+    width: 32
+    height: 32
+  textureGroups:
+  - name: Albedo
+    texture: {fileID: 2800000, guid: a2ac37cc912af254ab84e62d385955eb, type: 3}
+  modelGroups:
+  - name: Column
+    meshes:
+    - {fileID: -3880785816324371413, guid: 2ffc1dfb924044e41ac4d5ec84999ba9, type: 3}
+    - {fileID: 4144009027902187638, guid: 42819d69498997e45ad17dd515f1ca35, type: 3}
+    - {fileID: 8260190864564434209, guid: 42819d69498997e45ad17dd515f1ca35, type: 3}
+    - {fileID: 103404794461427891, guid: 42819d69498997e45ad17dd515f1ca35, type: 3}
+    - {fileID: 3363388174537189485, guid: 42819d69498997e45ad17dd515f1ca35, type: 3}

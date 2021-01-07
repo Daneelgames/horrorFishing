@@ -1,0 +1,495 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7987009019131243334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16ad07a78750c7644b710e19e1a23d4a, type: 3}
+  m_Name: lamp ceiling
+  m_EditorClassIdentifier: 
+  isSelected: 0
+  rect:
+    serializedVersion: 2
+    x: 1031.0345
+    y: 517.63916
+    width: 502.03015
+    height: 524.55176
+  guiRect:
+    serializedVersion: 2
+    x: 1024
+    y: 512
+    width: 512
+    height: 512
+  debugMode: 0
+  dragRectHeight:
+    serializedVersion: 2
+    x: 1755.1501
+    y: 1237.8514
+    width: 64
+    height: 16
+  dragRectWidth:
+    serializedVersion: 2
+    x: 2027.1501
+    y: 965.8515
+    width: 16
+    height: 64
+  dragRectPos:
+    serializedVersion: 2
+    x: 1771.1501
+    y: 981.8515
+    width: 32
+    height: 32
+  textureGroups:
+  - name: Albedo
+    texture: {fileID: 2800000, guid: 4f33d07ce66402e48a2ebd5a23a79455, type: 3}
+  - name: Normal
+    texture: {fileID: 2800000, guid: 578082ae120c4ac4cbcfe54cc1e6e64b, type: 3}
+  - name: Metal
+    texture: {fileID: 2800000, guid: be71817b8ba7d934a8223a953b701c85, type: 3}
+  modelGroups:
+  - name: lamp
+    meshes:
+    - {fileID: 9009893830714642796, guid: 586ba2df9a447b2478d4165d25ae7203, type: 3}
+    - {fileID: 4238229267004693435, guid: 586ba2df9a447b2478d4165d25ae7203, type: 3}
+--- !u!114 &-7208113504966088743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16ad07a78750c7644b710e19e1a23d4a, type: 3}
+  m_Name: blackWall
+  m_EditorClassIdentifier: 
+  isSelected: 0
+  rect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 517.65515
+    height: 524.55176
+  guiRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 512
+    height: 512
+  debugMode: 0
+  dragRectHeight:
+    serializedVersion: 2
+    x: 731.1502
+    y: 725.8515
+    width: 64
+    height: 16
+  dragRectWidth:
+    serializedVersion: 2
+    x: 1003.1502
+    y: 453.8515
+    width: 16
+    height: 64
+  dragRectPos:
+    serializedVersion: 2
+    x: 747.1502
+    y: 469.8515
+    width: 32
+    height: 32
+  textureGroups:
+  - name: Albedo
+    texture: {fileID: 2800000, guid: 87ec3629ead023c42be391c81ae8df82, type: 3}
+  - name: Normal
+    texture: {fileID: 2800000, guid: 2d760f69f97579c47907e626bc535537, type: 3}
+  - name: Metal
+    texture: {fileID: 2800000, guid: 5ec645da2f6216344b4ddb3af7e1b4a1, type: 3}
+  modelGroups:
+  - name: wall
+    meshes:
+    - {fileID: 2349923392674682527, guid: c60ab813f2cabdc45bcbd08fec78122e, type: 3}
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 892d1a7aeb4cc284dbf62e69e125db52, type: 3}
+  m_Name: OfficeTileAtlas2k
+  m_EditorClassIdentifier: 
+  textureQuads:
+  - {fileID: -7208113504966088743}
+  - {fileID: 1219928463948234042}
+  - {fileID: 7636048257804864054}
+  - {fileID: 1809053527281410756}
+  - {fileID: 5735752795242547702}
+  - {fileID: 5417128343181202547}
+  - {fileID: -7987009019131243334}
+  - {fileID: 7095000179696625227}
+  selectedTextureQuad: {fileID: 7095000179696625227}
+  showTextures: 1
+  exportSettings: {fileID: 11400000, guid: b397a98e84dd17d4cad7bb4a40cec303, type: 2}
+  textureAtlasSize: {x: 2048, y: 2048}
+  textureGroupRegistration:
+  - name: Albedo
+  - name: Normal
+  - name: Metal
+--- !u!114 &1219928463948234042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16ad07a78750c7644b710e19e1a23d4a, type: 3}
+  m_Name: Black columnb
+  m_EditorClassIdentifier: 
+  isSelected: 0
+  rect:
+    serializedVersion: 2
+    x: 503.125
+    y: 0
+    width: 517.65515
+    height: 524.55176
+  guiRect:
+    serializedVersion: 2
+    x: 512
+    y: 0
+    width: 512
+    height: 512
+  debugMode: 0
+  dragRectHeight:
+    serializedVersion: 2
+    x: 1243.1501
+    y: 725.8515
+    width: 64
+    height: 16
+  dragRectWidth:
+    serializedVersion: 2
+    x: 1515.1501
+    y: 453.8515
+    width: 16
+    height: 64
+  dragRectPos:
+    serializedVersion: 2
+    x: 1259.1501
+    y: 469.8515
+    width: 32
+    height: 32
+  textureGroups:
+  - name: Albedo
+    texture: {fileID: 2800000, guid: a2ac37cc912af254ab84e62d385955eb, type: 3}
+  - name: Normal
+    texture: {fileID: 2800000, guid: 2e4f10540f5e2a54b9099f61219c2e0e, type: 3}
+  - name: Metal
+    texture: {fileID: 2800000, guid: 2227b8a2c39c5bd498ed4f9fb6b9fc91, type: 3}
+  modelGroups:
+  - name: column
+    meshes:
+    - {fileID: 4144009027902187638, guid: 42819d69498997e45ad17dd515f1ca35, type: 3}
+    - {fileID: 8260190864564434209, guid: 42819d69498997e45ad17dd515f1ca35, type: 3}
+    - {fileID: 103404794461427891, guid: 42819d69498997e45ad17dd515f1ca35, type: 3}
+    - {fileID: 3363388174537189485, guid: 42819d69498997e45ad17dd515f1ca35, type: 3}
+    - {fileID: -3880785816324371413, guid: 2ffc1dfb924044e41ac4d5ec84999ba9, type: 3}
+--- !u!114 &1809053527281410756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16ad07a78750c7644b710e19e1a23d4a, type: 3}
+  m_Name: black broken wall
+  m_EditorClassIdentifier: 
+  isSelected: 0
+  rect:
+    serializedVersion: 2
+    x: 1542.8448
+    y: 0
+    width: 502.03015
+    height: 524.55176
+  guiRect:
+    serializedVersion: 2
+    x: 1536
+    y: 0
+    width: 512
+    height: 512
+  debugMode: 0
+  dragRectHeight:
+    serializedVersion: 2
+    x: 2267.1501
+    y: 725.8515
+    width: 64
+    height: 16
+  dragRectWidth:
+    serializedVersion: 2
+    x: 2539.1501
+    y: 453.8515
+    width: 16
+    height: 64
+  dragRectPos:
+    serializedVersion: 2
+    x: 2283.1501
+    y: 469.8515
+    width: 32
+    height: 32
+  textureGroups:
+  - name: Albedo
+    texture: {fileID: 2800000, guid: 92fafb63859c6ad4c8ab50e548cc5c42, type: 3}
+  - name: Normal
+    texture: {fileID: 2800000, guid: 2f0d9c4e73f5aad4da51c732b20a4414, type: 3}
+  - name: Metal
+    texture: {fileID: 2800000, guid: d1b6488380153a546acfbb7cc91df7c8, type: 3}
+  modelGroups:
+  - name: broken wall
+    meshes:
+    - {fileID: 2159237283749499624, guid: 036959dad0424b442af833773821efd9, type: 3}
+    - {fileID: -8866198225833410990, guid: 036959dad0424b442af833773821efd9, type: 3}
+--- !u!114 &5417128343181202547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16ad07a78750c7644b710e19e1a23d4a, type: 3}
+  m_Name: ceiling
+  m_EditorClassIdentifier: 
+  isSelected: 0
+  rect:
+    serializedVersion: 2
+    x: 503.4483
+    y: 517.63916
+    width: 502.03015
+    height: 524.55176
+  guiRect:
+    serializedVersion: 2
+    x: 512
+    y: 512
+    width: 512
+    height: 512
+  debugMode: 0
+  dragRectHeight:
+    serializedVersion: 2
+    x: 1243.1501
+    y: 1237.8514
+    width: 64
+    height: 16
+  dragRectWidth:
+    serializedVersion: 2
+    x: 1515.1501
+    y: 965.8515
+    width: 16
+    height: 64
+  dragRectPos:
+    serializedVersion: 2
+    x: 1259.1501
+    y: 981.8515
+    width: 32
+    height: 32
+  textureGroups:
+  - name: Albedo
+    texture: {fileID: 2800000, guid: a344b2d5425829943872ebcf7b1be861, type: 3}
+  - name: Normal
+    texture: {fileID: 2800000, guid: 6299b6bd6be11f945b592b0c978460dd, type: 3}
+  - name: Metal
+    texture: {fileID: 2800000, guid: 62199cf45cce64d49bf5245efbde86cd, type: 3}
+  modelGroups:
+  - name: ceiling
+    meshes:
+    - {fileID: -6205580480818838902, guid: 98bbb4092430ef0479a933c6acbad9a6, type: 3}
+--- !u!114 &5735752795242547702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16ad07a78750c7644b710e19e1a23d4a, type: 3}
+  m_Name: floor 1
+  m_EditorClassIdentifier: 
+  isSelected: 0
+  rect:
+    serializedVersion: 2
+    x: 0
+    y: 514.1909
+    width: 502.03015
+    height: 524.55176
+  guiRect:
+    serializedVersion: 2
+    x: 0
+    y: 512
+    width: 512
+    height: 512
+  debugMode: 0
+  dragRectHeight:
+    serializedVersion: 2
+    x: 731.1502
+    y: 1237.8514
+    width: 64
+    height: 16
+  dragRectWidth:
+    serializedVersion: 2
+    x: 1003.1502
+    y: 965.8515
+    width: 16
+    height: 64
+  dragRectPos:
+    serializedVersion: 2
+    x: 747.1502
+    y: 981.8515
+    width: 32
+    height: 32
+  textureGroups:
+  - name: Albedo
+    texture: {fileID: 2800000, guid: abc686698193ba447bf2806ab8e91e62, type: 3}
+  - name: Normal
+    texture: {fileID: 2800000, guid: 8a2baca9d62c2f94fb07b4c7fe3ee8e1, type: 3}
+  - name: Metal
+    texture: {fileID: 0}
+  modelGroups:
+  - name: floor
+    meshes:
+    - {fileID: -4631875407514858542, guid: d7f8d7dbf4be1be41ab46d8bfdb4a6bb, type: 3}
+--- !u!114 &7095000179696625227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16ad07a78750c7644b710e19e1a23d4a, type: 3}
+  m_Name: door
+  m_EditorClassIdentifier: 
+  isSelected: 1
+  rect:
+    serializedVersion: 2
+    x: 1534.4828
+    y: 524.53564
+    width: 502.03015
+    height: 524.55176
+  guiRect:
+    serializedVersion: 2
+    x: 1536
+    y: 512
+    width: 512
+    height: 512
+  debugMode: 0
+  dragRectHeight:
+    serializedVersion: 2
+    x: 3500.7896
+    y: 1350.8627
+    width: 64
+    height: 16
+  dragRectWidth:
+    serializedVersion: 2
+    x: 3772.7896
+    y: 1078.8627
+    width: 16
+    height: 64
+  dragRectPos:
+    serializedVersion: 2
+    x: 3516.7896
+    y: 1094.8627
+    width: 32
+    height: 32
+  textureGroups:
+  - name: Albedo
+    texture: {fileID: 2800000, guid: 040d56546a05bc84386f52385dc8aab1, type: 3}
+  - name: Normal
+    texture: {fileID: 2800000, guid: d0f6ac54fb0c0d4448fde1fa431911a4, type: 3}
+  - name: Metal
+    texture: {fileID: 2800000, guid: 2e7f878cbdf292746967044e43309613, type: 3}
+  modelGroups:
+  - name: door
+    meshes:
+    - {fileID: 5779197439840542771, guid: 8ebe9da5e3b69eb42997d811a61f3ba0, type: 3}
+    - {fileID: -5287171592913596021, guid: 8ebe9da5e3b69eb42997d811a61f3ba0, type: 3}
+    - {fileID: 1500138650670271526, guid: 8ebe9da5e3b69eb42997d811a61f3ba0, type: 3}
+    - {fileID: 1862375796775256295, guid: 8ebe9da5e3b69eb42997d811a61f3ba0, type: 3}
+    - {fileID: -9003972338082106059, guid: 8ebe9da5e3b69eb42997d811a61f3ba0, type: 3}
+    - {fileID: 5745039986148803436, guid: 8ebe9da5e3b69eb42997d811a61f3ba0, type: 3}
+    - {fileID: -19198817381464232, guid: 8ebe9da5e3b69eb42997d811a61f3ba0, type: 3}
+    - {fileID: 8742403844376396957, guid: 8ebe9da5e3b69eb42997d811a61f3ba0, type: 3}
+    - {fileID: -2155834690660624194, guid: 8ebe9da5e3b69eb42997d811a61f3ba0, type: 3}
+    - {fileID: 4576525355934450700, guid: 8ebe9da5e3b69eb42997d811a61f3ba0, type: 3}
+    - {fileID: -4094537548133756629, guid: 8ebe9da5e3b69eb42997d811a61f3ba0, type: 3}
+    - {fileID: -2833980135247169420, guid: 8ebe9da5e3b69eb42997d811a61f3ba0, type: 3}
+    - {fileID: 3009367166453509073, guid: 8ebe9da5e3b69eb42997d811a61f3ba0, type: 3}
+    - {fileID: 769575693685284129, guid: 8ebe9da5e3b69eb42997d811a61f3ba0, type: 3}
+    - {fileID: 6350724535513845635, guid: 8ebe9da5e3b69eb42997d811a61f3ba0, type: 3}
+    - {fileID: 1322140632837854743, guid: 8ebe9da5e3b69eb42997d811a61f3ba0, type: 3}
+    - {fileID: -2639014849102182621, guid: 8ebe9da5e3b69eb42997d811a61f3ba0, type: 3}
+    - {fileID: 8393969432434051992, guid: 8ebe9da5e3b69eb42997d811a61f3ba0, type: 3}
+--- !u!114 &7636048257804864054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16ad07a78750c7644b710e19e1a23d4a, type: 3}
+  m_Name: black doorway
+  m_EditorClassIdentifier: 
+  isSelected: 0
+  rect:
+    serializedVersion: 2
+    x: 1012.5
+    y: 0
+    width: 502.03015
+    height: 524.55176
+  guiRect:
+    serializedVersion: 2
+    x: 1024
+    y: 0
+    width: 512
+    height: 512
+  debugMode: 0
+  dragRectHeight:
+    serializedVersion: 2
+    x: 1755.1501
+    y: 725.8515
+    width: 64
+    height: 16
+  dragRectWidth:
+    serializedVersion: 2
+    x: 2027.1501
+    y: 453.8515
+    width: 16
+    height: 64
+  dragRectPos:
+    serializedVersion: 2
+    x: 1771.1501
+    y: 469.8515
+    width: 32
+    height: 32
+  textureGroups:
+  - name: Albedo
+    texture: {fileID: 2800000, guid: 584f828cd4d55dc4ebcc76f8beedafb1, type: 3}
+  - name: Normal
+    texture: {fileID: 2800000, guid: 34ce833c05d1d7a4e9254ab863bb5e57, type: 3}
+  - name: Metal
+    texture: {fileID: 2800000, guid: bbd0fe40f4dc0cf47af0811b46346614, type: 3}
+  modelGroups:
+  - name: doorway
+    meshes:
+    - {fileID: -6043630251644407740, guid: f0ca344accbc00b4da84daafe5afdb22, type: 3}
+    - {fileID: -3096905587511235524, guid: f0ca344accbc00b4da84daafe5afdb22, type: 3}
