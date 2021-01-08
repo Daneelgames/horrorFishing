@@ -655,6 +655,67 @@ public class NpcController : MonoBehaviour
                     }
                 }
             }
+            else if (dialogues[currentDialog].dialogueEvent == Dialogue.DialogueEvent.SetNpcInLove)
+            {
+                if (eventsRepeat <= currentEventRepeat)
+                {
+                    if (gm.language == 0)
+                        newPhrase = Translator.TranslateText(dialogues[currentDialog].doesntMetRequirementsPhrase);
+                    else if (gm.language == 1)
+                        newPhrase = Translator.TranslateText(dialogues[currentDialog].doesntMetRequirementsPhraseRu);
+                    else if (gm.language == 2)
+                        newPhrase = Translator.TranslateText(dialogues[currentDialog].doesntMetRequirementsPhraseEsp);
+                    else if (gm.language == 3)
+                        newPhrase = Translator.TranslateText(dialogues[currentDialog].doesntMetRequirementsPhraseGer);
+                    else if (gm.language == 4)
+                        newPhrase = Translator.TranslateText(dialogues[currentDialog].doesntMetRequirementsPhraseIT);
+                    else if (gm.language == 5)
+                        newPhrase = Translator.TranslateText(dialogues[currentDialog].doesntMetRequirementsPhraseSPBR);
+                    foreach (char c in newPhrase)
+                    {
+                        ui.dialoguePhrase.text += c;
+                        yield return new WaitForSeconds(speakDelay);
+                    }
+                }
+                else
+                {
+                    string newPhrasePhrase = "";
+                    if (gm.language == 0)
+                        newPhrasePhrase = Translator.TranslateText(dialogues[currentDialog].phrases[currentLine]);
+                    else if (gm.language == 1)
+                        newPhrasePhrase = Translator.TranslateText(dialogues[currentDialog].phrasesRu[currentLine]);
+                    else if (gm.language == 2)
+                        newPhrasePhrase = Translator.TranslateText(dialogues[currentDialog].phrasesESP[currentLine]);
+                    else if (gm.language == 3)
+                        newPhrasePhrase = Translator.TranslateText(dialogues[currentDialog].phrasesGER[currentLine]);
+                    else if (gm.language == 4)
+                        newPhrasePhrase = Translator.TranslateText(dialogues[currentDialog].phrasesIT[currentLine]);
+                    else if (gm.language == 5)
+                        newPhrasePhrase = Translator.TranslateText(dialogues[currentDialog].phrasesSPBR[currentLine]);
+
+                    ui.dialoguePhrase.text = newPhrasePhrase;
+                    ui.dialogueChoice.text = newPhrase;
+
+                    choosing = true;
+                    if (gm.language == 0)
+                        newPhrase = Translator.TranslateText("Ladyshoe wants to join the party");
+                    else if (gm.language == 1)
+                        newPhrase = Translator.TranslateText("Туфелька хочет вступить в пати");
+                    else if (gm.language == 2)
+                        newPhrase = Translator.TranslateText("Ladyshoe wants to join the party");
+                    else if (gm.language == 3)
+                        newPhrase = Translator.TranslateText("Ladyshoe wants to join the party");
+                    else if (gm.language == 4)
+                        newPhrase = Translator.TranslateText("Ladyshoe wants to join the party");
+                    else if (gm.language == 5)
+                        newPhrase = Translator.TranslateText("Ladyshoe wants to join the party");
+                    foreach (char c in newPhrase)
+                    {
+                        ui.dialogueChoice.text += c;
+                        yield return new WaitForSeconds(speakDelay);
+                    }
+                }
+            }
             else if (dialogues[currentDialog].dialogueEvent == Dialogue.DialogueEvent.MeatHole)
             {
                 if (eventsRepeat <= currentEventRepeat)
@@ -2498,6 +2559,23 @@ public class NpcController : MonoBehaviour
                     gm.qm.CompleteQuest(7);
                     break;
                 
+                case Dialogue.DialogueEvent.SetNpcInLove:
+                    if(gm.language == 0)
+                        newPhraseChoice = Translator.TranslateText("Ladyshoe joined party!");
+                    else if (gm.language == 1)
+                        newPhraseChoice = Translator.TranslateText("Туфелька присоединилась к пати!");
+                    else if (gm.language == 2)
+                        newPhraseChoice = Translator.TranslateText("Ladyshoe joined party!");
+                    else if (gm.language == 3)
+                        newPhraseChoice = Translator.TranslateText("Ladyshoe joined party!");
+                    else if (gm.language == 4)
+                        newPhraseChoice = Translator.TranslateText("Ladyshoe joined party!");
+                    else if (gm.language == 5)
+                        newPhraseChoice = Translator.TranslateText("Ladyshoe joined party!");
+                    hc.inLove = true;
+                    QuestManager.instance.CompleteQuest(0);
+                    break;
+                
                 case Dialogue.DialogueEvent.DisarmTrap:
                     
                     var chance = 0.35f;
@@ -3511,7 +3589,7 @@ public class Dialogue
         OneLevelBack, GivePlayerWeapon, BuyAmmo, UpgradeWeapon, Warm, 
         KillQuest, ItemQuest, WeaponQuest, PoisonQuest, BleedQuest, FireQuest, 
         ReduceBadRep, DisarmTrap, JoinToxicCult, JoinFlamesCult, JoinBloodCult, JoinGoldCult,
-        KissHer, MeatHole, GiveCarl, BuyGoldenKey, Taxi
+        KissHer, MeatHole, GiveCarl, BuyGoldenKey, Taxi, SetNpcInLove
     }
     public DialogueEvent dialogueEvent;
     public int eventCost = 10;

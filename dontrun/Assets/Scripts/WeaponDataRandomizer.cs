@@ -72,7 +72,8 @@ public class WeaponDataRandomizer : MonoBehaviour
             }
             else
             {
-                dead = _dead;
+                //dead = _dead;
+                dead = true;
             
                 if (dead || Random.value <= gm.level.deadWeaponRate) // dead weapon
                 {

@@ -1757,7 +1757,7 @@ public class GameManager : MonoBehaviour
         Destroy(renderTextureInstance);
     }
 
-    public HealthController GetClosestUnit(Vector3 pos, bool includePlayer)
+    public HealthController GetClosestUnit(Vector3 pos, bool includePlayer, HealthController whoAsking)
     {
         HealthController newHc = null;
         float distance = 1000;
@@ -1765,7 +1765,7 @@ public class GameManager : MonoBehaviour
         
         for (int i = units.Count - 1; i >= 0; i--)
         {
-            if ((!includePlayer && units[i].player) || units[i].health <= 0)
+            if (units[i] == whoAsking || (!includePlayer && units[i].player) || units[i].health <= 0)
                 continue;
 
             newDist = Vector3.Distance(pos, units[i].transform.position);

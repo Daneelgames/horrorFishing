@@ -9934,7 +9934,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 20ba4360d9a6e0b48a96f09f68e90166, type: 2}
-  - {fileID: 2100000, guid: 20ba4360d9a6e0b48a96f09f68e90166, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -20078,9 +20077,9 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -6187304764875253321, guid: 37f4a131f509ebc40a056587ae8f6728,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: c261c86a13c66124dba4fffc058e3af3, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 3ebfdbf25f0deef49ac6641b2c65b520, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -20088,7 +20087,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 0.79
-  MinDistance: 5
+  MinDistance: 0
   MaxDistance: 20
   Pan2D: 0
   rolloffMode: 2
@@ -20099,22 +20098,22 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.05
+      time: 0
       value: 1
-      inSlope: 0
-      outSlope: 0
+      inSlope: -2.875165
+      outSlope: -2.875165
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.086111106
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: -0.122696996
-      outSlope: -0.122696996
+      inSlope: -0.07747992
+      outSlope: -0.07747992
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.27630934
+      inWeight: 0.21111119
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -20139,7 +20138,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.16666667
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -30794,7 +30793,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 0.79
   MinDistance: 5
-  MaxDistance: 100
+  MaxDistance: 20
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -30931,7 +30930,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 0.79
   MinDistance: 5
-  MaxDistance: 100
+  MaxDistance: 20
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -41281,7 +41280,7 @@ MonoBehaviour:
   - {fileID: 5921871920003995228}
   - {fileID: 5647641827967955193}
   bodyPartMax: 0
-  hc: {fileID: 0}
+  hc: {fileID: 6484314999241537213}
   bloodFx: {fileID: 7296228066712574396, guid: 8079d28f804b3754fbfc1ce89ba21296, type: 3}
   drop: []
   dropPosition: {fileID: 2197519793523707262}
@@ -46539,7 +46538,7 @@ MonoBehaviour:
   roseNpc: -1
   currentDialog: 0
   currentLine: 0
-  eventsRepeat: 3
+  eventsRepeat: 1
   currentEventRepeat: 0
   npcSetPhrasesOnLevel: {fileID: 0}
   randomizedPhrasesData: {fileID: 0}
@@ -46565,7 +46564,7 @@ MonoBehaviour:
   inQuest: 0
   order: 1
   dialogues:
-  - dialogueEvent: 0
+  - dialogueEvent: 30
     eventCost: 0
     questToStart: 0
     phrases:
@@ -62147,13 +62146,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8436313311353494369}
-  m_LocalRotation: {x: -0.020583877, y: 0.58635783, z: -0.7999681, w: -0.12574527}
-  m_LocalPosition: {x: -0.000082, y: -0.000343, z: 0.00007}
+  m_LocalRotation: {x: -0.099656664, y: 0.55562556, z: 0.021181876, w: -0.8251668}
+  m_LocalPosition: {x: 0.000022, y: -0.000326, z: 0.00003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1414278519111552591}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -266.934, y: -636.191, z: -489.46}
+  m_LocalEulerAnglesHint: {x: -188.102, y: -608.50903, z: -548.463}
 --- !u!198 &8436313311353494372
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -62163,7 +62162,7 @@ ParticleSystem:
   m_GameObject: {fileID: 8436313311353494369}
   serializedVersion: 7
   lengthInSec: 1
-  simulationSpeed: 2.5
+  simulationSpeed: 10
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
@@ -62565,8 +62564,8 @@ ParticleSystem:
     startRotationX:
       serializedVersion: 2
       minMaxState: 3
-      scalar: -1.0471976
-      minScalar: 1.0471976
+      scalar: 0
+      minScalar: 0
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -62671,8 +62670,8 @@ ParticleSystem:
     startRotation:
       serializedVersion: 2
       minMaxState: 3
-      scalar: -1.0471976
-      minScalar: 1.0471976
+      scalar: 0
+      minScalar: 0
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -62856,7 +62855,7 @@ ParticleSystem:
     m_SpriteRenderer: {fileID: 0}
     m_UseMeshMaterialIndex: 0
     m_UseMeshColors: 1
-    alignToDirection: 0
+    alignToDirection: 1
     m_Texture: {fileID: 0}
     m_TextureClipChannel: 3
     m_TextureClipThreshold: 0
@@ -71976,7 +71975,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: c76f3f929722a83418dbd6afb2fa23ee, type: 2}
-  - {fileID: 2100000, guid: c76f3f929722a83418dbd6afb2fa23ee, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -77087,10 +77085,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 3.0131125
-  m_Height: 6.9543705
-  m_Direction: 2
-  m_Center: {x: 0, y: 2.7631125, z: 1.8676414}
+  m_Radius: 1.5
+  m_Height: 5
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.5, z: 1}
 --- !u!114 &899869711365808678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77310,6 +77308,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 36.559
+      objectReference: {fileID: 0}
+    - target: {fileID: -2639638324218457063, guid: e644f617d8204974d8251806a2eba212,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.99999994
+      objectReference: {fileID: 0}
+    - target: {fileID: -2639638324218457063, guid: e644f617d8204974d8251806a2eba212,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -2639638324218457063, guid: e644f617d8204974d8251806a2eba212,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -2639638324218457063, guid: e644f617d8204974d8251806a2eba212,
         type: 3}

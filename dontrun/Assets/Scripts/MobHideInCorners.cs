@@ -69,7 +69,7 @@ public class MobHideInCorners : MonoBehaviour
         {
             if (hc.inLove)
             {
-                target  = gm.GetClosestUnit(transform.position, false);
+                target  = gm.GetClosestUnit(transform.position, false, hc);
             }
             else
             {

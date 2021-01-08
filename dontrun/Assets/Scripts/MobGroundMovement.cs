@@ -207,7 +207,7 @@ public class MobGroundMovement : MonoBehaviour, IUpdatable
         if (damager)
             target = damager;
         else
-            target  = GameManager.instance.GetClosestUnit(transform.position, false);
+            target  = GameManager.instance.GetClosestUnit(transform.position, false, hc);
         
         if (hideAfterTimeCoroutine != null)
             StopCoroutine(hideAfterTimeCoroutine);
@@ -411,7 +411,7 @@ public class MobGroundMovement : MonoBehaviour, IUpdatable
                     {
                         if (hc.inLove)
                         {
-                            target  = gm.GetClosestUnit(transform.position, false);
+                            target  = gm.GetClosestUnit(transform.position, false, hc);
                         }
                         else
                         {
@@ -464,7 +464,7 @@ public class MobGroundMovement : MonoBehaviour, IUpdatable
                 {
                     if (target == null || target.health <= 0)
                     {
-                        var targetTemp = gm.GetClosestUnit(transform.position, false);
+                        var targetTemp = gm.GetClosestUnit(transform.position, true, hc);
 
                         if (targetTemp == null ||
                             Vector3.Distance(transform.position, targetTemp.transform.position) > 50)
@@ -525,7 +525,7 @@ public class MobGroundMovement : MonoBehaviour, IUpdatable
     {
         if (hc.inLove)
         {
-            target  = gm.GetClosestUnit(transform.position, false);
+            target  = gm.GetClosestUnit(transform.position, false, hc);
         }
         else
         {
@@ -580,7 +580,7 @@ public class MobGroundMovement : MonoBehaviour, IUpdatable
     {
         if (hc.inLove)
         {
-            target  = gm.GetClosestUnit(transform.position, false);
+            target  = gm.GetClosestUnit(transform.position, false, hc);
         }
         else
         {
@@ -667,8 +667,8 @@ public class MobGroundMovement : MonoBehaviour, IUpdatable
                 
                 if (target == null || target.gameObject == null || !target.gameObject.activeInHierarchy)
                 {
-                    if (hc.inLove)
-                        target = gm.GetClosestUnit(transform.position, false);
+                    if (!hc.inLove)
+                        target = gm.GetClosestUnit(transform.position, false, hc);
                     else
                         target = gm.player;
                 }
