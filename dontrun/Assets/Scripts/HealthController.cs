@@ -244,6 +244,11 @@ public class HealthController : MonoBehaviour, IUpdatable
 
             faceHuggedCooldown = 60;
         }
+        else
+        {
+            if (canHear)
+                SpawnController.instance.mobsInGame.Add(this);
+        }
     }
 
     void ResetStatusEffects()

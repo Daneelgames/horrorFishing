@@ -22,7 +22,7 @@ public class HubItemsSpawner : MonoBehaviour
     private GameObject startGoldSpawned;
     private HealthController ladyOnRoofSpawned;
     private GameObject shoesOnBeachSpawned;
-    private HealthController shoeMimicSpawned;
+    private List<HealthController> shoeMimicsSpawned = new List<HealthController>();
     
     // Start is called before the first frame update
     void Awake()
@@ -34,7 +34,7 @@ public class HubItemsSpawner : MonoBehaviour
     {
         // check what to spawn based on what quests are active
         var qm = QuestManager.instance;
-
+        sc = SpawnController.instance;
         if (mrSunSpawned == null)
         {
             Instantiate(fieldEventsSpawners[2].gameObjectToSpawn, fieldEventsSpawners[2].transform.position,
@@ -57,12 +57,15 @@ public class HubItemsSpawner : MonoBehaviour
                 }
                 
                 // spawn mob
-                if (shoeMimicSpawned == null)
+                if (shoeMimicsSpawned.Count == 0)
                 {
-                    var go = Instantiate(monstersSpawners[0].monstersToSpawn[0], monstersSpawners[0].transform.position,
-                        monstersSpawners[0].transform.rotation);
+                    for (int i = 0; i < monstersSpawners.Count; i++)
+                    {
+                        var go = Instantiate(monstersSpawners[0].monstersToSpawn[0], monstersSpawners[i].transform.position,
+                            monstersSpawners[i].transform.rotation);
 
-                    shoeMimicSpawned = go;
+                        shoeMimicsSpawned.Add(go);   
+                    }
                 }
 
                 // spawn lady
