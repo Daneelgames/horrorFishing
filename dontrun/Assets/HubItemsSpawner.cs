@@ -20,6 +20,7 @@ public class HubItemsSpawner : MonoBehaviour
 
     private GameObject mrSunSpawned;
     private GameObject startGoldSpawned;
+    private GameObject letterSpawned;
     private HealthController ladyOnRoofSpawned;
     private GameObject shoesOnBeachSpawned;
     private List<HealthController> shoeMimicsSpawned = new List<HealthController>();
@@ -53,7 +54,8 @@ public class HubItemsSpawner : MonoBehaviour
 
                     shoesOnBeachSpawned = go;
                     
-                    sc.InstantiateItem(itemSpawners[0].itemToSpawn, itemSpawners[0].transform.position, false); 
+                    // revolver
+                    //sc.InstantiateItem(itemSpawners[0].itemToSpawn, itemSpawners[0].transform.position, false); 
                 }
                 
                 // spawn mob
@@ -90,12 +92,6 @@ public class HubItemsSpawner : MonoBehaviour
                 if (ladyOnRoofSpawned != null)
                     ladyOnRoofSpawned.Kill();
                 
-                //remove shoes
-                if (shoesOnBeachSpawned != null)
-                {
-                    Destroy(shoesOnBeachSpawned);
-                    shoesOnBeachSpawned = null;
-                }
             }
             else // quest didnt even started
             {
@@ -117,9 +113,29 @@ public class HubItemsSpawner : MonoBehaviour
                 }
             }
         #endregion
-        
+
+        #region quest 3 Return the shoe
+
+        if (qm.activeQuestsIndexes.Contains(3)) // return shoe quest is active
+        {
+            if (letterSpawned == null)
+            {
+                var go = Instantiate(itemSpawners[0].gameObjectToSpawn, itemSpawners[0].transform.position,
+                    itemSpawners[0].transform.rotation);
+                letterSpawned = go;
+            }
+        }
+        else if (qm.completedQuestsIndexes.Contains(3)) // return shoe quest is completed
+        {
+            //remove shoes
+            if (shoesOnBeachSpawned != null)
+            {
+                Destroy(shoesOnBeachSpawned);
+                shoesOnBeachSpawned = null;
+            }
+        }
+        #endregion
     }
-    
     
     void SpawnRandomItem(Vector3 spawnPos)
     {

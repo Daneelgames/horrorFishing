@@ -338,16 +338,20 @@ namespace PlayerControls
             }
         }
         
+        bool forw = false;
+        bool back = false;
+        bool right = false;
+        bool left = false;
         private void Movement()
         {
             /*
             _x = Input.GetAxisRaw(horizontalString);
             _z = Input.GetAxisRaw(verticalString);
             */
-            bool forw = KeyBindingManager.GetKey(KeyAction.Forward);
-            bool back = KeyBindingManager.GetKey(KeyAction.Backwards);
-            bool right = KeyBindingManager.GetKey(KeyAction.RightStrafe);
-            bool left = KeyBindingManager.GetKey(KeyAction.LeftStrafe);
+            forw = KeyBindingManager.GetKey(KeyAction.Forward);
+            back = KeyBindingManager.GetKey(KeyAction.Backwards);
+            right = KeyBindingManager.GetKey(KeyAction.RightStrafe);
+            left = KeyBindingManager.GetKey(KeyAction.LeftStrafe);
 
             if (right)
                 _x = 1;
