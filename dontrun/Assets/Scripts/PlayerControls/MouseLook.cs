@@ -213,7 +213,7 @@ public class MouseLook : MonoBehaviour
         mainCamera.fieldOfView = cameraFov;
         handsCamera.fieldOfView = cameraFov;
         
-        if (activeWeaponHolderAnim)
+        if (activeWeaponHolderAnim && activeWeaponHolderAnim.GetBool(aimingString) != aiming)
             activeWeaponHolderAnim.SetBool(aimingString, aiming);
     }
 

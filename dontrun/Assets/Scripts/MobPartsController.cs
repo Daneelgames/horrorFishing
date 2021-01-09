@@ -39,13 +39,13 @@ public class MobPartsController : MonoBehaviour
     private ItemsList il;
 
     public bool animDamageByTrigger = false;
-    
+    private string peacefulBool = "Peaceful";
     private void Start()
     {
         il = ItemsList.instance;
         
-        if (hc.peaceful && anim)
-            anim.SetBool("Peaceful", true);
+        if (hc.peaceful && anim && anim.GetBool(peacefulBool) == false)
+            anim.SetBool(peacefulBool, true);
         
         bodyPartMax = bodyParts.Count;
         if (movementCollider)

@@ -2560,6 +2560,11 @@ public class NpcController : MonoBehaviour
                     break;
                 
                 case Dialogue.DialogueEvent.SetNpcInLove:
+                    // specific for ladyshoe
+                    hc.transform.parent = null;
+                    hc.mobPartsController.agent.enabled = false;
+                    ///////
+                    
                     if(gm.language == 0)
                         newPhraseChoice = Translator.TranslateText("Ladyshoe joined party!");
                     else if (gm.language == 1)
@@ -2572,6 +2577,8 @@ public class NpcController : MonoBehaviour
                         newPhraseChoice = Translator.TranslateText("Ladyshoe joined party!");
                     else if (gm.language == 5)
                         newPhraseChoice = Translator.TranslateText("Ladyshoe joined party!");
+                    
+                    hc.mobPartsController.agent.enabled = true;
                     hc.inLove = true;
                     QuestManager.instance.CompleteQuest(0);
                     break;

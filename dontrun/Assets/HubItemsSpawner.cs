@@ -37,7 +37,7 @@ public class HubItemsSpawner : MonoBehaviour
         sc = SpawnController.instance;
         if (mrSunSpawned == null)
         {
-            Instantiate(fieldEventsSpawners[2].gameObjectToSpawn, fieldEventsSpawners[2].transform.position,
+            mrSunSpawned = Instantiate(fieldEventsSpawners[2].gameObjectToSpawn, fieldEventsSpawners[2].transform.position,
                 fieldEventsSpawners[2].transform.rotation);
         }
         

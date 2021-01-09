@@ -2067,7 +2067,7 @@ public class UiManager : MonoBehaviour
             
             UpdateWeightString();
             
-            ToggleInventoryPage(0);
+            ToggleInventoryPage(3);
         }
         else
         {
