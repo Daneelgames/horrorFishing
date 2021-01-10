@@ -215,7 +215,7 @@ public class MobGroundMovement : MonoBehaviour, IUpdatable
         if (authorathive)
         {
             mobParts.anim.SetBool(peacefulString, false);
-            if (mobParts.simpleWalker == false)
+            if (mobParts.simpleWalker == false || mobParts.simpleWalkerString != chaseString)
                 mobParts.anim.SetBool(chaseString, true);   
         }
         
@@ -448,7 +448,7 @@ public class MobGroundMovement : MonoBehaviour, IUpdatable
                                     
                                         mobAu.IdleAmbient();
                                     
-                                        if (authorathive && mobParts.simpleWalker == false)
+                                        if (authorathive && (mobParts.simpleWalker == false || mobParts.simpleWalkerString != chaseString))
                                             mobParts.anim.SetBool(chaseString, false);
                                     }
                                 }
@@ -488,7 +488,7 @@ public class MobGroundMovement : MonoBehaviour, IUpdatable
             {
                 if ((monsterState == State.Chase && target && Vector3.Distance(transform.position, target.transform.position) > agent.stoppingDistance) || agent.velocity.magnitude > 0f)
                 {
-                    if (authorathive && mobParts.simpleWalker == false)
+                    if (authorathive && (mobParts.simpleWalker == false || mobParts.simpleWalkerString != chaseString))
                         mobParts.anim.SetBool(chaseString, true);   
                     
                     if (!mobAu.chaseAu.isPlaying)
@@ -505,7 +505,7 @@ public class MobGroundMovement : MonoBehaviour, IUpdatable
 
                     if (!authorathive) yield break;
 
-                    if (mobParts.simpleWalker == false)
+                    if (mobParts.simpleWalker == false || mobParts.simpleWalkerString != chaseString)
                     {
                         if (Vector3.Distance(agent.destination, transform.position) > agent.stoppingDistance)
                         {
@@ -562,7 +562,7 @@ public class MobGroundMovement : MonoBehaviour, IUpdatable
                     agent.CalculatePath(lastKnownPlayerPosition, path);
                     agent.SetPath(path);
                 }                        
-                if (mobParts.simpleWalker == false)
+                if (mobParts.simpleWalker == false || mobParts.simpleWalkerString != chaseString)
                     mobParts.anim.SetBool(chaseString, true);
                 mobParts.anim.SetBool(peacefulString, false);   
             }
@@ -625,7 +625,7 @@ public class MobGroundMovement : MonoBehaviour, IUpdatable
                 
                 if (authorathive)
                 {
-                    if (mobParts.simpleWalker == false)
+                    if (mobParts.simpleWalker == false || mobParts.simpleWalkerString != chaseString)
                         mobParts.anim.SetBool(chaseString, false);
 
                     //targetSpeed = levels[GetLevel()].idleSpeed;
@@ -638,7 +638,7 @@ public class MobGroundMovement : MonoBehaviour, IUpdatable
 
                 if (authorathive)
                 {
-                    if (mobParts.simpleWalker == false)
+                    if (mobParts.simpleWalker == false || mobParts.simpleWalkerString != chaseString)
                         mobParts.anim.SetBool(chaseString, true);
                     targetSpeed = levels[GetLevel()].chaseSpeed;
                 }
@@ -726,7 +726,7 @@ public class MobGroundMovement : MonoBehaviour, IUpdatable
         {
             mobAu.IdleAmbient();
             if (!mobParts) mobParts = hc.mobPartsController;
-            if (mobParts.simpleWalker == false)
+            if (mobParts.simpleWalker == false || mobParts.simpleWalkerString != chaseString)
                 mobParts.anim.SetBool(chaseString, false);
             //targetSpeed = levels[GetLevel()].idleSpeed * (gm.player.health / gm.player.healthMax); -- mobs are super slow in coop
             targetSpeed = levels[GetLevel()].idleSpeed;
@@ -735,7 +735,7 @@ public class MobGroundMovement : MonoBehaviour, IUpdatable
         {
             mobAu.ChaseAmbient();
             if (!mobParts) mobParts = hc.mobPartsController;
-            if (mobParts.simpleWalker == false)
+            if (mobParts.simpleWalker == false || mobParts.simpleWalkerString != chaseString)
                 mobParts.anim.SetBool(chaseString, true);
             //targetSpeed = levels[GetLevel()].idleSpeed * (gm.player.health / gm.player.healthMax); -- mobs are super slow in coop
             targetSpeed = levels[GetLevel()].chaseSpeed;
@@ -772,7 +772,7 @@ public class MobGroundMovement : MonoBehaviour, IUpdatable
         yield return new WaitForSeconds(time);
         
         mobAu.IdleAmbient();
-        if (mobParts.simpleWalker == false)
+        if (mobParts.simpleWalker == false || mobParts.simpleWalkerString != chaseString)
             mobParts.anim.SetBool(chaseString, false);
         targetSpeed = levels[GetLevel()].idleSpeed;
         hideAfterTimeCoroutine = null;

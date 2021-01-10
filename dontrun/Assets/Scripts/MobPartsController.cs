@@ -17,10 +17,11 @@ public class MobPartsController : MonoBehaviour
     public NavMeshAgent agent;
     [Tooltip("Sets Chase anim only when object is moving")]
     public bool simpleWalker = false;
+    public string simpleWalkerString = "Chase";
 
     private Vector3 prevPos;
     private Vector3 newPos;
-    private float distanceThreshold = 1f;
+    private float distanceThreshold = 0.33f;
     
     public Animator anim;
     public List<MobBodyPart> bodyParts = new List<MobBodyPart>();
@@ -74,9 +75,9 @@ public class MobPartsController : MonoBehaviour
             newPos = transform.position;
             
             if (Vector3.Distance(prevPos, newPos) > distanceThreshold)
-                anim.SetBool("Chase", true);
+                anim.SetBool(simpleWalkerString, true);
             else
-                anim.SetBool("Chase", false);
+                anim.SetBool(simpleWalkerString, false);
         }
     }
 
@@ -439,7 +440,7 @@ public class MobPartsController : MonoBehaviour
         if (anim)
         {
             anim.SetBool("Peaceful", false);
-            if (!simpleWalker)
+            if (!simpleWalker || simpleWalkerString != "Chase")
                 anim.SetBool("Chase", true);   
             
             if (animDamageByTrigger)
