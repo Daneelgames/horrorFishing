@@ -183,6 +183,7 @@ public class NpcController : MonoBehaviour
         }
     }
 
+    private string activeString = "Active";
     public void Interact()
     {
         inLoveScaler = 1;
@@ -209,7 +210,7 @@ public class NpcController : MonoBehaviour
             {
                 if (!choosing)
                 {
-                    ui.dialogueAnim.SetTrigger("Active");
+                    ui.dialogueAnim.SetTrigger(activeString);
                     if (roseNpc >= 0)
                     {
                         if (!gm.roseNpcsInteractedInHub.Contains(roseNpc))
@@ -219,13 +220,13 @@ public class NpcController : MonoBehaviour
                 }
                 else
                 {
-                    ui.dialogueAnim.SetTrigger("Active");
+                    ui.dialogueAnim.SetTrigger(activeString);
                     StartCoroutine(MakeChoice());   
                 }   
             }
             else
             {
-                ui.dialogueAnim.SetTrigger("Active");
+                ui.dialogueAnim.SetTrigger(activeString);
                 StartCoroutine(CheckBlockingQuest());
             }
         }
@@ -381,10 +382,12 @@ public class NpcController : MonoBehaviour
         hideText = StartCoroutine(HideText());
     }
     
+    string newPhrase = String.Empty;
+    string  newPhrasePhrase = String.Empty;
     IEnumerator NextPhrase()
     {
         canInteract = false;
-        string newPhrase = "";
+        newPhrase = String.Empty;
         gm = GameManager.instance;
         if (hc)
         {
@@ -401,10 +404,11 @@ public class NpcController : MonoBehaviour
                 ui.dialogueSpeakerName.text = interactable.itemNames[0];
         }
         
-        ui.dialoguePhrase.text = "";
-        ui.dialogueChoice.text = "";
+        ui.dialoguePhrase.text = String.Empty;
+        ui.dialogueChoice.text = String.Empty;
+        
         if (shuffler) audioSource.clip = shuffler.GetVoiceClip();
-        audioSource.pitch = UnityEngine.Random.Range(0.8f, 1.2f);
+        audioSource.pitch = Random.Range(0.8f, 1.2f);
         audioSource.Play();
 
         // LAST LINE OF DIALOGUE
@@ -434,7 +438,7 @@ public class NpcController : MonoBehaviour
                 }
                 else
                 {
-                    string newPhrasePhrase = "";
+                    newPhrasePhrase = String.Empty;
                     if (gm.language == 0)
                         newPhrasePhrase = Translator.TranslateText(dialogues[currentDialog].phrases[currentLine]);
                     else if (gm.language == 1)
@@ -496,7 +500,7 @@ public class NpcController : MonoBehaviour
                 }
                 else
                 {
-                    string newPhrasePhrase = "";
+                    newPhrasePhrase = String.Empty;
                     if (gm.language == 0)
                         newPhrasePhrase = Translator.TranslateText(dialogues[currentDialog].phrases[currentLine]);
                     else if (gm.language == 1)
@@ -557,7 +561,7 @@ public class NpcController : MonoBehaviour
                 }
                 else
                 {
-                    string newPhrasePhrase = "";
+                    newPhrasePhrase = String.Empty;
                     if (gm.language == 0)
                         newPhrasePhrase = Translator.TranslateText(dialogues[currentDialog].phrases[currentLine]);
                     else if (gm.language == 1)
@@ -618,7 +622,7 @@ public class NpcController : MonoBehaviour
                 }
                 else
                 {
-                    string newPhrasePhrase = "";
+                    newPhrasePhrase = String.Empty;
                     if (gm.language == 0)
                         newPhrasePhrase = Translator.TranslateText(dialogues[currentDialog].phrases[currentLine]);
                     else if (gm.language == 1)
@@ -679,7 +683,7 @@ public class NpcController : MonoBehaviour
                 }
                 else
                 {
-                    string newPhrasePhrase = "";
+                    newPhrasePhrase = String.Empty;
                     if (gm.language == 0)
                         newPhrasePhrase = Translator.TranslateText(dialogues[currentDialog].phrases[currentLine]);
                     else if (gm.language == 1)
@@ -740,7 +744,7 @@ public class NpcController : MonoBehaviour
                 }
                 else
                 {
-                    string newPhrasePhrase = "";
+                    newPhrasePhrase = String.Empty;
                     if (gm.language == 0)
                         newPhrasePhrase = Translator.TranslateText(dialogues[currentDialog].phrases[currentLine]);
                     else if (gm.language == 1)
@@ -801,7 +805,7 @@ public class NpcController : MonoBehaviour
                 }
                 else
                 {
-                    string newPhrasePhrase = "";
+                    newPhrasePhrase = String.Empty;
                     if (gm.language == 0)
                         newPhrasePhrase = Translator.TranslateText(dialogues[currentDialog].phrases[currentLine]);
                     else if (gm.language == 1)
@@ -862,7 +866,7 @@ public class NpcController : MonoBehaviour
                 }
                 else
                 {
-                    string newPhrasePhrase = "";
+                    newPhrasePhrase = String.Empty;
                     if (gm.language == 0)
                         newPhrasePhrase = Translator.TranslateText(dialogues[currentDialog].phrases[currentLine]);
                     else if (gm.language == 1)
@@ -924,7 +928,7 @@ public class NpcController : MonoBehaviour
                 }
                 else
                 {
-                    string newPhrasePhrase = "";
+                    newPhrasePhrase = String.Empty;
                     if (gm.language == 0)
                         newPhrasePhrase = Translator.TranslateText(dialogues[currentDialog].phrases[currentLine]);
                     else if (gm.language == 1)
@@ -985,7 +989,7 @@ public class NpcController : MonoBehaviour
                 }
                 else
                 {
-                    string newPhrasePhrase = "";
+                    newPhrasePhrase = String.Empty;
                     if (gm.language == 0)
                         newPhrasePhrase = Translator.TranslateText(dialogues[currentDialog].phrases[currentLine]);
                     else if (gm.language == 1)
@@ -1046,7 +1050,8 @@ public class NpcController : MonoBehaviour
                 }
                 else
                 {
-                    string newPhrasePhrase = "";
+                    
+                    newPhrasePhrase = String.Empty;
                     if (gm.language == 0)
                         newPhrasePhrase = Translator.TranslateText(dialogues[currentDialog].phrases[currentLine]);
                     else if (gm.language == 1)
@@ -1107,7 +1112,7 @@ public class NpcController : MonoBehaviour
                 }
                 else
                 {
-                    string newPhrasePhrase = "";
+                    newPhrasePhrase = String.Empty;
                     if (gm.language == 0)
                         newPhrasePhrase = Translator.TranslateText(dialogues[currentDialog].phrases[currentLine]);
                     else if (gm.language == 1)
@@ -1168,7 +1173,8 @@ public class NpcController : MonoBehaviour
                 }
                 else
                 {
-                    string newPhrasePhrase = "";
+                    
+                    newPhrasePhrase = String.Empty;
                     if (gm.language == 0)
                         newPhrasePhrase = Translator.TranslateText(dialogues[currentDialog].phrases[currentLine]);
                     else if (gm.language == 1)
@@ -1229,7 +1235,8 @@ public class NpcController : MonoBehaviour
                 }
                 else
                 {
-                    string newPhrasePhrase = "";
+                    
+                    newPhrasePhrase = String.Empty;
                     if (gm.language == 0)
                         newPhrasePhrase = Translator.TranslateText(dialogues[currentDialog].phrases[currentLine]);
                     else if (gm.language == 1)
@@ -1290,7 +1297,8 @@ public class NpcController : MonoBehaviour
                 }
                 else
                 {
-                    string newPhrasePhrase = "";
+                    
+                    newPhrasePhrase = String.Empty;
                     if (gm.language == 0)
                         newPhrasePhrase = Translator.TranslateText(dialogues[currentDialog].phrases[currentLine]);
                     else if (gm.language == 1)
@@ -1351,7 +1359,8 @@ public class NpcController : MonoBehaviour
                 }
                 else
                 {
-                    string newPhrasePhrase = "";
+                    
+                    newPhrasePhrase = String.Empty;
                     if (gm.language == 0)
                         newPhrasePhrase = Translator.TranslateText(dialogues[currentDialog].phrases[currentLine]);
                     else if (gm.language == 1)
@@ -1412,7 +1421,8 @@ public class NpcController : MonoBehaviour
                 }
                 else
                 {
-                    string newPhrasePhrase = "";
+                    
+                    newPhrasePhrase = String.Empty;
                     if (gm.language == 0)
                         newPhrasePhrase = Translator.TranslateText(dialogues[currentDialog].phrases[currentLine]);
                     else if (gm.language == 1)
@@ -1473,7 +1483,8 @@ public class NpcController : MonoBehaviour
                 }
                 else
                 {
-                    string newPhrasePhrase = "";
+                    
+                    newPhrasePhrase = String.Empty;
                     if (gm.language == 0)
                         newPhrasePhrase = Translator.TranslateText(dialogues[currentDialog].phrases[currentLine]);
                     else if (gm.language == 1)
@@ -1534,7 +1545,8 @@ public class NpcController : MonoBehaviour
                 }
                 else
                 {
-                    string newPhrasePhrase = "";
+                    
+                    newPhrasePhrase = String.Empty;
                     if (gm.language == 0)
                         newPhrasePhrase = Translator.TranslateText(dialogues[currentDialog].phrases[currentLine]);
                     else if (gm.language == 1)
@@ -1595,7 +1607,8 @@ public class NpcController : MonoBehaviour
                 }
                 else
                 {
-                    string newPhrasePhrase = "";
+                    
+                    newPhrasePhrase = String.Empty;
                     if (gm.language == 0)
                         newPhrasePhrase = Translator.TranslateText(dialogues[currentDialog].phrases[currentLine]);
                     else if (gm.language == 1)
@@ -1656,7 +1669,8 @@ public class NpcController : MonoBehaviour
                 }
                 else
                 {
-                    string newPhrasePhrase = "";
+                    
+                    newPhrasePhrase = String.Empty;
                     if (gm.language == 0)
                         newPhrasePhrase = Translator.TranslateText(dialogues[currentDialog].phrases[currentLine]);
                     else if (gm.language == 1)
@@ -1717,7 +1731,8 @@ public class NpcController : MonoBehaviour
                 }
                 else
                 {
-                    string newPhrasePhrase = "";
+                    
+                    newPhrasePhrase = String.Empty;
                     if (gm.language == 0)
                         newPhrasePhrase = Translator.TranslateText(dialogues[currentDialog].phrases[currentLine]);
                     else if (gm.language == 1)
@@ -1778,7 +1793,8 @@ public class NpcController : MonoBehaviour
                 }
                 else
                 {
-                    string newPhrasePhrase = "";
+                    
+                    newPhrasePhrase = String.Empty;
                     if (gm.language == 0)
                         newPhrasePhrase = Translator.TranslateText(dialogues[currentDialog].phrases[currentLine]);
                     else if (gm.language == 1)
@@ -1839,7 +1855,8 @@ public class NpcController : MonoBehaviour
                 }
                 else
                 {
-                    string newPhrasePhrase = "";
+                    
+                    newPhrasePhrase = String.Empty;
                     if (gm.language == 0)
                         newPhrasePhrase = Translator.TranslateText(dialogues[currentDialog].phrases[currentLine]);
                     else if (gm.language == 1)
@@ -1900,7 +1917,8 @@ public class NpcController : MonoBehaviour
                 }
                 else
                 {
-                    string newPhrasePhrase = "";
+                    
+                    newPhrasePhrase = String.Empty;
                     if (gm.language == 0)
                         newPhrasePhrase = Translator.TranslateText(dialogues[currentDialog].phrases[currentLine]);
                     else if (gm.language == 1)
@@ -1919,17 +1937,17 @@ public class NpcController : MonoBehaviour
 
                     choosing = true;
                     if (gm.language == 0)
-                        newPhrase = Translator.TranslateText("Bury half of your gold in its roots?");
+                        newPhrase = Translator.TranslateText("Share your gold with a stranger?");
                     else if (gm.language == 1)
-                        newPhrase = Translator.TranslateText("Закопать половину своего золота в корнях Древа?");
+                        newPhrase = Translator.TranslateText("Поделиться золотом с незнакомцем?");
                     else if (gm.language == 2)
-                        newPhrase = Translator.TranslateText("entierra la mitad de tu oro en las raíces");
+                        newPhrase = Translator.TranslateText("Share the gold with a stranger?");
                     else if (gm.language == 3)
-                        newPhrase = Translator.TranslateText("begrabe dein halbes Gold in den Wurzeln");
+                        newPhrase = Translator.TranslateText("Share the gold with a stranger?");
                     else if (gm.language == 4)
-                        newPhrase = Translator.TranslateText("Seppellire tutto il tuo oro nelle sue racidi?");
+                        newPhrase = Translator.TranslateText("Share the gold with a stranger?");
                     else if (gm.language == 5)
-                        newPhrase = Translator.TranslateText("Enterrar todo o seu ouro em suas raízes?");
+                        newPhrase = Translator.TranslateText("Share the gold with a stranger?");
                     foreach (char c in newPhrase)
                     {
                         ui.dialogueChoice.text += c;
@@ -1961,7 +1979,8 @@ public class NpcController : MonoBehaviour
                 }
                 else
                 {
-                    string newPhrasePhrase = "";
+                    
+                    newPhrasePhrase = String.Empty;
                     if (gm.language == 0)
                         newPhrasePhrase = Translator.TranslateText(dialogues[currentDialog].phrases[currentLine]);
                     else if (gm.language == 1)
@@ -2022,7 +2041,8 @@ public class NpcController : MonoBehaviour
                 }
                 else
                 {
-                    string newPhrasePhrase = "";
+                    
+                    newPhrasePhrase = String.Empty;
                     if (gm.language == 0)
                         newPhrasePhrase = Translator.TranslateText(dialogues[currentDialog].phrases[currentLine]);
                     else if (gm.language == 1)
@@ -2083,7 +2103,8 @@ public class NpcController : MonoBehaviour
                 }
                 else
                 {
-                    string newPhrasePhrase = "";
+                    
+                    newPhrasePhrase = String.Empty;
                     if (gm.language == 0)
                         newPhrasePhrase = Translator.TranslateText(dialogues[currentDialog].phrases[currentLine]);
                     else if (gm.language == 1)
@@ -2306,7 +2327,8 @@ public class NpcController : MonoBehaviour
 
                     newPhrase = choiceText;
                     
-                    string newPhrasePhrase = "";
+                    
+                    newPhrasePhrase = String.Empty;
                     if (interactable.weaponPickUp && interactable.weaponPickUp.weaponDataRandomier)
                     {
                         newPhrasePhrase = Translator.TranslateText(interactable.weaponPickUp.weaponDataRandomier.weaponData.randomPhrases[Random.Range(0, interactable.weaponPickUp.weaponDataRandomier.weaponData.randomPhrases.Count)].text[gm.language]);
@@ -2406,10 +2428,11 @@ public class NpcController : MonoBehaviour
         //Hide();
     }
 
+    string newPhraseChoice = String.Empty;
     IEnumerator MakeChoice()
     {
-        ui.dialoguePhrase.text = "";
-        ui.dialogueChoice.text = "";
+        ui.dialoguePhrase.text = String.Empty;
+        ui.dialogueChoice.text = String.Empty;
         
         if (shuffler) audioSource.clip = shuffler.GetVoiceClip();
         audioSource.pitch = UnityEngine.Random.Range(0.8f, 1.2f);
@@ -2422,7 +2445,7 @@ public class NpcController : MonoBehaviour
          (dialogues[currentDialog].dialogueEvent == Dialogue.DialogueEvent.Warm && (hc.statusEffects.Count <= 1 || !hc.statusEffects[1].effectActive)))
         // pay gold if weapon wants it
         {
-            string newPhrase = "";
+            newPhrase = String.Empty;
             if (gm.language == 0)
                 newPhrase = Translator.TranslateText(dialogues[currentDialog].doesntMetRequirementsPhrase);
             else if (gm.language == 1)
@@ -2455,11 +2478,11 @@ public class NpcController : MonoBehaviour
         else
         {
             canInteract = false;
-            string newPhrase = "...";
-            string newPhraseChoice = "...";
+            newPhrase = String.Empty;
+            newPhraseChoice = String.Empty;
             ui.dialogueSpeakerName.text = hc.names[gm.language];
-            ui.dialoguePhrase.text = "";
-            ui.dialogueChoice.text = "";
+            ui.dialoguePhrase.text = String.Empty;
+            ui.dialogueChoice.text = String.Empty;
             currentEventRepeat++;
             
             if (dialogues[currentDialog].dialogueEvent != Dialogue.DialogueEvent.GivePlayerWeapon ||
@@ -2477,13 +2500,13 @@ public class NpcController : MonoBehaviour
                 }
                 PlayerSkillsController.instance.PlayerLoseGold(dialogues[currentDialog].eventCost * inLoveScaler);
                 ui.UpdateGold(il.gold);
-            }
+            }/*
             else if (dialogues[currentDialog].dialogueEvent == Dialogue.DialogueEvent.ReduceBadRep)
             {
                 PlayerSkillsController.instance.PlayerLoseGold(il.gold);
                 il.gold = 0;
                 ui.UpdateGold(il.gold);
-            }
+            }*/
 
             switch (dialogues[currentDialog].dialogueEvent)
             {
@@ -2868,20 +2891,21 @@ public class NpcController : MonoBehaviour
                 
                 case Dialogue.DialogueEvent.ReduceBadRep:
                     
-                    il.AddToBadReputation(-5f);
+                    il.AddToBadReputation(-1f);
                     il.LoseGold(il.gold / 2);
+                    
                     if(gm.language == 0)
-                        newPhraseChoice = Translator.TranslateText("You buried some gold. The Gut loves you again.");
+                        newPhraseChoice = Translator.TranslateText("You helped somebody. The Sea likes this");
                     else if (gm.language == 1)
-                        newPhraseChoice = Translator.TranslateText("Ты похоронил золото. Кишка вновь любит тебя.");
+                        newPhraseChoice = Translator.TranslateText("Ты помог кому-то. Морю это нравится");
                     else if (gm.language == 2)
-                        newPhraseChoice = Translator.TranslateText("Has enterrado todo tu oro. La Entraña te quiere otra vez.");
+                        newPhraseChoice = Translator.TranslateText("You helped somebody. The Sea likes this");
                     else if (gm.language == 3)
-                        newPhraseChoice = Translator.TranslateText("Du hast all dein Gold vergraben. Der Magen liebt dich wieder");
+                        newPhraseChoice = Translator.TranslateText("You helped somebody. The Sea likes this");
                     else if (gm.language == 4)
-                        newPhraseChoice = Translator.TranslateText("Hai seppellito tutto il tuo oro. L'intestino ti ama di nuovo.");
+                        newPhraseChoice = Translator.TranslateText("You helped somebody. The Sea likes this");
                     else if (gm.language == 5)
-                        newPhraseChoice = Translator.TranslateText("Você enterrou todo o seu ouro. O intestino te ama novamente.");
+                        newPhraseChoice = Translator.TranslateText("You helped somebody. The Sea likes this");
                     break;
                 
                 case Dialogue.DialogueEvent.KissHer:

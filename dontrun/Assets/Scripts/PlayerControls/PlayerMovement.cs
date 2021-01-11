@@ -342,17 +342,24 @@ namespace PlayerControls
         bool back = false;
         bool right = false;
         bool left = false;
+        private float aimingSpeedScaler = 1;
         private void Movement()
         {
             /*
             _x = Input.GetAxisRaw(horizontalString);
             _z = Input.GetAxisRaw(verticalString);
             */
+            
+            if (mouseLook.aiming) 
+                aimingSpeedScaler = 0.3f;
+            else 
+                aimingSpeedScaler = 1;
+            
             forw = KeyBindingManager.GetKey(KeyAction.Forward);
             back = KeyBindingManager.GetKey(KeyAction.Backwards);
             right = KeyBindingManager.GetKey(KeyAction.RightStrafe);
             left = KeyBindingManager.GetKey(KeyAction.LeftStrafe);
-
+            
             if (right)
                 _x = 1;
             else if (left)
@@ -464,38 +471,38 @@ namespace PlayerControls
                 if (!_grounded) _move /= 100; // FALLING
 
                 if (hc.wc.activeWeapon && hc.wc.activeWeapon.weaponType == WeaponController.Type.Melee && !hc.wc.activeWeapon.canAct) // if attacking
-                    controller.Move(_move.normalized * inWallCoeff * movementStats.currentMoveSpeed * coldScaler * weightSpeedScaler * crouchSpeedCoeff / 2f * Time.deltaTime);
+                    controller.Move(_move.normalized * aimingSpeedScaler * inWallCoeff * movementStats.currentMoveSpeed * coldScaler * weightSpeedScaler * crouchSpeedCoeff / 2f * Time.deltaTime);
                 else if (_z > 0) // MOVING FORWARD
                 {
                     if (!psc.fastStrafing)
-                        controller.Move(_move.normalized * inWallCoeff * (movementStats.currentMoveSpeed * coldScaler * weightSpeedScaler * crouchSpeedCoeff * Time.deltaTime)); //Keep this multiply order, its affect performance.
+                        controller.Move(_move.normalized *  aimingSpeedScaler * inWallCoeff * (movementStats.currentMoveSpeed * coldScaler * weightSpeedScaler * crouchSpeedCoeff * Time.deltaTime)); //Keep this multiply order, its affect performance.
                     else
-                        controller.Move(_move.normalized * inWallCoeff * (movementStats.currentMoveSpeed * coldScaler * weightSpeedScaler * crouchSpeedCoeff * 1.25f * Time.deltaTime)); //Keep this multiply order, its affect performance.
+                        controller.Move(_move.normalized *  aimingSpeedScaler * inWallCoeff * (movementStats.currentMoveSpeed * coldScaler * weightSpeedScaler * crouchSpeedCoeff * 1.25f * Time.deltaTime)); //Keep this multiply order, its affect performance.
                 }
                 else if (Mathf.Approximately(_z, 0) && !Mathf.Approximately(_x, 0)) // STRAIFING
                 {
                     if (!psc.fastStrafing)
-                        controller.Move(_move.normalized * inWallCoeff * (movementStats.currentMoveSpeed * coldScaler * weightSpeedScaler * crouchSpeedCoeff * 0.75f * Time.deltaTime));//Keep this multiply order, its affect performance.
+                        controller.Move(_move.normalized *  aimingSpeedScaler * inWallCoeff * (movementStats.currentMoveSpeed * coldScaler * weightSpeedScaler * crouchSpeedCoeff * 0.75f * Time.deltaTime));//Keep this multiply order, its affect performance.
                     else
-                        controller.Move(_move.normalized * inWallCoeff * (movementStats.currentMoveSpeed * coldScaler * weightSpeedScaler  * crouchSpeedCoeff * 1.25f * Time.deltaTime));//Keep this multiply order, its affect performance.
+                        controller.Move(_move.normalized *  aimingSpeedScaler * inWallCoeff * (movementStats.currentMoveSpeed * coldScaler * weightSpeedScaler  * crouchSpeedCoeff * 1.25f * Time.deltaTime));//Keep this multiply order, its affect performance.
                 }
                 //else if (Mathf.Approximately(_z, -1)) // walking && strafing backwards
                 else if (_z < 0) // walking && strafing backwards
                 {
                     if (!psc.fastStrafing)
                     {
-                        controller.Move(_move.normalized * inWallCoeff * movementStats.currentMoveSpeed * coldScaler * weightSpeedScaler  * crouchSpeedCoeff / 2 * Time.deltaTime);
+                        controller.Move(_move.normalized *  aimingSpeedScaler * inWallCoeff * movementStats.currentMoveSpeed * coldScaler * weightSpeedScaler  * crouchSpeedCoeff / 2 * Time.deltaTime);
                     }
                     else
                     {
-                        controller.Move(_move.normalized * inWallCoeff * (movementStats.currentMoveSpeed * coldScaler * weightSpeedScaler  * crouchSpeedCoeff * 1.25f * Time.deltaTime));//Keep this multiply order, its affect performance.
+                        controller.Move(_move.normalized *  aimingSpeedScaler * inWallCoeff * (movementStats.currentMoveSpeed * coldScaler * weightSpeedScaler  * crouchSpeedCoeff * 1.25f * Time.deltaTime));//Keep this multiply order, its affect performance.
                     }
 
                 }
                 else if (Mathf.Approximately(_z, 0) && Mathf.Approximately(_x, 0)) // to idle
                 {
                     movementStats.currentMoveSpeed = Mathf.Lerp(movementStats.currentMoveSpeed, 0, Time.deltaTime);
-                    controller.Move(_move.normalized * inWallCoeff * (movementStats.currentMoveSpeed * coldScaler * weightSpeedScaler  * Time.deltaTime));
+                    controller.Move(_move.normalized * aimingSpeedScaler * inWallCoeff * (movementStats.currentMoveSpeed * coldScaler * weightSpeedScaler  * Time.deltaTime));
                 }
 
                 // RUNNING
