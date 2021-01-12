@@ -18,9 +18,10 @@ public class HubItemsSpawner : MonoBehaviour
 
     public static HubItemsSpawner instance;
 
+    private HealthController strangerWomanSpawned;
     private GameObject mrSunSpawned;
     private GameObject startGoldSpawned;
-    private GameObject letterSpawned;
+    private Interactable letterSpawned;
     private HealthController ladyOnRoofSpawned;
     private GameObject shoesOnBeachSpawned;
     private List<HealthController> shoeMimicsSpawned = new List<HealthController>();
@@ -36,10 +37,27 @@ public class HubItemsSpawner : MonoBehaviour
         // check what to spawn based on what quests are active
         var qm = QuestManager.instance;
         sc = SpawnController.instance;
+
         if (mrSunSpawned == null)
         {
             mrSunSpawned = Instantiate(fieldEventsSpawners[2].gameObjectToSpawn, fieldEventsSpawners[2].transform.position,
                 fieldEventsSpawners[2].transform.rotation);
+        }
+        
+        // spawn lady
+        if (ladyOnRoofSpawned == null)
+        {
+            var go = Instantiate(npcSpawners[0].npcsToSpawn[0], npcSpawners[0].transform.position,
+                npcSpawners[0].transform.rotation);
+
+            ladyOnRoofSpawned = go;
+        }
+        
+        return;
+        if (strangerWomanSpawned == null)
+        {
+            strangerWomanSpawned = Instantiate(monstersSpawners[4].monstersToSpawn[0], monstersSpawners[4].transform.position,
+                monstersSpawners[4].transform.rotation);
         }
         
         #region Quest 0. Shoes on beach
@@ -120,7 +138,7 @@ public class HubItemsSpawner : MonoBehaviour
         {
             if (letterSpawned == null)
             {
-                var go = Instantiate(itemSpawners[0].gameObjectToSpawn, itemSpawners[0].transform.position,
+                var go = Instantiate(itemSpawners[0].itemToSpawn, itemSpawners[0].transform.position,
                     itemSpawners[0].transform.rotation);
                 letterSpawned = go;
             }
