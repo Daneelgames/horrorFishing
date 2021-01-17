@@ -661,7 +661,7 @@ public class NpcController : MonoBehaviour
             }
             else if (dialogues[currentDialog].dialogueEvent == Dialogue.DialogueEvent.SetNpcInLove)
             {
-                if (eventsRepeat <= currentEventRepeat)
+                if (currentEventRepeat >= eventsRepeat)
                 {
                     if (gm.language == 0)
                         newPhrase = Translator.TranslateText(dialogues[currentDialog].doesntMetRequirementsPhrase);
