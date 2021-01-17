@@ -12178,6 +12178,7 @@ MonoBehaviour:
   mobType: 3
   agent: {fileID: 0}
   simpleWalker: 0
+  simpleWalkerString: Chase
   anim: {fileID: 4834573291861764360}
   bodyParts:
   - {fileID: 4419370389899002430}
@@ -13713,12 +13714,19 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 13
       objectReference: {fileID: 0}
+    - target: {fileID: 7697917024284591599, guid: 88ff1c7b08620ac449a891449fdb5d3b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7977248964784123728, guid: 88ff1c7b08620ac449a891449fdb5d3b,
         type: 3}
       propertyPath: m_Layer
       value: 13
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8970286627828927033, guid: 88ff1c7b08620ac449a891449fdb5d3b, type: 3}
+    - {fileID: 1568873030180560556, guid: 88ff1c7b08620ac449a891449fdb5d3b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 88ff1c7b08620ac449a891449fdb5d3b, type: 3}
 --- !u!4 &5409793916822982443 stripped
 Transform:

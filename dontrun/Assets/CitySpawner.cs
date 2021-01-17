@@ -10,6 +10,8 @@ public class CitySpawner : MonoBehaviour
     public GameObject gameObjectToSpawn;
     public Interactable itemToSpawn;
 
+    public GameObject spawnedObject;
+
     [ContextMenu("SpawnGameObjectToSpawn")]
     void SpawnGameObjectToSpawn()
     {

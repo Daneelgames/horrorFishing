@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using PlayerControls;
-using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
@@ -9,6 +8,7 @@ using Random = UnityEngine.Random;
 public class HubItemsSpawner : MonoBehaviour
 {
     public List<CitySpawner> itemSpawners = new List<CitySpawner>();
+    public List<CitySpawner> ammoSpawners = new List<CitySpawner>();
     public List<CitySpawner> monstersSpawners = new List<CitySpawner>();
     public List<CitySpawner> npcSpawners = new List<CitySpawner>();
     public List<CitySpawner> fieldEventsSpawners = new List<CitySpawner>();
@@ -21,7 +21,7 @@ public class HubItemsSpawner : MonoBehaviour
     private HealthController strangerWomanSpawned;
     private GameObject mrSunSpawned;
     private GameObject startGoldSpawned;
-    private Interactable letterSpawned;
+    private GameObject letterSpawned;
     private HealthController ladyOnRoofSpawned;
     private GameObject shoesOnBeachSpawned;
     private List<HealthController> shoeMimicsSpawned = new List<HealthController>();
@@ -32,11 +32,30 @@ public class HubItemsSpawner : MonoBehaviour
         instance = this;
     }
 
+    NavMeshHit hit;
+    private Vector3 positionNearSpawner;
+    public Vector3 GetPositionNearSpawner(Vector3 spawnerPosition)
+    {
+        
+        positionNearSpawner = spawnerPosition + Random.insideUnitSphere * 30;
+                            
+        if (NavMesh.SamplePosition(positionNearSpawner, out hit, 30.0f, NavMesh.AllAreas))
+        {
+            return hit.position;
+        }
+        else
+        {
+            return spawnerPosition;
+        }
+    }
+    
     public void UpdateHub()
     {
         // check what to spawn based on what quests are active
         var qm = QuestManager.instance;
         sc = SpawnController.instance;
+
+        UpdateAmmo();
 
         if (mrSunSpawned == null)
         {
@@ -51,14 +70,21 @@ public class HubItemsSpawner : MonoBehaviour
                 npcSpawners[0].transform.rotation);
 
             ladyOnRoofSpawned = go;
+            
+            // revolver
+            sc.InstantiateItem(itemSpawners[0].itemToSpawn, itemSpawners[0].transform.position, false); 
         }
         
         //return;
         
         if (strangerWomanSpawned == null)
         {
-            strangerWomanSpawned = Instantiate(monstersSpawners[4].monstersToSpawn[0], monstersSpawners[4].transform.position,
-                monstersSpawners[4].transform.rotation);
+            for (int i = 0; i < monstersSpawners.Count; i++)
+            {
+                strangerWomanSpawned = Instantiate(monstersSpawners[4].monstersToSpawn[0],
+                    GetPositionNearSpawner(monstersSpawners[i].transform.position),
+                    monstersSpawners[i].transform.rotation);
+            }
         }
         
         #region Quest 0. Shoes on beach
@@ -73,8 +99,6 @@ public class HubItemsSpawner : MonoBehaviour
 
                     shoesOnBeachSpawned = go;
                     
-                    // revolver
-                    //sc.InstantiateItem(itemSpawners[0].itemToSpawn, itemSpawners[0].transform.position, false); 
                 }
                 
                 // spawn mob
@@ -139,7 +163,7 @@ public class HubItemsSpawner : MonoBehaviour
         {
             if (letterSpawned == null)
             {
-                var go = Instantiate(itemSpawners[0].itemToSpawn, itemSpawners[0].transform.position,
+                var go = Instantiate(itemSpawners[0].gameObjectToSpawn, itemSpawners[0].transform.position,
                     itemSpawners[0].transform.rotation);
                 letterSpawned = go;
             }
@@ -225,6 +249,20 @@ public class HubItemsSpawner : MonoBehaviour
             sc.InstantiateItem(sc.weaponPickUpPrefabs[availableWeapons[weaponIndex]], tempSpawners[spawnerIndex].transform.position, false);
             
             availableWeapons.RemoveAt(weaponIndex);
+        }
+    }
+
+    void UpdateAmmo()
+    {
+        for (int i = 0; i < ammoSpawners.Count; i++)
+        {
+            if (ammoSpawners[i].spawnedObject == null)
+            {
+                var newAmmo = Instantiate(ammoSpawners[i].itemToSpawn,
+                    GetPositionNearSpawner(ammoSpawners[i].transform.position), Quaternion.identity);
+                
+                ammoSpawners[i].spawnedObject = newAmmo.gameObject;
+            }
         }
     }
 }

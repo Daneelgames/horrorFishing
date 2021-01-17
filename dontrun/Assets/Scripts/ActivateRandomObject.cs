@@ -15,7 +15,7 @@ public class ActivateRandomObject : MonoBehaviour
 
     private ItemsList il;
 
-    private void Awake()
+    private void Start()
     {
         if (disableIfPlayerIsArmed && GLNetworkWrapper.instance && GLNetworkWrapper.instance.coopIsActive)
         {

@@ -719,6 +719,8 @@ public class WeaponController : MonoBehaviour
 
     public void LoseDurability()
     {
+        return;
+        
         float durabilityDamage = Random.Range(damageMin, damageMax);
 
         if (gm.tutorialPassed == 0)
@@ -738,6 +740,8 @@ public class WeaponController : MonoBehaviour
 
     public void LoseDurabilityEverySecond()
     {
+        return;
+
         if (durability > 0)
         {
             if (PlayerSkillsController.instance.strongWeapon)
