@@ -22,7 +22,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: DoubleLineMarking
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
-  m_ShaderKeywords: 
+  m_ShaderKeywords: _ENVIRONMENTREFLECTIONS_OFF _SPECULARHIGHLIGHTS_OFF
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -159,7 +159,7 @@ Material:
     - _DstBlend: 0
     - _EdgeLength: 10
     - _EmissionLM: 0
-    - _EnvironmentReflections: 1
+    - _EnvironmentReflections: 0
     - _FrezFalloff: 4
     - _FrezPow: 0
     - _Gloss: 0
@@ -177,10 +177,10 @@ Material:
     - _Reflection: 0
     - _ShadowIntensity: 0.462
     - _Shininess: 1
-    - _Smoothness: 0.1618
+    - _Smoothness: 1
     - _SmoothnessTextureChannel: 0
     - _Sparkle: 0.01
-    - _SpecularHighlights: 1
+    - _SpecularHighlights: 0
     - _SquashAmount: 1
     - _SrcBlend: 1
     - _Surface: 0

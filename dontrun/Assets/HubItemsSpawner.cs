@@ -53,7 +53,8 @@ public class HubItemsSpawner : MonoBehaviour
             ladyOnRoofSpawned = go;
         }
         
-        return;
+        //return;
+        
         if (strangerWomanSpawned == null)
         {
             strangerWomanSpawned = Instantiate(monstersSpawners[4].monstersToSpawn[0], monstersSpawners[4].transform.position,
