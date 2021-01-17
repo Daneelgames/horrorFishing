@@ -16,7 +16,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 94
+  m_StaticEditorFlags: 82
   m_IsActive: 1
 --- !u!4 &5523818168522331695
 Transform:
@@ -93,12 +93,13 @@ GameObject:
   - component: {fileID: 92302998168370089}
   - component: {fileID: 663282039084903789}
   - component: {fileID: 9210624343872499905}
+  - component: {fileID: 1689944937895279079}
   m_Layer: 30
   m_Name: PW_Tree_Spruce_05
   m_TagString: PW - Nature
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 94
+  m_StaticEditorFlags: 82
   m_IsActive: 1
 --- !u!4 &92302998168370089
 Transform:
@@ -163,6 +164,22 @@ CapsuleCollider:
   m_Height: 15
   m_Direction: 1
   m_Center: {x: 0, y: 6.5, z: 0}
+--- !u!208 &1689944937895279079
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3971247770807929274}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.25, y: 2.5, z: 0.25}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 2, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &4716839103442175051
 GameObject:
   m_ObjectHideFlags: 0
@@ -179,7 +196,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 94
+  m_StaticEditorFlags: 82
   m_IsActive: 1
 --- !u!4 &6784555828192749571
 Transform:
@@ -261,7 +278,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 94
+  m_StaticEditorFlags: 82
   m_IsActive: 1
 --- !u!4 &7870201292889807718
 Transform:
@@ -407,7 +424,7 @@ PrefabInstance:
     - target: {fileID: 8453565801692758646, guid: 19820f9d1a3b64140b74a937a6d9ce1a,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 94
+      value: 82
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19820f9d1a3b64140b74a937a6d9ce1a, type: 3}

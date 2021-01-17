@@ -41412,9 +41412,9 @@ MonoBehaviour:
   mobParts: {fileID: 935847778855054865}
   levels:
   - damage: 500
-    attackCooldown: 1.5
-    attackCooldownMax: 1.5
-    attackCooldownMin: 1.5
+    attackCooldown: 1
+    attackCooldownMax: 1
+    attackCooldownMin: 1
     minimumAttackDelay: 0.2
     maximumAttackDelay: 0.2
     swingTime: 0.5
@@ -46539,7 +46539,7 @@ MonoBehaviour:
   roseNpc: -1
   currentDialog: 0
   currentLine: 0
-  eventsRepeat: 0
+  eventsRepeat: 1
   currentEventRepeat: 0
   npcSetPhrasesOnLevel: {fileID: 0}
   randomizedPhrasesData: {fileID: 0}
@@ -46567,7 +46567,7 @@ MonoBehaviour:
   dialogues:
   - dialogueEvent: 30
     eventCost: 0
-    questToStart: 0
+    questToStart: 3
     phrases:
     - TALK TO THE SHOE, KID
     - what's up?
@@ -77087,10 +77087,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 1.5
+  m_Radius: 2.4323673
   m_Height: 5
   m_Direction: 1
-  m_Center: {x: 0, y: 1.5, z: 1}
+  m_Center: {x: 0, y: 1.5, z: 0}
 --- !u!114 &899869711365808678
 MonoBehaviour:
   m_ObjectHideFlags: 0
