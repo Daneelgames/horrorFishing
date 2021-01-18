@@ -36,6 +36,7 @@ public class QuestManager : MonoBehaviour
         }
         UiManager.instance.UpdateQuest();
         */
+        StartQuest(0);
     }
 
     public void StartQuest(int questIndex)
