@@ -2382,6 +2382,10 @@ public class NpcController : MonoBehaviour
             {
                 QuestManager.instance.StartQuest(dialogues[currentDialog].questToStart);
             }
+            if (dialogues[currentDialog].questToComplete >= 0)
+            {
+                QuestManager.instance.CompleteQuest(dialogues[currentDialog].questToComplete);
+            }
             
             if (!choosing && currentDialog + 1 < dialogues.Count)
             {
@@ -3625,6 +3629,7 @@ public class Dialogue
     public DialogueEvent dialogueEvent;
     public int eventCost = 10;
     public int questToStart = -1;
+    public int questToComplete = -1;
     public List<string> phrases = new List<string>();
     public List<string> phrasesRu = new List<string>();
     public List<string> phrasesESP = new List<string>();

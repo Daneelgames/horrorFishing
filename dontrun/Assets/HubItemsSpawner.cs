@@ -20,13 +20,12 @@ public class HubItemsSpawner : MonoBehaviour
 
     private HealthController strangerWomanSpawned;
     private GameObject mrSunSpawned;
-    private GameObject startGoldSpawned;
-    private GameObject letterSpawned;
     private HealthController ladyOnRoofSpawned;
     private GameObject shoesOnBeachSpawned;
     private List<HealthController> shoeMimicsSpawned = new List<HealthController>();
     
-    // Start is called before the first frame update
+    public List<ChangeDialogueOnQuest> dialogueOnQuestsChangers = new List<ChangeDialogueOnQuest>();
+    
     void Awake()
     {
         instance = this;
@@ -43,10 +42,8 @@ public class HubItemsSpawner : MonoBehaviour
         {
             return hit.position;
         }
-        else
-        {
-            return spawnerPosition;
-        }
+            
+        return spawnerPosition;
     }
     
     public void UpdateHub()
@@ -79,17 +76,14 @@ public class HubItemsSpawner : MonoBehaviour
         
         if (strangerWomanSpawned == null)
         {
-            for (int i = 0; i < monstersSpawners.Count; i++)
-            {
-                strangerWomanSpawned = Instantiate(monstersSpawners[4].monstersToSpawn[0],
-                    GetPositionNearSpawner(monstersSpawners[i].transform.position),
-                    monstersSpawners[i].transform.rotation);
-            }
+            strangerWomanSpawned = Instantiate(monstersSpawners[1].monstersToSpawn[0],
+                GetPositionNearSpawner(monstersSpawners[1].transform.position),
+                monstersSpawners[1].transform.rotation);
         }
         
         #region Quest 0. Shoes on beach
 
-            if (qm.activeQuestsIndexes.Contains(0)) // shoe quest is active
+            if (qm.activeQuestsIndexes.Contains(1)) // shoe quest is active
             {
                 // spawn shoes on beach if not spawned
                 if (shoesOnBeachSpawned == null)
@@ -121,54 +115,12 @@ public class HubItemsSpawner : MonoBehaviour
 
                     ladyOnRoofSpawned = go;
                 }
-                
-                //remove start gold
-                if (startGoldSpawned != null)
-                {
-                    Destroy(startGoldSpawned);
-                    startGoldSpawned = null;
-                }
-            }
-            else if (qm.completedQuestsIndexes.Contains(0)) // shoe quest is completed
-            {
-                // remove lady on the roof
-                if (ladyOnRoofSpawned != null)
-                    ladyOnRoofSpawned.Kill();
-                
-            }
-            else // quest didnt even started
-            {
-                // spawn start pile of gold
-                if (startGoldSpawned == null)
-                {
-                    var go = Instantiate(fieldEventsSpawners[0].gameObjectToSpawn, fieldEventsSpawners[0].transform.position,
-                        fieldEventsSpawners[0].transform.rotation);
-
-                    startGoldSpawned = go;
-                }
-                
-                if (ladyOnRoofSpawned == null)
-                {
-                    var go = Instantiate(npcSpawners[0].npcsToSpawn[0], npcSpawners[0].transform.position,
-                        npcSpawners[0].transform.rotation);
-
-                    ladyOnRoofSpawned = go;
-                }
             }
         #endregion
 
         #region quest 3 Return the shoe
 
-        if (qm.activeQuestsIndexes.Contains(3)) // return shoe quest is active
-        {
-            if (letterSpawned == null)
-            {
-                var go = Instantiate(itemSpawners[0].gameObjectToSpawn, itemSpawners[0].transform.position,
-                    itemSpawners[0].transform.rotation);
-                letterSpawned = go;
-            }
-        }
-        else if (qm.completedQuestsIndexes.Contains(3)) // return shoe quest is completed
+        if (qm.completedQuestsIndexes.Contains(2)) // return shoe quest is completed
         {
             //remove shoes
             if (shoesOnBeachSpawned != null)
@@ -178,6 +130,11 @@ public class HubItemsSpawner : MonoBehaviour
             }
         }
         #endregion
+
+        for (int i = 0; i < dialogueOnQuestsChangers.Count; i++)
+        {
+            dialogueOnQuestsChangers[i].UpdateDialogue();
+        }
     }
     
     void SpawnRandomItem(Vector3 spawnPos)

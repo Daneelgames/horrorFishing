@@ -46539,7 +46539,7 @@ MonoBehaviour:
   roseNpc: -1
   currentDialog: 0
   currentLine: 0
-  eventsRepeat: 1
+  eventsRepeat: 0
   currentEventRepeat: 0
   npcSetPhrasesOnLevel: {fileID: 0}
   randomizedPhrasesData: {fileID: 0}
@@ -46567,7 +46567,8 @@ MonoBehaviour:
   dialogues:
   - dialogueEvent: 30
     eventCost: 0
-    questToStart: 3
+    questToStart: 2
+    questToComplete: 1
     phrases:
     - TALK TO THE SHOE, KID
     - what's up?
@@ -46603,6 +46604,7 @@ MonoBehaviour:
   - dialogueEvent: 0
     eventCost: 0
     questToStart: 0
+    questToComplete: -1
     phrases:
     - well i'm the right shoe and the rest are left
     - that's why I'm so special
@@ -46636,7 +46638,8 @@ MonoBehaviour:
     eventCompleteSPBR: ...
   - dialogueEvent: 0
     eventCost: 0
-    questToStart: 0
+    questToStart: -1
+    questToComplete: -1
     phrases:
     - lady in red? ow man
     - no ladies here. do you feel funny?

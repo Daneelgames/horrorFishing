@@ -670,6 +670,13 @@ namespace PlayerControls
         private void Gravity()
         {
             _grounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+
+            if (_grounded)
+                _velocity.y = -2f;
+            else
+                _velocity.y = gravity;
+            
+            /*
             if (_grounded && _velocity.y < 0 && transform.position.y > 0.5f)
             {
                 _velocity.y = -2f;
@@ -681,11 +688,9 @@ namespace PlayerControls
             }
             else if (fallingInHole || _gameManager.hub)
                 _velocity.y += gravity * 0.2f * Time.deltaTime;
-            /*
-            else if (_gameManager.tutorialPassed == 1)
-                _velocity.y += -gravity * Time.deltaTime;*/
             else
                 _velocity.y += gravity * Time.deltaTime;
+                */
 
             controller.Move(_velocity * Time.deltaTime);
         }

@@ -39,32 +39,6 @@ MonoBehaviour:
   m_Name: '[SCPE] SharpenRenderer'
   m_EditorClassIdentifier: 
   m_Active: 1
---- !u!114 &-4372261928784643854
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 039ea2c8d80d11f4aa1926e992d660b4, type: 3}
-  m_Name: '[SCPE] ColorSplitRenderer'
-  m_EditorClassIdentifier: 
-  m_Active: 1
---- !u!114 &-3431091186384947930
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97a529de71a3723409dc5bcc5e30cf8c, type: 3}
-  m_Name: '[SCPE] ScanlinesRenderer'
-  m_EditorClassIdentifier: 
-  m_Active: 1
 --- !u!114 &-2990574406340721881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76,19 +50,6 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 856792627b7ad87479de639d23b34329, type: 3}
   m_Name: '[SCPE] PosterizeRenderer'
-  m_EditorClassIdentifier: 
-  m_Active: 1
---- !u!114 &-2315934488005935309
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 058d8bb16aaa48740a270439645f313d, type: 3}
-  m_Name: '[SCPE] GradientRenderer'
   m_EditorClassIdentifier: 
   m_Active: 1
 --- !u!114 &-936519185650172764
@@ -120,25 +81,23 @@ MonoBehaviour:
   - {fileID: -5670439921952443707}
   - {fileID: 5215557194879781450}
   - {fileID: -936519185650172764}
-  - {fileID: -3431091186384947930}
-  - {fileID: 285893806960095125}
   - {fileID: -9135043720275707901}
-  - {fileID: 2415307706064542363}
   - {fileID: -2990574406340721881}
   - {fileID: -5569480282877018372}
-  - {fileID: 6408257369660886573}
-  - {fileID: -4372261928784643854}
-  - {fileID: 1511806636389801499}
-  - {fileID: -2315934488005935309}
   m_RendererFeatureMap: 
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
+  xrSystemData: {fileID: 11400000, guid: 60e1133243b97e347b653163a8c01b64, type: 2}
   shaders:
     blitPS: {fileID: 4800000, guid: c17132b1f77d20942aa75f8429c0f8bc, type: 3}
     copyDepthPS: {fileID: 4800000, guid: d6dae50ee9e1bfa4db75f19f99355220, type: 3}
     screenSpaceShadowPS: {fileID: 4800000, guid: 0f854b35a0cf61a429bd5dcfea30eddd,
       type: 3}
     samplingPS: {fileID: 4800000, guid: 04c410c9937594faa893a11dceb85f7e, type: 3}
+    tileDepthInfoPS: {fileID: 0}
+    tileDeferredPS: {fileID: 0}
+    stencilDeferredPS: {fileID: 4800000, guid: e9155b26e1bc55942a41e518703fe304, type: 3}
     fallbackErrorPS: {fileID: 4800000, guid: e6e9a19c3678ded42a3bc431ebef7dbd, type: 3}
+    materialErrorPS: {fileID: 4800000, guid: 5fd9a8feb75a4b5894c241777f519d4e, type: 3}
   m_OpaqueLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -153,45 +112,8 @@ MonoBehaviour:
     failOperation: 0
     zFailOperation: 0
   m_ShadowTransparentReceive: 1
---- !u!114 &285893806960095125
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcd94696eaa046c48b6ad1a61fc8a956, type: 3}
-  m_Name: '[SCPE] RipplesRenderer'
-  m_EditorClassIdentifier: 
-  m_Active: 1
---- !u!114 &1511806636389801499
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4bdb6dd14f6f00478b0543e3f8446e7, type: 3}
-  m_Name: '[SCPE] ColorizeRenderer'
-  m_EditorClassIdentifier: 
-  m_Active: 1
---- !u!114 &2415307706064542363
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da344ce563de5ee4a9266dc0a74eabd0, type: 3}
-  m_Name: '[SCPE] SketchRenderer'
-  m_EditorClassIdentifier: 
-  m_Active: 1
+  m_RenderingMode: 0
+  m_AccurateGbufferNormals: 0
 --- !u!114 &5215557194879781450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -203,18 +125,5 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e0f847b2f420ea54ba779e55bdc277ad, type: 3}
   m_Name: '[SCPE] PixelizeRenderer'
-  m_EditorClassIdentifier: 
-  m_Active: 1
---- !u!114 &6408257369660886573
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 400dc2baa0a22054cb259512e4ce8907, type: 3}
-  m_Name: '[SCPE] KuwaharaRenderer'
   m_EditorClassIdentifier: 
   m_Active: 1

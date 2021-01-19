@@ -61,6 +61,9 @@ public class QuestManager : MonoBehaviour
     
     public void CompleteQuest(int index)
     {
+        if (!activeQuestsIndexes.Contains(index))
+            return;
+        
         activeQuestsIndexes.Remove(index);
         if (!completedQuestsIndexes.Contains(index))
         {

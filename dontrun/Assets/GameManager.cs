@@ -925,6 +925,9 @@ public class GameManager : MonoBehaviour
         
         if (hub)
         {
+            if (QuestManager.instance)
+                QuestManager.instance.Init();
+            
             if (HubProgressionManager.instance)
                 HubProgressionManager.instance.FieldAfterDeath(true);
             
@@ -936,8 +939,6 @@ public class GameManager : MonoBehaviour
         }
         player.pac.Init();
         if (paused) paused = false;
-        if (QuestManager.instance)
-            QuestManager.instance.Init();
         
         yield return  new WaitForSeconds(0.1f);
         //PlayerCheckpointsController.instance.Init();

@@ -3058,7 +3058,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc92d75b40a93174280368f351b1122d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  updatePhysics: 1
+  updatePhysics: 0
 --- !u!4 &1446061011
 Transform:
   m_ObjectHideFlags: 0
@@ -4001,6 +4001,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 979385761, guid: 2edfc116bc651f841814f23b0f4baedd, type: 3}
+      propertyPath: m_TargetTexture
+      value: 
+      objectReference: {fileID: 8400000, guid: b4f863a000373774490a3bc9e46a5df7, type: 2}
+    - target: {fileID: 885060865001263343, guid: 2edfc116bc651f841814f23b0f4baedd,
+        type: 3}
+      propertyPath: m_TargetTexture
+      value: 
+      objectReference: {fileID: 8400000, guid: a17b8026349e6b3419194b148fe7c76f, type: 2}
     - target: {fileID: 3285892570108067007, guid: 2edfc116bc651f841814f23b0f4baedd,
         type: 3}
       propertyPath: m_FirstSelected
@@ -4021,6 +4030,11 @@ PrefabInstance:
       propertyPath: menuController
       value: 
       objectReference: {fileID: 1984111703}
+    - target: {fileID: 3285892571538876420, guid: 2edfc116bc651f841814f23b0f4baedd,
+        type: 3}
+      propertyPath: renderTexturePrefab
+      value: 
+      objectReference: {fileID: 8400000, guid: b4f863a000373774490a3bc9e46a5df7, type: 2}
     - target: {fileID: 3285892571538876420, guid: 2edfc116bc651f841814f23b0f4baedd,
         type: 3}
       propertyPath: credits.Array.data[0]
@@ -4106,6 +4120,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7169981165234574446, guid: 2edfc116bc651f841814f23b0f4baedd,
+        type: 3}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 8400000, guid: b4f863a000373774490a3bc9e46a5df7, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2edfc116bc651f841814f23b0f4baedd, type: 3}
 --- !u!1001 &4788024439793052765
