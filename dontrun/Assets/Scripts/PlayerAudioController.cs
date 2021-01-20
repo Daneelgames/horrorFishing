@@ -149,7 +149,7 @@ public class PlayerAudioController : MonoBehaviour
         else
         {
             //todo: play another sound for dash without stamina 
-            dashSource.pitch = Random.Range(0.75f, 1.25f);n
+            dashSource.pitch = Random.Range(0.75f, 1.25f);
             dashSource.Play();
         }
     }
