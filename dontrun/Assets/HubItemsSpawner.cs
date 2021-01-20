@@ -19,7 +19,6 @@ public class HubItemsSpawner : MonoBehaviour
     public static HubItemsSpawner instance;
 
     private HealthController strangerWomanSpawned;
-    private GameObject mrSunSpawned;
     private HealthController ladyOnRoofSpawned;
     private GameObject shoesOnBeachSpawned;
     private List<HealthController> shoeMimicsSpawned = new List<HealthController>();
@@ -53,12 +52,6 @@ public class HubItemsSpawner : MonoBehaviour
         sc = SpawnController.instance;
 
         UpdateAmmo();
-
-        if (mrSunSpawned == null)
-        {
-            mrSunSpawned = Instantiate(fieldEventsSpawners[2].gameObjectToSpawn, fieldEventsSpawners[2].transform.position,
-                fieldEventsSpawners[2].transform.rotation);
-        }
         
         // spawn lady
         if (ladyOnRoofSpawned == null)
