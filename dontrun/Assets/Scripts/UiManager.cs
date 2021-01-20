@@ -498,7 +498,7 @@ public class UiManager : MonoBehaviour
         SetDithering(1);
         SetPixels(1);
         SetDoubleVision(1);
-        SetEdgeDetection(0);
+        //SetEdgeDetection(0);
 
     }
 
