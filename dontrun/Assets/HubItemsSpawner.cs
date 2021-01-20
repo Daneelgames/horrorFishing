@@ -34,10 +34,9 @@ public class HubItemsSpawner : MonoBehaviour
     private Vector3 positionNearSpawner;
     public Vector3 GetPositionNearSpawner(Vector3 spawnerPosition)
     {
-        
-        positionNearSpawner = spawnerPosition + Random.insideUnitSphere * 30;
+        positionNearSpawner = spawnerPosition + Random.insideUnitSphere * 50;
                             
-        if (NavMesh.SamplePosition(positionNearSpawner, out hit, 30.0f, NavMesh.AllAreas))
+        if (NavMesh.SamplePosition(positionNearSpawner, out hit, 50.0f, NavMesh.AllAreas))
         {
             return hit.position;
         }
