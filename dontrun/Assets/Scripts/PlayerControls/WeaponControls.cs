@@ -1022,6 +1022,7 @@ public class WeaponControls : MonoBehaviour
         var baseTransform = baseController.transform;
         var pickedWeapon = Instantiate(baseController, baseTransform.position, baseTransform.rotation);
         pickedWeapon.transform.parent = baseController.transform.parent;
+        pickedWeapon.transform.localScale = Vector3.one;
 
         pickedWeapon.dataRandomizer.NewDescription(weaponPickUp.weaponDataRandomier.generatedName, weaponPickUp.weaponDataRandomier.generatedDescriptions, weaponPickUp.weaponDataRandomier.r1, weaponPickUp.weaponDataRandomier.r2, weaponPickUp.weaponDataRandomier.r3, weaponPickUp.weaponDataRandomier.r4, weaponPickUp.weaponDataRandomier.statusEffect, weaponPickUp.weaponDataRandomier.dead, weaponPickUp.weaponDataRandomier.npc, weaponPickUp.weaponDataRandomier.npcPaid);
         
