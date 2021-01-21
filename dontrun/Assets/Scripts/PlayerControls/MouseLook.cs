@@ -249,7 +249,7 @@ public class MouseLook : MonoBehaviour
     public bool PositionIsVisibleToPlayer(Vector3 pos)
     {
         Vector3 screenPoint = mainCamera.WorldToViewportPoint(pos);
-        bool visible = screenPoint.z > 0.1f && screenPoint.x > 0.1f && screenPoint.x < 0.9f && screenPoint.y > 0.1f && screenPoint.y < 0.9f;
+        bool visible = screenPoint.z > 0.1f && screenPoint.x > -0.1f && screenPoint.x < 1.1f && screenPoint.y > -0.1f && screenPoint.y < 1.1f;
         
         return visible;
     }

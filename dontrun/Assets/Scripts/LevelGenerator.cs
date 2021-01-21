@@ -13,14 +13,20 @@ public class LevelGenerator : MonoBehaviour
 {
     public static LevelGenerator instance;
 
+    [HideInInspector]
     public List<RoomController> roomsPrefabs;
 
+    public List<AssetReference> propsReferences;
+    public List<PropController> propsInGame;
+    
+    [HideInInspector]
     public TileController meatTile;
+    [HideInInspector]
     public List<TileController> levelTiles;
+    [HideInInspector]
     public List<TileController> levelTilesInGame;
-    public List<AssetReference> coridorPropsReferences;
+    [HideInInspector]
     public List<AssetReference> roomsPropsReferences;
-    public List<PropController> corridorPropsInGame;
     int coridorIndexCurrent = 0;
 
     public int currentMainTile = 0;
@@ -212,7 +218,7 @@ public class LevelGenerator : MonoBehaviour
 
     public void UpdateCorridorPropsReferences()
     {
-        coridorPropsReferences = new List<AssetReference>(gm.level.propsAdressables);
+        propsReferences = new List<AssetReference>(gm.level.propsAdressables);
     }
     
     public void UpdateRoomPropsReferences()
@@ -254,7 +260,7 @@ public class LevelGenerator : MonoBehaviour
         wallBlockersMax = newLevelData.wallBlockersMax;
         propsRate = newLevelData.propsRate;
 
-        coridorPropsReferences = new List<AssetReference>(newLevelData.propsAdressables);
+        propsReferences = new List<AssetReference>(newLevelData.propsAdressables);
         roomsPropsReferences = new List<AssetReference>(newLevelData.roomsPropsReferences);
 
         if (!PlayerSkillsController.instance.horrorMode)
@@ -329,7 +335,7 @@ public class LevelGenerator : MonoBehaviour
     void SpawnStartRoom(AssetReference roomAdressable)
     {
         // spawn room on clients
-        AssetSpawner.instance.Spawn(roomAdressable, Vector3.zero, AssetSpawner.ObjectType.Room);
+        AssetSpawner.instance.Spawn(roomAdressable, Vector3.zero,AssetSpawner.ObjectType.Room);
         
         /*
         if (levelgenOnHost)
@@ -347,7 +353,7 @@ public class LevelGenerator : MonoBehaviour
     void SpawnRoom(int index, Vector3 pos)
     {
         //spawn room on clients
-        AssetSpawner.instance.Spawn(gm.loadedRtps[index].roomReference, pos, AssetSpawner.ObjectType.Room);    
+        AssetSpawner.instance.Spawn(gm.loadedRtps[index].roomReference, pos,AssetSpawner.ObjectType.Room);    
         
         /*
         if (levelgenOnHost)
@@ -2201,7 +2207,7 @@ public class LevelGenerator : MonoBehaviour
                 {
                     if (t.canSpawnProp)
                     {
-                        t.SpawnProp(coridorPropsReferences);
+                        t.SpawnProp(propsReferences);
                         sc.spawners.Remove(t.spawner);
                     }
                 }
@@ -2221,7 +2227,7 @@ public class LevelGenerator : MonoBehaviour
                     if (i != 0)
                         t.SpawnRoomProp(roomsPropsReferences);
                     else
-                        t.SpawnProp(coridorPropsReferences);
+                        t.SpawnProp(propsReferences);
 
                     sc.spawners.Remove(t.spawner);
                 }

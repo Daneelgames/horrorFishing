@@ -170,9 +170,9 @@ public class AiDirector : MonoBehaviour
     {
         float distance = 1000;
         PropController prop = null;
-        for (int i = LevelGenerator.instance.corridorPropsInGame.Count - 1; i >= 0; i--)
+        for (int i = LevelGenerator.instance.propsInGame.Count - 1; i >= 0; i--)
         {
-            var p = LevelGenerator.instance.corridorPropsInGame[i];
+            var p = LevelGenerator.instance.propsInGame[i];
             
             if(p == null) continue;
 

@@ -89,6 +89,14 @@ public class AssetSpawner : MonoBehaviour
 
     void ProceedProp(GameObject go)
     {
+        PropController newProp = go.GetComponent<PropController>();
+        LevelGenerator.instance.propsInGame.Add(newProp);
+
+        float angle = Random.Range(0, 360);
+        newProp.transform.rotation = Quaternion.identity;
+        newProp.transform.Rotate(Vector3.up, angle, Space.Self);
+        
+        return;
         var lg = LevelGenerator.instance;
 
         for (var index = 0; index < lg.levelTilesInGame.Count; index++)

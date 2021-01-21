@@ -739,19 +739,19 @@ public class PlayerSkillsController : MonoBehaviour
 
     public void SwapPropsOnServer()
     {
-        for (int i = lg.corridorPropsInGame.Count - 1; i >= 0; i--)
+        for (int i = lg.propsInGame.Count - 1; i >= 0; i--)
         {
-            if (lg.corridorPropsInGame[i] == null)
+            if (lg.propsInGame[i] == null)
             {
-                lg.corridorPropsInGame.RemoveAt(i);
+                lg.propsInGame.RemoveAt(i);
                 continue;
             }
                 
-            float distance = Vector3.Distance(transform.position, lg.corridorPropsInGame[i].transform.position);
+            float distance = Vector3.Distance(transform.position, lg.propsInGame[i].transform.position);
                 
             if (Random.value > 0.5f && distance > 6.5f && distance < 40f)
             {
-                lg.corridorPropsInGame[i].SwapRandomProp();
+                lg.propsInGame[i].SwapRandomProp();
             }
         }
 

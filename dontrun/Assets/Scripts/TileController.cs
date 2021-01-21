@@ -1238,13 +1238,12 @@ public class TileController : MonoBehaviour
 
     public IEnumerator SpawnCorridorPropOnClient(int corridorPropReferenceIndex)
     {
-        while (LevelGenerator.instance.coridorPropsReferences.Count <= corridorPropReferenceIndex)
+        while (LevelGenerator.instance.propsReferences.Count <= corridorPropReferenceIndex)
         {
             LevelGenerator.instance.UpdateCorridorPropsReferences();
             yield return new WaitForSeconds(0.1f);
         }
-        //print("@@@ SPAWN FUCKING CORRIDOR PROP FOR GOD'S SAKE. Index is " + corridorPropReferenceIndex);
-        SpawnPropFromPrefab(LevelGenerator.instance.coridorPropsReferences[corridorPropReferenceIndex]);
+        SpawnPropFromPrefab(LevelGenerator.instance.propsReferences[corridorPropReferenceIndex]);
     }
     public IEnumerator SpawnRoomPropOnClient(int roomPropReferenceIndex)
     {
@@ -1266,12 +1265,13 @@ public class TileController : MonoBehaviour
     public void SetPropToTile(GameObject newGameObject)
     {
         PropController newProp = newGameObject.GetComponent<PropController>();
+        lg.propsInGame.Add(newProp);
         //print("SET SOME FUCKING PROP TO TILE BITCH. NewProp is " + newProp);
         if (newProp)
         {
             propTile = true;
             newProp.usedTile = this;
-            lg.corridorPropsInGame.Add(newProp);
+            lg.propsInGame.Add(newProp);
             spawner.spawnedProp = newProp;
             propOnTile = newProp;
 
@@ -1374,7 +1374,7 @@ public class TileController : MonoBehaviour
     {
         if (propOnTile != null)
         {
-            lg.corridorPropsInGame.Remove(propOnTile);
+            lg.propsInGame.Remove(propOnTile);
             spawner.spawnedProp = null;
             
             if (destroy)

@@ -314,7 +314,7 @@ public class PlayerNetworkObject : NetworkBehaviour
     
     public void AddProp()
     {
-        propsAmount = LevelGenerator.instance.corridorPropsInGame.Count;
+        propsAmount = LevelGenerator.instance.propsInGame.Count;
         CmdAddProp(propsAmount);
     }
     [Command]

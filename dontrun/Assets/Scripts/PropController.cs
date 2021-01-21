@@ -58,7 +58,7 @@ public class PropController : MonoBehaviour
             sc.spawnersOnProps.Remove(spawner);
         }
 
-        AssetReference newPropReference = lg.coridorPropsReferences[Random.Range(0, lg.coridorPropsReferences.Count)];
+        AssetReference newPropReference = lg.propsReferences[Random.Range(0, lg.propsReferences.Count)];
         PropController newProp = null;
         
         _asyncOperationHandle = newPropReference.LoadAssetAsync<GameObject>();
@@ -77,11 +77,11 @@ public class PropController : MonoBehaviour
             newProp.swapParticles.transform.parent = null;
             newProp.swapParticles.Play();
         
-            lg.corridorPropsInGame.Add(newProp);
+            lg.propsInGame.Add(newProp);
             usedTile.spawner.spawnedProp = newProp;
             usedTile.propOnTile = newProp;
 
-            lg.corridorPropsInGame.Remove(this);
+            lg.propsInGame.Remove(this);
             if (npc)
             {
                 ItemsList.instance.interactables.Remove(npc.interactable);
@@ -101,8 +101,8 @@ public class PropController : MonoBehaviour
     void OnDestroy()
     {
         lg = LevelGenerator.instance;
-        if (lg != null && lg.corridorPropsInGame.Contains(this))
-            lg.corridorPropsInGame.Remove(this);
+        if (lg != null && lg.propsInGame.Contains(this))
+            lg.propsInGame.Remove(this);
     }
     
     /*
