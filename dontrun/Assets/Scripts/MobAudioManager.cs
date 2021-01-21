@@ -16,10 +16,11 @@ public class MobAudioManager : MonoBehaviour
     {
         if (SpawnController.instance) SpawnController.instance.mobAudioManagers.Add(this);
         
+        /*
         if (resurrectAu && Random.value > 0.5f)
         {
             Resurrect();
-        }
+        }*/
     }
 
     void OnDestroy()

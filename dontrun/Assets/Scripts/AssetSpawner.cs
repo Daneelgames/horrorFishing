@@ -89,13 +89,38 @@ public class AssetSpawner : MonoBehaviour
 
     void ProceedProp(GameObject go)
     {
+        Vector3 finalPosition = go.transform.position;
+        go.transform.position += Vector3.up * 50;
+        
+        var hits = Physics.RaycastAll(finalPosition + Vector3.up, Vector3.down, 500);
+        for (var index = 0; index < hits.Length; index++)
+        {
+            var hit = hits[index];
+
+            if (hit.collider.gameObject.layer != 23 && hit.collider.gameObject.layer != 28 &&
+                hit.collider.gameObject.layer != 29 && hit.collider.gameObject.layer != 30 &&
+                hit.collider.gameObject.layer != 25) // floor
+                continue;
+
+            print("Raycasted to GO " + hit.collider.gameObject.name + ". Layer " + hit.collider.gameObject.layer + ". Hit normal: " + hit.normal);
+
+            var normalRotation = Quaternion.LookRotation(hit.normal);
+            go.transform.rotation = normalRotation;
+            go.transform.Rotate(90, 0, 0);
+            go.transform.Rotate(0, Random.Range(1, 359f), 0);
+            break;
+        }
+
+        go.transform.position = finalPosition;
+
+        /*
+        float angle = Random.Range(0, 360);
+        go.transform.Rotate(Vector3.up, angle, Space.Self);
+        */
+
         PropController newProp = go.GetComponent<PropController>();
         LevelGenerator.instance.propsInGame.Add(newProp);
 
-        float angle = Random.Range(0, 360);
-        newProp.transform.rotation = Quaternion.identity;
-        newProp.transform.Rotate(Vector3.up, angle, Space.Self);
-        
         return;
         var lg = LevelGenerator.instance;
 

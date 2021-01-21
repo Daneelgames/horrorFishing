@@ -34,8 +34,6 @@ public class LevelAmbientController : MonoBehaviour
                 yield return new WaitForSeconds(0.1f);   
             }
 
-            print(closestDistance + "; " + closestTrigger.radius);
-            
             if (closestDistance < closestTrigger.radius)
             {
                 if (ambientSource.isPlaying == false)
