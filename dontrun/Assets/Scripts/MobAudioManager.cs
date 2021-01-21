@@ -122,6 +122,9 @@ public class MobAudioManager : MonoBehaviour
         {
             case 0: 
                 // idle ambient
+                if (idleAu.isPlaying)
+                    break;
+                
                 chaseAu.Stop();
 
                 idleAu.pitch = Random.Range(0.75f, 1.25f);
@@ -130,6 +133,9 @@ public class MobAudioManager : MonoBehaviour
             
             case 1:
                 // chase
+                if (chaseAu.isPlaying)
+                    break;
+
                 idleAu.Stop();
 
                 chaseAu.pitch = Random.Range(0.75f, 1.25f);

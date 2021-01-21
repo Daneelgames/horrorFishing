@@ -40,6 +40,7 @@ public class HubStreamer : MonoBehaviour
                     distance = newDist;
                     tempClosestZone = zoneControllers[i];
                 }
+                yield return null;
             }
 
             if (tempClosestZone != null && tempClosestZone != activeZone)

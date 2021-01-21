@@ -858,6 +858,8 @@ public class UiManager : MonoBehaviour
 
     public void GotItem(Interactable item)
     {
+        return;
+
         //if (item.pickUp || item.ammoPickUp|| item.weaponPickUp)
         {
             if (item.pickedByPlayerMessage.Count > 0)
@@ -878,6 +880,8 @@ public class UiManager : MonoBehaviour
     }
     public void UseTool(int index)
     {
+        return;
+
         pickedItemInfo.text = Translator.TranslateText(il.savedTools[pm.hc.wc.currentToolIndex].useMessage[gm.language]);
         itemInfoAnim.SetTrigger(itemInfoUpdateString);
         playerAteItem = true;
@@ -885,6 +889,8 @@ public class UiManager : MonoBehaviour
 
     public void EatWeapon()
     {
+        return;
+
         string ateString = "";
         string effectString = "";
 
@@ -949,6 +955,8 @@ public class UiManager : MonoBehaviour
 
     public void ThrowTool(int index)
     {
+        return;
+
         pickedItemInfo.text = Translator.TranslateText(il.savedTools[pm.hc.wc.currentToolIndex].throwMessage[gm.language]);
         itemInfoAnim.SetTrigger(itemInfoUpdateString);
         playerThrewItem = true;
@@ -963,6 +971,8 @@ public class UiManager : MonoBehaviour
 
     public void WeaponBroke(WeaponController w)
     {
+        return;
+
         if (gm.language == 0)
             pickedItemInfo.text = Translator.TranslateText("I broke this stuff");
         else if (gm.language == 1)
@@ -996,6 +1006,8 @@ public class UiManager : MonoBehaviour
 
     public void PlayerHeardOnClient()
     {
+        return;
+        
         if (gm.language == 0)
             pickedItemInfo.text = Translator.TranslateText("Someone heard me...");
         else if (gm.language == 1)
@@ -1014,6 +1026,8 @@ public class UiManager : MonoBehaviour
 
     public void NoAmmo()
     {
+        return;
+        
         if (gm.language == 0)
             pickedItemInfo.text = Translator.TranslateText("No more ammo");
         else if (gm.language == 1)
@@ -1073,6 +1087,8 @@ public class UiManager : MonoBehaviour
 
     public void KeyUsed()
     {
+        return;
+        
         if (gm.language == 0)
             pickedItemInfo.text = Translator.TranslateText("I opened a lock");
         else if (gm.language == 1)
@@ -1279,12 +1295,16 @@ public class UiManager : MonoBehaviour
 
     public void MeatTrapFeedback(string message)
     {
+        return;
+        
         pickedItemInfo.text = message;
         itemInfoAnim.SetTrigger(itemInfoUpdateString);
     }
     
     public void DamagedMessage(string damageMessage)
     {
+        return;
+
         if (canSendDamageMessage)
         {
             pickedItemInfo.text = damageMessage;
@@ -1308,6 +1328,8 @@ public class UiManager : MonoBehaviour
     
     public void  StatusEffect(int index)
     {
+        return;
+
         if (index == 0)
         {
             if (gm.language == 0)
@@ -1405,6 +1427,8 @@ public class UiManager : MonoBehaviour
     
     public void DoorOpen()
     {
+        return;
+
         if (gm.language == 0)
             pickedItemInfo.text = Translator.TranslateText("I opened a door");
         else if (gm.language == 1)
@@ -1432,6 +1456,8 @@ public class UiManager : MonoBehaviour
     
     public void DoorClose()
     {
+        return;
+
         if (gm.language == 0)
             pickedItemInfo.text = Translator.TranslateText("I shut the door");
         else if (gm.language == 1)
@@ -1458,6 +1484,8 @@ public class UiManager : MonoBehaviour
     }
     public void DoorUnlock()
     {
+        return;
+
         if (gm.language == 0)
             pickedItemInfo.text = Translator.TranslateText("I used a lockpick");
         else if (gm.language == 1)
@@ -1485,6 +1513,8 @@ public class UiManager : MonoBehaviour
     
     public void EnterBike()
     {
+        return;
+
         if (gm.language == 0)
             pickedItemInfo.text = Translator.TranslateText("I got on a weird bike");
         else if (gm.language == 1)
@@ -1512,6 +1542,8 @@ public class UiManager : MonoBehaviour
     
     public void ExitBike()
     {
+        return;
+
         if (gm.language == 0)
             pickedItemInfo.text = Translator.TranslateText("I got down on grass");
         else if (gm.language == 1)
@@ -1551,6 +1583,8 @@ public class UiManager : MonoBehaviour
 
     public void BreakDoor()
     {
+        return;
+
         if (gm.language == 0)
             pickedItemInfo.text = Translator.TranslateText("I broke a door");
         else if (gm.language == 1)
@@ -1577,6 +1611,8 @@ public class UiManager : MonoBehaviour
     }
     public void InLove()
     {
+        return;
+
         if (gm.language == 0)
             pickedItemInfo.text = Translator.TranslateText("I'm in love, I don't want to fight");
         else if (gm.language == 1)
@@ -1604,6 +1640,8 @@ public class UiManager : MonoBehaviour
 
     public void DashAttack(string targetMessage)
     {
+        return;
+
         if (gm.language == 0)
             pickedItemInfo.text = Translator.TranslateText("I crashed into " + targetMessage);
         else if (gm.language == 1)

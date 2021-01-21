@@ -1059,9 +1059,11 @@ public class SpawnController : MonoBehaviour
             }
         }
         
+        /*
         print("MOB HEAR NOISE: " + playerId + "; " + heard);
         if (heard)
             UiManager.instance.SomeoneHearPlayer(playerId);  
+            */
     }
     
     public void MoveMobsCloser()
