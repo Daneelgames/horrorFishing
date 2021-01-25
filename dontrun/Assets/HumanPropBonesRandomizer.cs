@@ -16,10 +16,17 @@ public class HumanPropBonesRandomizer : MonoBehaviour
     
     public List<Transform> groundContactBones = new List<Transform>();
     public List<Vector3> groundContactBonesPositions = new List<Vector3>();
+    
+    public List<Transform> removedGroundContactBones = new List<Transform>();
+    public List<Transform> armsBonesTargets = new List<Transform>();
+    public Transform headBoneTarget;
+    public Transform hipsBone;
 
     void Start()
     {
         RandomizeBones();
+        return;
+        
         if (bonesToAnimate.Count > 0 && Random.value < changeToAnimate)
             StartCoroutine(AnimateBones());
     }
@@ -38,6 +45,9 @@ public class HumanPropBonesRandomizer : MonoBehaviour
                     Random.Range(animateBonesAnglesMinMax.x,
                         animateBonesAnglesMinMax.y));
 
+                if (groundContactBones.Count > groundContactBonesPositions.Count)
+                    yield break;
+                
                 for (int j = 0; j < groundContactBones.Count; j++)
                 {
                     groundContactBones[j].transform.position = groundContactBonesPositions[j];
@@ -76,13 +86,32 @@ public class HumanPropBonesRandomizer : MonoBehaviour
             }
         }
 
-        if (groundContactBones.Count > 1 && Random.value > 0.5f)
+        if (Random.value > 0.5f)
         {
             int removeContactsAmount = Random.Range(1, groundContactBones.Count - 1);
             for (int i = removeContactsAmount; i >= 0; i--)
             {
-                groundContactBones.RemoveAt(Random.Range(0,groundContactBones.Count));
+                if (groundContactBones.Count <= 1)
+                    break;
+                
+                int removedContactIndex = Random.Range(0, groundContactBones.Count);
+                removedGroundContactBones.Add(groundContactBones[removedContactIndex]);
+                groundContactBones.RemoveAt(removedContactIndex);
             }
+        }
+        
+        if (Random.value > 0.75f)
+            groundContactBones.Add(hipsBone);
+        
+        if (Random.value > 0.75f)
+            removedGroundContactBones.Add(headBoneTarget);
+
+        for (int i = 0; i < armsBonesTargets.Count; i++)
+        {
+            if (Random.value > 0.66f)
+                groundContactBones.Add(armsBonesTargets[i]);
+            else
+                removedGroundContactBones.Add(armsBonesTargets[i]);
         }
         
         for (int i = 0; i < groundContactBones.Count; i++)
@@ -97,16 +126,15 @@ public class HumanPropBonesRandomizer : MonoBehaviour
                     hit.collider.gameObject.layer != 25) // floor
                     continue;
 
-                var normalRotation = Quaternion.LookRotation(hit.normal);
-                //groundContactBones[i].transform.rotation = normalRotation;
-                //groundContactBones[i].transform.Rotate(90, 0, 0);
-                //groundContactBones[i].transform.Rotate(0, Random.Range(1, 359f), 0);
-                if (Vector3.Distance(groundContactBones[i].transform.position, hit.point) > 1)
-                    groundContactBones[i].transform.parent.transform.position = Vector3.Lerp(groundContactBones[i].transform.parent.transform.position, hit.point, 0.5f);
                 
                 groundContactBones[i].transform.position = hit.point;
                 groundContactBonesPositions.Add(hit.point);
             }
+        }
+
+        for (int i = 0; i < removedGroundContactBones.Count; i++)
+        {
+            removedGroundContactBones[i].transform.position += Random.insideUnitSphere * Random.Range(0, 10);
         }
     }
     

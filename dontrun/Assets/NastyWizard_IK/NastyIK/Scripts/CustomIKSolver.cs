@@ -1,0 +1,54 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEditor.UIElements;
+using UnityEngine;
+
+public class CustomIKSolver : MonoBehaviour {
+
+    //public string _name; // this is just a label to tell what solver this is if you have multiple on the same game object
+    //[Space(25)]
+    public string label = "Enter Limb Name";
+
+    public List<CustomIKJoint> Joints; // list of joints that are part of the calculation for IK
+
+    public CustomIKJoint Ankle; // foot end effector location
+    public Transform Target; // where the IK is pointing at
+
+    public int Itterations = 3; // how many times the IK is calculated per frame
+    public float maxScale = 2;
+
+    public bool Visualise;
+
+    private void LateUpdate()
+    {
+        SolveIK(Target.position);
+    }
+
+    private Quaternion rotTarget;
+    private Quaternion r;
+    private Vector3 j;    
+    private Vector3 p;
+    private float distanceToTarget = 0;
+    public void SolveIK(Vector3 target)
+    {
+        for (int k = 0; k < Itterations; k++)
+        {
+            for (int i = 0; i < Joints.Count; i++)
+            {
+                p = Ankle.transform.position;
+                j = Joints[i].transform.position;
+                r = Joints[i].transform.rotation;
+
+                rotTarget = Quaternion.FromToRotation(p - j, target - j) * r;
+
+                Joints[i].transform.rotation = Quaternion.Slerp(Joints[i].transform.rotation, rotTarget, (float)(i + 1) / Joints.Count);
+            }
+        }
+
+        distanceToTarget = Vector3.Distance(Ankle.transform.position, target);
+        if (distanceToTarget > 0.1f && transform.localScale.x < maxScale)
+            transform.localScale *= 1 + Time.deltaTime * 3;
+        else if (transform.localScale.x > 1)
+            transform.localScale *= 1 - Time.deltaTime * 3;
+    }
+}

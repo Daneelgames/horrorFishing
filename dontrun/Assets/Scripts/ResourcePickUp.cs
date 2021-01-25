@@ -23,8 +23,10 @@ public class ResourcePickUp : MonoBehaviour
     {
         spawner = SpawnController.instance;
         
+        /*
         if (resourceType == ItemsList.ResourceType.Key || resourceType == ItemsList.ResourceType.Skill)
             transform.parent = null;
+            */
         
         //StartCoroutine(CheckIfOutsideTheLevel());
     }
