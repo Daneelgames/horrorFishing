@@ -5255,7 +5255,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: c76f3f929722a83418dbd6afb2fa23ee, type: 2}
-  - {fileID: 2100000, guid: c76f3f929722a83418dbd6afb2fa23ee, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5869,6 +5868,7 @@ GameObject:
   - component: {fileID: 3590900632386647478}
   - component: {fileID: 6008367842165810385}
   - component: {fileID: 564408715035514821}
+  - component: {fileID: 4088381648378547805}
   m_Layer: 10
   m_Name: CityPropBarrelFlaming
   m_TagString: Untagged
@@ -5919,6 +5919,7 @@ MonoBehaviour:
   npc: {fileID: 0}
   rigidbodies: []
   swapParticles: {fileID: 5082810673794296357}
+  spawnedObject: {fileID: 0}
 --- !u!82 &3590900632386647478
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6073,6 +6074,22 @@ MonoBehaviour:
   _snapRotation: 0
   _synchronizeScale: 0
   _snapScale: 0
+--- !u!208 &4088381648378547805
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8140440150181420784}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 1.93, y: 1, z: 1.93}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.41, y: 0, z: 0.91}
+  m_TimeToStationary: 0.5
 --- !u!1 &8381218957016874598
 GameObject:
   m_ObjectHideFlags: 0

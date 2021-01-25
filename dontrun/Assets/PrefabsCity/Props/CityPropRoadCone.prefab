@@ -5285,7 +5285,6 @@ GameObject:
   m_Component:
   - component: {fileID: 653096452550814582}
   - component: {fileID: 1486622409718819482}
-  - component: {fileID: 393123230762576193}
   m_Layer: 10
   m_Name: MobLifter
   m_TagString: Untagged
@@ -5320,19 +5319,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.8041908, z: 1}
   m_Center: {x: 0, y: -0.0979046, z: 0}
---- !u!114 &393123230762576193
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6426106908710372151}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7c3db673747db949a4d39bbed4f36f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  height: 0.75
 --- !u!1 &6791333922842707651
 GameObject:
   m_ObjectHideFlags: 0
@@ -5392,6 +5378,7 @@ GameObject:
   - component: {fileID: 2290437047492909934}
   - component: {fileID: -6789089292058976383}
   - component: {fileID: -320508632260112526}
+  - component: {fileID: 6610265657165629185}
   m_Layer: 10
   m_Name: CityPropRoadCone
   m_TagString: Untagged
@@ -5442,6 +5429,7 @@ MonoBehaviour:
   npc: {fileID: 0}
   rigidbodies: []
   swapParticles: {fileID: 7536193594471122173}
+  spawnedObject: {fileID: 0}
 --- !u!82 &2290437047492909934
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5596,6 +5584,22 @@ MonoBehaviour:
   _snapRotation: 0
   _synchronizeScale: 0
   _snapScale: 0
+--- !u!208 &6610265657165629185
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6837751119426367528}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 1.41, y: 1, z: 1.41}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -1.05, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1001 &3288584656466008399
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -4799,7 +4799,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: c76f3f929722a83418dbd6afb2fa23ee, type: 2}
-  - {fileID: 2100000, guid: c76f3f929722a83418dbd6afb2fa23ee, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4920,6 +4919,7 @@ GameObject:
   - component: {fileID: 6310843719311680712}
   - component: {fileID: -6293720054901009845}
   - component: {fileID: 922579409822333904}
+  - component: {fileID: 6850092500106601246}
   m_Layer: 0
   m_Name: CorridorProps15
   m_TagString: Untagged
@@ -4967,6 +4967,7 @@ MonoBehaviour:
   npc: {fileID: 0}
   rigidbodies: []
   swapParticles: {fileID: 9199300218533661119}
+  spawnedObject: {fileID: 0}
 --- !u!82 &6310843719311680712
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5121,6 +5122,22 @@ MonoBehaviour:
   _snapRotation: 0
   _synchronizeScale: 0
   _snapScale: 0
+--- !u!208 &6850092500106601246
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2313732525315462375}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.5, y: 1, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &4050097040703413805
 GameObject:
   m_ObjectHideFlags: 0
@@ -5177,7 +5194,6 @@ GameObject:
   m_Component:
   - component: {fileID: 930649673735117764}
   - component: {fileID: 8908183382184537818}
-  - component: {fileID: 4304206339933945517}
   m_Layer: 10
   m_Name: Plant01
   m_TagString: Untagged
@@ -5213,19 +5229,6 @@ CapsuleCollider:
   m_Height: 2.5172982
   m_Direction: 1
   m_Center: {x: 0, y: 0.7413509, z: 0}
---- !u!114 &4304206339933945517
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4229176000774564311}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7c3db673747db949a4d39bbed4f36f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  height: 2
 --- !u!1001 &3266324193672407455
 PrefabInstance:
   m_ObjectHideFlags: 0

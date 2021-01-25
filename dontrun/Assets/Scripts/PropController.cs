@@ -22,6 +22,7 @@ public class PropController : MonoBehaviour
     public List<Rigidbody> rigidbodies;
 
     public ParticleSystem swapParticles;
+    public Interactable spawnedObject;
     private AsyncOperationHandle<GameObject> _asyncOperationHandle;
 
     void Start()
@@ -103,6 +104,9 @@ public class PropController : MonoBehaviour
         lg = LevelGenerator.instance;
         if (lg != null && lg.propsInGame.Contains(this))
             lg.propsInGame.Remove(this);
+        
+        if (spawnedObject)
+            Destroy(spawnedObject.gameObject);
     }
     
     /*

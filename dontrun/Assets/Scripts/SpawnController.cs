@@ -168,7 +168,6 @@ public class SpawnController : MonoBehaviour
             SpawnItemOptimized(item, spawnProvider, true);
         }
 
-
         for (int i = 0; i < newLevelData.keysToSpawn; i++)
         {
             SpawnItemOptimized(key, spawnProvider, true);
@@ -478,9 +477,6 @@ public class SpawnController : MonoBehaviour
         return lg.roomsInGame[roomIndex].tiles[Random.Range(0, lg.roomsInGame[roomIndex].tiles.Count)];
     }
     
-    
-    
-
     public void SpawnEyeTaker(int amount)
     {
         for (int i = 0; i < amount; i++)
@@ -521,6 +517,25 @@ public class SpawnController : MonoBehaviour
         InstantiateItem(item, spawnPos, server);
     }
 
+    public void SpawnItemOnProp(PropController newProp)
+    {
+        il = ItemsList.instance;
+        wc = WeaponControls.instance;
+
+        if (Random.value >= 0.5f && wc.activeWeapon && wc.activeWeapon.weaponType != WeaponController.Type.Melee && il.ammoDataStorage.GetAmmoCount(wc.activeWeapon.weapon) <= 0)
+        {
+            int weaponIndex = 0;
+            if (wc.secondWeapon &&
+                wc.secondWeapon.weaponType != WeaponController.Type.Melee &&
+                il.ammoDataStorage.GetAmmoCount(gm.player.wc.activeWeapon.weapon) <= 0)
+            {
+                if (Random.value > 0.5f) weaponIndex = 1;
+            }
+
+            SpawnAdditionalAmmoOnProp(weaponIndex, newProp);
+        }
+    }
+    
     public void InstantiateItem(Interactable item, Vector3 spawnPos, bool serverSpawn)
     {
         var spawnedItem = Instantiate(item, spawnPos,
@@ -1278,7 +1293,17 @@ public class SpawnController : MonoBehaviour
             NetworkServer.Spawn(newAmmo.gameObject);
         }
     }
+    private void SpawnAdditionalAmmoOnProp(int weaponIndex, PropController newProp) // 0 - activeWeapon, 1 - secondWeapon
+    {
+        Interactable item = null;
+        if (weaponIndex == 0)
+            item = gm.player.wc.activeWeapon.ammoPackPrefab;
+        else if (weaponIndex == 1)
+            item = gm.player.wc.secondWeapon.ammoPackPrefab;
 
+        var newAmmo = Instantiate(item, newProp.spawners[Random.Range(0, newProp.spawners.Count)].transform.position, Quaternion.identity);
+        newProp.spawnedObject = newAmmo;
+    }
 
     public void AttractMonstersOnServer(Vector3 newTarget, bool _chase)
     {

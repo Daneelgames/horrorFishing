@@ -142,11 +142,11 @@ public class WeaponControls : MonoBehaviour
 
             if (eatCooldown <= 0)
             {
-                EatWeapon();
+                //EatWeapon();
                 UseTool();   
             }
             
-            ThrowTool();
+            //ThrowTool();
             ChangeTool();
             
              
@@ -168,6 +168,7 @@ public class WeaponControls : MonoBehaviour
             changeToolCooldown -= Time.deltaTime;
     }
 
+    private string takePainkillerString = "TakePainkiller";
     void UseTool()
     {
         /*
@@ -190,7 +191,7 @@ public class WeaponControls : MonoBehaviour
                 eatCooldown = eatCooldownMax;
                 StartCoroutine(UsingTool());
         
-                pm.crosshairAnimator.SetTrigger("TakePainkiller");
+                pm.crosshairAnimator.SetTrigger(takePainkillerString);
 
                 eatWeaponTimeCurrent = 0;
                 if (activeWeapon)

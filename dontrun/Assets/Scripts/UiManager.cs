@@ -1072,10 +1072,14 @@ public class UiManager : MonoBehaviour
             toolBackground.enabled = true;
             activeToolIcon.sprite = toolsSprites[pm.hc.wc.currentToolIndex];
             activeToolInfo.enabled = true;
+            activeToolInfo.text = String.Empty;
+            
+            /*
             if (il.savedTools[pm.hc.wc.currentToolIndex].known)
                 activeToolInfo.text = il.savedTools[pm.hc.wc.currentToolIndex].info[gm.language] + " X" + il.savedTools[pm.hc.wc.currentToolIndex].amount;
             else
                 activeToolInfo.text = il.savedTools[pm.hc.wc.currentToolIndex].unknownInfo[gm.language] + " X" + il.savedTools[pm.hc.wc.currentToolIndex].amount;
+                */
         }
         else
         {
@@ -1709,7 +1713,8 @@ public class UiManager : MonoBehaviour
                 activeWeaponBrokenIcon.enabled = false;
             if (pm.hc.wc.activeWeapon)
             {
-                activeWeaponName.text = pm.hc.wc.activeWeapon.dataRandomizer.generatedName[gm.language] + ". " + pm.hc.wc.activeWeapon.dataRandomizer.effectInName[gm.language];
+                activeWeaponName.text = String.Empty;
+                //activeWeaponName.text = pm.hc.wc.activeWeapon.dataRandomizer.generatedName[gm.language] + ". " + pm.hc.wc.activeWeapon.dataRandomizer.effectInName[gm.language];
             
                 Color newColor = Color.white;
                 if (pm.hc.wc.activeWeapon.dataRandomizer.statusEffect < 0)

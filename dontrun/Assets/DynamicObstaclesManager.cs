@@ -55,7 +55,10 @@ public class DynamicObstaclesManager : MonoBehaviour
 
                 distanceToObject = Vector3.Distance(pm.transform.position, prop.transform.position); 
                 if (distanceToObject > distanceToDestroyFar || (distanceToObject > distanceToDestroy && MouseLook.instance.PositionIsVisibleToPlayer(prop.transform.position) == false && Random.value > 0.5f))
-                {
+                { 
+                    if (prop.spawnedObject != null)
+                        Destroy(prop.spawnedObject.gameObject);
+                    
                     Destroy(prop.gameObject);
                 }
                 yield return null;
@@ -63,13 +66,20 @@ public class DynamicObstaclesManager : MonoBehaviour
 
             if (lg.propsInGame.Count < propsSpawnedMax)
             {
-                if (Random.value > 0.001f)
-                    spawnPosition = GetPositionAroundPoint(pm.transform.position, false);
-                else
-                    spawnPosition = GetPositionAroundPoint(pm.transform.position + pm.movementTransform.forward * distanceToDestroy, true);
+                int propsAmountToSpawn = Random.Range(1, 10);
                 
-                if (Vector3.Distance(spawnPosition, pm.transform.position) > 3)
-                    AssetSpawner.instance.Spawn(lg.propsReferences[Random.Range(0, lg.propsReferences.Count)], spawnPosition, AssetSpawner.ObjectType.Prop);
+                for (int i = 0; i < propsAmountToSpawn; i++)
+                {
+                    if (Random.value > 0.001f)
+                        spawnPosition = GetPositionAroundPoint(pm.transform.position, false);
+                    else
+                        spawnPosition = GetPositionAroundPoint(pm.transform.position + pm.movementTransform.forward * distanceToDestroy, true);
+                
+                    if (Vector3.Distance(spawnPosition, pm.transform.position) > 3)
+                        AssetSpawner.instance.Spawn(lg.propsReferences[Random.Range(0, lg.propsReferences.Count)], spawnPosition, AssetSpawner.ObjectType.Prop);  
+                    
+                    yield return null;
+                }
             }
         }
     }
@@ -78,6 +88,11 @@ public class DynamicObstaclesManager : MonoBehaviour
     {
         while (true)
         {
+            while (QuestManager.instance.activeQuestsIndexes.Count <= 2)
+            {
+                yield return new WaitForSeconds(1);
+            }
+            
             yield return new WaitForSeconds(Random.Range(handleEnemiesTimeMin, handleEnemiesTimeMax));
             for (int i = sc.mobsInGame.Count - 1; i >= 0; i--)
             {

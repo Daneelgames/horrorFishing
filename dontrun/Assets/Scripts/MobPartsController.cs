@@ -31,7 +31,6 @@ public class MobPartsController : MonoBehaviour
     public GameObject bloodFx;
     public List<Drop> drop;
     public Transform dropPosition;
-    public Collider movementCollider;
     public bool forceDropOnTile = false; 
 
     private bool dead = false;
@@ -49,8 +48,6 @@ public class MobPartsController : MonoBehaviour
             anim.SetBool(peacefulBool, true);
         
         bodyPartMax = bodyParts.Count;
-        if (movementCollider)
-            movementCollider.transform.parent = null;
 
         if (hc.mobGroundMovement)
             hc.mobGroundMovement.mobParts = this;
@@ -79,12 +76,6 @@ public class MobPartsController : MonoBehaviour
             else
                 anim.SetBool(simpleWalkerString, false);
         }
-    }
-
-    private void Update()
-    {
-        if (movementCollider)
-            movementCollider.transform.position = transform.position;
     }
 
     public void Death()

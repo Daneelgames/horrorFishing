@@ -1025,6 +1025,7 @@ GameObject:
   - component: {fileID: 9221770753133090435}
   - component: {fileID: -2776333776685157917}
   - component: {fileID: -2386557632443431287}
+  - component: {fileID: 2984552227006321825}
   m_Layer: 10
   m_Name: CabinPropTable
   m_TagString: Untagged
@@ -1075,6 +1076,7 @@ MonoBehaviour:
   npc: {fileID: 0}
   rigidbodies: []
   swapParticles: {fileID: 623462526614931728}
+  spawnedObject: {fileID: 0}
 --- !u!82 &9221770753133090435
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1229,6 +1231,22 @@ MonoBehaviour:
   _snapRotation: 0
   _synchronizeScale: 0
   _snapScale: 0
+--- !u!208 &2984552227006321825
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4528256804153474501}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 2.08, y: 1, z: 2.08}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &5129742490676854167
 GameObject:
   m_ObjectHideFlags: 0
@@ -1971,14 +1989,13 @@ GameObject:
   - component: {fileID: 4286916012105111155}
   - component: {fileID: 3955096278691625571}
   - component: {fileID: 985488865037181230}
-  - component: {fileID: 7958759758332440410}
   m_Layer: 10
   m_Name: MobLifter (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7770911179690077996
 Transform:
   m_ObjectHideFlags: 0
@@ -2055,19 +2072,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7958759758332440410
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8890059201523172615}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7c3db673747db949a4d39bbed4f36f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  height: 1.6
 --- !u!1 &8965479329968474876
 GameObject:
   m_ObjectHideFlags: 0

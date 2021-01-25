@@ -4985,7 +4985,6 @@ GameObject:
   - component: {fileID: 7014233303583432238}
   - component: {fileID: 4132829850614984392}
   - component: {fileID: 1709985218875727064}
-  - component: {fileID: 656096234217785262}
   m_Layer: 10
   m_Name: MobLifterCollider
   m_TagString: Untagged
@@ -5069,19 +5068,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.942507, z: 1}
   m_Center: {x: 0, y: -0.47125345, z: 0}
---- !u!114 &656096234217785262
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2638322920488949786}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7c3db673747db949a4d39bbed4f36f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  height: 1.45
 --- !u!1 &5480768997180403064
 GameObject:
   m_ObjectHideFlags: 0
@@ -5187,6 +5173,7 @@ GameObject:
   - component: {fileID: 4121290906250093964}
   - component: {fileID: -8117499573715352208}
   - component: {fileID: -1811311018516395258}
+  - component: {fileID: 8583714729249669297}
   m_Layer: 10
   m_Name: CabinPropBed
   m_TagString: Untagged
@@ -5237,6 +5224,7 @@ MonoBehaviour:
   npc: {fileID: 0}
   rigidbodies: []
   swapParticles: {fileID: 1958760052939304681}
+  spawnedObject: {fileID: 0}
 --- !u!82 &4121290906250093964
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5391,6 +5379,22 @@ MonoBehaviour:
   _snapRotation: 0
   _synchronizeScale: 0
   _snapScale: 0
+--- !u!208 &8583714729249669297
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6985870815445573752}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.805, y: 0.87, z: 2.62}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.84, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &7068533179493323804
 GameObject:
   m_ObjectHideFlags: 0

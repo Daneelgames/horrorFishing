@@ -75,7 +75,7 @@ public class Interactable : MonoBehaviour,
     
     public void Start()
     {
-        if (pickUp || ammoPickUp || weaponPickUp) transform.parent = null;
+        //if (pickUp || ammoPickUp || weaponPickUp) transform.parent = null;
         
         if (itemNames.Count > gm.language)
             nameGui.text = itemNames[gm.language];
@@ -260,8 +260,10 @@ public class Interactable : MonoBehaviour,
                         }
                     }
                     
+                    /*
                     if (rb && rb.isKinematic)
                         rb.isKinematic = false;
+                        */
 
                     if (activeMeatHole == null)
                     {

@@ -57,6 +57,7 @@ public class HealthController : MonoBehaviour, IUpdatable
 
     [Header("Monster")] public bool boss = false;
     public BossStateChanger bossStateChanger;
+    public PropController propController;
     public string mobKilledAchievementID = "";
     public bool cultist = false;
     public MobGroundMovement mobGroundMovement;
@@ -1904,6 +1905,9 @@ public class HealthController : MonoBehaviour, IUpdatable
         }
 
         dead = true;
+        
+        if (propController && propController.spawnedObject)
+            Destroy(propController.spawnedObject.gameObject);
         
         if (boss)
         {
