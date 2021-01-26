@@ -18,10 +18,21 @@ public class CustomIKSolver : MonoBehaviour {
     public float maxScale = 2;
 
     public bool Visualise;
+    public bool canAnimateScale = true;
+    private bool animateScale = true;
+
+    IEnumerator Start()
+    {
+        yield return new WaitForSeconds(0.5f);
+        animateScale = canAnimateScale;
+    }
 
     private void LateUpdate()
     {
-        SolveIK(Target.position);
+        SolveIK();
+        
+        if (animateScale)
+            AnimateScale();
     }
 
     private Quaternion rotTarget;
@@ -29,7 +40,8 @@ public class CustomIKSolver : MonoBehaviour {
     private Vector3 j;    
     private Vector3 p;
     private float distanceToTarget = 0;
-    public void SolveIK(Vector3 target)
+    
+    void SolveIK()
     {
         for (int k = 0; k < Itterations; k++)
         {
@@ -39,19 +51,17 @@ public class CustomIKSolver : MonoBehaviour {
                 j = Joints[i].transform.position;
                 r = Joints[i].transform.rotation;
 
-                rotTarget = Quaternion.FromToRotation(p - j, target - j) * r;
+                rotTarget = Quaternion.FromToRotation(p - j, Target.position - j) * r;
 
                 Joints[i].transform.rotation = Quaternion.Slerp(Joints[i].transform.rotation, rotTarget, (float)(i + 1) / Joints.Count);
             }
         }
+    }
+
+    void AnimateScale()
+    {
+        distanceToTarget = Vector3.Distance(Ankle.transform.position, Target.position);
         
-        distanceToTarget = Vector3.Distance(Ankle.transform.position, target);
-        /*
-        if (distanceToTarget > 0.1f)
-            transform.localScale *= 1 + Time.deltaTime * 3;
-        else if (transform.localScale.x > 1)
-            transform.localScale *= 1 - Time.deltaTime * 3;
-            */
         if (distanceToTarget > 0.1f)
             transform.localScale = Vector3.ClampMagnitude(transform.localScale * (1 + Time.deltaTime * 3), maxScale);
         else if (transform.localScale.x > 1)
