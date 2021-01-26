@@ -1,91 +1,213 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SubsystemsImplementation;
 
 public class HumanPropBonesRandomizer : MonoBehaviour
 {
-    [Range(0, 1)] public float changeToAnimate = 0; 
-    public List<Transform> boneList = new List<Transform>();
-    public List<Vector3> bonesEulearAnglesListTpose = new List<Vector3>();
-    public List<Vector3> bonesLocalPositionsListTpose = new List<Vector3>();
-    
-    [Header("Generated Pose")]
-    List<Transform> bonesToAnimate = new List<Transform>();
-    public List<Vector3> bonesEulearAnglesListTemp = new List<Vector3>();
-    public Vector2 animateBonesAnglesMinMax = Vector2.zero;
-    
     public List<Transform> groundContactBones = new List<Transform>();
-    public List<Vector3> groundContactBonesPositions = new List<Vector3>();
-    
+
     public List<Transform> removedGroundContactBones = new List<Transform>();
     public List<Transform> armsBonesTargets = new List<Transform>();
     public Transform headBoneTarget;
     public Transform hipsBone;
 
+    [Header("Animation timings")] 
+    
+    public float stepDelay = 1;
+    public float stepOffsetScale = 0.5f;
+    public float hipsMoveHeight = 1;
+    
+    List<Coroutine> boneMoveCoroutines = new List<Coroutine>();
+    
+    bool sideOffsetRight = true;
+    Vector3 sideOffset = Vector3.right;
+    float currentStepDelay = 0;
+
+    public bool animate = false;
     void Start()
     {
-        RandomizeBones();
-        return;
+        stepDelay += Random.Range(-stepDelay, stepDelay) / 2;
+        stepOffsetScale += Random.Range(-stepOffsetScale, stepOffsetScale) / 2;
+        hipsMoveHeight += Random.Range(-hipsMoveHeight, hipsMoveHeight) / 2;
         
-        if (bonesToAnimate.Count > 0 && Random.value < changeToAnimate)
-            StartCoroutine(AnimateBones());
+        InitBones();
+        if (!animate)
+        {
+            RandomizePose();
+            return;   
+        }
+        
+        StartCoroutine(AnimateBody());
+        StartCoroutine(AnimateGroundContact());
     }
 
-    IEnumerator AnimateBones()
+    public void RandomizePose()
+    {
+        for (int i = 0; i < groundContactBones.Count; i++)
+        {
+            var hits = Physics.RaycastAll(transform.position + Random.insideUnitSphere * Random.Range(1, 3) + Vector3.up * 100f, Vector3.down, 500);
+            if (hits == null || hits.Length <= 0)
+            {
+                continue;   
+            }
+                
+            for (var j =  hits.Length - 1; j >= 0; j--)
+            {
+                var hit = hits[j];
+
+                if (hit.collider.gameObject.layer != 23 && hit.collider.gameObject.layer != 28 &&
+                    hit.collider.gameObject.layer != 29 && hit.collider.gameObject.layer != 30 &&
+                    hit.collider.gameObject.layer != 25 && hit.collider.gameObject.layer != 20) // floor
+                    continue;
+
+                StartCoroutine(MoveGroundContactToPos(groundContactBones[i], groundContactBones[i].transform.position,
+                    hit.point));
+                break;
+            }
+        }
+        
+
+        for (int i = 0; i < removedGroundContactBones.Count; i++)
+        {
+            Vector3 newOffset = Random.insideUnitSphere * Random.Range(0, hipsMoveHeight);
+            newOffset.y = Mathf.Clamp(newOffset.y, 0, 100);
+            removedGroundContactBones[i].transform.position += newOffset;
+        }
+    }
+    
+    IEnumerator AnimateGroundContact()
     {
         while (true)
         {
-            for (int i = 0; i < bonesToAnimate.Count; i++)
+            for (int i = 0; i < groundContactBones.Count; i++)
             {
-                bonesToAnimate[i].transform.eulerAngles = bonesEulearAnglesListTemp[i] + new Vector3(
-                    Random.Range(animateBonesAnglesMinMax.x,
-                        animateBonesAnglesMinMax.y),
-                    Random.Range(animateBonesAnglesMinMax.x,
-                        animateBonesAnglesMinMax.y),
-                    Random.Range(animateBonesAnglesMinMax.x,
-                        animateBonesAnglesMinMax.y));
-
-                if (groundContactBones.Count > groundContactBonesPositions.Count)
-                    yield break;
-                
-                for (int j = 0; j < groundContactBones.Count; j++)
+                var hits = Physics.RaycastAll(transform.position + Random.insideUnitSphere * Random.Range(1, 3) + Vector3.up * 100f, Vector3.down, 500);
+                if (hits == null || hits.Length <= 0)
                 {
-                    groundContactBones[j].transform.position = groundContactBonesPositions[j];
+                    yield return new WaitForSeconds(stepDelay / groundContactBones.Count);
+                    continue;   
                 }
-                yield return null;   
+                
+                //for (var j =  hits.Length - 1; j >= 0; j--)
+                for (var j =  0; j < hits.Length; j++)
+                {
+                    var hit = hits[j];
+
+                    if (hit.collider.gameObject.layer != 23 && hit.collider.gameObject.layer != 28 &&
+                        hit.collider.gameObject.layer != 29 && hit.collider.gameObject.layer != 30 &&
+                        hit.collider.gameObject.layer != 25 && hit.collider.gameObject.layer != 20) // floor
+                        continue;
+
+                    yield return StartCoroutine(MoveGroundContactToPos(groundContactBones[i], groundContactBones[i].transform.position,
+                        hit.point));
+                    break;
+                }
+                yield return new WaitForSeconds(stepDelay / groundContactBones.Count);
             }
+            // move removed bones more realistically
         }
     }
-
-    [ContextMenu("SaveAngles")]
-    void SaveAngles()
+    
+    IEnumerator AnimateBody()
     {
-        bonesEulearAnglesListTpose.Clear();
-        bonesLocalPositionsListTpose.Clear();
-        
-        for (int i = 0; i < boneList.Count; i++)
+        while (true)
         {
-            bonesEulearAnglesListTpose.Add(boneList[i].transform.eulerAngles);
-            bonesLocalPositionsListTpose.Add(boneList[i].transform.localPosition);
+            currentStepDelay = stepDelay + Random.Range(-stepDelay, stepDelay) / 2;
+            MoveBody(Vector3.up);
+            
+            yield return new WaitForSeconds(currentStepDelay);
+
+            currentStepDelay = stepDelay + Random.Range(-stepDelay, stepDelay) / 2;
+            sideOffsetRight = !sideOffsetRight;
+            MoveBody(Vector3.down);
+            
+            yield return new WaitForSeconds(currentStepDelay);
+        }
+        // ReSharper disable once IteratorNeverReturns
+    }
+
+    private Vector3 tempNewStartForBone;
+    void MoveBody(Vector3 upDownDirection)
+    {
+        for (var index = 0; index < boneMoveCoroutines.Count; index++)
+        {
+            StopCoroutine( boneMoveCoroutines[index]);
+        }
+        boneMoveCoroutines.Clear();
+            
+        sideOffset = GetSideOffset();
+
+        for (int i = 0; i < removedGroundContactBones.Count; i++)
+        {
+            /*
+            boneMoveCoroutines.Add(StartCoroutine(MoveBoneToPos(removedGroundContactBones[i], removedGroundContactBones[i].transform.localPosition,
+                removedGroundContactBones[i].transform.localPosition + upDownDirection * hipsMoveHeight + sideOffset)));
+                */
+            
+            tempNewStartForBone =
+                transform.position + new Vector3(Random.Range(-hipsMoveHeight,hipsMoveHeight), Random.Range(hipsMoveHeight / 2,hipsMoveHeight * 2), Random.Range(-hipsMoveHeight,hipsMoveHeight));
+            
+            boneMoveCoroutines.Add(StartCoroutine(MoveBoneToPos(removedGroundContactBones[i], removedGroundContactBones[i].transform.position,
+                tempNewStartForBone + upDownDirection * hipsMoveHeight + sideOffset)));
+        }
+    }
+    
+    Vector3 GetSideOffset()
+    {
+        if (sideOffsetRight)
+            return transform.right * stepOffsetScale;
+
+        return -transform.right * stepOffsetScale;
+    }
+    
+    IEnumerator MoveBoneToPos(Transform bone, Vector3 startPos, Vector3 newPos)
+    {
+        float t = 0;
+        float tScaler = Random.Range(0.5f, 3);
+        
+        while (t < currentStepDelay)
+        {
+            t += Time.deltaTime;
+            bone.transform.position = Vector3.Lerp(startPos, newPos, t / currentStepDelay * tScaler);
+            yield return null;
+        }
+
+        Vector3 staticPos = bone.transform.position;
+        while (true)
+        {
+            bone.transform.position = staticPos + new Vector3(Random.Range(-0.1f,0.1f),Random.Range(-0.1f,0.1f),Random.Range(-0.1f,0.1f));
+            yield return null;
+        }
+    }
+    
+    IEnumerator MoveGroundContactToPos(Transform bone, Vector3 startPos, Vector3 newPos)
+    {
+        float t = 0;
+        float smallerStepDelay = stepDelay / groundContactBones.Count / 2;
+        Vector3 stepUpPosition = newPos + Vector3.up * hipsMoveHeight * Random.Range(1f, 3f);;
+        
+        while (t < smallerStepDelay)
+        {
+            t += Time.deltaTime;
+            bone.transform.position = Vector3.Lerp(startPos, stepUpPosition , t / smallerStepDelay);
+            yield return null;
+        }
+
+        t = 0;
+        startPos = bone.transform.position;
+        
+        while (t < smallerStepDelay)
+        {
+            t += Time.deltaTime;
+            bone.transform.position = Vector3.Lerp(startPos, newPos, t / smallerStepDelay);
+            yield return null;
         }
     }
     
     [ContextMenu("RandomizeAngles")]
-    void RandomizeBones()
+    void InitBones()
     {
-        bonesEulearAnglesListTemp.Clear();
-        groundContactBonesPositions.Clear();
-        
-        for (int i = 0; i < boneList.Count; i++)
-        {
-            boneList[i].transform.eulerAngles = bonesEulearAnglesListTpose[i] + new Vector3(Random.Range(-40, 40),Random.Range(-40, 40),Random.Range(-40, 40));
-            if (Random.value > 0.5f)
-            {
-                bonesToAnimate.Add(boneList[i]);   
-                bonesEulearAnglesListTemp.Add(boneList[i].transform.eulerAngles);
-            }
-        }
-
         if (Random.value > 0.5f)
         {
             int removeContactsAmount = Random.Range(1, groundContactBones.Count - 1);
@@ -100,12 +222,13 @@ public class HumanPropBonesRandomizer : MonoBehaviour
             }
         }
         
-        if (Random.value > 0.75f)
-            groundContactBones.Add(hipsBone);
+        removedGroundContactBones.Add(hipsBone);
         
-        if (Random.value > 0.75f)
+        if (Random.value > 0.9f)
+            groundContactBones.Add(headBoneTarget);
+        else
             removedGroundContactBones.Add(headBoneTarget);
-
+            
         for (int i = 0; i < armsBonesTargets.Count; i++)
         {
             if (Random.value > 0.66f)
@@ -116,37 +239,7 @@ public class HumanPropBonesRandomizer : MonoBehaviour
         
         for (int i = 0; i < groundContactBones.Count; i++)
         {
-            var hits = Physics.RaycastAll(groundContactBones[i].position + Vector3.up, Vector3.down, 500);
-            for (var j = 0; j < hits.Length; j++)
-            {
-                var hit = hits[j];
-
-                if (hit.collider.gameObject.layer != 23 && hit.collider.gameObject.layer != 28 &&
-                    hit.collider.gameObject.layer != 29 && hit.collider.gameObject.layer != 30 &&
-                    hit.collider.gameObject.layer != 25) // floor
-                    continue;
-
-                
-                groundContactBones[i].transform.position = hit.point;
-                groundContactBonesPositions.Add(hit.point);
-            }
-        }
-
-        for (int i = 0; i < removedGroundContactBones.Count; i++)
-        {
-            removedGroundContactBones[i].transform.position += Random.insideUnitSphere * Random.Range(0, 10);
-        }
-    }
-    
-    [ContextMenu("RestoreAngles")]
-    void RestoreBones()
-    {
-        bonesEulearAnglesListTemp.Clear();
-
-        for (int i = 0; i < boneList.Count; i++)
-        {
-            boneList[i].transform.eulerAngles = bonesEulearAnglesListTpose[i];
-            boneList[i].transform.localPosition = bonesLocalPositionsListTpose[i];
+            groundContactBones[i].transform.parent = null;
         }
     }
 }

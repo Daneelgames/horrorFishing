@@ -1301,7 +1301,10 @@ public class SpawnController : MonoBehaviour
         else if (weaponIndex == 1)
             item = gm.player.wc.secondWeapon.ammoPackPrefab;
 
-        var newAmmo = Instantiate(item, newProp.spawners[Random.Range(0, newProp.spawners.Count)].transform.position, Quaternion.identity);
+        var spawnerNew = newProp.spawners[Random.Range(0, newProp.spawners.Count)];
+        var newAmmo = Instantiate(item, spawnerNew.transform.position, Quaternion.identity);
+        newAmmo.transform.eulerAngles = new Vector3(Random.Range(0,360), Random.Range(0,360),Random.Range(0,360));
+        newAmmo.transform.parent = spawnerNew.transform;
         newProp.spawnedObject = newAmmo;
     }
 
@@ -1728,6 +1731,7 @@ public class SpawnController : MonoBehaviour
     
     public void StartBadRepChase()
     {
+        return;
         if (!chase)
         {
             if (gm.hub)

@@ -721,6 +721,14 @@ public class Interactable : MonoBehaviour,
         showName = false;
     }
 
+    public void ReleaseItemWithExplosion()
+    {
+        transform.parent = null;
+        rb.isKinematic = false;
+        rb.constraints = RigidbodyConstraints.None;
+        rb.AddExplosionForce(100f, transform.position + Random.insideUnitSphere, 10);
+    }
+
     private void OnDestroy()
     {
         StopAllCoroutines();

@@ -44,10 +44,16 @@ public class CustomIKSolver : MonoBehaviour {
                 Joints[i].transform.rotation = Quaternion.Slerp(Joints[i].transform.rotation, rotTarget, (float)(i + 1) / Joints.Count);
             }
         }
-
+        
         distanceToTarget = Vector3.Distance(Ankle.transform.position, target);
-        if (distanceToTarget > 0.1f && transform.localScale.x < maxScale)
+        /*
+        if (distanceToTarget > 0.1f)
             transform.localScale *= 1 + Time.deltaTime * 3;
+        else if (transform.localScale.x > 1)
+            transform.localScale *= 1 - Time.deltaTime * 3;
+            */
+        if (distanceToTarget > 0.1f)
+            transform.localScale = Vector3.ClampMagnitude(transform.localScale * (1 + Time.deltaTime * 3), maxScale);
         else if (transform.localScale.x > 1)
             transform.localScale *= 1 - Time.deltaTime * 3;
     }

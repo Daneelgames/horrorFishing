@@ -1905,9 +1905,12 @@ public class HealthController : MonoBehaviour, IUpdatable
         }
 
         dead = true;
-        
+
         if (propController && propController.spawnedObject)
-            Destroy(propController.spawnedObject.gameObject);
+        {
+            propController.spawnedObject.ReleaseItemWithExplosion();   
+            propController.spawnedObject = null;   
+        }
         
         if (boss)
         {
