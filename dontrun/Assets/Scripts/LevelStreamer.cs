@@ -11,6 +11,8 @@ public class LevelStreamer : MonoBehaviour
 {
     public List<StreamingGroup> streamingGroups;
 	private static LevelStreamer _instance;
+
+    public float streamingDistance = 60;
     public static LevelStreamer Instance
 	{
 		get
@@ -85,8 +87,7 @@ public class LevelStreamer : MonoBehaviour
                     if ((closestPlayer.transform.position - streamingObjects[i].transform.position).magnitude <
                         MouseLook.instance.mainCamera.farClipPlane)
                         */
-                    if ((closestPlayer.transform.position - streamingObjects[i].transform.position).magnitude <
-                        streamingObjects[i].streamingDistance)
+                    if ((closestPlayer.transform.position - streamingObjects[i].transform.position).magnitude < streamingDistance)
                     {
                         if (!streamingObjects[i].streamObjectAboveAnimator)
                         {
@@ -145,8 +146,7 @@ public class LevelStreamer : MonoBehaviour
                 if (closestPlayer == null)
                     continue;
                 
-                if ((closestPlayer.transform.position - streamingObjects[i].transform.position).magnitude <
-                    streamingObjects[i].streamingDistance)
+                if ((closestPlayer.transform.position - streamingObjects[i].transform.position).magnitude < streamingDistance)
                 {
                     if (!streamingObjects[i].streamObjectAboveAnimator)
                     {

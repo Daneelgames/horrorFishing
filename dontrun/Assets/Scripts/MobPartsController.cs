@@ -15,13 +15,15 @@ public class MobPartsController : MonoBehaviour
     public Mob mobType = Mob.Walker;
 
     public NavMeshAgent agent;
+
     [Tooltip("Sets Chase anim only when object is moving")]
+    public IkMonsterAnimator ikMonsterAnimator;
     public bool simpleWalker = false;
     public string simpleWalkerString = "Chase";
+    public float distanceThreshold = 0.1f;
 
     private Vector3 prevPos;
     private Vector3 newPos;
-    private float distanceThreshold = 0.33f;
     
     public Animator anim;
     public List<MobBodyPart> bodyParts = new List<MobBodyPart>();
@@ -68,13 +70,29 @@ public class MobPartsController : MonoBehaviour
         while (hc.health > 0)
         {
             prevPos = transform.position;
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.1f);
             newPos = transform.position;
-            
+
             if (Vector3.Distance(prevPos, newPos) > distanceThreshold)
-                anim.SetBool(simpleWalkerString, true);
+            {
+                if (ikMonsterAnimator && ikMonsterAnimator.animate == false)
+                {
+                    ikMonsterAnimator.SetAnimate(true);
+                    //ikMonsterAnimator.ToggleAggressiveMeshes(true);
+                }
+                else if (anim)
+                    anim.SetBool(simpleWalkerString, true);
+            }
             else
-                anim.SetBool(simpleWalkerString, false);
+            {
+                if (ikMonsterAnimator && ikMonsterAnimator.animate)
+                {
+                    ikMonsterAnimator.SetAnimate(false);
+                    //ikMonsterAnimator.ToggleAggressiveMeshes(false);
+                }
+                else if (anim)
+                    anim.SetBool(simpleWalkerString, false);
+            }
         }
     }
 

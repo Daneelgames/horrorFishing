@@ -18,21 +18,25 @@ public class CustomIKSolver : MonoBehaviour {
     public float maxScale = 2;
 
     public bool Visualise;
-    public bool canAnimateScale = true;
-    private bool animateScale = true;
+    public bool canAnimate = true;
+    private bool animate = true;
 
     IEnumerator Start()
     {
-        yield return new WaitForSeconds(0.5f);
-        animateScale = canAnimateScale;
+        while (true)
+        {
+            yield return new WaitForSeconds(1f);
+            animate = canAnimate;   
+        }
     }
 
     private void LateUpdate()
     {
+        if (!animate)
+            return;
+
         SolveIK();
-        
-        if (animateScale)
-            AnimateScale();
+        AnimateScale();
     }
 
     private Quaternion rotTarget;

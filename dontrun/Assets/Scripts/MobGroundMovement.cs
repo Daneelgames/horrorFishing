@@ -159,6 +159,9 @@ public class MobGroundMovement : MonoBehaviour, IUpdatable
             
             if (monsterState == State.Chase && target && agent.enabled)
             {
+                if (mobParts && mobParts.ikMonsterAnimator && mobParts.ikMonsterAnimator.agressive == false)
+                    mobParts.ikMonsterAnimator.ToggleAggressiveMeshes(true);
+
                 if (Vector3.Distance(transform.position, target.transform.position) < agent.stoppingDistance)
                 {
                     Vector3 direction = (target.transform.position - transform.position).normalized;
@@ -171,6 +174,8 @@ public class MobGroundMovement : MonoBehaviour, IUpdatable
                 }
                 //agent.speed = Mathf.Lerp(agent.speed, targetSpeed * coldModifier, 2 * Time.deltaTime);   
             }
+            else if (monsterState != State.Chase && mobParts && mobParts.ikMonsterAnimator && mobParts.ikMonsterAnimator.agressive == true)
+                mobParts.ikMonsterAnimator.ToggleAggressiveMeshes(false);
 
             if (agent)
             {
@@ -722,6 +727,9 @@ public class MobGroundMovement : MonoBehaviour, IUpdatable
 
     public void MoveCloser(Vector3 newPos, bool hide)
     {
+        if (mobParts && mobParts.ikMonsterAnimator)
+            mobParts.ikMonsterAnimator.SetAnimate(true);
+        
         if (hide)
         {
             mobAu.IdleAmbient();

@@ -247,7 +247,7 @@ public class HealthController : MonoBehaviour, IUpdatable
         }
         else
         {
-            if (canHear)
+            if (canHear && propController == null)
                 SpawnController.instance.mobsInGame.Add(this);
         }
     }

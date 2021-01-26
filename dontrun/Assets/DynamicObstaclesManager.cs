@@ -23,6 +23,14 @@ public class DynamicObstaclesManager : MonoBehaviour
     private PlayerMovement pm;
     private SpawnController sc;
     private LevelGenerator lg;
+
+    public static DynamicObstaclesManager instance;
+
+
+    void Awake()
+    {
+        instance = this;
+    }
     
     void Start()
     {
@@ -59,7 +67,9 @@ public class DynamicObstaclesManager : MonoBehaviour
                     if (prop.spawnedObject != null)
                         Destroy(prop.spawnedObject.gameObject);
                     
-                    Destroy(prop.gameObject);
+                    lg.propsInGame.Remove(prop);
+                    StartCoroutine(DestroyGameObjectAnimated(prop.gameObject));
+                    //Destroy(prop.gameObject);
                 }
                 yield return null;
             }
@@ -75,7 +85,7 @@ public class DynamicObstaclesManager : MonoBehaviour
                     else
                         spawnPosition = GetPositionAroundPoint(pm.transform.position + pm.movementTransform.forward * distanceToDestroy, true);
                 
-                    if (Vector3.Distance(spawnPosition, pm.transform.position) > 3)
+                    if (Vector3.Distance(spawnPosition, pm.transform.position) > 5)
                         AssetSpawner.instance.Spawn(lg.propsReferences[Random.Range(0, lg.propsReferences.Count)], spawnPosition, AssetSpawner.ObjectType.Prop);  
                     
                     yield return null;
@@ -88,7 +98,7 @@ public class DynamicObstaclesManager : MonoBehaviour
     {
         while (true)
         {
-            while (QuestManager.instance.activeQuestsIndexes.Count <= 2)
+            while (WeaponControls.instance.activeWeapon == null)
             {
                 yield return new WaitForSeconds(1);
             }
@@ -106,7 +116,9 @@ public class DynamicObstaclesManager : MonoBehaviour
                 distanceToObject = Vector3.Distance(pm.transform.position, mob.transform.position); 
                 if (distanceToObject > distanceToDestroyFar || (distanceToObject > distanceToDestroy && MouseLook.instance.PositionIsVisibleToPlayer(mob.transform.position) == false && Random.value > 0.5f))
                 {
-                    Destroy(mob.gameObject);
+                    sc.mobsInGame.Remove(mob);
+                    StartCoroutine(DestroyGameObjectAnimated(mob.gameObject));
+                    //Destroy(mob.gameObject);
                 }
                 yield return null;
             }
@@ -117,9 +129,34 @@ public class DynamicObstaclesManager : MonoBehaviour
                     spawnPosition = GetPositionAroundPoint(pm.transform.position, false);
                 else
                     spawnPosition = GetPositionAroundPoint(pm.transform.position + pm.movementTransform.forward * distanceToDestroy, true);
-                if (Vector3.Distance(spawnPosition, pm.transform.position) > 3)
+                if (Vector3.Distance(spawnPosition, pm.transform.position) > 5)
                     AssetSpawner.instance.Spawn(sc.enemiesReferences[Random.Range(0, sc.enemiesReferences.Count)], spawnPosition, AssetSpawner.ObjectType.Mob);
             }
+        }
+    }
+
+    IEnumerator DestroyGameObjectAnimated(GameObject go)
+    {
+        float t = 0;
+        float tt = 0.5f;
+        while (t < tt)
+        {
+            go.transform.localScale = Vector3.Lerp(go.transform.localScale, Vector3.zero, t / tt);
+            t += Time.deltaTime;
+            yield return null;
+        }
+        Destroy(go);
+    }
+    
+    public IEnumerator CreateGameObjectAnimated(GameObject go)
+    {
+        float t = 0;
+        float tt = 0.5f;
+        while (t < tt)
+        {
+            go.transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, t / tt);
+            t += Time.deltaTime;
+            yield return null;
         }
     }
 

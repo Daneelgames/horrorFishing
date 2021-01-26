@@ -5,8 +5,6 @@ using CerealDevelopment.TimeManagement;
 
 public class StreamingObject : MonoBehaviour //, IUpdatable
 {
-	[HideInInspector]
-    public float streamingDistance = 50;
     [Header("Use this if animator inside streaming object to reduce lag")]
     public bool streamObjectAboveAnimator = false;
     public List<GameObject> childObjectToHide = new List<GameObject>();

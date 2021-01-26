@@ -24,7 +24,12 @@ public class IkMonsterAnimator : MonoBehaviour
     Vector3 sideOffset = Vector3.right;
     float currentStepDelay = 0;
 
-    public bool animate = false;
+    public bool agressive = false;
+    public bool animate = true;
+    public List<GameObject> passiveMesh = new List<GameObject>();
+    public List<GameObject> agressiveMesh = new List<GameObject>();
+    
+    public List<CustomIKSolver> ikSolvers = new List<CustomIKSolver>();
     void Start()
     {
         stepDelay += Random.Range(-stepDelay, stepDelay) / 2;
@@ -42,6 +47,16 @@ public class IkMonsterAnimator : MonoBehaviour
         StartCoroutine(AnimateGroundContact());
     }
 
+    public void SetAnimate(bool a)
+    {
+        animate = a;
+        
+        for (var index = 0; index < ikSolvers.Count; index++)
+        {
+            ikSolvers[index].canAnimate = animate;
+        }
+    }
+    
     public void RandomizePose()
     {
         for (int i = 0; i < groundContactBones.Count; i++)
@@ -75,11 +90,35 @@ public class IkMonsterAnimator : MonoBehaviour
             removedGroundContactBones[i].transform.position += newOffset;
         }
     }
-    
+
+    public void ToggleAggressiveMeshes(bool _aggressive)
+    {
+        agressive = _aggressive; 
+        for (var index = 0; index < agressiveMesh.Count; index++)
+        {
+            agressiveMesh[index].gameObject.SetActive(_aggressive);
+        }
+
+        for (var index = 0; index < passiveMesh.Count; index++)
+        {
+            passiveMesh[index].gameObject.SetActive(!_aggressive);
+        }
+
+        for (var index = 0; index < ikSolvers.Count; index++)
+        {
+            ikSolvers[index].canAnimate = _aggressive;
+        }
+    }
+
     IEnumerator AnimateGroundContact()
     {
         while (true)
         {
+            while (animate == false)
+            {
+                yield return null;
+            }
+            
             for (int i = 0; i < groundContactBones.Count; i++)
             {
                 var hits = Physics.RaycastAll(transform.position + Random.insideUnitSphere * Random.Range(1, 3) + Vector3.up * 100f, Vector3.down, 500);
@@ -113,6 +152,10 @@ public class IkMonsterAnimator : MonoBehaviour
     {
         while (true)
         {
+            while (animate == false)
+            {
+                yield return null;
+            }
             currentStepDelay = stepDelay + Random.Range(-stepDelay, stepDelay) / 2;
             MoveBody(Vector3.up);
             
@@ -174,7 +217,7 @@ public class IkMonsterAnimator : MonoBehaviour
         }
 
         Vector3 staticPos = bone.transform.position;
-        while (true)
+        while (animate)
         {
             bone.transform.position = staticPos + new Vector3(Random.Range(-0.1f,0.1f),Random.Range(-0.1f,0.1f),Random.Range(-0.1f,0.1f));
             yield return null;

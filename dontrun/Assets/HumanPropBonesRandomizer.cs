@@ -36,7 +36,7 @@ namespace Assets
             {
                 foreach (var ik in IkSolvers)
                 {
-                    ik.canAnimateScale = false;
+                    ik.canAnimate = false;
                 }
             }
         }
@@ -116,9 +116,9 @@ namespace Assets
                 removedGroundContactBones.Add(hipsBone);
         
             if (Random.value > 0.75f)
-                removedGroundContactBones.Add(headBoneTarget);
-            else
                 groundContactBones.Add(headBoneTarget);
+            else
+                removedGroundContactBones.Add(headBoneTarget);
 
             for (int i = 0; i < armsBonesTargets.Count; i++)
             {

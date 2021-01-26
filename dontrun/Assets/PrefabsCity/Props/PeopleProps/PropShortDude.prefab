@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 481163040}
   - component: {fileID: 481163041}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: IkTargetLegRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1691448537}
   - component: {fileID: 1691448538}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: IkTargetLegLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +99,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8615256766644983502}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: RThumb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -130,7 +130,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5719706670848571522}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: LThumb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -162,7 +162,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8070313156323769872}
   - component: {fileID: 2267105725955153391}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: IkTargetArmLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -206,7 +206,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8951000876504159677}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: LeftHandFinger1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -238,7 +238,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2376483474543666783}
   - component: {fileID: 2886383259071956086}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: LeftArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -286,7 +286,7 @@ GameObject:
   - component: {fileID: 948553778472732401}
   - component: {fileID: 7812520536384485547}
   - component: {fileID: 5317191630586588443}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: HealthCollider (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -332,7 +332,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 343406557803879188}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.2
   m_Height: 1.4100187
@@ -347,7 +347,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2720581368703345790}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: CMU compliant skeleton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -378,7 +378,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6051241783681963743}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: LeftHandFinger1_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -409,7 +409,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4215301983095678316}
   - component: {fileID: 23698497}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: LeftLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -457,7 +457,7 @@ GameObject:
   - component: {fileID: 5431883849698551641}
   - component: {fileID: 8173137866771733129}
   - component: {fileID: 8137974116612583198}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: Spawner (1)
   m_TagString: Untagged
   m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
@@ -520,7 +520,7 @@ GameObject:
   - component: {fileID: 5032367603731153111}
   - component: {fileID: 8364161102721461579}
   - component: {fileID: 6521331502682676492}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: HealthCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -549,7 +549,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1591076974271092129}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -588,7 +588,7 @@ GameObject:
   - component: {fileID: 2260381921805995437}
   - component: {fileID: 1552592299003733627}
   - component: {fileID: 827363580735824287}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: PropShortDude
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -779,6 +779,7 @@ MonoBehaviour:
   level: 0
   mobType: 3
   agent: {fileID: 0}
+  ikMonsterAnimator: {fileID: 0}
   simpleWalker: 1
   simpleWalkerString: Move
   anim: {fileID: 2541771321573688620}
@@ -885,11 +886,11 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -3329600060583670345, guid: 37f4a131f509ebc40a056587ae8f6728,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: c925a1b00369f5c4da3fe15cb276d252, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -1078,7 +1079,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3645030621692675440}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: LeftFingerBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1111,7 +1112,7 @@ GameObject:
   - component: {fileID: 4182257175319243638}
   - component: {fileID: 7423419753718210818}
   - component: {fileID: 3961665530415219901}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: HealthCollider (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1157,7 +1158,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1746883368854891625}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.2
   m_Height: 1.1963753
@@ -1172,7 +1173,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3645444096689556375}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: RightToeBase_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1202,7 +1203,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6654152517008891513}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: RightHandFinger1_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1232,7 +1233,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7043866205624223023}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: LeftToeBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1265,7 +1266,7 @@ GameObject:
   - component: {fileID: 4995208928276935282}
   - component: {fileID: 1456463099235081650}
   - component: {fileID: 8399791805192001379}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: LeftShoulder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1309,7 +1310,7 @@ MonoBehaviour:
   Itterations: 1
   maxScale: 100
   Visualise: 0
-  animateScale: 1
+  canAnimateScale: 1
 --- !u!114 &8399791805192001379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1333,7 +1334,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4963155152873569140}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: RThumb_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1364,7 +1365,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8038332378091679233}
   - component: {fileID: 7933521955230008640}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: LeftForeArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1412,7 +1413,7 @@ GameObject:
   - component: {fileID: 8057055181522033897}
   - component: {fileID: 3708407930566475683}
   - component: {fileID: 854826554659193278}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: HealthCollider (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1458,7 +1459,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3267364401269288341}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.2
   m_Height: 1.1963753
@@ -1475,7 +1476,7 @@ GameObject:
   - component: {fileID: 8994548063089628165}
   - component: {fileID: 5341052384460014928}
   - component: {fileID: 1344266407412922305}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: HealthCollider (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1521,7 +1522,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3332797914585266992}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.26
   m_Height: 1.1963753
@@ -1537,7 +1538,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3032781098949210983}
   - component: {fileID: 8897432002822668759}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: RightForeArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1584,7 +1585,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7554621057643768954}
   - component: {fileID: 2060554961172678080}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: LeftHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1631,7 +1632,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2977585504068852300}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: RightHandFinger1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1663,7 +1664,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7114881351014905489}
   - component: {fileID: 2518931363593251602}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: IKTargetHead
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1707,7 +1708,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4615714390855299397}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: RightFingerBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1740,7 +1741,7 @@ GameObject:
   - component: {fileID: 6301044145241532432}
   - component: {fileID: 5543974845632431719}
   - component: {fileID: 7298620780030758068}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: DeathParticlesMeat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6574,7 +6575,7 @@ GameObject:
   - component: {fileID: 6687868544250563901}
   - component: {fileID: 550384374057271531}
   - component: {fileID: 2376069585367303041}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: Spawner (2)
   m_TagString: Untagged
   m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
@@ -6636,7 +6637,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8585754412644645975}
   - component: {fileID: 1769689413272120838}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: Spine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6685,7 +6686,7 @@ GameObject:
   - component: {fileID: 6430441493494093240}
   - component: {fileID: 4886748488324301122}
   - component: {fileID: 6635066887507703809}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: HealthCollider (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6731,7 +6732,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5124419451484304089}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.2
   m_Height: 0.8850747
@@ -6747,7 +6748,7 @@ GameObject:
   m_Component:
   - component: {fileID: 103198287523244016}
   - component: {fileID: 6355352611342094361}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: Neck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6793,7 +6794,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7416590795594167104}
   - component: {fileID: 3573954190931481323}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: RightHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6842,7 +6843,7 @@ GameObject:
   - component: {fileID: 756422556195752758}
   - component: {fileID: 23698495}
   - component: {fileID: 23698494}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: RHipJoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6900,7 +6901,7 @@ MonoBehaviour:
   Itterations: 1
   maxScale: 100
   Visualise: 0
-  animateScale: 1
+  canAnimateScale: 1
 --- !u!1 &5742632642560844425
 GameObject:
   m_ObjectHideFlags: 0
@@ -6911,7 +6912,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3323677619232654388}
   - component: {fileID: 8472940036142357477}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: oldasianshortMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7026,7 +7027,7 @@ GameObject:
   - component: {fileID: 4378473251883453392}
   - component: {fileID: 6528858914273248931}
   - component: {fileID: 8229062334585789317}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: HealthCollider (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7072,7 +7073,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5800631298218886514}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.4681893
   m_Height: 0.9363793
@@ -7087,7 +7088,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7206278516984124448}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: Hips
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7123,7 +7124,7 @@ GameObject:
   - component: {fileID: 8695549560796632298}
   - component: {fileID: 1930966105548392378}
   - component: {fileID: 2618854654040193803}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: HealthCollider (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7169,7 +7170,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5957234028833575753}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.2
   m_Height: 1.4100187
@@ -7186,7 +7187,7 @@ GameObject:
   - component: {fileID: 6163744224515052956}
   - component: {fileID: 6163744224515052955}
   - component: {fileID: 7110918998420533427}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
@@ -7248,7 +7249,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1085220477530664453}
   - component: {fileID: 7039890873833620996}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7296,7 +7297,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3378491178282438636}
   - component: {fileID: 23698493}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: RightUpLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7342,7 +7343,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6347065457647755235}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: Head_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7373,7 +7374,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3009172534017941413}
   - component: {fileID: 23698496}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: LeftFoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7418,7 +7419,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5879476227537098003}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7450,7 +7451,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7209110780043908015}
   - component: {fileID: 23698492}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: RightLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7496,7 +7497,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7039566203479514810}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: LThumb_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7527,7 +7528,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6238512351332215655}
   - component: {fileID: 2541771321573688620}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: lowpolyoldAsianShort
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7584,7 +7585,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4016136915715453769}
   - component: {fileID: 4092831223665261557}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: Neck1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7632,7 +7633,7 @@ GameObject:
   - component: {fileID: 8089178959664336082}
   - component: {fileID: 5055133922716756293}
   - component: {fileID: 2572074228560487825}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: RightShoulder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7676,7 +7677,7 @@ MonoBehaviour:
   Itterations: 1
   maxScale: 100
   Visualise: 0
-  animateScale: 1
+  canAnimateScale: 1
 --- !u!114 &2572074228560487825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7702,7 +7703,7 @@ GameObject:
   - component: {fileID: 9056079372859809681}
   - component: {fileID: 7057742955517815218}
   - component: {fileID: 3785654827803587993}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: Spawner (3)
   m_TagString: Untagged
   m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
@@ -7766,7 +7767,7 @@ GameObject:
   - component: {fileID: 1651370077528625288}
   - component: {fileID: 81976112544933992}
   - component: {fileID: 8533130040661066709}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: DeathParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12696,7 +12697,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3656537680941022235}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: RightToeBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12727,7 +12728,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4210193775957661197}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: LeftToeBase_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12759,7 +12760,7 @@ GameObject:
   - component: {fileID: 6855497104669487520}
   - component: {fileID: 1935279601421225784}
   - component: {fileID: 8995833937380685638}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: HealthCollider (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12805,7 +12806,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7723780029459644705}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.26
   m_Height: 1.1963753
@@ -12822,7 +12823,7 @@ GameObject:
   - component: {fileID: 361538678435332336}
   - component: {fileID: 23698500}
   - component: {fileID: 23698499}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: LHipJoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12880,7 +12881,7 @@ MonoBehaviour:
   Itterations: 1
   maxScale: 100
   Visualise: 0
-  animateScale: 1
+  canAnimateScale: 1
 --- !u!1 &8108327436518968990
 GameObject:
   m_ObjectHideFlags: 0
@@ -12891,7 +12892,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6944173408797173317}
   - component: {fileID: 446807362171676049}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: Spine1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12939,7 +12940,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4889190726713358462}
   - component: {fileID: 8097166827254823326}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: IkTargetArmRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12984,7 +12985,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6952519955296391024}
   - component: {fileID: 6097340004564587706}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: RightArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13032,7 +13033,7 @@ GameObject:
   - component: {fileID: 5050364253566607787}
   - component: {fileID: 2481539485526551064}
   - component: {fileID: 6914664275299698345}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: HealthCollider (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13078,7 +13079,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8548254330395467546}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.2
   m_Height: 0.8850747
@@ -13095,7 +13096,7 @@ GameObject:
   - component: {fileID: 7289162804572404346}
   - component: {fileID: 362800508575658953}
   - component: {fileID: 2999657922565029046}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: LowerBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13141,7 +13142,7 @@ MonoBehaviour:
   Itterations: 1
   maxScale: 2
   Visualise: 0
-  animateScale: 1
+  canAnimateScale: 1
 --- !u!114 &2999657922565029046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13166,7 +13167,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5679229485779384368}
   - component: {fileID: 23698491}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: RightFoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13212,7 +13213,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6517679504290930881}
   - component: {fileID: 568950690226857779}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: StreamingVisuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13261,7 +13262,7 @@ GameObject:
   - component: {fileID: 8487819297478372720}
   - component: {fileID: 629245839683704605}
   - component: {fileID: 9007597136107870179}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: HealthCollider (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13307,7 +13308,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9014339807594824026}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.4
   m_Height: 1.0537361
@@ -13323,7 +13324,7 @@ GameObject:
   m_Component:
   - component: {fileID: 394859505473957453}
   - component: {fileID: 23698498}
-  m_Layer: 11
+  m_Layer: 16
   m_Name: LeftUpLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}

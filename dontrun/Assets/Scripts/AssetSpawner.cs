@@ -102,7 +102,7 @@ public class AssetSpawner : MonoBehaviour
                 hit.collider.gameObject.layer != 25) // floor
                 continue;
 
-            print("Raycasted to GO " + hit.collider.gameObject.name + ". Layer " + hit.collider.gameObject.layer + ". Hit normal: " + hit.normal);
+            //print("Raycasted to GO " + hit.collider.gameObject.name + ". Layer " + hit.collider.gameObject.layer + ". Hit normal: " + hit.normal);
 
             var normalRotation = Quaternion.LookRotation(hit.normal);
             go.transform.rotation = normalRotation;
@@ -112,6 +112,8 @@ public class AssetSpawner : MonoBehaviour
         }
 
         go.transform.position = finalPosition;
+
+        StartCoroutine(DynamicObstaclesManager.instance.CreateGameObjectAnimated(go));
 
         PropController newProp = go.GetComponent<PropController>();
         LevelGenerator.instance.propsInGame.Add(newProp);

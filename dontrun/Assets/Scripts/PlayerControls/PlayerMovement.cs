@@ -20,9 +20,9 @@ namespace PlayerControls
         public float _z = 0;
 
         [Header("Noise")] 
-        public float walkNoiseDistance = 10;
-        public float runNoiseDistance = 50;
-        public float dashNoiseDistance = 30;
+        public float walkNoiseDistance = 5;
+        public float runNoiseDistance = 20;
+        public float dashNoiseDistance = 10;
         
         public int dashDamage = 100;
         public float dashDamageSelf = 50;
