@@ -1817,8 +1817,7 @@ public class HealthController : MonoBehaviour, IUpdatable
                     if (mobPartsController.anim)
                         mobPartsController.anim.SetTrigger("Damaged");
 
-                    //if (part && health < healthMax * 0.5f && Random.value > 0.5f)
-                    if (part)
+                    if (part && Random.value > 0.5f)
                     {
                         mobPartsController.KillBodyPart(part);
                     }
