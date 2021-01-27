@@ -12,6 +12,8 @@ public class MobAudioManager : MonoBehaviour
     public AudioSource damageAu;
     public AudioSource resurrectAu;
 
+
+    private int prevStep = 0;
     void Awake()
     {
         if (SpawnController.instance) SpawnController.instance.mobAudioManagers.Add(this);
@@ -29,11 +31,15 @@ public class MobAudioManager : MonoBehaviour
             SpawnController.instance.mobAudioManagers.Remove(this);
     }
     
-    public void Step(int index)
+    public void Step()
     {
         // from anim,dont sync
-        steps[index].pitch = Random.Range(0.75f, 1.25f);
-        steps[index].Play();
+        steps[prevStep].pitch = Random.Range(0.75f, 1.25f);
+        steps[prevStep].Play();
+
+        prevStep++;
+        if (prevStep >= steps.Count)
+            prevStep = 0;
     }
 
     public void Resurrect()
@@ -161,7 +167,7 @@ public class MobAudioManager : MonoBehaviour
                 // damage
                 if (!damageAu.isPlaying)
                 {
-                    damageAu.pitch = Random.Range(0.75f, 1.25f);
+                    damageAu.pitch = Random.Range(0.25f, 0.75f);
                     damageAu.Play();   
                 }
                 break;

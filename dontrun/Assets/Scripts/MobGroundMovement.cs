@@ -67,6 +67,7 @@ public class MobGroundMovement : MonoBehaviour, IUpdatable
     public MobLifterController currentMobLifter;
     
     bool authorathive = true;
+    public bool rotateToTargetInUpdate = true;
 
 
     void Start()
@@ -157,11 +158,8 @@ public class MobGroundMovement : MonoBehaviour, IUpdatable
             if (coldModifier < 1)
                 coldModifier += Time.deltaTime / 5;
             
-            if (monsterState == State.Chase && target && agent.enabled)
+            if (rotateToTargetInUpdate && monsterState == State.Chase && target && agent.enabled)
             {
-                if (mobParts && mobParts.ikMonsterAnimator && mobParts.ikMonsterAnimator.agressive == false)
-                    mobParts.ikMonsterAnimator.ToggleAggressiveMeshes(true);
-
                 if (Vector3.Distance(transform.position, target.transform.position) < agent.stoppingDistance)
                 {
                     Vector3 direction = (target.transform.position - transform.position).normalized;
@@ -171,11 +169,12 @@ public class MobGroundMovement : MonoBehaviour, IUpdatable
                     newRot.z = 0;
                     lookRotation.eulerAngles = newRot;
                     transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 360);
+                    /*
+                    if (mobParts.ikMonsterAnimator.animate == false)
+                        mobParts.ikMonsterAnimator.SetAnimate(true);*/
                 }
                 //agent.speed = Mathf.Lerp(agent.speed, targetSpeed * coldModifier, 2 * Time.deltaTime);   
             }
-            else if (monsterState != State.Chase && mobParts && mobParts.ikMonsterAnimator && mobParts.ikMonsterAnimator.agressive == true)
-                mobParts.ikMonsterAnimator.ToggleAggressiveMeshes(false);
 
             if (agent)
             {
@@ -221,7 +220,10 @@ public class MobGroundMovement : MonoBehaviour, IUpdatable
         {
             mobParts.anim.SetBool(peacefulString, false);
             if (mobParts.simpleWalker == false || mobParts.simpleWalkerString != chaseString)
-                mobParts.anim.SetBool(chaseString, true);   
+                mobParts.anim.SetBool(chaseString, true);  
+            
+            if (mobParts.ikMonsterAnimator)
+                mobParts.ikMonsterAnimator.SetAnimate(true); 
         }
         
         //targetSpeed += Random.Range(0, targetSpeed);
@@ -515,10 +517,14 @@ public class MobGroundMovement : MonoBehaviour, IUpdatable
                         if (Vector3.Distance(agent.destination, transform.position) > agent.stoppingDistance)
                         {
                             mobParts.anim.SetBool(chaseString, true);
+                            if (mobParts.ikMonsterAnimator)
+                                mobParts.ikMonsterAnimator.SetAnimate(true);
                         }
                         else
                         {
                             mobParts.anim.SetBool(chaseString, false);
+                            if (mobParts.ikMonsterAnimator)
+                                mobParts.ikMonsterAnimator.SetAnimate(false);
                         }   
                     }
                 }   
@@ -569,6 +575,10 @@ public class MobGroundMovement : MonoBehaviour, IUpdatable
                 }                        
                 if (mobParts.simpleWalker == false || mobParts.simpleWalkerString != chaseString)
                     mobParts.anim.SetBool(chaseString, true);
+                
+                if (mobParts.ikMonsterAnimator)
+                    mobParts.ikMonsterAnimator.SetAnimate(true);
+                
                 mobParts.anim.SetBool(peacefulString, false);   
             }
             
@@ -645,6 +655,9 @@ public class MobGroundMovement : MonoBehaviour, IUpdatable
                 {
                     if (mobParts.simpleWalker == false || mobParts.simpleWalkerString != chaseString)
                         mobParts.anim.SetBool(chaseString, true);
+                    
+                    if (mobParts.ikMonsterAnimator)
+                        mobParts.ikMonsterAnimator.SetAnimate(true);
                     targetSpeed = levels[GetLevel()].chaseSpeed;
                 }
 
@@ -782,6 +795,10 @@ public class MobGroundMovement : MonoBehaviour, IUpdatable
         mobAu.IdleAmbient();
         if (mobParts.simpleWalker == false || mobParts.simpleWalkerString != chaseString)
             mobParts.anim.SetBool(chaseString, false);
+        
+        if (mobParts.ikMonsterAnimator)
+            mobParts.ikMonsterAnimator.SetAnimate(false);
+        
         targetSpeed = levels[GetLevel()].idleSpeed;
         hideAfterTimeCoroutine = null;
     }

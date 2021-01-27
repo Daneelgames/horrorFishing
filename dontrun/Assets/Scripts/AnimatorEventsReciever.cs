@@ -15,7 +15,7 @@ public class AnimatorEventsReciever : MonoBehaviour
     
     public void MobStep(int index)
     {
-        mobAu.Step(index);
+        mobAu.Step();
     }
     
     public void PlayShotParticle()

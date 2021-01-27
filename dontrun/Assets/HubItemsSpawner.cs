@@ -66,12 +66,13 @@ public class HubItemsSpawner : MonoBehaviour
         
         //return;
         
+        /*
         if (strangerWomanSpawned == null)
         {
             strangerWomanSpawned = Instantiate(monstersSpawners[1].monstersToSpawn[0],
                 GetPositionNearSpawner(monstersSpawners[1].transform.position),
                 monstersSpawners[1].transform.rotation);
-        }
+        }*/
         
         #region Quest 0. Shoes on beach
 

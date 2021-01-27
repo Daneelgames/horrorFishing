@@ -67,7 +67,7 @@ public class HealthController : MonoBehaviour, IUpdatable
     public MobHideInCorners mobHideInCorners;
     public MobPartsController mobPartsController;
     public MobBombBehaviour bombBehaviour;
-    public List<MobMeleeAttack> mobMeleeAttacks;
+    public MobMeleeAttack mobMeleeAttack;
     public MobAudioManager mobAudio;
     public MobDeerActivator deerActivator;
     public MobProjectileShooter mps;
@@ -174,13 +174,9 @@ public class HealthController : MonoBehaviour, IUpdatable
             mobGroundMovement.hc = this;
         if (mobJumperMovement)
             mobJumperMovement.hc = this;
-        if (mobMeleeAttacks.Count > 0)
+        if (mobMeleeAttack)
         {
-            for (var index = 0; index < mobMeleeAttacks.Count; index++)
-            {
-                var mobMeleeAttack = mobMeleeAttacks[index];
-                mobMeleeAttack.hc = this;
-            }
+            mobMeleeAttack.hc = this;
         }
         if (mobPartsController)
             mobPartsController.hc = this;
@@ -1703,6 +1699,8 @@ public class HealthController : MonoBehaviour, IUpdatable
                 }
             }
 
+            
+            /*
             if (playerNetworkDummyController)
             {
                 if (effect >= 0)
@@ -1741,6 +1739,7 @@ public class HealthController : MonoBehaviour, IUpdatable
                 }
                 playerNetworkDummyController.DummyHealthChanged(-dmg, effect);   
             }
+            */
             
             if (mobGroundMovement)
             {
@@ -1817,6 +1816,12 @@ public class HealthController : MonoBehaviour, IUpdatable
                 {
                     if (mobPartsController.anim)
                         mobPartsController.anim.SetTrigger("Damaged");
+
+                    //if (part && health < healthMax * 0.5f && Random.value > 0.5f)
+                    if (part)
+                    {
+                        mobPartsController.KillBodyPart(part);
+                    }
                 }
 
                 damageCooldown = damageCooldownMax;
@@ -1841,7 +1846,7 @@ public class HealthController : MonoBehaviour, IUpdatable
 
     IEnumerator NpcInteractorSetActive()
     {
-        if (!mobGroundMovement && !mobJumperMovement && mobMeleeAttacks.Count <= 0 && !mobHideInCorners) 
+        if (!mobGroundMovement && !mobJumperMovement && mobMeleeAttack == null && !mobHideInCorners) 
             yield return new WaitForSeconds(5);
         else
         {
@@ -2009,13 +2014,9 @@ public class HealthController : MonoBehaviour, IUpdatable
                 mobGroundMovement.Death();
             }
 
-            if (mobMeleeAttacks.Count > 0)
+            if (mobMeleeAttack)
             {
-                for (var index = 0; index < mobMeleeAttacks.Count; index++)
-                {
-                    var mobMeleeAttack = mobMeleeAttacks[index];
-                    mobMeleeAttack.Death();
-                }
+                mobMeleeAttack.Death();
             }
 
             if (mobHideInCorners)
@@ -2053,7 +2054,7 @@ public class HealthController : MonoBehaviour, IUpdatable
             if (door)
                 door.DoorDestroyed();
 
-            if (mobGroundMovement || mobMeleeAttacks.Count > 0 || mobHideInCorners || mobJumperMovement)
+            if (mobGroundMovement || mobMeleeAttack || mobHideInCorners || mobJumperMovement)
             {
                 SpawnController.instance.mobsInGame.Remove(this);
                 SpawnController.instance.mobsInGameStatic.Remove(this);

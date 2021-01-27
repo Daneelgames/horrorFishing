@@ -125,10 +125,11 @@ public class DynamicObstaclesManager : MonoBehaviour
 
             if (sc.mobsInGame.Count < enemiesSpawnedMax)
             {
-                if (Random.value > 0.001f)
+                if (Random.value > 0.25f)
                     spawnPosition = GetPositionAroundPoint(pm.transform.position, false);
                 else
                     spawnPosition = GetPositionAroundPoint(pm.transform.position + pm.movementTransform.forward * distanceToDestroy, true);
+                
                 if (Vector3.Distance(spawnPosition, pm.transform.position) > 5)
                     AssetSpawner.instance.Spawn(sc.enemiesReferences[Random.Range(0, sc.enemiesReferences.Count)], spawnPosition, AssetSpawner.ObjectType.Mob);
             }
@@ -152,6 +153,9 @@ public class DynamicObstaclesManager : MonoBehaviour
     {
         float t = 0;
         float tt = 0.5f;
+        if (MouseLook.instance.PositionIsVisibleToPlayer(go.transform.position))
+            tt = Random.Range(1, 5);
+        
         while (t < tt)
         {
             go.transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, t / tt);

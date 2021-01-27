@@ -43,7 +43,6 @@ public class MobDamageArea : MonoBehaviour
     {
         while (true)
         {
-
             if (mobAttack != null && mobAttack.gameObject.activeInHierarchy)
             {
                 var distance = 1000f;
@@ -201,7 +200,7 @@ public class MobDamageArea : MonoBehaviour
 
     IEnumerator StartAttack()
     {
-        yield return new WaitForSeconds(Random.Range(mobAttack.levels[Mathf.Clamp(mobAttack.mobParts.level, 0, mobAttack.levels.Count-1)].minimumAttackDelay, mobAttack.levels[Mathf.Clamp(mobAttack.mobParts.level, 0, mobAttack.levels.Count-1)].maximumAttackDelay));
+        yield return new WaitForSeconds(0.5f);
         mobAttack.Attack();
         mobAttack.Cooldown();
         atackCoroutine = null;

@@ -6,6 +6,8 @@ public class MobCastleBehaviour : MonoBehaviour
 {
     public List<MobMeleeAttack> meleeAttacks;
     private bool attacking = false;
+    
+    /*
     public void StartAttack(MobMeleeAttack meleeAttack)
     {
         if (!attacking)
@@ -31,5 +33,5 @@ public class MobCastleBehaviour : MonoBehaviour
             else 
                 m.damageArea.gameObject.SetActive(false);
         }   
-    }
+    }*/
 }

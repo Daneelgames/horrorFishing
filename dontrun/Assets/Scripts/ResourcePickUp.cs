@@ -17,27 +17,20 @@ public class ResourcePickUp : MonoBehaviour
 
     public QuestItemController questItem;
 
-    SpawnController spawner;
 
     private void Start()
     {
-        spawner = SpawnController.instance;
-        
-        /*
-        if (resourceType == ItemsList.ResourceType.Key || resourceType == ItemsList.ResourceType.Skill)
-            transform.parent = null;
-            */
-        
-        //StartCoroutine(CheckIfOutsideTheLevel());
+        StartCoroutine(SetLossyScale());
     }
 
-    IEnumerator CheckIfOutsideTheLevel()
+    IEnumerator SetLossyScale()
     {
         while (true)
         {
-            yield return new WaitForSeconds(3);
-            if (transform.position.y < -100)
-                transform.position = spawner.spawners[Random.Range(0, spawner.spawners.Count)].transform.position + Vector3.up;
+            yield return new WaitForSeconds(1);
+            transform.localScale = Vector3.one;
+            transform.localScale = new Vector3 (1/transform.lossyScale.x, 1/transform.lossyScale.y, 1/transform.lossyScale.z);
         }
+        // ReSharper disable once IteratorNeverReturns
     }
 }

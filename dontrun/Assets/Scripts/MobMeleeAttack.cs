@@ -14,20 +14,12 @@ public class MobMeleeAttackStats
     public float attackCooldown = 2;
     public float attackCooldownMax = 3.5f;
     public float attackCooldownMin = 1.75f;
-    public float minimumAttackDelay = 0;
-    public float maximumAttackDelay = 3;
-    
-    public float swingTime = 0.5f;
-    public float attackTime = 0.5f;
-    public float returnTime = 1f;
-
-   
 }
+
 public class MobMeleeAttack : MonoBehaviour
 {
     public MobPartsController mobParts;
     public List<MobMeleeAttackStats> levels;
-    public MobDamageArea damageArea;
     public MobGroundMovement mobGroundMovement;
     public HealthController hc;
     
@@ -39,15 +31,10 @@ public class MobMeleeAttack : MonoBehaviour
 
     public StatussEffectsOnAttack effectsOnAttack;
 
-    private MobCastleBehaviour castle;
-
-    public FlexNetworkAnimator _flexNetworkAnimator;
-
     private void Start()
     {
         pm = PlayerMovement.instance;
         levels[GetLevel()].attackCooldown = 0;
-        castle = GetComponent<MobCastleBehaviour>();
         mobGroundMovement = GetComponent<MobGroundMovement>();
     }
     
@@ -72,9 +59,6 @@ public class MobMeleeAttack : MonoBehaviour
     {
         if (!hc.peaceful)
         {
-            if (castle)
-                castle.StartAttack(this);
-                
             if (attackCoroutine != null && gameObject.activeInHierarchy)
                 StopCoroutine(attackCoroutine);
             attackCoroutine = StartCoroutine(AttackOverTime());
@@ -89,6 +73,9 @@ public class MobMeleeAttack : MonoBehaviour
 
     public IEnumerator AttackOverTime()
     {
+        yield break;
+        
+        /*
         if (hc.mobPartsController)
         {
             if (mobGroundMovement && mobGroundMovement.agent && mobGroundMovement.agent.enabled)
@@ -117,7 +104,7 @@ public class MobMeleeAttack : MonoBehaviour
             
             if (castle)
                 castle.StopAttack(this);
-        }
+        }*/
     }
 
     public void StopAttackAnimation()
@@ -140,11 +127,5 @@ public class MobMeleeAttack : MonoBehaviour
     {
         if (attackCoroutine != null)
             StopCoroutine(attackCoroutine);
-
-        damageArea.ToggleDangerous(false);
-        if (damageArea.coll)
-            damageArea.coll.enabled = false;
-        damageArea.enabled = false;
-        damageArea.gameObject.SetActive(false);
     }
 }

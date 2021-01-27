@@ -46,6 +46,5 @@ public class MobPartsSpawner : MonoBehaviour
 
             timeTemp -= spawnRate;
         }
-        mpc.ActivateMob();
     }
 }

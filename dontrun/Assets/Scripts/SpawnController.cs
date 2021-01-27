@@ -994,7 +994,6 @@ public class SpawnController : MonoBehaviour
 
     public void MobHearNoise(Vector3 noiseSource, float noiseDistance)
     {
-        print("mob hear noise lg generating " + LevelGenerator.instance.generating);
         
         if (LevelGenerator.instance.generating) return;
         
@@ -1305,6 +1304,7 @@ public class SpawnController : MonoBehaviour
         var newAmmo = Instantiate(item, spawnerNew.transform.position, Quaternion.identity);
         newAmmo.transform.eulerAngles = new Vector3(Random.Range(0,360), Random.Range(0,360),Random.Range(0,360));
         newAmmo.transform.parent = spawnerNew.transform;
+        newAmmo.transform.localPosition = Vector3.zero;
         newProp.spawnedObject = newAmmo;
     }
 
@@ -1786,7 +1786,7 @@ public class SpawnController : MonoBehaviour
         StopCoroutine(SpawnStartEnemies());
         for (int i = gm.units.Count - 1; i >= 0 ; i --)
         {
-            if (gm.units[i].mobGroundMovement || gm.units[i].mobMeleeAttacks.Count > 0 || gm.units[i].mobJumperMovement || gm.units[i].mobHideInCorners)
+            if (gm.units[i].mobGroundMovement || gm.units[i].mobMeleeAttack || gm.units[i].mobJumperMovement || gm.units[i].mobHideInCorners)
             {
                 gm.units[i].Damage(1000000, gm.units[i].transform.position + Vector3.up, gm.units[i].transform.position, null,
                     null,false,null,null,null, true);

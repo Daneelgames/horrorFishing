@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
 using Mirror;
+using PlayerControls;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.TextCore;
@@ -469,15 +471,23 @@ public class MobPartsController : MonoBehaviour
     void SpawnBlood(Vector3 bloodPosition, Vector3 damageOrigin)
     {
         GameObject newBlood = Instantiate(bloodFx, bloodPosition, Quaternion.identity);
+        /*
         if (GameManager.instance.bloodMist == 0)
-            Destroy(newBlood.transform.GetChild(0).gameObject);
+            Destroy(newBlood.transform.GetChild(0).gameObject);*/
         newBlood.transform.LookAt(damageOrigin);
     }
-
-    public void ActivateMob()
+    
+    public void KillBodyPart(MobBodyPart part)
     {
-        // ACTIVATE MOB
-        // this was used waaaay back for like a single day
+        if (part.ikTargets.Count == 0)
+            return;
+        
+        SpawnBlood(part.transform.position, PlayerMovement.instance.transform.position);
+        GameObject newBlood = Instantiate(hc.deathParticles.gameObject, part.transform.position, Quaternion.identity);
+        newBlood.transform.LookAt(PlayerMovement.instance.transform.position);
+        
+        part.transform.parent.localScale = Vector3.zero;
+        ikMonsterAnimator.RemoveIkTarget(part.ikTargets);
     }
     
     [ContextMenu("Get body parts in children")]
@@ -493,6 +503,26 @@ public class MobPartsController : MonoBehaviour
             }
         }
     }
+    [ContextMenu("Set Melee attack to bodyParts")]
+    void SetMeleeAttackToBodyParts()
+    {
+        if (!hc || !hc.mobMeleeAttack)
+            return;
+        
+        foreach (var part in bodyParts)
+        {
+            part.mobAttack = hc.mobMeleeAttack;
+        }
+    }
+    [ContextMenu("ToggleBodyPartsAsDangerous")]
+    void ToggleBodyPartsAsDangerous()
+    {
+        foreach (var part in bodyParts)
+        {
+            part.usedForAttack = !part.usedForAttack;
+        }
+    }
+    
 }
 
 [Serializable]

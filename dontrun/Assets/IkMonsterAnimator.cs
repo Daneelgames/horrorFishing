@@ -5,6 +5,7 @@ using UnityEngine.SubsystemsImplementation;
 
 public class IkMonsterAnimator : MonoBehaviour
 {
+    public HealthController hc;
     public List<Transform> groundContactBones = new List<Transform>();
 
     public List<Transform> removedGroundContactBones = new List<Transform>();
@@ -24,10 +25,7 @@ public class IkMonsterAnimator : MonoBehaviour
     Vector3 sideOffset = Vector3.right;
     float currentStepDelay = 0;
 
-    public bool agressive = false;
     public bool animate = true;
-    public List<GameObject> passiveMesh = new List<GameObject>();
-    public List<GameObject> agressiveMesh = new List<GameObject>();
     
     public List<CustomIKSolver> ikSolvers = new List<CustomIKSolver>();
     void Start()
@@ -55,6 +53,49 @@ public class IkMonsterAnimator : MonoBehaviour
         {
             ikSolvers[index].canAnimate = animate;
         }
+
+        if (animate)
+        {
+            StopAllCoroutines();
+            StartCoroutine(AnimateBody());
+            StartCoroutine(AnimateGroundContact());
+        }
+    }
+
+    public void RemoveIkTarget(List<CustomIKJoint> removedIkTargets)
+    {
+        for (int i = 0; i < removedIkTargets.Count; i++)
+        {
+            if (groundContactBones.Contains(removedIkTargets[i].transform))
+            {
+                groundContactBones.Remove(removedIkTargets[i].transform);
+            }
+            
+            if (removedGroundContactBones.Contains(removedIkTargets[i].transform))
+            {
+                removedGroundContactBones.Remove(removedIkTargets[i].transform);
+            }
+
+            if (armsBonesTargets.Contains(removedIkTargets[i].transform))
+                armsBonesTargets.Remove(removedIkTargets[i].transform);
+
+            if (removedIkTargets[i].transform == headBoneTarget)
+                headBoneTarget = null;
+        }
+
+        if (groundContactBones.Count == 0)
+        {
+            if (removedGroundContactBones.Count > 0)
+            {
+                groundContactBones.Add(removedGroundContactBones[Random.Range(0, removedGroundContactBones.Count)]);
+            }
+            else if (headBoneTarget)
+                groundContactBones.Add(headBoneTarget);
+            else
+                groundContactBones.Add(hipsBone);
+        }
+
+        InitBones();
     }
     
     public void RandomizePose()
@@ -89,25 +130,7 @@ public class IkMonsterAnimator : MonoBehaviour
             newOffset.y = Mathf.Clamp(newOffset.y, 0, 100);
             removedGroundContactBones[i].transform.position += newOffset;
         }
-    }
-
-    public void ToggleAggressiveMeshes(bool _aggressive)
-    {
-        agressive = _aggressive; 
-        for (var index = 0; index < agressiveMesh.Count; index++)
-        {
-            agressiveMesh[index].gameObject.SetActive(_aggressive);
-        }
-
-        for (var index = 0; index < passiveMesh.Count; index++)
-        {
-            passiveMesh[index].gameObject.SetActive(!_aggressive);
-        }
-
-        for (var index = 0; index < ikSolvers.Count; index++)
-        {
-            ikSolvers[index].canAnimate = _aggressive;
-        }
+        SetAnimate(false);
     }
 
     IEnumerator AnimateGroundContact()
@@ -154,6 +177,7 @@ public class IkMonsterAnimator : MonoBehaviour
         {
             while (animate == false)
             {
+                
                 yield return null;
             }
             currentStepDelay = stepDelay + Random.Range(-stepDelay, stepDelay) / 2;
@@ -170,7 +194,7 @@ public class IkMonsterAnimator : MonoBehaviour
         // ReSharper disable once IteratorNeverReturns
     }
 
-    private Vector3 tempNewStartForBone;
+    private Vector3 tempNewEndForBone;
     void MoveBody(Vector3 upDownDirection)
     {
         for (var index = 0; index < boneMoveCoroutines.Count; index++)
@@ -183,16 +207,10 @@ public class IkMonsterAnimator : MonoBehaviour
 
         for (int i = 0; i < removedGroundContactBones.Count; i++)
         {
-            /*
-            boneMoveCoroutines.Add(StartCoroutine(MoveBoneToPos(removedGroundContactBones[i], removedGroundContactBones[i].transform.localPosition,
-                removedGroundContactBones[i].transform.localPosition + upDownDirection * hipsMoveHeight + sideOffset)));
-                */
-            
-            tempNewStartForBone =
-                transform.position + new Vector3(Random.Range(-hipsMoveHeight,hipsMoveHeight), Random.Range(hipsMoveHeight / 2,hipsMoveHeight * 2), Random.Range(-hipsMoveHeight,hipsMoveHeight));
+            tempNewEndForBone = transform.position + new Vector3(Random.Range(-hipsMoveHeight,hipsMoveHeight), Random.Range(hipsMoveHeight / 5,hipsMoveHeight * 5), Random.Range(-hipsMoveHeight,hipsMoveHeight));
             
             boneMoveCoroutines.Add(StartCoroutine(MoveBoneToPos(removedGroundContactBones[i], removedGroundContactBones[i].transform.position,
-                tempNewStartForBone + upDownDirection * hipsMoveHeight + sideOffset)));
+                tempNewEndForBone + upDownDirection * hipsMoveHeight + sideOffset)));
         }
     }
     
@@ -227,25 +245,18 @@ public class IkMonsterAnimator : MonoBehaviour
     IEnumerator MoveGroundContactToPos(Transform bone, Vector3 startPos, Vector3 newPos)
     {
         float t = 0;
-        float smallerStepDelay = stepDelay / groundContactBones.Count / 2;
-        Vector3 stepUpPosition = newPos + Vector3.up * hipsMoveHeight * Random.Range(1f, 3f);;
+        float smallerStepDelay = stepDelay / groundContactBones.Count * Random.Range(0.5f, 2f);
+        Vector3 stepUpPosition = newPos + Vector3.up * hipsMoveHeight * Random.Range(2f, 5f);
+        Vector3 stepUpPositionCurrent = stepUpPosition;
         
         while (t < smallerStepDelay)
         {
             t += Time.deltaTime;
-            bone.transform.position = Vector3.Lerp(startPos, stepUpPosition , t / smallerStepDelay);
+            bone.transform.position = Vector3.Lerp(startPos, stepUpPositionCurrent , t / smallerStepDelay);
+            stepUpPositionCurrent = Vector3.Lerp(stepUpPosition, newPos , t / smallerStepDelay);
             yield return null;
         }
-
-        t = 0;
-        startPos = bone.transform.position;
-        
-        while (t < smallerStepDelay)
-        {
-            t += Time.deltaTime;
-            bone.transform.position = Vector3.Lerp(startPos, newPos, t / smallerStepDelay);
-            yield return null;
-        }
+        hc.mobAudio.Step();
     }
     
     [ContextMenu("RandomizeAngles")]
@@ -265,24 +276,30 @@ public class IkMonsterAnimator : MonoBehaviour
             }
         }
         
-        removedGroundContactBones.Add(hipsBone);
-        
-        if (Random.value > 0.9f)
-            groundContactBones.Add(headBoneTarget);
-        else
-            removedGroundContactBones.Add(headBoneTarget);
+        if (!removedGroundContactBones.Contains(hipsBone))
+            removedGroundContactBones.Add(hipsBone);
+
+        if (headBoneTarget)
+        {
+            if (Random.value > 0.9f && !groundContactBones.Contains(headBoneTarget))
+                groundContactBones.Add(headBoneTarget);
+            else if (!removedGroundContactBones.Contains(headBoneTarget))
+                removedGroundContactBones.Add(headBoneTarget);   
+        }
             
         for (int i = 0; i < armsBonesTargets.Count; i++)
         {
-            if (Random.value > 0.66f)
+            if (Random.value > 0.66f && !groundContactBones.Contains(armsBonesTargets[i]))
                 groundContactBones.Add(armsBonesTargets[i]);
-            else
+            else if (!removedGroundContactBones.Contains(armsBonesTargets[i]))
                 removedGroundContactBones.Add(armsBonesTargets[i]);
         }
         
         for (int i = 0; i < groundContactBones.Count; i++)
         {
             groundContactBones[i].transform.parent = null;
+            if (removedGroundContactBones.Contains(groundContactBones[i]))
+                removedGroundContactBones.Remove(groundContactBones[i]);
         }
     }
 }
