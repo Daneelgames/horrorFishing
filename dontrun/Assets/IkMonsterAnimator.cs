@@ -226,7 +226,7 @@ public class IkMonsterAnimator : MonoBehaviour
     {
         float t = 0;
         float tScaler = Random.Range(0.5f, 3);
-        newPos = new Vector3(newPos.x, Mathf.Clamp(newPos.y, transform.position.y, transform.position.y + 10), newPos.z);
+        newPos = new Vector3(newPos.x, Mathf.Clamp(newPos.y, transform.position.y, transform.position.y + 5), newPos.z);
         
         while (t < currentStepDelay)
         {

@@ -569,6 +569,13 @@ public class MobGroundMovement : MonoBehaviour, IUpdatable
                     targetSpeed = levels[GetLevel()].chaseSpeed * coldModifier;
                     lastKnownPlayerPosition = target.transform.position;
                     //lastKnownPlayerPosition.y = 0;
+                    
+                    NavMeshHit hit;
+                    if (NavMesh.SamplePosition(lastKnownPlayerPosition, out hit, 30.0f, NavMesh.AllAreas))
+                    {
+                        lastKnownPlayerPosition = hit.position;
+                    }   
+                    
                     path = new NavMeshPath();
                     agent.CalculatePath(lastKnownPlayerPosition, path);
                     agent.SetPath(path);

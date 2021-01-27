@@ -51,6 +51,9 @@ public class CustomIKSolver : MonoBehaviour {
         {
             for (int i = 0; i < Joints.Count; i++)
             {
+                if (Target == null)
+                    return;
+                
                 p = Ankle.transform.position;
                 j = Joints[i].transform.position;
                 r = Joints[i].transform.rotation;
