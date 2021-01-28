@@ -488,6 +488,27 @@ public class MobPartsController : MonoBehaviour
         
         part.transform.parent.localScale = Vector3.zero;
         ikMonsterAnimator.RemoveIkTarget(part.ikTargets);
+        StartCoroutine(RestoreKilledBodyPart(part));
+    }
+
+    IEnumerator RestoreKilledBodyPart(MobBodyPart part)
+    {
+        yield return new WaitForSeconds(Random.Range(10f, 60f));
+        
+        if (!gameObject.activeInHierarchy || !gameObject)
+            yield break;
+        
+        float t = 0;
+        float tt = Random.Range(1, 3);
+        
+        while (t < tt)
+        {
+            part.transform.parent.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, t / tt);
+            t += Time.deltaTime;
+            yield return null;
+        }
+        
+        ikMonsterAnimator.RestoreIkTarget(part.ikTargets);
     }
     
     [ContextMenu("Get body parts in children")]

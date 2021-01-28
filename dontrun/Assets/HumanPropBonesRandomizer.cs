@@ -26,6 +26,11 @@ namespace Assets
 
 
         public List<CustomIKSolver> IkSolvers;
+        
+        void Awake()
+        {
+            transform.localScale = Vector3.zero;
+        }
         void Start()
         {
             RandomizeBones();
@@ -81,7 +86,7 @@ namespace Assets
         }
     
         [ContextMenu("RandomizeAngles")]
-        void RandomizeBones()
+        public void RandomizeBones()
         {
             bonesEulearAnglesListTemp.Clear();
             groundContactBonesPositions.Clear();

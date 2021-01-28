@@ -137,6 +137,7 @@ public class AssetSpawner : MonoBehaviour
     {
         var sc = SpawnController.instance;
         sc.ProceedMob(go);
+        StartCoroutine(DynamicObstaclesManager.instance.CreateGameObjectAnimated(go));
     }
 
     void EnqueueSpawnForAfterInitialization(AssetReference assetReference, Vector3 newPos, ObjectType objectType)

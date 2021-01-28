@@ -171,6 +171,17 @@ public class WeaponController : MonoBehaviour
             }
         }
     }
+
+    void UseLadyShoe()
+    {
+        RaycastHit hit;
+        Physics.Raycast(playerMovement.cameraAnimator.transform.position, WeaponControls.instance.crosshair.transform.position - playerMovement.cameraAnimator.transform.position, out hit, 1000, layerMask);
+        if (hit.collider)
+        {
+            DynamicObstaclesManager.instance.CreatePlayersHumanProp(hit.point);
+            Instantiate(bulletImpact, hit.point, Quaternion.identity);
+        }
+    }
     
     public void Attack()
     {    
@@ -280,7 +291,10 @@ public class WeaponController : MonoBehaviour
 
         canAct = true;
     }
-    
+
+    private string meleeSwingString = "MeleeSwing";
+    private string meleeAttackString = "MeleeAttack";
+    private string meleeReturnString = "MeleeReturn";
     IEnumerator MeleeAttack(int attackVariation) // basic attack
     {
         canAct = false;
@@ -296,8 +310,8 @@ public class WeaponController : MonoBehaviour
         pac.PlaySwingSound(swingClip);
         damagedInOnHit.Clear();
 
-        weaponMovementAnim.SetBool("MeleeSwing", true);
-        playerMovement.cameraAnimator.SetBool("MeleeSwing", true);
+        weaponMovementAnim.SetBool(meleeSwingString, true);
+        playerMovement.cameraAnimator.SetBool(meleeSwingString, true);
         //durabilityDamaged = false;
         //crosshair.SetTrigger("MeleeSwing");
         yield return new WaitForSeconds(meleeSwingTime);
@@ -308,26 +322,29 @@ public class WeaponController : MonoBehaviour
         dangerous = true;
         playerMovement.ShotJiggle(stressAmount);
 
-        weaponMovementAnim.SetBool("MeleeSwing", false);
-        playerMovement.cameraAnimator.SetBool("MeleeSwing", false);
-        weaponMovementAnim.SetBool("MeleeAttack", true);
-        playerMovement.cameraAnimator.SetBool("MeleeAttack", true);
+        weaponMovementAnim.SetBool(meleeSwingString, false);
+        playerMovement.cameraAnimator.SetBool(meleeSwingString, false);
+        weaponMovementAnim.SetBool(meleeAttackString, true);
+        playerMovement.cameraAnimator.SetBool(meleeAttackString, true);
         //crosshair.SetTrigger("MeleeAttack");
         yield return new WaitForSeconds(meleeAttackTime);
+        if (weapon == WeaponPickUp.Weapon.LadyShoe)
+            UseLadyShoe();
+        
         attackingMelee = false;
 
         if (SpawnController.instance)
             SpawnController.instance.MobHearNoise(transform.position, noiseDistance);
         
         dangerous = false;
-        weaponMovementAnim.SetBool("MeleeAttack", false);
-        playerMovement.cameraAnimator.SetBool("MeleeAttack", false);
-        weaponMovementAnim.SetBool("MeleeReturn", true);
-        playerMovement.cameraAnimator.SetBool("MeleeReturn", true);
+        weaponMovementAnim.SetBool(meleeAttackString, false);
+        playerMovement.cameraAnimator.SetBool(meleeAttackString, false);
+        weaponMovementAnim.SetBool(meleeReturnString, true);
+        playerMovement.cameraAnimator.SetBool(meleeReturnString, true);
         //crosshair.SetTrigger("MeleeReturn");
         yield return new WaitForSeconds(meleeReturnTime);
-        weaponMovementAnim.SetBool("MeleeReturn", false);
-        playerMovement.cameraAnimator.SetBool("MeleeReturn", false);
+        weaponMovementAnim.SetBool(meleeReturnString, false);
+        playerMovement.cameraAnimator.SetBool(meleeReturnString, false);
         canAct = true;
     }
 

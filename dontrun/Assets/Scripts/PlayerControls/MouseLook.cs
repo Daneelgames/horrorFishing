@@ -98,7 +98,7 @@ public class MouseLook : MonoBehaviour
             if (crouchCoroutine != null)
                 StopCoroutine(crouchCoroutine);
             
-            crouchCoroutine = StartCoroutine(Crouch(1));
+            crouchCoroutine = StartCoroutine(Crouch(0.5f));
 
         }
         else if (!crouch && crouching)

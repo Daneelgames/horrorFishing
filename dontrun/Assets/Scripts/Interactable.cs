@@ -398,8 +398,10 @@ public class Interactable : MonoBehaviour,
         {
             ui.playerInteracted = true;
         }
-        //gameObject.SetActive(false);
-
+        
+        QuestManager.instance.CompleteQuest(weaponPickUp.completeQuestOnPickUp);
+        QuestManager.instance.StartQuest(weaponPickUp.startQuestOnPickUp);
+        
         if (GLNetworkWrapper.instance && GLNetworkWrapper.instance.coopIsActive)
         {
             //print(il.interactables.IndexOf(this));

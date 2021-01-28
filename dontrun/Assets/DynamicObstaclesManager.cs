@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Mirror.Examples.Chat;
 using NUnit.Framework;
 using PlayerControls;
 using UnityEngine;
@@ -7,6 +8,7 @@ using UnityEngine.AI;
 
 public class DynamicObstaclesManager : MonoBehaviour
 {
+    public int maximumPropsInGame = 30;
     public float handlePropsTimeMin = 1;
     public float handlePropsTimeMax = 5;
     
@@ -139,9 +141,12 @@ public class DynamicObstaclesManager : MonoBehaviour
     IEnumerator DestroyGameObjectAnimated(GameObject go)
     {
         float t = 0;
-        float tt = 0.5f;
+        float tt = Random.Range(1, 3);
         while (t < tt)
         {
+            if (go == null)
+                yield break;
+            
             go.transform.localScale = Vector3.Lerp(go.transform.localScale, Vector3.zero, t / tt);
             t += Time.deltaTime;
             yield return null;
@@ -151,19 +156,46 @@ public class DynamicObstaclesManager : MonoBehaviour
     
     public IEnumerator CreateGameObjectAnimated(GameObject go)
     {
+        if (LevelGenerator.instance.propsInGame.Count > maximumPropsInGame)
+            StartCoroutine(DestroyGameObjectAnimated(LevelGenerator.instance.propsInGame[0].gameObject));
+        
         float t = 0;
-        float tt = 0.5f;
-        if (MouseLook.instance.PositionIsVisibleToPlayer(go.transform.position))
-            tt = Random.Range(1, 5);
+        float tt = Random.Range(1, 3);
         
         while (t < tt)
         {
+            if (go == null)
+                yield break;
+            
             go.transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, t / tt);
             t += Time.deltaTime;
             yield return null;
         }
     }
 
+    public void CreatePlayersHumanProp(Vector3 pos)
+    {
+        bool foundProp = false;
+        if (lg.propsInGame.Count > 1)
+        {
+            var propTemp = lg.propsInGame[Random.Range(0, lg.propsInGame.Count)];
+            if (MouseLook.instance.PositionIsVisibleToPlayer(propTemp.transform.position) == false &&
+                Vector3.Distance(PlayerMovement.instance.transform.position, propTemp.transform.position) > 5)
+            {
+                foundProp = true;
+                propTemp.transform.localScale = Vector3.zero;
+                propTemp.transform.position = pos;
+                StartCoroutine(CreateGameObjectAnimated(propTemp.gameObject));
+                propTemp.humanPropBonesRandomizer.RandomizeBones();   
+            }
+        }
+        
+        if (!foundProp)
+        {
+            AssetSpawner.instance.Spawn(lg.propsReferences[Random.Range(0, lg.propsReferences.Count)], pos, AssetSpawner.ObjectType.Prop);
+        }
+    }
+    
     Vector3 GetPositionAroundPoint(Vector3 point, bool ignoreVisibility)
     {
         NavMeshHit hit;

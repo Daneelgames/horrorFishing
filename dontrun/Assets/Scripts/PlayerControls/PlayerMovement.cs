@@ -241,10 +241,10 @@ namespace PlayerControls
 
                 if (crouching)
                 {
-                    controller.height = 1;
-                    controller.center = Vector3.up * 0.5f;
-                    damagecollider.height = 1;
-                    damagecollider.center = Vector3.up * 0.5f;
+                    controller.height = 0.5f;
+                    controller.center = Vector3.up * 0.25f;
+                    damagecollider.height = 0.5f;
+                    damagecollider.center = Vector3.up * 0.25f;
                 }
                 else
                 {
@@ -455,7 +455,6 @@ namespace PlayerControls
             }
             else
             {
-                controller.stepOffset = 1f;
                 // MOVEMENT DIRECTION
                 ////////////////////
                 _move = movementTransform.right * _x + movementTransform.forward * _z;
@@ -466,7 +465,15 @@ namespace PlayerControls
                     movementStats.movementState = _move.magnitude < 0.3f ? MovementState.Idle : MovementState.Walking;
 
                 var crouchSpeedCoeff = 1f;
-                if (crouching) crouchSpeedCoeff = 0.33f;
+                if (crouching)
+                {
+                    crouchSpeedCoeff = 0.33f;
+                    controller.stepOffset = 0.5f;
+                }
+                else
+                {
+                    controller.stepOffset = 1f;
+                }
                 
                 if (!_grounded) _move /= 100; // FALLING
 

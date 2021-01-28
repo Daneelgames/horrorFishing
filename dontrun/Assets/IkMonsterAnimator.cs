@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using PlayerControls;
 using UnityEngine;
 using UnityEngine.SubsystemsImplementation;
 
@@ -28,6 +29,13 @@ public class IkMonsterAnimator : MonoBehaviour
     public bool animate = true;
     
     public List<CustomIKSolver> ikSolvers = new List<CustomIKSolver>();
+
+    public float distanceFromBoneToPlayerToBeAbleToAttack = 5;
+    
+    void Awake()
+    {
+        transform.localScale = Vector3.zero;
+    }
     void Start()
     {
         stepDelay += Random.Range(-stepDelay, stepDelay) / 2;
@@ -43,6 +51,12 @@ public class IkMonsterAnimator : MonoBehaviour
         
         StartCoroutine(AnimateBody());
         StartCoroutine(AnimateGroundContact());
+    }
+
+    private float limbsSpeedModifier = 1;
+    public float GetLimbsSpeedModifier()
+    {
+        return limbsSpeedModifier;
     }
 
     public void SetAnimate(bool a)
@@ -95,6 +109,19 @@ public class IkMonsterAnimator : MonoBehaviour
                 groundContactBones.Add(hipsBone);
         }
 
+        InitBones();
+    }
+
+    public void RestoreIkTarget(List<CustomIKJoint> restoredIkTargets)
+    {
+        for (int i = 0; i < restoredIkTargets.Count; i++)
+        {
+            if (!groundContactBones.Contains(restoredIkTargets[i].transform))
+            {
+                groundContactBones.Add(restoredIkTargets[i].transform);
+            }
+        }
+        
         InitBones();
     }
     
@@ -207,7 +234,10 @@ public class IkMonsterAnimator : MonoBehaviour
 
         for (int i = 0; i < removedGroundContactBones.Count; i++)
         {
-            tempNewEndForBone = transform.position + new Vector3(Random.Range(-hipsMoveHeight,hipsMoveHeight), Random.Range(hipsMoveHeight / 5,hipsMoveHeight * 5), Random.Range(-hipsMoveHeight,hipsMoveHeight));
+            if (Vector3.Distance(PlayerMovement.instance.transform.position, removedGroundContactBones[i].transform.position) <= distanceFromBoneToPlayerToBeAbleToAttack)
+                tempNewEndForBone = PlayerMovement.instance.transform.position + new Vector3(Random.Range(-hipsMoveHeight,hipsMoveHeight), Random.Range(hipsMoveHeight / 5,hipsMoveHeight * 5), Random.Range(-hipsMoveHeight,hipsMoveHeight));
+            else
+                tempNewEndForBone = transform.position + new Vector3(Random.Range(-hipsMoveHeight,hipsMoveHeight), Random.Range(hipsMoveHeight / 5,hipsMoveHeight * 5), Random.Range(-hipsMoveHeight,hipsMoveHeight));
             
             boneMoveCoroutines.Add(StartCoroutine(MoveBoneToPos(removedGroundContactBones[i], removedGroundContactBones[i].transform.position,
                 tempNewEndForBone + upDownDirection * hipsMoveHeight + sideOffset)));
@@ -302,5 +332,7 @@ public class IkMonsterAnimator : MonoBehaviour
             if (removedGroundContactBones.Contains(groundContactBones[i]))
                 removedGroundContactBones.Remove(groundContactBones[i]);
         }
+
+        limbsSpeedModifier = Mathf.Clamp(groundContactBones.Count * 0.25f, 0.1f, 1f);
     }
 }

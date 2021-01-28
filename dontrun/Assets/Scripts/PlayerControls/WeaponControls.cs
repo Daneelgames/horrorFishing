@@ -131,11 +131,12 @@ public class WeaponControls : MonoBehaviour
                 SwitchWeapon();
                 HideWeapon();
                 
+                /*
                 if (dropCooldown <= 0)
                 {
                     DropWeaponInput();
                     DropToolInput();   
-                }
+                }*/
             }
             
             ItemInHands();

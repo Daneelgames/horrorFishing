@@ -56,6 +56,7 @@ public class MobGroundMovement : MonoBehaviour, IUpdatable
 
     [Header("Speed scales by this")]
     public float coldModifier = 1;    
+    public float limbsModifier = 1;    
     
     public HealthController target;
 
@@ -98,7 +99,7 @@ public class MobGroundMovement : MonoBehaviour, IUpdatable
         if (authorathive)
         {
             targetSpeed = levels[GetLevel()].idleSpeed;
-            agent.speed = targetSpeed * coldModifier;   
+            agent.speed = targetSpeed * coldModifier * limbsModifier;   
             
             if (hc.peaceful) mobParts.anim.SetBool(peacefulString, true);
             else
@@ -157,6 +158,9 @@ public class MobGroundMovement : MonoBehaviour, IUpdatable
         {
             if (coldModifier < 1)
                 coldModifier += Time.deltaTime / 5;
+
+            if (mobParts.ikMonsterAnimator)
+                limbsModifier = mobParts.ikMonsterAnimator.GetLimbsSpeedModifier();
             
             if (rotateToTargetInUpdate && monsterState == State.Chase && target && agent.enabled)
             {
@@ -191,18 +195,18 @@ public class MobGroundMovement : MonoBehaviour, IUpdatable
         if (agent.baseOffset < newOffset - 0.05f)
         {
             // mob climb up
-            agent.speed = targetSpeed * coldModifier * 0.33f;
+            agent.speed = targetSpeed * coldModifier * limbsModifier * 0.33f;
             agent.baseOffset += Time.deltaTime * 5;   
         }
         else if (agent.baseOffset > newOffset + 0.05f)
         {
             // mob goes down
-            agent.speed = targetSpeed * coldModifier * 0.75f;
+            agent.speed = targetSpeed * coldModifier * limbsModifier * 0.75f;
             agent.baseOffset -= Time.deltaTime * 5;   
         }
         else
         {
-            agent.speed = Mathf.Lerp(agent.speed, targetSpeed * coldModifier, 2 * Time.deltaTime);   
+            agent.speed = Mathf.Lerp(agent.speed, targetSpeed * coldModifier * limbsModifier, 2 * Time.deltaTime);   
         } 
     }
 
@@ -566,7 +570,7 @@ public class MobGroundMovement : MonoBehaviour, IUpdatable
             {
                 if (target && agent.enabled)
                 {
-                    targetSpeed = levels[GetLevel()].chaseSpeed * coldModifier;
+                    targetSpeed = levels[GetLevel()].chaseSpeed * coldModifier * limbsModifier;
                     lastKnownPlayerPosition = target.transform.position;
                     //lastKnownPlayerPosition.y = 0;
                     

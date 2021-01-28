@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
+using Assets;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -24,6 +25,7 @@ public class PropController : MonoBehaviour
     public ParticleSystem swapParticles;
     public Interactable spawnedObject;
     private AsyncOperationHandle<GameObject> _asyncOperationHandle;
+    public HumanPropBonesRandomizer humanPropBonesRandomizer;
 
     void Start()
     {
