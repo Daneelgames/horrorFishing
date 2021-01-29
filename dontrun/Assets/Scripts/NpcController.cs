@@ -2378,11 +2378,11 @@ public class NpcController : MonoBehaviour
                 //ui.dialogueAnim.SetBool("Active", false);
             }
 
-            if (dialogues[currentDialog].questToStart >= 0)
+            if (dialogues[currentDialog].questToStart > 0)
             {
                 QuestManager.instance.StartQuest(dialogues[currentDialog].questToStart);
             }
-            if (dialogues[currentDialog].questToComplete >= 0)
+            if (dialogues[currentDialog].questToComplete > 0)
             {
                 QuestManager.instance.CompleteQuest(dialogues[currentDialog].questToComplete);
             }
@@ -2607,7 +2607,7 @@ public class NpcController : MonoBehaviour
                     
                     hc.mobPartsController.agent.enabled = true;
                     hc.inLove = true;
-                    QuestManager.instance.CompleteQuest(0);
+                    QuestManager.instance.CompleteQuest(1);
                     break;
                 
                 case Dialogue.DialogueEvent.DisarmTrap:

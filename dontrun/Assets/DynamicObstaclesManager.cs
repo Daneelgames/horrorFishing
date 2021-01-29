@@ -78,7 +78,7 @@ public class DynamicObstaclesManager : MonoBehaviour
 
             if (lg.propsInGame.Count < propsSpawnedMax)
             {
-                int propsAmountToSpawn = Random.Range(1, 10);
+                int propsAmountToSpawn = Random.Range(1, 4);
                 
                 for (int i = 0; i < propsAmountToSpawn; i++)
                 {
@@ -193,6 +193,28 @@ public class DynamicObstaclesManager : MonoBehaviour
         if (!foundProp)
         {
             AssetSpawner.instance.Spawn(lg.propsReferences[Random.Range(0, lg.propsReferences.Count)], pos, AssetSpawner.ObjectType.Prop);
+        }
+    }
+    
+    public void CreatePlayersHumanMob(Vector3 pos)
+    {
+        bool foundMob = false;
+        if (sc.mobsInGame.Count > 1)
+        {
+            var mobTemp = sc.mobsInGame[Random.Range(0, sc.mobsInGame.Count)];
+            if (MouseLook.instance.PositionIsVisibleToPlayer(mobTemp.transform.position) == false &&
+                Vector3.Distance(PlayerMovement.instance.transform.position, mobTemp.transform.position) > 5)
+            {
+                foundMob = true;
+                mobTemp.transform.localScale = Vector3.zero;
+                mobTemp.transform.position = pos;
+                StartCoroutine(CreateGameObjectAnimated(mobTemp.gameObject));
+            }
+        }
+        
+        if (!foundMob)
+        {
+            AssetSpawner.instance.Spawn(sc.enemiesReferences[Random.Range(0, sc.enemiesReferences.Count)], pos, AssetSpawner.ObjectType.Mob);
         }
     }
     

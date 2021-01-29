@@ -86,8 +86,11 @@ public class HubItemsSpawner : MonoBehaviour
 
                     shoesOnBeachSpawned = go;
                     
+                    // ladyshoe
+                    sc.InstantiateItem(itemSpawners[1].itemToSpawn, itemSpawners[1].transform.position, false); 
                 }
                 
+                /*
                 // spawn mob
                 if (shoeMimicsSpawned.Count == 0)
                 {
@@ -99,6 +102,7 @@ public class HubItemsSpawner : MonoBehaviour
                         shoeMimicsSpawned.Add(go);   
                     }
                 }
+                */
 
                 // spawn lady
                 if (ladyOnRoofSpawned == null)

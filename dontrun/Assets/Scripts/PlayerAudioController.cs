@@ -154,7 +154,7 @@ public class PlayerAudioController : MonoBehaviour
         }
     }
     
-    public void PlaySteps() // every frame
+    public void PlaySteps() // every frame 
     {
         pm = PlayerMovement.instance;
         currentStepTime += Time.deltaTime;

@@ -63,7 +63,7 @@ public class MobBodyPart : MonoBehaviour
 
                 }
                 
-                if (distance <= 30)
+                if (distance <= 50)
                 {
                     closeToPlayer = true;   
                 }

@@ -104,8 +104,11 @@ public class MobGroundMovement : MonoBehaviour, IUpdatable
             if (hc.peaceful) mobParts.anim.SetBool(peacefulString, true);
             else
             {
-                if (hc.npcInteractor) hc.npcInteractor.gameObject.SetActive(false);
+                if (hc.npcInteractor) 
+                    hc.npcInteractor.gameObject.SetActive(false);
+                
                 target = gm.player;
+                //target = gm.GetClosestUnit(transform.position, true, hc);
             
                 mobParts.anim.SetBool(peacefulString, false);   
             }

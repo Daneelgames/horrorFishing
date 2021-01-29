@@ -397,6 +397,8 @@ public class ItemsList : MonoBehaviour
 
     public void AddToBadReputation(float add)
     {
+        return;
+        
         if (!Mathf.Approximately(add, 0))
         {
             ui = UiManager.instance;

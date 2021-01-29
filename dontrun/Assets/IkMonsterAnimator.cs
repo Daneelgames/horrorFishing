@@ -34,7 +34,7 @@ public class IkMonsterAnimator : MonoBehaviour
     
     void Awake()
     {
-        transform.localScale = Vector3.zero;
+        //transform.localScale = Vector3.zero;
     }
     void Start()
     {
@@ -238,6 +238,7 @@ public class IkMonsterAnimator : MonoBehaviour
                 tempNewEndForBone = PlayerMovement.instance.transform.position + new Vector3(Random.Range(-hipsMoveHeight,hipsMoveHeight), Random.Range(hipsMoveHeight / 5,hipsMoveHeight * 5), Random.Range(-hipsMoveHeight,hipsMoveHeight));
             else
                 tempNewEndForBone = transform.position + new Vector3(Random.Range(-hipsMoveHeight,hipsMoveHeight), Random.Range(hipsMoveHeight / 5,hipsMoveHeight * 5), Random.Range(-hipsMoveHeight,hipsMoveHeight));
+                //tempNewEndForBone = transform.position + new Vector3(Random.Range(-hipsMoveHeight,hipsMoveHeight), Random.Range(hipsMoveHeight / 5,hipsMoveHeight * 5), Random.Range(-hipsMoveHeight,hipsMoveHeight));
             
             boneMoveCoroutines.Add(StartCoroutine(MoveBoneToPos(removedGroundContactBones[i], removedGroundContactBones[i].transform.position,
                 tempNewEndForBone + upDownDirection * hipsMoveHeight + sideOffset)));

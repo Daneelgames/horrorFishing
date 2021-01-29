@@ -563,7 +563,7 @@ namespace PlayerControls
             }
 
 
-            if (_move.magnitude > 0) 
+            if (_move.magnitude > 0 && _grounded) 
                 playerAudio.PlaySteps();
             
             // HEARTBEAT

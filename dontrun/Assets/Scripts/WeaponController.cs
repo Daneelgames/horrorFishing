@@ -179,6 +179,7 @@ public class WeaponController : MonoBehaviour
         if (hit.collider)
         {
             DynamicObstaclesManager.instance.CreatePlayersHumanProp(hit.point);
+            //DynamicObstaclesManager.instance.CreatePlayersHumanMob(hit.point);
             Instantiate(bulletImpact, hit.point, Quaternion.identity);
         }
     }

@@ -29,7 +29,7 @@ namespace Assets
         
         void Awake()
         {
-            transform.localScale = Vector3.zero;
+            //transform.localScale = Vector3.zero;
         }
         void Start()
         {
@@ -135,7 +135,7 @@ namespace Assets
         
             for (int i = 0; i < groundContactBones.Count; i++)
             {
-                var hits = Physics.RaycastAll(groundContactBones[i].position + Vector3.up * 100, Vector3.down, 500);
+                var hits = Physics.RaycastAll(groundContactBones[i].position + Random.insideUnitSphere * Random.Range(0, 10) + Vector3.up * 100, Vector3.down, 500);
                 for (var j = 0; j < hits.Length; j++)
                 {
                     var hit = hits[j];

@@ -61,6 +61,8 @@ public class QuestManager : MonoBehaviour
     
     public void CompleteQuest(int index)
     {
+        print("Try to complete quest with index " + index);
+        
         if (!activeQuestsIndexes.Contains(index))
             return;
         
