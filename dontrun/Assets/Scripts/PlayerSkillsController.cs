@@ -775,52 +775,28 @@ public class PlayerSkillsController : MonoBehaviour
         // random kiss effect
         float r = Random.Range(0, 100);
 
-        if (pm.hc.health < pm.hc.healthMax * 0.33f)
+        if (pm.hc.health < pm.hc.healthMax * 0.5f || r > 66)
         {
-            print("heal");
             pm.hc.Heal(pm.hc.healthMax / 3);
         }
-        else if (pm.hc.health < pm.hc.healthMax * 0.5f)
+        else if (r > 33)
         {
-            print("regen");
-            pm.hc.InstantRegen();
-        }
-        else if (pm.hc.wc.activeWeapon && pm.hc.wc.activeWeapon.durability < pm.hc.wc.activeWeapon.durabilityMax * 0.5f)
-        {
-            
-            print("fix weapons");
-            pm.hc.wc.activeWeapon.FixWeapon();
-               
-            if (pm.hc.wc.secondWeapon)
-                pm.hc.wc.secondWeapon.FixWeapon();
+            // spawn human props
+            int propsAmountToSpawn = Random.Range(1, 10);
                 
-            il.SaveWeapons();
-            ui.UpdateWeapons();
+            for (int i = 0; i < propsAmountToSpawn; i++)
+            {
+                DynamicObstaclesManager.instance.SpawnPropAround();
+            }
         }
         else
         {
-            if (r <= 0.2f)
+            // spawn mobs
+            int mobsAmountToSpawn = Random.Range(1, 10);
+                
+            for (int i = 0; i < mobsAmountToSpawn; i++)
             {
-                print("spread love");
-                pm.hc.usedTile.SpreadStatusEffect(StatusEffects.StatusEffect.InLove, 3, 1, 30, null);   
-            }
-            else if (r <= 0.4f)
-            {
-                var explosion = Instantiate(gm.player.wc.allTools[0].grenadeExplosion, pm.transform.position, Quaternion.identity);
-                explosion.DestroyEffect(true);
-            }
-            else if (r <= 0.6f)
-            {
-                print("spread regen");
-                pm.hc.usedTile.SpreadStatusEffect(StatusEffects.StatusEffect.HealthRegen, 2, 1, 90, null);
-            }
-            else if (r <= 0.8f)
-            {
-                AiDirector.instance.BreakLight(0);
-            }
-            else
-            {
-                SwapProps();
+                DynamicObstaclesManager.instance.SpawnMobAround();
             }
         }
     }

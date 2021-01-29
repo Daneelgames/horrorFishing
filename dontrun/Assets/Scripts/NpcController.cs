@@ -720,6 +720,67 @@ public class NpcController : MonoBehaviour
                     }
                 }
             }
+            else if (dialogues[currentDialog].dialogueEvent == Dialogue.DialogueEvent.Pray)
+            {
+                if (currentEventRepeat >= eventsRepeat)
+                {
+                    if (gm.language == 0)
+                        newPhrase = Translator.TranslateText(dialogues[currentDialog].doesntMetRequirementsPhrase);
+                    else if (gm.language == 1)
+                        newPhrase = Translator.TranslateText(dialogues[currentDialog].doesntMetRequirementsPhraseRu);
+                    else if (gm.language == 2)
+                        newPhrase = Translator.TranslateText(dialogues[currentDialog].doesntMetRequirementsPhraseEsp);
+                    else if (gm.language == 3)
+                        newPhrase = Translator.TranslateText(dialogues[currentDialog].doesntMetRequirementsPhraseGer);
+                    else if (gm.language == 4)
+                        newPhrase = Translator.TranslateText(dialogues[currentDialog].doesntMetRequirementsPhraseIT);
+                    else if (gm.language == 5)
+                        newPhrase = Translator.TranslateText(dialogues[currentDialog].doesntMetRequirementsPhraseSPBR);
+                    foreach (char c in newPhrase)
+                    {
+                        ui.dialoguePhrase.text += c;
+                        yield return new WaitForSeconds(speakDelay);
+                    }
+                }
+                else
+                {
+                    newPhrasePhrase = String.Empty;
+                    if (gm.language == 0)
+                        newPhrasePhrase = Translator.TranslateText(dialogues[currentDialog].phrases[currentLine]);
+                    else if (gm.language == 1)
+                        newPhrasePhrase = Translator.TranslateText(dialogues[currentDialog].phrasesRu[currentLine]);
+                    else if (gm.language == 2)
+                        newPhrasePhrase = Translator.TranslateText(dialogues[currentDialog].phrasesESP[currentLine]);
+                    else if (gm.language == 3)
+                        newPhrasePhrase = Translator.TranslateText(dialogues[currentDialog].phrasesGER[currentLine]);
+                    else if (gm.language == 4)
+                        newPhrasePhrase = Translator.TranslateText(dialogues[currentDialog].phrasesIT[currentLine]);
+                    else if (gm.language == 5)
+                        newPhrasePhrase = Translator.TranslateText(dialogues[currentDialog].phrasesSPBR[currentLine]);
+
+                    ui.dialoguePhrase.text = newPhrasePhrase;
+                    ui.dialogueChoice.text = newPhrase;
+
+                    choosing = true;
+                    if (gm.language == 0)
+                        newPhrase = Translator.TranslateText("Pray with him?");
+                    else if (gm.language == 1)
+                        newPhrase = Translator.TranslateText("Помолиться вместе с ним?");
+                    else if (gm.language == 2)
+                        newPhrase = Translator.TranslateText("Pray with him?");
+                    else if (gm.language == 3)
+                        newPhrase = Translator.TranslateText("Pray with him?");
+                    else if (gm.language == 4)
+                        newPhrase = Translator.TranslateText("Pray with him?");
+                    else if (gm.language == 5)
+                        newPhrase = Translator.TranslateText("Pray with him?");
+                    foreach (char c in newPhrase)
+                    {
+                        ui.dialogueChoice.text += c;
+                        yield return new WaitForSeconds(speakDelay);
+                    }
+                }
+            }
             else if (dialogues[currentDialog].dialogueEvent == Dialogue.DialogueEvent.MeatHole)
             {
                 if (eventsRepeat <= currentEventRepeat)
@@ -2610,6 +2671,24 @@ public class NpcController : MonoBehaviour
                     QuestManager.instance.CompleteQuest(1);
                     break;
                 
+                
+                case Dialogue.DialogueEvent.Pray:
+                    if(gm.language == 0)
+                        newPhraseChoice = Translator.TranslateText("You silently chanted a prayer. You don't know if someone heard it");
+                    else if (gm.language == 1)
+                        newPhraseChoice = Translator.TranslateText("Ты молча пропел молитву. Ты не знаешь, услышал ли тебя кто-либо");
+                    else if (gm.language == 2)
+                        newPhraseChoice = Translator.TranslateText("You silently chanted a prayer. You don't know if someone heard it");
+                    else if (gm.language == 3)
+                        newPhraseChoice = Translator.TranslateText("You silently chanted a prayer. You don't know if someone heard it");
+                    else if (gm.language == 4)
+                        newPhraseChoice = Translator.TranslateText("You silently chanted a prayer. You don't know if someone heard it");
+                    else if (gm.language == 5)
+                        newPhraseChoice = Translator.TranslateText("You silently chanted a prayer. You don't know if someone heard it");
+                    
+                    PlayerSkillsController.instance.KissHer();
+                    break;
+                
                 case Dialogue.DialogueEvent.DisarmTrap:
                     
                     var chance = 0.35f;
@@ -3624,7 +3703,7 @@ public class Dialogue
         OneLevelBack, GivePlayerWeapon, BuyAmmo, UpgradeWeapon, Warm, 
         KillQuest, ItemQuest, WeaponQuest, PoisonQuest, BleedQuest, FireQuest, 
         ReduceBadRep, DisarmTrap, JoinToxicCult, JoinFlamesCult, JoinBloodCult, JoinGoldCult,
-        KissHer, MeatHole, GiveCarl, BuyGoldenKey, Taxi, SetNpcInLove
+        KissHer, MeatHole, GiveCarl, BuyGoldenKey, Taxi, SetNpcInLove, Pray
     }
     public DialogueEvent dialogueEvent;
     public int eventCost = 10;

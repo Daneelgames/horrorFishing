@@ -211,7 +211,7 @@ public class HealthController : MonoBehaviour, IUpdatable
         if (wallTrap)
             wallTrap.hc = this;
         psc = PlayerSkillsController.instance;
-        ResetStatusEffects();
+        //ResetStatusEffects();
         
         if (npcInteractor) npcInteractor.hc = this;
         

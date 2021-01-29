@@ -127,7 +127,7 @@ public class MouseLook : MonoBehaviour
 
     void Update()
     {
-        if (!gm.paused && !pm.teleport && !gm.questWindow)
+        if (!gm.paused && !pm.teleport/* && !gm.questWindow*/)
         {
             if ((GLNetworkWrapper.instance && GLNetworkWrapper.instance.coopIsActive) || (hc.health > 0 && canControl)) 
             {
@@ -178,7 +178,7 @@ public class MouseLook : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (!gm.paused && !pm.teleport && !gm.questWindow)
+        if (!gm.paused && !pm.teleport /*&& !gm.questWindow*/)
         {
             if ((GLNetworkWrapper.instance && GLNetworkWrapper.instance.coopIsActive) || (hc.health > 0 && canControl)) 
             {

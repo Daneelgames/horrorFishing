@@ -82,18 +82,22 @@ public class DynamicObstaclesManager : MonoBehaviour
                 
                 for (int i = 0; i < propsAmountToSpawn; i++)
                 {
-                    if (Random.value > 0.001f)
-                        spawnPosition = GetPositionAroundPoint(pm.transform.position, false);
-                    else
-                        spawnPosition = GetPositionAroundPoint(pm.transform.position + pm.movementTransform.forward * distanceToDestroy, true);
-                
-                    if (Vector3.Distance(spawnPosition, pm.transform.position) > 5)
-                        AssetSpawner.instance.Spawn(lg.propsReferences[Random.Range(0, lg.propsReferences.Count)], spawnPosition, AssetSpawner.ObjectType.Prop);  
-                    
+                    SpawnPropAround();
                     yield return null;
                 }
             }
         }
+    }
+
+    public void SpawnPropAround()
+    {
+        if (Random.value > 0.3f)
+            spawnPosition = GetPositionAroundPoint(pm.transform.position, false);
+        else
+            spawnPosition = GetPositionAroundPoint(pm.transform.position + pm.movementTransform.forward * distanceToDestroy, true);
+                
+        if (Vector3.Distance(spawnPosition, pm.transform.position) > 5)
+            AssetSpawner.instance.Spawn(lg.propsReferences[Random.Range(0, lg.propsReferences.Count)], spawnPosition, AssetSpawner.ObjectType.Prop);  
     }
     
     IEnumerator HandleDynamicMobs()
@@ -127,15 +131,20 @@ public class DynamicObstaclesManager : MonoBehaviour
 
             if (sc.mobsInGame.Count < enemiesSpawnedMax)
             {
-                if (Random.value > 0.25f)
-                    spawnPosition = GetPositionAroundPoint(pm.transform.position, false);
-                else
-                    spawnPosition = GetPositionAroundPoint(pm.transform.position + pm.movementTransform.forward * distanceToDestroy, true);
-                
-                if (Vector3.Distance(spawnPosition, pm.transform.position) > 5)
-                    AssetSpawner.instance.Spawn(sc.enemiesReferences[Random.Range(0, sc.enemiesReferences.Count)], spawnPosition, AssetSpawner.ObjectType.Mob);
+                SpawnMobAround();
             }
         }
+    }
+
+    public void SpawnMobAround()
+    {
+        if (Random.value > 0.25f)
+            spawnPosition = GetPositionAroundPoint(pm.transform.position, false);
+        else
+            spawnPosition = GetPositionAroundPoint(pm.transform.position + pm.movementTransform.forward * distanceToDestroy, true);
+                
+        if (Vector3.Distance(spawnPosition, pm.transform.position) > 5)
+            AssetSpawner.instance.Spawn(sc.enemiesReferences[Random.Range(0, sc.enemiesReferences.Count)], spawnPosition, AssetSpawner.ObjectType.Mob); 
     }
 
     IEnumerator DestroyGameObjectAnimated(GameObject go)

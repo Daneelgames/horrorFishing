@@ -162,7 +162,9 @@ public class MobGroundMovement : MonoBehaviour, IUpdatable
             if (coldModifier < 1)
                 coldModifier += Time.deltaTime / 5;
 
-            if (mobParts.ikMonsterAnimator)
+            if (target.health < target.healthMax * 0.2f)
+                limbsModifier = 0.1f;
+            else if (mobParts.ikMonsterAnimator)
                 limbsModifier = mobParts.ikMonsterAnimator.GetLimbsSpeedModifier();
             
             if (rotateToTargetInUpdate && monsterState == State.Chase && target && agent.enabled)

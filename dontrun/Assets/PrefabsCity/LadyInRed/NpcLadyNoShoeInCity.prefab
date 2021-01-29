@@ -258,8 +258,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnedWithRoom: 0
   names:
-  - Rose
-  - "\u0420\u043E\u0437\u0430"
+  - Lady in Red
+  - "\u041B\u0435\u0434\u0438 \u0432 \u041A\u0440\u0430\u0441\u043D\u043E\u043C"
   player: 0
   health: 10
   healthMax: 10
@@ -345,6 +345,7 @@ MonoBehaviour:
   inLove: 0
   boss: 0
   bossStateChanger: {fileID: 0}
+  propController: {fileID: 0}
   mobKilledAchievementID: 
   cultist: 0
   mobGroundMovement: {fileID: 0}
@@ -354,7 +355,7 @@ MonoBehaviour:
   mobHideInCorners: {fileID: 0}
   mobPartsController: {fileID: 1706148349466751583}
   bombBehaviour: {fileID: 0}
-  mobMeleeAttacks: []
+  mobMeleeAttack: {fileID: 0}
   mobAudio: {fileID: 7359561233083650843}
   deerActivator: {fileID: 0}
   mps: {fileID: 0}
@@ -406,8 +407,10 @@ MonoBehaviour:
   level: 0
   mobType: 3
   agent: {fileID: 0}
+  ikMonsterAnimator: {fileID: 0}
   simpleWalker: 0
   simpleWalkerString: Chase
+  distanceThreshold: 0.1
   anim: {fileID: 1126101868597057343}
   bodyParts:
   - {fileID: 2703910602857446314}
@@ -416,7 +419,6 @@ MonoBehaviour:
   bloodFx: {fileID: 7296228066712574396, guid: 8079d28f804b3754fbfc1ce89ba21296, type: 3}
   drop: []
   dropPosition: {fileID: 1935999432339294978}
-  movementCollider: {fileID: 0}
   forceDropOnTile: 0
   animDamageByTrigger: 0
 --- !u!114 &7359561233083650843
@@ -5627,10 +5629,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canBeInteracted: 1
-  itemName: Rose
+  itemName: Lady in Red
   itemNames:
-  - Rose
-  - "\u0420\u043E\u0437\u0430"
+  - Lady in Red
+  - "\u041B\u0435\u0434\u0438 \u0432 \u041A\u0440\u0430\u0441\u043D\u043E\u043C"
   pickUp: {fileID: 0}
   ammoPickUp: {fileID: 0}
   weaponPickUp: {fileID: 0}
@@ -5962,6 +5964,9 @@ MonoBehaviour:
   au: {fileID: 0}
   deathParticle: {fileID: 0}
   hc: {fileID: 0}
+  usedForAttack: 0
+  mobAttack: {fileID: 0}
+  ikTargets: []
 --- !u!136 &669941791618448401
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -11596,7 +11601,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1ae892b86acd424c888e3f737f20f40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  streamingDistance: 50
   streamObjectAboveAnimator: 0
   childObjectToHide: []
 --- !u!1 &2399663424317032056
@@ -17586,7 +17590,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1ae892b86acd424c888e3f737f20f40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  streamingDistance: 50
   streamObjectAboveAnimator: 0
   childObjectToHide: []
 --- !u!1 &3930163144907548851
@@ -17693,6 +17696,9 @@ MonoBehaviour:
   au: {fileID: 0}
   deathParticle: {fileID: 0}
   hc: {fileID: 0}
+  usedForAttack: 0
+  mobAttack: {fileID: 0}
+  ikTargets: []
 --- !u!136 &2838670943767997626
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -19044,7 +19050,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1ae892b86acd424c888e3f737f20f40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  streamingDistance: 150
   streamObjectAboveAnimator: 1
   childObjectToHide:
   - {fileID: 5872533027044168581}

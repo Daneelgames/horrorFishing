@@ -625,7 +625,7 @@ public class ItemsList : MonoBehaviour
                 if (pickUp.questItemIndex >= 0 && !savedQuestItems.Contains(pickUp.questItemIndex))
                 {
                     savedQuestItems.Add(pickUp.questItemIndex);
-                    ui.UpdateJournalIcon();   
+                    //ui.UpdateJournalIcon();   
                 }
                 break;
         }
@@ -721,7 +721,7 @@ public class ItemsList : MonoBehaviour
         wc.PickUpWeapon(weaponPickUp);
         weaponsOnLevel.Remove(weaponPickUp);
         ui.UpdateAmmo();
-        ui.UpdateJournalIcon();
+        //ui.UpdateJournalIcon();
     }
 
     public void SaveWeapons()

@@ -666,19 +666,22 @@ public class GameManager : MonoBehaviour
         if (questWindow)
         {
             questWindow = false;
+            /*
             if (GLNetworkWrapper.instance == null || GLNetworkWrapper.instance.coopIsActive == false)
                 Time.timeScale = 1;
             Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+            Cursor.visible = false;*/
         }
         else
         {
             itemList.SaveWeapons();
             questWindow = true;
+            
+            /*
             if (GLNetworkWrapper.instance == null || GLNetworkWrapper.instance.coopIsActive == false)
                 Time.timeScale = 0;
             Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
+            Cursor.visible = true;*/
         }
         ui.ToggleQuestWindow();
     }

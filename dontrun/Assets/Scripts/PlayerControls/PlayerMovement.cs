@@ -152,7 +152,7 @@ namespace PlayerControls
 
         private void Update()
         {
-            if (hc.health > 0 && controller.enabled && !inTransport && !_gameManager.paused && !teleport && !_gameManager.questWindow)
+            if (hc.health > 0 && controller.enabled && !inTransport && !_gameManager.paused && !teleport/* && !_gameManager.questWindow*/)
             {
                 Movement();
             }

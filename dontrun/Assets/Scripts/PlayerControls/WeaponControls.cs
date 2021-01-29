@@ -120,7 +120,7 @@ public class WeaponControls : MonoBehaviour
 
     void Update()
     {
-        if (pm.hc.health > 0 && pm.controller.enabled && !gm.paused && !gm.questWindow && !gm.mementoWindow && (gm.lg == null || !gm.lg.generating))
+        if (pm.hc.health > 0 && pm.controller.enabled && !gm.paused /*&& !gm.questWindow */&& !gm.mementoWindow && (gm.lg == null || !gm.lg.generating))
         {
             if (!eatingWeapon)
             {
