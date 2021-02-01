@@ -8,19 +8,26 @@ using UnityEngine.AI;
 
 public class DynamicObstaclesManager : MonoBehaviour
 {
-    public int maximumPropsInGame = 30;
+    public List<DynamicObstaclesZone> zones;
+    public DynamicObstaclesZone closestZone;
+    
+    [Header("Global Settings")]
+    public int propsSpawnedMax = 10;
+    public int enemiesSpawnedMax = 10;
+    
+    public float distanceToDestroy = 30;
+    public float distanceToDestroyFar = 70;
+    
+    
+    [Header("Zone Settings")]
     public float handlePropsTimeMin = 1;
     public float handlePropsTimeMax = 5;
     
     public float handleEnemiesTimeMin = 1;
     public float handleEnemiesTimeMax = 30;
-    
-    public int propsSpawnedMax = 10;
-    public int enemiesSpawnedMax = 10;
-
-    public float distanceToDestroy = 30;
-    public float distanceToDestroyFar = 70;
     public float sphereSpawnRadius = 30;
+    
+
     
     private PlayerMovement pm;
     private SpawnController sc;
@@ -47,13 +54,29 @@ public class DynamicObstaclesManager : MonoBehaviour
     private Vector3 spawnPosition;
     private Vector3 spawnNormalDirection;
     private float distanceToObject = 0;
-    
+
+
+    void GetClosestZone()
+    {
+        float distance = 1000;
+        float newDist = 0;
+        for (int i = 0; i < zones.Count; i++)
+        {
+            newDist = Vector3.Distance(PlayerMovement.instance.transform.position, zones[i].transform.position);
+            if (newDist < distance)
+            {
+                distance = newDist;
+                closestZone = zones[i];
+            }
+        }
+    }
     
     IEnumerator HandleDynamicProps()
     {
         while (true)
         {
-            yield return new WaitForSeconds(Random.Range(handlePropsTimeMin, handlePropsTimeMax));
+            GetClosestZone();
+            yield return new WaitForSeconds(Random.Range(closestZone.handlePropsTimeMin, closestZone.handlePropsTimeMax));
             for (int i = lg.propsInGame.Count - 1; i >= 0; i--)
             {
                 var prop = lg.propsInGame[i];
@@ -91,25 +114,25 @@ public class DynamicObstaclesManager : MonoBehaviour
 
     public void SpawnPropAround()
     {
+        if (closestZone.propsReferences.Count == 0)
+            return;
+
         if (Random.value > 0.3f)
             spawnPosition = GetPositionAroundPoint(pm.transform.position, false);
         else
             spawnPosition = GetPositionAroundPoint(pm.transform.position + pm.movementTransform.forward * distanceToDestroy, true);
                 
         if (Vector3.Distance(spawnPosition, pm.transform.position) > 5)
-            AssetSpawner.instance.Spawn(lg.propsReferences[Random.Range(0, lg.propsReferences.Count)], spawnPosition, AssetSpawner.ObjectType.Prop);  
+            AssetSpawner.instance.Spawn(closestZone.propsReferences[Random.Range(0, lg.propsReferences.Count)], spawnPosition, AssetSpawner.ObjectType.Prop);  
     }
     
     IEnumerator HandleDynamicMobs()
     {
         while (true)
         {
-            while (WeaponControls.instance.activeWeapon == null)
-            {
-                yield return new WaitForSeconds(1);
-            }
+            GetClosestZone();
             
-            yield return new WaitForSeconds(Random.Range(handleEnemiesTimeMin, handleEnemiesTimeMax));
+            yield return new WaitForSeconds(Random.Range(closestZone.handleEnemiesTimeMin, closestZone.handleEnemiesTimeMax));
             for (int i = sc.mobsInGame.Count - 1; i >= 0; i--)
             {
                 var mob = sc.mobsInGame[i];
@@ -138,13 +161,16 @@ public class DynamicObstaclesManager : MonoBehaviour
 
     public void SpawnMobAround()
     {
+        if (closestZone.enemiesReferences.Count == 0)
+            return;
+        
         if (Random.value > 0.25f)
             spawnPosition = GetPositionAroundPoint(pm.transform.position, false);
         else
             spawnPosition = GetPositionAroundPoint(pm.transform.position + pm.movementTransform.forward * distanceToDestroy, true);
                 
         if (Vector3.Distance(spawnPosition, pm.transform.position) > 5)
-            AssetSpawner.instance.Spawn(sc.enemiesReferences[Random.Range(0, sc.enemiesReferences.Count)], spawnPosition, AssetSpawner.ObjectType.Mob); 
+            AssetSpawner.instance.Spawn(closestZone.enemiesReferences[Random.Range(0, sc.enemiesReferences.Count)], spawnPosition, AssetSpawner.ObjectType.Mob); 
     }
 
     IEnumerator DestroyGameObjectAnimated(GameObject go)
@@ -165,7 +191,7 @@ public class DynamicObstaclesManager : MonoBehaviour
     
     public IEnumerator CreateGameObjectAnimated(GameObject go)
     {
-        if (LevelGenerator.instance.propsInGame.Count > maximumPropsInGame)
+        if (LevelGenerator.instance.propsInGame.Count > propsSpawnedMax)
             StartCoroutine(DestroyGameObjectAnimated(LevelGenerator.instance.propsInGame[0].gameObject));
         
         float t = 0;
@@ -230,11 +256,11 @@ public class DynamicObstaclesManager : MonoBehaviour
     Vector3 GetPositionAroundPoint(Vector3 point, bool ignoreVisibility)
     {
         NavMeshHit hit;
-        var newPos = point + Random.insideUnitSphere * sphereSpawnRadius;
+        var newPos = point + Random.insideUnitSphere * closestZone.sphereSpawnRadius;
 
         for (int i = 0; i < 5; i++)
         {
-            if (NavMesh.SamplePosition(newPos, out hit, sphereSpawnRadius, NavMesh.AllAreas) && (ignoreVisibility || MouseLook.instance.PositionIsVisibleToPlayer(hit.position) == false))
+            if (NavMesh.SamplePosition(newPos, out hit, closestZone.sphereSpawnRadius, NavMesh.AllAreas) && (ignoreVisibility || MouseLook.instance.PositionIsVisibleToPlayer(hit.position) == false))
             {
                 return hit.position;
             }   

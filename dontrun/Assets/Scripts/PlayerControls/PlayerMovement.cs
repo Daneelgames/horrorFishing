@@ -164,7 +164,7 @@ namespace PlayerControls
             else
                 playerHead.position = transform.position;   
 
-            if (!teleport && controller.enabled && !inTransport && !_gameManager.paused && !_gameManager.questWindow)
+            if (!teleport && controller.enabled && !inTransport && !_gameManager.paused /* && !_gameManager.questWindow*/)
                 Gravity();
 
             if (ableToChooseRespawn)

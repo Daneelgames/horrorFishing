@@ -522,16 +522,23 @@ public class SpawnController : MonoBehaviour
         il = ItemsList.instance;
         wc = WeaponControls.instance;
 
-        if (Random.value >= 0.5f && wc.activeWeapon && wc.activeWeapon.weaponType != WeaponController.Type.Melee && il.ammoDataStorage.GetAmmoCount(wc.activeWeapon.weapon) <= 0)
+        if (Random.value >= 0.5f)
         {
-            int weaponIndex = 0;
-            if (wc.secondWeapon &&
-                wc.secondWeapon.weaponType != WeaponController.Type.Melee &&
-                il.ammoDataStorage.GetAmmoCount(gm.player.wc.activeWeapon.weapon) <= 0)
+            int weaponIndex = -1;
+            if (wc.activeWeapon && wc.activeWeapon.weaponType != WeaponController.Type.Melee &&
+                il.ammoDataStorage.GetAmmoCount(wc.activeWeapon.weapon) <= 0)
             {
-                if (Random.value > 0.5f) weaponIndex = 1;
+                weaponIndex = 0;
+            }
+            else if (wc.secondWeapon &&
+                wc.secondWeapon.weaponType != WeaponController.Type.Melee &&
+                il.ammoDataStorage.GetAmmoCount(wc.secondWeapon.weapon) <= 0)
+            {
+                weaponIndex = 1;
             }
 
+            if (weaponIndex == -1) return;
+            
             SpawnAdditionalAmmoOnProp(weaponIndex, newProp);
         }
     }

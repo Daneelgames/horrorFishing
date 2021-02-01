@@ -102,6 +102,7 @@ public class HealthController : MonoBehaviour, IUpdatable
     public TileController wallMasterTile;
     public TileController usedTile;
     public ParticleSystem deathParticles;
+    public List<ParticleSystem> deathParticlesMulti;
     private AudioSource deathAudioSource;
 
     private bool lastChance = true;
@@ -211,7 +212,7 @@ public class HealthController : MonoBehaviour, IUpdatable
         if (wallTrap)
             wallTrap.hc = this;
         psc = PlayerSkillsController.instance;
-        //ResetStatusEffects();
+        ResetStatusEffects();
         
         if (npcInteractor) npcInteractor.hc = this;
         
@@ -1910,10 +1911,14 @@ public class HealthController : MonoBehaviour, IUpdatable
 
         dead = true;
 
-        if (propController && propController.spawnedObject)
+        if (propController)
         {
-            propController.spawnedObject.ReleaseItemWithExplosion();   
-            propController.spawnedObject = null;   
+            if (propController.spawnedObject)
+            {
+                propController.spawnedObject.ReleaseItemWithExplosion();   
+                propController.spawnedObject = null;   
+            }   
+            
         }
         
         if (boss)
@@ -1924,10 +1929,18 @@ public class HealthController : MonoBehaviour, IUpdatable
             if (sa)
                 sa.UnlockSteamAchievement(mobKilledAchievementID);
         }
+
+        for (int i = 0; i < deathParticlesMulti.Count; i++)
+        {
+            deathParticlesMulti[i].transform.parent = null;
+            deathParticlesMulti[i].gameObject.SetActive(true);
+            deathParticlesMulti[i].Play();
+        }
         
         if (deathParticles)
         {
             deathParticles.transform.parent = null;
+            deathParticles.gameObject.SetActive(true);
             deathParticles.Play();
             if (deathAudioSource) deathAudioSource.Play();
         }

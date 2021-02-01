@@ -483,8 +483,6 @@ public class MobPartsController : MonoBehaviour
             return;
         
         SpawnBlood(part.transform.position, PlayerMovement.instance.transform.position);
-        GameObject newBlood = Instantiate(hc.deathParticles.gameObject, part.transform.position, Quaternion.identity);
-        newBlood.transform.LookAt(PlayerMovement.instance.transform.position);
         
         part.transform.parent.localScale = Vector3.zero;
         ikMonsterAnimator.RemoveIkTarget(part.ikTargets);

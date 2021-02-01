@@ -41,6 +41,7 @@ public class PropController : MonoBehaviour
         */
     }
 
+
     IEnumerator KinematicRigidbodies()
     {
         yield return new WaitForSeconds(5);
