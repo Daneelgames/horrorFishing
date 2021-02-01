@@ -26,8 +26,10 @@ public class DynamicObstaclesManager : MonoBehaviour
     public float handleEnemiesTimeMin = 1;
     public float handleEnemiesTimeMax = 30;
     public float sphereSpawnRadius = 30;
-    
 
+
+    [Header("Colors")] 
+    public Light mainLight;
     
     private PlayerMovement pm;
     private SpawnController sc;
@@ -49,6 +51,27 @@ public class DynamicObstaclesManager : MonoBehaviour
         
         StartCoroutine(HandleDynamicProps());
         StartCoroutine(HandleDynamicMobs());
+    }
+
+    private string skyColorString = "_Tint";
+    private Color skyTempColor;
+    private Color mainLightTempColor;
+    private Color fogTempColor;
+    void Update()
+    {
+        if (closestZone == null) return;
+
+        if (RenderSettings.skybox)
+        {
+            skyTempColor = Color.Lerp(RenderSettings.skybox.GetColor(skyColorString), closestZone.skyColor, Time.deltaTime / 10);
+            RenderSettings.skybox.SetColor(skyColorString, skyTempColor);   
+        }
+        
+        mainLightTempColor = Color.Lerp(mainLight.color, closestZone.mainLightColor, Time.deltaTime / 10);
+        mainLight.color = mainLightTempColor;
+        
+        fogTempColor = Color.Lerp(RenderSettings.fogColor, closestZone.fogColor, Time.deltaTime / 10);
+        RenderSettings.fogColor = fogTempColor;
     }
 
     private Vector3 spawnPosition;
@@ -123,7 +146,7 @@ public class DynamicObstaclesManager : MonoBehaviour
             spawnPosition = GetPositionAroundPoint(pm.transform.position + pm.movementTransform.forward * distanceToDestroy, true);
                 
         if (Vector3.Distance(spawnPosition, pm.transform.position) > 5)
-            AssetSpawner.instance.Spawn(closestZone.propsReferences[Random.Range(0, lg.propsReferences.Count)], spawnPosition, AssetSpawner.ObjectType.Prop);  
+            AssetSpawner.instance.Spawn(closestZone.propsReferences[Random.Range(0, closestZone.propsReferences.Count)], spawnPosition, AssetSpawner.ObjectType.Prop);  
     }
     
     IEnumerator HandleDynamicMobs()
@@ -170,7 +193,7 @@ public class DynamicObstaclesManager : MonoBehaviour
             spawnPosition = GetPositionAroundPoint(pm.transform.position + pm.movementTransform.forward * distanceToDestroy, true);
                 
         if (Vector3.Distance(spawnPosition, pm.transform.position) > 5)
-            AssetSpawner.instance.Spawn(closestZone.enemiesReferences[Random.Range(0, sc.enemiesReferences.Count)], spawnPosition, AssetSpawner.ObjectType.Mob); 
+            AssetSpawner.instance.Spawn(closestZone.enemiesReferences[Random.Range(0, closestZone.enemiesReferences.Count)], spawnPosition, AssetSpawner.ObjectType.Mob); 
     }
 
     IEnumerator DestroyGameObjectAnimated(GameObject go)
@@ -189,16 +212,19 @@ public class DynamicObstaclesManager : MonoBehaviour
         Destroy(go);
     }
     
-    public IEnumerator CreateGameObjectAnimated(GameObject go)
+    public IEnumerator CreateGameObjectAnimated(GameObject go, Vector3 targetPos)
     {
         if (LevelGenerator.instance.propsInGame.Count > propsSpawnedMax)
             StartCoroutine(DestroyGameObjectAnimated(LevelGenerator.instance.propsInGame[0].gameObject));
         
         float t = 0;
         float tt = Random.Range(1, 3);
+        go.transform.localScale = Vector3.zero;
+        go.transform.position = targetPos;
         
         while (t < tt)
         {
+            // ReSharper disable once ConditionIsAlwaysTrueOrFalse
             if (go == null)
                 yield break;
             
@@ -219,8 +245,8 @@ public class DynamicObstaclesManager : MonoBehaviour
             {
                 foundProp = true;
                 propTemp.transform.localScale = Vector3.zero;
-                propTemp.transform.position = pos;
-                StartCoroutine(CreateGameObjectAnimated(propTemp.gameObject));
+                propTemp.transform.position = pos + Vector3.up * 500;
+                StartCoroutine(CreateGameObjectAnimated(propTemp.gameObject, pos));
                 propTemp.humanPropBonesRandomizer.RandomizeBones();   
             }
         }
@@ -242,8 +268,8 @@ public class DynamicObstaclesManager : MonoBehaviour
             {
                 foundMob = true;
                 mobTemp.transform.localScale = Vector3.zero;
-                mobTemp.transform.position = pos;
-                StartCoroutine(CreateGameObjectAnimated(mobTemp.gameObject));
+                mobTemp.transform.position = pos + Vector3.up * 500;
+                StartCoroutine(CreateGameObjectAnimated(mobTemp.gameObject, pos));
             }
         }
         

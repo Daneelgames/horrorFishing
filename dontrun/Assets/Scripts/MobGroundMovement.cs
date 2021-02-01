@@ -793,7 +793,7 @@ public class MobGroundMovement : MonoBehaviour, IUpdatable
         sightDistanceCurrent = levels[Mathf.Clamp(gm.level.mobsLevel, 0, levels.Count - 1)].sightDistance / 2;
         if (!agent) 
             agent = GetComponent<NavMeshAgent>();
-        if (agent.enabled)
+        if (agent.enabled && agent.isOnNavMesh)
         {
             agent.isStopped = true;
         

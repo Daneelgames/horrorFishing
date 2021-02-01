@@ -52,7 +52,7 @@ public class AssetSpawner : MonoBehaviour
 
     void SpawnFromLoadedReference(AssetReference assetReference, Vector3 newPos, ObjectType objectType)
     {
-        assetReference.InstantiateAsync(newPos, Quaternion.identity).Completed 
+        assetReference.InstantiateAsync(newPos + Vector3.up * 500, Quaternion.identity).Completed 
             += (asyncOperationHandle) =>
         {
             if (spawnedAssets.ContainsKey(assetReference) == false)
@@ -64,11 +64,11 @@ public class AssetSpawner : MonoBehaviour
 
             if (objectType == ObjectType.Prop)
             {
-                ProceedProp(asyncOperationHandle.Result);
+                ProceedProp(asyncOperationHandle.Result, newPos);
             }
             else if (objectType == ObjectType.Mob)
             {
-                ProceedMob(asyncOperationHandle.Result);
+                ProceedMob(asyncOperationHandle.Result, newPos);
             }
             else if (objectType == ObjectType.Room)
             {
@@ -87,10 +87,10 @@ public class AssetSpawner : MonoBehaviour
         };
     }
 
-    void ProceedProp(GameObject go)
+    void ProceedProp(GameObject go, Vector3 targetPos)
     {
-        Vector3 finalPosition = go.transform.position;
-        go.transform.position += Vector3.up * 50;
+        Vector3 finalPosition = targetPos;
+        //go.transform.position += Vector3.up * 50;
         
         var hits = Physics.RaycastAll(finalPosition + Vector3.up, Vector3.down, 500);
         for (var index = 0; index < hits.Length; index++)
@@ -111,9 +111,9 @@ public class AssetSpawner : MonoBehaviour
             break;
         }
 
-        go.transform.position = finalPosition;
+        //go.transform.position = finalPosition;
 
-        StartCoroutine(DynamicObstaclesManager.instance.CreateGameObjectAnimated(go));
+        StartCoroutine(DynamicObstaclesManager.instance.CreateGameObjectAnimated(go, finalPosition));
 
         PropController newProp = go.GetComponent<PropController>();
         LevelGenerator.instance.propsInGame.Add(newProp);
@@ -133,11 +133,11 @@ public class AssetSpawner : MonoBehaviour
         }
     }
 
-    void ProceedMob(GameObject go)
+    void ProceedMob(GameObject go, Vector3 targetPos)
     {
         var sc = SpawnController.instance;
         sc.ProceedMob(go);
-        StartCoroutine(DynamicObstaclesManager.instance.CreateGameObjectAnimated(go));
+        StartCoroutine(DynamicObstaclesManager.instance.CreateGameObjectAnimated(go, targetPos));
     }
 
     void EnqueueSpawnForAfterInitialization(AssetReference assetReference, Vector3 newPos, ObjectType objectType)
