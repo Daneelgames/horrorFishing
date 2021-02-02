@@ -56,7 +56,8 @@ public class HubItemsSpawner : MonoBehaviour
         if (ladyOnRoofSpawned == null)
         {
             var go = Instantiate(npcSpawners[0].npcsToSpawn[0], npcSpawners[0].transform.position,
-                npcSpawners[0].transform.rotation);
+                npcSpawners[0].transform.rotation); 
+            Instantiate(npcSpawners[0].gameObjectToSpawn, npcSpawners[0].transform.position, npcSpawners[0].transform.rotation);
 
             ladyOnRoofSpawned = go;
             
