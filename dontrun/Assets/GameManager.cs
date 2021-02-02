@@ -38,8 +38,8 @@ public class GameManager : MonoBehaviour
     public List<HealthController> units = new List<HealthController>();
     public HealthController player;
     public float mouseSensitivity = 100;
-    public float mouseLookSpeed = 5;
-    public float mouseLookSpeedCurrent = 5;
+    public float mouseLookSpeed = 30;
+    public float mouseLookSpeedCurrent = 30;
 
     public int mouseInvert = 0;
     public float brightness = 0.25f;
@@ -1493,7 +1493,7 @@ public class GameManager : MonoBehaviour
 
     public void MouseSpeed(float v)
     {
-        mouseLookSpeed = v;
+        mouseLookSpeed = 30;
         mouseLookSpeedCurrent = mouseLookSpeed;
     }
     
