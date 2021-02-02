@@ -105,6 +105,7 @@ public class Interactable : MonoBehaviour,
         if (!door && !button && !transport && !npc && canvasParent)
         {
             canvasParent.parent = il.itemCanvasesParent;
+            canvasParent.localScale = Vector3.one;
         }
 
         if (rb)
