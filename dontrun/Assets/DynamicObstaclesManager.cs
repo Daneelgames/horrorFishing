@@ -43,7 +43,11 @@ public class DynamicObstaclesManager : MonoBehaviour
         instance = this;
     }
     
-    void Start()
+    private string skyColorString = "_Tint";
+    private Color skyTempColor;
+    private Color mainLightTempColor;
+    private Color fogTempColor;
+    IEnumerator Start()
     {
         pm = PlayerMovement.instance;
         sc = SpawnController.instance;
@@ -51,28 +55,41 @@ public class DynamicObstaclesManager : MonoBehaviour
         
         StartCoroutine(HandleDynamicProps());
         StartCoroutine(HandleDynamicMobs());
-    }
 
-    private string skyColorString = "_Tint";
-    private Color skyTempColor;
-    private Color mainLightTempColor;
-    private Color fogTempColor;
-    void Update()
-    {
-        if (closestZone == null) return;
-
-        if (RenderSettings.skybox)
+        while (closestZone == null)
         {
-            skyTempColor = Color.Lerp(RenderSettings.skybox.GetColor(skyColorString), closestZone.skyColor, Time.deltaTime / 10);
-            RenderSettings.skybox.SetColor(skyColorString, skyTempColor);   
+            yield return null;
         }
         
-        mainLightTempColor = Color.Lerp(mainLight.color, closestZone.mainLightColor, Time.deltaTime / 10);
-        mainLight.color = mainLightTempColor;
+        yield return null;
         
-        fogTempColor = Color.Lerp(RenderSettings.fogColor, closestZone.fogColor, Time.deltaTime / 10);
-        RenderSettings.fogColor = fogTempColor;
+        RenderSettings.skybox.SetColor(skyColorString, closestZone.skyColor);  
+        mainLight.color = closestZone.mainLightColor;
+        RenderSettings.fogColor = closestZone.fogColor;
+        
+        // MANAGE WEATHER
+        while (true)
+        {
+            yield return null;
+            if (closestZone == null)
+            {
+                continue;
+            }
+
+            if (RenderSettings.skybox)
+            {
+                skyTempColor = Color.Lerp(RenderSettings.skybox.GetColor(skyColorString), closestZone.skyColor, Time.deltaTime / 10);
+                RenderSettings.skybox.SetColor(skyColorString, skyTempColor);   
+            }
+        
+            mainLightTempColor = Color.Lerp(mainLight.color, closestZone.mainLightColor, Time.deltaTime / 10);
+            mainLight.color = mainLightTempColor;
+        
+            fogTempColor = Color.Lerp(RenderSettings.fogColor, closestZone.fogColor, Time.deltaTime / 10);
+            RenderSettings.fogColor = fogTempColor;
+        }
     }
+
 
     private Vector3 spawnPosition;
     private Vector3 spawnNormalDirection;
@@ -212,7 +229,7 @@ public class DynamicObstaclesManager : MonoBehaviour
         Destroy(go);
     }
     
-    public IEnumerator CreateGameObjectAnimated(GameObject go, Vector3 targetPos)
+    public IEnumerator CreateGameObjectAnimated(GameObject go, Vector3 targetPos, Vector3 targetScale)
     {
         if (LevelGenerator.instance.propsInGame.Count > propsSpawnedMax)
             StartCoroutine(DestroyGameObjectAnimated(LevelGenerator.instance.propsInGame[0].gameObject));
@@ -228,7 +245,7 @@ public class DynamicObstaclesManager : MonoBehaviour
             if (go == null)
                 yield break;
             
-            go.transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, t / tt);
+            go.transform.localScale = Vector3.Lerp(Vector3.zero, targetScale, t / tt);
             t += Time.deltaTime;
             yield return null;
         }
@@ -240,13 +257,14 @@ public class DynamicObstaclesManager : MonoBehaviour
         if (lg.propsInGame.Count > 1)
         {
             var propTemp = lg.propsInGame[Random.Range(0, lg.propsInGame.Count)];
+            var initialLocalScale = propTemp.transform.localScale;
             if (MouseLook.instance.PositionIsVisibleToPlayer(propTemp.transform.position) == false &&
                 Vector3.Distance(PlayerMovement.instance.transform.position, propTemp.transform.position) > 5)
             {
                 foundProp = true;
                 propTemp.transform.localScale = Vector3.zero;
                 propTemp.transform.position = pos + Vector3.up * 500;
-                StartCoroutine(CreateGameObjectAnimated(propTemp.gameObject, pos));
+                StartCoroutine(CreateGameObjectAnimated(propTemp.gameObject, pos, initialLocalScale));
                 
                 if (propTemp)
                     propTemp.humanPropBonesRandomizer.RandomizeBones();   
@@ -265,13 +283,14 @@ public class DynamicObstaclesManager : MonoBehaviour
         if (sc.mobsInGame.Count > 1)
         {
             var mobTemp = sc.mobsInGame[Random.Range(0, sc.mobsInGame.Count)];
+            var initialLocalScale = mobTemp.transform.localScale;
             if (MouseLook.instance.PositionIsVisibleToPlayer(mobTemp.transform.position) == false &&
                 Vector3.Distance(PlayerMovement.instance.transform.position, mobTemp.transform.position) > 5)
             {
                 foundMob = true;
                 mobTemp.transform.localScale = Vector3.zero;
                 mobTemp.transform.position = pos + Vector3.up * 500;
-                StartCoroutine(CreateGameObjectAnimated(mobTemp.gameObject, pos));
+                StartCoroutine(CreateGameObjectAnimated(mobTemp.gameObject, pos, initialLocalScale));
             }
         }
         

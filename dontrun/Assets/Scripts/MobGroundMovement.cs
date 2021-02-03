@@ -102,7 +102,7 @@ public class MobGroundMovement : MonoBehaviour, IUpdatable
             agent.speed = targetSpeed * coldModifier * limbsModifier;   
             
             if (hc.peaceful) mobParts.anim.SetBool(peacefulString, true);
-            else
+            else if (gm)
             {
                 if (hc.npcInteractor) 
                     hc.npcInteractor.gameObject.SetActive(false);
@@ -154,7 +154,7 @@ public class MobGroundMovement : MonoBehaviour, IUpdatable
 
     void IUpdatable.OnUpdate()
     {
-        if (GLNetworkWrapper.instance && GLNetworkWrapper.instance.coopIsActive && GLNetworkWrapper.instance.localPlayer.isServer == false)
+        if (!target || (GLNetworkWrapper.instance && GLNetworkWrapper.instance.coopIsActive && GLNetworkWrapper.instance.localPlayer.isServer == false))
             return;
 
         if (hc.health > 0 && gameObject.activeInHierarchy)
@@ -167,7 +167,7 @@ public class MobGroundMovement : MonoBehaviour, IUpdatable
             else if (mobParts.ikMonsterAnimator)
                 limbsModifier = mobParts.ikMonsterAnimator.GetLimbsSpeedModifier();
             
-            if (rotateToTargetInUpdate && monsterState == State.Chase && target && agent.enabled)
+            if (rotateToTargetInUpdate && monsterState == State.Chase && agent.enabled)
             {
                 if (Vector3.Distance(transform.position, target.transform.position) < agent.stoppingDistance)
                 {
@@ -413,6 +413,8 @@ public class MobGroundMovement : MonoBehaviour, IUpdatable
                     yield return new WaitForSeconds(2);
                 else
                     yield return new WaitForSeconds(1);
+                if (gm == null)
+                    yield break;
                 
                 if (!hc.npcInteractor || !hc.npcInteractor.gameObject.activeInHierarchy)
                 {

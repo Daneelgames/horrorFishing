@@ -154,7 +154,7 @@ public class HealthController : MonoBehaviour, IUpdatable
         {
             // dont send player to unit list in coop
         }
-        else
+        else if (gm)
         {
             gm.AddUnit(this);   
         }
@@ -244,8 +244,8 @@ public class HealthController : MonoBehaviour, IUpdatable
         }
         else
         {
-            if (canHear && propController == null)
-                SpawnController.instance.mobsInGame.Add(this);
+            if (sc && canHear && propController == null)
+                sc.mobsInGame.Add(this);
         }
     }
 
@@ -1930,8 +1930,13 @@ public class HealthController : MonoBehaviour, IUpdatable
                 sa.UnlockSteamAchievement(mobKilledAchievementID);
         }
 
-        for (int i = 0; i < deathParticlesMulti.Count; i++)
+        for (int i = deathParticlesMulti.Count - 1; i >= 0; i--)
         {
+            if (deathParticlesMulti[i] == null)
+            {
+                deathParticlesMulti.RemoveAt(i);
+                continue;
+            }
             deathParticlesMulti[i].transform.parent = null;
             deathParticlesMulti[i].gameObject.SetActive(true);
             deathParticlesMulti[i].Play();

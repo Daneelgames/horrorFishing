@@ -113,7 +113,7 @@ public class AssetSpawner : MonoBehaviour
 
         //go.transform.position = finalPosition;
 
-        StartCoroutine(DynamicObstaclesManager.instance.CreateGameObjectAnimated(go, finalPosition));
+        StartCoroutine(DynamicObstaclesManager.instance.CreateGameObjectAnimated(go, finalPosition, go.transform.localScale));
 
         PropController newProp = go.GetComponent<PropController>();
         LevelGenerator.instance.propsInGame.Add(newProp);
@@ -137,7 +137,7 @@ public class AssetSpawner : MonoBehaviour
     {
         var sc = SpawnController.instance;
         sc.ProceedMob(go);
-        StartCoroutine(DynamicObstaclesManager.instance.CreateGameObjectAnimated(go, targetPos));
+        StartCoroutine(DynamicObstaclesManager.instance.CreateGameObjectAnimated(go, targetPos, go.transform.localScale));
     }
 
     void EnqueueSpawnForAfterInitialization(AssetReference assetReference, Vector3 newPos, ObjectType objectType)

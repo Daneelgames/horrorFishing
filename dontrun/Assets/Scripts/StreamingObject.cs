@@ -26,9 +26,14 @@ public class StreamingObject : MonoBehaviour //, IUpdatable
 
     public void UnhideChilds()
     {
-	    for (var index = 0; index < childObjectToHide.Count; index++)
+	    for (var index = childObjectToHide.Count - 1; index >= 0; index--)
 	    {
 		    var child = childObjectToHide[index];
+		    if (child == null)
+		    {
+			    childObjectToHide.RemoveAt(index);
+			    continue;
+		    }
 		    child.SetActive(true);
 	    }
     }

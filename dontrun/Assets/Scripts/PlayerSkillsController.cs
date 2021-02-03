@@ -778,26 +778,36 @@ public class PlayerSkillsController : MonoBehaviour
         if (pm.hc.health < pm.hc.healthMax * 0.5f || r > 66)
         {
             pm.hc.Heal(pm.hc.healthMax / 3);
+            SpawnDynamicMobs(Random.Range(0, 3));
+            SpawnDynamicProps(Random.Range(0, 3));
         }
         else if (r > 33)
         {
             // spawn human props
-            int propsAmountToSpawn = Random.Range(1, 10);
-                
-            for (int i = 0; i < propsAmountToSpawn; i++)
-            {
-                DynamicObstaclesManager.instance.SpawnPropAround();
-            }
+            SpawnDynamicProps(Random.Range(5, 10));
+            SpawnDynamicMobs(Random.Range(0, 3));
         }
         else
         {
             // spawn mobs
-            int mobsAmountToSpawn = Random.Range(1, 10);
-                
-            for (int i = 0; i < mobsAmountToSpawn; i++)
-            {
-                DynamicObstaclesManager.instance.SpawnMobAround();
-            }
+            SpawnDynamicProps(Random.Range(0, 3));
+            SpawnDynamicMobs(Random.Range(5, 10));
+        }
+    }
+
+    void SpawnDynamicMobs(int amount)
+    {
+        for (int i = 0; i < amount; i++)
+        {
+            DynamicObstaclesManager.instance.SpawnMobAround();
+        }
+    }
+
+    void SpawnDynamicProps(int amount)
+    {
+        for (int i = 0; i < amount; i++)
+        {
+            DynamicObstaclesManager.instance.SpawnPropAround();
         }
     }
     

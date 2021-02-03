@@ -50,6 +50,7 @@ public class MobAudioManager : MonoBehaviour
 
     public void IdleAmbient()
     {
+        if (SpawnController.instance == null) return;
         // should be synced
         int _action = 0;
         int _myIndex = SpawnController.instance.mobAudioManagers.IndexOf(this);
