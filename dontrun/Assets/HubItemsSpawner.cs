@@ -21,7 +21,6 @@ public class HubItemsSpawner : MonoBehaviour
     private HealthController strangerWomanSpawned;
     private HealthController ladyOnRoofSpawned;
     private GameObject shoesOnBeachSpawned;
-    private List<HealthController> shoeMimicsSpawned = new List<HealthController>();
     
     public List<ChangeDialogueOnQuest> dialogueOnQuestsChangers = new List<ChangeDialogueOnQuest>();
     
@@ -55,14 +54,16 @@ public class HubItemsSpawner : MonoBehaviour
         // spawn lady
         if (ladyOnRoofSpawned == null)
         {
-            var go = Instantiate(npcSpawners[0].npcsToSpawn[0], npcSpawners[0].transform.position,
+            // nps
+            ladyOnRoofSpawned = Instantiate(npcSpawners[0].npcsToSpawn[0], npcSpawners[0].transform.position,
                 npcSpawners[0].transform.rotation); 
+            //human ladder
             Instantiate(npcSpawners[0].gameObjectToSpawn, npcSpawners[0].transform.position, npcSpawners[0].transform.rotation);
 
-            ladyOnRoofSpawned = go;
             
-            // revolver
-            sc.InstantiateItem(itemSpawners[0].itemToSpawn, itemSpawners[0].transform.position, false); 
+            // revolver start cutscene
+            Instantiate(fieldEventsSpawners[0].gameObjectToSpawn, fieldEventsSpawners[0].transform.position,
+                fieldEventsSpawners[0].transform.rotation);
         }
         
         //return;
@@ -91,20 +92,6 @@ public class HubItemsSpawner : MonoBehaviour
                     sc.InstantiateItem(itemSpawners[1].itemToSpawn, itemSpawners[1].transform.position, false); 
                 }
                 
-                /*
-                // spawn mob
-                if (shoeMimicsSpawned.Count == 0)
-                {
-                    for (int i = 0; i < monstersSpawners.Count; i++)
-                    {
-                        var go = Instantiate(monstersSpawners[0].monstersToSpawn[0], monstersSpawners[i].transform.position,
-                            monstersSpawners[i].transform.rotation);
-
-                        shoeMimicsSpawned.Add(go);   
-                    }
-                }
-                */
-
                 // spawn lady
                 if (ladyOnRoofSpawned == null)
                 {
