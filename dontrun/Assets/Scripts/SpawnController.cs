@@ -562,10 +562,12 @@ public class SpawnController : MonoBehaviour
             spawnedItem.weaponPickUp.weaponDataRandomier.GenerateOnSpawn(false, false);
         }
 
+        /*
         if (GameManager.instance.hub)
         {
             spawnedItem.rb.useGravity = true;
         }
+        */
         
         if (serverSpawn && lg.levelgenOnHost)
         {

@@ -247,7 +247,9 @@ public class DynamicObstaclesManager : MonoBehaviour
                 propTemp.transform.localScale = Vector3.zero;
                 propTemp.transform.position = pos + Vector3.up * 500;
                 StartCoroutine(CreateGameObjectAnimated(propTemp.gameObject, pos));
-                propTemp.humanPropBonesRandomizer.RandomizeBones();   
+                
+                if (propTemp)
+                    propTemp.humanPropBonesRandomizer.RandomizeBones();   
             }
         }
         

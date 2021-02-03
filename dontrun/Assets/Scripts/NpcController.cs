@@ -2737,17 +2737,17 @@ public class NpcController : MonoBehaviour
                 
                 case Dialogue.DialogueEvent.Pray:
                     if(gm.language == 0)
-                        newPhraseChoice = Translator.TranslateText("You silently chanted a prayer. You don't know if someone heard it");
+                        newPhraseChoice = Translator.TranslateText("You silently chanted a prayer. You feel better");
                     else if (gm.language == 1)
-                        newPhraseChoice = Translator.TranslateText("Ты молча пропел молитву. Ты не знаешь, услышал ли тебя кто-либо");
+                        newPhraseChoice = Translator.TranslateText("Ты молча пропел молитву. Ты чувствуешь себя лучше");
                     else if (gm.language == 2)
-                        newPhraseChoice = Translator.TranslateText("You silently chanted a prayer. You don't know if someone heard it");
+                        newPhraseChoice = Translator.TranslateText("You silently chanted a prayer. You feel better");
                     else if (gm.language == 3)
-                        newPhraseChoice = Translator.TranslateText("You silently chanted a prayer. You don't know if someone heard it");
+                        newPhraseChoice = Translator.TranslateText("You silently chanted a prayer. You feel better");
                     else if (gm.language == 4)
-                        newPhraseChoice = Translator.TranslateText("You silently chanted a prayer. You don't know if someone heard it");
+                        newPhraseChoice = Translator.TranslateText("You silently chanted a prayer. You feel better");
                     else if (gm.language == 5)
-                        newPhraseChoice = Translator.TranslateText("You silently chanted a prayer. You don't know if someone heard it");
+                        newPhraseChoice = Translator.TranslateText("You silently chanted a prayer. You feel better");
                     
                     PlayerSkillsController.instance.KissHer();
                     break;
@@ -2770,7 +2770,8 @@ public class NpcController : MonoBehaviour
                         gameObjectActivateOnAgree.SetActive(true);
                     if (interactableToInteractOnDialogueAction)
                         interactableToInteractOnDialogueAction.Interact(false);
-                    gameObject.SetActive(false);
+                    hc.Kill();
+                    
                     break;
                 
                 case Dialogue.DialogueEvent.DisarmTrap:

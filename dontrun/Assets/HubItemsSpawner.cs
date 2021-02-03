@@ -23,7 +23,8 @@ public class HubItemsSpawner : MonoBehaviour
     private GameObject shoesOnBeachSpawned;
     
     public List<ChangeDialogueOnQuest> dialogueOnQuestsChangers = new List<ChangeDialogueOnQuest>();
-    
+
+    private WeaponControls wc;
     void Awake()
     {
         instance = this;
@@ -61,9 +62,16 @@ public class HubItemsSpawner : MonoBehaviour
             Instantiate(npcSpawners[0].gameObjectToSpawn, npcSpawners[0].transform.position, npcSpawners[0].transform.rotation);
 
             
+            wc = WeaponControls.instance;
+            bool canSpawnRevolver = !(wc.activeWeapon && wc.activeWeapon.weapon == WeaponPickUp.Weapon.Revolver);
+
+            if (wc.secondWeapon && wc.secondWeapon.weapon == WeaponPickUp.Weapon.Revolver)
+                canSpawnRevolver = false;
+            
             // revolver start cutscene
-            Instantiate(fieldEventsSpawners[0].gameObjectToSpawn, fieldEventsSpawners[0].transform.position,
-                fieldEventsSpawners[0].transform.rotation);
+            if (canSpawnRevolver)
+                Instantiate(fieldEventsSpawners[0].gameObjectToSpawn, fieldEventsSpawners[0].transform.position,
+                    fieldEventsSpawners[0].transform.rotation);
         }
         
         //return;

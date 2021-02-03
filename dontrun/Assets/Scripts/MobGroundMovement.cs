@@ -284,7 +284,7 @@ public class MobGroundMovement : MonoBehaviour, IUpdatable
     IEnumerator OpenDoors() // and search for player
     {
         RaycastHit searchHit;
-
+        
         while (hc.health > 0)
         {
             if (!hc.inLove)
@@ -434,6 +434,7 @@ public class MobGroundMovement : MonoBehaviour, IUpdatable
                             target = newTarget;
                         }
 
+                        agent.Warp(transform.position);
                         // this makes mobs to stop if they pass near the player
                         bool access = ((agent.enabled && agent.remainingDistance > 5) || agent.enabled == false);
                         
@@ -562,6 +563,7 @@ public class MobGroundMovement : MonoBehaviour, IUpdatable
 
         if (authorathive)
         {
+            agent.Warp(transform.position);
             if (agent.enabled)
                 agent.isStopped = false;   
         }
@@ -585,6 +587,7 @@ public class MobGroundMovement : MonoBehaviour, IUpdatable
                         lastKnownPlayerPosition = hit.position;
                     }   
                     
+                    agent.Warp(transform.position);
                     path = new NavMeshPath();
                     agent.CalculatePath(lastKnownPlayerPosition, path);
                     agent.SetPath(path);
