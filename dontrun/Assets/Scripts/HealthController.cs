@@ -1394,6 +1394,13 @@ public class HealthController : MonoBehaviour, IUpdatable
                 {
                     damagedOnLevel = true;
                     
+                    if (health <= healthMax * 0.33f)
+                        health -= (dmg - dmg * armor) * 0.66f; // light damage
+                    else if (health <= healthMax * 0.66f)
+                        health -= (dmg - dmg * armor); // normal damage
+                    else 
+                        health -= (dmg  - dmg * armor) * 2f;   
+                    /*
                     if (loveAndGoldActive)
                         dmg *= 0.5f;
                     
@@ -1431,9 +1438,9 @@ public class HealthController : MonoBehaviour, IUpdatable
                             else if (health <= healthMax * 0.66f)
                                 health -= (dmg - dmg * armor); // normal damage
                             else 
-                                health -= (dmg  - dmg * armor) * 1.75f;   
+                                health -= (dmg  - dmg * armor) * 2f;   
                         }
-                    }
+                    }*/
                 }
                 else
                 {
