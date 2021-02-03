@@ -133,7 +133,7 @@ public class DynamicObstaclesManager : MonoBehaviour
                         Destroy(prop.spawnedObject.gameObject);
                     
                     lg.propsInGame.Remove(prop);
-                    StartCoroutine(DestroyGameObjectAnimated(prop.gameObject));
+                    StartCoroutine(DestroyGameObjectAnimated(prop.gameObject, prop.gameObject.transform.position, Random.Range(1f,3f)));
                     //Destroy(prop.gameObject);
                 }
                 yield return null;
@@ -186,7 +186,7 @@ public class DynamicObstaclesManager : MonoBehaviour
                 if (distanceToObject > distanceToDestroyFar || (distanceToObject > distanceToDestroy && MouseLook.instance.PositionIsVisibleToPlayer(mob.transform.position) == false && Random.value > 0.5f))
                 {
                     sc.mobsInGame.Remove(mob);
-                    StartCoroutine(DestroyGameObjectAnimated(mob.gameObject));
+                    StartCoroutine(DestroyGameObjectAnimated(mob.gameObject, mob.gameObject.transform.position, Random.Range(1f,3f)));
                     //Destroy(mob.gameObject);
                 }
                 yield return null;
@@ -213,16 +213,18 @@ public class DynamicObstaclesManager : MonoBehaviour
             AssetSpawner.instance.Spawn(closestZone.enemiesReferences[Random.Range(0, closestZone.enemiesReferences.Count)], spawnPosition, AssetSpawner.ObjectType.Mob); 
     }
 
-    IEnumerator DestroyGameObjectAnimated(GameObject go)
+    public IEnumerator DestroyGameObjectAnimated(GameObject go, Vector3 targetPos, float tt)
     {
         float t = 0;
-        float tt = Random.Range(1, 3);
+        Vector3 startScale = go.transform.localScale;
+        Vector3 startPos = go.transform.position;
         while (t < tt)
         {
             if (go == null)
                 yield break;
             
-            go.transform.localScale = Vector3.Lerp(go.transform.localScale, Vector3.zero, t / tt);
+            go.transform.localScale = Vector3.Lerp(startScale, Vector3.zero, t / tt);
+            go.transform.position = Vector3.Lerp(startPos, targetPos, t / tt); 
             t += Time.deltaTime;
             yield return null;
         }
@@ -232,7 +234,7 @@ public class DynamicObstaclesManager : MonoBehaviour
     public IEnumerator CreateGameObjectAnimated(GameObject go, Vector3 targetPos, Vector3 targetScale)
     {
         if (LevelGenerator.instance.propsInGame.Count > propsSpawnedMax)
-            StartCoroutine(DestroyGameObjectAnimated(LevelGenerator.instance.propsInGame[0].gameObject));
+            StartCoroutine(DestroyGameObjectAnimated(LevelGenerator.instance.propsInGame[0].gameObject, LevelGenerator.instance.propsInGame[0].gameObject.transform.position, Random.Range(1f,3f)));
         
         float t = 0;
         float tt = Random.Range(1, 3);

@@ -302,7 +302,7 @@ public class AiDirector : MonoBehaviour
         {
             int weaponSpawnGroup = 2;
             int randomWeapon = Random.Range(0, gm.level.spawnGroups[weaponSpawnGroup].weapons.Length);
-            SpawnController.instance.InstantiateItem(gm.level.spawnGroups[weaponSpawnGroup].weapons[randomWeapon].weapon.value, tile.transform.position + Vector3.up, true);
+            SpawnController.instance.InstantiateItem(gm.level.spawnGroups[weaponSpawnGroup].weapons[randomWeapon].weapon.value, tile.transform.position + Vector3.up, Quaternion.Euler(Random.Range(0, 360), UnityEngine.Random.Range(0, 360), UnityEngine.Random.Range(0, 360)),true);
         }
         else if (r <= 0.66f)
         {
@@ -311,7 +311,7 @@ public class AiDirector : MonoBehaviour
             {
                 int randomSpawnGroup = 0;
                 int randomItem = Random.Range(0, gm.level.spawnGroups[randomSpawnGroup].simpleItems.Length);
-                SpawnController.instance.InstantiateItem(gm.level.spawnGroups[randomSpawnGroup].simpleItems[randomItem].item.value, tile.transform.position + Vector3.up, true);
+                SpawnController.instance.InstantiateItem(gm.level.spawnGroups[randomSpawnGroup].simpleItems[randomItem].item.value, tile.transform.position + Vector3.up, Quaternion.Euler(Random.Range(0, 360), UnityEngine.Random.Range(0, 360), UnityEngine.Random.Range(0, 360)),true);
             }
         }
         else // AMMO
@@ -322,7 +322,7 @@ public class AiDirector : MonoBehaviour
 
                 var item = gm.level.ammoSpawn[random].value.bulletPack;
                 if (item == null) item = gm.level.ammoSpawn[random].value.bullets;
-                SpawnController.instance.InstantiateItem(item, tile.transform.position + Vector3.up, true);   
+                SpawnController.instance.InstantiateItem(item, tile.transform.position + Vector3.up, Quaternion.Euler(Random.Range(0, 360), UnityEngine.Random.Range(0, 360), UnityEngine.Random.Range(0, 360)),true);   
             }
         }
     }

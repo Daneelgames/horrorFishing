@@ -12,10 +12,19 @@ public class AnimatorEventsReciever : MonoBehaviour
     public Transform dropPosition;
     public ParticleSystem rangeShotParticles;
     public AudioSource shotAu;
+    public List<GameObject> gameObjectsToActivate = new List<GameObject>();
     
     public void MobStep(int index)
     {
         mobAu.Step();
+    }
+
+    public void ActivateGameObjects()
+    {
+        for (var index = 0; index < gameObjectsToActivate.Count; index++)
+        {
+            gameObjectsToActivate[index].SetActive(true);
+        }
     }
     
     public void PlayShotParticle()

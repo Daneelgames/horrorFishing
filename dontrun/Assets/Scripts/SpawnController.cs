@@ -514,7 +514,7 @@ public class SpawnController : MonoBehaviour
             : GetResourceSpawner();
 
         Vector3 spawnPos = spawner.position + Vector3.up;
-        InstantiateItem(item, spawnPos, server);
+        InstantiateItem(item, spawnPos, Quaternion.Euler(Random.Range(0, 360), UnityEngine.Random.Range(0, 360), UnityEngine.Random.Range(0, 360)), server);
     }
 
     public void SpawnItemOnProp(PropController newProp)
@@ -543,11 +543,9 @@ public class SpawnController : MonoBehaviour
         }
     }
     
-    public void InstantiateItem(Interactable item, Vector3 spawnPos, bool serverSpawn)
+    public void InstantiateItem(Interactable item, Vector3 spawnPos, Quaternion rotation, bool serverSpawn)
     {
-        var spawnedItem = Instantiate(item, spawnPos,
-            Quaternion.Euler(Random.Range(0, 360),
-                UnityEngine.Random.Range(0, 360), UnityEngine.Random.Range(0, 360)));
+        var spawnedItem = Instantiate(item, spawnPos, rotation);
 
         if (spawnedItem.pickUp && spawnedItem.pickUp.resourceType == ItemsList.ResourceType.Key)
         {

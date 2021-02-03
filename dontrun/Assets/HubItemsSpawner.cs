@@ -8,10 +8,9 @@ using Random = UnityEngine.Random;
 public class HubItemsSpawner : MonoBehaviour
 {
     public List<CitySpawner> itemSpawners = new List<CitySpawner>();
-    public List<CitySpawner> ammoSpawners = new List<CitySpawner>();
-    public List<CitySpawner> monstersSpawners = new List<CitySpawner>();
     public List<CitySpawner> npcSpawners = new List<CitySpawner>();
     public List<CitySpawner> fieldEventsSpawners = new List<CitySpawner>();
+    public List<GameObject> levelBlockersPrefabs = new List<GameObject>();
     
     private ItemsList il;
     private SpawnController sc;
@@ -25,6 +24,7 @@ public class HubItemsSpawner : MonoBehaviour
     public List<ChangeDialogueOnQuest> dialogueOnQuestsChangers = new List<ChangeDialogueOnQuest>();
 
     private WeaponControls wc;
+    private QuestManager qm;
     void Awake()
     {
         instance = this;
@@ -47,11 +47,9 @@ public class HubItemsSpawner : MonoBehaviour
     public void UpdateHub()
     {
         // check what to spawn based on what quests are active
-        var qm = QuestManager.instance;
+        qm = QuestManager.instance;
         sc = SpawnController.instance;
 
-        UpdateAmmo();
-        
         // spawn lady
         if (ladyOnRoofSpawned == null)
         {
@@ -74,16 +72,6 @@ public class HubItemsSpawner : MonoBehaviour
                     fieldEventsSpawners[0].transform.rotation);
         }
         
-        //return;
-        
-        /*
-        if (strangerWomanSpawned == null)
-        {
-            strangerWomanSpawned = Instantiate(monstersSpawners[1].monstersToSpawn[0],
-                GetPositionNearSpawner(monstersSpawners[1].transform.position),
-                monstersSpawners[1].transform.rotation);
-        }*/
-        
         #region Quest 0. Shoes on beach
 
             if (qm.activeQuestsIndexes.Contains(1)) // shoe quest is active
@@ -97,7 +85,7 @@ public class HubItemsSpawner : MonoBehaviour
                     shoesOnBeachSpawned = go;
                     
                     // ladyshoe
-                    sc.InstantiateItem(itemSpawners[1].itemToSpawn, itemSpawners[1].transform.position, false); 
+                    sc.InstantiateItem(itemSpawners[0].itemToSpawn, itemSpawners[0].transform.position, itemSpawners[0].transform.rotation, false); 
                 }
                 
                 // spawn lady
@@ -124,95 +112,35 @@ public class HubItemsSpawner : MonoBehaviour
         }
         #endregion
 
+        UpdateLevelBlockers();
+        
         for (int i = 0; i < dialogueOnQuestsChangers.Count; i++)
         {
             dialogueOnQuestsChangers[i].UpdateDialogue();
         }
     }
-    
-    void SpawnRandomItem(Vector3 spawnPos)
+
+    private GameObject blockersBeforeGoingToGunn;
+    private GameObject blockersBeforeGettingShoeQuest;
+    void UpdateLevelBlockers()
     {
-        sc = SpawnController.instance;
-        var gm = GameManager.instance;
-
-        spawnPos += Vector3.up * 0.5f;
+        qm = QuestManager.instance;
+        // before getting shoe quest
+        if (!qm.activeQuestsIndexes.Contains(1) && !qm.completedQuestsIndexes.Contains(1))
+        {
+            if (blockersBeforeGettingShoeQuest == null)
+                blockersBeforeGettingShoeQuest = Instantiate(levelBlockersPrefabs[0], Vector3.zero, Quaternion.identity);
+        }
+        else if (blockersBeforeGettingShoeQuest)
+            StartCoroutine(DynamicObstaclesManager.instance.DestroyGameObjectAnimated(blockersBeforeGettingShoeQuest, Vector3.up * 200, 30f));
         
-        if (Random.value < 0.2f) // item
+        // before going to gunn
+        if (!qm.activeQuestsIndexes.Contains(3) && !qm.completedQuestsIndexes.Contains(3))
         {
-            var items = gm.arenaLevel.spawnGroups[0].simpleItems;
-            sc.InstantiateItem(items[Random.Range(0, items.Length)].item.value, spawnPos, false);
+            if (blockersBeforeGoingToGunn == null)
+                blockersBeforeGoingToGunn = Instantiate(levelBlockersPrefabs[1], Vector3.zero, Quaternion.identity);
         }
-        else 
-        {
-            var ammo = gm.arenaLevel.ammoSpawn;
-            sc.InstantiateItem(ammo[Random.Range(0, ammo.Length)].value.bulletPack, spawnPos, false);
-        }
-    }
-
-    void SpawnWeapons()
-    {
-        sc = SpawnController.instance;
-        
-        List<int> availableWeapons = new List<int>();
-        for (int i = 0; i < SpawnController.instance.weaponPickUpPrefabs.Count; i++)
-        {
-            availableWeapons.Add(i); 
-        }
-        
-        List<CitySpawner> tempSpawners = new List<CitySpawner>(itemSpawners);
-
-        float distance = 2000;
-        CitySpawner closestToPlayerSpawner = null;
-        for (int j = 0; j < tempSpawners.Count; j++)
-        {
-            float newDist = Vector3.Distance(tempSpawners[j].transform.position, PlayerMovement.instance.transform.position);
-            if (newDist < distance)
-            {
-                distance = newDist;
-                closestToPlayerSpawner = tempSpawners[j];
-            }
-        }
-
-        if (closestToPlayerSpawner != null)
-        {
-            tempSpawners.Remove(closestToPlayerSpawner);
-            
-            int weaponIndex = Random.Range(0, availableWeapons.Count);
-            
-            sc.InstantiateItem(sc.weaponPickUpPrefabs[availableWeapons[weaponIndex]], closestToPlayerSpawner.transform.position, false); 
-            availableWeapons.RemoveAt(weaponIndex);
-        }
-        else
-        {
-            Debug.LogError("No weapon spawner found");
-        }
-        
-        
-        for (int i = availableWeapons.Count - 1; i >= 0; i++)
-        {
-            if (availableWeapons.Count <= 0)
-                break;
-            
-            int weaponIndex = Random.Range(0, availableWeapons.Count);
-            int spawnerIndex = Random.Range(0, tempSpawners.Count);
-            
-            sc.InstantiateItem(sc.weaponPickUpPrefabs[availableWeapons[weaponIndex]], tempSpawners[spawnerIndex].transform.position, false);
-            
-            availableWeapons.RemoveAt(weaponIndex);
-        }
-    }
-
-    void UpdateAmmo()
-    {
-        for (int i = 0; i < ammoSpawners.Count; i++)
-        {
-            if (ammoSpawners[i].spawnedObject == null)
-            {
-                var newAmmo = Instantiate(ammoSpawners[i].itemToSpawn,
-                    GetPositionNearSpawner(ammoSpawners[i].transform.position), Quaternion.identity);
-                
-                ammoSpawners[i].spawnedObject = newAmmo.gameObject;
-            }
-        }
+        else if (blockersBeforeGoingToGunn)
+            StartCoroutine(DynamicObstaclesManager.instance.DestroyGameObjectAnimated(blockersBeforeGoingToGunn, Vector3.up * 200, 30f));
     }
 }
