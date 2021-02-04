@@ -5720,7 +5720,9 @@ MonoBehaviour:
   randomLinesAmountMax: 6
   hc: {fileID: 0}
   keySold: 0
+  gameObjectActivateOnAgree: {fileID: 0}
   mementoPrefab: {fileID: 0}
+  interactableToInteractOnDialogueAction: {fileID: 0}
   snout: 0
 --- !u!136 &6363434624374090997
 CapsuleCollider:
@@ -5823,7 +5825,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 3f61cb906dd490b4eb5e54ca819f9881, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -5832,7 +5834,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 0.79
   MinDistance: 5
-  MaxDistance: 60
+  MaxDistance: 50
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -5850,15 +5852,6 @@ AudioSource:
       weightedMode: 0
       inWeight: 0
       outWeight: 0
-    - serializedVersion: 3
-      time: 0.80024374
-      value: 0.6858428
-      inSlope: -1.3128427
-      outSlope: -1.3128427
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.3543207
-      outWeight: 0.1417618
     - serializedVersion: 3
       time: 1
       value: 0

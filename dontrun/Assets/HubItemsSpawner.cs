@@ -10,15 +10,15 @@ public class HubItemsSpawner : MonoBehaviour
     public List<CitySpawner> itemSpawners = new List<CitySpawner>();
     public List<CitySpawner> npcSpawners = new List<CitySpawner>();
     public List<CitySpawner> fieldEventsSpawners = new List<CitySpawner>();
-    public List<GameObject> levelBlockersPrefabs = new List<GameObject>();
+    public List<LevelBlockerController> levelBlockersPrefabs = new List<LevelBlockerController>();
     
     private ItemsList il;
     private SpawnController sc;
 
     public static HubItemsSpawner instance;
 
-    private HealthController strangerWomanSpawned;
-    private HealthController ladyOnRoofSpawned;
+    private HealthController ladyOnRoofSpawned_0;
+    private HealthController gunnWorkingSpawned_1;
     private GameObject shoesOnBeachSpawned;
     
     public List<ChangeDialogueOnQuest> dialogueOnQuestsChangers = new List<ChangeDialogueOnQuest>();
@@ -51,10 +51,10 @@ public class HubItemsSpawner : MonoBehaviour
         sc = SpawnController.instance;
 
         // spawn lady
-        if (ladyOnRoofSpawned == null)
+        if (ladyOnRoofSpawned_0 == null)
         {
             // nps
-            ladyOnRoofSpawned = Instantiate(npcSpawners[0].npcsToSpawn[0], npcSpawners[0].transform.position,
+            ladyOnRoofSpawned_0 = Instantiate(npcSpawners[0].npcsToSpawn[0], npcSpawners[0].transform.position,
                 npcSpawners[0].transform.rotation); 
             //human ladder
             Instantiate(npcSpawners[0].gameObjectToSpawn, npcSpawners[0].transform.position, npcSpawners[0].transform.rotation);
@@ -72,7 +72,7 @@ public class HubItemsSpawner : MonoBehaviour
                     fieldEventsSpawners[0].transform.rotation);
         }
         
-        #region Quest 0. Shoes on beach
+        #region Quest 1. Shoes on beach
 
             if (qm.activeQuestsIndexes.Contains(1)) // shoe quest is active
             {
@@ -89,17 +89,17 @@ public class HubItemsSpawner : MonoBehaviour
                 }
                 
                 // spawn lady
-                if (ladyOnRoofSpawned == null)
+                if (ladyOnRoofSpawned_0 == null)
                 {
                     var go = Instantiate(npcSpawners[0].npcsToSpawn[0], npcSpawners[0].transform.position,
                         npcSpawners[0].transform.rotation);
 
-                    ladyOnRoofSpawned = go;
+                    ladyOnRoofSpawned_0 = go;
                 }
             }
         #endregion
 
-        #region quest 3 Return the shoe
+        #region quest 2 Return the shoe
 
         if (qm.completedQuestsIndexes.Contains(2)) // return shoe quest is completed
         {
@@ -108,6 +108,20 @@ public class HubItemsSpawner : MonoBehaviour
             {
                 Destroy(shoesOnBeachSpawned);
                 shoesOnBeachSpawned = null;
+            }
+        }
+        #endregion
+        
+        #region quest 3 Find the Gunn
+
+        if (qm.activeQuestsIndexes.Contains(3))
+        {
+            //remove shoes
+            if (gunnWorkingSpawned_1 == null)
+            {
+                
+                gunnWorkingSpawned_1 = Instantiate(npcSpawners[1].npcsToSpawn[0], npcSpawners[1].transform.position,
+                    npcSpawners[1].transform.rotation); 
             }
         }
         #endregion
@@ -120,8 +134,10 @@ public class HubItemsSpawner : MonoBehaviour
         }
     }
 
-    private GameObject blockersBeforeGoingToGunn;
-    private GameObject blockersBeforeGettingShoeQuest;
+    private LevelBlockerController blockersBeforeGoingToGunn;
+    private LevelBlockerController blockersBeforeGettingShoeQuest;
+    private LevelBlockerController blockersGoingToGunn;
+    private LevelBlockerController blockersFindWood;
     void UpdateLevelBlockers()
     {
         qm = QuestManager.instance;
@@ -132,7 +148,7 @@ public class HubItemsSpawner : MonoBehaviour
                 blockersBeforeGettingShoeQuest = Instantiate(levelBlockersPrefabs[0], Vector3.zero, Quaternion.identity);
         }
         else if (blockersBeforeGettingShoeQuest)
-            StartCoroutine(DynamicObstaclesManager.instance.DestroyGameObjectAnimated(blockersBeforeGettingShoeQuest, Vector3.up * 200, 30f));
+            blockersBeforeGettingShoeQuest.DestroyBlockers();
         
         // before going to gunn
         if (!qm.activeQuestsIndexes.Contains(3) && !qm.completedQuestsIndexes.Contains(3))
@@ -141,6 +157,24 @@ public class HubItemsSpawner : MonoBehaviour
                 blockersBeforeGoingToGunn = Instantiate(levelBlockersPrefabs[1], Vector3.zero, Quaternion.identity);
         }
         else if (blockersBeforeGoingToGunn)
-            StartCoroutine(DynamicObstaclesManager.instance.DestroyGameObjectAnimated(blockersBeforeGoingToGunn, Vector3.up * 200, 30f));
+            blockersBeforeGoingToGunn.DestroyBlockers();
+
+        // Gunn quest blocker
+        if (qm.activeQuestsIndexes.Contains(3))
+        {
+            if (blockersGoingToGunn == null)
+                blockersGoingToGunn = Instantiate(levelBlockersPrefabs[2], Vector3.zero, Quaternion.identity);
+        }
+        else if (blockersGoingToGunn)
+            blockersGoingToGunn.DestroyBlockers();
+        
+        // find wood questblocker
+        if (qm.activeQuestsIndexes.Contains(4))
+        {
+            if (blockersFindWood == null)
+                blockersFindWood = Instantiate(levelBlockersPrefabs[3], Vector3.zero, Quaternion.identity);
+        }
+        else if (blockersFindWood)
+            blockersFindWood.DestroyBlockers();
     }
 }

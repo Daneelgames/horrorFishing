@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9196727086974332723}
   - component: {fileID: 7325210594386898498}
   - component: {fileID: 1777815447130407784}
-  m_Layer: 16
+  m_Layer: 14
   m_Name: EyeBlocker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 418544811141907162}
   m_LocalRotation: {x: -0, y: -0.8782566, z: -0, w: 0.47818965}
-  m_LocalPosition: {x: 252.72, y: 34.3, z: -5.94}
+  m_LocalPosition: {x: 242.04, y: 35.08, z: -8.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6384138045426295892}
@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 4748538012142735345}
   - component: {fileID: 8773207512619467}
   - component: {fileID: 3255413421336537548}
-  m_Layer: 16
+  m_Layer: 14
   m_Name: EyeBlocker (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -163,7 +163,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2970684806695876054}
-  m_Layer: 0
+  - component: {fileID: 6812806002482298260}
+  m_Layer: 14
   m_Name: LevelBlockers_0_beforeGettingShoeQuest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -187,6 +188,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6812806002482298260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1956675460172770751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab3ab3f8636299142ba46b135e61eb8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathParticle: {fileID: 4760705460041151556, guid: 818b66c639a317f4bb8a3abf33f4d3f9,
+    type: 3}
+  blockers:
+  - {fileID: 418544811141907162}
+  - {fileID: 7078470077635560587}
+  - {fileID: 1011817589923788683}
 --- !u!1 &7078470077635560587
 GameObject:
   m_ObjectHideFlags: 0
@@ -199,7 +218,7 @@ GameObject:
   - component: {fileID: 1216631002029330104}
   - component: {fileID: 5655743554133239194}
   - component: {fileID: 7627174047904987031}
-  m_Layer: 16
+  m_Layer: 14
   m_Name: EyeBlocker (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -214,7 +233,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7078470077635560587}
   m_LocalRotation: {x: -0, y: -0.8782566, z: -0, w: 0.47818965}
-  m_LocalPosition: {x: 268.41, y: 28.8, z: -21.82}
+  m_LocalPosition: {x: 268.41, y: 30.9, z: -21.82}
   m_LocalScale: {x: 1.5839, y: 1.5839, z: 1.5839}
   m_Children:
   - {fileID: 3154474211575902764}
@@ -349,7 +368,7 @@ PrefabInstance:
     - target: {fileID: 4554370489929167171, guid: 2f4a0bf979011584b971f5c595e6d1a3,
         type: 3}
       propertyPath: m_Layer
-      value: 16
+      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f4a0bf979011584b971f5c595e6d1a3, type: 3}
@@ -444,7 +463,7 @@ PrefabInstance:
     - target: {fileID: 4554370489929167171, guid: 2f4a0bf979011584b971f5c595e6d1a3,
         type: 3}
       propertyPath: m_Layer
-      value: 16
+      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f4a0bf979011584b971f5c595e6d1a3, type: 3}
@@ -539,7 +558,7 @@ PrefabInstance:
     - target: {fileID: 4554370489929167171, guid: 2f4a0bf979011584b971f5c595e6d1a3,
         type: 3}
       propertyPath: m_Layer
-      value: 16
+      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f4a0bf979011584b971f5c595e6d1a3, type: 3}

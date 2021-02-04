@@ -73,6 +73,7 @@ public class EffectVisualController : MonoBehaviour
             for (int i = 0; i < audioSources.Count; i++)
             {
                 audioSources[i].volume = initvolumes[i];
+                audioSources[i].pitch = Random.Range(0.5f, 1.5f);
             }   
         }
     }
