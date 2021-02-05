@@ -74,5 +74,8 @@ public class QuestManager : MonoBehaviour
             if (questData.quests.Count > index)
                 StartQuest(questData.quests[index].startQuestOnCompletion);   
         }
+        
+        HubItemsSpawner.instance.UpdateHub();
+        gm.SaveGame();
     }
 }
