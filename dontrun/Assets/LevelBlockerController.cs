@@ -20,12 +20,13 @@ public class LevelBlockerController : MonoBehaviour
 
     IEnumerator DestroyBlocker(int i)
     {
+        var blocker = blockers[i];
+        
         float t = 0;
         float tt = Random.Range(1f,10f);
         
         yield return new WaitForSeconds(tt);
         
-        var blocker = blockers[i];
         var startScale = blocker.transform.localScale; 
         while (t < tt)
         {

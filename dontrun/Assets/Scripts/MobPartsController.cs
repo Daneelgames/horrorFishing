@@ -58,9 +58,10 @@ public class MobPartsController : MonoBehaviour
 
         gm = GameManager.instance;
 
-        foreach (var part in bodyParts)
+        for (var index = 0; index < bodyParts.Count; index++)
         {
-            part.hc = hc;
+            if (bodyParts[index] != null)
+                bodyParts[index].hc = hc;
         }
 
         if (simpleWalker)
