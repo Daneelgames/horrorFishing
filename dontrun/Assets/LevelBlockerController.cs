@@ -33,8 +33,8 @@ public class LevelBlockerController : MonoBehaviour
             if (!blocker)
                 yield break;
             
-            blocker.transform.localScale = startScale + new Vector3(Random.Range(-0.1f, 0.1f),
-                Random.Range(-0.1f, 0.1f), Random.Range(-0.1f, 0.1f));
+            blocker.transform.localScale = startScale + new Vector3(Random.Range(-0.05f, 0.05f),
+                Random.Range(-0.05f, 0.05f), Random.Range(-0.05f, 0.05f));
             t += Time.deltaTime;
             yield return null;
         }
