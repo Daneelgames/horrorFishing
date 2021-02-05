@@ -43,6 +43,25 @@ public class HubItemsSpawner : MonoBehaviour
             
         return spawnerPosition;
     }
+
+    bool HaveRevolver()
+    {
+        if (wc.activeWeapon && wc.activeWeapon.weapon == WeaponPickUp.Weapon.Revolver)
+            return true;
+        if (wc.secondWeapon && wc.secondWeapon.weapon == WeaponPickUp.Weapon.Revolver)
+            return true;
+
+        return false;
+    }
+    bool HaveLeg()
+    {
+        if (wc.activeWeapon && wc.activeWeapon.weapon == WeaponPickUp.Weapon.LadyShoe)
+            return true;
+        if (wc.secondWeapon && wc.secondWeapon.weapon == WeaponPickUp.Weapon.LadyShoe)
+            return true;
+
+        return false;
+    }
     
     public void UpdateHub()
     {
@@ -59,12 +78,8 @@ public class HubItemsSpawner : MonoBehaviour
             //human ladder
             Instantiate(npcSpawners[0].gameObjectToSpawn, npcSpawners[0].transform.position, npcSpawners[0].transform.rotation);
 
-            
             wc = WeaponControls.instance;
-            bool canSpawnRevolver = !(wc.activeWeapon && wc.activeWeapon.weapon == WeaponPickUp.Weapon.Revolver);
-
-            if (wc.secondWeapon && wc.secondWeapon.weapon == WeaponPickUp.Weapon.Revolver)
-                canSpawnRevolver = false;
+            bool canSpawnRevolver = !HaveRevolver();
             
             // revolver start cutscene
             if (canSpawnRevolver)
@@ -176,5 +191,31 @@ public class HubItemsSpawner : MonoBehaviour
         }
         else if (blockersFindWood)
             blockersFindWood.DestroyBlockers();
+    }
+    
+    public IEnumerator RespawnPlayerAfterDeath()
+    {
+        wc = WeaponControls.instance;
+        var sc = SpawnController.instance;
+        var spawnersTemp = new List<Transform>(sc.spawners);
+        var currentSpawner = spawnersTemp[Random.Range(0, spawnersTemp.Count)];
+        
+        if (HaveLeg())
+        {
+            sc.InstantiateItem(itemSpawners[0].itemToSpawn, currentSpawner.position, currentSpawner.rotation, false);
+            spawnersTemp.Remove(currentSpawner);
+            currentSpawner = spawnersTemp[Random.Range(0, spawnersTemp.Count)];
+        }
+        if (HaveRevolver())
+        {
+            sc.InstantiateItem(itemSpawners[1].itemToSpawn, currentSpawner.position, currentSpawner.rotation, false);
+            spawnersTemp.Remove(currentSpawner);
+            currentSpawner = spawnersTemp[Random.Range(0, spawnersTemp.Count)];
+        }
+        
+        wc.ResetInventory();
+        yield return new WaitForSeconds(3f);
+        PlayerSkillsController.instance.InstantTeleport(currentSpawner.position);
+        PlayerMovement.instance.hc.RespawnPlayer();
     }
 }

@@ -2208,7 +2208,7 @@ public class LevelGenerator : MonoBehaviour
                     if (t.canSpawnProp)
                     {
                         t.SpawnProp(propsReferences);
-                        sc.spawners.Remove(t.spawner);
+                        sc.spawners.Remove(t.spawner.transform);
                     }
                 }
             }
@@ -2229,7 +2229,7 @@ public class LevelGenerator : MonoBehaviour
                     else
                         t.SpawnProp(propsReferences);
 
-                    sc.spawners.Remove(t.spawner);
+                    sc.spawners.Remove(t.spawner.transform);
                 }
 
                 yield return null;

@@ -28,7 +28,7 @@ public class SpawnController : MonoBehaviour
     public HealthController treeterPrefab;
     public HealthController floorBladePrefab;
     public HealthController meatTrap;
-    public List<Spawner> spawners = new List<Spawner>();
+    public List<Transform> spawners = new List<Transform>();
     public List<Spawner> spawnersOnProps = new List<Spawner>();
     
     public Interactable notePrefab;
@@ -2009,4 +2009,5 @@ public class SpawnController : MonoBehaviour
     {
         StopAllCoroutines();
     }
+
 }

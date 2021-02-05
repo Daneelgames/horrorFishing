@@ -503,8 +503,10 @@ public class GameManager : MonoBehaviour
                 if (Input.GetKeyDown("k"))
                 {
                     print("K");
+                    PlayerMovement.instance.hc.Kill();
+                    /*
                     if (GLNetworkWrapper.instance && GLNetworkWrapper.instance.localPlayer != null)
-                        GLNetworkWrapper.instance.localPlayer.connectedDummy.hc.Kill();
+                        GLNetworkWrapper.instance.localPlayer.connectedDummy.hc.Kill();*/
                 }
 
                 if (Input.GetKeyDown("b"))

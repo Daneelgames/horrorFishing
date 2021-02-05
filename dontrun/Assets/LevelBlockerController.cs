@@ -8,7 +8,19 @@ public class LevelBlockerController : MonoBehaviour
 {
     public GameObject deathParticle;
     public List<GameObject> blockers = new List<GameObject>();
+    public List<Transform> spawners = new List<Transform>();
 
+    void Start()
+    {
+        var sc = SpawnController.instance;
+        
+        for (int i = 0; i < spawners.Count; i++)
+        {
+            if (!sc.spawners.Contains(spawners[i]))
+                sc.spawners.Add(spawners[i]);
+        }
+    }
+    
     public void DestroyBlockers()
     {
         for (int i = 0; i < blockers.Count; i++)
@@ -26,6 +38,9 @@ public class LevelBlockerController : MonoBehaviour
         float tt = Random.Range(1f,10f);
         
         yield return new WaitForSeconds(tt);
+        
+        if (!blocker)
+            yield break;
         
         var startScale = blocker.transform.localScale; 
         while (t < tt)
@@ -55,6 +70,17 @@ public class LevelBlockerController : MonoBehaviour
                 yield return null;
             }
         }
+
+        var sc = SpawnController.instance;
+        for (int i = spawners.Count - 1; i >= 0; i--)
+        {
+            if (spawners[i] != null)
+            {
+                sc.spawners.Remove(spawners[i]);
+                Destroy(spawners[i].gameObject);   
+            }
+        }
+        
         Destroy(gameObject);
     }
 }

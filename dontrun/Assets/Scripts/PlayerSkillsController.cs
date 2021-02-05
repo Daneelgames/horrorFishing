@@ -637,7 +637,8 @@ public class PlayerSkillsController : MonoBehaviour
             
             if (tempTiles.Count > 0)
             {
-                teleportAnim.SetTrigger(teleportString);
+                // mole hand
+                //teleportAnim.SetTrigger(teleportString);
                 yield return new WaitForSeconds(0.5f);
 
                 //Time.timeScale = 0;

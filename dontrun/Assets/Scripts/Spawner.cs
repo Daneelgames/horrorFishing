@@ -9,11 +9,5 @@ public class Spawner : MonoBehaviour
     public PropController spawnedProp;
     void Start()
     {
-        if (SpawnController.instance == null) return;
-        
-        if (!propSpawner)
-            SpawnController.instance.spawners.Add(this);
-        else
-            SpawnController.instance.spawnersOnProps.Add(this);
     }
 }

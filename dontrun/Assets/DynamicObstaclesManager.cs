@@ -305,11 +305,11 @@ public class DynamicObstaclesManager : MonoBehaviour
     Vector3 GetPositionAroundPoint(Vector3 point, bool ignoreVisibility)
     {
         NavMeshHit hit;
-        var newPos = point + Random.insideUnitSphere * closestZone.sphereSpawnRadius;
+        var newPos = point + Random.onUnitSphere * Random.Range(closestZone.sphereSpawnRadiusMin, closestZone.sphereSpawnRadiusMax);
 
         for (int i = 0; i < 5; i++)
         {
-            if (NavMesh.SamplePosition(newPos, out hit, closestZone.sphereSpawnRadius, NavMesh.AllAreas) && (ignoreVisibility || MouseLook.instance.PositionIsVisibleToPlayer(hit.position) == false))
+            if (NavMesh.SamplePosition(newPos, out hit, closestZone.sphereSpawnRadiusMax, NavMesh.AllAreas) && (ignoreVisibility || MouseLook.instance.PositionIsVisibleToPlayer(hit.position) == false))
             {
                 return hit.position;
             }   

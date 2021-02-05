@@ -135,6 +135,7 @@ public class MouseLook : MonoBehaviour
             }
         }
 
+        /*
         if (hc.health > 0)
         {
             if (debugMapTime > 0 && Time.timeScale > 0)
@@ -173,7 +174,7 @@ public class MouseLook : MonoBehaviour
                     spectatorCam.gameObject.SetActive(false);
                 }
             }
-        }
+        }*/
     }
 
     private void LateUpdate()
@@ -189,7 +190,6 @@ public class MouseLook : MonoBehaviour
 
     void Aiming()
     {
-        
         if (Math.Abs(Input.GetAxisRaw(aimString)) > 0.1f)
             aiming = true;
         else if (Input.GetButton(aimString))

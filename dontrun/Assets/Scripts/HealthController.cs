@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Assets;
 using CerealDevelopment.TimeManagement;
 using Mirror;
 using PlayerControls;
@@ -1957,21 +1958,6 @@ public class HealthController : MonoBehaviour, IUpdatable
             if (deathAudioSource) deathAudioSource.Play();
         }
 
-        if (pm)
-        {
-            if (!gm.hub)
-                pm.cameraAnimator.SetBool("Death", true);
-            
-            gm.SaveNewDeath();
-            var sa = SteamAchievements.instance;
-            if (sa)
-                sa.UnlockSteamAchievement("NEW_ACHIEVEMENT_1_15");
-            var tm = TwitchManager.instance;
-            if (tm && tm.connected)
-            {
-                tm.PlayerDead();
-            }
-        }
 
         if (npcInteractor)
         {
@@ -2105,55 +2091,13 @@ public class HealthController : MonoBehaviour, IUpdatable
 
         if (pm || player)
         {
-            il.PlayerDie();
-            if (!gm.hub)
-            {
-                if (pm)
-                {
-                    if(!GLNetworkWrapper.instance || !GLNetworkWrapper.instance.coopIsActive)
-                        GutProgressionManager.instance.PlayerDie();
-
-                    pm.Death();
-                    ui.Death(damager);
-                    il.activeWeapon = WeaponPickUp.Weapon.Null;
-                    il.secondWeapon = WeaponPickUp.Weapon.Null;
-                }
-                else if (player)
-                {
-                    // dummy?
-                    if (GLNetworkWrapper.instance && GLNetworkWrapper.instance.coopIsActive && GLNetworkWrapper.instance.localPlayer.connectedDummy.hc == this)
-                    {
-                        ui.ToggleGameUi(false, false);
-                        if (playerNetworkDummyController && playerNetworkDummyController.targetPlayer)
-                        {
-                            playerNetworkDummyController.CmdSetHealth(0, -1);
-                            //playerNetworkDummyController.targetPlayer.Kill();
-                        }  
-                    }
-                }
-            }
-            else // hub
-            {
-                UiManager.instance.ikarusHands.SetActive(true);
-                PlayerMovement.instance.hc.invincible = true;
-                PlayerMovement.instance.goldenLightAnimator.SetBool("GoldenLight", true);
-                //UiManager.instance.welcomeToMeatZone.gameObject.SetActive(true);
-                PlayerMovement.instance.controller.enabled = false;
-        
-                ItemsList.instance.PlayerFinishedLevel();
-                if (gm.demo)
-                    GutProgressionManager.instance.SetLevel(1, 0);
-                else
-                {
-                    if (il.foundHerPiecesOnFloors.Contains(9))
-                        GutProgressionManager.instance.SetLevel(Random.Range(20, 999), Random.Range(4,10));
-                    else 
-                        GutProgressionManager.instance.SetLevel(7, 2);
-                }
-                GameManager.instance.NextLevel();
-            }
-            
             Time.timeScale = 1;
+            pm.cameraAnimator.SetBool("Death", true);
+            PlayerMovement.instance.hc.invincible = true;
+            //PlayerMovement.instance.goldenLightAnimator.SetBool("GoldenLight", true);
+            PlayerMovement.instance.controller.enabled = false;
+            
+            StartCoroutine(HubItemsSpawner.instance.RespawnPlayerAfterDeath());
         }
         else
         {
@@ -2164,18 +2108,15 @@ public class HealthController : MonoBehaviour, IUpdatable
 
             RemoveUnitOnClient();
             
-            /*
-            if (GLNetworkWrapper.instance == null || GLNetworkWrapper.instance.coopIsActive == false)
-            {
-                RemoveUnitOnClient();
-            }
-            else
-            {
-                var index = gm.units.IndexOf(this);
-                if (index >= 0)
-                    GLNetworkWrapper.instance.RemoveUnitOnClient(index);
-            }*/
         }
+    }
+
+    public void RespawnPlayer()
+    {
+        health = healthMax / 2;
+        pm.cameraAnimator.SetBool("Death", false);
+        PlayerMovement.instance.hc.invincible = false;
+        PlayerMovement.instance.controller.enabled = true;
     }
 
     public void RemoveUnitOnClient()
