@@ -25,6 +25,7 @@ public class MobDamageArea : MonoBehaviour
         coll = GetComponent<Collider>();
         gm = GameManager.instance;
         transform.parent = null;
+        dangerous = true;
     }
 
     void OnEnable()
@@ -208,6 +209,8 @@ public class MobDamageArea : MonoBehaviour
 
     public void ToggleDangerous(bool danger)
     {
+        return;
+        
         if (!mobAttack.gameObject.activeInHierarchy)
             return;
         dangerous = danger;

@@ -107,9 +107,17 @@ public class PropController : MonoBehaviour
         lg = LevelGenerator.instance;
         if (lg != null && lg.propsInGame.Contains(this))
             lg.propsInGame.Remove(this);
-        
+
         if (spawnedObject)
-            Destroy(spawnedObject.gameObject);
+        {
+            if (spawnedObject.weaponPickUp)
+            {
+                spawnedObject.ReleaseItemWithExplosion();   
+                spawnedObject = null;   
+            }
+            else
+                Destroy(spawnedObject.gameObject);   
+        }
     }
     
     /*

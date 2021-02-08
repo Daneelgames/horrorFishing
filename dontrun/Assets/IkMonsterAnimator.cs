@@ -341,4 +341,18 @@ public class IkMonsterAnimator : MonoBehaviour
 
         limbsSpeedModifier = Mathf.Clamp(groundContactBones.Count * 0.25f, 0.1f, 1f);
     }
+
+    void OnDestroy()
+    {
+        for (int i = groundContactBones.Count - 1; i >= 0; i--)
+        {
+            if (groundContactBones[i])
+                Destroy(groundContactBones[i].gameObject);
+        }
+        
+        for (int i = armsBonesTargets.Count - 1; i >= 0; i--)
+        {
+            Destroy(armsBonesTargets[i]);
+        }
+    }
 }

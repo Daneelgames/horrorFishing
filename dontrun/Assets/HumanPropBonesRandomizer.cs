@@ -168,5 +168,19 @@ namespace Assets
                 boneList[i].transform.localPosition = bonesLocalPositionsListTpose[i];
             }
         }
+        
+        void OnDestroy()
+        {
+            for (int i = groundContactBones.Count - 1; i >= 0; i--)
+            {
+                if (groundContactBones[i])
+                    Destroy(groundContactBones[i].gameObject);
+            }
+        
+            for (int i = armsBonesTargets.Count - 1; i >= 0; i--)
+            {
+                Destroy(armsBonesTargets[i]);
+            }
+        }
     }
 }

@@ -37,6 +37,8 @@ public class DynamicObstaclesManager : MonoBehaviour
 
     public static DynamicObstaclesManager instance;
 
+    public Interactable spawnedLeg;
+    public Interactable spawnedRevolver;
 
     void Awake()
     {
@@ -90,6 +92,41 @@ public class DynamicObstaclesManager : MonoBehaviour
         }
     }
 
+    public void PlayerDied()
+    {
+        StopCoroutine(HandleDynamicProps());
+        StopCoroutine(HandleDynamicMobs());
+        
+        for (int i = lg.propsInGame.Count - 1; i >= 0; i--)
+        {
+            var prop = lg.propsInGame[i];
+            if (prop == null)
+            {
+                lg.propsInGame.RemoveAt(i);
+                continue;
+            }
+
+            lg.propsInGame.Remove(prop);
+            StartCoroutine(DestroyGameObjectAnimated(prop.gameObject, prop.gameObject.transform.position, 1f));
+        }
+        
+        for (int i = sc.mobsInGame.Count - 1; i >= 0; i--)
+        {
+            var mob = sc.mobsInGame[i];
+            if (mob == null)
+            {
+                sc.mobsInGame.RemoveAt(i);
+                continue;
+            }
+
+            sc.mobsInGame.Remove(mob);
+            StartCoroutine(DestroyGameObjectAnimated(mob.gameObject, mob.gameObject.transform.position, 1f));
+        }
+        
+        StartCoroutine(HandleDynamicProps());
+        StartCoroutine(HandleDynamicMobs());
+    }
+    
 
     private Vector3 spawnPosition;
     private Vector3 spawnNormalDirection;
@@ -164,6 +201,25 @@ public class DynamicObstaclesManager : MonoBehaviour
                 
         if (Vector3.Distance(spawnPosition, pm.transform.position) > 5)
             AssetSpawner.instance.Spawn(closestZone.propsReferences[Random.Range(0, closestZone.propsReferences.Count)], spawnPosition, AssetSpawner.ObjectType.Prop);  
+    }
+
+    public void PlaceSpawnedWeaponOnProp(PropController newProp)
+    {
+        var spawnerNew = newProp.spawners[Random.Range(0, newProp.spawners.Count)];
+        if (spawnedLeg && Vector3.Distance(pm.transform.position, spawnedLeg.transform.position) > 30)
+        {
+            spawnedLeg.transform.eulerAngles = new Vector3(Random.Range(0,360), Random.Range(0,360),Random.Range(0,360));
+            spawnedLeg.transform.parent = spawnerNew.transform;
+            spawnedLeg.transform.localPosition = Vector3.zero;
+            newProp.spawnedObject = spawnedLeg;
+        }
+        else if (spawnedRevolver && Vector3.Distance(pm.transform.position, spawnedLeg.transform.position) > 30)
+        {
+            spawnedRevolver.transform.eulerAngles = new Vector3(Random.Range(0,360), Random.Range(0,360),Random.Range(0,360));
+            spawnedRevolver.transform.parent = spawnerNew.transform;
+            spawnedRevolver.transform.localPosition = Vector3.zero;
+            newProp.spawnedObject = spawnedRevolver;
+        }
     }
     
     IEnumerator HandleDynamicMobs()

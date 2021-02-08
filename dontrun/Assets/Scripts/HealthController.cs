@@ -1917,7 +1917,6 @@ public class HealthController : MonoBehaviour, IUpdatable
                 propController.spawnedObject.ReleaseItemWithExplosion();   
                 propController.spawnedObject = null;   
             }   
-            
         }
         
         if (boss)

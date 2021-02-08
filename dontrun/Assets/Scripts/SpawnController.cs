@@ -541,9 +541,13 @@ public class SpawnController : MonoBehaviour
             
             SpawnAdditionalAmmoOnProp(weaponIndex, newProp);
         }
+        else
+        {
+            DynamicObstaclesManager.instance.PlaceSpawnedWeaponOnProp(newProp);
+        }
     }
     
-    public void InstantiateItem(Interactable item, Vector3 spawnPos, Quaternion rotation, bool serverSpawn)
+    public Interactable InstantiateItem(Interactable item, Vector3 spawnPos, Quaternion rotation, bool serverSpawn)
     {
         var spawnedItem = Instantiate(item, spawnPos, rotation);
 
@@ -560,17 +564,7 @@ public class SpawnController : MonoBehaviour
             spawnedItem.weaponPickUp.weaponDataRandomier.GenerateOnSpawn(false, false);
         }
 
-        /*
-        if (GameManager.instance.hub)
-        {
-            spawnedItem.rb.useGravity = true;
-        }
-        */
-        
-        if (serverSpawn && lg.levelgenOnHost)
-        {
-            NetworkServer.Spawn(spawnedItem.gameObject);
-        }
+        return spawnedItem;
     }
     
     IEnumerator SpawnStartEnemies()

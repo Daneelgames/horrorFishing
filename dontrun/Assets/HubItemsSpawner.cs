@@ -192,9 +192,10 @@ public class HubItemsSpawner : MonoBehaviour
         else if (blockersFindWood)
             blockersFindWood.DestroyBlockers();
     }
-    
+
     public IEnumerator RespawnPlayerAfterDeath()
     {
+        DynamicObstaclesManager.instance.PlayerDied();
         PlayerMovement.instance.cameraAnimator.SetBool("Death", true);
         PlayerMovement.instance.hc.invincible = true;
         //PlayerMovement.instance.goldenLightAnimator.SetBool("GoldenLight", true);
@@ -217,17 +218,16 @@ public class HubItemsSpawner : MonoBehaviour
         PlayerSkillsController.instance.InstantTeleport(currentSpawner.position);
         PlayerMovement.instance.hc.RespawnPlayer();
         spawnersTemp.Remove(currentSpawner);
-
         if (spawnLeg)
         {
             currentSpawner = GetClosestSpawner(currentSpawner.position, spawnersTemp);
-            sc.InstantiateItem(itemSpawners[0].itemToSpawn, currentSpawner.position, currentSpawner.rotation, false);
+            DynamicObstaclesManager.instance.spawnedLeg = sc.InstantiateItem(itemSpawners[0].itemToSpawn, currentSpawner.position, currentSpawner.rotation, false);
             spawnersTemp.Remove(currentSpawner);
         }
         if (spawnRevolver)
         {
-            currentSpawner = spawnersTemp[Random.Range(0, spawnersTemp.Count)];
-            sc.InstantiateItem(itemSpawners[1].itemToSpawn, currentSpawner.position, currentSpawner.rotation, false);
+            currentSpawner = GetClosestSpawner(currentSpawner.position, spawnersTemp);
+            DynamicObstaclesManager.instance.spawnedRevolver = sc.InstantiateItem(itemSpawners[1].itemToSpawn, currentSpawner.position, currentSpawner.rotation, false);
         }
     }
 
