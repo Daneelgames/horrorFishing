@@ -35,7 +35,7 @@ public class LevelBlockerController : MonoBehaviour
         var blocker = blockers[i];
         
         float t = 0;
-        float tt = Random.Range(1f,10f);
+        float tt = Random.Range(1f,5f);
         
         yield return new WaitForSeconds(tt);
         

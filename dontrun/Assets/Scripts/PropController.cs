@@ -112,11 +112,15 @@ public class PropController : MonoBehaviour
         {
             if (spawnedObject.weaponPickUp)
             {
+                print("RELEASE WEAPON");
                 spawnedObject.ReleaseItemWithExplosion();   
                 spawnedObject = null;   
             }
             else
-                Destroy(spawnedObject.gameObject);   
+            {
+                print("DESTROY PICKUP NAMED " + spawnedObject.gameObject.name);
+                Destroy(spawnedObject.gameObject);
+            }   
         }
     }
     

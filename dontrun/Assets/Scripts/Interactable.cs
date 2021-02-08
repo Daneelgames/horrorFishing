@@ -729,6 +729,7 @@ public class Interactable : MonoBehaviour,
         transform.parent = null;
         rb.isKinematic = false;
         rb.constraints = RigidbodyConstraints.None;
+        rb.useGravity = true;
         rb.AddExplosionForce(100f, transform.position + Random.insideUnitSphere, 10);
     }
 

@@ -154,26 +154,31 @@ public class DynamicObstaclesManager : MonoBehaviour
         {
             GetClosestZone();
             yield return new WaitForSeconds(Random.Range(closestZone.handlePropsTimeMin, closestZone.handlePropsTimeMax));
-            for (int i = lg.propsInGame.Count - 1; i >= 0; i--)
+            if (lg.propsInGame.Count > 0)
             {
-                var prop = lg.propsInGame[i];
-                if (prop == null)
+                for (int i = lg.propsInGame.Count - 1; i >= 0; i--)
                 {
-                    lg.propsInGame.RemoveAt(i);
-                    continue;
-                }
+                    var prop = lg.propsInGame[i];
+                    if (prop == null)
+                    {
+                        lg.propsInGame.RemoveAt(i);
+                        continue;
+                    }
 
-                distanceToObject = Vector3.Distance(pm.transform.position, prop.transform.position); 
-                if (distanceToObject > distanceToDestroyFar || (distanceToObject > distanceToDestroy && MouseLook.instance.PositionIsVisibleToPlayer(prop.transform.position) == false && Random.value > 0.5f))
-                { 
-                    if (prop.spawnedObject != null)
-                        Destroy(prop.spawnedObject.gameObject);
+                    distanceToObject = Vector3.Distance(pm.transform.position, prop.transform.position); 
+                    if (distanceToObject > distanceToDestroyFar || (distanceToObject > distanceToDestroy && MouseLook.instance.PositionIsVisibleToPlayer(prop.transform.position) == false && Random.value > 0.5f))
+                    { 
+                        /*
+                        if (prop.spawnedObject != null)
+                            Destroy(prop.spawnedObject.gameObject);
+                            */
                     
-                    lg.propsInGame.Remove(prop);
-                    StartCoroutine(DestroyGameObjectAnimated(prop.gameObject, prop.gameObject.transform.position, Random.Range(1f,3f)));
-                    //Destroy(prop.gameObject);
-                }
-                yield return null;
+                        lg.propsInGame.Remove(prop);
+                        StartCoroutine(DestroyGameObjectAnimated(prop.gameObject, prop.gameObject.transform.position, Random.Range(1f,3f)));
+                        //Destroy(prop.gameObject);
+                    }
+                    yield return null;
+                }   
             }
 
             if (lg.propsInGame.Count < propsSpawnedMax)
@@ -219,13 +224,17 @@ public class DynamicObstaclesManager : MonoBehaviour
         var spawnerNew = newProp.spawners[Random.Range(0, newProp.spawners.Count)];
         if (spawnedLeg != null && Vector3.Distance(pm.transform.position, spawnedLeg.transform.position) > 30)
         {
+            spawnedLeg.rb.useGravity = false;
+            spawnedLeg.rb.constraints = RigidbodyConstraints.FreezeAll;
             spawnedLeg.transform.eulerAngles = new Vector3(Random.Range(0,360), Random.Range(0,360),Random.Range(0,360));
             spawnedLeg.transform.parent = spawnerNew.transform;
             spawnedLeg.transform.localPosition = Vector3.zero;
             newProp.spawnedObject = spawnedLeg;
         }
-        else if (spawnedRevolver != null && Vector3.Distance(pm.transform.position, spawnedLeg.transform.position) > 30)
+        else if (spawnedRevolver != null && Vector3.Distance(pm.transform.position, spawnedRevolver.transform.position) > 30)
         {
+            spawnedRevolver.rb.useGravity = false;
+            spawnedRevolver.rb.constraints = RigidbodyConstraints.FreezeAll;
             spawnedRevolver.transform.eulerAngles = new Vector3(Random.Range(0,360), Random.Range(0,360),Random.Range(0,360));
             spawnedRevolver.transform.parent = spawnerNew.transform;
             spawnedRevolver.transform.localPosition = Vector3.zero;
@@ -240,23 +249,26 @@ public class DynamicObstaclesManager : MonoBehaviour
             GetClosestZone();
             
             yield return new WaitForSeconds(Random.Range(closestZone.handleEnemiesTimeMin, closestZone.handleEnemiesTimeMax));
-            for (int i = sc.mobsInGame.Count - 1; i >= 0; i--)
+            if (sc.mobsInGame.Count > 0)
             {
-                var mob = sc.mobsInGame[i];
-                if (mob == null)
+                for (int i = sc.mobsInGame.Count - 1; i >= 0; i--)
                 {
-                    sc.mobsInGame.RemoveAt(i);
-                    continue;
-                }
+                    var mob = sc.mobsInGame[i];
+                    if (mob == null)
+                    {
+                        sc.mobsInGame.RemoveAt(i);
+                        continue;
+                    }
 
-                distanceToObject = Vector3.Distance(pm.transform.position, mob.transform.position); 
-                if (distanceToObject > distanceToDestroyFar || (distanceToObject > distanceToDestroy && MouseLook.instance.PositionIsVisibleToPlayer(mob.transform.position) == false && Random.value > 0.5f))
-                {
-                    sc.mobsInGame.Remove(mob);
-                    StartCoroutine(DestroyGameObjectAnimated(mob.gameObject, mob.gameObject.transform.position, Random.Range(1f,3f)));
-                    //Destroy(mob.gameObject);
-                }
-                yield return null;
+                    distanceToObject = Vector3.Distance(pm.transform.position, mob.transform.position); 
+                    if (distanceToObject > distanceToDestroyFar || (distanceToObject > distanceToDestroy && MouseLook.instance.PositionIsVisibleToPlayer(mob.transform.position) == false && Random.value > 0.5f))
+                    {
+                        sc.mobsInGame.Remove(mob);
+                        StartCoroutine(DestroyGameObjectAnimated(mob.gameObject, mob.gameObject.transform.position, Random.Range(1f,3f)));
+                        //Destroy(mob.gameObject);
+                    }
+                    yield return null;
+                }   
             }
 
             if (sc.mobsInGame.Count < enemiesSpawnedMax)
@@ -295,6 +307,8 @@ public class DynamicObstaclesManager : MonoBehaviour
             t += Time.deltaTime;
             yield return null;
         }
+
+        
         Destroy(go);
     }
     
