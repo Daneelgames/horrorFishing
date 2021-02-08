@@ -80,6 +80,10 @@ public class MouseLook : MonoBehaviour
         //activeWeaponHolderAnim = wc.activeWeapon.weaponMovementAnim;
     }
 
+    public void SyncCameraFov()
+    {
+        cameraFov = mainCamera.fieldOfView;
+    }
 
     public void ToggleCrouch(bool crouch)
     {

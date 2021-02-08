@@ -214,7 +214,7 @@ public class HubItemsSpawner : MonoBehaviour
         // death anim is over
 
         StartCoroutine(GetUpPhraseCoroutine());
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(2.1f);
         PlayerSkillsController.instance.InstantTeleport(currentSpawner.position);
         PlayerMovement.instance.hc.RespawnPlayer();
         spawnersTemp.Remove(currentSpawner);
@@ -244,6 +244,7 @@ public class HubItemsSpawner : MonoBehaviour
             cam.fieldOfView = Mathf.Lerp(startFov, 180, t / tt);
             yield return null;
         }
+        MouseLook.instance.SyncCameraFov();
     }
     IEnumerator GetUpPhraseCoroutine()
     {

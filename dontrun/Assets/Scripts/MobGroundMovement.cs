@@ -437,10 +437,8 @@ public class MobGroundMovement : MonoBehaviour, IUpdatable
                         }
 
                         agent.Warp(transform.position);
-                        // this makes mobs to stop if they pass near the player
-                        bool access = ((agent.enabled && agent.remainingDistance > 5) || agent.enabled == false);
                         
-                        if (monsterState == State.Idle && access) // if mob moves for hide
+                        if (monsterState == State.Idle) // if mob moves for hide
                         {
                             if (newDist > 30 && Random.value > 0.9f)
                             {   
