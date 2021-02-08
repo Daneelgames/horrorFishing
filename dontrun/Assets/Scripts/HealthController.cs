@@ -2092,11 +2092,9 @@ public class HealthController : MonoBehaviour, IUpdatable
         if (pm || player)
         {
             Time.timeScale = 1;
-            pm.cameraAnimator.SetBool("Death", true);
-            PlayerMovement.instance.hc.invincible = true;
-            //PlayerMovement.instance.goldenLightAnimator.SetBool("GoldenLight", true);
-            PlayerMovement.instance.controller.enabled = false;
             
+            HubItemsSpawner.instance.StopAllCoroutines();
+            if (pac) pac.Death();
             StartCoroutine(HubItemsSpawner.instance.RespawnPlayerAfterDeath());
         }
         else
@@ -2113,10 +2111,12 @@ public class HealthController : MonoBehaviour, IUpdatable
 
     public void RespawnPlayer()
     {
-        health = healthMax / 2;
         pm.cameraAnimator.SetBool("Death", false);
         PlayerMovement.instance.hc.invincible = false;
         PlayerMovement.instance.controller.enabled = true;
+        health = healthMax / 2;
+        il.playerCurrentHealth = health;
+        ui.UpdateHealthbar();
     }
 
     public void RemoveUnitOnClient()

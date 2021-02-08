@@ -198,8 +198,6 @@ namespace PlayerControls
                 hc.Antidote();
                 
                 mouseLook = MouseLook.instance;
-                if (mouseLook.debugMap)
-                    mouseLook.debugMap.SetActive(false);
                 
                 if (WeaponControls.instance.activeWeapon) WeaponControls.instance.activeWeapon.canAct = true;
                 
@@ -209,19 +207,6 @@ namespace PlayerControls
 
             GLNetworkWrapper.instance.ToggleSpectatorCameraFromLocalPlayer(true);
 
-            if (mouseLook.debugMap)
-            {
-                mouseLook.debugMap.SetActive(true);
-                
-                if (GLNetworkWrapper.instance && GLNetworkWrapper.instance.coopIsActive)
-                {
-                    mouseLook.spectatorCam.gameObject.SetActive(true);   
-                }
-                else
-                {
-                    mouseLook.spectatorCam.gameObject.SetActive(false);
-                }
-            }
             
             cameraAnimator.SetFloat(speedString, 0);
             controller.enabled = false;
@@ -738,8 +723,6 @@ namespace PlayerControls
             hc.wc.Init();
             controller.enabled = true;
             mouseLook.canControl = true;
-            mouseLook.debugMap.SetActive(false);
-            mouseLook.spectatorCam.SetActive(false);
             mouseLook.mainCamera.cullingMask = mouseLook.defaultCullingMask;
             
             if (GameManager.instance.questWindow)

@@ -56,9 +56,6 @@ public class MouseLook : MonoBehaviour
 
     public Light playerLight;
 
-    private float debugMapTime = 0;
-    public GameObject debugMap;
-    public GameObject spectatorCam;
 
     [Header("Culling settings")] 
     public LayerMask defaultCullingMask;
@@ -81,11 +78,6 @@ public class MouseLook : MonoBehaviour
 
         mainCamera.cullingMask = coopLoadingCullingMask;
         //activeWeaponHolderAnim = wc.activeWeapon.weaponMovementAnim;
-    }
-
-    public void AddDebugMapTime(float time)
-    {
-        debugMapTime += time;
     }
 
 
@@ -127,12 +119,9 @@ public class MouseLook : MonoBehaviour
 
     void Update()
     {
-        if (!gm.paused && !pm.teleport/* && !gm.questWindow*/)
+        if (!gm.paused && !pm.teleport && hc.health > 0 && canControl)
         {
-            if ((GLNetworkWrapper.instance && GLNetworkWrapper.instance.coopIsActive) || (hc.health > 0 && canControl)) 
-            {
-                Aiming();
-            }
+            Aiming();
         }
 
         /*
@@ -219,7 +208,12 @@ public class MouseLook : MonoBehaviour
 
     void Looking()
     {
-        if (pm == null) return;
+        if (pm == null || pm.hc.health <= 0)
+        {
+            if (camHolder) camHolder.transform.localRotation = Quaternion.Slerp(camHolder.transform.localRotation, Quaternion.identity, Time.deltaTime * gm.mouseLookSpeedCurrent);
+                
+            return;
+        }
         
         mouseX = Input.GetAxis(mouseXstring) * gm.mouseSensitivity;
         mouseY = Input.GetAxis(mouseYstring) * gm.mouseSensitivity;

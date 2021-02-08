@@ -27,6 +27,7 @@ public class PlayerAudioController : MonoBehaviour
     public List<AudioClip> bossAmbients;
     public AudioSource itemSource;
     public AudioSource damagedSource;
+    public AudioSource deathSource;
     public AudioSource loPitchDamagedSource;
     public AudioSource interactSource;
     public AudioSource weaponReloadingSource;
@@ -350,6 +351,12 @@ public class PlayerAudioController : MonoBehaviour
         damagedSource.Stop();
         damagedSource.pitch = Random.Range(0.5f, 1.5f);
         damagedSource.Play();
+    }
+    public void Death()
+    {
+        deathSource.Stop();
+        deathSource.pitch = Random.Range(0.5f, 1.25f);
+        deathSource.Play();
     }
 
     public void ToggleQuests()

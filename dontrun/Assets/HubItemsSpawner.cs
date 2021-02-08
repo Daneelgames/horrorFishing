@@ -195,27 +195,93 @@ public class HubItemsSpawner : MonoBehaviour
     
     public IEnumerator RespawnPlayerAfterDeath()
     {
+        PlayerMovement.instance.cameraAnimator.SetBool("Death", true);
+        PlayerMovement.instance.hc.invincible = true;
+        //PlayerMovement.instance.goldenLightAnimator.SetBool("GoldenLight", true);
+        PlayerMovement.instance.controller.enabled = false; 
+        
         wc = WeaponControls.instance;
         var sc = SpawnController.instance;
         var spawnersTemp = new List<Transform>(sc.spawners);
         var currentSpawner = spawnersTemp[Random.Range(0, spawnersTemp.Count)];
+        bool spawnLeg = HaveLeg();
+        bool spawnRevolver = HaveRevolver();
         
-        if (HaveLeg())
+        wc.ResetInventory();
+        StartCoroutine(AnimateDeathFov());
+        yield return new WaitForSeconds(1f);
+        // death anim is over
+
+        StartCoroutine(GetUpPhraseCoroutine());
+        yield return new WaitForSeconds(2f);
+        PlayerSkillsController.instance.InstantTeleport(currentSpawner.position);
+        PlayerMovement.instance.hc.RespawnPlayer();
+        spawnersTemp.Remove(currentSpawner);
+
+        if (spawnLeg)
         {
+            currentSpawner = GetClosestSpawner(currentSpawner.position, spawnersTemp);
             sc.InstantiateItem(itemSpawners[0].itemToSpawn, currentSpawner.position, currentSpawner.rotation, false);
             spawnersTemp.Remove(currentSpawner);
             currentSpawner = spawnersTemp[Random.Range(0, spawnersTemp.Count)];
         }
-        if (HaveRevolver())
+        if (spawnRevolver)
         {
             sc.InstantiateItem(itemSpawners[1].itemToSpawn, currentSpawner.position, currentSpawner.rotation, false);
-            spawnersTemp.Remove(currentSpawner);
-            currentSpawner = spawnersTemp[Random.Range(0, spawnersTemp.Count)];
+        }
+    }
+
+    IEnumerator AnimateDeathFov()
+    {
+        float t = 0;
+        float tt = 3;
+        var cam = MouseLook.instance.mainCamera;
+        float startFov = cam.fieldOfView;
+
+        while (t < tt)
+        {
+            t += Time.deltaTime;
+            cam.fieldOfView = Mathf.Lerp(startFov, 180, t / tt);
+            yield return null;
+        }
+    }
+    IEnumerator GetUpPhraseCoroutine()
+    {
+        var ui = UiManager.instance;
+        string newPhrase = "PICK YOURSELF UP AND GET BACK IN THE RACE";
+        ui.dialogueSpeakerName.text = "Lady in Red";
+        
+        ui.dialogueAnim.SetTrigger("Active");
+        
+        foreach (char c in newPhrase)
+        {
+            ui.dialoguePhrase.text += c;
+            yield return null;
         }
         
-        wc.ResetInventory();
         yield return new WaitForSeconds(3f);
-        PlayerSkillsController.instance.InstantTeleport(currentSpawner.position);
-        PlayerMovement.instance.hc.RespawnPlayer();
+    
+        ui.dialogueAnim.SetTrigger("Inactive");
+        ui.dialoguePhrase.text = "";
+        ui.dialogueChoice.text = "";
+    }
+
+    Transform GetClosestSpawner(Vector3 originPoint, List<Transform> spawnersTemp)
+    {
+        float distance = 1000;
+        float newDist = 0;
+        Transform closestSpawner = null;
+        for (int i = 0; i < spawnersTemp.Count; i++)
+        {
+            newDist = Vector3.Distance(originPoint, spawnersTemp[i].position);
+
+            if (newDist > 10 && newDist < distance)
+            {
+                distance = newDist;
+                closestSpawner = spawnersTemp[i];
+            }
+        }
+
+        return closestSpawner;
     }
 }

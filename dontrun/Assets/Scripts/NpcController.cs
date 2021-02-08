@@ -233,7 +233,7 @@ public class NpcController : MonoBehaviour
             }
         }
     }
-
+    
     public void HideDialogue()
     {
         ui = UiManager.instance;

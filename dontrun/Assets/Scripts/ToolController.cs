@@ -172,7 +172,6 @@ public class ToolController : MonoBehaviour
                 break;
             
              case ToolType.Insight:
-                 MouseLook.instance.AddDebugMapTime(45f);
                  break;
         }
         
