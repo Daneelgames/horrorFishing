@@ -223,10 +223,10 @@ public class HubItemsSpawner : MonoBehaviour
             currentSpawner = GetClosestSpawner(currentSpawner.position, spawnersTemp);
             sc.InstantiateItem(itemSpawners[0].itemToSpawn, currentSpawner.position, currentSpawner.rotation, false);
             spawnersTemp.Remove(currentSpawner);
-            currentSpawner = spawnersTemp[Random.Range(0, spawnersTemp.Count)];
         }
         if (spawnRevolver)
         {
+            currentSpawner = spawnersTemp[Random.Range(0, spawnersTemp.Count)];
             sc.InstantiateItem(itemSpawners[1].itemToSpawn, currentSpawner.position, currentSpawner.rotation, false);
         }
     }

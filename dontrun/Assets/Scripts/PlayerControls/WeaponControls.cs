@@ -125,7 +125,7 @@ public class WeaponControls : MonoBehaviour
             if (!eatingWeapon)
             {
                 Attacking();
-                AttackYourself();
+                //AttackYourself();
                 Reloading();
             
                 SwitchWeapon();

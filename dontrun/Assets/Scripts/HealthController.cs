@@ -106,7 +106,6 @@ public class HealthController : MonoBehaviour, IUpdatable
     public List<ParticleSystem> deathParticlesMulti;
     private AudioSource deathAudioSource;
 
-    private bool lastChance = true;
     private SpawnController sc;
     GameManager gm;
     private UiManager ui;
@@ -1384,66 +1383,59 @@ public class HealthController : MonoBehaviour, IUpdatable
         if (damageCooldown <= 0 && health > 0)
         {
             int effect = -1;
-            if ((pm || player) && lastChance && health - dmg - dmg * armor <= 0 && health - dmg - dmg * armor >= -50f)
+            if (pm || player)
             {
-                health = 50;
-                lastChance = false;
-            }
-            else
-            {
-                if (pm || player)
-                {
-                    damagedOnLevel = true;
-                    
-                    if (health <= healthMax * 0.33f)
-                        health -= (dmg - dmg * armor) * 0.66f; // light damage
-                    else if (health <= healthMax * 0.66f)
-                        health -= (dmg - dmg * armor); // normal damage
-                    else 
-                        health -= (dmg  - dmg * armor) * 2f;   
-                    /*
-                    if (loveAndGoldActive)
-                        dmg *= 0.5f;
-                    
-                    wc = WeaponControls.instance;
-                    
-                    // scale damage
-                    if (gm.tutorialPassed == 0)
-                        dmg *= 0.5f;
-                    else if (wc.activeWeapon && wc.activeWeapon.weapon == WeaponPickUp.Weapon.Shield && !wc.activeWeapon.broken && !wc.activeWeapon.hidden)
-                    {
-                        dmg *= 0.5f;
-                        wc.activeWeapon.LoseDurability();
-                    }
+                damagedOnLevel = true;
                 
-                    if (psc.horrorMode)
-                    {
-                        dmg *= 3;
-                        health -= (dmg - dmg * armor); // normal damage
-                    }
-                    else
-                    {
-                        if (gm.difficultyLevel == GameManager.GameMode.StickyMeat)
-                        {
-                            if (health <= healthMax * 0.33f)
-                                health -= (dmg - dmg * armor) * 0.33f;
-                            else if (health <= healthMax * 0.5f)
-                                health -= (dmg - dmg * armor) * 0.75f;
-                            else 
-                                health -= (dmg  - dmg * armor);
-                        }
-                        else if (gm.difficultyLevel == GameManager.GameMode.MeatZone)
-                        {
-                            if (health <= healthMax * 0.33f)
-                                health -= (dmg - dmg * armor) * 0.66f; // light damage
-                            else if (health <= healthMax * 0.66f)
-                                health -= (dmg - dmg * armor); // normal damage
-                            else 
-                                health -= (dmg  - dmg * armor) * 2f;   
-                        }
-                    }*/
+                if (health <= healthMax * 0.33f)
+                    health -= (dmg - dmg * armor) * 0.66f; // light damage
+                else if (health <= healthMax * 0.66f)
+                    health -= (dmg - dmg * armor); // normal damage
+                else 
+                    health -= (dmg  - dmg * armor) * 2f;   
+                /*
+                if (loveAndGoldActive)
+                    dmg *= 0.5f;
+                
+                wc = WeaponControls.instance;
+                
+                // scale damage
+                if (gm.tutorialPassed == 0)
+                    dmg *= 0.5f;
+                else if (wc.activeWeapon && wc.activeWeapon.weapon == WeaponPickUp.Weapon.Shield && !wc.activeWeapon.broken && !wc.activeWeapon.hidden)
+                {
+                    dmg *= 0.5f;
+                    wc.activeWeapon.LoseDurability();
+                }
+            
+                if (psc.horrorMode)
+                {
+                    dmg *= 3;
+                    health -= (dmg - dmg * armor); // normal damage
                 }
                 else
+                {
+                    if (gm.difficultyLevel == GameManager.GameMode.StickyMeat)
+                    {
+                        if (health <= healthMax * 0.33f)
+                            health -= (dmg - dmg * armor) * 0.33f;
+                        else if (health <= healthMax * 0.5f)
+                            health -= (dmg - dmg * armor) * 0.75f;
+                        else 
+                            health -= (dmg  - dmg * armor);
+                    }
+                    else if (gm.difficultyLevel == GameManager.GameMode.MeatZone)
+                    {
+                        if (health <= healthMax * 0.33f)
+                            health -= (dmg - dmg * armor) * 0.66f; // light damage
+                        else if (health <= healthMax * 0.66f)
+                            health -= (dmg - dmg * armor); // normal damage
+                        else 
+                            health -= (dmg  - dmg * armor) * 2f;   
+                    }
+                }*/
+            }
+            else
                 {
                     if (PlayerSkillsController.instance.horrorMode)
                     {
@@ -1498,7 +1490,6 @@ public class HealthController : MonoBehaviour, IUpdatable
                         GLNetworkWrapper.instance.UnitHealthChanged(gameObject, -d, effect, _damagedByPlayer);
                     }
                 }
-            }
             
             if (bossStateChanger)
                 bossStateChanger.BossDamaged();
@@ -1986,25 +1977,8 @@ public class HealthController : MonoBehaviour, IUpdatable
         
         if (activeNpc) ActiveNpcManager.instance.NpcIsDead();
 
-        print("mobparts and wallmaster: " + mobPartsController + " and " + wallMasterTile);
         if (mobPartsController)
         {
-            if (wallMasterTile)
-            {
-                
-                //ONLY ON SERVER OR IN SOLO
-                if (GLNetworkWrapper.instance && GLNetworkWrapper.instance.coopIsActive &&
-                    LevelGenerator.instance.levelgenOnHost)
-                {
-                    print("[COOP] WallMasterTile.DestroyWall");
-                    wallMasterTile.CreateTileBehindBrokenWall(this);
-                }
-                else if (GLNetworkWrapper.instance == null || GLNetworkWrapper.instance.coopIsActive == false)
-                {
-                    wallMasterTile.CreateTileBehindBrokenWall(this);
-                }
-            }
-            
             if (monsterTrapTrigger)
                 monsterTrapTrigger.enabled = false;
             
@@ -2041,18 +2015,6 @@ public class HealthController : MonoBehaviour, IUpdatable
                 }
                 Destroy(npcInteractor.gameObject);
                 
-                /*
-                if (GLNetworkWrapper.instance == null || GLNetworkWrapper.instance.coopIsActive == false)
-                {
-                    Destroy(npcInteractor.gameObject);
-                }
-                else
-                {
-                    var index = il.interactables.IndexOf(npcInteractor.interactable);
-                    if (index >= 0)
-                        GLNetworkWrapper.instance.DestroyInteractable(index);
-                }
-                */
             }
             else if (weaponPickUp)
             {
@@ -2074,11 +2036,6 @@ public class HealthController : MonoBehaviour, IUpdatable
             print("Affect reputation: " + affectReputation);
             if (affectReputation)
                 il.AddToBadReputation(addBadRepOnDeath);
-            
-            /*
-            if (!pm && !player)
-                gm.units.Remove(this);
-                */
         }
         
 
@@ -2105,7 +2062,6 @@ public class HealthController : MonoBehaviour, IUpdatable
                 trapController.Death();
 
             RemoveUnitOnClient();
-            
         }
     }
 
@@ -2116,6 +2072,7 @@ public class HealthController : MonoBehaviour, IUpdatable
         PlayerMovement.instance.controller.enabled = true;
         health = healthMax / 2;
         il.playerCurrentHealth = health;
+        dead = false;
         ui.UpdateHealthbar();
     }
 
