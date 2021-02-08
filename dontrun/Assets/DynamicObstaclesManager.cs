@@ -205,15 +205,26 @@ public class DynamicObstaclesManager : MonoBehaviour
 
     public void PlaceSpawnedWeaponOnProp(PropController newProp)
     {
+        if (spawnedLeg && spawnedLeg.gameObject.activeInHierarchy == false)
+        {
+            Destroy(spawnedLeg.gameObject);
+            spawnedLeg = null;
+        }
+        if (spawnedRevolver && spawnedRevolver.gameObject.activeInHierarchy == false)
+        {
+            Destroy(spawnedRevolver.gameObject);
+            spawnedRevolver = null;
+        }
+        
         var spawnerNew = newProp.spawners[Random.Range(0, newProp.spawners.Count)];
-        if (spawnedLeg && Vector3.Distance(pm.transform.position, spawnedLeg.transform.position) > 30)
+        if (spawnedLeg != null && Vector3.Distance(pm.transform.position, spawnedLeg.transform.position) > 30)
         {
             spawnedLeg.transform.eulerAngles = new Vector3(Random.Range(0,360), Random.Range(0,360),Random.Range(0,360));
             spawnedLeg.transform.parent = spawnerNew.transform;
             spawnedLeg.transform.localPosition = Vector3.zero;
             newProp.spawnedObject = spawnedLeg;
         }
-        else if (spawnedRevolver && Vector3.Distance(pm.transform.position, spawnedLeg.transform.position) > 30)
+        else if (spawnedRevolver != null && Vector3.Distance(pm.transform.position, spawnedLeg.transform.position) > 30)
         {
             spawnedRevolver.transform.eulerAngles = new Vector3(Random.Range(0,360), Random.Range(0,360),Random.Range(0,360));
             spawnedRevolver.transform.parent = spawnerNew.transform;
