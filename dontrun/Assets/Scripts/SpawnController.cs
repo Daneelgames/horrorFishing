@@ -1306,6 +1306,7 @@ public class SpawnController : MonoBehaviour
         newAmmo.transform.eulerAngles = new Vector3(Random.Range(0,360), Random.Range(0,360),Random.Range(0,360));
         newAmmo.transform.parent = spawnerNew.transform;
         newAmmo.transform.localPosition = Vector3.zero;
+        newAmmo.insideTheProp = true;
         newProp.spawnedObject = newAmmo;
     }
 

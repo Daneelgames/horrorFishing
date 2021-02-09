@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using PlayerControls;
 using TMPro;
@@ -16,12 +17,12 @@ public class NpcController : MonoBehaviour
     }
 
     public bool canCreateQuestGiver = false;
-    public int roseNpc = -1;
     public int currentDialog = 0;
     public int currentLine = 0;
     public int eventsRepeat = 1;
     public int currentEventRepeat = 0;
 
+    public NpcPointToClosestPickUp npcPointerOnPickUp;
     public NpcSetPhrasesOnLevel npcSetPhrasesOnLevel;
     public RandomizedPhrasesData randomizedPhrasesData;
     public bool randomizedPhrasesOrder = false;
@@ -96,7 +97,8 @@ public class NpcController : MonoBehaviour
         if (npcSetPhrasesOnLevel)
             randomizedPhrasesData = npcSetPhrasesOnLevel.GetRandomizedData();
         
-        InitPhrases();
+        if (gm)
+            InitPhrases();
     }
 
     public void InitPhrases()
@@ -185,6 +187,52 @@ public class NpcController : MonoBehaviour
         }
     }
 
+    void CreatePointerPhrases()
+    {
+        // replace everything in random order
+        var tempDialogues = new List<Dialogue>(dialogues);
+        
+        dialogues.Clear();
+        
+        // amount of phrases
+        Dialogue newSentence = new Dialogue();
+        int randomDialogIndex = Random.Range(0, npcPointerOnPickUp.pointerPhrases.dialogues.Count);
+        Dialogue randomDialogue = npcPointerOnPickUp.pointerPhrases.dialogues[randomDialogIndex];
+
+        switch (gm.language)
+        {
+            case 0:
+                newSentence.phrases.Add(randomDialogue.phrases[Random.Range(0, randomDialogue.phrases.Count)]);
+                break;
+            case 1:
+                newSentence.phrasesRu.Add(randomDialogue.phrasesRu[Random.Range(0, randomDialogue.phrasesRu.Count)]);
+                newSentence.phrases.Add(randomDialogue.phrases[Random.Range(0, randomDialogue.phrases.Count)]);
+                break;
+            case 2:
+                newSentence.phrasesESP.Add(randomDialogue.phrasesESP[Random.Range(0, randomDialogue.phrasesESP.Count)]);
+                newSentence.phrases.Add(randomDialogue.phrases[Random.Range(0, randomDialogue.phrases.Count)]);
+                break;
+            case 3:
+                newSentence.phrasesGER.Add(randomDialogue.phrasesGER[Random.Range(0, randomDialogue.phrasesGER.Count)]);
+                newSentence.phrases.Add(randomDialogue.phrases[Random.Range(0, randomDialogue.phrases.Count)]);
+                break;
+            case 4:
+                newSentence.phrasesIT.Add(randomDialogue.phrasesIT[Random.Range(0, randomDialogue.phrasesIT.Count)]);
+                newSentence.phrases.Add(randomDialogue.phrases[Random.Range(0, randomDialogue.phrases.Count)]);
+                break;
+            case 5:
+                newSentence.phrasesSPBR.Add(randomDialogue.phrasesSPBR[Random.Range(0, randomDialogue.phrasesSPBR.Count)]);
+                newSentence.phrases.Add(randomDialogue.phrases[Random.Range(0, randomDialogue.phrases.Count)]);
+                break;
+        }
+        dialogues.Add(newSentence);   
+        
+        if (tempDialogues.Count > 0)
+        {
+            dialogues.Add(tempDialogues.Last());
+        }
+    }
+
     private string activeString = "Active";
     public void Interact()
     {
@@ -212,12 +260,13 @@ public class NpcController : MonoBehaviour
             {
                 if (!choosing)
                 {
-                    ui.dialogueAnim.SetTrigger(activeString);
-                    if (roseNpc >= 0)
+                    if (npcPointerOnPickUp && npcPointerOnPickUp.CanInitPointerDialogue())
                     {
-                        if (!gm.roseNpcsInteractedInHub.Contains(roseNpc))
-                            gm.roseNpcsInteractedInHub.Add(roseNpc);
+                        CreatePointerPhrases();
+                        npcPointerOnPickUp.PointOnClosestPickUp();
                     }
+                    ui.dialogueAnim.SetTrigger(activeString);
+                    
                     StartCoroutine(NextPhrase());
                 }
                 else
@@ -237,7 +286,7 @@ public class NpcController : MonoBehaviour
     public void HideDialogue()
     {
         ui = UiManager.instance;
-        if (ui.dialogueInteractor == this)
+        if (ui && ui.dialogueInteractor == this)
         {
             currentLine = 0;
             if (!ui || !ui.dialogueAnim)
@@ -2863,45 +2912,6 @@ public class NpcController : MonoBehaviour
                     }
                     
                     break;
-                
-                case Dialogue.DialogueEvent.MeatHole:
-                    if (interactable.itemInsideMeatHole != null && interactable.itemInsideMeatHole.gameObject.activeInHierarchy)
-                    {
-                        if(gm.language == 0)
-                            newPhraseChoice = Translator.TranslateText("You shove your hand into the meat hole. You find something interesting.");
-                        else if (gm.language == 1)
-                            newPhraseChoice = Translator.TranslateText("Ты засунул руку в мясную дыру. Ты нащупал что-то интересное.");
-                        else if (gm.language == 2)
-                            newPhraseChoice = Translator.TranslateText("Metes tu mano en el Agujero de Carne. Encuentras algo interesante.");
-                        else if (gm.language == 3)
-                            newPhraseChoice = Translator.TranslateText("Sie schieben Ihre Hand in ein Fleischloch. Du hast etwas Interessantes gefunden.");
-                        else if (gm.language == 4)
-                            newPhraseChoice = Translator.TranslateText("Infili la tua mano nel foro di carne. Trovi qualcosa di interessante.");
-                        else if (gm.language == 5)
-                            newPhraseChoice = Translator.TranslateText("Você enfia a mão no buraco da carne. Você encontrou algo interessante.");
-
-                        interactable.itemInsideMeatHole.InteractThroughMeathole();
-                    }
-                    else
-                    {
-                        if(gm.language == 0)
-                            newPhraseChoice = Translator.TranslateText("You shove your hand into the meat hole. Something bites your finger off!");
-                        else if (gm.language == 1)
-                            newPhraseChoice = Translator.TranslateText("Ты засунул руку в мясную дыру. Кто-то откусил тебе палец.");
-                        else if (gm.language == 2)
-                            newPhraseChoice = Translator.TranslateText("Empujas tu mano en un agujero de carne. Alguien te muerde el dedo.");
-                        else if (gm.language == 3)
-                            newPhraseChoice = Translator.TranslateText("Sie schieben Ihre Hand in ein Fleischloch. Jemand beißt dir den Finger ab.");
-                        else if (gm.language == 4)
-                            newPhraseChoice = Translator.TranslateText("Infili la tua mano nel foro di carne. Qualcuno ti stacca il dito a morsi.");
-                        else if (gm.language == 5)
-                            newPhraseChoice = Translator.TranslateText("Você enfia a mão no buraco da carne. Alguém arrancou seu dedo.");
-
-                        pm.hc.Damage(pm.hc.health / 2, transform.position, pm.mouseLook.transform.position,
-                        null, hc.playerDamagedMessage[gm.language], false, null, null, null, false);
-                    }
-                    break;
-                
                 
                 case Dialogue.DialogueEvent.UpgradeWeapon:
                     if(gm.language == 0)

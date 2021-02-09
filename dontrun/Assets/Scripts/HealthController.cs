@@ -272,7 +272,8 @@ public class HealthController : MonoBehaviour, IUpdatable
         this.DisableUpdates();
         StopAllCoroutines();
         
-        GutQuestsController.instance.UnitKilled(this);
+        if (GutQuestsController.instance)
+            GutQuestsController.instance.UnitKilled(this);
     }
 
     public void ResetFaceHugCooldown(FaceEaterBehaviour faceEater)
@@ -1951,19 +1952,6 @@ public class HealthController : MonoBehaviour, IUpdatable
 
         if (npcInteractor)
         {
-            if (npcInteractor.interactable && npcInteractor.interactable.itemInsideMeatHole != null 
-                && npcInteractor.interactable.itemInsideMeatHole.isActiveAndEnabled)
-            {
-                npcInteractor.interactable.itemInsideMeatHole.transform.position = mobPartsController.dropPosition.position;
-                npcInteractor.interactable.itemInsideMeatHole.SpawnByMeatHole();
-            }
-
-            if (npcInteractor.roseNpc >= 0)
-            {
-                if (!gm.roseNpcsInteractedInHub.Contains(npcInteractor.roseNpc))
-                    gm.roseNpcsInteractedInHub.Add(npcInteractor.roseNpc);
-            }
-            
             npcInteractor.HideDialogue();
         }
 
@@ -2295,7 +2283,7 @@ public class HealthController : MonoBehaviour, IUpdatable
     private void OnDestroy()
     {
         //GutQuestsController.instance.UnitKilled(this);
-        if (gm.units.Contains(this))
+        if (gm && gm.units.Contains(this))
             gm.units.Remove(this);
         
         if (npcInteractor)

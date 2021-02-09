@@ -96,7 +96,7 @@ MonoBehaviour:
   light: {fileID: 0}
   hint: {fileID: 8343117640820459249}
   visual: {fileID: 0}
-  hintDistance: 30
+  hintDistance: 100
   mapMarker: {fileID: 7786907747933632506}
   mapMarkerCross: {fileID: 0}
   rb: {fileID: 8343117640820458429}
@@ -159,6 +159,8 @@ MonoBehaviour:
   maximumSpawnDistance: 200
   interactable: {fileID: 8343117640820460998}
   weaponConnector: {fileID: 0}
+  completeQuestOnPickUp: -1
+  startQuestOnPickUp: -1
   npc: {fileID: 0}
 --- !u!114 &150708295
 MonoBehaviour:
@@ -280,7 +282,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1ae892b86acd424c888e3f737f20f40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  streamingDistance: 50
   streamObjectAboveAnimator: 0
   childObjectToHide: []
 --- !u!1 &8343117640820459017

@@ -32,16 +32,14 @@ public class Interactable : MonoBehaviour,
     bool showName = false;
 
     public GameObject hint;
-    [Header("This visual is controller by meat hole")]
+    [Header("Use this visual to toggle its layer to Hands or Pickups")]
     public GameObject visual;
+    public bool insideTheProp = false;
     public float hintDistance = 10;
     public GameObject mapMarker;
     public GameObject mapMarkerCross;
     public Rigidbody rb;
 
-    public bool canCreateMeatHole = false;
-    public HealthController activeMeatHole;
-    public Interactable itemInsideMeatHole;
     
     [Header("Locals")]
     public List<string> pickedByPlayerMessage = new List<string>();
@@ -68,7 +66,8 @@ public class Interactable : MonoBehaviour,
         ui = UiManager.instance;
         il = ItemsList.instance;
         
-        il.interactables.Add(this);
+        if (il)
+            il.interactables.Add(this);
         
         if (door) door.interactableController = this;
     }
@@ -76,6 +75,9 @@ public class Interactable : MonoBehaviour,
     public void Start()
     {
         //if (pickUp || ammoPickUp || weaponPickUp) transform.parent = null;
+        
+        if (GameManager.instance == null)
+            return;
         
         if (itemNames.Count > gm.language)
             nameGui.text = itemNames[gm.language];
@@ -176,7 +178,7 @@ public class Interactable : MonoBehaviour,
         if (GLNetworkWrapper.instance && GLNetworkWrapper.instance.coopIsActive && LevelGenerator.instance.levelgenOnHost == false)
             return;
 
-		if (!gm.hub && rb && rb.useGravity && transform.position.y < -0.5f)
+		if (gm && !gm.hub && rb && rb.useGravity && transform.position.y < -0.5f)
 		{
 			rb.MovePosition(new Vector3(transform.position.x, 0.5f, transform.position.z));
 		}
@@ -213,91 +215,9 @@ public class Interactable : MonoBehaviour,
             {
                 if (newDist <= newHintdistance)
                 {
-                    // meat hole stuff
-                    if (canCreateMeatHole && activeMeatHole == null && !gm.hub && ((GLNetworkWrapper.instance == null || GLNetworkWrapper.instance.coopIsActive == false) ||
-                        (LevelGenerator.instance.levelgenOnHost)))
+                    if (portable)
                     {
-                        // this fires once in 3 seconds
-                        if (tick < 3)
-                        {
-                            tick++;
-                        }
-                        else
-                        {
-                            tick = 0;
-                            
-                            // check if this object is outside the level
-                            ElevatorController elevator = ElevatorController.instance;
-                            float elevDist = Vector3.Distance(transform.position, elevator.transform.position);
-                            float spawnerDist = Vector3.Distance(transform.position, gm.lg.playerSpawner.position);
-                            
-                            if (elevator && (weaponPickUp) && (elevDist <= 6 || spawnerDist <= 5))
-                            {
-                                SendToMeatHole(false);
-                            }
-                            else if (elevator && (pickUp && pickUp.resourceType == ItemsList.ResourceType.Key) && (elevDist <= 15 || spawnerDist <= 15))
-                            {
-                                SendToMeatHole(false);
-                            }
-                            else if (transform.position.y < -100)
-                            {
-                                SendToMeatHole(false);
-                            }
-                            else if (transform.position.y > 8)
-                            {
-                                SendToMeatHole(false);
-                            }
-                            else if (Physics.Raycast(transform.position + Vector3.up * 100, Vector3.down, 1000, floorLayerMask))
-                            {
-                                // this object is inside the level
-                                //print("im inside the level");
-                            }
-                            else
-                            {
-                                // this object is outside the level
-                                SendToMeatHole(true);
-                                //print(itemName + " is outside the level, spawning a meat hole");
-                            }
-                        }
-                    }
-                    
-                    /*
-                    if (rb && rb.isKinematic)
-                        rb.isKinematic = false;
-                        */
-
-                    if (activeMeatHole == null)
-                    {
-                        if (portable)
-                        {
-                            if (!portable.inHands)
-                            {
-                                hint.transform.LookAt(gm.player.pm.cameraAnimator.transform.position);
-                                nameGui.transform.parent.transform.LookAt(gm.player.pm.cameraAnimator.transform.position);
-                                hint.SetActive(true);
-                                hint.transform.GetChild(0).gameObject.layer = 9;
-                                nameGui.gameObject.layer = 9;
-                            }
-                            else
-                            {
-                                hint.SetActive(true);
-                                hint.transform.GetChild(0).gameObject.layer = 13;
-                                nameGui.gameObject.layer = 13;
-                                rb.constraints = RigidbodyConstraints.None;
-                                /*
-                                rb.useGravity = true;
-                                rb.isKinematic = false;
-                                */
-                            }
-                        }
-                        else if (door)
-                        {
-                            hint.transform.LookAt(gm.player.pm.cameraAnimator.transform.position);
-                            nameGui.transform.parent.transform.LookAt(gm.player.pm.cameraAnimator.transform.position);
-                            nameGuiAnim.gameObject.SetActive(true);
-                            hint.SetActive(true);
-                        }
-                        else if (nameGui != null)
+                        if (!portable.inHands)
                         {
                             hint.transform.LookAt(gm.player.pm.cameraAnimator.transform.position);
                             nameGui.transform.parent.transform.LookAt(gm.player.pm.cameraAnimator.transform.position);
@@ -305,17 +225,38 @@ public class Interactable : MonoBehaviour,
                             hint.transform.GetChild(0).gameObject.layer = 9;
                             nameGui.gameObject.layer = 9;
                         }
+                        else
+                        {
+                            hint.SetActive(true);
+                            hint.transform.GetChild(0).gameObject.layer = 13;
+                            nameGui.gameObject.layer = 13;
+                            rb.constraints = RigidbodyConstraints.None;
+                            /*
+                            rb.useGravity = true;
+                            rb.isKinematic = false;
+                            */
+                        }
                     }
-                    else
+                    else if (door)
                     {
-                        hint.SetActive(false);
-                        if (rb && !rb.isKinematic && rb.velocity.magnitude < 0.5f)
-                            rb.isKinematic = true;
+                        hint.transform.LookAt(gm.player.pm.cameraAnimator.transform.position);
+                        nameGui.transform.parent.transform.LookAt(gm.player.pm.cameraAnimator.transform.position);
+                        nameGuiAnim.gameObject.SetActive(true);
+                        hint.SetActive(true);
+                    }
+                    else if (nameGui != null)
+                    {
+                        hint.transform.LookAt(gm.player.pm.cameraAnimator.transform.position);
+                        nameGui.transform.parent.transform.LookAt(gm.player.pm.cameraAnimator.transform.position);
+                        hint.SetActive(true);
+                        hint.transform.GetChild(0).gameObject.layer = 9;
+                        nameGui.gameObject.layer = 9;
                     }
                 }
                 else
                 {
                     hint.SetActive(false);
+                    
                     if (rb && !rb.isKinematic && rb.velocity.magnitude < 0.5f)
                         rb.isKinematic = true;
                 }
@@ -323,61 +264,6 @@ public class Interactable : MonoBehaviour,
 
             yield return new WaitForSeconds(1f);
         }
-    }
-
-    void SendToMeatHole(bool putOnTile)
-    {
-        // called on host or solo
-
-        print("Put On Tile " + putOnTile);
-        if (meatBrain || ( putOnTile && pickUp && pickUp.resourceType == ItemsList.ResourceType.Key))
-        {
-            if (GLNetworkWrapper.instance && GLNetworkWrapper.instance.coopIsActive && LevelGenerator.instance.levelgenOnHost == false)
-                return;
-
-            transform.position = LevelGenerator.instance.GetClosestTile(transform.position).transform.position +
-                                 Vector3.up * 0.2f;
-        }
-        else
-        {
-            activeMeatHole = SpawnController.instance.GetMeatHole(transform.position);
-
-            if (GLNetworkWrapper.instance && GLNetworkWrapper.instance.coopIsActive)
-            {
-                GLNetworkWrapper.instance.SendToMeatHole(gameObject, activeMeatHole.gameObject);
-            }
-            else
-            {
-                SendToMeatHoleOnClient(activeMeatHole.gameObject);
-            }   
-        }
-    }
-
-    public void SendToMeatHoleOnClient(GameObject meatHole)
-    {
-        activeMeatHole = meatHole.GetComponent<HealthController>();
-        
-        if (activeMeatHole && activeMeatHole.npcInteractor && activeMeatHole.npcInteractor.interactable)
-            activeMeatHole.npcInteractor.interactable.itemInsideMeatHole = this;
-                                
-        rb.useGravity = false;
-        rb.constraints = RigidbodyConstraints.FreezeAll;
-        rb.isKinematic = true;
-
-        transform.position += Vector3.down * 30;
-        if (visual)
-            visual.SetActive(false);
-    }
-
-    // when meat hole dies
-    public void SpawnByMeatHole()
-    {
-        rb.useGravity = true;
-        rb.constraints = RigidbodyConstraints.None;
-        rb.isKinematic = false;
-        activeMeatHole = null;
-        if (visual)
-            visual.SetActive(true);
     }
 
     public void PickWeapon()
@@ -416,22 +302,9 @@ public class Interactable : MonoBehaviour,
         }
     }
 
-    public void InteractThroughMeathole()
-    {
-        activeMeatHole.Damage(1000, activeMeatHole.transform.position, activeMeatHole.transform.position,
-        null, null,false,null, null, null, true);
-        activeMeatHole = null;
-        if (weaponPickUp && weaponPickUp.npc)
-        {
-            weaponPickUp.weaponDataRandomier.npc = false;
-            weaponPickUp.weaponDataRandomier.UpdateDescription();
-        }
-        Interact(false);
-    }
-    
     public void Interact(bool toolForceKnown)
     {
-        if (activeMeatHole != null || !canBeInteracted) return;
+        if (!canBeInteracted) return;
         
         gm = GameManager.instance;
         ic = InteractionController.instance;
@@ -706,6 +579,8 @@ public class Interactable : MonoBehaviour,
         if (nameGuiAnim != null)
         {
             nameGuiAnim.gameObject.SetActive(true);
+            if (visual && insideTheProp) 
+                SetLayerRecursively(visual, 9);
             showName = true;
             nameGuiAnim.SetBool("Active", true);
 
@@ -716,11 +591,22 @@ public class Interactable : MonoBehaviour,
         }
     }
 
+    void SetLayerRecursively(GameObject go, int newLayer)
+    {
+        go.layer = newLayer;
+        foreach (Transform child in go.transform)
+        {
+            SetLayerRecursively(child.gameObject, newLayer);
+        }
+    }
+    
     IEnumerator HideGuiOverTime()
     {
         yield return new WaitForSeconds(0.1f);
         if (nameGuiAnim != null)
             nameGuiAnim.SetBool("Active", false);
+        if (visual) 
+            SetLayerRecursively(visual, 13);
         showName = false;
     }
 
@@ -730,6 +616,9 @@ public class Interactable : MonoBehaviour,
         rb.isKinematic = false;
         rb.constraints = RigidbodyConstraints.None;
         rb.useGravity = true;
+        insideTheProp = false;
+        if (visual)
+            SetLayerRecursively(visual, 13);
         rb.AddExplosionForce(100f, transform.position + Random.insideUnitSphere, 10);
     }
 

@@ -605,6 +605,9 @@ MonoBehaviour:
   au: {fileID: 0}
   deathParticle: {fileID: 0}
   hc: {fileID: 0}
+  usedForAttack: 0
+  mobAttack: {fileID: 0}
+  ikTargets: []
 --- !u!1 &3770530751704683132
 GameObject:
   m_ObjectHideFlags: 0
@@ -704,7 +707,7 @@ MonoBehaviour:
   light: {fileID: 0}
   hint: {fileID: 6644601417102115923}
   visual: {fileID: 0}
-  hintDistance: 30
+  hintDistance: 100
   mapMarker: {fileID: 8392752004839875198}
   mapMarkerCross: {fileID: 1899845902917783461}
   rb: {fileID: 3770530751704683129}
@@ -770,6 +773,8 @@ MonoBehaviour:
   maximumSpawnDistance: 50
   interactable: {fileID: 3770530751704683128}
   weaponConnector: {fileID: 0}
+  completeQuestOnPickUp: -1
+  startQuestOnPickUp: -1
   npc: {fileID: 765899232804653402}
 --- !u!114 &1680814572
 MonoBehaviour:
@@ -892,7 +897,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1ae892b86acd424c888e3f737f20f40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  streamingDistance: 50
   streamObjectAboveAnimator: 0
   childObjectToHide: []
 --- !u!1 &3952783957723744310
@@ -5787,7 +5791,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1ae892b86acd424c888e3f737f20f40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  streamingDistance: 50
   streamObjectAboveAnimator: 0
   childObjectToHide: []
 --- !u!1 &4326949012847910731
@@ -5882,6 +5885,9 @@ MonoBehaviour:
   au: {fileID: 0}
   deathParticle: {fileID: 0}
   hc: {fileID: 0}
+  usedForAttack: 0
+  mobAttack: {fileID: 0}
+  ikTargets: []
 --- !u!1 &5343380483767876300
 GameObject:
   m_ObjectHideFlags: 0
@@ -6073,7 +6079,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1ae892b86acd424c888e3f737f20f40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  streamingDistance: 50
   streamObjectAboveAnimator: 0
   childObjectToHide: []
 --- !u!1 &5646665778709226176
@@ -6549,6 +6554,9 @@ MonoBehaviour:
   au: {fileID: 0}
   deathParticle: {fileID: 0}
   hc: {fileID: 0}
+  usedForAttack: 0
+  mobAttack: {fileID: 0}
+  ikTargets: []
 --- !u!1 &6419857790434773122
 GameObject:
   m_ObjectHideFlags: 0
@@ -6769,6 +6777,7 @@ MonoBehaviour:
   inLove: 0
   boss: 0
   bossStateChanger: {fileID: 0}
+  propController: {fileID: 0}
   mobKilledAchievementID: 
   cultist: 0
   mobGroundMovement: {fileID: 0}
@@ -6778,7 +6787,7 @@ MonoBehaviour:
   mobHideInCorners: {fileID: 0}
   mobPartsController: {fileID: 918809445500454511}
   bombBehaviour: {fileID: 0}
-  mobMeleeAttacks: []
+  mobMeleeAttack: {fileID: 0}
   mobAudio: {fileID: 7647843124106743075}
   deerActivator: {fileID: 0}
   mps: {fileID: 0}
@@ -6802,6 +6811,7 @@ MonoBehaviour:
   wallMasterTile: {fileID: 0}
   usedTile: {fileID: 0}
   deathParticles: {fileID: 3896702975685036291}
+  deathParticlesMulti: []
   playerDamagedMessage:
   - Vein whip cut me!
   - "\u0412\u0435\u043D\u043E\u0437\u043D\u044B\u0439 \u0445\u043B\u044B\u0441\u0442
@@ -6831,7 +6841,10 @@ MonoBehaviour:
   level: 0
   mobType: 3
   agent: {fileID: 0}
+  ikMonsterAnimator: {fileID: 0}
   simpleWalker: 0
+  simpleWalkerString: Chase
+  distanceThreshold: 0.1
   anim: {fileID: 7988344712377563229}
   bodyParts:
   - {fileID: 7949021187870822700}
@@ -6845,7 +6858,6 @@ MonoBehaviour:
     amountMax: 3
     amountMin: 3
   dropPosition: {fileID: 2180762917936604416}
-  movementCollider: {fileID: 0}
   forceDropOnTile: 0
   animDamageByTrigger: 0
 --- !u!114 &7647843124106743075
@@ -11728,7 +11740,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1ae892b86acd424c888e3f737f20f40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  streamingDistance: 50
   streamObjectAboveAnimator: 0
   childObjectToHide: []
 --- !u!1 &6644601416876786320
@@ -12166,11 +12177,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canCreateQuestGiver: 0
-  roseNpc: -1
   currentDialog: 0
   currentLine: 0
   eventsRepeat: 999
   currentEventRepeat: 0
+  npcPointerOnPickUp: {fileID: 0}
   npcSetPhrasesOnLevel: {fileID: 0}
   randomizedPhrasesData: {fileID: 0}
   randomizedPhrasesOrder: 0
@@ -12198,6 +12209,7 @@ MonoBehaviour:
   - dialogueEvent: 9
     eventCost: 10
     questToStart: -1
+    questToComplete: -1
     phrases:
     - Do you want to make friends? I can be interested ...
     phrasesRu:
@@ -12242,7 +12254,9 @@ MonoBehaviour:
   randomLinesAmountMax: 6
   hc: {fileID: 0}
   keySold: 0
+  gameObjectActivateOnAgree: {fileID: 0}
   mementoPrefab: {fileID: 0}
+  interactableToInteractOnDialogueAction: {fileID: 0}
   snout: 0
 --- !u!1 &6989008356276437647
 GameObject:

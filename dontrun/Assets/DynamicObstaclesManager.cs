@@ -229,6 +229,7 @@ public class DynamicObstaclesManager : MonoBehaviour
             spawnedLeg.transform.eulerAngles = new Vector3(Random.Range(0,360), Random.Range(0,360),Random.Range(0,360));
             spawnedLeg.transform.parent = spawnerNew.transform;
             spawnedLeg.transform.localPosition = Vector3.zero;
+            spawnedLeg.insideTheProp = true;
             newProp.spawnedObject = spawnedLeg;
         }
         else if (spawnedRevolver != null && Vector3.Distance(pm.transform.position, spawnedRevolver.transform.position) > 30)
@@ -238,6 +239,7 @@ public class DynamicObstaclesManager : MonoBehaviour
             spawnedRevolver.transform.eulerAngles = new Vector3(Random.Range(0,360), Random.Range(0,360),Random.Range(0,360));
             spawnedRevolver.transform.parent = spawnerNew.transform;
             spawnedRevolver.transform.localPosition = Vector3.zero;
+            spawnedRevolver.insideTheProp = true;
             newProp.spawnedObject = spawnedRevolver;
         }
     }

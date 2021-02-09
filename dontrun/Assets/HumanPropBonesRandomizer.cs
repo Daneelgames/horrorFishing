@@ -182,5 +182,27 @@ namespace Assets
                 Destroy(armsBonesTargets[i]);
             }
         }
+
+        public IEnumerator PointToInteractable(Vector3 newPos)
+        {
+            //choose Ik target to pose here
+            var randomIkSolver = IkSolvers[Random.Range(1, IkSolvers.Count)];
+            randomIkSolver.canAnimate = true;
+            yield return StartCoroutine(MoveTransformToPosition(randomIkSolver.Target.transform, newPos, Random.Range(5f, 10f)));
+            randomIkSolver.canAnimate = false;
+        }
+
+        IEnumerator MoveTransformToPosition(Transform boneTransform, Vector3 newPos, float tt)
+        {
+            float t = 0;
+            Vector3 startPos = boneTransform.position;
+            
+            while (t < tt)
+            {
+                boneTransform.position = Vector3.Lerp(startPos, newPos, t / tt);
+                t += Time.smoothDeltaTime;
+                yield return null;
+            }
+        }
     }
 }

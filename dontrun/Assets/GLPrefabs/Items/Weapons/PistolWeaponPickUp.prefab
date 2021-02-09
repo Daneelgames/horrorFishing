@@ -1394,6 +1394,9 @@ MonoBehaviour:
   au: {fileID: 0}
   deathParticle: {fileID: 0}
   hc: {fileID: 0}
+  usedForAttack: 0
+  mobAttack: {fileID: 0}
+  ikTargets: []
 --- !u!1 &4159098589108473302
 GameObject:
   m_ObjectHideFlags: 0
@@ -6324,7 +6327,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1ae892b86acd424c888e3f737f20f40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  streamingDistance: 50
   streamObjectAboveAnimator: 0
   childObjectToHide: []
 --- !u!1 &4719242308733058284
@@ -6389,6 +6391,9 @@ MonoBehaviour:
   au: {fileID: 0}
   deathParticle: {fileID: 0}
   hc: {fileID: 0}
+  usedForAttack: 0
+  mobAttack: {fileID: 0}
+  ikTargets: []
 --- !u!1 &4791904786659617580
 GameObject:
   m_ObjectHideFlags: 0
@@ -11479,7 +11484,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1ae892b86acd424c888e3f737f20f40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  streamingDistance: 50
   streamObjectAboveAnimator: 0
   childObjectToHide: []
 --- !u!1 &5426140749672515355
@@ -11531,6 +11535,9 @@ MonoBehaviour:
   au: {fileID: 0}
   deathParticle: {fileID: 0}
   hc: {fileID: 0}
+  usedForAttack: 0
+  mobAttack: {fileID: 0}
+  ikTargets: []
 --- !u!136 &2467362044873412589
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -12218,7 +12225,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1ae892b86acd424c888e3f737f20f40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  streamingDistance: 50
   streamObjectAboveAnimator: 0
   childObjectToHide: []
 --- !u!1 &7205756614737665601
@@ -12481,7 +12487,7 @@ MonoBehaviour:
   light: {fileID: 0}
   hint: {fileID: 320990624230679958}
   visual: {fileID: 0}
-  hintDistance: 30
+  hintDistance: 100
   mapMarker: {fileID: 2434050030515450004}
   mapMarkerCross: {fileID: 5220816325152829934}
   rb: {fileID: 7787184660339405756}
@@ -12546,6 +12552,8 @@ MonoBehaviour:
   maximumSpawnDistance: 80
   interactable: {fileID: 7787184660339405757}
   weaponConnector: {fileID: 8713390146167761210}
+  completeQuestOnPickUp: -1
+  startQuestOnPickUp: -1
   npc: {fileID: 5795504534075314537}
 --- !u!114 &1330965083
 MonoBehaviour:
@@ -12753,6 +12761,7 @@ MonoBehaviour:
   inLove: 0
   boss: 0
   bossStateChanger: {fileID: 0}
+  propController: {fileID: 0}
   mobKilledAchievementID: 
   cultist: 0
   mobGroundMovement: {fileID: 0}
@@ -12762,7 +12771,7 @@ MonoBehaviour:
   mobHideInCorners: {fileID: 0}
   mobPartsController: {fileID: 9075897009595835106}
   bombBehaviour: {fileID: 0}
-  mobMeleeAttacks: []
+  mobMeleeAttack: {fileID: 0}
   mobAudio: {fileID: 7931401529901761786}
   deerActivator: {fileID: 0}
   mps: {fileID: 0}
@@ -12786,6 +12795,7 @@ MonoBehaviour:
   wallMasterTile: {fileID: 0}
   usedTile: {fileID: 0}
   deathParticles: {fileID: 7418671664872353018}
+  deathParticlesMulti: []
   playerDamagedMessage:
   - Pistol shot me!
   - "\u041F\u0438\u0441\u0442\u043E\u043B\u0435\u0442 \u043F\u043E\u0434\u0441\u0442\u0440\u0435\u043B\u0438\u043B
@@ -12815,7 +12825,10 @@ MonoBehaviour:
   level: 0
   mobType: 3
   agent: {fileID: 0}
+  ikMonsterAnimator: {fileID: 0}
   simpleWalker: 0
+  simpleWalkerString: Chase
+  distanceThreshold: 0.1
   anim: {fileID: 6298465462697783922}
   bodyParts:
   - {fileID: 6848138748386805392}
@@ -12829,7 +12842,6 @@ MonoBehaviour:
     amountMax: 3
     amountMin: 3
   dropPosition: {fileID: 181223908361513205}
-  movementCollider: {fileID: 0}
   forceDropOnTile: 0
   animDamageByTrigger: 0
 --- !u!114 &7931401529901761786
@@ -13197,6 +13209,9 @@ MonoBehaviour:
   au: {fileID: 0}
   deathParticle: {fileID: 0}
   hc: {fileID: 0}
+  usedForAttack: 0
+  mobAttack: {fileID: 0}
+  ikTargets: []
 --- !u!1 &8989591888781651058
 GameObject:
   m_ObjectHideFlags: 0
@@ -13243,11 +13258,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canCreateQuestGiver: 0
-  roseNpc: -1
   currentDialog: 0
   currentLine: 0
   eventsRepeat: 999
   currentEventRepeat: 0
+  npcPointerOnPickUp: {fileID: 0}
   npcSetPhrasesOnLevel: {fileID: 0}
   randomizedPhrasesData: {fileID: 0}
   randomizedPhrasesOrder: 0
@@ -13275,6 +13290,7 @@ MonoBehaviour:
   - dialogueEvent: 9
     eventCost: 10
     questToStart: -1
+    questToComplete: -1
     phrases:
     - Do you want to make friends? I can be interested ...
     phrasesRu:
@@ -13319,7 +13335,9 @@ MonoBehaviour:
   randomLinesAmountMax: 6
   hc: {fileID: 0}
   keySold: 0
+  gameObjectActivateOnAgree: {fileID: 0}
   mementoPrefab: {fileID: 0}
+  interactableToInteractOnDialogueAction: {fileID: 0}
   snout: 0
 --- !u!1001 &427003971340799895
 PrefabInstance:

@@ -336,9 +336,6 @@ public class PlayerNetworkObject : NetworkBehaviour
     void RpcSendToMeatHole(GameObject go, GameObject meatHole) 
     {
         if (go == null) return;
-
-        var interactable = go.GetComponent<Interactable>();
-        if (interactable) interactable.SendToMeatHoleOnClient(meatHole);
     }
     
     
