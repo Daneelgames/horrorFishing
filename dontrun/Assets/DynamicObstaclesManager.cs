@@ -154,7 +154,7 @@ public class DynamicObstaclesManager : MonoBehaviour
         {
             GetClosestZone();
             yield return new WaitForSeconds(Random.Range(closestZone.handlePropsTimeMin, closestZone.handlePropsTimeMax));
-            if (lg.propsInGame.Count > 0)
+            if (lg.propsInGame.Count > 1)
             {
                 for (int i = lg.propsInGame.Count - 1; i >= 0; i--)
                 {
@@ -199,7 +199,7 @@ public class DynamicObstaclesManager : MonoBehaviour
         if (closestZone.propsReferences.Count == 0)
             return;
 
-        if (Random.value > 0.3f)
+        if (Random.value > 0.1f)
             spawnPosition = GetPositionAroundPoint(pm.transform.position, false);
         else
             spawnPosition = GetPositionAroundPoint(pm.transform.position + pm.movementTransform.forward * distanceToDestroy, true);
@@ -251,7 +251,7 @@ public class DynamicObstaclesManager : MonoBehaviour
             GetClosestZone();
             
             yield return new WaitForSeconds(Random.Range(closestZone.handleEnemiesTimeMin, closestZone.handleEnemiesTimeMax));
-            if (sc.mobsInGame.Count > 0)
+            if (sc.mobsInGame.Count > 1)
             {
                 for (int i = sc.mobsInGame.Count - 1; i >= 0; i--)
                 {

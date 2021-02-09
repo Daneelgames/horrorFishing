@@ -21,12 +21,15 @@ public class CustomIKSolver : MonoBehaviour {
     public bool canAnimate = true;
     private bool animate = true;
 
+    Vector3 targetScale = Vector3.one;
     IEnumerator Start()
     {
+        yield return new WaitForSeconds(1f);
+        targetScale = transform.localScale;
         while (true)
         {
-            yield return new WaitForSeconds(1f);
             animate = canAnimate;   
+            yield return new WaitForSeconds(1f);
         }
     }
 
@@ -67,11 +70,21 @@ public class CustomIKSolver : MonoBehaviour {
 
     void AnimateScale()
     {
+        //MAKE IT LESS JITTERY??
         distanceToTarget = Vector3.Distance(Ankle.transform.position, Target.position);
         
+        /*
         if (distanceToTarget > 0.1f)
             transform.localScale = Vector3.ClampMagnitude(transform.localScale * (1 + Time.deltaTime * 3), maxScale);
         else if (transform.localScale.x > 1)
             transform.localScale *= 1 - Time.deltaTime * 3;
+            */
+        
+        if (distanceToTarget > 0.1f)
+            targetScale = Vector3.ClampMagnitude(targetScale * (1 + Time.deltaTime * 3), maxScale);
+        else if (targetScale.x > 1)
+            targetScale *= 1 - Time.deltaTime * 3;
+        
+        transform.localScale = Vector3.Lerp(transform.localScale, targetScale, Time.deltaTime * 0.5f);
     }
 }
