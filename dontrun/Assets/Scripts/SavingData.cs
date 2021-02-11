@@ -58,6 +58,7 @@ public class SavingData
     public List<int> tapesFoundOfFloors = new List<int>();
     
     public int coopBiomeCheckpoints = 0;
+    public int notesPickedUp = 0;
     
     public int savedWeaponActive = -1;
     public int savedWeaponSecond = -1;
@@ -143,6 +144,7 @@ public class SavingData
         tutorialHints = gm.tutorialHints;
         darkness = gm.darkness;
         coopBiomeCheckpoints = gm.coopBiomeCheckpoints;
+        notesPickedUp = gm.notesPickedUp;
         
         grain = gm.grain;
         bloom = gm.bloom;

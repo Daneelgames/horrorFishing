@@ -10,6 +10,7 @@ public class HubItemsSpawner : MonoBehaviour
     public List<CitySpawner> itemSpawners = new List<CitySpawner>();
     public List<CitySpawner> npcSpawners = new List<CitySpawner>();
     public List<CitySpawner> fieldEventsSpawners = new List<CitySpawner>();
+    public List<CitySpawner> noteSpawners = new List<CitySpawner>();
     public List<LevelBlockerController> levelBlockersPrefabs = new List<LevelBlockerController>();
     
     private ItemsList il;
@@ -44,6 +45,15 @@ public class HubItemsSpawner : MonoBehaviour
         return spawnerPosition;
     }
 
+    public void NewNotePickedUp(int noteIndex)
+    {
+        if (GameManager.instance.notesPickedUp < noteIndex)
+        {
+            GameManager.instance.notesPickedUp = noteIndex;
+            GameManager.instance.SaveGame();
+        }
+    }
+    
     bool HaveRevolver()
     {
         if (wc.activeWeapon && wc.activeWeapon.weapon == WeaponPickUp.Weapon.Revolver)
@@ -85,6 +95,13 @@ public class HubItemsSpawner : MonoBehaviour
             if (canSpawnRevolver)
                 Instantiate(fieldEventsSpawners[0].gameObjectToSpawn, fieldEventsSpawners[0].transform.position,
                     fieldEventsSpawners[0].transform.rotation);
+            
+            // spawn notes
+            for (int i = 0; i < noteSpawners.Count; i++)
+            {
+                Instantiate(noteSpawners[i].itemToSpawn, noteSpawners[i].transform.position,
+                    noteSpawners[i].transform.rotation);
+            }
         }
         
         #region Quest 1. Shoes on beach

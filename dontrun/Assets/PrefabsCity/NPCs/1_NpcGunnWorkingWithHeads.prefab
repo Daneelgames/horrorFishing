@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2046988899983990959}
   m_LocalRotation: {x: 0.35270056, y: -0, z: -0, w: 0.9357363}
-  m_LocalPosition: {x: 0.77, y: 6.53, z: 1.72}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 4.2794724, y: 4.2794724, z: 4.2794724}
   m_Children:
   - {fileID: 2046988899983997430}
@@ -71,13 +71,11 @@ MonoBehaviour:
   light: {fileID: 0}
   hint: {fileID: 2046988899983994429}
   visual: {fileID: 0}
+  insideTheProp: 0
   hintDistance: 200
   mapMarker: {fileID: 0}
   mapMarkerCross: {fileID: 0}
   rb: {fileID: 0}
-  canCreateMeatHole: 0
-  activeMeatHole: {fileID: 0}
-  itemInsideMeatHole: {fileID: 0}
   pickedByPlayerMessage: []
 --- !u!114 &2046988899983995985
 MonoBehaviour:
@@ -92,11 +90,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canCreateQuestGiver: 0
-  roseNpc: -1
   currentDialog: 0
   currentLine: 0
   eventsRepeat: 1
   currentEventRepeat: 0
+  npcPointerOnPickUp: {fileID: 0}
   npcSetPhrasesOnLevel: {fileID: 0}
   randomizedPhrasesData: {fileID: 0}
   randomizedPhrasesOrder: 0
@@ -270,7 +268,7 @@ CapsuleCollider:
   m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0.33, y: 1.48, z: -0.68}
 --- !u!82 &2046988899983998500
 AudioSource:
   m_ObjectHideFlags: 0
@@ -880,7 +878,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2046988899983994519}
   m_LocalRotation: {x: 0, y: 0, z: -0.27160832, w: 0.9624079}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 1.274, y: 2.078, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 2046988899983997430}
@@ -994,7 +992,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2046988899983994745}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.155}
   m_LocalScale: {x: 0.003, y: 0.003, z: 0.003}
   m_Children:
   - {fileID: 2046988899983995701}
@@ -1003,7 +1001,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0115, y: 0.195}
+  m_AnchoredPosition: {x: 0.0115, y: 0.386}
   m_SizeDelta: {x: 98.3715, y: 42.8204}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2046988899983995750

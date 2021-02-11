@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PortableObject : MonoBehaviour
 {
+    public int noteIndex = -1;
     public bool inHands = false;
     public AudioSource au;
     public AudioClip pickSound;
@@ -80,6 +81,11 @@ public class PortableObject : MonoBehaviour
             }
             
             wasPickedUp = true;
+
+            if (noteIndex >= 0)
+            {
+                HubItemsSpawner.instance.NewNotePickedUp(noteIndex);
+            }
         }
     }
 

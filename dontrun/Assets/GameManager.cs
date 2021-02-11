@@ -156,6 +156,7 @@ public class GameManager : MonoBehaviour
 
     public int coopBiomeCheckpoints = 0;
     private int randomSeed = 0;
+    public int notesPickedUp = -1;
     public int flashbackSceneIndex = 0;
     public bool newGamePlus = false;
     public bool cagesCompleted = false;
@@ -1694,6 +1695,7 @@ public class GameManager : MonoBehaviour
             ActiveNpcManager.instance.LoadCurrentActiveNpc(data);
 
             coopBiomeCheckpoints = data.coopBiomeCheckpoints;
+            notesPickedUp = data.notesPickedUp;
             
             if (SteamworksLobby.instance)
                 SteamworksLobby.instance.SetCheckpoints(coopBiomeCheckpoints);

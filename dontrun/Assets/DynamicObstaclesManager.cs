@@ -4,12 +4,14 @@ using Mirror.Examples.Chat;
 using NUnit.Framework;
 using PlayerControls;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.AI;
 
 public class DynamicObstaclesManager : MonoBehaviour
 {
     public List<DynamicObstaclesZone> zones;
     public DynamicObstaclesZone closestZone;
+    public AssetReference humanPropreference;
     
     [Header("Global Settings")]
     public int propsSpawnedMax = 10;
@@ -343,7 +345,7 @@ public class DynamicObstaclesManager : MonoBehaviour
         {
             var propTemp = lg.propsInGame[Random.Range(0, lg.propsInGame.Count)];
             var initialLocalScale = propTemp.transform.localScale;
-            if (MouseLook.instance.PositionIsVisibleToPlayer(propTemp.transform.position) == false &&
+            if (propTemp.humanPropBonesRandomizer && MouseLook.instance.PositionIsVisibleToPlayer(propTemp.transform.position) == false &&
                 Vector3.Distance(PlayerMovement.instance.transform.position, propTemp.transform.position) > 5)
             {
                 foundProp = true;
@@ -358,7 +360,7 @@ public class DynamicObstaclesManager : MonoBehaviour
         
         if (!foundProp)
         {
-            AssetSpawner.instance.Spawn(lg.propsReferences[Random.Range(0, lg.propsReferences.Count)], pos, AssetSpawner.ObjectType.Prop);
+            AssetSpawner.instance.Spawn(humanPropreference, pos, AssetSpawner.ObjectType.Prop);
         }
     }
     
