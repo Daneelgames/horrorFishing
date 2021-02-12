@@ -116,16 +116,16 @@ public class PlayerNetworkDummyController : NetworkBehaviour
         {
             transform.position = targetPlayer.transform.position;
             //transform.rotation = targetPlayer.pm.movementTransform.rotation;
-            Vector3 newRot = new Vector3(0, targetPlayer.pm.movementTransform.rotation.y, 0);
+            Vector3 newRot = new Vector3(0, targetPlayer.playerMovement.movementTransform.rotation.y, 0);
             transform.eulerAngles = newRot;
 
             if (!hiding)
             {
-                ikSpineBone.transform.eulerAngles = new Vector3(0, targetPlayer.pm.mouseLook.transform.eulerAngles.y + 90, targetPlayer.pm.mouseLook.transform.eulerAngles.x);   
+                ikSpineBone.transform.eulerAngles = new Vector3(0, targetPlayer.playerMovement.mouseLook.transform.eulerAngles.y + 90, targetPlayer.playerMovement.mouseLook.transform.eulerAngles.x);   
             }
             else
             {
-                ikSpineBone.transform.eulerAngles = new Vector3(0, targetPlayer.pm.mouseLook.transform.eulerAngles.y + 90, 0);   
+                ikSpineBone.transform.eulerAngles = new Vector3(0, targetPlayer.playerMovement.mouseLook.transform.eulerAngles.y + 90, 0);   
             }
         }
         else
@@ -194,9 +194,9 @@ public class PlayerNetworkDummyController : NetworkBehaviour
             targetPlayer.health = currentHp;
             
             if (UnityEngine.Random.value > 0.1f)
-                targetPlayer.pm.cameraAnimator.SetTrigger("Damage");
+                targetPlayer.playerMovement.cameraAnimator.SetTrigger("Damage");
             else
-                targetPlayer.pm.cameraAnimator.SetTrigger("Earthquake");
+                targetPlayer.playerMovement.cameraAnimator.SetTrigger("Earthquake");
                 
             targetPlayer.pac.Damaged();
             UiManager.instance.UpdateHealthbar();

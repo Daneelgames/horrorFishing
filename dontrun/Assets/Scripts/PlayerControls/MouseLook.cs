@@ -123,61 +123,18 @@ public class MouseLook : MonoBehaviour
 
     void Update()
     {
-        if (!gm.paused && !pm.teleport && hc.health > 0 && canControl)
-        {
-            Aiming();
-        }
-
-        /*
-        if (hc.health > 0)
-        {
-            if (debugMapTime > 0 && Time.timeScale > 0)
-            {
-                if (!debugMap.gameObject.activeInHierarchy)
-                {
-                    debugMap.gameObject.SetActive(true);
-                    if (GLNetworkWrapper.instance && GLNetworkWrapper.instance.coopIsActive)
-                    {
-                        spectatorCam.gameObject.SetActive(true);   
-                    }
-                    else
-                    {
-                        spectatorCam.gameObject.SetActive(false);
-                    }
-                }
-                
-                debugMapTime -= Time.deltaTime;   
-            }
-            else if (debugMap.gameObject.activeInHierarchy) 
-                debugMap.gameObject.SetActive(false);
-        }
-        else
-        {
-            if (!debugMap.gameObject.activeInHierarchy)
-            {
-                debugMapTime = 0;
-                debugMap.gameObject.SetActive(true);
-                
-                if (GLNetworkWrapper.instance && GLNetworkWrapper.instance.coopIsActive)
-                {
-                    spectatorCam.gameObject.SetActive(true);   
-                }
-                else
-                {
-                    spectatorCam.gameObject.SetActive(false);
-                }
-            }
-        }*/
+        if (gm.paused || !pm || !hc || pm.teleport || !(hc.health > 0) || !canControl) return;
+        
+        Aiming();
     }
 
     private void LateUpdate()
     {
-        if (!gm.paused && !pm.teleport /*&& !gm.questWindow*/)
+        if (!gm || gm.paused || !pm || pm.teleport) return;
+        
+        if ((GLNetworkWrapper.instance && GLNetworkWrapper.instance.coopIsActive) || (hc.health > 0 && canControl)) 
         {
-            if ((GLNetworkWrapper.instance && GLNetworkWrapper.instance.coopIsActive) || (hc.health > 0 && canControl)) 
-            {
-                Looking();
-            }
+            Looking();
         }
     }
 
@@ -236,7 +193,7 @@ public class MouseLook : MonoBehaviour
         targetRotation.localRotation = Quaternion.Euler(xRotation, yRotation, 0);
         transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotation.localRotation, Time.deltaTime * gm.mouseLookSpeedCurrent);
         camHolder.transform.localRotation = Quaternion.Slerp(camHolder.transform.localRotation, transform.localRotation, Time.deltaTime * gm.mouseLookSpeedCurrent);
-        gm.player.pm.movementTransform.transform.rotation = camHolder.transform.rotation;
+        gm.player.playerMovement.movementTransform.transform.rotation = camHolder.transform.rotation;
     }
 
     public void Recoil()

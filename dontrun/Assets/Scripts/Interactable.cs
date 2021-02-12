@@ -163,11 +163,11 @@ public class Interactable : MonoBehaviour,
 		}
 
 		if (hint.activeInHierarchy && gm && gm.player)
-			hint.transform.LookAt(gm.player.pm.cameraAnimator.transform.position);
+			hint.transform.LookAt(gm.player.playerMovement.cameraAnimator.transform.position);
 
 		if (showName && nameGui != null)
 		{
-			nameGui.transform.parent.transform.LookAt(gm.player.pm.cameraAnimator.transform.position);
+			nameGui.transform.parent.transform.LookAt(gm.player.playerMovement.cameraAnimator.transform.position);
 			if (!door && !button && !transport && !npc)
 			{
 				if (canvasParent)
@@ -219,8 +219,8 @@ public class Interactable : MonoBehaviour,
                     {
                         if (!portable.inHands)
                         {
-                            hint.transform.LookAt(gm.player.pm.cameraAnimator.transform.position);
-                            nameGui.transform.parent.transform.LookAt(gm.player.pm.cameraAnimator.transform.position);
+                            hint.transform.LookAt(gm.player.playerMovement.cameraAnimator.transform.position);
+                            nameGui.transform.parent.transform.LookAt(gm.player.playerMovement.cameraAnimator.transform.position);
                             hint.SetActive(true);
                             hint.transform.GetChild(0).gameObject.layer = 9;
                             nameGui.gameObject.layer = 9;
@@ -239,15 +239,15 @@ public class Interactable : MonoBehaviour,
                     }
                     else if (door)
                     {
-                        hint.transform.LookAt(gm.player.pm.cameraAnimator.transform.position);
-                        nameGui.transform.parent.transform.LookAt(gm.player.pm.cameraAnimator.transform.position);
+                        hint.transform.LookAt(gm.player.playerMovement.cameraAnimator.transform.position);
+                        nameGui.transform.parent.transform.LookAt(gm.player.playerMovement.cameraAnimator.transform.position);
                         nameGuiAnim.gameObject.SetActive(true);
                         hint.SetActive(true);
                     }
                     else if (nameGui != null)
                     {
-                        hint.transform.LookAt(gm.player.pm.cameraAnimator.transform.position);
-                        nameGui.transform.parent.transform.LookAt(gm.player.pm.cameraAnimator.transform.position);
+                        hint.transform.LookAt(gm.player.playerMovement.cameraAnimator.transform.position);
+                        nameGui.transform.parent.transform.LookAt(gm.player.playerMovement.cameraAnimator.transform.position);
                         hint.SetActive(true);
                         hint.transform.GetChild(0).gameObject.layer = 9;
                         nameGui.gameObject.layer = 9;

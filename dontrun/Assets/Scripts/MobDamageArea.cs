@@ -131,7 +131,7 @@ public class MobDamageArea : MonoBehaviour
                 HealthController hc = other.gameObject.GetComponent<HealthController>();
                 
                 //print(hc);
-                if (hc == null || hc == mobAttack.hc || (hc.player && mobAttack.hc.inLove) || (GLNetworkWrapper.instance && GLNetworkWrapper.instance.coopIsActive && hc.pm))
+                if (hc == null || hc == mobAttack.hc || (hc.player && mobAttack.hc.inLove) || (GLNetworkWrapper.instance && GLNetworkWrapper.instance.coopIsActive && hc.playerMovement))
                     return;
                 
                 Vector3 bloodSpawnPosition = hc.transform.position + Vector3.up;

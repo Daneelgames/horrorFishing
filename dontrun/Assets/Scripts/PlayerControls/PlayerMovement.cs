@@ -58,7 +58,6 @@ namespace PlayerControls
         public InteractionController interactionController;
 
         public bool _grounded = false;
-        [HideInInspector]
         public HealthController hc;
 
         public Collider dashCollider;
@@ -99,7 +98,7 @@ namespace PlayerControls
         {
             instance = this;
             controller.enabled = false;
-
+            hc = GetComponent<HealthController>();
             GameManager.instance.player = hc;
         }
 

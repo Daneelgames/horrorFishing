@@ -11,9 +11,9 @@ public class DynamicMapMark : MonoBehaviour
     {
         transform.parent = null;
 
-        if (master && master.player && master.pm)
+        if (master && master.player && master.playerMovement)
         {
-            rotatingTransform = master.pm.mouseLook.transform;
+            rotatingTransform = master.playerMovement.mouseLook.transform;
         }
     }
     

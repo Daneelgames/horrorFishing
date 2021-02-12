@@ -24,7 +24,8 @@ public class UiManager : MonoBehaviour
     public TextMeshProUGUI activeWeaponName;
     public Animator pauseAnim;
 
-    [Header("Feedback")]
+    [Header("Feedback")] 
+    public Animator eyesHealthbarAnimator;
     public List<Image> healthbars = new List<Image>();
     public List<Image> healthbarsFones = new List<Image>();
     public Animator hintAnim;
@@ -324,46 +325,10 @@ public class UiManager : MonoBehaviour
     }
 
 
+    private string stringHpBlend = "HpBlend";
     public void UpdateHealthbar()
     {
-        var hc = PlayerMovement.instance.hc;
-        int hearts = ItemsList.instance.heartContainerAmount;
-
-        if (hearts > 0)
-        {
-            float healthToProceed = hc.health;
-            healthbars[0].fillAmount = hc.health / 1000;
-            healthToProceed -= 1000;
-            
-            for (int i = 1; i <= hearts; i++)
-            {
-                healthbarsFones[i].gameObject.SetActive(true);
-                healthbars[i].gameObject.SetActive(true);
-
-                if (healthToProceed > 0)
-                {
-                    healthbars[i].fillAmount = healthToProceed / 100;
-                    healthToProceed -= 100;   
-                }
-                else
-                    healthbars[i].fillAmount = 0;
-            }
-        }
-        else
-        {
-            for (int i = 0; i < healthbars.Count; i++)
-            {
-                if (i == 0)
-                {
-                    healthbars[i].fillAmount = pm.hc.health / pm.hc.healthMax;
-                }
-                else
-                {
-                    healthbars[i].gameObject.SetActive(false);
-                    healthbarsFones[i].gameObject.SetActive(false);
-                }
-            }
-        }
+        eyesHealthbarAnimator.SetFloat(stringHpBlend, PlayerMovement.instance.hc.health / PlayerMovement.instance.hc.healthMax);
     }
     
     
@@ -1284,9 +1249,11 @@ public class UiManager : MonoBehaviour
 
     public void UpdateGold(float _gold)
     {
+        if (goldAmountTextAnim) goldAmountTextAnim.gameObject.SetActive(false);
+        return;
+        
         int g = Mathf.RoundToInt(_gold);
         goldAmountText.text = g.ToString();
-        if (goldAmountTextAnim)
             goldAmountTextAnim.SetTrigger("Update");
     }
     /*
@@ -1414,9 +1381,14 @@ public class UiManager : MonoBehaviour
         }
     }
 
+
+    private Coroutine hideDialogueOverTimeCoroutine;
     public void HideDialogue(float t)
     {
-        StartCoroutine(HideDialogueOverTime(t));
+        if (hideDialogueOverTimeCoroutine != null)
+            StopCoroutine(hideDialogueOverTimeCoroutine);
+        
+        hideDialogueOverTimeCoroutine = StartCoroutine(HideDialogueOverTime(t));
     }
 
     IEnumerator HideDialogueOverTime(float t)

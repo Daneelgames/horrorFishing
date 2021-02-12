@@ -115,9 +115,7 @@ public class HubItemsSpawner : MonoBehaviour
                         fieldEventsSpawners[1].transform.rotation);
 
                     shoesOnBeachSpawned = go;
-                    
-                    // ladyshoe
-                    sc.InstantiateItem(itemSpawners[0].itemToSpawn, itemSpawners[0].transform.position, itemSpawners[0].transform.rotation, false); 
+                     
                 }
                 
                 // spawn lady

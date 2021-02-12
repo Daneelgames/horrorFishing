@@ -109,6 +109,8 @@ public class WeaponController : MonoBehaviour
     AiDirector aiDir;
     private PlayerSkillsController psc;
 
+    public RandomizedPhrasesData randomPhrases;
+
     private void Start()
     {
         gm = GameManager.instance;
@@ -358,34 +360,34 @@ public class WeaponController : MonoBehaviour
 
     private void OnTriggerStay(Collider coll)
     {
-        if (dangerous && (coll.gameObject.layer == 11 || coll.gameObject.layer == 10 || coll.gameObject.layer == 16 ) && coll.gameObject != playerMovement.gameObject)
+        if (weapon == WeaponPickUp.Weapon.LadyShoe || !dangerous || (coll.gameObject.layer != 11 && coll.gameObject.layer != 10 && coll.gameObject.layer != 16) ||
+            coll.gameObject == playerMovement.gameObject) return;
+        
+        
+        bool alreadyHit = false;
+        for (var index = 0; index < damagedInOnHit.Count; index++)
         {
-            bool alreadyHit = false;
-            for (var index = 0; index < damagedInOnHit.Count; index++)
-            {
-                MobBodyPart part = damagedInOnHit[index];
-                if (coll && part && part.gameObject == coll.gameObject)
-                    alreadyHit = true;
-            }
-
-            if (!alreadyHit)
-            {
-                if (FindDamageTarget(coll.gameObject, meleeImpactVfxHolder.position, playerMovement.cameraAnimator.transform.position))
-                {
-                    if (psc.activeCult == PlayerSkillsController.Cult.bleedingCult)
-                        playerMovement.hc.Heal((damageMax + damageMin) / 20);
-                    LoseDurability();
-                }
-
-                uiManager.UpdateWeapons();
-                damagedInOnHit.Add(coll.gameObject.GetComponent<MobBodyPart>());
-            }
-
-            var newBulletImpact = Instantiate(bulletImpact, meleeImpactVfxHolder.position, Quaternion.identity);
-            newBulletImpact.transform.LookAt(meleeImpactVfxHolder.position);
-            Destroy(newBulletImpact, 2);
-
+            MobBodyPart part = damagedInOnHit[index];
+            if (coll && part && part.gameObject == coll.gameObject)
+                alreadyHit = true;
         }
+
+        if (!alreadyHit)
+        {
+            if (FindDamageTarget(coll.gameObject, meleeImpactVfxHolder.position, playerMovement.cameraAnimator.transform.position))
+            {
+                if (psc.activeCult == PlayerSkillsController.Cult.bleedingCult)
+                    playerMovement.hc.Heal((damageMax + damageMin) / 20);
+                LoseDurability();
+            }
+
+            uiManager.UpdateWeapons();
+            damagedInOnHit.Add(coll.gameObject.GetComponent<MobBodyPart>());
+        }
+
+        var newBulletImpact = Instantiate(bulletImpact, meleeImpactVfxHolder.position, Quaternion.identity);
+        newBulletImpact.transform.LookAt(meleeImpactVfxHolder.position);
+        Destroy(newBulletImpact, 2);
     }
     
     IEnumerator AttackSelfRange()

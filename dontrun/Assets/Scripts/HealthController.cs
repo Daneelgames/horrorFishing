@@ -44,7 +44,7 @@ public class HealthController : MonoBehaviour, IUpdatable
     float fireAuVolume = 1;
 
     [Header("Player")]
-    public PlayerMovement pm;
+    public PlayerMovement playerMovement;
     public WeaponControls wc;
     public float damageCooldown = 0;
     float damageCooldownMax = 1;
@@ -150,7 +150,7 @@ public class HealthController : MonoBehaviour, IUpdatable
             }
         }
         
-        if (GLNetworkWrapper.instance && GLNetworkWrapper.instance.coopIsActive && pm)
+        if (GLNetworkWrapper.instance && GLNetworkWrapper.instance.coopIsActive && playerMovement)
         {
             // dont send player to unit list in coop
         }
@@ -164,9 +164,9 @@ public class HealthController : MonoBehaviour, IUpdatable
         healthMax = health;
         damageCooldownMax = damageCooldown;
 
-        if (pm)
+        if (playerMovement)
         {
-            pm.hc = this;
+            playerMovement.hc = this;
         }
 
         StartCoroutine(DamageCooldown());
@@ -228,7 +228,7 @@ public class HealthController : MonoBehaviour, IUpdatable
         if (trapController) trapController.ownHc = this;
         if (wallBlockerController) wallBlockerController.hc = this;
 
-        if (pm)
+        if (playerMovement)
         {
             for (int i = 0; i < il.heartContainerAmount; i++)
             {
@@ -263,7 +263,7 @@ public class HealthController : MonoBehaviour, IUpdatable
     {
         this.EnableUpdates();
 
-        if (pm && il.savedQuestItems.Contains(8)) // if player have camera
+        if (playerMovement && il.savedQuestItems.Contains(8)) // if player have camera
             StartCoroutine(CameraRegen());
     }
 
@@ -297,15 +297,15 @@ public class HealthController : MonoBehaviour, IUpdatable
 
     void IUpdatable.OnUpdate()
     {
-        if (pm && pm.controller.enabled == false && pm.inTransport == null)
+        if (playerMovement && playerMovement.controller.enabled == false && playerMovement.inTransport == null)
             return;
         
-        if (pm)
+        if (playerMovement)
         {
             if (faceHuggedCooldown > 0)
                 faceHuggedCooldown -= Time.deltaTime;
             
-            if (pm.controller.enabled && psc.dickheadStomach && health > healthMax * 0.1f)
+            if (playerMovement.controller.enabled && psc.dickheadStomach && health > healthMax * 0.1f)
             {
                 // damage over time
                 DamageOverTime(4 * Time.deltaTime, null, null);
@@ -529,7 +529,7 @@ public class HealthController : MonoBehaviour, IUpdatable
                 }
                 else if (i == 5 && !statusEffects[i].effectImmune) // gold hunger
                 {
-                    if (pm)
+                    if (playerMovement)
                     {
                         if (il.gold > 0)
                         {
@@ -554,10 +554,10 @@ public class HealthController : MonoBehaviour, IUpdatable
                 }
                 else if (i == 6 && !statusEffects[i].effectImmune) // cold
                 {
-                    if (pm)
+                    if (playerMovement)
                     {
-                        pm.coldScaler = Mathf.Lerp(pm.coldScaler, 0.75f, Time.deltaTime);
-                        if (!pm.movementStats.isRunning)
+                        playerMovement.coldScaler = Mathf.Lerp(playerMovement.coldScaler, 0.75f, Time.deltaTime);
+                        if (!playerMovement.movementStats.isRunning)
                         {
                             string damager = "Bone Shiver";
                             if (gm.language == 1) damager = "Костная Дрожь";
@@ -579,7 +579,7 @@ public class HealthController : MonoBehaviour, IUpdatable
                     inLove = true;
                 }
             }
-            if (pm)
+            if (playerMovement)
             {
                 ui.UpdateStatusEffects(i);
             }
@@ -589,11 +589,11 @@ public class HealthController : MonoBehaviour, IUpdatable
     void FillEffect(int index)
     {
         float modificator = 1;
-        if (index == 6 && pm) // if cold and player has a torch, slow cold
+        if (index == 6 && playerMovement) // if cold and player has a torch, slow cold
         {
             if (wc.activeWeapon && wc.activeWeapon.weapon == WeaponPickUp.Weapon.Torch && wc.activeWeapon.durability > 0)
                 modificator = 0.33f;
-            if (pm.movementStats.isRunning)
+            if (playerMovement.movementStats.isRunning)
                 modificator *= 0.5f;
         }
         if (statusEffects[index].effectLevelCurrent < statusEffects[index].effectLevelMax)
@@ -722,7 +722,7 @@ public class HealthController : MonoBehaviour, IUpdatable
                 statusEffectsVisuals[0].gameObject.SetActive(true);
                 statusEffectsVisuals[0].StartEffect();   
             }      
-            if (pm) 
+            if (playerMovement) 
                 ui.UpdateStatusEffects(0);
         }
     }
@@ -738,7 +738,7 @@ public class HealthController : MonoBehaviour, IUpdatable
                 statusEffectsVisuals[2].gameObject.SetActive(true);
                 statusEffectsVisuals[2].StartEffect();   
             }      
-            if (pm) 
+            if (playerMovement) 
                 ui.UpdateStatusEffects(2);
         }
     }
@@ -758,7 +758,7 @@ public class HealthController : MonoBehaviour, IUpdatable
             statusEffects[1].effectLevelCurrent = statusEffects[1].effectLevelMax;
             statusEffects[1].effectActive = true; 
         }
-        if (pm) 
+        if (playerMovement) 
             ui.UpdateStatusEffects(1);
     }
     public void InstantRegen()
@@ -772,7 +772,7 @@ public class HealthController : MonoBehaviour, IUpdatable
                 statusEffectsVisuals[4].gameObject.SetActive(true);
                 statusEffectsVisuals[4].StartEffect();
             }   
-            if (pm) 
+            if (playerMovement) 
                 ui.UpdateStatusEffects(4);
         }
     }
@@ -787,7 +787,7 @@ public class HealthController : MonoBehaviour, IUpdatable
                 statusEffectsVisuals[5].gameObject.SetActive(true);
                 statusEffectsVisuals[5].StartEffect();
             }   
-            if (pm) 
+            if (playerMovement) 
                 ui.UpdateStatusEffects(5);
         }
     }
@@ -802,7 +802,7 @@ public class HealthController : MonoBehaviour, IUpdatable
                 statusEffectsVisuals[6].gameObject.SetActive(true);
                 statusEffectsVisuals[6].StartEffect();
             }
-            if (pm) 
+            if (playerMovement) 
                 ui.UpdateStatusEffects(6);
         }
     }
@@ -819,7 +819,7 @@ public class HealthController : MonoBehaviour, IUpdatable
                 statusEffectsVisuals[7].StartEffect();
             }   
             
-            if (pm) 
+            if (playerMovement) 
                 ui.UpdateStatusEffects(7);
         }
     }
@@ -835,7 +835,7 @@ public class HealthController : MonoBehaviour, IUpdatable
                 statusEffectsVisuals[3].gameObject.SetActive(true);
                 statusEffectsVisuals[3].StartEffect();
             }   
-            if (pm) 
+            if (playerMovement) 
                 ui.UpdateStatusEffects(3);
         }
     }
@@ -848,8 +848,8 @@ public class HealthController : MonoBehaviour, IUpdatable
             {
                 if (i == 6) // cold
                 {
-                    if (pm)
-                        pm.coldScaler = Mathf.Lerp(pm.coldScaler, 1, Time.deltaTime * 0.1f);
+                    if (playerMovement)
+                        playerMovement.coldScaler = Mathf.Lerp(playerMovement.coldScaler, 1, Time.deltaTime * 0.1f);
                     
                     statusEffects[i].effectLevelCurrent -= Time.deltaTime * statusEffects[i].depletionSpeed;
                 }
@@ -925,8 +925,8 @@ public class HealthController : MonoBehaviour, IUpdatable
                 }
                 if (i == 6) // cold
                 {
-                    if (pm)
-                        pm.coldScaler = 1;
+                    if (playerMovement)
+                        playerMovement.coldScaler = 1;
                 }
                 if (i == 7) // love
                 {
@@ -959,7 +959,7 @@ public class HealthController : MonoBehaviour, IUpdatable
                         statusEffects[2].effectActive = false;
                         statusEffects[2].effectLevelCurrent = 0;
 
-                        if (pm)
+                        if (playerMovement)
                         {
                             firePartilcesEmission.rateOverTime = 0;
                             fireAu.volume = 0;
@@ -1076,7 +1076,7 @@ public class HealthController : MonoBehaviour, IUpdatable
         
         if (gameObject.activeInHierarchy)
         {
-            if (pm || player)
+            if (playerMovement || player)
             {
                 damagedOnLevel = true;
                 
@@ -1104,7 +1104,7 @@ public class HealthController : MonoBehaviour, IUpdatable
             }
             if (deerActivator) deerActivator.Activate();
             
-            if (pm)
+            if (playerMovement)
             {
                 if (damageMessage != null)
                     ui.DamagedMessage(damageMessage);
@@ -1132,7 +1132,7 @@ public class HealthController : MonoBehaviour, IUpdatable
                     mobPartsController.Death();
                     door.DoorDestroyed();   
                 }
-                else if (pm)
+                else if (playerMovement)
                 {
                     // first death achievement
                     if (!gm.demo && SteamAchievements.instance)
@@ -1142,7 +1142,7 @@ public class HealthController : MonoBehaviour, IUpdatable
                         print("Player died!");
                         
                         if (GLNetworkWrapper.instance == null || GLNetworkWrapper.instance.coopIsActive == false)
-                            pm.cameraAnimator.SetBool("Death", true);
+                            playerMovement.cameraAnimator.SetBool("Death", true);
                         else
                         {
                             print("Kill player dummy");
@@ -1198,7 +1198,7 @@ public class HealthController : MonoBehaviour, IUpdatable
                     if (playerNetworkDummyController && playerNetworkDummyController.targetPlayer)
                         playerNetworkDummyController.targetPlayer.InstantPoison();
 
-                    if (pm)
+                    if (playerMovement)
                         ui.UpdateStatusEffects(0);
                     break;
                 
@@ -1220,7 +1220,7 @@ public class HealthController : MonoBehaviour, IUpdatable
 
                     if (playerNetworkDummyController && playerNetworkDummyController.targetPlayer)
                         playerNetworkDummyController.targetPlayer.StartFire();
-                    if (pm)
+                    if (playerMovement)
                         ui.UpdateStatusEffects(1);
                     break;
                 
@@ -1241,7 +1241,7 @@ public class HealthController : MonoBehaviour, IUpdatable
                     if (playerNetworkDummyController && playerNetworkDummyController.targetPlayer)
                         playerNetworkDummyController.targetPlayer.InstantBleed();
                     
-                    if (pm)
+                    if (playerMovement)
                         ui.UpdateStatusEffects(2);
                     break;
                 
@@ -1260,7 +1260,7 @@ public class HealthController : MonoBehaviour, IUpdatable
                     if (playerNetworkDummyController && playerNetworkDummyController.targetPlayer)
                         playerNetworkDummyController.targetPlayer.InstantRust();
 
-                    if (pm)
+                    if (playerMovement)
                         ui.UpdateStatusEffects(3);
                     break;
                 
@@ -1274,7 +1274,7 @@ public class HealthController : MonoBehaviour, IUpdatable
         
                     if (playerNetworkDummyController && playerNetworkDummyController.targetPlayer)
                         playerNetworkDummyController.targetPlayer.InstantRegen();
-                    if (pm)
+                    if (playerMovement)
                         ui.UpdateStatusEffects(4);
                     break;
                 
@@ -1293,7 +1293,7 @@ public class HealthController : MonoBehaviour, IUpdatable
                     if (playerNetworkDummyController && playerNetworkDummyController.targetPlayer)
                         playerNetworkDummyController.targetPlayer.InstantGoldHunger();
 
-                    if (pm)
+                    if (playerMovement)
                         ui.UpdateStatusEffects(5);
                     break;
                 case 6:
@@ -1310,7 +1310,7 @@ public class HealthController : MonoBehaviour, IUpdatable
         
                     if (playerNetworkDummyController && playerNetworkDummyController.targetPlayer)
                         playerNetworkDummyController.targetPlayer.InstantCold();
-                    if (pm)
+                    if (playerMovement)
                         ui.UpdateStatusEffects(6);
                     break;
                 case 7:
@@ -1327,7 +1327,7 @@ public class HealthController : MonoBehaviour, IUpdatable
         
                     if (playerNetworkDummyController && playerNetworkDummyController.targetPlayer)
                         playerNetworkDummyController.targetPlayer.InstantLove();
-                    if (pm)
+                    if (playerMovement)
                         ui.UpdateStatusEffects(7);
                     break;
             }
@@ -1366,7 +1366,7 @@ public class HealthController : MonoBehaviour, IUpdatable
         MobBodyPart part, string damageMessage, bool _damagedByPlayer, string damager, 
         HealthController damagerHc, StatussEffectsOnAttack effectsOnAttack, bool ignoreDistance)
     {
-        if (pm && _damagedByPlayer && currentFaceEater != null)
+        if (playerMovement && _damagedByPlayer && currentFaceEater != null)
         {
             currentFaceEater.hc.Damage(dmg, currentFaceEater.transform.position, currentFaceEater.transform.position,
                 null, currentFaceEater.hc.damagedByPlayerMessage[gm.language], true, null, this, null, true);
@@ -1384,7 +1384,7 @@ public class HealthController : MonoBehaviour, IUpdatable
         if (damageCooldown <= 0 && health > 0)
         {
             int effect = -1;
-            if (pm || player)
+            if (playerMovement || player)
             {
                 damagedOnLevel = true;
                 
@@ -1526,7 +1526,7 @@ public class HealthController : MonoBehaviour, IUpdatable
                                 }
                             }
 
-                            if (pm)
+                            if (playerMovement)
                                 ui.UpdateStatusEffects(0);
                             break;
                         
@@ -1551,7 +1551,7 @@ public class HealthController : MonoBehaviour, IUpdatable
                                 }
                             }
 
-                            if (pm)
+                            if (playerMovement)
                                 ui.UpdateStatusEffects(1);
                             break;
                         
@@ -1574,7 +1574,7 @@ public class HealthController : MonoBehaviour, IUpdatable
                                 }
                             }
 
-                            if (pm)
+                            if (playerMovement)
                                 ui.UpdateStatusEffects(2);
                             break;
                         
@@ -1595,7 +1595,7 @@ public class HealthController : MonoBehaviour, IUpdatable
                                 }
                             }
 
-                            if (pm)
+                            if (playerMovement)
                                 ui.UpdateStatusEffects(3);
                             break;
                         
@@ -1614,7 +1614,7 @@ public class HealthController : MonoBehaviour, IUpdatable
                                     */  
                                 }
                             }
-                            if (pm)
+                            if (playerMovement)
                                 ui.UpdateStatusEffects(4);
                             break;
                         
@@ -1635,7 +1635,7 @@ public class HealthController : MonoBehaviour, IUpdatable
                                 }
                             }
 
-                            if (pm)
+                            if (playerMovement)
                                 ui.UpdateStatusEffects(5);
                             break;
                         case StatusEffects.StatusEffect.Cold:
@@ -1654,7 +1654,7 @@ public class HealthController : MonoBehaviour, IUpdatable
                                     }
                                 }   
                             }
-                            if (pm)
+                            if (playerMovement)
                                 ui.UpdateStatusEffects(6);
                             break;
                         case StatusEffects.StatusEffect.InLove:
@@ -1673,14 +1673,14 @@ public class HealthController : MonoBehaviour, IUpdatable
                                     }
                                 }   
                             }
-                            if (pm)
+                            if (playerMovement)
                                 ui.UpdateStatusEffects(7);
                             break;
                     }
                 }
             }
             
-            if (pm)
+            if (playerMovement)
             {
                 il.playerCurrentHealth = health;
                 //il.AddToBadReputation(-0.1f);
@@ -1786,7 +1786,7 @@ public class HealthController : MonoBehaviour, IUpdatable
 
             if (health <= 0)
             {
-                if (pm)
+                if (playerMovement)
                 {
                     if (damagerHc != null && damagerHc.eyeEater && il.lostAnEye == 0)
                     {
@@ -1828,12 +1828,12 @@ public class HealthController : MonoBehaviour, IUpdatable
                 if (damageCooldown > 0)
                     StartCoroutine(DamageCooldown());
 
-                if (pm) // only for player
+                if (playerMovement) // only for player
                 {
                     if (Random.value > 0.1f)
-                        pm.cameraAnimator.SetTrigger("Damage");
+                        playerMovement.cameraAnimator.SetTrigger("Damage");
                     else
-                        pm.cameraAnimator.SetTrigger("Earthquake");
+                        playerMovement.cameraAnimator.SetTrigger("Earthquake");
 
                     if (GLNetworkWrapper.instance && GLNetworkWrapper.instance.coopIsActive)
                     {
@@ -2033,7 +2033,7 @@ public class HealthController : MonoBehaviour, IUpdatable
             QuestManager.instance.StartQuest(startQuestOnDeath);
         }
 
-        if (pm || player)
+        if (playerMovement || player)
         {
             Time.timeScale = 1;
             
@@ -2054,7 +2054,7 @@ public class HealthController : MonoBehaviour, IUpdatable
 
     public void RespawnPlayer()
     {
-        pm.cameraAnimator.SetBool("Death", false);
+        playerMovement.cameraAnimator.SetBool("Death", false);
         PlayerMovement.instance.hc.invincible = false;
         PlayerMovement.instance.controller.enabled = true;
         health = healthMax / 2;
@@ -2099,7 +2099,7 @@ public class HealthController : MonoBehaviour, IUpdatable
         
         if (health > healthMax) health = healthMax;
 
-        if (pm)
+        if (playerMovement)
         {
             il.playerCurrentHealth = health;
             ui.UpdateHealthbar();
@@ -2128,7 +2128,7 @@ public class HealthController : MonoBehaviour, IUpdatable
             */   
         }
 
-        if (pm)
+        if (playerMovement)
         {
             firePartilcesEmission.rateOverTime = 0;
             fireAu.volume = 0;
@@ -2248,7 +2248,7 @@ public class HealthController : MonoBehaviour, IUpdatable
         }
         
         // repair weapon
-        if (pm)
+        if (playerMovement)
         {
             if (wc)
             {
@@ -2268,7 +2268,7 @@ public class HealthController : MonoBehaviour, IUpdatable
         StopBleeding();
         health += amount;
         if (health > healthMax) health = healthMax;
-        if (pm)
+        if (playerMovement)
         {
             ui.UpdateHealthbar();
             il.playerCurrentHealth = health;

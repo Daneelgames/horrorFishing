@@ -39,7 +39,7 @@ public class ExplossionController : MonoBehaviour
                     if (hc.player)
                     {
                         // dont damage the player directly in coop
-                        if (hc.pm && GLNetworkWrapper.instance && GLNetworkWrapper.instance.coopIsActive)
+                        if (hc.playerMovement && GLNetworkWrapper.instance && GLNetworkWrapper.instance.coopIsActive)
                             return;
                         
                         explosionDamage /= 4;   

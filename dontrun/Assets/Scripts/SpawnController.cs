@@ -591,7 +591,7 @@ public class SpawnController : MonoBehaviour
                         if (gm.player.wc.activeWeapon && !PlayerSkillsController.instance.horrorMode)
                         {
                             // COUNT MOVEMENT
-                            if (gm.player.pm.movementStats.isRunning)
+                            if (gm.player.playerMovement.movementStats.isRunning)
                                 mobSpawnTimer += 2f * il.badReputaion;
                             else
                                 mobSpawnTimer += 1f * il.badReputaion;
@@ -652,7 +652,7 @@ public class SpawnController : MonoBehaviour
                         }
                         else //  delay spawn if no weapons or if in horror mode
                         {
-                                if (gm.player.pm.movementStats.isRunning)
+                                if (gm.player.playerMovement.movementStats.isRunning)
                                     mobSpawnTimer += 2f * il.badReputaion;
                                 else
                                     mobSpawnTimer += 1f * il.badReputaion;   

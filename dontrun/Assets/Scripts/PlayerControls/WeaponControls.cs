@@ -7,6 +7,7 @@ using PlayerControls;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
+using Random = UnityEngine.Random;
 
 
 public enum WeaponPickUpAction
@@ -790,6 +791,7 @@ public class WeaponControls : MonoBehaviour
         il.SaveWeapons();
         activeWeapon.playerMovement.mouseLook.activeWeaponHolderAnim = activeWeapon.weaponMovementAnim;
 
+        WeaponPhrase();
         yield return new WaitForSeconds(0.5f);
         activeWeapon.hidden = false;
         activeWeapon.canAct = true;
@@ -797,6 +799,20 @@ public class WeaponControls : MonoBehaviour
         il.activeWeaponDescriptions = new List<string>(activeWeapon.descriptions);
     }
 
+    private string activeString = "Active";
+    void WeaponPhrase()
+    {
+        if (!activeWeapon || !activeWeapon.randomPhrases) return;
+        
+        ui = UiManager.instance;
+        var tempDialogue = activeWeapon.randomPhrases.dialogues[Random.Range(0, activeWeapon.randomPhrases.dialogues.Count)];
+        ui.dialogueSpeakerName.text = activeWeapon.dataRandomizer.generatedName[gm.language];
+        ui.dialoguePhrase.text = tempDialogue.phrases[Random.Range(0, tempDialogue.phrases.Count)];
+        ui.dialogueChoice.text = String.Empty;
+        ui.dialogueAnim.SetTrigger(activeString);
+        ui.HideDialogue(4);
+    }
+    
     IEnumerator SwitchWeaponOverTime()
     {
         crosshair.SetTrigger("Switch"); 
@@ -829,7 +845,7 @@ public class WeaponControls : MonoBehaviour
 
         UiManager.instance.UpdateAmmo();
         yield return new WaitForSeconds(0.5f);
-
+        
         if (activeWeapon)
         {
             activeWeapon.hidden = false;
@@ -844,7 +860,7 @@ public class WeaponControls : MonoBehaviour
             secondWeapon.canAct = true;
             il.secondWeaponDescriptions = new List<string>(secondWeapon.descriptions);   
         }
-        
+        WeaponPhrase();
         eatingWeapon = false;
         ui.UpdateWeapons();
     }
@@ -879,6 +895,7 @@ public class WeaponControls : MonoBehaviour
                 throw new ArgumentOutOfRangeException();
         }
         
+        WeaponPhrase();
         yield return new WaitForSeconds(0.5f);
         activeWeapon.weaponMovementAnim.SetBool("Broken", activeWeapon.broken);
         activeWeapon.canAct = true;

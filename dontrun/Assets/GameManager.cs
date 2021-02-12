@@ -398,7 +398,7 @@ public class GameManager : MonoBehaviour
 
     public void AddUnit(HealthController h)
     {
-        if (h.player && h.wc && h.pm && h.playerNetworkDummyController == null)
+        if (h.player && h.wc && h.playerMovement && h.playerNetworkDummyController == null)
         {
             player = h;
             playerStartPos = player.transform.position;
@@ -425,9 +425,9 @@ public class GameManager : MonoBehaviour
         
         if (player && player.health > 0)
         {
-            if (player.pm && player.pm.inTransport && (Input.GetButtonDown(dashString) || KeyBindingManager.GetKeyDown(KeyAction.Dash)))
+            if (player.playerMovement && player.playerMovement.inTransport && (Input.GetButtonDown(dashString) || KeyBindingManager.GetKeyDown(KeyAction.Dash)))
             {
-                player.pm.inTransport.ExitTransport();   
+                player.playerMovement.inTransport.ExitTransport();   
             }
 
             if (hub)
@@ -448,7 +448,7 @@ public class GameManager : MonoBehaviour
         
         lg = LevelGenerator.instance;
         
-        if (player && player.health > 0 && (player.pm.controller.enabled || (!player.pm.controller.enabled && player.pm.inTransport)) && (!lg || !lg.generating))
+        if (player && player.health > 0 && (player.playerMovement.controller.enabled || (!player.playerMovement.controller.enabled && player.playerMovement.inTransport)) && (!lg || !lg.generating))
         {
             if (Input.GetKeyDown("u"))
                 UiManager.instance.ToggleGameUi(false, true);
@@ -921,7 +921,7 @@ public class GameManager : MonoBehaviour
         if (ls)
             ls.Init();
         print("FIELD LOADED");
-        player.pm.StartLevel();
+        player.playerMovement.StartLevel();
         
         /*
         if (tutorialPassed == 0)
@@ -964,7 +964,7 @@ public class GameManager : MonoBehaviour
         readyToStartLevel = false;
         GutQuestsController.instance.ClearQuests();
         
-        bool bikeInLevel = !restart && player && player.pm.inTransport && returnTo == 1;
+        bool bikeInLevel = !restart && player && player.playerMovement.inTransport && returnTo == 1;
         
         GutProgressionManager.instance.Init();
 
@@ -1158,7 +1158,7 @@ public class GameManager : MonoBehaviour
 
         if (bikeInLevel && sc.bike) sc.bike.SetActive(true);
         
-        player.pm.StartLevel();
+        player.playerMovement.StartLevel();
         
         player.wc.FindNewTool();
         if (ls)
@@ -1330,7 +1330,7 @@ public class GameManager : MonoBehaviour
         
         loading = false;
         
-        player.pm.StartLevel();
+        player.playerMovement.StartLevel();
         player.wc.FindNewTool();
         
         if (ls)

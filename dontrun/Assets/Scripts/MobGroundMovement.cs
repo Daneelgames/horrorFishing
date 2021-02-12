@@ -394,7 +394,7 @@ public class MobGroundMovement : MonoBehaviour, IUpdatable
                     {
                         if (sightDistanceCurrent < levels[GetLevel()].sightDistanceIdleMaximum)
                         {
-                            if (!gm.player.pm.crouching)
+                            if (!gm.player.playerMovement.crouching)
                                 sightDistanceCurrent += levels[GetLevel()].sightDistanceGrowRate;
                             else
                                 sightDistanceCurrent += levels[GetLevel()].sightDistanceGrowRate * 0.33f;

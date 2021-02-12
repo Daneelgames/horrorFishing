@@ -9991,7 +9991,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1ae892b86acd424c888e3f737f20f40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  streamingDistance: 50
   streamObjectAboveAnimator: 0
   childObjectToHide: []
 --- !u!1 &962978271017867397
@@ -19630,7 +19629,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1ae892b86acd424c888e3f737f20f40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  streamingDistance: 50
   streamObjectAboveAnimator: 0
   childObjectToHide: []
 --- !u!1 &1213697924802733266
@@ -19964,7 +19962,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1ae892b86acd424c888e3f737f20f40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  streamingDistance: 50
   streamObjectAboveAnimator: 1
   childObjectToHide:
   - {fileID: 8082772272192911689}
@@ -20021,6 +20018,9 @@ MonoBehaviour:
   au: {fileID: 0}
   deathParticle: {fileID: 0}
   hc: {fileID: 0}
+  usedForAttack: 0
+  mobAttack: {fileID: 0}
+  ikTargets: []
 --- !u!136 &2281927698607686927
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -30094,7 +30094,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3598064386381550205}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 2813259491738862995}
@@ -30433,7 +30433,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5077406346837187391}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.39, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3195286725350911380}
@@ -31200,6 +31200,9 @@ MonoBehaviour:
   au: {fileID: 0}
   deathParticle: {fileID: 0}
   hc: {fileID: 0}
+  usedForAttack: 0
+  mobAttack: {fileID: 0}
+  ikTargets: []
 --- !u!136 &3861744694315020808
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -40975,6 +40978,7 @@ MonoBehaviour:
   dropPosition: {fileID: 0}
   rangeShotParticles: {fileID: 0}
   shotAu: {fileID: 0}
+  gameObjectsToActivate: []
 --- !u!1 &6195285346920765117
 GameObject:
   m_ObjectHideFlags: 0
@@ -41074,7 +41078,6 @@ GameObject:
   - component: {fileID: 3129338261924909713}
   - component: {fileID: 3738337181620317269}
   - component: {fileID: 2399888694780333327}
-  - component: {fileID: 7469744586870411297}
   - component: {fileID: 5688869884001014716}
   - component: {fileID: 2648820373759681364}
   - component: {fileID: 2677744447183082690}
@@ -41101,7 +41104,6 @@ Transform:
   - {fileID: 282719277893476824}
   - {fileID: 4840995746235025284}
   - {fileID: 7448138322215772519}
-  - {fileID: 8536809304008243848}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -41203,7 +41205,7 @@ MonoBehaviour:
   - {fileID: 7633045683476308973}
   fireParticles: {fileID: 1001636351256704981}
   fireAu: {fileID: 3492530970955636641}
-  pm: {fileID: 0}
+  playerMovement: {fileID: 0}
   wc: {fileID: 0}
   damageCooldown: 0
   pac: {fileID: 0}
@@ -41214,6 +41216,7 @@ MonoBehaviour:
   inLove: 0
   boss: 0
   bossStateChanger: {fileID: 0}
+  propController: {fileID: 0}
   mobKilledAchievementID: 
   cultist: 0
   mobGroundMovement: {fileID: 2399888694780333327}
@@ -41223,8 +41226,7 @@ MonoBehaviour:
   mobHideInCorners: {fileID: 0}
   mobPartsController: {fileID: 935847778855054865}
   bombBehaviour: {fileID: 0}
-  mobMeleeAttacks:
-  - {fileID: 7469744586870411297}
+  mobMeleeAttack: {fileID: 0}
   mobAudio: {fileID: 7646566839696336221}
   deerActivator: {fileID: 0}
   mps: {fileID: 0}
@@ -41248,6 +41250,7 @@ MonoBehaviour:
   wallMasterTile: {fileID: 0}
   usedTile: {fileID: 0}
   deathParticles: {fileID: 4450831390819569253}
+  deathParticlesMulti: []
   playerDamagedMessage:
   - Ladyshoe smashed me!
   - "\u0422\u0443\u0444\u0435\u043B\u044C\u043A\u0430 \u0434\u043E\u043B\u0431\u0430\u043D\u0443\u043B\u0430
@@ -41273,8 +41276,10 @@ MonoBehaviour:
   level: 0
   mobType: 0
   agent: {fileID: 770424592236811483}
+  ikMonsterAnimator: {fileID: 0}
   simpleWalker: 1
   simpleWalkerString: Chase
+  distanceThreshold: 0.1
   anim: {fileID: 3356578221240416163}
   bodyParts:
   - {fileID: 1087564442742855834}
@@ -41285,7 +41290,6 @@ MonoBehaviour:
   bloodFx: {fileID: 7296228066712574396, guid: 8079d28f804b3754fbfc1ce89ba21296, type: 3}
   drop: []
   dropPosition: {fileID: 2197519793523707262}
-  movementCollider: {fileID: 0}
   forceDropOnTile: 0
   animDamageByTrigger: 0
 --- !u!114 &7646566839696336221
@@ -41395,49 +41399,10 @@ MonoBehaviour:
     m_Bits: 329216
   mobAu: {fileID: 7646566839696336221}
   coldModifier: 1
+  limbsModifier: 1
   target: {fileID: 0}
   currentMobLifter: {fileID: 0}
---- !u!114 &7469744586870411297
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6484314999241537185}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc9323279ec551141abac577f90a0064, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mobParts: {fileID: 935847778855054865}
-  levels:
-  - damage: 500
-    attackCooldown: 1
-    attackCooldownMax: 1
-    attackCooldownMin: 1
-    minimumAttackDelay: 0.2
-    maximumAttackDelay: 0.2
-    swingTime: 0.5
-    attackTime: 0.5
-    returnTime: 0.65
-  damageArea: {fileID: 899869711365808678}
-  mobGroundMovement: {fileID: 2399888694780333327}
-  hc: {fileID: 6484314999241537213}
-  thiefBehaviour: 0
-  mobCharacterControllerMovement: {fileID: 0}
-  effectsOnAttack:
-    effects:
-    - effectType: 4
-      fillSpeed: 0
-      depletionSpeed: 0
-      effectValue: 100
-      effectImmune: 0
-      effectLevelCurrent: 0
-      effectLevelMax: 0
-      effectActive: 0
-    effectsValues:
-    - 100
-  _flexNetworkAnimator: {fileID: 0}
+  rotateToTargetInUpdate: 1
 --- !u!114 &5688869884001014716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46515,13 +46480,11 @@ MonoBehaviour:
   light: {fileID: 0}
   hint: {fileID: 5077406346837187391}
   visual: {fileID: 0}
+  insideTheProp: 0
   hintDistance: 10
   mapMarker: {fileID: 0}
   mapMarkerCross: {fileID: 0}
   rb: {fileID: 0}
-  canCreateMeatHole: 0
-  activeMeatHole: {fileID: 0}
-  itemInsideMeatHole: {fileID: 0}
   pickedByPlayerMessage: []
 --- !u!114 &225147372403997463
 MonoBehaviour:
@@ -46536,11 +46499,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canCreateQuestGiver: 0
-  roseNpc: -1
   currentDialog: 0
   currentLine: 0
   eventsRepeat: 1
   currentEventRepeat: 0
+  npcPointerOnPickUp: {fileID: 0}
   npcSetPhrasesOnLevel: {fileID: 0}
   randomizedPhrasesData: {fileID: 0}
   randomizedPhrasesOrder: 0
@@ -46565,16 +46528,16 @@ MonoBehaviour:
   inQuest: 0
   order: 1
   dialogues:
-  - dialogueEvent: 30
+  - dialogueEvent: 32
     eventCost: 0
-    questToStart: 2
-    questToComplete: 1
+    questToStart: -1
+    questToComplete: -1
     phrases:
     - TALK TO THE SHOE, KID
     - what's up?
     - you're alone in the woods
     - you don't get it, right?
-    - let me walk you back where you came from
+    - let me walk you back to where you came from
     phrasesRu:
     - "\u0413\u041E\u0412\u041E\u0420\u0418 \u0421 \u0422\u0423\u0424\u041B\u0415\u0419,
       \u0428\u041A\u0415\u0422"
@@ -46601,69 +46564,6 @@ MonoBehaviour:
     eventCompleteGer: fine, lead the way
     eventCompleteIT: fine, lead the way
     eventCompleteSPBR: fine, lead the way
-  - dialogueEvent: 0
-    eventCost: 0
-    questToStart: -1
-    questToComplete: -1
-    phrases:
-    - well i'm the right shoe and the rest are left
-    - that's why I'm so special
-    - look, there is also a piece of gold next to the eye
-    - I don't understand what you don't understand
-    phrasesRu:
-    - "\u043D\u0443 \u044F \u043F\u0440\u0430\u0432\u0430\u044F \u0442\u0443\u0444\u043B\u044F,
-      \u0430 \u043E\u0441\u0442\u0430\u043B\u044C\u043D\u044B\u0435 - \u043B\u0435\u0432\u044B\u0435"
-    - "\u043F\u043E\u044D\u0442\u043E\u043C\u0443 \u044F \u0442\u0430\u043A\u0430\u044F
-      \u043E\u0441\u043E\u0431\u0435\u043D\u043D\u0430\u044F"
-    - "\u0441\u043C\u043E\u0442\u0440\u0438, \u0435\u0449\u0435 \u0438 \u043A\u0443\u0441\u043E\u043A
-      \u0437\u043E\u043B\u043E\u0442\u0430 \u0440\u044F\u0434\u043E\u043C \u0441
-      \u0433\u043B\u0430\u0437\u043E\u043C"
-    - "\u043D\u0435 \u043F\u043E\u043D\u0438\u043C\u0430\u044E, \u0447\u0435\u0433\u043E
-      \u0442\u044B \u043D\u0435 \u043F\u043E\u043D\u0438\u043C\u0430\u0435\u0448\u044C"
-    phrasesESP: []
-    phrasesGER: []
-    phrasesIT: []
-    phrasesSPBR: []
-    doesntMetRequirementsPhrase: ...
-    doesntMetRequirementsPhraseRu: ...
-    doesntMetRequirementsPhraseEsp: ...
-    doesntMetRequirementsPhraseGer: ...
-    doesntMetRequirementsPhraseIT: ...
-    doesntMetRequirementsPhraseSPBR: ...
-    eventComplete: ...
-    eventCompleteRu: ...
-    eventCompleteEsp: ...
-    eventCompleteGer: ...
-    eventCompleteIT: ...
-    eventCompleteSPBR: ...
-  - dialogueEvent: 0
-    eventCost: 0
-    questToStart: -1
-    questToComplete: -1
-    phrases:
-    - lady in red? ow man
-    - no ladies here. do you feel funny?
-    phrasesRu:
-    - "\u043B\u0435\u0434\u0438 \u0432 \u043A\u0440\u0430\u0441\u043D\u043E\u043C?
-      \u043E\u0445 \u0431\u043B\u0438\u043D"
-    - "\u0442\u0435\u0431\u0435 \u043F\u043E\u043C\u0435\u0440\u0435\u0449\u0438\u043B\u043E\u0441\u044C,
-      \u0442\u0443\u0442 \u0442\u0430\u043A\u0438\u0445 \u043D\u0435\u0442"
-    phrasesESP: []
-    phrasesGER: []
-    phrasesIT: []
-    phrasesSPBR: []
-    doesntMetRequirementsPhrase: ...
-    doesntMetRequirementsPhraseRu: ...
-    doesntMetRequirementsPhraseEsp: ...
-    doesntMetRequirementsPhraseGer: ...
-    doesntMetRequirementsPhraseIT: ...
-    doesntMetRequirementsPhraseSPBR: ...
-    eventComplete: ...
-    eventCompleteRu: ...
-    eventCompleteEsp: ...
-    eventCompleteGer: ...
-    eventCompleteIT: ...
-    eventCompleteSPBR: ...
   npcVoice: {fileID: 8300000, guid: 3f61cb906dd490b4eb5e54ca819f9881, type: 3}
   audioSource: {fileID: 395291233992086035}
   shuffler: {fileID: 2007512321723117195}
@@ -46679,9 +46579,11 @@ MonoBehaviour:
   randomDialoguesAmountMax: 3
   randomLinesAmountMin: 3
   randomLinesAmountMax: 6
-  hc: {fileID: 0}
+  hc: {fileID: 6484314999241537213}
   keySold: 0
+  gameObjectActivateOnAgree: {fileID: 0}
   mementoPrefab: {fileID: 0}
+  interactableToInteractOnDialogueAction: {fileID: 0}
   snout: 0
 --- !u!136 &7968667456844020538
 CapsuleCollider:
@@ -67122,6 +67024,9 @@ MonoBehaviour:
   au: {fileID: 0}
   deathParticle: {fileID: 0}
   hc: {fileID: 0}
+  usedForAttack: 0
+  mobAttack: {fileID: 0}
+  ikTargets: []
 --- !u!136 &9110246702441290684
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -72037,7 +71942,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1ae892b86acd424c888e3f737f20f40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  streamingDistance: 50
   streamObjectAboveAnimator: 0
   childObjectToHide: []
 --- !u!82 &1211179590235015069
@@ -77048,70 +76952,6 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!1 &9033262056314563088
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8536809304008243848}
-  - component: {fileID: 2400900108091683162}
-  - component: {fileID: 899869711365808678}
-  m_Layer: 12
-  m_Name: DamageArea
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8536809304008243848
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9033262056314563088}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 6484314999241537215}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &2400900108091683162
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9033262056314563088}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 2.4323673
-  m_Height: 5
-  m_Direction: 1
-  m_Center: {x: 0, y: 1.5, z: 0}
---- !u!114 &899869711365808678
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9033262056314563088}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d2a3543aa27e4e45acd9e2b5de58c36, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mobAttack: {fileID: 7469744586870411297}
-  distanceToBreakDoor: 4
-  distanceToplayerToBeAbleToAttack: 30
-  attackAnimString: Attack
-  coll: {fileID: 2400900108091683162}
-  customTransformToFollow: {fileID: 0}
 --- !u!1001 &1107562217788463423
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -77196,15 +77036,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf71b4d7b9af9ee4e97502c2e587ebf2, type: 3}
---- !u!4 &5075731973037198170 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5273229928011485797, guid: cf71b4d7b9af9ee4e97502c2e587ebf2,
-    type: 3}
-  m_PrefabInstance: {fileID: 1107562217788463423}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8082772272192911689 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9184281609602572406, guid: cf71b4d7b9af9ee4e97502c2e587ebf2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1107562217788463423}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5075731973037198170 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5273229928011485797, guid: cf71b4d7b9af9ee4e97502c2e587ebf2,
     type: 3}
   m_PrefabInstance: {fileID: 1107562217788463423}
   m_PrefabAsset: {fileID: 0}
@@ -77598,9 +77438,9 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 6210512582273704244}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &4466045649987500544 stripped
+--- !u!4 &7019894274511178339 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 7767223447606418228, guid: e644f617d8204974d8251806a2eba212,
+  m_CorrespondingSourceObject: {fileID: -5234448375175369897, guid: e644f617d8204974d8251806a2eba212,
     type: 3}
   m_PrefabInstance: {fileID: 6210512582273704244}
   m_PrefabAsset: {fileID: 0}
@@ -77610,21 +77450,21 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 6210512582273704244}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &7019894274511178339 stripped
+--- !u!4 &4466045649987500544 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: -5234448375175369897, guid: e644f617d8204974d8251806a2eba212,
-    type: 3}
-  m_PrefabInstance: {fileID: 6210512582273704244}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &5889183515680556767 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e644f617d8204974d8251806a2eba212,
+  m_CorrespondingSourceObject: {fileID: 7767223447606418228, guid: e644f617d8204974d8251806a2eba212,
     type: 3}
   m_PrefabInstance: {fileID: 6210512582273704244}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &8191307504256686502 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2854563699051640978, guid: e644f617d8204974d8251806a2eba212,
+    type: 3}
+  m_PrefabInstance: {fileID: 6210512582273704244}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5889183515680556767 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e644f617d8204974d8251806a2eba212,
     type: 3}
   m_PrefabInstance: {fileID: 6210512582273704244}
   m_PrefabAsset: {fileID: 0}

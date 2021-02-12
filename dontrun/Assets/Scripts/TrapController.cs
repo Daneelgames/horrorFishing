@@ -108,7 +108,7 @@ public class TrapController : MonoBehaviour
 
     void DamageUnit(HealthController hc)
     {
-        if (hc == null || hc.health <= 0 || (GLNetworkWrapper.instance && GLNetworkWrapper.instance.coopIsActive && (hc.pm || LevelGenerator.instance.levelgenOnHost == false)))
+        if (hc == null || hc.health <= 0 || (GLNetworkWrapper.instance && GLNetworkWrapper.instance.coopIsActive && (hc.playerMovement || LevelGenerator.instance.levelgenOnHost == false)))
             return;
         
         hc.Damage(damage, hc.transform.position + Vector3.up * 2, transform.position, null, playerDamagedMessage[gm.language], false, names[gm.language], ownHc, effectsOnAttack, false);
