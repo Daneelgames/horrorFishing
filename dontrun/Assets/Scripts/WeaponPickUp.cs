@@ -50,7 +50,7 @@ public class WeaponPickUp : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
             transform.localScale = Vector3.one;
             
-            if (transform.lossyScale.x < 0.001f)
+            if (transform.lossyScale.x < 0.001f || transform.parent == null)
                 continue;
             
             transform.localScale = new Vector3 (1/transform.lossyScale.x, 1/transform.lossyScale.y, 1/transform.lossyScale.z);

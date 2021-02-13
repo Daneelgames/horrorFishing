@@ -236,13 +236,13 @@ public class HubItemsSpawner : MonoBehaviour
         if (spawnLeg)
         {
             currentSpawner = GetClosestSpawner(currentSpawner.position, spawnersTemp);
-            DynamicObstaclesManager.instance.spawnedLeg = sc.InstantiateItem(itemSpawners[0].itemToSpawn, currentSpawner.position, currentSpawner.rotation, false);
+            DynamicObstaclesManager.instance.spawnedLeg = sc.InstantiateItem(itemSpawners[0].itemToSpawn, currentSpawner.position + Vector3.up * 0.5f, currentSpawner.rotation, false);
             spawnersTemp.Remove(currentSpawner);
         }
         if (spawnRevolver)
         {
             currentSpawner = GetClosestSpawner(currentSpawner.position, spawnersTemp);
-            DynamicObstaclesManager.instance.spawnedRevolver = sc.InstantiateItem(itemSpawners[1].itemToSpawn, currentSpawner.position, currentSpawner.rotation, false);
+            DynamicObstaclesManager.instance.spawnedRevolver = sc.InstantiateItem(itemSpawners[1].itemToSpawn, currentSpawner.position + Vector3.up * 0.5f, currentSpawner.rotation, false);
         }
     }
 

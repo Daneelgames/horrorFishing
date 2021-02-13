@@ -212,6 +212,8 @@ public class DynamicObstaclesManager : MonoBehaviour
 
     public void PlaceSpawnedWeaponOnProp(PropController newProp)
     {
+        return;
+        
         if (spawnedLeg && spawnedLeg.gameObject.activeInHierarchy == false)
         {
             Destroy(spawnedLeg.gameObject);
