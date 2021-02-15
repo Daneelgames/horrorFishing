@@ -38,12 +38,13 @@ public class MobPartsController : MonoBehaviour
     public bool forceDropOnTile = false; 
 
     private bool dead = false;
-    
+    public bool lookAtPlayer = false;
     GameManager gm;
     private ItemsList il;
 
     public bool animDamageByTrigger = false;
     private string peacefulBool = "Peaceful";
+    
     private void Start()
     {
         il = ItemsList.instance;
@@ -66,6 +67,45 @@ public class MobPartsController : MonoBehaviour
 
         if (simpleWalker)
             StartCoroutine(SimpleWalkerAnimationsDetector());
+
+        if (lookAtPlayer)
+            StartCoroutine(LookAtPlayerCoroutine());
+    }
+
+    IEnumerator LookAtPlayerCoroutine()
+    {
+        var pm = PlayerMovement.instance;
+        while (true)
+        {
+            yield return new WaitForSeconds(1);
+            if (Vector3.Distance(transform.position, pm.transform.position) > 25f)
+            {   
+                yield return new WaitForSeconds(1);
+            }
+            else
+            {
+                StartCoroutine(SmoothLookAtPlayer(pm.transform.position));
+            }
+        }
+    }
+
+    private float t = 0;
+    private float tt = 1;
+    Quaternion startQuaternion = Quaternion.identity;
+    Quaternion endQuaternion = Quaternion.identity;
+    IEnumerator SmoothLookAtPlayer(Vector3 playerPos)
+    {
+        t = 0;
+        tt = 1;
+        startQuaternion = transform.rotation;
+        endQuaternion.SetLookRotation(transform.position - playerPos, Vector3.up);
+        endQuaternion.eulerAngles = new Vector3(0, endQuaternion.eulerAngles.y, 0);
+        while (t < tt)
+        {
+            t += Time.deltaTime;
+            transform.rotation = Quaternion.Slerp(startQuaternion, endQuaternion, t/tt);
+            yield return null;
+        }    
     }
 
     IEnumerator SimpleWalkerAnimationsDetector()
