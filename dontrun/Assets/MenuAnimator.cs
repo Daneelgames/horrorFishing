@@ -19,12 +19,14 @@ public class MenuAnimator : MonoBehaviour
 
     void Awake()
     {
-        roseInitRotation = roseGo.transform.rotation;
+        if (roseGo)
+            roseInitRotation = roseGo.transform.rotation;
     }
     
     void OnEnable()
     {
-        StartCoroutine(AnimateRose());
+        if (roseGo)
+            StartCoroutine(AnimateRose());
     }
 
     public void PointerOnButton(GameObject button)
@@ -48,8 +50,10 @@ public class MenuAnimator : MonoBehaviour
         buttonPressedAu.Stop();
         buttonPressedAu.pitch = Random.Range(0.5f, 1.5f);
         buttonPressedAu.Play();
-        StartCoroutine(AnimateUiParentOnPress(uiParent));
-        StartCoroutine(AnimateUiParentOnPress(uiParentSettings));
+        if (uiParent)
+            StartCoroutine(AnimateUiParentOnPress(uiParent));
+        if (uiParentSettings)
+            StartCoroutine(AnimateUiParentOnPress(uiParentSettings));
     }
 
     IEnumerator AnimateButtonOnSelection(GameObject button)

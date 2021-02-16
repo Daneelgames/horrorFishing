@@ -21,6 +21,7 @@ public class MenuController : MonoBehaviour
 
     public GameObject settingsWindow;
     public GameObject menuWindow;
+    public GameObject menuVisuals;
 
     GameManager gm;
 
@@ -145,15 +146,29 @@ public class MenuController : MonoBehaviour
         }
     }
 
-    public void ToggleSettingsWindow()
+    public void ToggleSettingsWindow(bool exitToMenu)
     {
-        if (GLNetworkWrapper.instance && GLNetworkWrapper.instance.coopIsActive == false)
-            GameManager.instance.StopHostingButton();
+        if (!exitToMenu && UiManager.instance)
+        {
+            menuWindow.SetActive(false);
+            menuVisuals.SetActive(false);
+            if (!settingsWindow.activeInHierarchy)
+            {
+                print("SETTINGS MAKE ACTIVE");
+                settingsWindow.SetActive(true);   
+            }
+            else
+            {
+                print("SETTINGS MAKE INACTIVE");
+                settingsWindow.SetActive(false);
+                if (gm.paused)
+                    gm.TogglePause(false);
+            }
+            return;
+        }
         
         if (!settingsWindow.activeInHierarchy)
         {
-            if (SteamworksLobby.instance)
-                SteamworksLobby.instance.ToggleButtons(false);
             menuWindow.SetActive(false);
             settingsWindow.SetActive(true);
             
@@ -169,8 +184,8 @@ public class MenuController : MonoBehaviour
             EventSystem.current.SetSelectedGameObject(null);
             EventSystem.current.SetSelectedGameObject(firstSelectedInMenu);
         }
+        menuVisuals.SetActive(true);
     }
-    
 }
 
 

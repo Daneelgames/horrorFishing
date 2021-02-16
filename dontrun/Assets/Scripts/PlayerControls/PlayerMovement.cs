@@ -728,7 +728,7 @@ namespace PlayerControls
                 GameManager.instance.ToggleQuests();
             
             if (GameManager.instance.paused)
-                GameManager.instance.TogglePause();
+                GameManager.instance.TogglePause(true);
             
             if (GLNetworkWrapper.instance && GLNetworkWrapper.instance.coopIsActive)
             {

@@ -41209,7 +41209,7 @@ MonoBehaviour:
   wc: {fileID: 0}
   damageCooldown: 0
   pac: {fileID: 0}
-  invincible: 0
+  invincible: 1
   damagedOnLevel: 0
   faceHuggedCooldown: 30
   playerNetworkDummyController: {fileID: 0}
@@ -41291,6 +41291,7 @@ MonoBehaviour:
   drop: []
   dropPosition: {fileID: 2197519793523707262}
   forceDropOnTile: 0
+  lookAtPlayer: 0
   animDamageByTrigger: 0
 --- !u!114 &7646566839696336221
 MonoBehaviour:
@@ -46498,6 +46499,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b78d897f0212c2a4991e2d8406a42d5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dykIndex: -1
   canCreateQuestGiver: 0
   currentDialog: 0
   currentLine: 0

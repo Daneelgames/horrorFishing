@@ -75,6 +75,7 @@ public class GameManager : MonoBehaviour
     // 0 - eng, 1 - rus, 2 - esl, 3 - ger, 3 - Ita, 3 - Sp-BR
     public int language = 0;
     public int tutorialPassed = 0;
+    public int resolution = 2;
 
     public bool readyToStartLevel = false;
 
@@ -176,7 +177,7 @@ public class GameManager : MonoBehaviour
         loadingAnim.gameObject.SetActive(false);
     }
 
-    IEnumerator Start()
+    void Start()
     {
         if (procMapMaterialPrefab && renderTexturePrefab)
         {
@@ -191,23 +192,38 @@ public class GameManager : MonoBehaviour
         
         SetVolume(volumeSliderValue);
         
-        /*
-        if (volumeSliderValue < 0.1f)
-            volumeSliderValue = 0.5f;
-        */
-        //GutProgressionManager.instance.Init();
-
         var lobby = SteamworksLobby.instance;
         if (lobby) lobby.SetCheckpoints(coopBiomeCheckpoints);
         
         savedOnFloor = 0;
         
-        yield break;
-        
-        // city test
-        yield return new WaitForSeconds(0.25f);
-        savedOnFloor = 0;
-        ContinueGameButton();
+        switch (resolution)
+        {
+            case 0:
+                Screen.SetResolution(3840, 2160, FullScreenMode.FullScreenWindow);
+                break;
+            case 1:
+                Screen.SetResolution(2560, 1440, FullScreenMode.FullScreenWindow);
+                break;
+            case 2:
+                Screen.SetResolution(1920, 1080, FullScreenMode.FullScreenWindow);
+                break;
+            case 3:
+                Screen.SetResolution(1600, 900, FullScreenMode.FullScreenWindow);
+                break;
+            case 4:
+                Screen.SetResolution(1280, 720, FullScreenMode.FullScreenWindow);
+                break;
+            case 5:
+                Screen.SetResolution(960, 540, FullScreenMode.FullScreenWindow);
+                break;
+            case 6:
+                Screen.SetResolution(640, 360, FullScreenMode.FullScreenWindow);
+                break;
+            case 7:
+                Screen.SetResolution(480, 270, FullScreenMode.FullScreenWindow);
+                break;
+        }
     }
 
     public void PreloadNextLevelRooms()
@@ -366,7 +382,6 @@ public class GameManager : MonoBehaviour
                     TwitchManager.instance.ToggleCanvasAnim(false);   
                     TwitchManager.instance.ToggleMeatchImages(false);
                 }
-                menuController.gameObject.SetActive(false);
                 player = null;
                 units.Clear();
                 ui = null;
@@ -557,13 +572,13 @@ public class GameManager : MonoBehaviour
             {
                 if (Input.GetButtonDown(cancelString))
                 {
-                    TogglePause();
+                    TogglePause(true);
                 }
                 
                 if (!Application.isFocused)
                 {
                     if (!paused)
-                        TogglePause();
+                        TogglePause(true);
                 }
             }
             
@@ -632,7 +647,7 @@ public class GameManager : MonoBehaviour
         itemList.PickResource(newSkill);
     }
     
-    public void TogglePause() // if not pause than quest window
+    public void TogglePause(bool toggleUiPause) // if not pause than quest window
     {
         if (!paused)
         {
@@ -665,7 +680,7 @@ public class GameManager : MonoBehaviour
                 ui.VolumeFromScript(volumeSliderValue);
             }
         }
-        if (ui)
+        if (toggleUiPause && ui)
             ui.TogglePause();
     }
 
@@ -753,17 +768,12 @@ public class GameManager : MonoBehaviour
 
     public void ReturnToMenu(bool credits)
     {
-        if (TwitchManager.instance)TwitchManager.instance.StopVoting();
-        
         StartCoroutine(ReturnToMainMenu(credits));
     }
     
     public IEnumerator ReturnToMainMenu(bool showCredits)
     {
         SaveGame();
-        
-        if (FizzySteamworks.instance)
-            FizzySteamworks.instance.Shutdown();
         
         StopHostingButton();
         ItemsList.instance.savedTools.Clear();
@@ -774,15 +784,7 @@ public class GameManager : MonoBehaviour
         Cursor.visible = true;
         itemList.keys = 0;
         
-        print("unload scene");
-        //AsyncOperation AOU;
-        // UNLOAD SCENE
-        //AOU = SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().name);
-        //yield return AOU;
-        
         SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().name);
-        
-        //Addressables.ReleaseInstance(activeSceneOp);
         
         print("wait until scene unloads");
         
@@ -790,26 +792,13 @@ public class GameManager : MonoBehaviour
         SceneManager.SetActiveScene(SceneManager.GetSceneAt(0));
 
         print("menu active");
-        menuController.gameObject.SetActive(true);
         
         if (showCredits)
         {
             ToggleCredits();
         }
-    
-        if (TwitchManager.instance)
-            TwitchManager.instance.ToggleCanvasAnim(false);
         
-        var lobby = SteamworksLobby.instance;
-        if (lobby)
-        {
-            lobby.SetCheckpoints(coopBiomeCheckpoints);
-            lobby.ToggleButtons(false);
-            lobby.ToggleConnectionFeedback(false);
-        }
-        
-        if (GLNetworkWrapper.instance)
-            GLNetworkWrapper.instance.isGameReady = false;
+        menuController.ToggleSettingsWindow( true);
     }
 
     public void ToggleCredits()
@@ -854,7 +843,6 @@ public class GameManager : MonoBehaviour
         lhc.StartHints();
         yield return  new WaitForSeconds(1f);
         
-        menuController.gameObject.SetActive(false);
         player = null;
         units.Clear();
         ui = null;
@@ -1205,7 +1193,6 @@ public class GameManager : MonoBehaviour
         loadingAnim.SetBool("Active", true);
         yield return  new WaitForSeconds(1f);
         
-        menuController.gameObject.SetActive(false);
         
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -1667,6 +1654,7 @@ public class GameManager : MonoBehaviour
             itemList.LoadInventory(data);
             tutorialHints = data.tutorialHints;
             hubVisits = data.hubVisits;
+            resolution = data.resolution;
 
             if (data.difficultyLevel == 0)
                 difficultyLevel = GameMode.StickyMeat;
@@ -1702,6 +1690,7 @@ public class GameManager : MonoBehaviour
             lowPitchDamage = 0;
             //rareWindowShown = 0;
             tutorialPassed = 0;
+            resolution = 2;
             lastTalkedDyk = -1;
             tutorialHints = 0;
             tapesFoundOfFloors.Clear();

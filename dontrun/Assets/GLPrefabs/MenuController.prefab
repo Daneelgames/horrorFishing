@@ -11663,7 +11663,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 2.5}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -243, y: -386}
+  m_AnchoredPosition: {x: -265.3, y: -391.6}
   m_SizeDelta: {x: 265.82684, y: 83.099976}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &40153760307461120
@@ -11950,7 +11950,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 2.5}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -142, y: -298}
+  m_AnchoredPosition: {x: -76.8, y: -289.6}
   m_SizeDelta: {x: 270.10214, y: 83.099976}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2077108069627614363
@@ -14014,7 +14014,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 2.5}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -124, y: -124}
+  m_AnchoredPosition: {x: -97, y: -117.5}
   m_SizeDelta: {x: 276.40482, y: 83.099976}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8377744903119244852
@@ -14923,7 +14923,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 1, g: 0.8484358, b: 0, a: 1}
@@ -14949,9 +14949,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4788024440560797706}
-        m_TargetAssemblyTypeName: 
+        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
         m_MethodName: ToggleSettingsWindow
-        m_Mode: 1
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -15228,8 +15228,8 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 7074649714413972993}
-  toggleTransition: 1
-  graphic: {fileID: 5706509972203521526}
+  toggleTransition: 0
+  graphic: {fileID: 0}
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
@@ -15546,7 +15546,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 2.5}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -322, y: -220}
+  m_AnchoredPosition: {x: -266.1, y: -220}
   m_SizeDelta: {x: 273.1122, y: 83.099976}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8317863567887033899
@@ -16149,9 +16149,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4788024440560797706}
-        m_TargetAssemblyTypeName: 
+        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
         m_MethodName: ToggleSettingsWindow
-        m_Mode: 1
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -17439,6 +17439,7 @@ MonoBehaviour:
       CORRER, LUTAR E SER INTELIGENTE"
   settingsWindow: {fileID: 6259929368268594808}
   menuWindow: {fileID: 6433604609507178272}
+  menuVisuals: {fileID: 4788024439295715293}
   firstSelectedInMenu: {fileID: 6509375863185541577}
   firstSelectedInOptions: {fileID: 0}
   firstSelectedInDifficultyWindow: {fileID: 0}
@@ -17475,7 +17476,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 05a2779637396c7419eb1832a07c8999, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -18957,7 +18958,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 2.5}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -252, y: -552}
+  m_AnchoredPosition: {x: -281.8, y: -554.8}
   m_SizeDelta: {x: 217.43353, y: 83.099976}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2957443565879548274
@@ -26259,7 +26260,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 2.5}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -40.00006, y: -583}
+  m_AnchoredPosition: {x: 2.8, y: -588.6}
   m_SizeDelta: {x: 214.229, y: 83.099976}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8899649444072493822
@@ -26927,7 +26928,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 2.5}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -210, y: -682}
+  m_AnchoredPosition: {x: -186.7, y: -692.2}
   m_SizeDelta: {x: 214.229, y: 83.099976}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5040538011210481429
@@ -28933,7 +28934,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 2.5}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -86, y: -459}
+  m_AnchoredPosition: {x: -16.2, y: -464.6}
   m_SizeDelta: {x: 251.57535, y: 83.099976}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3609881137865744033

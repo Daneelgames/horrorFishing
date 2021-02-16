@@ -24,6 +24,7 @@ public class SavingData
     public int wasInHub = 0;
     public int checkpoints = 0;
     public int hubVisits = 0;
+    public int resolution = 0;
     public int difficultyLevel = 0;
     public int goldSpentOnSon = 0;
     public int bloodMist;
@@ -163,6 +164,7 @@ public class SavingData
         
         wasInHub = gm.wasInHub;
         hubVisits = gm.hubVisits;
+        resolution = gm.resolution;
         snoutFound = gm.snoutFound;
         hubActiveCheckpointIndex = GameManager.instance.hubActiveCheckpointIndex;
         activeQuests = new List<int>(QuestManager.instance.activeQuestsIndexes);

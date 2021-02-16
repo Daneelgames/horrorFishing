@@ -97,8 +97,6 @@ public class UiManager : MonoBehaviour
     public List<StatusEffectsUi> statusEffectsUi;
     public List<BaffBarUi> buffBarUi;
 
-    [Header("Settings")] public GameObject settingsCanvas;
-    
     [Header("Hints")]
     public bool playerInteracted = false;
     public bool playerSprinted = false;
@@ -199,13 +197,11 @@ public class UiManager : MonoBehaviour
 
         mementoChooseParticlesEmission = mementoChooseParticles.emission;
 
+        /*
         mouseSens.value = gm.mouseSensitivity;
         mouseSpeed.value = gm.mouseLookSpeed;
+        */
         
-        if (!gm.hub)
-        {
-            renderVolume.profile = gm.level.renderProfile;
-        }
         welcomeToMeatZone.gameObject.SetActive(false);
         postProcessVolume = renderVolume.profile;
         postProcessVolume.TryGet(out _colorAdjustments);
@@ -217,26 +213,12 @@ public class UiManager : MonoBehaviour
         postProcessVolume.TryGet(out _sharpen);
         postProcessVolume.TryGet(out _bloom);
 
-        for (var index = 0; index < statusEffectsUi.Count; index++)
-        {
-            var s = statusEffectsUi[index];
-            s.background.enabled = false;
-            s.name.enabled = false;
-            //s.backgroundOutline.enabled = false;
-
-            Color newColor = s.fill.color;
-            newColor.a = 0;
-            s.fill.color = newColor;
-            s.fill.fillAmount = 0;
-        }
-        
         Settings();
         CloseSettings();
         SetButtonLocals();
 
-        volume.value = gm.volumeSliderValue;
-
         /*
+        volume.value = gm.volumeSliderValue;
         SetBloom(gm.bloom);
         SetDithering(gm.dithering);
         SetPixels(gm.pixels);
@@ -446,24 +428,30 @@ public class UiManager : MonoBehaviour
     
     IEnumerator InitKeysSettings()
     {
+        /*
         foreach (var s in settingWindowsToScale)
         {
             s.transform.localScale = Vector3.zero;   
-        }
+        }*/
         Settings();
         yield return null;
         CloseSettings();
+        
+        /*
         foreach (var s in settingWindowsToScale)
         {
             s.transform.localScale = Vector3.one;   
         }
+        */
         UpdateWeaponSwitchButtonText();
         
+        /*
         SetBloom(1);
         SetDithering(1);
         SetPixels(1);
         SetDoubleVision(1);
         //SetEdgeDetection(0);
+        */
 
     }
 
@@ -1768,7 +1756,7 @@ public class UiManager : MonoBehaviour
     {
         //gm.Restart();
         
-        gm.TogglePause();
+        gm.TogglePause(true);
         if (gm.language == 0)
             gm.player.Damage(gm.player.healthMax * 5, gm.player.transform.position, gm.player.transform.position, null, "I've killed myself", false, "myself", null, null, false);
         else if (gm.language == 1)
@@ -1845,11 +1833,6 @@ public class UiManager : MonoBehaviour
             CloseSettings();
         }
         
-        if (gm.hub)
-            restart.gameObject.SetActive(false);
-        else if (gm.tutorialPassed == 1)
-            restart.gameObject.SetActive(true);
-        
         UpdateWeaponSwitchButtonText();
     }
 
@@ -1885,7 +1868,7 @@ public class UiManager : MonoBehaviour
     // this by methods
     public void VolumeFromScript(float newValue)
     {
-        gm.SetVolume(newValue);
+        //gm.SetVolume(newValue);
     }
 
     public void Brightness()
@@ -1914,10 +1897,10 @@ public class UiManager : MonoBehaviour
         brightness.value = gm.brightness;
         if (_colorAdjustments)
         _colorAdjustments.postExposure.Override(brightness.value);
-        */
         
         mouseSens.value = gm.mouseSensitivity;
         mouseSpeed.value = gm.mouseLookSpeed;
+        */
     }
 
     public void GetSkill(string skillInfo)
@@ -2291,21 +2274,18 @@ public class UiManager : MonoBehaviour
     public void Settings()
     {
         pauseAnim.gameObject.SetActive(false);
-        settingsCanvas.SetActive(true);
-        EventSystem.current.SetSelectedGameObject(null);
-        EventSystem.current.SetSelectedGameObject(firstSelectedInSettings);
+        GameManager.instance.menuController.ToggleSettingsWindow(false);
     }
 
     public void CloseSettings()
     {
-        //gm.SaveVolume(volume.value);
-
-        settingsCanvas.SetActive(false);
+        pauseAnim.gameObject.SetActive(false);
+        GameManager.instance.menuController.ToggleSettingsWindow(false);
         VolumeFromScript(gm.volumeSliderValue);
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(firstSelectedInPause);
         if (gm.paused)
-            gm.TogglePause();
+            gm.TogglePause(true);
     }
 
     public void UpdateBuff(int index, float amount, bool active)

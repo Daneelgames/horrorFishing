@@ -279,7 +279,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1067401942
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6036,7 +6036,7 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 0
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
@@ -6049,8 +6049,8 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 1
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
-  m_textAlignment: 513
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -6176,7 +6176,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &911474033364312733
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6235,7 +6235,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 16777215
+    rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 0}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -6381,7 +6381,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2361246642227387337}
   - component: {fileID: 2901438782636159503}
-  - component: {fileID: 5654613475666862250}
   m_Layer: 5
   m_Name: TMP SubMeshUI [Oswald-Bold SDF Material + LiberationSans SDF Atlas]
   m_TagString: Untagged
@@ -6416,34 +6415,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2310416721359859338}
   m_CullTransparentMesh: 0
---- !u!114 &5654613475666862250
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2310416721359859338}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 058cba836c1846c3aa1c5fd2e28aea77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_spriteAsset: {fileID: 0}
-  m_material: {fileID: 0}
-  m_sharedMaterial: {fileID: 0}
-  m_isDefaultMaterial: 0
-  m_padding: 0
-  m_TextComponent: {fileID: 7463041799473075109}
-  m_materialReferenceIndex: 1
 --- !u!1 &2360731097574197274
 GameObject:
   m_ObjectHideFlags: 0
@@ -6491,7 +6462,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3931247017908186251
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6708,6 +6679,7 @@ MonoBehaviour:
   hubVisits: 0
   language: 0
   tutorialPassed: 0
+  resolution: 2
   readyToStartLevel: 0
   qm: {fileID: 0}
   creditsActive: 0
@@ -6719,7 +6691,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   creditsParent: {fileID: 0}
-  menuRandomizer: {fileID: 0}
   loadedRtps: []
   procMapMaterialPrefab: {fileID: 2100000, guid: e97affab24e910d438af9b2281613220,
     type: 2}
@@ -6754,9 +6725,13 @@ MonoBehaviour:
   mapCamera: {fileID: 979385761}
   mapBackgroundFx: {fileID: 6798419727703453954}
   coopBiomeCheckpoints: 0
+  notesPickedUp: -1
   flashbackSceneIndex: 0
   newGamePlus: 0
   cagesCompleted: 0
+  lastTalkedDyk: -1
+  revolverFound: 0
+  ladyshoeFound: 0
 --- !u!114 &3285892571538876422
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9390,7 +9365,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: MEAT ZONE
+  m_text: ROSE OF MEAT
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dd9635f5c3f9dd9449d29916b3d304a1, type: 2}
   m_sharedMaterial: {fileID: 411782785972086242, guid: dd9635f5c3f9dd9449d29916b3d304a1,
@@ -9674,7 +9649,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7419666071989193319
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14894,7 +14869,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: MEAT ZONE
+  m_text: ROSE OF MEAT
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dd9635f5c3f9dd9449d29916b3d304a1, type: 2}
   m_sharedMaterial: {fileID: 411782785972086242, guid: dd9635f5c3f9dd9449d29916b3d304a1,
@@ -15029,7 +15004,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: MEAT ZONE
+  m_text: ROSE OF MEAT
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dd9635f5c3f9dd9449d29916b3d304a1, type: 2}
   m_sharedMaterial: {fileID: 411782785972086242, guid: dd9635f5c3f9dd9449d29916b3d304a1,

@@ -54,6 +54,14 @@ public class PlayerSettingsController : MonoBehaviour
 
     public void SetResolution(int scale)
     {
+        ChangeScreenResolution(scale);
+
+        GameManager.instance.resolution = scale;
+        GameManager.instance.SaveGame();
+    }
+
+    void ChangeScreenResolution(int scale)
+    {
         switch (scale)
         {
             case 0:
