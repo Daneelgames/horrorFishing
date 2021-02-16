@@ -230,7 +230,7 @@ public class HubItemsSpawner : MonoBehaviour
         StartCoroutine(GetUpPhraseCoroutine());
         yield return new WaitForSeconds(2.1f);
         PlayerSkillsController.instance.InstantTeleport(currentSpawner.position);
-        PlayerMovement.instance.hc.RespawnPlayer();
+        PlayerMovement.instance.hc.RespawnPlayer(true);
         spawnersTemp.Remove(currentSpawner);
         if (spawnLeg)
         {
@@ -268,7 +268,7 @@ public class HubItemsSpawner : MonoBehaviour
         StartCoroutine(GetUpPhraseCoroutine());
         yield return new WaitForSeconds(2.1f);
         PlayerSkillsController.instance.InstantTeleport(newPlayerPos);
-        PlayerMovement.instance.hc.RespawnPlayer();
+        PlayerMovement.instance.hc.RespawnPlayer(false);
         if (spawnLeg)
         {
             currentSpawner = GetClosestSpawner(newPlayerPos, spawnersTemp);

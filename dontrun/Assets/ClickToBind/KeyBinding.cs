@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections;
 using System;
+using TMPro;
 
 [System.Serializable]
 //[RequireComponent(typeof(SaveKeyBinding))] //used to save data to database
@@ -17,7 +18,7 @@ public class KeyBinding : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 	//keycode set in inspector and by player
 	public KeyCode keyCode = KeyCode.W;
 	//Text to display keycode for user feedback
-	public Text keyDisplay;
+	public TextMeshProUGUI keyDisplay;
 
 	//Used for color changing during key binding
 	public GameObject button;

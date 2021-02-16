@@ -10,21 +10,10 @@ public class MenuController : MonoBehaviour
 {
     public TextMeshProUGUI languageText;
     public Button continueButton;
-    public GameObject difficultySettngs;
-    public List<string> easyMode = new List<string>();
-    public TextMeshProUGUI easyText;
-    public List<string> mediumMode = new List<string>();
-    public TextMeshProUGUI mediumText;
-    public List<string> hardMode = new List<string>();
-    public TextMeshProUGUI hardText;
     public List<string> startButton = new List<string>();
     public TextMeshProUGUI startText;
     public List<string> continueButtonL = new List<string>();
     public TextMeshProUGUI continueButtonText;
-    public List<string> creditsButton = new List<string>();
-    public TextMeshProUGUI creditsButtonText;
-    public List<string> warningTxt = new List<string>();
-    public TextMeshProUGUI warningText;
     public List<string> quitButton = new List<string>();
     public TextMeshProUGUI quitText;
 
@@ -47,7 +36,6 @@ public class MenuController : MonoBehaviour
     void Start()
     {
         Init();
-        
     }
 
     void OnEnable()
@@ -72,7 +60,6 @@ public class MenuController : MonoBehaviour
             // hide
             continueButton.gameObject.SetActive(false);
         }
-        difficultySettngs.SetActive(false);
         
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(firstSelectedInMenu);
@@ -101,11 +88,6 @@ public class MenuController : MonoBehaviour
         
         if (gm.newGamePlus)
         {
-            difficultySettngs.SetActive(true);
-            easyText.text = easyMode[gm.language];
-            mediumText.text = mediumMode[gm.language];
-            hardText.text = hardMode[gm.language];
-        
             // clear event data selected obj
             EventSystem.current.SetSelectedGameObject(null);
             EventSystem.current.SetSelectedGameObject(firstSelectedInDifficultyWindow);   
@@ -147,8 +129,6 @@ public class MenuController : MonoBehaviour
 
         startText.text = startButton[gm.language];
          continueButtonText.text = continueButtonL[gm.language];
-         creditsButtonText.text = creditsButton[gm.language];
-         warningText.text = warningTxt[gm.language];
          quitText.text = quitButton[gm.language];
 
          SetButtonLocals();

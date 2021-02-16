@@ -2052,12 +2052,13 @@ public class HealthController : MonoBehaviour, IUpdatable
         }
     }
 
-    public void RespawnPlayer()
+    public void RespawnPlayer(bool setHealth)
     {
         playerMovement.cameraAnimator.SetBool("Death", false);
         PlayerMovement.instance.hc.invincible = false;
         PlayerMovement.instance.controller.enabled = true;
-        health = healthMax / 2;
+        if (setHealth)
+            health = healthMax / 2;
         il.playerCurrentHealth = health;
         dead = false;
         ui.UpdateHealthbar();

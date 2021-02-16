@@ -246,6 +246,9 @@ public class DynamicObstaclesManager : MonoBehaviour
             {
                 for (int i = lg.propsInGame.Count - 1; i >= 0; i--)
                 {
+                    if (lg.propsInGame.Count <= i)
+                        continue;
+                    
                     var prop = lg.propsInGame[i];
                     if (prop == null)
                     {
@@ -345,6 +348,9 @@ public class DynamicObstaclesManager : MonoBehaviour
             {
                 for (int i = sc.mobsInGame.Count - 1; i >= 0; i--)
                 {
+                    if (sc.mobsInGame.Count <= i)
+                        continue;
+
                     var mob = sc.mobsInGame[i];
                     if (mob == null)
                     {

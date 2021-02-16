@@ -397,7 +397,6 @@ public class GameManager : MonoBehaviour
             Cursor.visible = false;
             lhc = LoadingHintsController.instance;
             SaveGame();
-            menuController.difficultySettngs.SetActive(false);
             StartCoroutine(StartGame());
         }
     }
@@ -1747,7 +1746,8 @@ public class GameManager : MonoBehaviour
 
     public void SetVolume(float newVolume)
     {
-        mixer.SetFloat("MasterVolume",  Mathf.Log10(newVolume) * 20);
+        //mixer.SetFloat("MasterVolume",  Mathf.Log10(newVolume) * 20);
+        AudioListener.volume = newVolume;
     }
     
     void OnDestroy()
