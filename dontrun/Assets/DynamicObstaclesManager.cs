@@ -12,6 +12,7 @@ public class DynamicObstaclesManager : MonoBehaviour
     public List<DynamicObstaclesZone> zones;
     public DynamicObstaclesZone closestZone;
     public AssetReference humanPropreference;
+    public List<AssetReference> dykReferences;
     
     [Header("Global Settings")]
     public int propsSpawnedMax = 10;
@@ -51,6 +52,7 @@ public class DynamicObstaclesManager : MonoBehaviour
     private Color skyTempColor;
     private Color mainLightTempColor;
     private Color fogTempColor;
+    
     IEnumerator Start()
     {
         pm = PlayerMovement.instance;
@@ -59,6 +61,7 @@ public class DynamicObstaclesManager : MonoBehaviour
         
         StartCoroutine(HandleDynamicProps());
         StartCoroutine(HandleDynamicMobs());
+        StartCoroutine(HandleDyk());
 
         while (closestZone == null)
         {
@@ -92,6 +95,89 @@ public class DynamicObstaclesManager : MonoBehaviour
             fogTempColor = Color.Lerp(RenderSettings.fogColor, closestZone.fogColor, Time.deltaTime / 10);
             RenderSettings.fogColor = fogTempColor;
         }
+    }
+
+    private GameObject spawnedDyk;
+    IEnumerator HandleDyk()
+    {
+        int dykeToSpawn = -1;
+        while (true)
+        {
+            pm = PlayerMovement.instance;
+            
+            yield return new WaitForSeconds(10f);
+
+            if (spawnedDyk != null)
+            {
+                if (Vector3.Distance(spawnedDyk.transform.position, pm.transform.position) > 15f)
+                {
+                    DestroyGameObjectAnimated(spawnedDyk.gameObject, spawnedDyk.transform.position + Vector3.up * 100f, 5f);
+                    spawnedDyk = null;
+                }
+            }
+            else
+            {
+                // get needed dyke
+                dykeToSpawn = GetNeededDyke();
+                if (dykeToSpawn >= 0)
+                    SpawnDykAround(dykReferences[dykeToSpawn]);
+            }
+        }
+    }
+
+    public void SetNewDykToSpawned(GameObject newdyk)
+    {
+        print("set new dyk");
+        spawnedDyk = newdyk;
+    }
+
+    public void SaveLastTalkedDyk(int index)
+    {
+        if (GameManager.instance.lastTalkedDyk < index)
+        {
+            GameManager.instance.lastTalkedDyk = index;
+            GameManager.instance.SaveGame();
+        }
+    }
+    
+    int GetNeededDyke()
+    {
+        if (GameManager.instance.lastTalkedDyk == -1 && closestZone != zones[0])
+        {
+            return 0;
+        }
+        
+        if (GameManager.instance.lastTalkedDyk == 0 && pm.hc.health < pm.hc.healthMax)
+        {
+            return 1;
+        }
+        
+        if (GameManager.instance.lastTalkedDyk == 1 && WeaponControls.instance.activeWeapon && WeaponControls.instance.activeWeapon.weapon == WeaponPickUp.Weapon.Revolver)
+        {
+            return 2;
+        }
+        
+        if (GameManager.instance.lastTalkedDyk == 2 && WeaponControls.instance.activeWeapon == null)
+        {
+            return 3;
+        }
+        
+        if (GameManager.instance.lastTalkedDyk == 3 && WeaponControls.instance.activeWeapon && WeaponControls.instance.activeWeapon.weapon == WeaponPickUp.Weapon.LadyShoe)
+        {
+            return 4;
+        }
+
+        return -1;
+    }
+    public void SpawnDykAround(AssetReference dykeRef)
+    {
+        if (Random.value > 0.5f)
+            spawnPosition = GetPositionAroundPoint(pm.transform.position, false);
+        else
+            spawnPosition = GetPositionAroundPoint(pm.transform.position + pm.movementTransform.forward * distanceToDestroy, true);
+                
+        if (Vector3.Distance(spawnPosition, pm.transform.position) > 5)
+            AssetSpawner.instance.Spawn(dykeRef, spawnPosition, AssetSpawner.ObjectType.Dyk); 
     }
 
     public void PlayerDied()
@@ -289,7 +375,7 @@ public class DynamicObstaclesManager : MonoBehaviour
         if (closestZone.enemiesReferences.Count == 0)
             return;
         
-        if (Random.value > 0.25f)
+        if (Random.value > 0.5f)
             spawnPosition = GetPositionAroundPoint(pm.transform.position, false);
         else
             spawnPosition = GetPositionAroundPoint(pm.transform.position + pm.movementTransform.forward * distanceToDestroy, true);

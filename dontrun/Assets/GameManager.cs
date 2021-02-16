@@ -90,8 +90,6 @@ public class GameManager : MonoBehaviour
     SkillInfo firstMementoToChoose;
     SkillInfo secondMementoToChoose;
 
-    public MenuRandomizer menuRandomizer;
-
     AsyncOperation AOfield;
     AsyncOperation AOlevel;
 
@@ -160,6 +158,10 @@ public class GameManager : MonoBehaviour
     public int flashbackSceneIndex = 0;
     public bool newGamePlus = false;
     public bool cagesCompleted = false;
+    public int lastTalkedDyk = -1;
+
+    public bool revolverFound = false;
+    public bool ladyshoeFound = false;
     
     void Awake()
     {
@@ -197,6 +199,10 @@ public class GameManager : MonoBehaviour
 
         var lobby = SteamworksLobby.instance;
         if (lobby) lobby.SetCheckpoints(coopBiomeCheckpoints);
+        
+        savedOnFloor = 0;
+        
+        yield break;
         
         // city test
         yield return new WaitForSeconds(0.25f);
@@ -757,7 +763,9 @@ public class GameManager : MonoBehaviour
     {
         SaveGame();
         
-        FizzySteamworks.instance.Shutdown();
+        if (FizzySteamworks.instance)
+            FizzySteamworks.instance.Shutdown();
+        
         StopHostingButton();
         ItemsList.instance.savedTools.Clear();
         paused = false;
@@ -789,7 +797,6 @@ public class GameManager : MonoBehaviour
         {
             ToggleCredits();
         }
-        menuRandomizer.Init();
     
         if (TwitchManager.instance)
             TwitchManager.instance.ToggleCanvasAnim(false);
@@ -857,18 +864,9 @@ public class GameManager : MonoBehaviour
         
         yield return new WaitForEndOfFrame();
         
-        if (tutorialPassed == 1)
-        {
-            //AsyncOperation
-            AOfield = SceneManager.LoadSceneAsync(3, LoadSceneMode.Additive); // load hub   
-            AOfield.allowSceneActivation = false;
-        }
-        else if (tutorialPassed == 0)
-        {
-            AOfield = SceneManager.LoadSceneAsync(1, LoadSceneMode.Additive); // load hub   
-            AOfield.allowSceneActivation = false;
-        }
-
+        AOfield = SceneManager.LoadSceneAsync(1, LoadSceneMode.Additive); // load hub   
+        AOfield.allowSceneActivation = false;
+        
         while (!AOfield.isDone)
         {
             yield return null;
@@ -885,8 +883,10 @@ public class GameManager : MonoBehaviour
 
         yield return null;
 
+        /*
         if (tutorialPassed == 0)
             DeleteLocalSave(false);
+            */
 
         player = PlayerMovement.instance.hc;
         player.transform.position = playerStartPos;
@@ -929,20 +929,18 @@ public class GameManager : MonoBehaviour
             qm.StartQuest(0);
         }*/
         
-        if (hub)
-        {
-            if (QuestManager.instance)
-                QuestManager.instance.Init();
+        if (QuestManager.instance)
+            QuestManager.instance.Init();
             
-            if (HubProgressionManager.instance)
-                HubProgressionManager.instance.FieldAfterDeath(true);
+        if (HubProgressionManager.instance)
+            HubProgressionManager.instance.FieldAfterDeath(true);
             
-            if (HubItemsSpawner.instance)
-                HubItemsSpawner.instance.UpdateHub();
+        if (HubItemsSpawner.instance)
+            HubItemsSpawner.instance.UpdateHub();
             
-            if (PlayerCheckpointsController.instance)
-                StartCoroutine(PlayerCheckpointsController.instance.Init());
-        }
+        if (PlayerCheckpointsController.instance)
+            StartCoroutine(PlayerCheckpointsController.instance.Init());
+        
         player.pac.Init();
         if (paused) paused = false;
         
@@ -1179,22 +1177,9 @@ public class GameManager : MonoBehaviour
         Cursor.visible = false;
         QuestManager.instance.Init();
 
-        if (!hub)
-        {
-            var tm = TwitchManager.instance;
-            var ti = TwitchIrc.Instance;
-            if (tm && ti != null && ti.stream != null)
-            {
-                yield return new WaitForSeconds(tm.voteTime);
-                tm.StartNewVoting();   
-            }
-        }    
-        else
-        {
-            ui.Init(false);
-            HubItemsSpawner.instance.UpdateHub();
-            StartCoroutine(PlayerCheckpointsController.instance.Init());
-        }
+        ui.Init(false);
+        HubItemsSpawner.instance.UpdateHub();
+        StartCoroutine(PlayerCheckpointsController.instance.Init());
     }
 
     
@@ -1603,6 +1588,8 @@ public class GameManager : MonoBehaviour
         if (data != null)
         {
             cagesCompleted = data.cagesCompleted;
+            revolverFound = data.revolverFound;
+            ladyshoeFound = data.ladyshoeFound;
             itemList.heartContainerAmount = data.heartContainerAmount;
             itemList.gold = data.playersGold;
             mouseInvert = data.invertMouse;
@@ -1630,6 +1617,7 @@ public class GameManager : MonoBehaviour
             snoutFound = data.snoutFound;
             itemList.badReputaion = data.badReputaion;
             bloodMist = data.bloodMist;
+            lastTalkedDyk = data.lastTalkedDyk;
             lowPitchDamage = data.lowPitchDamage;
             if (data.roseNpcsInteractedInHub != null)
                 roseNpcsInteractedInHub = new List<int>(data.roseNpcsInteractedInHub);
@@ -1715,6 +1703,7 @@ public class GameManager : MonoBehaviour
             lowPitchDamage = 0;
             //rareWindowShown = 0;
             tutorialPassed = 0;
+            lastTalkedDyk = -1;
             tutorialHints = 0;
             tapesFoundOfFloors.Clear();
             itemList.unlockedTracks.Clear();
@@ -1724,6 +1713,8 @@ public class GameManager : MonoBehaviour
         savedOnFloor = 0;
         itemList.gold = 0;
         cagesCompleted = false;
+        ladyshoeFound = false;
+        revolverFound = false;
         
         darkness = 0;
         goldenKeysFoundOnFloors.Clear();

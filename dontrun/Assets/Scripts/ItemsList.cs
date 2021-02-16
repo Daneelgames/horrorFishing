@@ -731,6 +731,16 @@ public class ItemsList : MonoBehaviour
         if (wc.activeWeapon)
         {
             activeWeapon = wc.activeWeapon.weapon;
+            if (GameManager.instance.revolverFound == false && activeWeapon == WeaponPickUp.Weapon.Revolver)
+            {
+                GameManager.instance.revolverFound = true;
+                GameManager.instance.SaveGame();
+            }
+            else if (GameManager.instance.ladyshoeFound == false && activeWeapon == WeaponPickUp.Weapon.LadyShoe)
+            {
+                GameManager.instance.ladyshoeFound = true;
+                GameManager.instance.SaveGame();
+            }
             activeWeaponClip = wc.activeWeapon.ammoClip;
             activeWeaponDurability = wc.activeWeapon.durability;
             activeWeaponDescriptions = new List<string>(wc.activeWeapon.descriptions);

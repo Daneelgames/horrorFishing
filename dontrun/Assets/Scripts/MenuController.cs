@@ -96,7 +96,8 @@ public class MenuController : MonoBehaviour
 
     public void ShowDifficultySettings()
     {
-        SteamworksLobby.instance.ToggleButtons(false);
+        if (SteamworksLobby.instance)
+            SteamworksLobby.instance.ToggleButtons(false);
         
         if (gm.newGamePlus)
         {
@@ -171,7 +172,8 @@ public class MenuController : MonoBehaviour
         
         if (!settingsWindow.activeInHierarchy)
         {
-            SteamworksLobby.instance.ToggleButtons(false);
+            if (SteamworksLobby.instance)
+                SteamworksLobby.instance.ToggleButtons(false);
             menuWindow.SetActive(false);
             settingsWindow.SetActive(true);
             

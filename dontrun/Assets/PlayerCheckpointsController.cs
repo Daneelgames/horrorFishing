@@ -25,32 +25,25 @@ public class PlayerCheckpointsController : MonoBehaviour
 
     public IEnumerator Init()
     {
-        yield return new WaitForSeconds(1);
+        if (GameManager.instance.revolverFound == false)
+            yield break;
         
-        if (GameManager.instance.tutorialPassed == 1)
+        activeCheckpointIndex = GameManager.instance.hubActiveCheckpointIndex;
+        UiManager.instance.Init(false);
+
+        Vector3 newPos = PlayerMovement.instance.transform.position;
+    
+        RaycastHit hit;
+        if (Physics.Raycast(checkpoints[activeCheckpointIndex].transform.position, Vector3.down, out hit, 500, layerMask))
         {
-            activeCheckpointIndex = GameManager.instance.hubActiveCheckpointIndex;
-            var p = PlayerMovement.instance;
-            UiManager.instance.Init(false);
-            p.teleport = true;
-        
-            RaycastHit hit;
-            if (Physics.Raycast(checkpoints[activeCheckpointIndex].transform.position, Vector3.down, out hit, 500, layerMask))
-            {
-                p.transform.position = hit.point + Vector3.up;
-                print("PLAYER POS AT CHECKPOINT ON TERRAIN: " + p.transform.position);
-            }
-            else
-            {
-                p.transform.position = checkpoints[activeCheckpointIndex].transform.position;
-                print("PLAYER POS AT CHECKPOINT: " + p.transform.position);   
-            }
-            p.playerHead.position = p.transform.position;
-            print("PLAYER POS: " + p.transform.position);
-            //PlayerAudioController.instance.GetNewFootSteps();
-            p.teleport = false;
-            print("PLAYER POS: " + p.transform.position);   
+            newPos = hit.point + Vector3.up;
         }
+        else
+        {
+            newPos = checkpoints[activeCheckpointIndex].transform.position;
+        }
+        
+        StartCoroutine(HubItemsSpawner.instance.RespawnPlayerOnContinue(newPos));
     }
 
     public IEnumerator TaxiToNeededCheckpoint(GameObject bike)

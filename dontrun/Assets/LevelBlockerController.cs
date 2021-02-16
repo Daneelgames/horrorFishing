@@ -10,7 +10,7 @@ public class LevelBlockerController : MonoBehaviour
     public List<GameObject> blockers = new List<GameObject>();
     public List<Transform> spawners = new List<Transform>();
 
-    void Start()
+    void Awake()
     {
         var sc = SpawnController.instance;
         

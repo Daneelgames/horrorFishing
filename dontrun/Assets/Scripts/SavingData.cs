@@ -27,7 +27,10 @@ public class SavingData
     public int difficultyLevel = 0;
     public int goldSpentOnSon = 0;
     public int bloodMist;
+    public int lastTalkedDyk = -1;
     public bool cagesCompleted = false;
+    public bool ladyshoeFound = false;
+    public bool revolverFound = false;
     public bool newGamePlus = false;
     
     public int grain;
@@ -127,6 +130,9 @@ public class SavingData
         bloodMist = gm.bloodMist;
         mouseSense = gm.mouseSensitivity;
         cagesCompleted = gm.cagesCompleted;
+        revolverFound = gm.revolverFound;
+        ladyshoeFound = gm.ladyshoeFound;
+        lastTalkedDyk = gm.lastTalkedDyk;
         playersGold = Mathf.RoundToInt(il.gold);
         invertMouse = gm.mouseInvert;
         badReputaion = il.badReputaion;

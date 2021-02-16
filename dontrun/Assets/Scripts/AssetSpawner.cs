@@ -10,7 +10,7 @@ public class AssetSpawner : MonoBehaviour
 {
     public enum ObjectType
     {
-        Room, Prop, Mob
+        Room, Prop, Mob, Dyk
     }
 
     public static AssetSpawner instance;
@@ -69,6 +69,10 @@ public class AssetSpawner : MonoBehaviour
             else if (objectType == ObjectType.Mob)
             {
                 ProceedMob(asyncOperationHandle.Result, newPos);
+            }
+            else if (objectType == ObjectType.Dyk)
+            {
+                ProceedDyk(asyncOperationHandle.Result, newPos);
             }
             else if (objectType == ObjectType.Room)
             {
@@ -137,6 +141,13 @@ public class AssetSpawner : MonoBehaviour
     {
         var sc = SpawnController.instance;
         sc.ProceedMob(go);
+        StartCoroutine(DynamicObstaclesManager.instance.CreateGameObjectAnimated(go, targetPos, go.transform.localScale));
+    }
+    void ProceedDyk(GameObject go, Vector3 targetPos)
+    {
+        var sc = SpawnController.instance;
+        sc.ProceedMob(go);
+        DynamicObstaclesManager.instance.SetNewDykToSpawned(go);
         StartCoroutine(DynamicObstaclesManager.instance.CreateGameObjectAnimated(go, targetPos, go.transform.localScale));
     }
 

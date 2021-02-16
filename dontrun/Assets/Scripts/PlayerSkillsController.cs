@@ -776,7 +776,7 @@ public class PlayerSkillsController : MonoBehaviour
         // random kiss effect
         float r = Random.Range(0, 100);
 
-        pm.hc.Heal(pm.hc.healthMax / Random.Range(2f,10f));
+        pm.hc.Heal(pm.hc.healthMax / 3f);
         
         if (pm.hc.health < pm.hc.healthMax * 0.5f || r > 66)
         {

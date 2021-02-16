@@ -15,7 +15,7 @@ public class NpcController : MonoBehaviour
         Replace,
         After
     }
-
+    public int dykIndex = -1;
     public bool canCreateQuestGiver = false;
     public int currentDialog = 0;
     public int currentLine = 0;
@@ -465,6 +465,9 @@ public class NpcController : MonoBehaviour
         // LAST LINE OF DIALOGUE
         if (currentLine >= dialogues[currentDialog].phrases.Count - 1) // MIGHT REMOVED MINUS ONE HERE
         {
+            if (dykIndex >= 0)
+                DynamicObstaclesManager.instance.SaveLastTalkedDyk(dykIndex);
+            
             if (dialogues[currentDialog].dialogueEvent == Dialogue.DialogueEvent.FixWeapon)
             {
                 if (wc.activeWeapon == null || eventsRepeat <= currentEventRepeat)

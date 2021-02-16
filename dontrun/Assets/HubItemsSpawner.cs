@@ -89,10 +89,9 @@ public class HubItemsSpawner : MonoBehaviour
             Instantiate(npcSpawners[0].gameObjectToSpawn, npcSpawners[0].transform.position, npcSpawners[0].transform.rotation);
 
             wc = WeaponControls.instance;
-            bool canSpawnRevolver = !HaveRevolver();
             
             // revolver start cutscene
-            if (canSpawnRevolver)
+            if (GameManager.instance.revolverFound == false)
                 Instantiate(fieldEventsSpawners[0].gameObjectToSpawn, fieldEventsSpawners[0].transform.position,
                     fieldEventsSpawners[0].transform.rotation);
             
@@ -236,6 +235,43 @@ public class HubItemsSpawner : MonoBehaviour
         if (spawnLeg)
         {
             currentSpawner = GetClosestSpawner(currentSpawner.position, spawnersTemp);
+            DynamicObstaclesManager.instance.spawnedLeg = sc.InstantiateItem(itemSpawners[0].itemToSpawn, currentSpawner.position + Vector3.up * 0.5f, currentSpawner.rotation, false);
+            spawnersTemp.Remove(currentSpawner);
+        }
+        if (spawnRevolver)
+        {
+            currentSpawner = GetClosestSpawner(currentSpawner.position, spawnersTemp);
+            DynamicObstaclesManager.instance.spawnedRevolver = sc.InstantiateItem(itemSpawners[1].itemToSpawn, currentSpawner.position + Vector3.up * 0.5f, currentSpawner.rotation, false);
+        }
+    }
+    public IEnumerator RespawnPlayerOnContinue(Vector3 newPlayerPos)
+    {
+        DynamicObstaclesManager.instance.PlayerDied();
+        PlayerMovement.instance.cameraAnimator.SetBool("Death", true);
+        PlayerMovement.instance.hc.invincible = true;
+        //PlayerMovement.instance.goldenLightAnimator.SetBool("GoldenLight", true);
+        PlayerMovement.instance.controller.enabled = false; 
+        
+        wc = WeaponControls.instance;
+        var sc = SpawnController.instance;
+        var spawnersTemp = new List<Transform>(sc.spawners);
+        print("spawners temp count = " + spawnersTemp.Count);
+        var currentSpawner = spawnersTemp[Random.Range(0, spawnersTemp.Count)];
+        bool spawnLeg = GameManager.instance.ladyshoeFound;
+        bool spawnRevolver = GameManager.instance.revolverFound;
+        
+        wc.ResetInventory();
+        StartCoroutine(AnimateDeathFov());
+        yield return new WaitForSeconds(1f);
+        // death anim is over
+
+        StartCoroutine(GetUpPhraseCoroutine());
+        yield return new WaitForSeconds(2.1f);
+        PlayerSkillsController.instance.InstantTeleport(newPlayerPos);
+        PlayerMovement.instance.hc.RespawnPlayer();
+        if (spawnLeg)
+        {
+            currentSpawner = GetClosestSpawner(newPlayerPos, spawnersTemp);
             DynamicObstaclesManager.instance.spawnedLeg = sc.InstantiateItem(itemSpawners[0].itemToSpawn, currentSpawner.position + Vector3.up * 0.5f, currentSpawner.rotation, false);
             spawnersTemp.Remove(currentSpawner);
         }

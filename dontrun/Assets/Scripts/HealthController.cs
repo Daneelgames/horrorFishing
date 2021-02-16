@@ -1388,9 +1388,9 @@ public class HealthController : MonoBehaviour, IUpdatable
             {
                 damagedOnLevel = true;
                 
-                if (health <= healthMax * 0.33f)
-                    health -= (dmg - dmg * armor) * 0.66f; // light damage
-                else if (health <= healthMax * 0.66f)
+                if (health <= healthMax * 0.4f)
+                    health -= (dmg - dmg * armor) * 0.25f; // light damage
+                else if (health <= healthMax * 0.7f)
                     health -= (dmg - dmg * armor); // normal damage
                 else 
                     health -= (dmg  - dmg * armor) * 2f;   

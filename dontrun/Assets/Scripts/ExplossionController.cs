@@ -57,7 +57,7 @@ public class ExplossionController : MonoBehaviour
                         hc.door.DoorDestroyed();
                 }
             }
-            else if (coll.gameObject.layer == 16) // WALLS
+            else if (coll.gameObject.layer == 16 || coll.gameObject.layer == 10) // WALLS or solids
             {
                 MobBodyPart part = coll.gameObject.GetComponent<MobBodyPart>();
 
@@ -86,7 +86,8 @@ public class ExplossionController : MonoBehaviour
     IEnumerator DamageWallCoroutine(MobBodyPart part)
     {
         yield return null;
-        part.hc.Damage(part.hc.healthMax, part.gameObject.transform.position + Vector3.one * 2,
+        if (part != null)
+            part.hc.Damage(part.hc.healthMax, part.gameObject.transform.position + Vector3.one * 2,
             transform.position, null, null, false, null, null, null, true);
         
         wallsDamageCoroutine = null;
