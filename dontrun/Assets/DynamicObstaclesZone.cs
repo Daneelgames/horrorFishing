@@ -18,6 +18,8 @@ public class DynamicObstaclesZone : MonoBehaviour
     public float sphereSpawnRadiusMin = 10;
     public float sphereSpawnRadiusMax = 30;
 
+    public float destroyTimeMin = 1;
+    public float destroyTimeMax = 3;
     public Color skyColor;
     public Color fogColor;
     public Color mainLightColor;

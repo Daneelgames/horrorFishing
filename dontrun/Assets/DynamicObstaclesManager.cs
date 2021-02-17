@@ -248,7 +248,7 @@ public class DynamicObstaclesManager : MonoBehaviour
                 {
                     var r = lg.propsInGame[Random.Range(0, lg.propsInGame.Count)];
                     lg.propsInGame.Remove(r);
-                    StartCoroutine(DestroyGameObjectAnimated(r.gameObject, r.gameObject.transform.position, 1));   
+                    StartCoroutine(DestroyGameObjectAnimated(r.gameObject, r.gameObject.transform.position, Random.Range(closestZone.destroyTimeMin,closestZone.destroyTimeMax)));   
                 }
                 else
                 {
@@ -268,7 +268,7 @@ public class DynamicObstaclesManager : MonoBehaviour
                         if (distanceToObject > distanceToDestroyFar || (distanceToObject > distanceToDestroy && MouseLook.instance.PositionIsVisibleToPlayer(prop.transform.position) == false && Random.value > 0.5f))
                         { 
                             lg.propsInGame.Remove(prop);
-                            StartCoroutine(DestroyGameObjectAnimated(prop.gameObject, prop.gameObject.transform.position, Random.Range(1f,3f)));
+                            StartCoroutine(DestroyGameObjectAnimated(prop.gameObject, prop.gameObject.transform.position, Random.Range(closestZone.destroyTimeMin,closestZone.destroyTimeMax)));
                         }
                         yield return null;
                     }      
@@ -365,7 +365,7 @@ public class DynamicObstaclesManager : MonoBehaviour
                     if (distanceToObject > distanceToDestroyFar || (distanceToObject > distanceToDestroy && MouseLook.instance.PositionIsVisibleToPlayer(mob.transform.position) == false && Random.value > 0.5f))
                     {
                         sc.mobsInGame.Remove(mob);
-                        StartCoroutine(DestroyGameObjectAnimated(mob.gameObject, mob.gameObject.transform.position, Random.Range(1f,3f)));
+                        StartCoroutine(DestroyGameObjectAnimated(mob.gameObject, mob.gameObject.transform.position, Random.Range(closestZone.destroyTimeMin,closestZone.destroyTimeMax)));
                         //Destroy(mob.gameObject);
                     }
                     yield return null;
@@ -416,10 +416,10 @@ public class DynamicObstaclesManager : MonoBehaviour
     public IEnumerator CreateGameObjectAnimated(GameObject go, Vector3 targetPos, Vector3 targetScale)
     {
         if (LevelGenerator.instance.propsInGame.Count > propsSpawnedMax)
-            StartCoroutine(DestroyGameObjectAnimated(LevelGenerator.instance.propsInGame[0].gameObject, LevelGenerator.instance.propsInGame[0].gameObject.transform.position, Random.Range(1f,3f)));
+            StartCoroutine(DestroyGameObjectAnimated(LevelGenerator.instance.propsInGame[0].gameObject, LevelGenerator.instance.propsInGame[0].gameObject.transform.position, Random.Range(closestZone.destroyTimeMin,closestZone.destroyTimeMax)));
         
         float t = 0;
-        float tt = Random.Range(1, 3);
+        float tt = Random.Range(closestZone.destroyTimeMin,closestZone.destroyTimeMax);
         go.transform.localScale = Vector3.zero;
         go.transform.position = targetPos;
         
