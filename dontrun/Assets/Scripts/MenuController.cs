@@ -152,7 +152,7 @@ public class MenuController : MonoBehaviour
         {
             menuWindow.SetActive(false);
             menuVisuals.SetActive(false);
-            if (!settingsWindow.activeInHierarchy)
+            if (!settingsWindow.activeInHierarchy && gm.paused)
             {
                 print("SETTINGS MAKE ACTIVE");
                 settingsWindow.SetActive(true);   

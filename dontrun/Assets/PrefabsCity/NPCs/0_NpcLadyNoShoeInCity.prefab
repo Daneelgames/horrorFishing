@@ -218,7 +218,7 @@ GameObject:
   - component: {fileID: 8224730762168979962}
   - component: {fileID: 3434698393550248382}
   m_Layer: 11
-  m_Name: NpcLadyNoShoeInCity
+  m_Name: 0_NpcLadyNoShoeInCity
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -334,7 +334,7 @@ MonoBehaviour:
   statusEffectsVisuals: []
   fireParticles: {fileID: 8656329640905460019}
   fireAu: {fileID: 6522759206571419748}
-  pm: {fileID: 0}
+  playerMovement: {fileID: 0}
   wc: {fileID: 0}
   damageCooldown: 0
   pac: {fileID: 0}
@@ -421,6 +421,7 @@ MonoBehaviour:
   drop: []
   dropPosition: {fileID: 1935999432339294978}
   forceDropOnTile: 0
+  lookAtPlayer: 0
   animDamageByTrigger: 0
 --- !u!114 &7359561233083650843
 MonoBehaviour:
@@ -5652,13 +5653,11 @@ MonoBehaviour:
   light: {fileID: 0}
   hint: {fileID: 4775837466666235712}
   visual: {fileID: 0}
+  insideTheProp: 0
   hintDistance: 10
   mapMarker: {fileID: 0}
   mapMarkerCross: {fileID: 0}
   rb: {fileID: 0}
-  canCreateMeatHole: 0
-  activeMeatHole: {fileID: 0}
-  itemInsideMeatHole: {fileID: 0}
   pickedByPlayerMessage: []
 --- !u!114 &3368683852470693620
 MonoBehaviour:
@@ -5672,12 +5671,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b78d897f0212c2a4991e2d8406a42d5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dykIndex: -1
   canCreateQuestGiver: 0
-  roseNpc: 2
   currentDialog: 0
   currentLine: 0
   eventsRepeat: 1
   currentEventRepeat: 0
+  npcPointerOnPickUp: {fileID: 0}
   npcSetPhrasesOnLevel: {fileID: 0}
   randomizedPhrasesData: {fileID: 11400000, guid: e9d8ea458b46af74fab2ddca9aec240a,
     type: 2}
@@ -6415,13 +6415,13 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 3ebfdbf25f0deef49ac6641b2c65b520, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.66
   m_Pitch: 1
   Loop: 1
   Mute: 0
   Spatialize: 1
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 256
   DopplerLevel: 0.79
   MinDistance: 5
   MaxDistance: 50

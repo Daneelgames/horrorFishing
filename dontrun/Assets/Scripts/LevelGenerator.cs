@@ -140,8 +140,6 @@ public class LevelGenerator : MonoBehaviour
 
     private void Start()
     {
-        GameManager.instance.loadingAnim.gameObject.SetActive(false);
-        
         pm = PlayerMovement.instance;
         tilesFolder = new GameObject();
         tilesFolder.transform.parent = transform;

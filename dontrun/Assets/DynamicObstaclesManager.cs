@@ -105,7 +105,7 @@ public class DynamicObstaclesManager : MonoBehaviour
         {
             pm = PlayerMovement.instance;
             
-            yield return new WaitForSeconds(10f);
+            yield return new WaitForSeconds(30f);
 
             if (spawnedDyk != null)
             {

@@ -64,7 +64,7 @@ public class MenuAnimator : MonoBehaviour
         {
             yield return null;
             button.transform.localScale = lastButtonToAnimate.transform.localScale + Vector3.one * Random.Range(-scaleRandomOffset, scaleRandomOffset);
-            t += Time.deltaTime;
+            t += Time.unscaledDeltaTime;
         }
         
         button.transform.localScale = lastButtonToAnimate.transform.localScale;
@@ -77,7 +77,7 @@ public class MenuAnimator : MonoBehaviour
         {
             yield return null;
             uiparent.transform.localScale = Vector3.one + Vector3.one * Random.Range(-0.05f, 0.05f);
-            t += Time.deltaTime;
+            t += Time.unscaledDeltaTime;
         }
         
         uiparent.transform.localScale = initScale;

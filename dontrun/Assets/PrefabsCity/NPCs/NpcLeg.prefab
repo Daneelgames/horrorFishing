@@ -30371,7 +30371,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4337214903290738485}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.67, z: -0.15}
+  m_LocalPosition: {x: 0, y: 1.88, z: -0.09}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6484314999241537215}
@@ -41209,7 +41209,7 @@ MonoBehaviour:
   wc: {fileID: 0}
   damageCooldown: 0
   pac: {fileID: 0}
-  invincible: 1
+  invincible: 0
   damagedOnLevel: 0
   faceHuggedCooldown: 30
   playerNetworkDummyController: {fileID: 0}
@@ -41288,7 +41288,10 @@ MonoBehaviour:
   bodyPartMax: 0
   hc: {fileID: 6484314999241537213}
   bloodFx: {fileID: 7296228066712574396, guid: 8079d28f804b3754fbfc1ce89ba21296, type: 3}
-  drop: []
+  drop:
+  - item: {fileID: 3770530751704683128, guid: 44d0bad17b0e25045a67ae5c16d2b55f, type: 3}
+    amountMax: 1
+    amountMin: 1
   dropPosition: {fileID: 2197519793523707262}
   forceDropOnTile: 0
   lookAtPlayer: 0

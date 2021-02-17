@@ -21,7 +21,6 @@ public class UiManager : MonoBehaviour
     public TextMeshProUGUI goldAmountText;
     public Animator goldAmountTextAnim;
     public TextMeshProUGUI ammoAmountText;
-    public TextMeshProUGUI activeWeaponName;
     public Animator pauseAnim;
 
     [Header("Feedback")] 
@@ -434,7 +433,9 @@ public class UiManager : MonoBehaviour
             s.transform.localScale = Vector3.zero;   
         }*/
         Settings();
+        GameManager.instance.menuController.settingsWindow.SetActive(true);
         yield return null;
+        GameManager.instance.menuController.settingsWindow.SetActive(false);
         CloseSettings();
         
         /*
@@ -484,6 +485,8 @@ public class UiManager : MonoBehaviour
     
     public void UpdateStatusEffects(int index)
     {
+        return;
+        
         if (pm == null)
             pm = PlayerMovement.instance;
 
@@ -1010,36 +1013,6 @@ public class UiManager : MonoBehaviour
 
     public void UpdateTools()
     {
-        if (il == null)
-            il = ItemsList.instance;
-        
-        if (pm == null)
-            pm = PlayerMovement.instance;
-        
-        if (gm == null)
-            gm = GameManager.instance;
-
-        if (il.savedTools.Count > pm.hc.wc.currentToolIndex && il.savedTools[pm.hc.wc.currentToolIndex].amount > 0)
-        {
-            activeToolIcon.enabled = true;
-            toolBackground.enabled = true;
-            activeToolIcon.sprite = toolsSprites[pm.hc.wc.currentToolIndex];
-            activeToolInfo.enabled = true;
-            activeToolInfo.text = String.Empty;
-            
-            /*
-            if (il.savedTools[pm.hc.wc.currentToolIndex].known)
-                activeToolInfo.text = il.savedTools[pm.hc.wc.currentToolIndex].info[gm.language] + " X" + il.savedTools[pm.hc.wc.currentToolIndex].amount;
-            else
-                activeToolInfo.text = il.savedTools[pm.hc.wc.currentToolIndex].unknownInfo[gm.language] + " X" + il.savedTools[pm.hc.wc.currentToolIndex].amount;
-                */
-        }
-        else
-        {
-            activeToolIcon.enabled = false;
-            toolBackground.enabled = false;
-            activeToolInfo.enabled = false;
-        }
     }
 
     public void KeyUsed()
@@ -1673,9 +1646,6 @@ public class UiManager : MonoBehaviour
                 activeWeaponBrokenIcon.enabled = false;
             if (pm.hc.wc.activeWeapon)
             {
-                activeWeaponName.text = String.Empty;
-                //activeWeaponName.text = pm.hc.wc.activeWeapon.dataRandomizer.generatedName[gm.language] + ". " + pm.hc.wc.activeWeapon.dataRandomizer.effectInName[gm.language];
-            
                 Color newColor = Color.white;
                 if (pm.hc.wc.activeWeapon.dataRandomizer.statusEffect < 0)
                     newColor = Color.grey;
@@ -1683,14 +1653,11 @@ public class UiManager : MonoBehaviour
                 {
                     newColor = statuscolors[pm.hc.wc.activeWeapon.dataRandomizer.statusEffect];
                 }
-
-                activeWeaponName.color = newColor;   
             }
         }
         else
         {
             activeWeaponIcon.enabled = false;
-            activeWeaponName.text = "";
         }
 
         if (pm.hc.wc.secondWeapon && il.secondWeapon != WeaponPickUp.Weapon.Null)
@@ -2290,6 +2257,8 @@ public class UiManager : MonoBehaviour
 
     public void UpdateBuff(int index, float amount, bool active)
     {
+        return;
+        
         if (amount <= 0)
         {
             buffBarUi[index].fill.gameObject.SetActive(false);

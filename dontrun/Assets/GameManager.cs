@@ -4,12 +4,14 @@ using System.Configuration;
 using Mirror;
 using Mirror.FizzySteam;
 using PlayerControls;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Audio;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.ResourceManagement.ResourceProviders;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour
 {
@@ -63,6 +65,7 @@ public class GameManager : MonoBehaviour
     private bool loading = false;
 
     public Animator loadingAnim;
+    public Camera loadingCam;
 
     public bool paused = false;
     public bool questWindow = false;
@@ -174,7 +177,6 @@ public class GameManager : MonoBehaviour
         
         instance = this;
         
-        loadingAnim.gameObject.SetActive(false);
     }
 
     void Start()
@@ -449,21 +451,6 @@ public class GameManager : MonoBehaviour
             {
                 player.playerMovement.inTransport.ExitTransport();   
             }
-
-            if (hub)
-            {
-                mapCamera.transform.position = player.transform.position + Vector3.up * 250;
-                mapCamera.orthographicSize = 200;
-                mapCamera.farClipPlane = 1000;
-                mapBackgroundFx.transform.localPosition = Vector3.forward * 600;
-            }
-            else
-            {
-                mapCamera.transform.position = Vector3.up * 25;
-                mapCamera.orthographicSize = 150;
-                mapCamera.farClipPlane = 100;
-                mapBackgroundFx.transform.localPosition = Vector3.forward * 50;
-            }
         }
         
         lg = LevelGenerator.instance;
@@ -647,7 +634,7 @@ public class GameManager : MonoBehaviour
         itemList.PickResource(newSkill);
     }
     
-    public void TogglePause(bool toggleUiPause) // if not pause than quest window
+    public void TogglePause(bool togglePlayerUiPause) // if not pause than quest window
     {
         if (!paused)
         {
@@ -680,7 +667,7 @@ public class GameManager : MonoBehaviour
                 ui.VolumeFromScript(volumeSliderValue);
             }
         }
-        if (toggleUiPause && ui)
+        if (togglePlayerUiPause && ui)
             ui.TogglePause();
     }
 
@@ -774,7 +761,7 @@ public class GameManager : MonoBehaviour
     public IEnumerator ReturnToMainMenu(bool showCredits)
     {
         SaveGame();
-        
+        MoveLoadingAnimToParent(transform);
         StopHostingButton();
         ItemsList.instance.savedTools.Clear();
         paused = false;
@@ -798,7 +785,10 @@ public class GameManager : MonoBehaviour
             ToggleCredits();
         }
         
-        menuController.ToggleSettingsWindow( true);
+        //menuController.ToggleSettingsWindow( true);
+        menuController.menuWindow.SetActive(true);
+        menuController.menuVisuals.SetActive(true);
+        menuController.settingsWindow.SetActive(false);
     }
 
     public void ToggleCredits()
@@ -828,6 +818,13 @@ public class GameManager : MonoBehaviour
     {
         StartCoroutine(LoadGameScene(false, 2, true));   
     }
+
+    void MoveLoadingAnimToParent(Transform parent)
+    {
+        loadingAnim.gameObject.transform.parent = parent;
+        loadingAnim.gameObject.transform.localPosition = Vector3.zero;
+        loadingAnim.gameObject.transform.localRotation = Quaternion.identity;
+    }
     
     public IEnumerator StartGame()
     {
@@ -838,8 +835,10 @@ public class GameManager : MonoBehaviour
             TwitchManager.instance.ToggleMeatchImages(false);
         }
         loading = true;
-        loadingAnim.gameObject.SetActive(true);
+        
+        MoveLoadingAnimToParent(transform);
         loadingAnim.SetBool("Active", true);
+        loadingCam.gameObject.SetActive(true);
         lhc.StartHints();
         yield return  new WaitForSeconds(1f);
         
@@ -898,11 +897,12 @@ public class GameManager : MonoBehaviour
         else 
             ui.Init(false);
         
+        MoveLoadingAnimToParent(MouseLook.instance.mainCamera.transform);
         loadingAnim.SetBool("Active", false);
+        loadingCam.gameObject.SetActive(false);
         
         yield return  new WaitForSeconds(1f);
         loading = false;
-        loadingAnim.gameObject.SetActive(false);
         lhc.StopHints();
         
         if (ls)
@@ -1135,7 +1135,9 @@ public class GameManager : MonoBehaviour
 
         readyToStartLevel = true;
         
+        MoveLoadingAnimToParent(MouseLook.instance.mainCamera.transform);
         loadingAnim.SetBool("Active", false);
+        loadingCam.gameObject.SetActive(false);
         
         yield return  new WaitForSeconds(1f);
         
@@ -1189,8 +1191,9 @@ public class GameManager : MonoBehaviour
             TwitchManager.instance.ToggleMeatchImages(false);
         }
         
-        loadingAnim.gameObject.SetActive(true);
+        MoveLoadingAnimToParent(transform);
         loadingAnim.SetBool("Active", true);
+        loadingCam.gameObject.SetActive(true);
         yield return  new WaitForSeconds(1f);
         
         
@@ -1295,7 +1298,9 @@ public class GameManager : MonoBehaviour
         itemList.keys = 0;
         readyToStartLevel = true;
         
+        MoveLoadingAnimToParent(MouseLook.instance.mainCamera.transform);
         loadingAnim.SetBool("Active", false);
+        loadingCam.gameObject.SetActive(false);
         
         yield return  new WaitForSeconds(1f);
         

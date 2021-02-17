@@ -1502,11 +1502,6 @@ public class GutProgressionManager : MonoBehaviour
 
     void UpdateProgression()
     {
-        gm = GameManager.instance;
-        if (playerFloor > 0)
-            levelNumber.text = "-" + playerFloor;
-        else
-            levelNumber.text = "0";
     }
 
 

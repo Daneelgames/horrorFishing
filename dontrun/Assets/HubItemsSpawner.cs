@@ -246,6 +246,7 @@ public class HubItemsSpawner : MonoBehaviour
     }
     public IEnumerator RespawnPlayerOnContinue(Vector3 newPlayerPos)
     {
+        PlayerAudioController.instance.Death();
         DynamicObstaclesManager.instance.PlayerDied();
         PlayerMovement.instance.cameraAnimator.SetBool("Death", true);
         PlayerMovement.instance.hc.invincible = true;
@@ -278,6 +279,28 @@ public class HubItemsSpawner : MonoBehaviour
         if (spawnRevolver)
         {
             currentSpawner = GetClosestSpawner(currentSpawner.position, spawnersTemp);
+            DynamicObstaclesManager.instance.spawnedRevolver = sc.InstantiateItem(itemSpawners[1].itemToSpawn, currentSpawner.position + Vector3.up * 0.5f, currentSpawner.rotation, false);
+        }
+    }
+
+    public void RespawnItems()
+    {
+        var spawnersTemp = new List<Transform>(sc.spawners);
+        var currentSpawner = GetClosestSpawner(PlayerMovement.instance.transform.position, spawnersTemp);
+        float distance = 1000f;
+        float newDistance = 0;
+        
+        
+        if (DynamicObstaclesManager.instance.spawnedLeg)
+        {
+            Destroy(DynamicObstaclesManager.instance.spawnedLeg.gameObject);
+            DynamicObstaclesManager.instance.spawnedLeg = sc.InstantiateItem(itemSpawners[0].itemToSpawn, currentSpawner.position + Vector3.up * 0.5f, currentSpawner.rotation, false);
+            currentSpawner = GetClosestSpawner(DynamicObstaclesManager.instance.spawnedLeg.transform.position, spawnersTemp);
+        }
+        
+        if (DynamicObstaclesManager.instance.spawnedRevolver)
+        {
+            Destroy(DynamicObstaclesManager.instance.spawnedRevolver.gameObject);
             DynamicObstaclesManager.instance.spawnedRevolver = sc.InstantiateItem(itemSpawners[1].itemToSpawn, currentSpawner.position + Vector3.up * 0.5f, currentSpawner.rotation, false);
         }
     }

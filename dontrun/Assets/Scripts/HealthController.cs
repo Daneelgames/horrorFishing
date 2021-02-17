@@ -2058,7 +2058,7 @@ public class HealthController : MonoBehaviour, IUpdatable
         PlayerMovement.instance.hc.invincible = false;
         PlayerMovement.instance.controller.enabled = true;
         if (setHealth)
-            health = healthMax / 2;
+            health = healthMax;
         il.playerCurrentHealth = health;
         dead = false;
         ui.UpdateHealthbar();

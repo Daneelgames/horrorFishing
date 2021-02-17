@@ -27,26 +27,10 @@ public class LoadingHintsController : MonoBehaviour
     
     public void StartHints()
     {
-        
-        hintsCoroutine = StartCoroutine(HintsCoroutine());
     }
 
     public void StopHints()
     {
-        StopCoroutine(hintsCoroutine);
-    }
-
-    IEnumerator HintsCoroutine()
-    {
-        currentHint = UnityEngine.Random.Range(0, hints.Count);
-        while (true)
-        {
-            hintsField.text = hints[currentHint].hints[gm.language];
-            yield return new WaitForSecondsRealtime(7);
-            currentHint++;
-            if (currentHint >= hints.Count)
-                currentHint = 0;
-        }
     }
 }
 

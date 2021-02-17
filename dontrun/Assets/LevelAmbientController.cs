@@ -6,6 +6,7 @@ using UnityEngine;
 public class LevelAmbientController : MonoBehaviour
 {
     public List<SphereCollider> triggers = new List<SphereCollider>();
+    public float maxVolume = 1;
     public AudioSource ambientSource;
 
     private PlayerMovement pm;
@@ -39,7 +40,7 @@ public class LevelAmbientController : MonoBehaviour
                 if (ambientSource.isPlaying == false)
                     ambientSource.Play();
                 
-                ambientSource.volume = Mathf.Clamp(1 - closestDistance / closestTrigger.radius , 0, 1);
+                ambientSource.volume = Mathf.Clamp(1 - closestDistance / closestTrigger.radius , 0, maxVolume);
             }
             else if (ambientSource.isPlaying)
             {

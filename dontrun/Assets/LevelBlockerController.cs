@@ -80,7 +80,8 @@ public class LevelBlockerController : MonoBehaviour
                 Destroy(spawners[i].gameObject);   
             }
         }
-        
+
+        HubItemsSpawner.instance.RespawnItems();
         Destroy(gameObject);
     }
 }
