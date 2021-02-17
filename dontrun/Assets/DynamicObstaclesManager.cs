@@ -259,17 +259,18 @@ public class DynamicObstaclesManager : MonoBehaviour
                     distanceToObject = Vector3.Distance(pm.transform.position, prop.transform.position); 
                     if (distanceToObject > distanceToDestroyFar || (distanceToObject > distanceToDestroy && MouseLook.instance.PositionIsVisibleToPlayer(prop.transform.position) == false && Random.value > 0.5f))
                     { 
-                        /*
-                        if (prop.spawnedObject != null)
-                            Destroy(prop.spawnedObject.gameObject);
-                            */
-                    
                         lg.propsInGame.Remove(prop);
                         StartCoroutine(DestroyGameObjectAnimated(prop.gameObject, prop.gameObject.transform.position, Random.Range(1f,3f)));
-                        //Destroy(prop.gameObject);
                     }
                     yield return null;
                 }   
+            }
+
+            if (closestZone.removePropOnEveryStep)
+            {
+                var r = lg.propsInGame[Random.Range(0, lg.propsInGame.Count)];
+                lg.propsInGame.Remove(r);
+                StartCoroutine(DestroyGameObjectAnimated(r.gameObject, r.gameObject.transform.position, 1));   
             }
 
             if (lg.propsInGame.Count < propsSpawnedMax)

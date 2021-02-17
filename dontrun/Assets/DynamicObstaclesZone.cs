@@ -7,6 +7,8 @@ public class DynamicObstaclesZone : MonoBehaviour
 {
     public List<AssetReference> propsReferences;
     public List<AssetReference> enemiesReferences;
+
+    public bool removePropOnEveryStep = false;
     
     public float handlePropsTimeMin = 1;
     public float handlePropsTimeMax = 5;
