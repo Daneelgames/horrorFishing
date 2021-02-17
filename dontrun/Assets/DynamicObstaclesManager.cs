@@ -244,33 +244,35 @@ public class DynamicObstaclesManager : MonoBehaviour
             yield return new WaitForSeconds(Random.Range(closestZone.handlePropsTimeMin, closestZone.handlePropsTimeMax));
             if (lg.propsInGame.Count > 1)
             {
-                for (int i = lg.propsInGame.Count - 1; i >= 0; i--)
+                if (closestZone.removePropOnEveryStep)
                 {
-                    if (lg.propsInGame.Count <= i)
-                        continue;
-                    
-                    var prop = lg.propsInGame[i];
-                    if (prop == null)
+                    var r = lg.propsInGame[Random.Range(0, lg.propsInGame.Count)];
+                    lg.propsInGame.Remove(r);
+                    StartCoroutine(DestroyGameObjectAnimated(r.gameObject, r.gameObject.transform.position, 1));   
+                }
+                else
+                {
+                    for (int i = lg.propsInGame.Count - 1; i >= 0; i--)
                     {
-                        lg.propsInGame.RemoveAt(i);
-                        continue;
-                    }
+                        if (lg.propsInGame.Count <= i)
+                            continue;
+                    
+                        var prop = lg.propsInGame[i];
+                        if (prop == null)
+                        {
+                            lg.propsInGame.RemoveAt(i);
+                            continue;
+                        }
 
-                    distanceToObject = Vector3.Distance(pm.transform.position, prop.transform.position); 
-                    if (distanceToObject > distanceToDestroyFar || (distanceToObject > distanceToDestroy && MouseLook.instance.PositionIsVisibleToPlayer(prop.transform.position) == false && Random.value > 0.5f))
-                    { 
-                        lg.propsInGame.Remove(prop);
-                        StartCoroutine(DestroyGameObjectAnimated(prop.gameObject, prop.gameObject.transform.position, Random.Range(1f,3f)));
-                    }
-                    yield return null;
-                }   
-            }
-
-            if (closestZone.removePropOnEveryStep)
-            {
-                var r = lg.propsInGame[Random.Range(0, lg.propsInGame.Count)];
-                lg.propsInGame.Remove(r);
-                StartCoroutine(DestroyGameObjectAnimated(r.gameObject, r.gameObject.transform.position, 1));   
+                        distanceToObject = Vector3.Distance(pm.transform.position, prop.transform.position); 
+                        if (distanceToObject > distanceToDestroyFar || (distanceToObject > distanceToDestroy && MouseLook.instance.PositionIsVisibleToPlayer(prop.transform.position) == false && Random.value > 0.5f))
+                        { 
+                            lg.propsInGame.Remove(prop);
+                            StartCoroutine(DestroyGameObjectAnimated(prop.gameObject, prop.gameObject.transform.position, Random.Range(1f,3f)));
+                        }
+                        yield return null;
+                    }      
+                }
             }
 
             if (lg.propsInGame.Count < propsSpawnedMax)
