@@ -538,10 +538,8 @@ public class WeaponController : MonoBehaviour
                 {
                     RaycastHit hit;
                     Vector3 r = new Vector3(Random.Range(-randomCast, randomCast), Random.Range(-randomCast, randomCast), Random.Range(-randomCast, randomCast));
-                    Physics.Raycast(playerMovement.cameraAnimator.transform.position, (weaponConnector.activeBarrels[b].shotDirection.transform.position - playerMovement.cameraAnimator.transform.position) + r, out hit, 1000, layerMask);
-                    if (hit.collider)
-                        print(hit.collider.gameObject.name);
-                    //Physics.Raycast(weaponConnector.activeBarrels[b].transform.position, (weaponConnector.activeBarrels[b].shotDirection.transform.position - weaponConnector.activeBarrels[b].transform.position) + r, out hit, 1000, layerMask);
+                    Physics.Raycast(playerMovement.cameraAnimator.transform.position, (wc.crosshair.transform.position - playerMovement.cameraAnimator.transform.position) + r, out hit, 1000, layerMask);
+                    //Physics.Raycast(playerMovement.cameraAnimator.transform.position, (weaponConnector.activeBarrels[b].shotDirection.transform.position - playerMovement.cameraAnimator.transform.position) + r, out hit, 1000, layerMask);
 
                     if (hit.collider != null && (hit.collider.gameObject.layer == 11 || hit.collider.gameObject.layer == 10|| hit.collider.gameObject.layer == 16)) // if UNIT or wall
                     {
