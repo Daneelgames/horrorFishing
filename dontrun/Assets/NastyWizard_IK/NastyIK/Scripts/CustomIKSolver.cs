@@ -17,7 +17,6 @@ public class CustomIKSolver : MonoBehaviour {
     public int Itterations = 1; // how many times the IK is calculated per frame
     public float maxScale = 10;
 
-    public bool Visualise;
     public bool canAnimate = true;
     private bool animate = true;
 
@@ -71,7 +70,7 @@ public class CustomIKSolver : MonoBehaviour {
     void AnimateScale()
     {
         //MAKE IT LESS JITTERY??
-        distanceToTarget = Vector3.Distance(Ankle.transform.position, Target.position);
+        distanceToTarget = GetDistanceToTarget();
         
         /*
         if (distanceToTarget > 0.1f)
@@ -86,5 +85,10 @@ public class CustomIKSolver : MonoBehaviour {
             targetScale *= 1 - Time.deltaTime * 3;
         
         transform.localScale = Vector3.Lerp(transform.localScale, targetScale, Time.deltaTime * 0.5f);
+    }
+
+    public float GetDistanceToTarget()
+    {
+        return Vector3.Distance(Ankle.transform.position, Target.position);
     }
 }

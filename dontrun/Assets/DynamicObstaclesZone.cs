@@ -8,6 +8,10 @@ public class DynamicObstaclesZone : MonoBehaviour
     public List<AssetReference> propsReferences;
     public List<AssetReference> enemiesReferences;
 
+    [Range(0, 1)] public float chanceOfSpawningInPlayerSight = 0;
+    public int propsSpawnedMax = 20;
+    public int enemiesSpawnedMax = 2;
+    
     public bool removePropOnEveryStep = false;
     
     public float handlePropsTimeMin = 1;

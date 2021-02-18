@@ -18,6 +18,7 @@ public class HubItemsSpawner : MonoBehaviour
 
     public static HubItemsSpawner instance;
 
+    private HealthController worldHolderSpawned;
     private HealthController ladyOnRoofSpawned_0;
     private HealthController gunnWorkingSpawned_1;
     private GameObject shoesOnBeachSpawned;
@@ -79,14 +80,19 @@ public class HubItemsSpawner : MonoBehaviour
         qm = QuestManager.instance;
         sc = SpawnController.instance;
 
+        if (worldHolderSpawned == null)
+        {
+            worldHolderSpawned = Instantiate(npcSpawners[0].npcsToSpawn[0], npcSpawners[0].transform.position,
+                npcSpawners[0].transform.rotation);
+        }
         // spawn lady
         if (ladyOnRoofSpawned_0 == null)
         {
             // nps
-            ladyOnRoofSpawned_0 = Instantiate(npcSpawners[0].npcsToSpawn[0], npcSpawners[0].transform.position,
-                npcSpawners[0].transform.rotation); 
+            ladyOnRoofSpawned_0 = Instantiate(npcSpawners[1].npcsToSpawn[0], npcSpawners[1].transform.position,
+                npcSpawners[1].transform.rotation); 
             //human ladder
-            Instantiate(npcSpawners[0].gameObjectToSpawn, npcSpawners[0].transform.position, npcSpawners[0].transform.rotation);
+            Instantiate(npcSpawners[1].gameObjectToSpawn, npcSpawners[1].transform.position, npcSpawners[1].transform.rotation);
 
             wc = WeaponControls.instance;
             
@@ -120,8 +126,8 @@ public class HubItemsSpawner : MonoBehaviour
                 // spawn lady
                 if (ladyOnRoofSpawned_0 == null)
                 {
-                    var go = Instantiate(npcSpawners[0].npcsToSpawn[0], npcSpawners[0].transform.position,
-                        npcSpawners[0].transform.rotation);
+                    var go = Instantiate(npcSpawners[1].npcsToSpawn[0], npcSpawners[1].transform.position,
+                        npcSpawners[1].transform.rotation);
 
                     ladyOnRoofSpawned_0 = go;
                 }
@@ -149,8 +155,8 @@ public class HubItemsSpawner : MonoBehaviour
             if (gunnWorkingSpawned_1 == null)
             {
                 
-                gunnWorkingSpawned_1 = Instantiate(npcSpawners[1].npcsToSpawn[0], npcSpawners[1].transform.position,
-                    npcSpawners[1].transform.rotation); 
+                gunnWorkingSpawned_1 = Instantiate(npcSpawners[2].npcsToSpawn[0], npcSpawners[2].transform.position,
+                    npcSpawners[2].transform.rotation); 
             }
         }
         #endregion

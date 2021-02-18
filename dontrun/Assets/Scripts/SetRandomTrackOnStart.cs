@@ -25,6 +25,11 @@ public class SetRandomTrackOnStart : MonoBehaviour
             snoutMusicPlayerInstance = this;
     }
     
+    [ContextMenu("GetAu")]
+    void InstantiateAllPrefabs()
+    {
+        au = GetComponent<AudioSource>();
+    }
     void OnEnable()
     {
         if (onlyForCoop && (GLNetworkWrapper.instance == null || GLNetworkWrapper.instance.coopIsActive == false))

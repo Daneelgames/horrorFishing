@@ -20,8 +20,6 @@ public class PropController : MonoBehaviour
     public AudioSource swapAu;
     public NpcController npc;
 
-    public List<Rigidbody> rigidbodies;
-
     public ParticleSystem swapParticles;
     public Interactable spawnedObject;
     private AsyncOperationHandle<GameObject> _asyncOperationHandle;
@@ -31,24 +29,6 @@ public class PropController : MonoBehaviour
     {
         lg = LevelGenerator.instance;
         sc = SpawnController.instance;
-        StartCoroutine(KinematicRigidbodies());
-
-        /*
-        if (GLNetworkWrapper.instance && GLNetworkWrapper.instance.coopIsActive)
-        {
-            GLNetworkWrapper.instance.localPlayer.AddProp();
-        }
-        */
-    }
-
-
-    IEnumerator KinematicRigidbodies()
-    {
-        yield return new WaitForSeconds(5);
-        foreach (var r in rigidbodies)
-        {
-            r.isKinematic = true;
-        }
     }
     
     public void SwapRandomProp()

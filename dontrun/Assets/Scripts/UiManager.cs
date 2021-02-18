@@ -433,9 +433,11 @@ public class UiManager : MonoBehaviour
             s.transform.localScale = Vector3.zero;   
         }*/
         Settings();
+        GameManager.instance.menuController.settingsWindow.transform.localScale = Vector3.zero;
         GameManager.instance.menuController.settingsWindow.SetActive(true);
         yield return null;
         GameManager.instance.menuController.settingsWindow.SetActive(false);
+        GameManager.instance.menuController.settingsWindow.transform.localScale = Vector3.one;
         CloseSettings();
         
         /*

@@ -6,18 +6,18 @@ namespace Assets
 {
     public class HumanPropBonesRandomizer : MonoBehaviour
     {
+        public bool grounded = false;
+        CustomIKJoint lowestBone = null;
+        public LayerMask groundMask;
         [Range(0, 1)] public float changeToAnimate = 0; 
         public List<Transform> boneList = new List<Transform>();
         public List<Vector3> bonesEulearAnglesListTpose = new List<Vector3>();
         public List<Vector3> bonesLocalPositionsListTpose = new List<Vector3>();
     
         [Header("Generated Pose")]
-        List<Transform> bonesToAnimate = new List<Transform>();
         public List<Vector3> bonesEulearAnglesListTemp = new List<Vector3>();
-        public Vector2 animateBonesAnglesMinMax = Vector2.zero;
     
         public List<Transform> groundContactBones = new List<Transform>();
-        public List<Vector3> groundContactBonesPositions = new List<Vector3>();
     
         public List<Transform> removedGroundContactBones = new List<Transform>();
         public List<Transform> armsBonesTargets = new List<Transform>();
@@ -25,51 +25,81 @@ namespace Assets
         public Transform hipsBone;
 
 
+        private Vector3 hipsLocalPosition;
+
         public List<CustomIKSolver> IkSolvers;
+        public bool simulateGravity = true;
         
-        void Awake()
+        IEnumerator Start()
         {
-            //transform.localScale = Vector3.zero;
-        }
-        void Start()
-        {
+            hipsLocalPosition = hipsBone.localPosition;
+            
             RandomizeBones();
         
-            if (bonesToAnimate.Count > 0 && Random.value < changeToAnimate)
-                StartCoroutine(AnimateBones());
-            else
+            foreach (var ik in IkSolvers)
             {
-                foreach (var ik in IkSolvers)
-                {
-                    ik.canAnimate = false;
-                }
+                ik.canAnimate = false;
             }
+            yield return new WaitForSeconds(1f);
+            if (simulateGravity)
+                StartCoroutine(SimulateGravity());
         }
 
-        IEnumerator AnimateBones()
+        private Collider[] hitColliders;
+        private bool foundGround = false;
+        IEnumerator SimulateGravity()
         {
-            while (true)
+            //find lowest ground point
+            float lowestY = transform.position.y + 1000;
+            for (int i = 0; i < IkSolvers.Count; i++)
             {
-                for (int i = 0; i < bonesToAnimate.Count; i++)
+                if (groundContactBones.Contains(IkSolvers[i].Target))
                 {
-                    bonesToAnimate[i].transform.eulerAngles = bonesEulearAnglesListTemp[i] + new Vector3(
-                        Random.Range(animateBonesAnglesMinMax.x,
-                            animateBonesAnglesMinMax.y),
-                        Random.Range(animateBonesAnglesMinMax.x,
-                            animateBonesAnglesMinMax.y),
-                        Random.Range(animateBonesAnglesMinMax.x,
-                            animateBonesAnglesMinMax.y));
-
-                    if (groundContactBones.Count > groundContactBonesPositions.Count)
-                        yield break;
-                
-                    for (int j = 0; j < groundContactBones.Count; j++)
+                    if (IkSolvers[i].Ankle.transform.position.y < lowestY)
                     {
-                        groundContactBones[j].transform.position = groundContactBonesPositions[j];
+                        lowestY = IkSolvers[i].Ankle.transform.position.y;
+                        lowestBone = IkSolvers[i].Ankle;
                     }
-                    yield return null;   
                 }
             }
+            yield return null;
+
+            do
+            {
+                yield return new WaitForSeconds(0.5f);
+
+                foundGround = false;
+                hitColliders = Physics.OverlapSphere(lowestBone.transform.position, 0.25f, groundMask);
+
+                for (int index = 0; index < hitColliders.Length; index++)
+                {
+                    if (hitColliders[index].transform.IsChildOf(transform)) continue;
+
+                    foundGround = true;
+                    break;
+                }
+
+                grounded = foundGround;
+            } while (grounded);
+
+            var rb = gameObject.AddComponent<Rigidbody>();
+            StartCoroutine(WaitForRigidbodyToSleep(rb));
+        }
+
+        IEnumerator WaitForRigidbodyToSleep(Rigidbody rb)
+        {
+            do
+            {
+                yield return new WaitForSeconds(1f);
+            } while (rb.velocity.magnitude > 0.1f);
+            
+            Destroy(rb);
+            
+            
+            StartCoroutine(NewPoseInRuntime());
+            yield return new WaitForSeconds(1f);
+            
+            StartCoroutine(SimulateGravity());
         }
 
         [ContextMenu("SaveAngles")]
@@ -89,14 +119,12 @@ namespace Assets
         public void RandomizeBones()
         {
             bonesEulearAnglesListTemp.Clear();
-            groundContactBonesPositions.Clear();
         
             for (int i = 0; i < boneList.Count; i++)
             {
                 boneList[i].transform.eulerAngles = bonesEulearAnglesListTpose[i] + new Vector3(Random.Range(-40, 40),Random.Range(-40, 40),Random.Range(-40, 40));
                 if (Random.value > 0.5f)
                 {
-                    bonesToAnimate.Add(boneList[i]);   
                     bonesEulearAnglesListTemp.Add(boneList[i].transform.eulerAngles);
                 }
             }
@@ -147,13 +175,63 @@ namespace Assets
 
                 
                     groundContactBones[i].transform.position = hit.point;
-                    groundContactBonesPositions.Add(hit.point);
                 }
             }
 
             for (int i = 0; i < removedGroundContactBones.Count; i++)
             {
                 removedGroundContactBones[i].transform.position += Random.insideUnitSphere * Random.Range(0, 10);
+            }
+
+            hipsBone.localPosition = hipsLocalPosition;
+        }
+        
+        IEnumerator NewPoseInRuntime()
+        {
+            for (int i = 0; i < IkSolvers.Count; i++)
+            {
+                IkSolvers[i].Target.position = IkSolvers[i].Ankle.transform.position;
+            }
+            
+            foreach (var ik in IkSolvers)
+            {
+                ik.canAnimate = true;
+            }
+            
+            for (int i = 0; i < groundContactBones.Count; i++)
+            {
+                var hits = Physics.RaycastAll(groundContactBones[i].position + Random.insideUnitSphere * Random.Range(0, 10) + Vector3.up * 100, Vector3.down, 500);
+                for (var j = 0; j < hits.Length; j++)
+                {
+                    var hit = hits[j];
+
+                    if (hit.collider.gameObject.layer != 23 && hit.collider.gameObject.layer != 28 &&
+                        hit.collider.gameObject.layer != 29 && hit.collider.gameObject.layer != 30 &&
+                        hit.collider.gameObject.layer != 25 && hit.collider.gameObject.layer != 20) // floor
+                        continue;
+                
+                    groundContactBones[i].transform.position = hit.point;
+                }
+            }
+
+            for (int i = 0; i < IkSolvers.Count; i++)
+            {
+                IkSolvers[i].Target.position += Random.insideUnitSphere * Random.Range(0, 10);
+            }
+
+            float t = 0;
+            Vector3 hipsStartPos = hipsBone.localPosition;
+            
+            while (t < 1)
+            {
+                hipsBone.localPosition = Vector3.Lerp(hipsStartPos, hipsLocalPosition, t / 1);
+                t += Time.deltaTime;
+                yield return null;
+            }
+            
+            foreach (var ik in IkSolvers)
+            {
+                ik.canAnimate = false;
             }
         }
     

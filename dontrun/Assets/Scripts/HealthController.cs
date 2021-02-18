@@ -2037,6 +2037,9 @@ public class HealthController : MonoBehaviour, IUpdatable
         {
             Time.timeScale = 1;
             
+            if (wc.activeWeapon && wc.activeWeapon.reloading)
+                wc.activeWeapon.StopReloading();
+            
             HubItemsSpawner.instance.StopAllCoroutines();
             if (pac) pac.Death();
             StartCoroutine(HubItemsSpawner.instance.RespawnPlayerAfterDeath());

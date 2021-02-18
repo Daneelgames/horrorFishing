@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
+using UnityEditor;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -10,6 +11,32 @@ public class LevelBlockerController : MonoBehaviour
     public List<GameObject> blockers = new List<GameObject>();
     public List<Transform> spawners = new List<Transform>();
 
+    public GameObject eyePrefab;
+
+    /*
+    [ContextMenu("SpawnEye")]
+    public void SpawnEye()
+    {
+        foreach (var b in blockers)
+        {
+            var newObject = PrefabUtility.InstantiatePrefab(eyePrefab);
+            var newPrefab = newObject as GameObject;
+            newPrefab.transform.position = b.transform.position;
+            newPrefab.transform.rotation = b.transform.rotation;
+            newPrefab.transform.parent = b.transform;
+            newPrefab.transform.localScale = Vector3.one;
+            newPrefab.transform.parent = transform;
+        }
+    }
+    [ContextMenu("RotateEyesRandomly")]
+    public void RotateEyesRandomly()
+    {
+        for (var index = 0; index < blockers.Count; index++)
+        {
+            blockers[index].transform.GetChild(0).Rotate(Random.Range(0f,360f),Random.Range(0f,360f),Random.Range(0f,360f));
+        }
+    }*/
+    
     void Awake()
     {
         var sc = SpawnController.instance;

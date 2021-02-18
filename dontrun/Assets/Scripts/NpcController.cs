@@ -78,11 +78,6 @@ public class NpcController : MonoBehaviour
             questGiver.npcController = this;
         }
         
-        if (dialogues.Count > 0 && dialogues[0].dialogueEvent == Dialogue.DialogueEvent.Taxi)
-        {
-            parentObject = hc.transform.parent.parent.parent.gameObject;   
-        }
-                        
         gm = GameManager.instance;
         pm = PlayerMovement.instance;
         wc = WeaponControls.instance;
@@ -889,6 +884,67 @@ public class NpcController : MonoBehaviour
                         newPhrase = Translator.TranslateText("Agree?");
                     else if (gm.language == 5)
                         newPhrase = Translator.TranslateText("Agree?");
+                    foreach (char c in newPhrase)
+                    {
+                        ui.dialogueChoice.text += c;
+                        yield return new WaitForSeconds(speakDelay);
+                    }
+                }
+            }
+            else if (dialogues[currentDialog].dialogueEvent == Dialogue.DialogueEvent.Die)
+            {
+                if (currentEventRepeat >= eventsRepeat)
+                {
+                    if (gm.language == 0)
+                        newPhrase = Translator.TranslateText(dialogues[currentDialog].doesntMetRequirementsPhrase);
+                    else if (gm.language == 1)
+                        newPhrase = Translator.TranslateText(dialogues[currentDialog].doesntMetRequirementsPhraseRu);
+                    else if (gm.language == 2)
+                        newPhrase = Translator.TranslateText(dialogues[currentDialog].doesntMetRequirementsPhraseEsp);
+                    else if (gm.language == 3)
+                        newPhrase = Translator.TranslateText(dialogues[currentDialog].doesntMetRequirementsPhraseGer);
+                    else if (gm.language == 4)
+                        newPhrase = Translator.TranslateText(dialogues[currentDialog].doesntMetRequirementsPhraseIT);
+                    else if (gm.language == 5)
+                        newPhrase = Translator.TranslateText(dialogues[currentDialog].doesntMetRequirementsPhraseSPBR);
+                    foreach (char c in newPhrase)
+                    {
+                        ui.dialoguePhrase.text += c;
+                        yield return new WaitForSeconds(speakDelay);
+                    }
+                }
+                else
+                {
+                    newPhrasePhrase = String.Empty;
+                    if (gm.language == 0)
+                        newPhrasePhrase = Translator.TranslateText(dialogues[currentDialog].phrases[currentLine]);
+                    else if (gm.language == 1)
+                        newPhrasePhrase = Translator.TranslateText(dialogues[currentDialog].phrasesRu[currentLine]);
+                    else if (gm.language == 2)
+                        newPhrasePhrase = Translator.TranslateText(dialogues[currentDialog].phrasesESP[currentLine]);
+                    else if (gm.language == 3)
+                        newPhrasePhrase = Translator.TranslateText(dialogues[currentDialog].phrasesGER[currentLine]);
+                    else if (gm.language == 4)
+                        newPhrasePhrase = Translator.TranslateText(dialogues[currentDialog].phrasesIT[currentLine]);
+                    else if (gm.language == 5)
+                        newPhrasePhrase = Translator.TranslateText(dialogues[currentDialog].phrasesSPBR[currentLine]);
+
+                    ui.dialoguePhrase.text = newPhrasePhrase;
+                    ui.dialogueChoice.text = newPhrase;
+
+                    choosing = true;
+                    if (gm.language == 0)
+                        newPhrase = Translator.TranslateText("Die?");
+                    else if (gm.language == 1)
+                        newPhrase = Translator.TranslateText("Умереть?");
+                    else if (gm.language == 2)
+                        newPhrase = Translator.TranslateText("Die?");
+                    else if (gm.language == 3)
+                        newPhrase = Translator.TranslateText("Die?");
+                    else if (gm.language == 4)
+                        newPhrase = Translator.TranslateText("Die?");
+                    else if (gm.language == 5)
+                        newPhrase = Translator.TranslateText("Die?");
                     foreach (char c in newPhrase)
                     {
                         ui.dialogueChoice.text += c;
@@ -2660,7 +2716,8 @@ public class NpcController : MonoBehaviour
             canInteract = false;
             newPhrase = String.Empty;
             newPhraseChoice = String.Empty;
-            ui.dialogueSpeakerName.text = hc.names[gm.language];
+            
+            ui.dialogueSpeakerName.text = interactable.itemNames[gm.language];
             ui.dialoguePhrase.text = String.Empty;
             ui.dialogueChoice.text = String.Empty;
             currentEventRepeat++;
@@ -2823,6 +2880,24 @@ public class NpcController : MonoBehaviour
                     if (interactableToInteractOnDialogueAction)
                         interactableToInteractOnDialogueAction.Interact(false);
                     hc.Kill();
+                    
+                    break;
+                
+                case Dialogue.DialogueEvent.Die:
+                    if(gm.language == 0)
+                        newPhraseChoice = Translator.TranslateText("You died");
+                    else if (gm.language == 1)
+                        newPhraseChoice = Translator.TranslateText("You died");
+                    else if (gm.language == 2)
+                        newPhraseChoice = Translator.TranslateText("You died");
+                    else if (gm.language == 3)
+                        newPhraseChoice = Translator.TranslateText("You died");
+                    else if (gm.language == 4)
+                        newPhraseChoice = Translator.TranslateText("You died");
+                    else if (gm.language == 5)
+                        newPhraseChoice = Translator.TranslateText("You died");
+
+                    PlayerMovement.instance.hc.Kill();
                     
                     break;
                 
@@ -3145,21 +3220,19 @@ public class NpcController : MonoBehaviour
                 
                 case Dialogue.DialogueEvent.Taxi:
                     if(gm.language == 0)
-                        newPhraseChoice = Translator.TranslateText("You will be served by a meat taxi");
+                        newPhraseChoice = Translator.TranslateText("You blinked");
                     else if (gm.language == 1)
-                        newPhraseChoice = Translator.TranslateText("Тебя обслужит мясное такси");
+                        newPhraseChoice = Translator.TranslateText("You blinked");
                     else if (gm.language == 2)
-                        newPhraseChoice = Translator.TranslateText("Serás atendido por un taxi de carne");
+                        newPhraseChoice = Translator.TranslateText("You blinked");
                     else if (gm.language == 3)
-                        newPhraseChoice = Translator.TranslateText("Sie werden von einem Fleischtaxi bedient");
+                        newPhraseChoice = Translator.TranslateText("You blinked");
                     else if (gm.language == 4)
-                        newPhraseChoice = Translator.TranslateText("Sarai servito da un taxi di carne");
+                        newPhraseChoice = Translator.TranslateText("You blinked");
                     else if (gm.language == 5)
-                        newPhraseChoice = Translator.TranslateText("Você será servido por um táxi de carnes");
+                        newPhraseChoice = Translator.TranslateText("You blinked");
 
-                    if (parentObject == null)
-                        parentObject = hc.transform.parent.parent.parent.gameObject;
-                    StartCoroutine(PlayerCheckpointsController.instance.TaxiToNeededCheckpoint(parentObject));
+                    PlayerSkillsController.instance.InstantTeleport(SpawnController.instance.spawners[Random.Range(0,SpawnController.instance.spawners.Count)].transform.position);
                     break;
                 
                 case Dialogue.DialogueEvent.GivePlayerWeapon:
@@ -3801,7 +3874,7 @@ public class Dialogue
         OneLevelBack, GivePlayerWeapon, BuyAmmo, UpgradeWeapon, Warm, 
         KillQuest, ItemQuest, WeaponQuest, PoisonQuest, BleedQuest, FireQuest, 
         ReduceBadRep, DisarmTrap, JoinToxicCult, JoinFlamesCult, JoinBloodCult, JoinGoldCult,
-        KissHer, MeatHole, GiveCarl, BuyGoldenKey, Taxi, SetNpcInLove, Pray, AgreeSetObjectActiveAndHideNpc
+        KissHer, MeatHole, GiveCarl, BuyGoldenKey, Taxi, SetNpcInLove, Pray, AgreeSetObjectActiveAndHideNpc, Die
     }
     public DialogueEvent dialogueEvent;
     public int eventCost = 10;

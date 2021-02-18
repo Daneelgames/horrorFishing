@@ -42,7 +42,7 @@ public class ExplossionController : MonoBehaviour
                         if (hc.playerMovement && GLNetworkWrapper.instance && GLNetworkWrapper.instance.coopIsActive)
                             return;
                         
-                        explosionDamage /= 4;   
+                        explosionDamage /= 5;   
                     }
 
                     if (!hc.door)
