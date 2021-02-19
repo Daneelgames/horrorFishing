@@ -21,6 +21,7 @@ public class CustomIKSolver : MonoBehaviour {
     private bool animate = true;
 
     Vector3 targetScale = Vector3.one;
+    public bool animateScale = true;
     IEnumerator Start()
     {
         yield return new WaitForSeconds(1f);
@@ -32,12 +33,21 @@ public class CustomIKSolver : MonoBehaviour {
         }
     }
 
+    public void SetAnimateInstantly(bool a)
+    {
+        canAnimate = a;
+        animate = a;
+    }
+
     private void LateUpdate()
     {
         if (!animate)
             return;
 
         SolveIK();
+        
+        if (!animateScale) return;
+        
         AnimateScale();
     }
 

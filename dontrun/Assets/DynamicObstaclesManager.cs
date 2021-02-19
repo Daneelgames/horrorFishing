@@ -155,6 +155,11 @@ public class DynamicObstaclesManager : MonoBehaviour
         {
             return 4;
         }
+        
+        if (QuestManager.instance.activeQuestsIndexes.Contains(4))
+        {
+            return 5;
+        }
 
         return -1;
     }

@@ -21,6 +21,7 @@ public class HubItemsSpawner : MonoBehaviour
     private HealthController worldHolderSpawned;
     private HealthController ladyOnRoofSpawned_0;
     private HealthController gunnWorkingSpawned_1;
+    private HealthController gunnOnBeachSpawned;
     private GameObject shoesOnBeachSpawned;
     
     public List<ChangeDialogueOnQuest> dialogueOnQuestsChangers = new List<ChangeDialogueOnQuest>();
@@ -161,6 +162,20 @@ public class HubItemsSpawner : MonoBehaviour
         }
         #endregion
 
+        #region quest 4 find wood
+
+        if (qm.activeQuestsIndexes.Contains(4))
+        {
+            //remove shoes
+            if (gunnOnBeachSpawned == null)
+            {
+                
+                gunnOnBeachSpawned = Instantiate(npcSpawners[3].npcsToSpawn[0], npcSpawners[3].transform.position,
+                    npcSpawners[3].transform.rotation); 
+            }
+        }
+        #endregion
+        
         UpdateLevelBlockers();
         
         for (int i = 0; i < dialogueOnQuestsChangers.Count; i++)
