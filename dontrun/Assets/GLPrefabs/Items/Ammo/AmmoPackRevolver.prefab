@@ -1250,13 +1250,11 @@ MonoBehaviour:
   light: {fileID: 0}
   hint: {fileID: 1717691824}
   visual: {fileID: 7522630362735331625}
+  insideTheProp: 0
   hintDistance: 66
   mapMarker: {fileID: 0}
   mapMarkerCross: {fileID: 0}
   rb: {fileID: 7522630363282633626}
-  canCreateMeatHole: 1
-  activeMeatHole: {fileID: 0}
-  itemInsideMeatHole: {fileID: 0}
   pickedByPlayerMessage:
   - I found revolver ammo
   - "\u042F \u043D\u0430\u0448\u0435\u043B \u0440\u0435\u0432\u043E\u043B\u044C\u0432\u0435\u0440\u043D\u044B\u0435
@@ -1355,7 +1353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54260f26caefeac40a5b8b91e023da78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distanceCondition: 75
+  distanceCondition: 30
   and: 0
   destroyIfQuestNotActive: -1
   destroyIfQuestActive: -1

@@ -51,7 +51,7 @@ public class ExplossionController : MonoBehaviour
                             explosionDamage = hc.healthMax;
                         
                         hc.Damage(explosionDamage, hc.gameObject.transform.position + Vector3.one * 2,
-                            transform.position, null, damageMessages[GameManager.instance.language], false, names[GameManager.instance.language], null, effectsOnAttack, true);   
+                            transform.position, null, damageMessages[GameManager.instance.language], true, names[GameManager.instance.language], null, effectsOnAttack, true);   
                     }
                     else
                         hc.door.DoorDestroyed();
@@ -88,7 +88,7 @@ public class ExplossionController : MonoBehaviour
         yield return null;
         if (part != null)
             part.hc.Damage(part.hc.healthMax, part.gameObject.transform.position + Vector3.one * 2,
-            transform.position, null, null, false, null, null, null, true);
+            transform.position, null, null, true, null, null, null, true);
         
         wallsDamageCoroutine = null;
     }

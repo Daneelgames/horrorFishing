@@ -6,6 +6,7 @@ using CerealDevelopment.TimeManagement;
 using Mirror;
 using PlayerControls;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
@@ -86,7 +87,7 @@ public class HealthController : MonoBehaviour, IUpdatable
 
     public DynamicMapMark dynamicMapMark;
 
-    public float addBadRepOnDeath = 0;
+    public float addSpawnCooldownOnDeath = 30;
 
     [Header("Prop")]
     public DoorController door;
@@ -2022,7 +2023,9 @@ public class HealthController : MonoBehaviour, IUpdatable
 
             print("Affect reputation: " + affectReputation);
             if (affectReputation)
-                il.AddToBadReputation(addBadRepOnDeath);
+            {
+                DynamicObstaclesManager.instance.AddSpawnCooldown(addSpawnCooldownOnDeath);
+            }
         }
         
 

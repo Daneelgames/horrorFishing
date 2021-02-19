@@ -16,6 +16,8 @@ public class DynamicObstaclesManager : MonoBehaviour
     
     [Header("Global Settings")]
     
+    public float mobsSpawnCooldown = 0f;
+    public float mobsSpawnCooldownMax = 60f;
     public float distanceToDestroy = 30;
     public float distanceToDestroyFar = 70;
     
@@ -67,6 +69,10 @@ public class DynamicObstaclesManager : MonoBehaviour
         while (true)
         {
             yield return null;
+
+            if (mobsSpawnCooldown > 0)
+                mobsSpawnCooldown -= Time.deltaTime;
+            
             if (closestZone == null)
             {
                 continue;
@@ -114,6 +120,13 @@ public class DynamicObstaclesManager : MonoBehaviour
         }
     }
 
+    public void AddSpawnCooldown(float cooldown)
+    {
+        mobsSpawnCooldown += cooldown;
+        if (mobsSpawnCooldown > mobsSpawnCooldownMax)
+            mobsSpawnCooldown = mobsSpawnCooldownMax;
+    }
+
     public void SetNewDykToSpawned(GameObject newdyk)
     {
         print("set new dyk");
@@ -131,7 +144,7 @@ public class DynamicObstaclesManager : MonoBehaviour
     
     int GetNeededDyke()
     {
-        if (GameManager.instance.lastTalkedDyk == -1 && closestZone != zones[0])
+        if (GameManager.instance.lastTalkedDyk == -1 && (QuestManager.instance.activeQuestsIndexes.Contains(1) ||QuestManager.instance.completedQuestsIndexes.Contains(1)))
         {
             return 0;
         }
@@ -338,6 +351,10 @@ public class DynamicObstaclesManager : MonoBehaviour
             GetClosestZone();
             
             yield return new WaitForSeconds(Random.Range(closestZone.handleEnemiesTimeMin, closestZone.handleEnemiesTimeMax));
+            
+            if (mobsSpawnCooldown > 0)
+                continue;
+            
             if (sc.mobsInGame.Count > 1)
             {
                 for (int i = sc.mobsInGame.Count - 1; i >= 0; i--)

@@ -667,7 +667,7 @@ namespace PlayerControls
             else if (transform.position.y > 0)
                 _velocity.y = gravity;
             else
-                _velocity.y = gravity * 5;
+                _velocity.y = gravity * 3;
             
             /*
             if (_grounded && _velocity.y < 0 && transform.position.y > 0.5f)

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class MobBodyPart : MonoBehaviour
 {
-    [Range(0, 10)]
+    [Range(0, 100)]
     public float damageModificator = 1;
     public Collider coll;
     public AudioSource au;

@@ -29,18 +29,19 @@ namespace Assets
 
         public List<CustomIKSolver> IkSolvers;
         public bool simulateGravity = true;
-        
+
+        public AudioSource changePoseAudioSource;
+        public AudioClip changePoseAudioClip;
         IEnumerator Start()
         {
             hipsLocalPosition = hipsBone.localPosition;
             
             RandomizeBones();
 
-            bool animateScale = Random.value < 0.5f;
             
             foreach (var ik in IkSolvers)
             {
-                ik.animateScale = animateScale;
+                //ik.animateScale = false;
                 ik.canAnimate = false;
             }
             yield return new WaitForSeconds(1f);
@@ -52,40 +53,40 @@ namespace Assets
         private bool foundGround = false;
         IEnumerator SimulateGravity()
         {
-            //find lowest ground point
-            float lowestY = transform.position.y + 1000;
-            for (int i = 0; i < IkSolvers.Count; i++)
-            {
-                //if (!groundContactBones.Contains(IkSolvers[i].Target)) continue;
-                
-                if (IkSolvers[i].Ankle.transform.position.y < lowestY)
-                {
-                    lowestY = IkSolvers[i].Ankle.transform.position.y;
-                    lowestBone = IkSolvers[i].Ankle;
-                }
-                
-            }
-            yield return null;
-
             do
             {
-                yield return new WaitForSeconds(1f);
-
                 foundGround = false;
-                hitColliders = Physics.OverlapSphere(lowestBone.transform.position, 0.5f, groundMask);
-
-                for (int index = 0; index < hitColliders.Length; index++)
+                for (int i = 0; i < IkSolvers.Count; i++)
                 {
-                    //if (hitColliders[index].transform.IsChildOf(transform)) continue;
+                    //hitColliders = Physics.OverlapSphere(IkSolvers[i].Ankle.transform.position, IkSolvers[i].transform.localScale.x, groundMask);
+                    hitColliders = Physics.OverlapSphere(IkSolvers[i].Ankle.transform.position, 0.5f, groundMask);
 
-                    foundGround = true;
-                    break;
+                    for (int index = 0; index < hitColliders.Length; index++)
+                    {
+                        yield return null;
+                        
+                        if (hitColliders[index].transform.IsChildOf(transform))
+                        {
+                            continue;
+                        }
+
+                        print(hitColliders[index].gameObject.name);
+                        foundGround = true;
+                        break;
+                    }
+
+                    yield return new WaitForSeconds(0.1f);
                 }
 
                 grounded = foundGround;
             } while (grounded);
 
+            foreach (var ik in IkSolvers)
+            {
+                ik.animateScale = false;
+            }
             var rb = gameObject.AddComponent<Rigidbody>();
+            rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
             rb.mass = 10;
             rb.angularDrag = 1;
             rb.drag = 1;
@@ -96,14 +97,13 @@ namespace Assets
         {
             do
             {
-                yield return new WaitForSeconds(1f);
-            } while (rb.velocity.magnitude > 0.25f);
+                yield return new WaitForSeconds(0.1f);
+            } while (rb.velocity.magnitude > 0.1f);
             
             Destroy(rb);
             
             
             yield return StartCoroutine(NewPoseInRuntime());
-            //yield return new WaitForSeconds(1f);
             
             StartCoroutine(SimulateGravity());
         }
@@ -150,10 +150,6 @@ namespace Assets
                 }
             }
         
-            /*
-            if (Random.value > 0.75f)
-                groundContactBones.Add(hipsBone);
-            else*/
             removedGroundContactBones.Add(hipsBone);
         
             if (Random.value > 0.75f)
@@ -173,9 +169,6 @@ namespace Assets
 
             for (int i = 0; i < removedGroundContactBones.Count; i++)
             {
-                // OLD
-                //removedGroundContactBones[i].transform.position += Random.insideUnitSphere * Random.Range(0, 10);
-                
                 // NEW
                 tempPosForContactBone = hipsLocalPosition + Random.insideUnitSphere * Random.Range(2, 10);
                 if (Physics.Raycast(tempPosForContactBone + Vector3.up * 100, Vector3.down, out var hit, 1000f, groundMask))
@@ -189,16 +182,23 @@ namespace Assets
         
         IEnumerator NewPoseInRuntime()
         {
-            
             foreach (var ik in IkSolvers)
             {
                 //ik.canAnimate = true;
                 ik.SetAnimateInstantly(true);
             }
+
+            changePoseAudioSource.pitch = Random.Range(0.5f, 1.5f);
+            changePoseAudioSource.loop = true;
+            changePoseAudioSource.clip = changePoseAudioClip;
+            changePoseAudioSource.time = changePoseAudioSource.clip.length * Random.Range(0.1f, 0.9f); 
+            changePoseAudioSource.Play();
             
             FindNewGroundContactPoints();
 
-            float rTime = Random.Range(0.5f, 3f);
+            float rTime = Random.Range(1f, 3f);
+            float t = 0;
+
             for (int i = 0; i < IkSolvers.Count; i++)
             {
                 tempPosForContactBone = transform.position + hipsLocalPosition + Random.insideUnitSphere * Random.Range(2, 10);
@@ -209,7 +209,6 @@ namespace Assets
                 }
             }
 
-            float t = 0;
             Vector3 hipsStartPos = hipsBone.localPosition;
             
             while (t < rTime)
@@ -224,17 +223,8 @@ namespace Assets
                 //ik.canAnimate = true;
                 ik.SetAnimateInstantly(false);
             }
-        }
-
-        IEnumerator MoveBoneToPoint(Transform bone, Vector3 startPos, Vector3 endPos, float tt)
-        {
-            float t = 0;
-            while (t < tt)
-            {
-                bone.transform.position = Vector3.Lerp(startPos, endPos, t / tt);
-                t += Time.deltaTime;
-                yield return null;
-            }
+            
+            changePoseAudioSource.Stop();
         }
 
         void FindNewGroundContactPoints()
@@ -267,8 +257,6 @@ namespace Assets
 
                 StartCoroutine(MoveBoneToPoint(groundContactBones[i].transform,
                     groundContactBones[i].transform.position, finalPoint, 1));
-                
-                //groundContactBones[i].transform.position = finalPoint;
             }
         }
         
@@ -303,18 +291,16 @@ namespace Assets
             //choose Ik target to pose here
             var randomIkSolver = IkSolvers[Random.Range(1, IkSolvers.Count)];
             randomIkSolver.canAnimate = true;
-            yield return StartCoroutine(MoveTransformToPosition(randomIkSolver.Target.transform, newPos, Random.Range(5f, 10f)));
+            yield return StartCoroutine(MoveBoneToPoint(randomIkSolver.Target.transform, randomIkSolver.Target.transform.position, newPos, Random.Range(5f, 10f)));
             randomIkSolver.canAnimate = false;
         }
 
-        IEnumerator MoveTransformToPosition(Transform boneTransform, Vector3 newPos, float tt)
+        IEnumerator MoveBoneToPoint(Transform bone, Vector3 startPos, Vector3 endPos, float tt)
         {
             float t = 0;
-            Vector3 startPos = boneTransform.position;
-            
             while (t < tt)
             {
-                boneTransform.position = Vector3.Lerp(startPos, newPos, t / tt);
+                bone.transform.position = Vector3.Lerp(startPos, endPos, t / tt);
                 t += Time.smoothDeltaTime;
                 yield return null;
             }

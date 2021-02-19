@@ -661,7 +661,7 @@ public class WeaponController : MonoBehaviour
     void KilledSomeone(HealthController hc)
     {
         print("Killed someone");
-        itemList.AddToBadReputation(hc.addBadRepOnDeath);
+        itemList.AddToBadReputation(hc.addSpawnCooldownOnDeath);
 
         gm.SaveNewKill();
         

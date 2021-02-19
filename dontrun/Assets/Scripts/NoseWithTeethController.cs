@@ -59,7 +59,7 @@ public class NoseWithTeethController : MonoBehaviour
                         if (part.hc.health <= 0)
                         {
                             gm.SaveNewKill();
-                            gm.itemList.AddToBadReputation(part.hc.addBadRepOnDeath);
+                            gm.itemList.AddToBadReputation(part.hc.addSpawnCooldownOnDeath);
                             if (!gm.demo && part.hc.mobKilledAchievementID.Length > 0)
                             {
                                 SteamAchievements.instance.UnlockSteamAchievement(part.hc.mobKilledAchievementID);

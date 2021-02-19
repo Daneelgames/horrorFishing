@@ -70,7 +70,7 @@ public class WeaponConnector : MonoBehaviour
                         break;
                     
                     case WeaponPickUp.Weapon.Revolver:
-                        clipSize = Random.Range(4,9);
+                        clipSize = 6;
                         break;
                     
                     case WeaponPickUp.Weapon.Shotgun:
@@ -95,7 +95,7 @@ public class WeaponConnector : MonoBehaviour
                         break;
                     
                     case WeaponPickUp.Weapon.Revolver:
-                        clipSize = Random.Range(4,9);
+                        clipSize = 6;
                         break;
                     
                     case WeaponPickUp.Weapon.Shotgun:
