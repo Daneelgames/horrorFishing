@@ -45,7 +45,7 @@ public class LookAtTarget : MonoBehaviour
         tt = lookTime;
         startQuaternion = transform.rotation;
         endQuaternion.SetLookRotation(transform.position - playerPos, Vector3.up);
-        endQuaternion.eulerAngles = new Vector3(0, endQuaternion.eulerAngles.y, 0);
+        //endQuaternion.eulerAngles = new Vector3(0, endQuaternion.eulerAngles.y, 0);
         while (t < tt)
         {
             t += Time.deltaTime;
