@@ -10,7 +10,7 @@ public class HubCheckpoint : MonoBehaviour
     IEnumerator Start()
     {
         yield return new WaitForSeconds(10);
-        active = true;
+        active = true; 
     }
 
     void OnTriggerStay(Collider coll)

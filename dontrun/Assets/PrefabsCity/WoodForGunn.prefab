@@ -128,13 +128,11 @@ MonoBehaviour:
   light: {fileID: 0}
   hint: {fileID: 2219587200123650729}
   visual: {fileID: 0}
+  insideTheProp: 0
   hintDistance: 30
   mapMarker: {fileID: 0}
   mapMarkerCross: {fileID: 0}
   rb: {fileID: 2219587200123650126}
-  canCreateMeatHole: 0
-  activeMeatHole: {fileID: 0}
-  itemInsideMeatHole: {fileID: 0}
   pickedByPlayerMessage:
   - ' '
   - ' '
@@ -154,6 +152,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 536e1d637dd3e5740bc49106c983f583, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  portableQuestType: 1
+  noteIndex: -1
   inHands: 0
   au: {fileID: 2256952226842774901}
   pickSound: {fileID: 8300000, guid: 0bc96403ebc23e84cb78619eb9b21e04, type: 3}
@@ -334,7 +334,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distanceCondition: 75
+  and: 0
   destroyIfQuestNotActive: 4
+  destroyIfQuestActive: -1
 --- !u!1 &2219587200123650729
 GameObject:
   m_ObjectHideFlags: 0

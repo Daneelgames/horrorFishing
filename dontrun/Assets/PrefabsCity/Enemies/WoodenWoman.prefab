@@ -57030,7 +57030,7 @@ MonoBehaviour:
   - {fileID: 5056109110309312443}
   fireParticles: {fileID: 1649090919069215293}
   fireAu: {fileID: 4065263192460430974}
-  pm: {fileID: 0}
+  playerMovement: {fileID: 0}
   wc: {fileID: 0}
   damageCooldown: 0
   pac: {fileID: 0}
@@ -57066,7 +57066,7 @@ MonoBehaviour:
   damagedByPlayer: 0
   eyeEater: 0
   dynamicMapMark: {fileID: 0}
-  addBadRepOnDeath: 0.1
+  addSpawnCooldownOnDeath: 15
   door: {fileID: 0}
   npcInteractor: {fileID: 0}
   weaponPickUp: {fileID: 0}
@@ -57106,7 +57106,7 @@ MonoBehaviour:
     sightDistanceGrowRate: 1
     sightDistanceChase: 25
     idleSpeed: 1
-    chaseSpeed: 5
+    chaseSpeed: 8
     chaseTime: 10
     hideDistanceFromPlayerMin: 20
     hideDistanceFromPlayerMax: 40
@@ -57118,7 +57118,7 @@ MonoBehaviour:
   raycastOrigin: {fileID: 6190912678064269681}
   searchLayerMask:
     serializedVersion: 2
-    m_Bits: 1922371072
+    m_Bits: 1922369024
   mobAu: {fileID: 6899551787562366732}
   coldModifier: 1
   limbsModifier: 1
@@ -57164,6 +57164,7 @@ MonoBehaviour:
     amountMin: 1
   dropPosition: {fileID: 1325791816283812668}
   forceDropOnTile: 0
+  lookAtPlayer: 0
   animDamageByTrigger: 0
 --- !u!114 &483175983666138722
 MonoBehaviour:

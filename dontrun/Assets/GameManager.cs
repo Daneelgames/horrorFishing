@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
+using System.IO;
 using Mirror;
 using Mirror.FizzySteam;
 using PlayerControls;
@@ -440,6 +441,9 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown("p"))
+            SaveSecretFile();
+        
         if (PlayerMovement.instance)
            player = PlayerMovement.instance.hc;
         
@@ -465,93 +469,20 @@ public class GameManager : MonoBehaviour
 
             if (cheats && Input.GetKey("g") && Input.GetKey("z"))
             {
-                // cheats
-                if (Input.GetKeyDown("6"))
-                    ReturnToHub(true, false);
                 
-                if (Input.GetKeyDown("l"))
-                    PlayerSkillsController.instance.AddSkill(itemList.skillsData.skills[33]);
-
-                if (Input.GetKeyDown("f"))
-                    ItemsList.instance.AddToBadReputation(5);
-
-                /*
-                if (Input.GetKeyDown("n"))
-                {
-                    if (!hub) 
-                        GutProgressionManager.instance.PlayerFinishLevel();
-                    NextLevel();   
-                }
-                */
-                
-                if (Input.GetKeyDown("m"))
-                {
-                    // milk
-                    PlayerSkillsController.instance.SwapProps();
-                }
-                
-                if (Input.GetKeyDown("t"))
-                    AllTools();   
-                
-                if (Input.GetKeyDown("x"))
-                    GiveRandomStatus();   
-                
-                if (Input.GetKeyDown("w"))
-                    AiDirector.instance.BreakClosestWall(true, 1000);   
-                
-                if (Input.GetKeyDown("r"))
-                    PlayerSkillsController.instance.InstantTeleport(PlayerMovement.instance.transform.position);
-
-                if (Input.GetKeyDown("p"))
-                    AiDirector.instance.RotatePropFromShortCut();   
-                
-                if (Input.GetKeyDown("s"))
-                    GetSkill();
-
                 if (Input.GetKeyDown("k"))
                 {
-                    print("K");
                     PlayerMovement.instance.hc.Kill();
                     /*
                     if (GLNetworkWrapper.instance && GLNetworkWrapper.instance.localPlayer != null)
                         GLNetworkWrapper.instance.localPlayer.connectedDummy.hc.Kill();*/
                 }
 
-                if (Input.GetKeyDown("b"))
-                {
-                    if (GLNetworkWrapper.instance && GLNetworkWrapper.instance.localPlayer != null)
-                    {
-                        var newEffect = new StatussEffectsOnAttack();
-                        var statusEffect = new StatusEffects();
-                        statusEffect.depletionSpeed = 1;
-                        statusEffect.effectActive = true;
-                        statusEffect.effectType = StatusEffects.StatusEffect.Bleed;
-                        statusEffect.effectValue = 100;
-
-                        var effectValues = new List<float>();
-                        effectValues.Add(100);
-                        
-                        newEffect.effects.Add(statusEffect);
-                        newEffect.effectsValues = new List<float>(effectValues);
-                        
-                        GLNetworkWrapper.instance.localPlayer.connectedDummy.hc.Damage(100, Vector3.zero, Vector3.zero, null, null, 
-                            false, null, null, newEffect, true);   
-                    }
-                    
-                    //itemList.GenerateAllWeaponsOnFloor();  
-                }
-                
-                if (Input.GetKeyDown("t"))
-                    itemList.GetRandomTool();
-
                 if (Input.GetKeyDown("c"))
                     player.invincible = !player.invincible;
                 
                 if (Input.GetKeyDown("d"))
                     StartCoroutine(KillAll());      
-                
-                if (Input.GetKeyDown("h") && hub)
-                    EndingController.instance.StartDarknessBeforeEnding();
             }
             
 
@@ -1648,12 +1579,15 @@ public class GameManager : MonoBehaviour
                 }    
             }
             
-            if (data.activeQuests != null)
-                qm.activeQuestsIndexes = new List<int>(data.activeQuests);
             if (data.completedQuests != null)
                 qm.completedQuestsIndexes = new List<int>(data.completedQuests);
+            if (data.activeQuests != null)
+                qm.activeQuestsIndexes = new List<int>(data.activeQuests);
             if (data.savedQuestItems != null)
                 itemList.savedQuestItems = new List<int>(data.savedQuestItems);
+
+            QuestManager.instance.ClearCompletedQuestsFromActive();
+            
             itemList.herPiecesApplied = data.appliedHerPieces;
             itemList.foundHerPiecesOnFloors = data.foundHerPiecesOnFloors;
             itemList.LoadInventory(data);
@@ -1802,5 +1736,12 @@ public class GameManager : MonoBehaviour
         {
             player.StartFire();
         }
+    }
+    
+    public void SaveSecretFile()
+    {
+        print("save secret file");
+    	string path = Path.Combine(Application.dataPath, "..", "secret.file");
+    	File.WriteAllText(path, "GameCompleted");
     }
 }

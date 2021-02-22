@@ -22,6 +22,7 @@ public class HubItemsSpawner : MonoBehaviour
     private HealthController ladyOnRoofSpawned_0;
     private HealthController gunnWorkingSpawned_1;
     private HealthController gunnOnBeachSpawned;
+    private HealthController motherOnBeachSpawned;
     private GameObject shoesOnBeachSpawned;
     
     public List<ChangeDialogueOnQuest> dialogueOnQuestsChangers = new List<ChangeDialogueOnQuest>();
@@ -175,6 +176,20 @@ public class HubItemsSpawner : MonoBehaviour
             }
         }
         #endregion
+
+        #region quest 5 speak to mother
+
+        if (qm.activeQuestsIndexes.Contains(5))
+        {
+            //remove shoes
+            if (motherOnBeachSpawned == null)
+            {
+                
+                motherOnBeachSpawned = Instantiate(npcSpawners[4].npcsToSpawn[0], npcSpawners[4].transform.position,
+                    npcSpawners[4].transform.rotation); 
+            }
+        }
+        #endregion
         
         UpdateLevelBlockers();
         
@@ -188,6 +203,7 @@ public class HubItemsSpawner : MonoBehaviour
     private LevelBlockerController blockersBeforeGettingShoeQuest;
     private LevelBlockerController blockersGoingToGunn;
     private LevelBlockerController blockersFindWood;
+    private LevelBlockerController blockersSpeaktoMother;
     void UpdateLevelBlockers()
     {
         qm = QuestManager.instance;
@@ -226,6 +242,15 @@ public class HubItemsSpawner : MonoBehaviour
         }
         else if (blockersFindWood)
             blockersFindWood.DestroyBlockers();
+        
+        // speak to mother
+        if (qm.activeQuestsIndexes.Contains(5))
+        {
+            if (blockersSpeaktoMother == null)
+                blockersSpeaktoMother = Instantiate(levelBlockersPrefabs[4], Vector3.zero, Quaternion.identity);
+        }
+        else if (blockersSpeaktoMother)
+            blockersSpeaktoMother.DestroyBlockers();
     }
 
     public IEnumerator RespawnPlayerAfterDeath()

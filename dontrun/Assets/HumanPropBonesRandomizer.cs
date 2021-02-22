@@ -65,7 +65,7 @@ namespace Assets
                     {
                         yield return null;
                         
-                        if (hitColliders[index].transform.IsChildOf(transform))
+                        if (hitColliders[index] == null || hitColliders[index].transform.IsChildOf(transform))
                         {
                             continue;
                         }

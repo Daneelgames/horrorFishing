@@ -87,7 +87,7 @@ public class HealthController : MonoBehaviour, IUpdatable
 
     public DynamicMapMark dynamicMapMark;
 
-    public float addSpawnCooldownOnDeath = 30;
+    public float addSpawnCooldownOnDeath = 0;
 
     [Header("Prop")]
     public DoorController door;

@@ -5,6 +5,13 @@ using UnityEngine;
 
 public class PortableObject : MonoBehaviour
 {
+    public enum QuestPortable
+    {
+        Null, GunnWood
+    }
+
+    public QuestPortable portableQuestType = QuestPortable.Null;
+
     public int noteIndex = -1;
     public bool inHands = false;
     public AudioSource au;
@@ -87,6 +94,18 @@ public class PortableObject : MonoBehaviour
                 HubItemsSpawner.instance.NewNotePickedUp(noteIndex);
             }
         }
+    }
+
+    public void UseAsQuestPortable()
+    {
+        if (WeaponControls.instance.activeWeapon)
+            WeaponControls.instance.activeWeapon.canAct = true;
+        
+        followPortableTransform = false;
+        au.Play();
+        transform.parent = null;
+        canPickUp = false;
+        InteractionController.instance.objectInHands = null;
     }
 
     IEnumerator MoveInHands()

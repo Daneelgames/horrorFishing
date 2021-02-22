@@ -79,7 +79,7 @@ public class MobDamageArea : MonoBehaviour
 
     private void Update()
     {
-        if (mobAttack == null)
+        if (mobAttack == null || mobAttack.hc.health <= 0)
             Destroy(gameObject);
         else if(!mobAttack.gameObject.activeInHierarchy)
             return;

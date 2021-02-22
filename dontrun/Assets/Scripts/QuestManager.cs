@@ -41,7 +41,7 @@ public class QuestManager : MonoBehaviour
 
     public void StartQuest(int questIndex)
     {
-        if (questIndex == -1 || activeQuestsIndexes.Contains(questIndex)) return;
+        if (questIndex == -1 || activeQuestsIndexes.Contains(questIndex) || completedQuestsIndexes.Contains(questIndex)) return;
 
         if (questIndex >= questData.quests.Count)
         {
@@ -77,5 +77,14 @@ public class QuestManager : MonoBehaviour
         
         HubItemsSpawner.instance.UpdateHub();
         gm.SaveGame();
+    }
+
+    public void ClearCompletedQuestsFromActive()
+    {
+        for (int i = activeQuestsIndexes.Count - 1; i >= 0; i--)
+        {
+            if (completedQuestsIndexes.Contains(activeQuestsIndexes[i]))
+                activeQuestsIndexes.RemoveAt(i);
+        }
     }
 }
