@@ -23,6 +23,7 @@ public class HubItemsSpawner : MonoBehaviour
     private HealthController gunnWorkingSpawned_1;
     private HealthController gunnOnBeachSpawned;
     private HealthController motherOnBeachSpawned;
+    private HealthController gunnWalkable;
     private GameObject shoesOnBeachSpawned;
     
     public List<ChangeDialogueOnQuest> dialogueOnQuestsChangers = new List<ChangeDialogueOnQuest>();
@@ -165,12 +166,13 @@ public class HubItemsSpawner : MonoBehaviour
 
         #region quest 4 find wood
 
-        if (qm.activeQuestsIndexes.Contains(4))
+        if (qm.activeQuestsIndexes.Contains(4) || (qm.completedQuestsIndexes.Contains(4) 
+                                                   && !qm.activeQuestsIndexes.Contains(5) 
+                                                   && !qm.completedQuestsIndexes.Contains(5)))
         {
             //remove shoes
             if (gunnOnBeachSpawned == null)
             {
-                
                 gunnOnBeachSpawned = Instantiate(npcSpawners[3].npcsToSpawn[0], npcSpawners[3].transform.position,
                     npcSpawners[3].transform.rotation); 
             }
@@ -179,14 +181,26 @@ public class HubItemsSpawner : MonoBehaviour
 
         #region quest 5 speak to mother
 
-        if (qm.activeQuestsIndexes.Contains(5))
+        if (qm.activeQuestsIndexes.Contains(5) || qm.activeQuestsIndexes.Contains(6))
         {
             //remove shoes
             if (motherOnBeachSpawned == null)
             {
-                
                 motherOnBeachSpawned = Instantiate(npcSpawners[4].npcsToSpawn[0], npcSpawners[4].transform.position,
                     npcSpawners[4].transform.rotation); 
+            }
+        }
+        #endregion
+        
+        #region quest 6 talk back to gunn
+
+        if (qm.activeQuestsIndexes.Contains(6) || qm.activeQuestsIndexes.Contains(7))
+        {
+            //remove shoes
+            if (gunnWalkable == null)
+            {
+                gunnWalkable = Instantiate(npcSpawners[5].npcsToSpawn[0], npcSpawners[5].transform.position,
+                    npcSpawners[5].transform.rotation); 
             }
         }
         #endregion
@@ -204,6 +218,7 @@ public class HubItemsSpawner : MonoBehaviour
     private LevelBlockerController blockersGoingToGunn;
     private LevelBlockerController blockersFindWood;
     private LevelBlockerController blockersSpeaktoMother;
+    private LevelBlockerController blockersFinal;
     void UpdateLevelBlockers()
     {
         qm = QuestManager.instance;
@@ -235,7 +250,9 @@ public class HubItemsSpawner : MonoBehaviour
             blockersGoingToGunn.DestroyBlockers();
         
         // find wood questblocker
-        if (qm.activeQuestsIndexes.Contains(4))
+        if (qm.activeQuestsIndexes.Contains(4) || (qm.completedQuestsIndexes.Contains(4) 
+                                                     && !qm.activeQuestsIndexes.Contains(5) 
+                                                     && !qm.completedQuestsIndexes.Contains(5)))
         {
             if (blockersFindWood == null)
                 blockersFindWood = Instantiate(levelBlockersPrefabs[3], Vector3.zero, Quaternion.identity);
@@ -244,13 +261,21 @@ public class HubItemsSpawner : MonoBehaviour
             blockersFindWood.DestroyBlockers();
         
         // speak to mother
-        if (qm.activeQuestsIndexes.Contains(5))
+        if (qm.activeQuestsIndexes.Contains(5) || qm.activeQuestsIndexes.Contains(6))
         {
             if (blockersSpeaktoMother == null)
                 blockersSpeaktoMother = Instantiate(levelBlockersPrefabs[4], Vector3.zero, Quaternion.identity);
         }
         else if (blockersSpeaktoMother)
             blockersSpeaktoMother.DestroyBlockers();
+        
+        if (qm.activeQuestsIndexes.Contains(7) || qm.completedQuestsIndexes.Contains(7))
+        {
+            if (blockersFinal == null)
+                blockersFinal = Instantiate(levelBlockersPrefabs[5], Vector3.zero, Quaternion.identity);
+        }
+        else if (blockersFinal)
+            blockersFinal.DestroyBlockers();
     }
 
     public IEnumerator RespawnPlayerAfterDeath()
@@ -362,6 +387,16 @@ public class HubItemsSpawner : MonoBehaviour
         {
             t += Time.deltaTime;
             cam.fieldOfView = Mathf.Lerp(startFov, 180, t / tt);
+            yield return null;
+        }
+
+        t = 0;
+        tt = 1;
+        startFov = 180;
+        while (t < tt)
+        {
+            t += Time.deltaTime;
+            cam.fieldOfView = Mathf.Lerp(startFov, MouseLook.instance.cameraFovIdle, t / tt);
             yield return null;
         }
         MouseLook.instance.SyncCameraFov();

@@ -94,6 +94,8 @@ public class HealthController : MonoBehaviour, IUpdatable
 
     [Header("NPC")]
     public NpcController npcInteractor;
+
+    public bool setNpcInteractorToZero = true;
     public WeaponPickUp weaponPickUp;
     public int startQuestOnDeath = -1;
 
@@ -120,7 +122,6 @@ public class HealthController : MonoBehaviour, IUpdatable
     string healthBool = "Health";
     ItemsList il;
     private PlayerSkillsController psc;
-    Vector3 npcInteractorOffset;
 
     public ActiveNpcController activeNpc;
     private FaceEaterBehaviour currentFaceEater;
@@ -245,7 +246,7 @@ public class HealthController : MonoBehaviour, IUpdatable
         }
         else
         {
-            if (sc && canHear && propController == null)
+            if (sc && canHear && propController == null && !inLove && !boss)
                 sc.mobsInGame.Add(this);
         }
     }
@@ -326,8 +327,8 @@ public class HealthController : MonoBehaviour, IUpdatable
             else if (peaceful)
                 peaceful = false;
         }
-        if (npcInteractor)
-            npcInteractor.transform.position = transform.position + npcInteractorOffset;
+        if (npcInteractor && setNpcInteractorToZero)
+            npcInteractor.transform.position = transform.position;
 
         if (health > 0)
         {

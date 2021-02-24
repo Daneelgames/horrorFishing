@@ -1,8 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using PlayerControls;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 using UnityEngine.SubsystemsImplementation;
+using Random = UnityEngine.Random;
 
 public class IkMonsterAnimator : MonoBehaviour
 {
@@ -14,8 +17,12 @@ public class IkMonsterAnimator : MonoBehaviour
     public Transform headBoneTarget;
     public Transform hipsBone;
 
-    [Header("Animation timings")] 
+    public float headRemovedBoneChance = 0.9f;
+    public float armsRemovedBonesChance = 0.66f;
     
+    public bool limbsAffectsSpeed = true;
+    [Header("Animation timings")] 
+    public bool randomize = true;
     public float stepDelay = 1;
     public float stepOffsetScale = 0.5f;
     public float hipsMoveHeight = 1;
@@ -32,17 +39,30 @@ public class IkMonsterAnimator : MonoBehaviour
     public List<CustomIKSolver> ikSolvers = new List<CustomIKSolver>();
 
     public float distanceFromBoneToPlayerToBeAbleToAttack = 5;
-    
-    void Awake()
-    {
-        //transform.localScale = Vector3.zero;
-    }
+
+    public bool initInStart = true;
+    private bool updateSolvers = false;
+
+    public AudioSource walkingAmbient;
     void Start()
     {
-        stepDelay += Random.Range(-stepDelay, stepDelay) / 2;
-        stepOffsetScale += Random.Range(-stepOffsetScale, stepOffsetScale) / 2;
-        hipsMoveHeight += Random.Range(-hipsMoveHeight, hipsMoveHeight) / 2;
-        
+        if (initInStart)
+        {
+            Init();
+        }
+    }
+
+    public void Init()
+    {
+        if (walkingAmbient) walkingAmbient.Play();
+        updateSolvers = true;
+        if (randomize)
+        {
+            stepDelay += Random.Range(-stepDelay, stepDelay) / 2;
+            stepOffsetScale += Random.Range(-stepOffsetScale, stepOffsetScale) / 2;
+            hipsMoveHeight += Random.Range(-hipsMoveHeight, hipsMoveHeight) / 2;
+        }
+
         InitBones();
         if (!animate)
         {
@@ -52,6 +72,17 @@ public class IkMonsterAnimator : MonoBehaviour
         
         StartCoroutine(AnimateBody());
         StartCoroutine(AnimateGroundContact());
+    }
+
+    private void LateUpdate()
+    {
+        if (updateSolvers)
+        {
+            for (int i = 0; i < ikSolvers.Count; i++)
+            {
+                ikSolvers[i].UpdateSolver();
+            }
+        }
     }
 
     private float limbsSpeedModifier = 1;
@@ -235,11 +266,14 @@ public class IkMonsterAnimator : MonoBehaviour
 
         for (int i = 0; i < removedGroundContactBones.Count; i++)
         {
-            if (Vector3.Distance(PlayerMovement.instance.transform.position, removedGroundContactBones[i].transform.position) <= distanceFromBoneToPlayerToBeAbleToAttack)
-                tempNewEndForBone = PlayerMovement.instance.transform.position + new Vector3(Random.Range(-hipsMoveHeight,hipsMoveHeight), Random.Range(hipsMoveHeight / 5,hipsMoveHeight * 5), Random.Range(-hipsMoveHeight,hipsMoveHeight));
+            if (!hc.inLove &&
+                Vector3.Distance(PlayerMovement.instance.transform.position,removedGroundContactBones[i].transform.position) <= distanceFromBoneToPlayerToBeAbleToAttack)
+            {
+                // ATTACK
+                tempNewEndForBone = PlayerMovement.instance.transform.position + new Vector3(Random.Range(-hipsMoveHeight,hipsMoveHeight), Random.Range(hipsMoveHeight / 5,hipsMoveHeight * 5), Random.Range(-hipsMoveHeight,hipsMoveHeight));   
+            }
             else
                 tempNewEndForBone = transform.position + new Vector3(Random.Range(-hipsMoveHeight,hipsMoveHeight), Random.Range(hipsMoveHeight / 5,hipsMoveHeight * 5), Random.Range(-hipsMoveHeight,hipsMoveHeight));
-            //tempNewEndForBone = transform.position + new Vector3(Random.Range(-hipsMoveHeight,hipsMoveHeight), Random.Range(hipsMoveHeight / 5,hipsMoveHeight * 5), Random.Range(-hipsMoveHeight,hipsMoveHeight));
             
             boneMoveCoroutines.Add(StartCoroutine(MoveBoneToPos(removedGroundContactBones[i], removedGroundContactBones[i].transform.position,
                 tempNewEndForBone + upDownDirection * hipsMoveHeight + sideOffset)));
@@ -297,28 +331,12 @@ public class IkMonsterAnimator : MonoBehaviour
     [ContextMenu("RandomizeAngles")]
     void InitBones()
     {
-        /*
-        if (Random.value > 0.5f)
-        {
-            int removeContactsAmount = Random.Range(1, groundContactBones.Count - 1);
-            for (int i = removeContactsAmount; i >= 0; i--)
-            {
-                if (groundContactBones.Count <= 1)
-                    break;
-                
-                int removedContactIndex = Random.Range(0, groundContactBones.Count);
-                removedGroundContactBones.Add(groundContactBones[removedContactIndex]);
-                groundContactBones.RemoveAt(removedContactIndex);
-            }
-        }
-        */
-        
         if (!removedGroundContactBones.Contains(hipsBone))
             removedGroundContactBones.Add(hipsBone);
 
         if (headBoneTarget)
         {
-            if (Random.value > 0.9f && !groundContactBones.Contains(headBoneTarget))
+            if (Random.value > headRemovedBoneChance && !groundContactBones.Contains(headBoneTarget))
                 groundContactBones.Add(headBoneTarget);
             else if (!removedGroundContactBones.Contains(headBoneTarget))
                 removedGroundContactBones.Add(headBoneTarget);   
@@ -326,7 +344,7 @@ public class IkMonsterAnimator : MonoBehaviour
             
         for (int i = 0; i < armsBonesTargets.Count; i++)
         {
-            if (Random.value > 0.66f && !groundContactBones.Contains(armsBonesTargets[i]))
+            if (Random.value > armsRemovedBonesChance && !groundContactBones.Contains(armsBonesTargets[i]))
                 groundContactBones.Add(armsBonesTargets[i]);
             else if (!removedGroundContactBones.Contains(armsBonesTargets[i]))
                 removedGroundContactBones.Add(armsBonesTargets[i]);
@@ -339,7 +357,8 @@ public class IkMonsterAnimator : MonoBehaviour
                 removedGroundContactBones.Remove(groundContactBones[i]);
         }
 
-        limbsSpeedModifier = Mathf.Clamp(groundContactBones.Count * 0.25f, 0.1f, 1f);
+        if (limbsAffectsSpeed)
+            limbsSpeedModifier = Mathf.Clamp(groundContactBones.Count * 0.25f, 0.1f, 1f);
     }
 
     void OnDestroy()

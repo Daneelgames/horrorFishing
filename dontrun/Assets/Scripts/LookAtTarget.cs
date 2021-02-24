@@ -11,11 +11,25 @@ public class LookAtTarget : MonoBehaviour
     public float lookTime = 1;
     public float lookDistance = 25;
     public float lookStep = 1;
+    public bool offset180 = false;
+    public Transform childToSetEuler;
+    public Vector3 childNewEuler;
  
-    void Start()
+    void Awake()
     {
+        StopAllCoroutines();
+        
         if (lookAtPlayer)
-            target = PlayerMovement.instance.cameraAnimator.transform; 
+            target = PlayerMovement.instance.cameraAnimator.transform;
+
+        if (childToSetEuler)
+        {
+            transform.localRotation = Quaternion.identity;
+            var newQuaternion = childToSetEuler.localRotation;
+            newQuaternion.eulerAngles = childNewEuler;
+            childToSetEuler.localRotation = newQuaternion;
+        }
+
         StartCoroutine(Look());
     }
 
@@ -44,7 +58,10 @@ public class LookAtTarget : MonoBehaviour
         t = 0;
         tt = lookTime;
         startQuaternion = transform.rotation;
-        endQuaternion.SetLookRotation(transform.position - playerPos, Vector3.up);
+        if (offset180)
+            endQuaternion.SetLookRotation(playerPos - transform.position, Vector3.up);
+        else
+            endQuaternion.SetLookRotation(transform.position - playerPos, Vector3.up);
         //endQuaternion.eulerAngles = new Vector3(0, endQuaternion.eulerAngles.y, 0);
         while (t < tt)
         {

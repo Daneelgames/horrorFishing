@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
+using Random = UnityEngine.Random;
 
 namespace Assets
 {
@@ -32,8 +35,16 @@ namespace Assets
 
         public AudioSource changePoseAudioSource;
         public AudioClip changePoseAudioClip;
-        IEnumerator Start()
+        
+        private bool updateSolvers = false;
+        void Start()
         {
+            StartCoroutine(Init());
+        }
+
+        public IEnumerator Init()
+        {
+            updateSolvers = true;
             hipsLocalPosition = hipsBone.localPosition;
             
             RandomizeBones();
@@ -46,7 +57,18 @@ namespace Assets
             }
             yield return new WaitForSeconds(1f);
             if (simulateGravity)
-                StartCoroutine(SimulateGravity());
+                StartCoroutine(SimulateGravity());   
+        }
+
+        private void LateUpdate()
+        {
+            if (updateSolvers)
+            {
+                for (int i = 0; i < IkSolvers.Count; i++)
+                {
+                    IkSolvers[i].UpdateSolver();
+                }
+            }
         }
 
         private Collider[] hitColliders;
@@ -291,7 +313,7 @@ namespace Assets
             //choose Ik target to pose here
             var randomIkSolver = IkSolvers[Random.Range(1, IkSolvers.Count)];
             randomIkSolver.canAnimate = true;
-            yield return StartCoroutine(MoveBoneToPoint(randomIkSolver.Target.transform, randomIkSolver.Target.transform.position, newPos, Random.Range(5f, 10f)));
+            yield return StartCoroutine(MoveBoneToPoint(randomIkSolver.Target.transform, randomIkSolver.Target.transform.position, newPos, Random.Range(1f, 5f)));
             randomIkSolver.canAnimate = false;
         }
 

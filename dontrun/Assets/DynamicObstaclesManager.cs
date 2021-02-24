@@ -106,7 +106,7 @@ public class DynamicObstaclesManager : MonoBehaviour
             {
                 if (Vector3.Distance(spawnedDyk.transform.position, pm.transform.position) > 15f)
                 {
-                    DestroyGameObjectAnimated(spawnedDyk.gameObject, spawnedDyk.transform.position + Vector3.up * 100f, 5f);
+                    StartCoroutine(DestroyGameObjectAnimated(spawnedDyk.gameObject, spawnedDyk.transform.position + Vector3.up * 100f, 5f));
                     spawnedDyk = null;
                 }
             }
@@ -130,6 +130,7 @@ public class DynamicObstaclesManager : MonoBehaviour
     public void SetNewDykToSpawned(GameObject newdyk)
     {
         print("set new dyk");
+        
         spawnedDyk = newdyk;
     }
 

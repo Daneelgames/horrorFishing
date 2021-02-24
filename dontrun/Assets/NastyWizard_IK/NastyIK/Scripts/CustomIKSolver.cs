@@ -39,7 +39,7 @@ public class CustomIKSolver : MonoBehaviour {
         animate = a;
     }
 
-    private void LateUpdate()
+    public void UpdateSolver()
     {
         if (!animate)
             return;

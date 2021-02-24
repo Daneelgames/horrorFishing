@@ -61,9 +61,11 @@ public class NpcController : MonoBehaviour
     private GameManager gm;
     bool choosing = false;
     public bool keySold = false;
+    public bool setInactiveOnAction = false;
 
     private float inLoveScaler = 1;
     public GameObject gameObjectActivateOnAgree;
+    public IkMonsterAnimator toInitOnDialogueAction; 
 
     public Interactable mementoPrefab;
     public Interactable interactableToInteractOnDialogueAction;
@@ -751,17 +753,17 @@ public class NpcController : MonoBehaviour
 
                     choosing = true;
                     if (gm.language == 0)
-                        newPhrase = Translator.TranslateText("Ladyshoe wants to join the party");
+                        newPhrase = Translator.TranslateText(hc.names[0] + " wants to join the party");
                     else if (gm.language == 1)
-                        newPhrase = Translator.TranslateText("Туфелька хочет вступить в пати");
+                        newPhrase = Translator.TranslateText(hc.names[0] + " wants to join the party");
                     else if (gm.language == 2)
-                        newPhrase = Translator.TranslateText("Ladyshoe wants to join the party");
+                        newPhrase = Translator.TranslateText(hc.names[0] + " wants to join the party");
                     else if (gm.language == 3)
-                        newPhrase = Translator.TranslateText("Ladyshoe wants to join the party");
+                        newPhrase = Translator.TranslateText(hc.names[0] + " wants to join the party");
                     else if (gm.language == 4)
-                        newPhrase = Translator.TranslateText("Ladyshoe wants to join the party");
+                        newPhrase = Translator.TranslateText(hc.names[0] + " wants to join the party");
                     else if (gm.language == 5)
-                        newPhrase = Translator.TranslateText("Ladyshoe wants to join the party");
+                        newPhrase = Translator.TranslateText(hc.names[0] + " wants to join the party");
                     foreach (char c in newPhrase)
                     {
                         ui.dialogueChoice.text += c;
@@ -2826,21 +2828,22 @@ public class NpcController : MonoBehaviour
                     ///////
                     
                     if(gm.language == 0)
-                        newPhraseChoice = Translator.TranslateText("Ladyshoe joined party!");
+                        newPhraseChoice = Translator.TranslateText(hc.names[0] + " joined the party!");
                     else if (gm.language == 1)
-                        newPhraseChoice = Translator.TranslateText("Туфелька присоединилась к пати!");
+                        newPhraseChoice = Translator.TranslateText(hc.names[0] + " joined the party!");
                     else if (gm.language == 2)
-                        newPhraseChoice = Translator.TranslateText("Ladyshoe joined party!");
+                        newPhraseChoice = Translator.TranslateText(hc.names[0] + " joined the party!");
                     else if (gm.language == 3)
-                        newPhraseChoice = Translator.TranslateText("Ladyshoe joined party!");
+                        newPhraseChoice = Translator.TranslateText(hc.names[0] + " joined the party!");
                     else if (gm.language == 4)
-                        newPhraseChoice = Translator.TranslateText("Ladyshoe joined party!");
+                        newPhraseChoice = Translator.TranslateText(hc.names[0] + " joined the party!");
                     else if (gm.language == 5)
-                        newPhraseChoice = Translator.TranslateText("Ladyshoe joined party!");
-                    
+                        newPhraseChoice = Translator.TranslateText(hc.names[0] + " joined the party!");
+
+                    if (toInitOnDialogueAction)
+                        toInitOnDialogueAction.Init();
                     hc.mobPartsController.agent.enabled = true;
                     hc.inLove = true;
-                    QuestManager.instance.CompleteQuest(1);
                     break;
                 
                 
@@ -3427,6 +3430,9 @@ public class NpcController : MonoBehaviour
 
             if (gameObject.activeInHierarchy)
                 hideText = StartCoroutine(HideText());
+            
+            if (setInactiveOnAction)
+                gameObject.SetActive(false);
         }
     }
 

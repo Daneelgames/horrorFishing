@@ -84,21 +84,6 @@ public class Interactable : MonoBehaviour,
         else
             nameGui.text = itemNames[0];
         
-        /*
-        if (pickUp && pickUp.resourceType == ItemsList.ResourceType.Skill && gm.itemList.savedSkills.Count > 0 &&
-            gm.itemList.savedSkills.Count >= gm.itemList.skillsData.skills.Count)
-        {
-            if (GLNetworkWrapper.instance && GLNetworkWrapper.instance.coopIsActive)
-            {
-                print(il.interactables.IndexOf(this));
-                GLNetworkWrapper.instance.DestroyInteractable(ItemsList.instance.interactables.IndexOf(this));
-                gameObject.SetActive(false);
-            }
-            else
-                Destroy(gameObject);   
-        }
-        */
-
         if (mapMarker)
             mapMarker.transform.parent = null;
         if (mapMarkerCross)

@@ -95,6 +95,7 @@ public class MobGroundMovement : MonoBehaviour, IUpdatable
         path = new NavMeshPath();
         hc = GetComponent<HealthController>();
 
+        if (hc.inLove) target = PlayerMovement.instance.hc;
 
         if (authorathive)
         {
@@ -244,39 +245,11 @@ public class MobGroundMovement : MonoBehaviour, IUpdatable
                 followPlayer = StartCoroutine(FollowPlayer());
                 hideCoroutine = StartCoroutine(CheckHide());  
                 
-                /*
-                if (GLNetworkWrapper.instance && GLNetworkWrapper.instance.coopIsActive)
-                {
-                    if (LevelGenerator.instance.levelgenOnHost)
-                    {
-                        // HOST
-                    }
-                }
-                else
-                {
-                    // SOLO
-                    followPlayer = StartCoroutine(FollowPlayer());
-                    hideCoroutine = StartCoroutine(CheckHide());    
-                } */
             }
-            else
+            else if (!hc.inLove)
             {
                 Hide(false);
                 
-                /*
-                if (GLNetworkWrapper.instance && GLNetworkWrapper.instance.coopIsActive)
-                {
-                    if (LevelGenerator.instance.levelgenOnHost)
-                    {
-                        // HOST
-                        Hide(false);
-                    }
-                }
-                else
-                {
-                    // SOLO
-                    Hide(false);
-                } */
             }
         }
     }
@@ -289,10 +262,7 @@ public class MobGroundMovement : MonoBehaviour, IUpdatable
         {
             if (!hc.inLove)
             {
-                if (GLNetworkWrapper.instance && GLNetworkWrapper.instance.coopIsActive)
-                {
-                    target = GLNetworkWrapper.instance.GetClosestPlayer(transform.position);
-                }
+                target = PlayerMovement.instance.hc;
                 
                 if (monsterState == State.Idle)
                 {
@@ -493,9 +463,12 @@ public class MobGroundMovement : MonoBehaviour, IUpdatable
                         }
                         target = targetTemp;
                     }
-                    
-                    agent.SetDestination(target.transform.position);
-                    //agent.SetDestination(gm.player.transform.position);   
+
+                    lastKnownPlayerPosition = target.transform.position;
+                    if (NavMesh.SamplePosition(lastKnownPlayerPosition, out var hit, 30.0f, NavMesh.AllAreas))
+                    {
+                        agent.SetDestination(hit.position);
+                    }   
                 }
                 
                 yield return new WaitForSeconds(1);
