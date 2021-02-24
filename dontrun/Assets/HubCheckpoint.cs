@@ -22,6 +22,5 @@ public class HubCheckpoint : MonoBehaviour
         {
             PlayerCheckpointsController.instance.SetActiveCheckpoint(this);
         }
-            
     }
 }

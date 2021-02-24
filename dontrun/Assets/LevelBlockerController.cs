@@ -13,30 +13,6 @@ public class LevelBlockerController : MonoBehaviour
 
     public GameObject eyePrefab;
 
-    /*
-    [ContextMenu("SpawnEye")]
-    public void SpawnEye()
-    {
-        foreach (var b in blockers)
-        {
-            var newObject = PrefabUtility.InstantiatePrefab(eyePrefab);
-            var newPrefab = newObject as GameObject;
-            newPrefab.transform.position = b.transform.position;
-            newPrefab.transform.rotation = b.transform.rotation;
-            newPrefab.transform.parent = b.transform;
-            newPrefab.transform.localScale = Vector3.one;
-            newPrefab.transform.parent = transform;
-        }
-    }
-    [ContextMenu("RotateEyesRandomly")]
-    public void RotateEyesRandomly()
-    {
-        for (var index = 0; index < blockers.Count; index++)
-        {
-            blockers[index].transform.GetChild(0).Rotate(Random.Range(0f,360f),Random.Range(0f,360f),Random.Range(0f,360f));
-        }
-    }*/
-    
     void Awake()
     {
         var sc = SpawnController.instance;
@@ -46,23 +22,29 @@ public class LevelBlockerController : MonoBehaviour
             if (!sc.spawners.Contains(spawners[i]))
                 sc.spawners.Add(spawners[i]);
         }
+        
+        for (int i = 0; i < blockers.Count; i++)
+        {
+            StartCoroutine(AnimateBlocker(i, Random.Range(1,5), false));
+        }
     }
     
     public void DestroyBlockers()
     {
         for (int i = 0; i < blockers.Count; i++)
         {
-            StartCoroutine(DestroyBlocker(i));
+            StartCoroutine(AnimateBlocker(i, Random.Range(1,5), true));
         }
         StartCoroutine(WaitUntilBlockersDestroyed());
     }
 
-    IEnumerator DestroyBlocker(int i)
+    
+    
+    IEnumerator AnimateBlocker(int i, float tt, bool destroy)
     {
         var blocker = blockers[i];
         
         float t = 0;
-        float tt = Random.Range(1f,5f);
         
         yield return new WaitForSeconds(tt);
         
@@ -81,6 +63,8 @@ public class LevelBlockerController : MonoBehaviour
             yield return null;
         }
 
+        if (!destroy) yield break;
+        
         Instantiate(deathParticle, blocker.transform.position, quaternion.identity);
         Destroy(blocker);
     }
@@ -111,4 +95,31 @@ public class LevelBlockerController : MonoBehaviour
         HubItemsSpawner.instance.RespawnItems();
         Destroy(gameObject);
     }
+    
+    
+    /*
+    [ContextMenu("SpawnEye")]
+    public void SpawnEye()
+    {
+        foreach (var b in blockers)
+        {
+            var newObject = PrefabUtility.InstantiatePrefab(eyePrefab);
+            var newPrefab = newObject as GameObject;
+            newPrefab.transform.position = b.transform.position;
+            newPrefab.transform.rotation = b.transform.rotation;
+            newPrefab.transform.parent = b.transform;
+            newPrefab.transform.localScale = Vector3.one;
+            newPrefab.transform.parent = transform;
+        }
+    }
+    [ContextMenu("RotateEyesRandomly")]
+    public void RotateEyesRandomly()
+    {
+        for (var index = 0; index < blockers.Count; index++)
+        {
+            blockers[index].transform.GetChild(0).localRotation = Quaternion.identity;
+            blockers[index].transform.GetChild(0).GetChild(0).localRotation = Quaternion.identity;
+        }
+    }*/
+
 }

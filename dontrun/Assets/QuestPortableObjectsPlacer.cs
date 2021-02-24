@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using PlayerControls;
@@ -11,10 +12,24 @@ public class QuestPortableObjectsPlacer : MonoBehaviour
     public int amount = 3;
     public int questToComplete = -1;
     public PortableObject.QuestPortable questPortableType = PortableObject.QuestPortable.GunnWood;
+    public GameObject completedVisual;
+
+    private IEnumerator Start()
+    {
+        while (true)
+        {
+            if (QuestManager.instance.completedQuestsIndexes.Contains(questToComplete))
+            {
+                 completedVisual.SetActive(true);
+                yield break;
+            }
+            yield return new WaitForSeconds(0.1f);
+        }
+    }
 
     void OnTriggerEnter(Collider coll)
     {
-        if (coll.gameObject == PlayerMovement.instance.gameObject)
+        if (QuestManager.instance.completedQuestsIndexes.Contains(questToComplete) == false && coll.gameObject == PlayerMovement.instance.gameObject)
         {
             var objInHands = InteractionController.instance.objectInHands;
             if (objInHands && objInHands.portableQuestType == questPortableType)
@@ -50,6 +65,7 @@ public class QuestPortableObjectsPlacer : MonoBehaviour
         if (amount <= 0)
         {
             QuestManager.instance.CompleteQuest(questToComplete);
+            completedVisual.SetActive(true);
         }
     }
 }

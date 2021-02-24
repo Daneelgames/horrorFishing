@@ -133,7 +133,7 @@ public class MobGroundMovement : MonoBehaviour, IUpdatable
         }
 
         
-        StartCoroutine(OpenDoors());   
+        StartCoroutine(SearchLoop());   
         
         mobAu.IdleAmbient();
     }
@@ -254,7 +254,7 @@ public class MobGroundMovement : MonoBehaviour, IUpdatable
         }
     }
 
-    IEnumerator OpenDoors() // and search for player
+    IEnumerator SearchLoop() // and search for player
     {
         RaycastHit searchHit;
         
@@ -283,38 +283,17 @@ public class MobGroundMovement : MonoBehaviour, IUpdatable
                 {
                     if (sightDistanceCurrent > 0 && Physics.Raycast(raycastOrigin.position, (target.transform.position + Vector3.up) - raycastOrigin.position, out searchHit, sightDistanceCurrent, searchLayerMask))
                     {
-                        //print(gameObject.name + " hit " + searchHit.collider.gameObject.name + " while was checking for " + target.gameObject.name);
-                        if (searchHit.collider.gameObject.layer == 18) // hit door
-                        {
-                            if (Vector3.Distance(transform.position, searchHit.collider.gameObject.transform.position) < 10)
-                            {
-                                DoorController newDoor = searchHit.collider.gameObject.GetComponent<DoorController>();
-                                if (newDoor != null)
-                                {
-                                    if (!newDoor.open)
-                                    {
-                                        newDoor.OpenDoor(transform.position);   
-                                    }
-                                }
-                            }
-                        }
-                        //else if (searchHit.collider.gameObject == gm.player.gameObject)
-                        else if (searchHit.collider.gameObject.layer == 9 || searchHit.collider.gameObject.layer == 11)
+                        if (searchHit.collider.gameObject.layer == 9 || searchHit.collider.gameObject.layer == 11)
                         {
                             bool foundPlayer = false;
                             
                             // hit either player or other unit
                             if (searchHit.collider.gameObject.layer == 11)
                             {
-                                /*
-                                HealthController newHc = searchHit.collider.gameObject.GetComponent<HealthController>();
-                                if (newHc && newHc.player)
-                                    foundPlayer = true;*/
-                                
                                 MobBodyPart foundPart = searchHit.collider.gameObject.GetComponent<MobBodyPart>();
                             
                                 if (foundPart && foundPart.hc && foundPart.hc.player)
-                                    foundPlayer = true;
+                                    foundPlayer = true;  
                             }
                             else
                             {
@@ -325,36 +304,12 @@ public class MobGroundMovement : MonoBehaviour, IUpdatable
                             {
                                 if (followPlayer == null)
                                 {
-                                    if (GLNetworkWrapper.instance && GLNetworkWrapper.instance.coopIsActive)
-                                    {
-                                        if (LevelGenerator.instance.levelgenOnHost)
-                                        {
-                                            // HOST
-                                            followPlayer = StartCoroutine(FollowPlayer());  
-                                        }
-                                    }
-                                    else
-                                    {
-                                        // SOLO
-                                        followPlayer = StartCoroutine(FollowPlayer());    
-                                    } 
+                                    followPlayer = StartCoroutine(FollowPlayer());   
                                 }
 
                                 if (hideCoroutine == null)
                                 {
-                                    if (GLNetworkWrapper.instance && GLNetworkWrapper.instance.coopIsActive)
-                                    {
-                                        if (LevelGenerator.instance.levelgenOnHost)
-                                        {
-                                            // HOST
-                                            hideCoroutine = StartCoroutine(CheckHide());
-                                        }
-                                    }
-                                    else
-                                    {
-                                        // SOLO
-                                        hideCoroutine = StartCoroutine(CheckHide());
-                                    } 
+                                    hideCoroutine = StartCoroutine(CheckHide());
                                 }   
                             }
                         }
@@ -366,8 +321,6 @@ public class MobGroundMovement : MonoBehaviour, IUpdatable
                         {
                             if (!gm.player.playerMovement.crouching)
                                 sightDistanceCurrent += levels[GetLevel()].sightDistanceGrowRate;
-                            else
-                                sightDistanceCurrent += levels[GetLevel()].sightDistanceGrowRate * 0.33f;
                         }
                     }
                     else
@@ -389,13 +342,11 @@ public class MobGroundMovement : MonoBehaviour, IUpdatable
                 if (!hc.npcInteractor || !hc.npcInteractor.gameObject.activeInHierarchy)
                 {
                     var newTarget = gm.player;
-                    if (GLNetworkWrapper.instance && GLNetworkWrapper.instance.coopIsActive)
-                        newTarget = GLNetworkWrapper.instance.GetClosestPlayer(transform.position);
                     
                     //float newDist = Vector3.Distance(transform.position, gm.player.transform.position);
                     float newDist = Vector3.Distance(transform.position, newTarget.transform.position);
 
-                    if (newDist < 50)
+                    if (newDist < levels[GetLevel()].sightDistanceIdleMaximum)
                     {
                         if (hc.inLove)
                         {
@@ -523,56 +474,45 @@ public class MobGroundMovement : MonoBehaviour, IUpdatable
         }
         else
         {
-            var newTarget = gm.player;
-            if (GLNetworkWrapper.instance && GLNetworkWrapper.instance.coopIsActive)
-                newTarget = GLNetworkWrapper.instance.GetClosestPlayer(transform.position);
-                            
-            target = newTarget;
+            target = gm.player;
         }
 
         monsterState = State.Chase;
         mobAu.ChaseAmbient();
         mobAu.Damage();
 
-        if (authorathive)
-        {
-            agent.Warp(transform.position);
-            if (agent.enabled)
-                agent.isStopped = false;   
-        }
+        agent.Warp(transform.position);
+        if (agent.enabled)
+            agent.isStopped = false;   
         
         if (projectileShooter)
             projectileShooter.ToggleDangerous(true);
 
         while (hc.health > 0 && monsterState == State.Chase)
         {
-            if (authorathive)
+            if (target && agent.enabled)
             {
-                if (target && agent.enabled)
+                targetSpeed = levels[GetLevel()].chaseSpeed * coldModifier * limbsModifier;
+                lastKnownPlayerPosition = target.transform.position;
+                
+                NavMeshHit hit;
+                if (NavMesh.SamplePosition(lastKnownPlayerPosition, out hit, 30.0f, NavMesh.AllAreas))
                 {
-                    targetSpeed = levels[GetLevel()].chaseSpeed * coldModifier * limbsModifier;
-                    lastKnownPlayerPosition = target.transform.position;
-                    //lastKnownPlayerPosition.y = 0;
-                    
-                    NavMeshHit hit;
-                    if (NavMesh.SamplePosition(lastKnownPlayerPosition, out hit, 30.0f, NavMesh.AllAreas))
-                    {
-                        lastKnownPlayerPosition = hit.position;
-                    }   
-                    
-                    agent.Warp(transform.position);
-                    path = new NavMeshPath();
-                    agent.CalculatePath(lastKnownPlayerPosition, path);
-                    agent.SetPath(path);
-                }                        
-                if (mobParts.simpleWalker == false || mobParts.simpleWalkerString != chaseString)
-                    mobParts.anim.SetBool(chaseString, true);
+                    lastKnownPlayerPosition = hit.position;
+                }   
                 
-                if (mobParts.ikMonsterAnimator)
-                    mobParts.ikMonsterAnimator.SetAnimate(true);
-                
-                mobParts.anim.SetBool(peacefulString, false);   
-            }
+                agent.Warp(transform.position);
+                path = new NavMeshPath();
+                agent.CalculatePath(lastKnownPlayerPosition, path);
+                agent.SetPath(path);
+            }                        
+            if (mobParts.simpleWalker == false || mobParts.simpleWalkerString != chaseString)
+                mobParts.anim.SetBool(chaseString, true);
+            
+            if (mobParts.ikMonsterAnimator)
+                mobParts.ikMonsterAnimator.SetAnimate(true);
+            
+            mobParts.anim.SetBool(peacefulString, false);   
             
             yield return new WaitForSeconds(1f);
         }

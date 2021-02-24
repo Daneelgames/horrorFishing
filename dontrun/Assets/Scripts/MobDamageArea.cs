@@ -86,6 +86,7 @@ public class MobDamageArea : MonoBehaviour
         
         if (customTransformToFollow != null)
         {
+            transform.localScale = Vector3.one;
             transform.position = customTransformToFollow.position;
             transform.rotation = customTransformToFollow.rotation;
         }
@@ -93,8 +94,8 @@ public class MobDamageArea : MonoBehaviour
         {
             transform.position = mobAttack.transform.position;
             newRot = mobAttack.transform.rotation;
+            transform.localScale = Vector3.one;
             newRot.eulerAngles = new Vector3(0, mobAttack.transform.rotation.eulerAngles.y, 0);
-            //transform.rotation = mobAttack.transform.rotation;
             transform.rotation = newRot;   
         }
     }
@@ -109,21 +110,6 @@ public class MobDamageArea : MonoBehaviour
 
         switch (other.gameObject.layer)
         {
-            // if hitting door
-            case 18:
-            {
-                if (Vector3.Distance(transform.position, other.gameObject.transform.position) <= distanceToBreakDoor)
-                {
-                    if (other != null)
-                    {
-                        DoorController door = other.gameObject.GetComponent<DoorController>();
-                        if (door)
-                            door.DoorDestroyed();   
-                    }
-                }
-
-                break;
-            }
             // if hitting other monster (not his part)
             case 11 when mobAttack && other.gameObject != mobAttack.gameObject:
             {
@@ -145,25 +131,10 @@ public class MobDamageArea : MonoBehaviour
                     {
                         if (dangerous)
                         {
+                            mobAttack.mobParts.Damaged(PlayerMovement.instance.transform.position,PlayerMovement.instance.transform.position);
                             mobAttack.StopAttackAnimation();
-                            if (mobAttack.hc.statusEffects[3].effectActive)// rust
-                                hc.Damage(mobAttack.levels[Mathf.Clamp(mobAttack.mobParts.level, 0, mobAttack.levels.Count-1)].damage / 2, bloodSpawnPosition, transform.position + Vector3.up, null, mobAttack.hc.playerDamagedMessage[gm.language], false, mobAttack.hc.names[gm.language], mobAttack.hc, mobAttack.effectsOnAttack, false);
-                            else
-                                hc.Damage(mobAttack.levels[Mathf.Clamp(mobAttack.mobParts.level, 0, mobAttack.levels.Count-1)].damage, bloodSpawnPosition, transform.position + Vector3.up, null, mobAttack.hc.playerDamagedMessage[gm.language], false, mobAttack.hc.names[gm.language], mobAttack.hc, mobAttack.effectsOnAttack, false);
-
-                            if (mobAttack.thiefBehaviour)
-                            {
-                                if (hc.player)
-                                {
-                                    ItemsList.instance.SomethingStolen();
-                                }
-
-                                var wc = WeaponControls.instance;
-                                
-                                if (wc && wc.activeWeapon == null && wc.secondWeapon == null && mobAttack.mobCharacterControllerMovement)
-                                    mobAttack.mobCharacterControllerMovement.RunAway(15);
-                                
-                            }
+                            
+                            hc.Damage(mobAttack.levels[Mathf.Clamp(mobAttack.mobParts.level, 0, mobAttack.levels.Count-1)].damage, bloodSpawnPosition, transform.position + Vector3.up, null, mobAttack.hc.playerDamagedMessage[gm.language], false, mobAttack.hc.names[gm.language], mobAttack.hc, mobAttack.effectsOnAttack, false);
                             
                             ToggleDangerous(false);
                             atackCoroutine = null;
@@ -183,14 +154,8 @@ public class MobDamageArea : MonoBehaviour
                     {
                         if (mobAttack.levels[Mathf.Clamp(mobAttack.mobParts.level, 0, mobAttack.levels.Count-1)].attackCooldown <= 0)
                         {
-                            if (mobAttack.hc.mobJumperMovement)
-                                mobAttack.hc.mobJumperMovement.Damaged(mobAttack.hc);
-                    
-                            
-                            if (mobAttack.hc.statusEffects[3].effectActive)// rust
-                                hc.Damage(mobAttack.levels[Mathf.Clamp(mobAttack.mobParts.level, 0, mobAttack.levels.Count-1)].damage / 2, bloodSpawnPosition, transform.position + Vector3.up, null, mobAttack.hc.playerDamagedMessage[gm.language], false, mobAttack.hc.names[gm.language], mobAttack.hc, mobAttack.effectsOnAttack, false);
-                            else
-                                hc.Damage(mobAttack.levels[Mathf.Clamp(mobAttack.mobParts.level, 0, mobAttack.levels.Count-1)].damage, bloodSpawnPosition, transform.position + Vector3.up, null, mobAttack.hc.playerDamagedMessage[gm.language], false, mobAttack.hc.names[gm.language], mobAttack.hc, mobAttack.effectsOnAttack, false);
+                            mobAttack.mobParts.Damaged(PlayerMovement.instance.transform.position,PlayerMovement.instance.transform.position);
+                            hc.Damage(mobAttack.levels[Mathf.Clamp(mobAttack.mobParts.level, 0, mobAttack.levels.Count-1)].damage, bloodSpawnPosition, transform.position + Vector3.up, null, mobAttack.hc.playerDamagedMessage[gm.language], false, mobAttack.hc.names[gm.language], mobAttack.hc, mobAttack.effectsOnAttack, false);
                         }
                     }   
                 }

@@ -33,6 +33,9 @@ public class MobAudioManager : MonoBehaviour
     
     public void Step()
     {
+        if (steps.Count == 0)
+            return;
+            
         // from anim,dont sync
         steps[prevStep].pitch = Random.Range(0.75f, 1.25f);
         steps[prevStep].Play();

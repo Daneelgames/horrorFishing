@@ -24,6 +24,7 @@ public class HubItemsSpawner : MonoBehaviour
     private HealthController gunnOnBeachSpawned;
     private HealthController motherOnBeachSpawned;
     private HealthController gunnWalkable;
+    private HealthController headDragonSpawned;
     private GameObject shoesOnBeachSpawned;
     
     public List<ChangeDialogueOnQuest> dialogueOnQuestsChangers = new List<ChangeDialogueOnQuest>();
@@ -87,6 +88,12 @@ public class HubItemsSpawner : MonoBehaviour
         {
             worldHolderSpawned = Instantiate(npcSpawners[0].npcsToSpawn[0], npcSpawners[0].transform.position,
                 npcSpawners[0].transform.rotation);
+        }
+
+        if (headDragonSpawned == null)
+        {
+            headDragonSpawned = Instantiate(npcSpawners[6].npcsToSpawn[0], npcSpawners[6].transform.position,
+                npcSpawners[6].transform.rotation);
         }
         // spawn lady
         if (ladyOnRoofSpawned_0 == null)

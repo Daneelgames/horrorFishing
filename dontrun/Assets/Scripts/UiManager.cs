@@ -427,35 +427,15 @@ public class UiManager : MonoBehaviour
     
     IEnumerator InitKeysSettings()
     {
-        /*
-        foreach (var s in settingWindowsToScale)
-        {
-            s.transform.localScale = Vector3.zero;   
-        }*/
         Settings();
-        GameManager.instance.menuController.settingsWindow.transform.localScale = Vector3.zero;
-        GameManager.instance.menuController.settingsWindow.SetActive(true);
+        var settingsWindow = GameManager.instance.menuController.settingsWindow; 
+        settingsWindow.transform.localScale = Vector3.zero;
+        settingsWindow.SetActive(true);
         yield return null;
-        GameManager.instance.menuController.settingsWindow.SetActive(false);
-        GameManager.instance.menuController.settingsWindow.transform.localScale = Vector3.one;
+        settingsWindow.SetActive(false);
+        settingsWindow.transform.localScale = Vector3.one;
         CloseSettings();
-        
-        /*
-        foreach (var s in settingWindowsToScale)
-        {
-            s.transform.localScale = Vector3.one;   
-        }
-        */
         UpdateWeaponSwitchButtonText();
-        
-        /*
-        SetBloom(1);
-        SetDithering(1);
-        SetPixels(1);
-        SetDoubleVision(1);
-        //SetEdgeDetection(0);
-        */
-
     }
 
     public void UpdateWeaponSwitchButtonText()
@@ -465,11 +445,6 @@ public class UiManager : MonoBehaviour
 
     public void DamageFeedback()
     {
-        /*
-        if (damageFeedbackCoroutine != null)
-            StopCoroutine(damageFeedbackCoroutine);
-            */
-        
         if (damageFeedbackCoroutine == null)
             damageFeedbackCoroutine = StartCoroutine(DamageFeedbackOverTime());
     }

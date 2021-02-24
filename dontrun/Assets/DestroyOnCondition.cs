@@ -18,7 +18,7 @@ public class DestroyOnCondition : MonoBehaviour
             if (GetDestroy())
                 Destroy(gameObject);
 
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(0.1f);
         }   
     }
 

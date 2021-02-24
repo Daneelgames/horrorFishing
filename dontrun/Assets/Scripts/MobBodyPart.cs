@@ -87,12 +87,15 @@ public class MobBodyPart : MonoBehaviour
 
         switch (other.gameObject.layer)
         {
-            // if hitting other monster (not his part)
             case 11 when mobAttack && other.gameObject != mobAttack.gameObject:
             {
                 HealthController _hc = other.gameObject.GetComponent<HealthController>();
+
+                if (hc == null)
+                {
+                    hc = other.gameObject.GetComponent<MobBodyPart>().hc;
+                }
                 
-                //print(hc);
                 if (_hc == null || _hc == mobAttack.hc || (_hc.player && mobAttack.hc.inLove))
                     return;
                 

@@ -134,23 +134,6 @@ public class HealthController : MonoBehaviour, IUpdatable
         gm = GameManager.instance;
         sc = SpawnController.instance;
 
-        if (GLNetworkWrapper.instance && GLNetworkWrapper.instance.coopIsActive)
-        {
-            if (boss)
-            {
-                health *= 2;
-                healthMax *= 2;
-            }
-            if (spawnedWithRoom)
-            {
-                if (LevelGenerator.instance.levelgenOnHost)
-                    NetworkServer.Spawn(gameObject);
-                else
-                {
-                    Destroy(gameObject);
-                }   
-            }
-        }
         
         if (GLNetworkWrapper.instance && GLNetworkWrapper.instance.coopIsActive && playerMovement)
         {
@@ -221,7 +204,7 @@ public class HealthController : MonoBehaviour, IUpdatable
         if (deathParticles)
             deathAudioSource = deathParticles.gameObject.GetComponent<AudioSource>();
 
-        if (boss)
+        if (boss && ui.bossHpParent)
         {
             ui.bossHpParent.SetActive(true);
             ui.bossNameText.text = names[gm.language];
@@ -335,7 +318,7 @@ public class HealthController : MonoBehaviour, IUpdatable
             GetTileEffect();   
         }
 
-        if (boss)
+        if (boss && ui.bossHealthbar)
         {
             ui.bossHealthbar.fillAmount = health / healthMax;
         }
@@ -1922,13 +1905,9 @@ public class HealthController : MonoBehaviour, IUpdatable
             }   
         }
         
-        if (boss)
+        if (boss && ui.bossHpParent)
         {
             ui.bossHpParent.SetActive(false);
-            ui.bossNameText.text = "";
-            var sa = SteamAchievements.instance;
-            if (sa)
-                sa.UnlockSteamAchievement(mobKilledAchievementID);
         }
 
         for (int i = deathParticlesMulti.Count - 1; i >= 0; i--)

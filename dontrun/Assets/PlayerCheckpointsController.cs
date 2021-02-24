@@ -20,7 +20,7 @@ public class PlayerCheckpointsController : MonoBehaviour
     {
         activeCheckpointIndex = checkpoints.IndexOf(c);
         GameManager.instance.hubActiveCheckpointIndex = activeCheckpointIndex;
-        //GameManager.instance.SaveGame();
+        GameManager.instance.SaveGame();
     }
 
     public IEnumerator Init()

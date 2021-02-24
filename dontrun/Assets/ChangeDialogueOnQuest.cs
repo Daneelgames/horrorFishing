@@ -20,7 +20,7 @@ public class ChangeDialogueOnQuest : MonoBehaviour
     {
         QuestManager qm = QuestManager.instance;
 
-        if (phrasesOnQuests.Count > qm.activeQuestsIndexes[qm.activeQuestsIndexes.Count - 1] 
+        if (phrasesOnQuests.Count > qm.activeQuestsIndexes[qm.activeQuestsIndexes.Count - 1] && phrasesOnQuests[qm.activeQuestsIndexes[qm.activeQuestsIndexes.Count - 1]] != null 
             && npcController.randomizedPhrasesData != phrasesOnQuests[qm.activeQuestsIndexes[qm.activeQuestsIndexes.Count - 1]])
         {
             npcController.randomizedPhrasesData = phrasesOnQuests[qm.activeQuestsIndexes[qm.activeQuestsIndexes.Count - 1]];
