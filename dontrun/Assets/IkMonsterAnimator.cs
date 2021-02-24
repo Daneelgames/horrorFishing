@@ -44,6 +44,7 @@ public class IkMonsterAnimator : MonoBehaviour
     private bool updateSolvers = false;
 
     public AudioSource walkingAmbient;
+    public LerpMoveToPlayer lerpMovetoPlayer;
     void Start()
     {
         if (initInStart)
@@ -226,6 +227,8 @@ public class IkMonsterAnimator : MonoBehaviour
                 }
                 yield return new WaitForSeconds(stepDelay / groundContactBones.Count);
             }
+
+            if (lerpMovetoPlayer) lerpMovetoPlayer.ResetTime();
             // move removed bones more realistically
         }
     }
@@ -264,10 +267,10 @@ public class IkMonsterAnimator : MonoBehaviour
             
         sideOffset = GetSideOffset();
 
+        
         for (int i = 0; i < removedGroundContactBones.Count; i++)
         {
-            if (!hc.inLove &&
-                Vector3.Distance(PlayerMovement.instance.transform.position,removedGroundContactBones[i].transform.position) <= distanceFromBoneToPlayerToBeAbleToAttack)
+            if (!hc.inLove && Vector3.Distance(PlayerMovement.instance.transform.position,removedGroundContactBones[i].transform.position) <= distanceFromBoneToPlayerToBeAbleToAttack)
             {
                 // ATTACK
                 tempNewEndForBone = PlayerMovement.instance.transform.position + new Vector3(Random.Range(-hipsMoveHeight,hipsMoveHeight), Random.Range(hipsMoveHeight / 5,hipsMoveHeight * 5), Random.Range(-hipsMoveHeight,hipsMoveHeight));   
@@ -331,7 +334,7 @@ public class IkMonsterAnimator : MonoBehaviour
     [ContextMenu("RandomizeAngles")]
     void InitBones()
     {
-        if (!removedGroundContactBones.Contains(hipsBone))
+        if (hipsBone && !removedGroundContactBones.Contains(hipsBone))
             removedGroundContactBones.Add(hipsBone);
 
         if (headBoneTarget)

@@ -82,7 +82,7 @@ public class MobBodyPart : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         if (usedForAttack == false || mobAttack.levels[0].attackCooldown > 0 || closeToPlayer == false || !other.gameObject.activeInHierarchy) return;
-        if (!mobAttack || !mobAttack.hc || mobAttack.hc.peaceful) return;
+        if (!mobAttack || !mobAttack.hc) return;
         if (!mobAttack.gameObject.activeInHierarchy) return;
 
         switch (other.gameObject.layer)
@@ -94,6 +94,41 @@ public class MobBodyPart : MonoBehaviour
                 if (hc == null)
                 {
                     hc = other.gameObject.GetComponent<MobBodyPart>().hc;
+                }
+                
+                if (_hc == null || _hc == mobAttack.hc || (_hc.player && mobAttack.hc.inLove))
+                    return;
+                
+                Vector3 bloodSpawnPosition = _hc.transform.position + Vector3.up;
+                
+                if (_hc.mobPartsController && _hc.mobPartsController.dropPosition)
+                    bloodSpawnPosition = _hc.mobPartsController.dropPosition.position;
+                
+                if (_hc.damageCooldown <= 0 && _hc.health > 0)
+                {
+                    mobAttack.Cooldown();
+                    
+                    _hc.Damage(mobAttack.levels[Mathf.Clamp(mobAttack.mobParts.level, 0, mobAttack.levels.Count-1)].damage, bloodSpawnPosition, transform.position + Vector3.up, null, mobAttack.hc.playerDamagedMessage[gm.language], false, mobAttack.hc.names[gm.language], mobAttack.hc, mobAttack.effectsOnAttack, false);
+                }
+                break;
+            }
+        }
+    }
+    private void OnCollisionEnter(Collision coll)
+    {
+        if (usedForAttack == false || mobAttack.levels[0].attackCooldown > 0 || closeToPlayer == false || !coll.gameObject.activeInHierarchy) return;
+        if (!mobAttack || !mobAttack.hc) return;
+        if (!mobAttack.gameObject.activeInHierarchy) return;
+
+        switch (coll.gameObject.layer)
+        {
+            case 11 when mobAttack && coll.gameObject != mobAttack.gameObject:
+            {
+                HealthController _hc = coll.gameObject.GetComponent<HealthController>();
+
+                if (hc == null)
+                {
+                    hc = coll.gameObject.GetComponent<MobBodyPart>().hc;
                 }
                 
                 if (_hc == null || _hc == mobAttack.hc || (_hc.player && mobAttack.hc.inLove))

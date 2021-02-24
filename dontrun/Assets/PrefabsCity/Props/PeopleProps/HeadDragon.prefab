@@ -1145,8 +1145,8 @@ GameObject:
   - component: {fileID: 1552592299003733627}
   - component: {fileID: 827363580735824287}
   - component: {fileID: 52264945090727485}
-  - component: {fileID: 4644393739402963498}
   - component: {fileID: -8392910487573062294}
+  - component: {fileID: 398082763628513562}
   m_Layer: 11
   m_Name: HeadDragon
   m_TagString: Untagged
@@ -1339,9 +1339,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level: 0
   mobType: 3
-  agent: {fileID: 4644393739402963498}
+  agent: {fileID: 0}
   ikMonsterAnimator: {fileID: 827363580735824287}
-  simpleWalker: 1
+  simpleWalker: 0
   simpleWalkerString: Move
   distanceThreshold: 0.1
   anim: {fileID: 2541771321573688620}
@@ -1532,19 +1532,20 @@ MonoBehaviour:
   - {fileID: 481163040}
   - {fileID: 8070313156323769872}
   - {fileID: 4889190726713358462}
+  - {fileID: 7206278516984124448}
   - {fileID: 7114881351014905489}
   removedGroundContactBones: []
   armsBonesTargets: []
-  headBoneTarget: {fileID: 7114881351014905489}
-  hipsBone: {fileID: 7206278516984124448}
-  headRemovedBoneChance: 0
+  headBoneTarget: {fileID: 0}
+  hipsBone: {fileID: 0}
+  headRemovedBoneChance: 1
   armsRemovedBonesChance: 0
   limbsAffectsSpeed: 0
   randomize: 0
-  stepDelay: 5
-  stepOffsetScale: 50
-  hipsMoveHeight: 50
-  groundPointStepUpPositionMinMax: {x: 1, y: 50}
+  stepDelay: 10
+  stepOffsetScale: 100
+  hipsMoveHeight: 100
+  groundPointStepUpPositionMinMax: {x: 100, y: 100}
   animate: 1
   ikSolvers:
   - {fileID: 362800508575658953}
@@ -1555,6 +1556,7 @@ MonoBehaviour:
   distanceFromBoneToPlayerToBeAbleToAttack: 5
   initInStart: 1
   walkingAmbient: {fileID: 0}
+  lerpMovetoPlayer: {fileID: 398082763628513562}
 --- !u!114 &52264945090727485
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1580,28 +1582,6 @@ MonoBehaviour:
   effectsOnAttack:
     effects: []
     effectsValues: []
---- !u!195 &4644393739402963498
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1686052409859093424}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!54 &-8392910487573062294
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1618,6 +1598,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &398082763628513562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1686052409859093424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a58f15dd6d6f6914682304830745af32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeStep: 0.1
+  aggressive: 1
+  loopTime: 10
 --- !u!1 &2009229647588362505
 GameObject:
   m_ObjectHideFlags: 0

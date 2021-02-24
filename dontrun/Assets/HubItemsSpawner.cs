@@ -90,11 +90,6 @@ public class HubItemsSpawner : MonoBehaviour
                 npcSpawners[0].transform.rotation);
         }
 
-        if (headDragonSpawned == null)
-        {
-            headDragonSpawned = Instantiate(npcSpawners[6].npcsToSpawn[0], npcSpawners[6].transform.position,
-                npcSpawners[6].transform.rotation);
-        }
         // spawn lady
         if (ladyOnRoofSpawned_0 == null)
         {
@@ -211,6 +206,20 @@ public class HubItemsSpawner : MonoBehaviour
             }
         }
         #endregion
+        
+        #region quest 7 kill dragon
+
+        if (qm.activeQuestsIndexes.Contains(7))
+        {
+            if (headDragonSpawned == null)
+            {
+                headDragonSpawned = Instantiate(npcSpawners[6].npcsToSpawn[0], npcSpawners[6].transform.position,
+                    npcSpawners[6].transform.rotation);
+            }
+        }
+        #endregion
+        
+        
         
         UpdateLevelBlockers();
         
