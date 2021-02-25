@@ -77,6 +77,12 @@ public class HubItemsSpawner : MonoBehaviour
 
         return false;
     }
+
+    public void RespawnBoss()
+    {
+        headDragonSpawned = Instantiate(npcSpawners[6].npcsToSpawn[0], npcSpawners[6].transform.position,
+            npcSpawners[6].transform.rotation);
+    }
     
     public void UpdateHub()
     {
@@ -90,6 +96,10 @@ public class HubItemsSpawner : MonoBehaviour
                 npcSpawners[0].transform.rotation);
         }
 
+        if (headDragonSpawned == null)
+        {
+            RespawnBoss();
+        }
         // spawn lady
         if (ladyOnRoofSpawned_0 == null)
         {
@@ -207,20 +217,6 @@ public class HubItemsSpawner : MonoBehaviour
         }
         #endregion
         
-        #region quest 7 kill dragon
-
-        if (qm.activeQuestsIndexes.Contains(7))
-        {
-            if (headDragonSpawned == null)
-            {
-                headDragonSpawned = Instantiate(npcSpawners[6].npcsToSpawn[0], npcSpawners[6].transform.position,
-                    npcSpawners[6].transform.rotation);
-            }
-        }
-        #endregion
-        
-        
-        
         UpdateLevelBlockers();
         
         for (int i = 0; i < dialogueOnQuestsChangers.Count; i++)
@@ -228,7 +224,7 @@ public class HubItemsSpawner : MonoBehaviour
             dialogueOnQuestsChangers[i].UpdateDialogue();
         }
     }
-
+    
     private LevelBlockerController blockersBeforeGoingToGunn;
     private LevelBlockerController blockersBeforeGettingShoeQuest;
     private LevelBlockerController blockersGoingToGunn;
@@ -313,7 +309,7 @@ public class HubItemsSpawner : MonoBehaviour
         StartCoroutine(AnimateDeathFov());
         yield return new WaitForSeconds(1f);
         // death anim is over
-
+        LerpMoveToPlayer.instance.RespawnBossOnPlayerDeath();
         StartCoroutine(GetUpPhraseCoroutine());
         yield return new WaitForSeconds(2.1f);
         PlayerSkillsController.instance.InstantTeleport(currentSpawner.position);

@@ -11135,7 +11135,7 @@ MonoBehaviour:
     - You would be a better husband for her
     - At least you wasn't scared coming here. Anyway...
     - Only the brave heart deserves her
-    - Whoever kills the Dragon will have the right to take the Rose
+    - Whoever gets the Spider's head will have the right to take the Rose
     phrasesRu: []
     phrasesESP: []
     phrasesGER: []
@@ -11160,7 +11160,7 @@ MonoBehaviour:
     phrases:
     - Nothing changes throughout the years
     - Tell the old coward that cheating wouldn't work
-    - If he wants Rose, he should slay the Dragon
+    - If he wants Rose, he should bring me the head of Spider
     - Go now
     phrasesRu: []
     phrasesESP: []
@@ -11196,6 +11196,7 @@ MonoBehaviour:
   randomLinesAmountMax: 6
   hc: {fileID: 1889556697248087120}
   keySold: 0
+  setInactiveOnAction: 0
   gameObjectActivateOnAgree: {fileID: 0}
   toInitOnDialogueAction: {fileID: 0}
   mementoPrefab: {fileID: 5232096813719522242, guid: 0d1620a94ce53dd41beb0163478c751a,
@@ -12157,6 +12158,8 @@ MonoBehaviour:
   lookDistance: 200
   lookStep: 5
   offset180: 1
+  childToSetEuler: {fileID: 0}
+  childNewEuler: {x: 0, y: 0, z: 0}
 --- !u!1 &4217915976855213221
 GameObject:
   m_ObjectHideFlags: 0

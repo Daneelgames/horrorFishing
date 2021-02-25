@@ -204,7 +204,7 @@ public class HealthController : MonoBehaviour, IUpdatable
         if (deathParticles)
             deathAudioSource = deathParticles.gameObject.GetComponent<AudioSource>();
 
-        if (boss && ui.bossHpParent)
+        if (boss && ui && ui.bossHpParent)
         {
             ui.bossHpParent.SetActive(true);
             ui.bossNameText.text = names[gm.language];
@@ -318,7 +318,7 @@ public class HealthController : MonoBehaviour, IUpdatable
             GetTileEffect();   
         }
 
-        if (boss && ui.bossHealthbar)
+        if (boss && ui && ui.bossHealthbar)
         {
             ui.bossHealthbar.fillAmount = health / healthMax;
         }

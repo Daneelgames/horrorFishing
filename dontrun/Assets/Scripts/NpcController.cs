@@ -5,6 +5,7 @@ using System.Linq;
 using UnityEngine;
 using PlayerControls;
 using TMPro;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class NpcController : MonoBehaviour
@@ -61,7 +62,8 @@ public class NpcController : MonoBehaviour
     private GameManager gm;
     bool choosing = false;
     public bool keySold = false;
-    public bool setInactiveOnAction = false;
+    public bool setNpcInactiveOnAction = false;
+    public bool spiderBossAggressiveOnAction = false;
 
     private float inLoveScaler = 1;
     public GameObject gameObjectActivateOnAgree;
@@ -3431,8 +3433,13 @@ public class NpcController : MonoBehaviour
             if (gameObject.activeInHierarchy)
                 hideText = StartCoroutine(HideText());
             
-            if (setInactiveOnAction)
+            if (setNpcInactiveOnAction)
                 gameObject.SetActive(false);
+
+            if (spiderBossAggressiveOnAction)
+            {
+                LerpMoveToPlayer.instance.SetAggressive();
+            }
         }
     }
 

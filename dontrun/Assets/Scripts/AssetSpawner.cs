@@ -10,7 +10,7 @@ public class AssetSpawner : MonoBehaviour
 {
     public enum ObjectType
     {
-        Room, Prop, Mob, Dyk
+        Room, Prop, Mob, Dyk, Vfx
     }
 
     public static AssetSpawner instance;
@@ -83,6 +83,10 @@ public class AssetSpawner : MonoBehaviour
                     
                     print("[COOP] Room spawned on server");
                 }
+            }
+            else if (objectType == ObjectType.Vfx)
+            {
+                asyncOperationHandle.Result.transform.position = newPos;
             }
             
             var notify = asyncOperationHandle.Result.AddComponent<NotifyOnDestroy>();

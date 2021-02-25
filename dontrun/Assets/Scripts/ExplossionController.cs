@@ -32,30 +32,21 @@ public class ExplossionController : MonoBehaviour
             
             if (coll.gameObject.layer == 18 || coll.gameObject.layer == 11)
             {
-                HealthController hc = coll.gameObject.GetComponent<HealthController>();
+                HealthController hc = coll.gameObject.GetComponent<MobBodyPart>().hc;
+                
+                if (hc == null)
+                    hc = coll.gameObject.GetComponent<HealthController>();
 
-                if (hc != null)
+                if (hc.player)
                 {
-                    if (hc.player)
-                    {
-                        // dont damage the player directly in coop
-                        if (hc.playerMovement && GLNetworkWrapper.instance && GLNetworkWrapper.instance.coopIsActive)
-                            return;
-                        
-                        explosionDamage /= 5;   
-                    }
-
-                    if (!hc.door)
-                    {
-                        if (!hc.boss && !hc.player)
-                            explosionDamage = hc.healthMax;
-                        
-                        hc.Damage(explosionDamage, hc.gameObject.transform.position + Vector3.one * 2,
-                            transform.position, null, damageMessages[GameManager.instance.language], true, names[GameManager.instance.language], null, effectsOnAttack, true);   
-                    }
-                    else
-                        hc.door.DoorDestroyed();
+                    explosionDamage /= 5;   
                 }
+
+                if (!hc.boss && !hc.player)
+                    explosionDamage = hc.healthMax;
+                
+                hc.Damage(explosionDamage, hc.gameObject.transform.position + Vector3.one * 2,
+                    transform.position, null, damageMessages[GameManager.instance.language], true, names[GameManager.instance.language], null, effectsOnAttack, true);   
             }
             else if (coll.gameObject.layer == 16 || coll.gameObject.layer == 10) // WALLS or solids
             {

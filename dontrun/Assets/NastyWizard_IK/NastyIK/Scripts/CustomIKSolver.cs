@@ -79,15 +79,7 @@ public class CustomIKSolver : MonoBehaviour {
 
     void AnimateScale()
     {
-        //MAKE IT LESS JITTERY??
         distanceToTarget = GetDistanceToTarget();
-        
-        /*
-        if (distanceToTarget > 0.1f)
-            transform.localScale = Vector3.ClampMagnitude(transform.localScale * (1 + Time.deltaTime * 3), maxScale);
-        else if (transform.localScale.x > 1)
-            transform.localScale *= 1 - Time.deltaTime * 3;
-            */
         
         if (distanceToTarget > 0.1f)
             targetScale = Vector3.ClampMagnitude(targetScale * (1 + Time.deltaTime * 3), maxScale);

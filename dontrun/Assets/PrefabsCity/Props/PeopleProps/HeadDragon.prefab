@@ -207,6 +207,7 @@ MonoBehaviour:
   offset180: 1
   childToSetEuler: {fileID: 0}
   childNewEuler: {x: 0, y: 0, z: 0}
+  randomizeChildScale: 1
 --- !u!1 &150343610464593819
 GameObject:
   m_ObjectHideFlags: 0
@@ -417,6 +418,7 @@ MonoBehaviour:
   offset180: 1
   childToSetEuler: {fileID: 0}
   childNewEuler: {x: 0, y: 0, z: 0}
+  randomizeChildScale: 1
 --- !u!1 &694448786303006837
 GameObject:
   m_ObjectHideFlags: 0
@@ -504,6 +506,7 @@ MonoBehaviour:
   offset180: 1
   childToSetEuler: {fileID: 0}
   childNewEuler: {x: 0, y: 0, z: 0}
+  randomizeChildScale: 1
 --- !u!1 &827650945394599169
 GameObject:
   m_ObjectHideFlags: 0
@@ -591,6 +594,7 @@ MonoBehaviour:
   offset180: 1
   childToSetEuler: {fileID: 0}
   childNewEuler: {x: 0, y: 0, z: 0}
+  randomizeChildScale: 1
 --- !u!1 &840943823598647699
 GameObject:
   m_ObjectHideFlags: 0
@@ -725,6 +729,7 @@ MonoBehaviour:
   offset180: 1
   childToSetEuler: {fileID: 0}
   childNewEuler: {x: 0, y: 0, z: 0}
+  randomizeChildScale: 1
 --- !u!1 &1195473053165638548
 GameObject:
   m_ObjectHideFlags: 0
@@ -820,6 +825,134 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartOffset: {x: 0, y: 0, z: 0}
   detailToggle: 0
+--- !u!1 &1331849541195692440
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5429232612299965338}
+  - component: {fileID: 7268664140835667516}
+  m_Layer: 11
+  m_Name: ambient
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5429232612299965338
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1331849541195692440}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6238512351332215655}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &7268664140835667516
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1331849541195692440}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -6187304764875253321, guid: 37f4a131f509ebc40a056587ae8f6728,
+    type: 2}
+  m_audioClip: {fileID: 8300000, guid: fbafed204c759d041905da0ecc236674, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.66
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 50
+  Pan2D: 0
+  rolloffMode: 2
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: -2.6533737
+      outSlope: -2.6533737
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.056818184
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.11827459
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.16666667
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1399959176404078676
 GameObject:
   m_ObjectHideFlags: 0
@@ -907,6 +1040,7 @@ MonoBehaviour:
   offset180: 1
   childToSetEuler: {fileID: 0}
   childNewEuler: {x: 0, y: 0, z: 0}
+  randomizeChildScale: 1
 --- !u!1 &1498629662578867529
 GameObject:
   m_ObjectHideFlags: 0
@@ -994,6 +1128,7 @@ MonoBehaviour:
   offset180: 1
   childToSetEuler: {fileID: 0}
   childNewEuler: {x: 0, y: 0, z: 0}
+  randomizeChildScale: 1
 --- !u!1 &1597437860977753331
 GameObject:
   m_ObjectHideFlags: 0
@@ -1081,6 +1216,7 @@ MonoBehaviour:
   offset180: 1
   childToSetEuler: {fileID: 0}
   childNewEuler: {x: 0, y: 0, z: 0}
+  randomizeChildScale: 1
 --- !u!1 &1622874445433810831
 GameObject:
   m_ObjectHideFlags: 0
@@ -1167,6 +1303,7 @@ Transform:
   m_Children:
   - {fileID: 7335313944329927820}
   - {fileID: 5879476227537098003}
+  - {fileID: 8625625034164742898}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1272,7 +1409,7 @@ MonoBehaviour:
   wc: {fileID: 0}
   damageCooldown: 0
   pac: {fileID: 0}
-  invincible: 0
+  invincible: 1
   damagedOnLevel: 0
   faceHuggedCooldown: 30
   playerNetworkDummyController: {fileID: 0}
@@ -1356,18 +1493,28 @@ MonoBehaviour:
   - {fileID: 8777586303802039433}
   - {fileID: 7660501931515159487}
   - {fileID: 1244566361696932884}
-  - {fileID: 9158352011595043333}
-  - {fileID: 1485651401872931816}
-  - {fileID: 5565684223282539222}
-  - {fileID: 3477304656333576571}
-  - {fileID: 3678616832506490052}
-  - {fileID: 598037360034431413}
-  - {fileID: 3576752847685205507}
-  - {fileID: 2878761957066768388}
-  - {fileID: 901252771204013011}
-  - {fileID: 2720152459629748597}
-  - {fileID: 2329392522314984437}
   - {fileID: 2317010592994890135}
+  - {fileID: 3576752847685205507}
+  - {fileID: 598037360034431413}
+  - {fileID: 3678616832506490052}
+  - {fileID: 548486067627603781}
+  - {fileID: 9143225415532640203}
+  - {fileID: 4756865066108728903}
+  - {fileID: 5275129706849742919}
+  - {fileID: 3477304656333576571}
+  - {fileID: 5565684223282539222}
+  - {fileID: 1485651401872931816}
+  - {fileID: 9158352011595043333}
+  - {fileID: 1402352917251235813}
+  - {fileID: 6008083347844132059}
+  - {fileID: 7870341747684118702}
+  - {fileID: 2329392522314984437}
+  - {fileID: 2720152459629748597}
+  - {fileID: 901252771204013011}
+  - {fileID: 2878761957066768388}
+  - {fileID: 725366900698507629}
+  - {fileID: 840206648510647937}
+  - {fileID: 6303789484118441542}
   - {fileID: 629245839683704605}
   - {fileID: 3695904152405370532}
   - {fileID: 4372418731989392883}
@@ -1401,7 +1548,8 @@ MonoBehaviour:
   idleAu: {fileID: 1552592299003733627}
   chaseAu: {fileID: 1552592299003733627}
   attackAu: {fileID: 1552592299003733627}
-  steps: []
+  steps:
+  - {fileID: 3906479201833445626}
   damageAu: {fileID: 1552592299003733627}
   resurrectAu: {fileID: 1552592299003733627}
 --- !u!135 &7918681264666532163
@@ -1542,7 +1690,7 @@ MonoBehaviour:
   armsRemovedBonesChance: 0
   limbsAffectsSpeed: 0
   randomize: 0
-  stepDelay: 10
+  stepDelay: 5
   stepOffsetScale: 100
   hipsMoveHeight: 100
   groundPointStepUpPositionMinMax: {x: 100, y: 100}
@@ -1555,8 +1703,12 @@ MonoBehaviour:
   - {fileID: 23698499}
   distanceFromBoneToPlayerToBeAbleToAttack: 5
   initInStart: 1
-  walkingAmbient: {fileID: 0}
+  walkingAmbient: {fileID: 7268664140835667516}
   lerpMovetoPlayer: {fileID: 398082763628513562}
+  stepVfxReference:
+    m_AssetGUID: 2e7e92bc7175b744ea40878dedfa79e4
+    m_SubObjectName: 
+    m_SubObjectType: 
 --- !u!114 &52264945090727485
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1572,9 +1724,9 @@ MonoBehaviour:
   mobParts: {fileID: 4784556740709362432}
   levels:
   - damage: 200
-    attackCooldown: 1
-    attackCooldownMax: 1
-    attackCooldownMin: 1
+    attackCooldown: 0.1
+    attackCooldownMax: 0.1
+    attackCooldownMin: 0.1
   mobGroundMovement: {fileID: 0}
   hc: {fileID: 1686052409859093420}
   thiefBehaviour: 0
@@ -1611,8 +1763,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeStep: 0.1
-  aggressive: 1
-  loopTime: 10
+  aggressive: 0
+  moveSpeed: 20
+  minWanderingTime: 5
+  maxWanderingTime: 90
+  hc: {fileID: 1686052409859093420}
 --- !u!1 &2009229647588362505
 GameObject:
   m_ObjectHideFlags: 0
@@ -1700,6 +1855,7 @@ MonoBehaviour:
   offset180: 1
   childToSetEuler: {fileID: 0}
   childNewEuler: {x: 0, y: 0, z: 0}
+  randomizeChildScale: 1
 --- !u!1 &2011011819988814722
 GameObject:
   m_ObjectHideFlags: 0
@@ -1835,6 +1991,7 @@ MonoBehaviour:
   offset180: 1
   childToSetEuler: {fileID: 0}
   childNewEuler: {x: 0, y: 0, z: 0}
+  randomizeChildScale: 1
 --- !u!1 &2444394692858378081
 GameObject:
   m_ObjectHideFlags: 0
@@ -1968,6 +2125,7 @@ MonoBehaviour:
   offset180: 1
   childToSetEuler: {fileID: 0}
   childNewEuler: {x: 0, y: 0, z: 0}
+  randomizeChildScale: 1
 --- !u!1 &2482977279336373135
 GameObject:
   m_ObjectHideFlags: 0
@@ -2055,6 +2213,7 @@ MonoBehaviour:
   offset180: 1
   childToSetEuler: {fileID: 0}
   childNewEuler: {x: 0, y: 0, z: 0}
+  randomizeChildScale: 1
 --- !u!1 &2517811245069028817
 GameObject:
   m_ObjectHideFlags: 0
@@ -2142,6 +2301,7 @@ MonoBehaviour:
   offset180: 1
   childToSetEuler: {fileID: 0}
   childNewEuler: {x: 0, y: 0, z: 0}
+  randomizeChildScale: 1
 --- !u!1 &2618666692765871378
 GameObject:
   m_ObjectHideFlags: 0
@@ -2229,6 +2389,7 @@ MonoBehaviour:
   offset180: 1
   childToSetEuler: {fileID: 0}
   childNewEuler: {x: 0, y: 0, z: 0}
+  randomizeChildScale: 1
 --- !u!1 &2628509080241649746
 GameObject:
   m_ObjectHideFlags: 0
@@ -2363,6 +2524,7 @@ MonoBehaviour:
   offset180: 1
   childToSetEuler: {fileID: 0}
   childNewEuler: {x: 0, y: 0, z: 0}
+  randomizeChildScale: 1
 --- !u!1 &2840436337883556061
 GameObject:
   m_ObjectHideFlags: 0
@@ -2450,6 +2612,7 @@ MonoBehaviour:
   offset180: 1
   childToSetEuler: {fileID: 0}
   childNewEuler: {x: 0, y: 0, z: 0}
+  randomizeChildScale: 1
 --- !u!1 &2901376756825579942
 GameObject:
   m_ObjectHideFlags: 0
@@ -2611,6 +2774,7 @@ MonoBehaviour:
   offset180: 1
   childToSetEuler: {fileID: 0}
   childNewEuler: {x: 0, y: 0, z: 0}
+  randomizeChildScale: 1
 --- !u!1 &3081661824211243963
 GameObject:
   m_ObjectHideFlags: 0
@@ -2698,6 +2862,7 @@ MonoBehaviour:
   offset180: 1
   childToSetEuler: {fileID: 0}
   childNewEuler: {x: 0, y: 0, z: 0}
+  randomizeChildScale: 1
 --- !u!1 &3112131130899692565
 GameObject:
   m_ObjectHideFlags: 0
@@ -7852,6 +8017,7 @@ MonoBehaviour:
   offset180: 1
   childToSetEuler: {fileID: 0}
   childNewEuler: {x: 0, y: 0, z: 0}
+  randomizeChildScale: 1
 --- !u!1 &4575536421081664891
 GameObject:
   m_ObjectHideFlags: 0
@@ -7939,6 +8105,7 @@ MonoBehaviour:
   offset180: 1
   childToSetEuler: {fileID: 0}
   childNewEuler: {x: 0, y: 0, z: 0}
+  randomizeChildScale: 1
 --- !u!1 &4643909554305706937
 GameObject:
   m_ObjectHideFlags: 0
@@ -8026,6 +8193,7 @@ MonoBehaviour:
   offset180: 1
   childToSetEuler: {fileID: 0}
   childNewEuler: {x: 0, y: 0, z: 0}
+  randomizeChildScale: 1
 --- !u!1 &4875259521839508232
 GameObject:
   m_ObjectHideFlags: 0
@@ -8113,6 +8281,7 @@ MonoBehaviour:
   offset180: 1
   childToSetEuler: {fileID: 0}
   childNewEuler: {x: 0, y: 0, z: 0}
+  randomizeChildScale: 1
 --- !u!1 &4988225804180552108
 GameObject:
   m_ObjectHideFlags: 0
@@ -8558,6 +8727,7 @@ MonoBehaviour:
   offset180: 1
   childToSetEuler: {fileID: 0}
   childNewEuler: {x: 0, y: 0, z: 0}
+  randomizeChildScale: 1
 --- !u!1 &5879435493514891945
 GameObject:
   m_ObjectHideFlags: 0
@@ -8645,6 +8815,7 @@ MonoBehaviour:
   offset180: 1
   childToSetEuler: {fileID: 0}
   childNewEuler: {x: 0, y: 0, z: 0}
+  randomizeChildScale: 1
 --- !u!1 &5896817615053412445
 GameObject:
   m_ObjectHideFlags: 0
@@ -8654,6 +8825,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7206278516984124448}
+  - component: {fileID: 3733901721497421488}
   m_Layer: 11
   m_Name: Hips
   m_TagString: Untagged
@@ -8679,6 +8851,22 @@ Transform:
   m_Father: {fileID: 2720581368703345790}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &3733901721497421488
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5896817615053412445}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &5939124496375134470
 GameObject:
   m_ObjectHideFlags: 0
@@ -8766,6 +8954,7 @@ MonoBehaviour:
   offset180: 1
   childToSetEuler: {fileID: 0}
   childNewEuler: {x: 0, y: 0, z: 0}
+  randomizeChildScale: 1
 --- !u!1 &6004775723590059899
 GameObject:
   m_ObjectHideFlags: 0
@@ -8853,6 +9042,7 @@ MonoBehaviour:
   offset180: 1
   childToSetEuler: {fileID: 0}
   childNewEuler: {x: 0, y: 0, z: 0}
+  randomizeChildScale: 1
 --- !u!1 &6175198090029915629
 GameObject:
   m_ObjectHideFlags: 0
@@ -9127,6 +9317,7 @@ MonoBehaviour:
   offset180: 1
   childToSetEuler: {fileID: 0}
   childNewEuler: {x: 0, y: 0, z: 0}
+  randomizeChildScale: 1
 --- !u!1 &6351647756709528761
 GameObject:
   m_ObjectHideFlags: 0
@@ -9214,6 +9405,7 @@ MonoBehaviour:
   offset180: 1
   childToSetEuler: {fileID: 0}
   childNewEuler: {x: 0, y: 0, z: 0}
+  randomizeChildScale: 1
 --- !u!1 &6416791715751346090
 GameObject:
   m_ObjectHideFlags: 0
@@ -9379,6 +9571,7 @@ MonoBehaviour:
   offset180: 1
   childToSetEuler: {fileID: 0}
   childNewEuler: {x: 0, y: 0, z: 0}
+  randomizeChildScale: 1
 --- !u!1 &6440181225142058198
 GameObject:
   m_ObjectHideFlags: 0
@@ -9466,6 +9659,7 @@ MonoBehaviour:
   offset180: 1
   childToSetEuler: {fileID: 0}
   childNewEuler: {x: 0, y: 0, z: 0}
+  randomizeChildScale: 1
 --- !u!1 &6620492375870285853
 GameObject:
   m_ObjectHideFlags: 0
@@ -9553,6 +9747,7 @@ MonoBehaviour:
   offset180: 1
   childToSetEuler: {fileID: 0}
   childNewEuler: {x: 0, y: 0, z: 0}
+  randomizeChildScale: 1
 --- !u!1 &6662691921495028191
 GameObject:
   m_ObjectHideFlags: 0
@@ -9640,6 +9835,7 @@ MonoBehaviour:
   offset180: 1
   childToSetEuler: {fileID: 0}
   childNewEuler: {x: 0, y: 0, z: 0}
+  randomizeChildScale: 1
 --- !u!1 &6762283769756611037
 GameObject:
   m_ObjectHideFlags: 0
@@ -9674,6 +9870,7 @@ Transform:
   - {fileID: 4889190726713358462}
   - {fileID: 1691448537}
   - {fileID: 481163040}
+  - {fileID: 5429232612299965338}
   m_Father: {fileID: 6517679504290930881}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -14886,6 +15083,7 @@ MonoBehaviour:
   offset180: 1
   childToSetEuler: {fileID: 0}
   childNewEuler: {x: 0, y: 0, z: 0}
+  randomizeChildScale: 1
 --- !u!1 &7493401288193593422
 GameObject:
   m_ObjectHideFlags: 0
@@ -15020,6 +15218,7 @@ MonoBehaviour:
   offset180: 1
   childToSetEuler: {fileID: 0}
   childNewEuler: {x: 0, y: 0, z: 0}
+  randomizeChildScale: 1
 --- !u!1 &7536737090540544672
 GameObject:
   m_ObjectHideFlags: 0
@@ -15107,6 +15306,7 @@ MonoBehaviour:
   offset180: 1
   childToSetEuler: {fileID: 0}
   childNewEuler: {x: 0, y: 0, z: 0}
+  randomizeChildScale: 1
 --- !u!1 &7547191579024292089
 GameObject:
   m_ObjectHideFlags: 0
@@ -15155,6 +15355,134 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartOffset: {x: 0, y: 0, z: 0}
   detailToggle: 0
+--- !u!1 &7581818306632709306
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8625625034164742898}
+  - component: {fileID: 3906479201833445626}
+  m_Layer: 11
+  m_Name: StepAu
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8625625034164742898
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7581818306632709306}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1686052409859093422}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &3906479201833445626
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7581818306632709306}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -6187304764875253321, guid: 37f4a131f509ebc40a056587ae8f6728,
+    type: 2}
+  m_audioClip: {fileID: 8300000, guid: 8927c23eec2eb4f40afea8853656861a, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 30
+  Pan2D: 0
+  rolloffMode: 1
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.16666667
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &7596295081919537061
 GameObject:
   m_ObjectHideFlags: 0
@@ -15337,6 +15665,7 @@ MonoBehaviour:
   offset180: 1
   childToSetEuler: {fileID: 0}
   childNewEuler: {x: 0, y: 0, z: 0}
+  randomizeChildScale: 1
 --- !u!1 &7872262666802370199
 GameObject:
   m_ObjectHideFlags: 0
@@ -15689,6 +16018,7 @@ MonoBehaviour:
   offset180: 1
   childToSetEuler: {fileID: 0}
   childNewEuler: {x: 0, y: 0, z: 0}
+  randomizeChildScale: 1
 --- !u!1 &8538609019592271959
 GameObject:
   m_ObjectHideFlags: 0
@@ -15823,6 +16153,7 @@ MonoBehaviour:
   offset180: 1
   childToSetEuler: {fileID: 0}
   childNewEuler: {x: 0, y: 0, z: 0}
+  randomizeChildScale: 1
 --- !u!1 &8686747543918128169
 GameObject:
   m_ObjectHideFlags: 0
@@ -15910,6 +16241,7 @@ MonoBehaviour:
   offset180: 1
   childToSetEuler: {fileID: 0}
   childNewEuler: {x: 0, y: 0, z: 0}
+  randomizeChildScale: 1
 --- !u!1 &8720643911075416496
 GameObject:
   m_ObjectHideFlags: 0
@@ -16168,6 +16500,7 @@ MonoBehaviour:
   offset180: 1
   childToSetEuler: {fileID: 0}
   childNewEuler: {x: 0, y: 0, z: 0}
+  randomizeChildScale: 1
 --- !u!1 &8855651937960238787
 GameObject:
   m_ObjectHideFlags: 0
@@ -16255,6 +16588,7 @@ MonoBehaviour:
   offset180: 1
   childToSetEuler: {fileID: 0}
   childNewEuler: {x: 0, y: 0, z: 0}
+  randomizeChildScale: 1
 --- !u!1 &8888619052824238938
 GameObject:
   m_ObjectHideFlags: 0
@@ -16373,6 +16707,7 @@ MonoBehaviour:
   offset180: 1
   childToSetEuler: {fileID: 0}
   childNewEuler: {x: 0, y: 0, z: 0}
+  randomizeChildScale: 1
 --- !u!1 &9110502671430859939
 GameObject:
   m_ObjectHideFlags: 0

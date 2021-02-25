@@ -14,12 +14,13 @@ public class LookAtTarget : MonoBehaviour
     public bool offset180 = false;
     public Transform childToSetEuler;
     public Vector3 childNewEuler;
+    public bool randomizeChildScale = false;
  
     void Awake()
     {
         StopAllCoroutines();
         
-        if (lookAtPlayer)
+        if (lookAtPlayer && PlayerMovement.instance)
             target = PlayerMovement.instance.cameraAnimator.transform;
 
         if (childToSetEuler)
@@ -31,10 +32,30 @@ public class LookAtTarget : MonoBehaviour
         }
 
         StartCoroutine(Look());
+
+        if (randomizeChildScale)
+            StartCoroutine(RandomizeChildScale());
     }
 
+    IEnumerator RandomizeChildScale()
+    {
+        var child = transform.GetChild(0);
+        if (child == null) yield break;
+        var initScale = child.transform.localScale;
+        while (true)
+        {
+            child.transform.localScale = new Vector3(initScale.x + Random.Range(-initScale.x / 5, initScale.x / 5),
+                                                     initScale.y + Random.Range(-initScale.y / 5, initScale.y / 5),
+                                                     initScale.z + Random.Range(-initScale.z / 5, initScale.z / 5)); 
+            yield return null;
+        }
+    }
+    
     IEnumerator Look()
     {
+        if (target == null)
+            yield break;
+        
         while (true)
         {
             yield return new WaitForSeconds(lookStep);

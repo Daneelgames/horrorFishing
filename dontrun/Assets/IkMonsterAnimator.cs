@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using PlayerControls;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.PlayerLoop;
 using UnityEngine.SubsystemsImplementation;
 using Random = UnityEngine.Random;
@@ -45,6 +46,8 @@ public class IkMonsterAnimator : MonoBehaviour
 
     public AudioSource walkingAmbient;
     public LerpMoveToPlayer lerpMovetoPlayer;
+
+    public AssetReference stepVfxReference;
     void Start()
     {
         if (initInStart)
@@ -221,15 +224,13 @@ public class IkMonsterAnimator : MonoBehaviour
                         hit.collider.gameObject.layer != 25 && hit.collider.gameObject.layer != 20) // floor
                         continue;
 
-                    yield return StartCoroutine(MoveGroundContactToPos(groundContactBones[i], groundContactBones[i].transform.position,
-                        hit.point));
+                    yield return StartCoroutine(MoveGroundContactToPos(groundContactBones[i], groundContactBones[i].transform.position, hit.point));
                     break;
                 }
                 yield return new WaitForSeconds(stepDelay / groundContactBones.Count);
             }
 
             if (lerpMovetoPlayer) lerpMovetoPlayer.ResetTime();
-            // move removed bones more realistically
         }
     }
     
@@ -295,7 +296,6 @@ public class IkMonsterAnimator : MonoBehaviour
     {
         float t = 0;
         float tScaler = Random.Range(0.5f, 3);
-        //newPos = new Vector3(newPos.x, Mathf.Clamp(newPos.y, transform.position.y, transform.position.y + 5), newPos.z);
         newPos = new Vector3(newPos.x, Mathf.Clamp(newPos.y, transform.position.y, transform.position.y + Random.Range(groundPointStepUpPositionMinMax.x, groundPointStepUpPositionMinMax.y)), newPos.z);
         
         while (t < currentStepDelay)
@@ -317,7 +317,6 @@ public class IkMonsterAnimator : MonoBehaviour
     {
         float t = 0;
         float smallerStepDelay = stepDelay / groundContactBones.Count * Random.Range(0.5f, 2f);
-        //Vector3 stepUpPosition = newPos + Vector3.up * hipsMoveHeight * Random.Range(2f, 5f);
         Vector3 stepUpPosition = newPos + Vector3.up * Random.Range(groundPointStepUpPositionMinMax.x, groundPointStepUpPositionMinMax.y);
         Vector3 stepUpPositionCurrent = stepUpPosition;
         
@@ -329,6 +328,17 @@ public class IkMonsterAnimator : MonoBehaviour
             yield return null;
         }
         hc.mobAudio.Step();
+        
+        if (stepVfxReference == null)
+            yield break; 
+                
+        for (int i = 0; i < ikSolvers.Count; i++)
+        {
+            if (ikSolvers[i].Target.transform == bone)
+            {
+                AssetSpawner.instance.Spawn(stepVfxReference, ikSolvers[i].Ankle.transform.position, AssetSpawner.ObjectType.Vfx);
+            }
+        }
     }
     
     [ContextMenu("RandomizeAngles")]
