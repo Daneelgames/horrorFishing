@@ -38,13 +38,14 @@ public class LerpMoveToPlayer : MonoBehaviour
         StartCoroutine(MainLoop());
     }
 
+    /*
     public void RespawnBossOnPlayerDeath()
     {
         print("boss respawned?");
         HubItemsSpawner.instance.RespawnBoss();
         hc.invincible = false;
         hc.Kill();
-    }
+    }*/
 
     IEnumerator Wandering()
     {
@@ -85,6 +86,9 @@ public class LerpMoveToPlayer : MonoBehaviour
     {
         while (true)
         {
+            if (aggressive)
+                targetPos = pm.transform.position;
+            
             transform.position = Vector3.MoveTowards(transform.position, targetPos, Time.deltaTime * moveSpeed);
             
             yield return null;
@@ -93,8 +97,10 @@ public class LerpMoveToPlayer : MonoBehaviour
 
     public void ResetTime()
     {
+        /*
         if (aggressive)
             targetPos = pm.transform.position;
+            */
         
         //targetPos = pm.transform.position + Random.insideUnitSphere * Random.Range(3f,15f);
     }

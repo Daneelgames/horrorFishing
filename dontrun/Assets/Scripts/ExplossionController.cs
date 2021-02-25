@@ -12,6 +12,8 @@ public class ExplossionController : MonoBehaviour
     private bool dangerous = true;
     public StatussEffectsOnAttack effectsOnAttack;
     private Coroutine wallsDamageCoroutine;
+    
+    List<HealthController> damagedHc = new List<HealthController>();
     void Start()
     {
         StartCoroutine(Disable());
@@ -30,17 +32,23 @@ public class ExplossionController : MonoBehaviour
             if (GLNetworkWrapper.instance  && GLNetworkWrapper.instance.coopIsActive && GLNetworkWrapper.instance.localPlayer.isServer == false)
                 return;
             
-            if (coll.gameObject.layer == 18 || coll.gameObject.layer == 11)
+            if (coll.gameObject.layer == 11)
             {
-                HealthController hc = coll.gameObject.GetComponent<MobBodyPart>().hc;
+                HealthController hc;
                 
-                if (hc == null)
+                var part = coll.gameObject.GetComponent<MobBodyPart>();
+                    
+                if (part) 
+                    hc = part.hc;
+                else
                     hc = coll.gameObject.GetComponent<HealthController>();
 
-                if (hc.player)
-                {
-                    explosionDamage /= 5;   
-                }
+                if (!hc || damagedHc.Contains(hc)) return;
+                
+                damagedHc.Add(hc);
+                
+                if (hc.player) explosionDamage /= 5;   
+                else if (hc.boss) explosionDamage /= 1.5f;
 
                 if (!hc.boss && !hc.player)
                     explosionDamage = hc.healthMax;
@@ -52,13 +60,13 @@ public class ExplossionController : MonoBehaviour
             {
                 MobBodyPart part = coll.gameObject.GetComponent<MobBodyPart>();
 
-                if (part != null)
-                {
-                    if (wallsDamageCoroutine == null)
-                        wallsDamageCoroutine = StartCoroutine(DamageWallCoroutine(part));
-                    else
-                        StartCoroutine(WaitUntilDamageCoroutineIsNull(part));
-                }
+                if (part == null)
+                    return;
+                
+                if (wallsDamageCoroutine == null)
+                    wallsDamageCoroutine = StartCoroutine(DamageWallCoroutine(part));
+                else
+                    StartCoroutine(WaitUntilDamageCoroutineIsNull(part));
             }
         }
     }
@@ -78,9 +86,20 @@ public class ExplossionController : MonoBehaviour
     {
         yield return null;
         if (part != null)
-            part.hc.Damage(part.hc.healthMax, part.gameObject.transform.position + Vector3.one * 2,
-            transform.position, null, null, true, null, null, null, true);
-        
+        {
+            if (damagedHc.Contains(part.hc))
+            {
+                wallsDamageCoroutine = null;
+                yield break;
+            }
+            
+            damagedHc.Add(part.hc);
+            
+            if (part.hc.boss) explosionDamage /= 1.5f;
+            
+            part.hc.Damage(explosionDamage, part.gameObject.transform.position + Vector3.one * 2,
+                transform.position, null, null, true, null, null, null, true);
+        }
         wallsDamageCoroutine = null;
     }
 }

@@ -5160,7 +5160,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnedWithRoom: 0
   names:
-  - Gunn
+  - Mother
   - "\u0413\u0430\u043D\u043D"
   player: 0
   health: 10
@@ -11196,7 +11196,8 @@ MonoBehaviour:
   randomLinesAmountMax: 6
   hc: {fileID: 1889556697248087120}
   keySold: 0
-  setInactiveOnAction: 0
+  setNpcInactiveOnAction: 0
+  spiderBossAggressiveOnAction: 0
   gameObjectActivateOnAgree: {fileID: 0}
   toInitOnDialogueAction: {fileID: 0}
   mementoPrefab: {fileID: 5232096813719522242, guid: 0d1620a94ce53dd41beb0163478c751a,
@@ -12160,6 +12161,7 @@ MonoBehaviour:
   offset180: 1
   childToSetEuler: {fileID: 0}
   childNewEuler: {x: 0, y: 0, z: 0}
+  randomizeChildScale: 0
 --- !u!1 &4217915976855213221
 GameObject:
   m_ObjectHideFlags: 0

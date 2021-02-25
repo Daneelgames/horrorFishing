@@ -328,17 +328,18 @@ public class IkMonsterAnimator : MonoBehaviour
             yield return null;
         }
         hc.mobAudio.Step();
-        
+           
+        /*
         if (stepVfxReference == null)
             yield break; 
-                
+             
         for (int i = 0; i < ikSolvers.Count; i++)
         {
             if (ikSolvers[i].Target.transform == bone)
             {
                 AssetSpawner.instance.Spawn(stepVfxReference, ikSolvers[i].Ankle.transform.position, AssetSpawner.ObjectType.Vfx);
             }
-        }
+        }*/
     }
     
     [ContextMenu("RandomizeAngles")]

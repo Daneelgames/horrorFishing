@@ -1379,103 +1379,62 @@ public class HealthController : MonoBehaviour, IUpdatable
                     health -= (dmg - dmg * armor); // normal damage
                 else 
                     health -= (dmg  - dmg * armor) * 2f;   
-                /*
-                if (loveAndGoldActive)
-                    dmg *= 0.5f;
-                
-                wc = WeaponControls.instance;
-                
-                // scale damage
-                if (gm.tutorialPassed == 0)
-                    dmg *= 0.5f;
-                else if (wc.activeWeapon && wc.activeWeapon.weapon == WeaponPickUp.Weapon.Shield && !wc.activeWeapon.broken && !wc.activeWeapon.hidden)
-                {
-                    dmg *= 0.5f;
-                    wc.activeWeapon.LoseDurability();
-                }
-            
-                if (psc.horrorMode)
-                {
-                    dmg *= 3;
-                    health -= (dmg - dmg * armor); // normal damage
-                }
-                else
-                {
-                    if (gm.difficultyLevel == GameManager.GameMode.StickyMeat)
-                    {
-                        if (health <= healthMax * 0.33f)
-                            health -= (dmg - dmg * armor) * 0.33f;
-                        else if (health <= healthMax * 0.5f)
-                            health -= (dmg - dmg * armor) * 0.75f;
-                        else 
-                            health -= (dmg  - dmg * armor);
-                    }
-                    else if (gm.difficultyLevel == GameManager.GameMode.MeatZone)
-                    {
-                        if (health <= healthMax * 0.33f)
-                            health -= (dmg - dmg * armor) * 0.66f; // light damage
-                        else if (health <= healthMax * 0.66f)
-                            health -= (dmg - dmg * armor); // normal damage
-                        else 
-                            health -= (dmg  - dmg * armor) * 2f;   
-                    }
-                }*/
             }
             else
+            {
+                if (PlayerSkillsController.instance.horrorMode)
                 {
-                    if (PlayerSkillsController.instance.horrorMode)
-                    {
-                        dmg *= 3;
-                    }
-                    
-                    if (boss && !_damagedByPlayer)
-                        dmg *= 0.1f;
-                    
-                    if (mobGroundMovement && mobGroundMovement.monsterState == MobGroundMovement.State.Idle)
-                        dmg *= 2;
-                    
-                    var d = dmg - dmg  * armor;
-
-                    if (GLNetworkWrapper.instance == null || GLNetworkWrapper.instance.coopIsActive == false)
-                    {
-                        // UNIT DAMAGED ON SOLO
-                        health -= d;   
-                    }
-                    else if (!playerNetworkDummyController)
-                    {
-                        if (effectsOnAttack != null && effectsOnAttack.effects.Count > 0)
-                        {
-                            switch (effectsOnAttack.effects[0].effectType)
-                            {
-                                case StatusEffects.StatusEffect.Poison:
-                                    effect = 0;
-                                    break;
-                                case StatusEffects.StatusEffect.Fire:
-                                    effect = 1;
-                                    break;
-                                case StatusEffects.StatusEffect.Bleed:
-                                    effect = 2;
-                                    break;
-                                case StatusEffects.StatusEffect.Rust:
-                                    effect = 3;
-                                    break;
-                                case StatusEffects.StatusEffect.HealthRegen:
-                                    effect = 4;
-                                    break;
-                                case StatusEffects.StatusEffect.GoldHunger:
-                                    effect = 5;
-                                    break;
-                                case StatusEffects.StatusEffect.Cold:
-                                    effect = 6;
-                                    break;
-                                case StatusEffects.StatusEffect.InLove:
-                                    effect = 7;
-                                    break;
-                            }
-                        }
-                        GLNetworkWrapper.instance.UnitHealthChanged(gameObject, -d, effect, _damagedByPlayer);
-                    }
+                    dmg *= 3;
                 }
+                
+                if (boss && !_damagedByPlayer)
+                    dmg *= 0.1f;
+                
+                if (mobGroundMovement && mobGroundMovement.monsterState == MobGroundMovement.State.Idle)
+                    dmg *= 2;
+                
+                var d = dmg - dmg  * armor;
+
+                if (GLNetworkWrapper.instance == null || GLNetworkWrapper.instance.coopIsActive == false)
+                {
+                    // UNIT DAMAGED ON SOLO
+                    health -= d;   
+                }
+                else if (!playerNetworkDummyController)
+                {
+                    if (effectsOnAttack != null && effectsOnAttack.effects.Count > 0)
+                    {
+                        switch (effectsOnAttack.effects[0].effectType)
+                        {
+                            case StatusEffects.StatusEffect.Poison:
+                                effect = 0;
+                                break;
+                            case StatusEffects.StatusEffect.Fire:
+                                effect = 1;
+                                break;
+                            case StatusEffects.StatusEffect.Bleed:
+                                effect = 2;
+                                break;
+                            case StatusEffects.StatusEffect.Rust:
+                                effect = 3;
+                                break;
+                            case StatusEffects.StatusEffect.HealthRegen:
+                                effect = 4;
+                                break;
+                            case StatusEffects.StatusEffect.GoldHunger:
+                                effect = 5;
+                                break;
+                            case StatusEffects.StatusEffect.Cold:
+                                effect = 6;
+                                break;
+                            case StatusEffects.StatusEffect.InLove:
+                                effect = 7;
+                                break;
+                        }
+                    }
+                    GLNetworkWrapper.instance.UnitHealthChanged(gameObject, -d, effect, _damagedByPlayer);
+                }
+            }
             
             if (bossStateChanger)
                 bossStateChanger.BossDamaged();

@@ -96,7 +96,7 @@ public class HubItemsSpawner : MonoBehaviour
                 npcSpawners[0].transform.rotation);
         }
 
-        if (headDragonSpawned == null)
+        if (headDragonSpawned == null && (qm.activeQuestsIndexes.Contains(5) || qm.completedQuestsIndexes.Contains(5)))
         {
             RespawnBoss();
         }
@@ -309,7 +309,6 @@ public class HubItemsSpawner : MonoBehaviour
         StartCoroutine(AnimateDeathFov());
         yield return new WaitForSeconds(1f);
         // death anim is over
-        LerpMoveToPlayer.instance.RespawnBossOnPlayerDeath();
         StartCoroutine(GetUpPhraseCoroutine());
         yield return new WaitForSeconds(2.1f);
         PlayerSkillsController.instance.InstantTeleport(currentSpawner.position);

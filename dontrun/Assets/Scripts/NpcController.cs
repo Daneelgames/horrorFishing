@@ -2846,6 +2846,7 @@ public class NpcController : MonoBehaviour
                         toInitOnDialogueAction.Init();
                     hc.mobPartsController.agent.enabled = true;
                     hc.inLove = true;
+                    hc.invincible = false;
                     break;
                 
                 
