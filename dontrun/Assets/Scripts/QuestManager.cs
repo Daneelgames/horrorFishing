@@ -1,7 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using PlayerControls;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class QuestManager : MonoBehaviour
 {
@@ -61,8 +63,6 @@ public class QuestManager : MonoBehaviour
     
     public void CompleteQuest(int index)
     {
-        print("Try to complete quest with index " + index);
-        
         if (!activeQuestsIndexes.Contains(index))
             return;
         
@@ -77,6 +77,22 @@ public class QuestManager : MonoBehaviour
         
         HubItemsSpawner.instance.UpdateHub();
         gm.SaveGame();
+        if (questData.quests[index].npcNameOnCompletion.Count > 0)
+        {
+            NpcPhraseOnCompletion(questData.quests[index].npcNameOnCompletion[gm.language], questData.quests[index].npcPhraseOnCompletion[gm.language]);
+        }
+    }
+
+    void NpcPhraseOnCompletion(string name, string phrase)
+    {
+        var ui = UiManager.instance;
+      
+        ui.weaponPhraseCooldown = 60;
+        ui.dialogueSpeakerName.text = name;
+        ui.dialoguePhrase.text = phrase;
+        ui.dialogueChoice.text = String.Empty;
+        ui.dialogueAnim.SetTrigger("Active");
+        ui.HideDialogue(4);
     }
 
     public void ClearCompletedQuestsFromActive()

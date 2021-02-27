@@ -302,10 +302,13 @@ public class HubItemsSpawner : MonoBehaviour
         var sc = SpawnController.instance;
         var spawnersTemp = new List<Transform>(sc.spawners);
         var currentSpawner = spawnersTemp[Random.Range(0, spawnersTemp.Count)];
+        
+        /*
         bool spawnLeg = HaveLeg();
         bool spawnRevolver = HaveRevolver();
-        
         wc.ResetInventory();
+        */
+        
         StartCoroutine(AnimateDeathFov());
         yield return new WaitForSeconds(1f);
         // death anim is over
@@ -314,6 +317,8 @@ public class HubItemsSpawner : MonoBehaviour
         PlayerSkillsController.instance.InstantTeleport(currentSpawner.position);
         PlayerMovement.instance.hc.RespawnPlayer(true);
         spawnersTemp.Remove(currentSpawner);
+        
+        /*
         if (spawnLeg)
         {
             currentSpawner = GetClosestSpawner(currentSpawner.position, spawnersTemp);
@@ -324,7 +329,7 @@ public class HubItemsSpawner : MonoBehaviour
         {
             currentSpawner = GetClosestSpawner(currentSpawner.position, spawnersTemp);
             DynamicObstaclesManager.instance.spawnedRevolver = sc.InstantiateItem(itemSpawners[1].itemToSpawn, currentSpawner.position + Vector3.up * 0.5f, currentSpawner.rotation, false);
-        }
+        }*/
     }
     public IEnumerator RespawnPlayerOnContinue(Vector3 newPlayerPos)
     {

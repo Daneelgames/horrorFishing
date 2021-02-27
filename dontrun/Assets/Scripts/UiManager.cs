@@ -182,6 +182,7 @@ public class UiManager : MonoBehaviour
     private bool canSendDamageMessage = true;
 
     private bool chaseFeedbackShowed = false;
+    public float weaponPhraseCooldown = 0;
     
     private void Awake()
     {

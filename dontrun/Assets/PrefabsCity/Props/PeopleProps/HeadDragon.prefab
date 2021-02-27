@@ -849,12 +849,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1331849541195692440}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 6238512351332215655}
-  m_RootOrder: 6
+  m_Father: {fileID: 7206278516984124448}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &7268664140835667516
 AudioSource:
@@ -869,7 +869,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: fbafed204c759d041905da0ecc236674, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.66
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -878,7 +878,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 50
+  MaxDistance: 75
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -1446,7 +1446,8 @@ MonoBehaviour:
   npcInteractor: {fileID: 0}
   setNpcInteractorToZero: 1
   weaponPickUp: {fileID: 0}
-  startQuestOnDeath: -1
+  startQuestOnDeath: 8
+  completeQuestOnDeath: 7
   armor: 0
   wallMasterTile: {fileID: 0}
   usedTile: {fileID: 0}
@@ -8848,6 +8849,7 @@ Transform:
   - {fileID: 7289162804572404346}
   - {fileID: 756422556195752758}
   - {fileID: 6996189384688540993}
+  - {fileID: 5429232612299965338}
   m_Father: {fileID: 2720581368703345790}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9870,7 +9872,6 @@ Transform:
   - {fileID: 4889190726713358462}
   - {fileID: 1691448537}
   - {fileID: 481163040}
-  - {fileID: 5429232612299965338}
   m_Father: {fileID: 6517679504290930881}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

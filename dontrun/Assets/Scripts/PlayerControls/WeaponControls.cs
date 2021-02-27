@@ -121,32 +121,27 @@ public class WeaponControls : MonoBehaviour
 
     void Update()
     {
-        if (pm.hc.health > 0 && pm.controller.enabled && !gm.paused /*&& !gm.questWindow */&& !gm.mementoWindow && (gm.lg == null || !gm.lg.generating))
+        if (pm.hc.health > 0 && pm.controller.enabled && !gm.paused)
         {
-            if (!eatingWeapon)
-            {
-                Attacking();
-                //AttackYourself();
-                Reloading();
+            if (ui && ui.weaponPhraseCooldown > 0)
+                ui.weaponPhraseCooldown -= Time.deltaTime;
             
-                SwitchWeapon();
-                HideWeapon();
-                
-                /*
-                if (dropCooldown <= 0)
-                {
-                    DropWeaponInput();
-                    DropToolInput();   
-                }*/
-            }
+            Attacking();
+            //AttackYourself();
+            Reloading();
+        
+            SwitchWeapon();
+            HideWeapon();
             
             ItemInHands();
 
+            /*
             if (eatCooldown <= 0)
             {
-                //EatWeapon();
+                EatWeapon();
                 UseTool();   
             }
+            */
             
             //ThrowTool();
             ChangeTool();
@@ -404,7 +399,7 @@ public class WeaponControls : MonoBehaviour
         //if ((Input.GetButtonDown(attackString)  || Input.GetAxis(attackString) > 0.5f || KeyBindingManager.GetKeyDown(KeyAction.Fire1)) && ic.objectInHands)
         if ((Input.GetAxis(attackString) > 0.5f || KeyBindingManager.GetKeyDown(KeyAction.Fire1)) && ic.objectInHands)
         {
-            ic.objectInHands.Throw();
+            ic.objectInHands.Drop();
         }
         else // and only than attack
         {
@@ -467,7 +462,7 @@ public class WeaponControls : MonoBehaviour
                     {
                         if (ic.objectInHands)
                         {
-                            ic.objectInHands.Throw();
+                            ic.objectInHands.Drop();
                         }
                         else
                         {
@@ -802,8 +797,8 @@ public class WeaponControls : MonoBehaviour
     private string activeString = "Active";
     void WeaponPhrase()
     {
-        if (!activeWeapon || !activeWeapon.randomPhrases) return;
-        
+        if (!activeWeapon || !activeWeapon.randomPhrases || ui.weaponPhraseCooldown > 0) return;
+        ui.weaponPhraseCooldown = 60;
         ui = UiManager.instance;
         var tempDialogue = activeWeapon.randomPhrases.dialogues[Random.Range(0, activeWeapon.randomPhrases.dialogues.Count)];
         ui.dialogueSpeakerName.text = activeWeapon.dataRandomizer.generatedName[gm.language];

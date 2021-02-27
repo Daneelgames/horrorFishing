@@ -19,5 +19,8 @@ public class Quest
     public string achievementOnStart;
     public string achievementOnComplete;
 
+    public List<string> npcNameOnCompletion;
+    public List<string> npcPhraseOnCompletion;
+    
     public int startQuestOnCompletion;
 }

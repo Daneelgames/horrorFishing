@@ -98,6 +98,7 @@ public class HealthController : MonoBehaviour, IUpdatable
     public bool setNpcInteractorToZero = true;
     public WeaponPickUp weaponPickUp;
     public int startQuestOnDeath = -1;
+    public int completeQuestOnDeath = -1;
 
     [Range(0,1)]
     public float armor = 0;
@@ -1973,6 +1974,10 @@ public class HealthController : MonoBehaviour, IUpdatable
         if (startQuestOnDeath >= 0)
         {
             QuestManager.instance.StartQuest(startQuestOnDeath);
+        }
+        if (completeQuestOnDeath >= 0)
+        {
+            QuestManager.instance.CompleteQuest(completeQuestOnDeath);
         }
 
         if (playerMovement || player)

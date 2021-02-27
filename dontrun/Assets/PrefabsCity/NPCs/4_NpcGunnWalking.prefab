@@ -122,8 +122,8 @@ MonoBehaviour:
   dialogues:
   - dialogueEvent: 30
     eventCost: 0
-    questToStart: 7
-    questToComplete: 6
+    questToStart: -1
+    questToComplete: -1
     phrases:
     - I finished that boat for you, lad
     - But you didn't convince the old hug ehh
@@ -197,6 +197,8 @@ MonoBehaviour:
   keySold: 0
   setNpcInactiveOnAction: 1
   spiderBossAggressiveOnAction: 1
+  startQuestOnAction: 7
+  completeQuestOnAction: 6
   gameObjectActivateOnAgree: {fileID: 0}
   toInitOnDialogueAction: {fileID: 226026425718650678}
   mementoPrefab: {fileID: 5232096813719522242, guid: 0d1620a94ce53dd41beb0163478c751a,
@@ -917,6 +919,7 @@ MonoBehaviour:
   setNpcInteractorToZero: 0
   weaponPickUp: {fileID: 0}
   startQuestOnDeath: -1
+  completeQuestOnDeath: -1
   armor: 0
   wallMasterTile: {fileID: 0}
   usedTile: {fileID: 0}

@@ -863,12 +863,4 @@ public class WeaponController : MonoBehaviour
             PlayerAudioController.instance.StopReload(reloadClipEnd);
         }
     }
-
-    /*
-    private void UpdateBulletsInGun()
-    {
-        for (var i = visibleBullets.Count; i > 0; i --)
-            visibleBullets[i - 1].SetActive(i <= ammoClip);
-    }
-    */
 }

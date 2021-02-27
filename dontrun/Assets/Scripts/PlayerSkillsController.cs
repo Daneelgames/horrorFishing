@@ -776,8 +776,6 @@ public class PlayerSkillsController : MonoBehaviour
         // random kiss effect
         float r = Random.Range(0, 100);
 
-        pm.hc.Heal(pm.hc.healthMax / 3f);
-        
         if (pm.hc.health < pm.hc.healthMax * 0.5f || r > 66)
         {
             SpawnDynamicMobs(Random.Range(0, 3));
@@ -795,6 +793,9 @@ public class PlayerSkillsController : MonoBehaviour
             SpawnDynamicProps(Random.Range(0, 3));
             SpawnDynamicMobs(Random.Range(5, 10));
         }
+        
+        pm.hc.Heal(pm.hc.healthMax);
+
     }
 
     void SpawnDynamicMobs(int amount)

@@ -46,7 +46,7 @@ public class InteractionController : MonoBehaviour
 
     private void Update()
     {
-        if ((Input.GetButtonDown(interactionString) || KeyBindingManager.GetKeyDown(KeyAction.Interaction)) && !gm.paused && !pm.hc.wc.eatingWeapon && pm.hc.health > 0)
+        if ((Input.GetButtonDown(interactionString) || KeyBindingManager.GetKeyDown(KeyAction.Interaction)) && !gm.paused &&pm.hc.health > 0)
         {
             if (objectInHands)
             {
@@ -63,7 +63,7 @@ public class InteractionController : MonoBehaviour
             }
             
             //if (ui.dialogueInteractor != null && (!selectedItem || selectedItem != ui.dialogueInteractor.interactable))
-            if (ui.dialogueInteractor != null && selectedItem && selectedItem != ui.dialogueInteractor.interactable)
+            if (ui.dialogueInteractor && (!selectedItem || (selectedItem && selectedItem != ui.dialogueInteractor.interactable)))
             {
                 ui.dialogueInteractor.HideDialogue();
             }

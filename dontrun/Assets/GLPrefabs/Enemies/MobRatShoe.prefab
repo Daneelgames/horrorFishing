@@ -228,6 +228,9 @@ MonoBehaviour:
   au: {fileID: 0}
   deathParticle: {fileID: 0}
   hc: {fileID: 964553168201813282}
+  usedForAttack: 0
+  mobAttack: {fileID: 0}
+  ikTargets: []
 --- !u!1 &774765182979290423
 GameObject:
   m_ObjectHideFlags: 0
@@ -480,8 +483,8 @@ MonoBehaviour:
   - Shoe
   - "\u0422\u0443\u0444\u0435\u043B\u044C\u043A\u0430"
   player: 0
-  health: 2000
-  healthMax: 2000
+  health: 500
+  healthMax: 500
   statusEffects:
   - effectType: 1
     fillSpeed: 100
@@ -561,7 +564,7 @@ MonoBehaviour:
   - {fileID: 2840351216784506485}
   fireParticles: {fileID: 8620632289470235635}
   fireAu: {fileID: 6425136132064847792}
-  pm: {fileID: 0}
+  playerMovement: {fileID: 0}
   wc: {fileID: 0}
   damageCooldown: 0
   pac: {fileID: 0}
@@ -572,6 +575,7 @@ MonoBehaviour:
   inLove: 0
   boss: 0
   bossStateChanger: {fileID: 0}
+  propController: {fileID: 0}
   mobKilledAchievementID: 
   cultist: 0
   mobGroundMovement: {fileID: 964553168201813281}
@@ -581,8 +585,7 @@ MonoBehaviour:
   mobHideInCorners: {fileID: 0}
   mobPartsController: {fileID: 6368900508020413838}
   bombBehaviour: {fileID: 0}
-  mobMeleeAttacks:
-  - {fileID: 7490763743273953196}
+  mobMeleeAttack: {fileID: 0}
   mobAudio: {fileID: 4503667638567919298}
   deerActivator: {fileID: 0}
   mps: {fileID: 0}
@@ -597,15 +600,17 @@ MonoBehaviour:
   damagedByPlayer: 0
   eyeEater: 0
   dynamicMapMark: {fileID: 0}
-  addBadRepOnDeath: 0.1
+  addSpawnCooldownOnDeath: 0
   door: {fileID: 0}
   npcInteractor: {fileID: 0}
+  setNpcInteractorToZero: 1
   weaponPickUp: {fileID: 0}
   startQuestOnDeath: -1
   armor: 0
   wallMasterTile: {fileID: 0}
   usedTile: {fileID: 0}
   deathParticles: {fileID: 931699847243738630}
+  deathParticlesMulti: []
   playerDamagedMessage:
   - shoe spiked me
   - "\u0442\u0443\u0444\u0435\u043B\u044C\u043A\u0430 \u043F\u0440\u043E\u0442\u043A\u043D\u0443\u043B\u0430
@@ -613,7 +618,7 @@ MonoBehaviour:
   damagedByPlayerMessage:
   - shoe
   - "\u0442\u0443\u0444\u0435\u043B\u044C\u043A\u0443"
-  canHear: 1
+  canHear: 0
   activeNpc: {fileID: 0}
   wall: 0
 --- !u!114 &964553168201813281
@@ -651,8 +656,10 @@ MonoBehaviour:
     m_Bits: 1922371072
   mobAu: {fileID: 4503667638567919298}
   coldModifier: 1
+  limbsModifier: 1
   target: {fileID: 0}
   currentMobLifter: {fileID: 0}
+  rotateToTargetInUpdate: 1
 --- !u!114 &6368900508020413838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -668,7 +675,10 @@ MonoBehaviour:
   level: 0
   mobType: 10
   agent: {fileID: 964553168201813311}
+  ikMonsterAnimator: {fileID: 0}
   simpleWalker: 0
+  simpleWalkerString: Chase
+  distanceThreshold: 0.1
   anim: {fileID: 4987727445962727948}
   bodyParts:
   - {fileID: 5167467068018064678}
@@ -690,8 +700,8 @@ MonoBehaviour:
     amountMax: 5
     amountMin: 5
   dropPosition: {fileID: 8297377300033624818}
-  movementCollider: {fileID: 1945090554738516176}
   forceDropOnTile: 0
+  lookAtPlayer: 0
   animDamageByTrigger: 0
 --- !u!114 &7490763743273953196
 MonoBehaviour:
@@ -711,39 +721,18 @@ MonoBehaviour:
     attackCooldown: 1.5
     attackCooldownMax: 2.5
     attackCooldownMin: 0.75
-    minimumAttackDelay: 0
-    maximumAttackDelay: 0.1
-    swingTime: 0.33
-    attackTime: 0.25
-    returnTime: 0.42
   - damage: 175
     attackCooldown: 1
     attackCooldownMax: 2
     attackCooldownMin: 0.5
-    minimumAttackDelay: 0
-    maximumAttackDelay: 0.1
-    swingTime: 0.33
-    attackTime: 0.25
-    returnTime: 0.42
   - damage: 200
     attackCooldown: 0.5
     attackCooldownMax: 1.5
     attackCooldownMin: 0.25
-    minimumAttackDelay: 0
-    maximumAttackDelay: 0.1
-    swingTime: 0.33
-    attackTime: 0.25
-    returnTime: 0.42
   - damage: 225
     attackCooldown: 0.25
     attackCooldownMax: 1.25
     attackCooldownMin: 0
-    minimumAttackDelay: 0.1
-    maximumAttackDelay: 0.5
-    swingTime: 0.33
-    attackTime: 0.25
-    returnTime: 0.42
-  damageArea: {fileID: 1945090553512400273}
   mobGroundMovement: {fileID: 964553168201813281}
   hc: {fileID: 964553168201813282}
   thiefBehaviour: 0
@@ -751,7 +740,6 @@ MonoBehaviour:
   effectsOnAttack:
     effects: []
     effectsValues: []
-  _flexNetworkAnimator: {fileID: 2940606346374599465}
 --- !u!114 &4503667638567919298
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1141,6 +1129,9 @@ MonoBehaviour:
   au: {fileID: 0}
   deathParticle: {fileID: 0}
   hc: {fileID: 964553168201813282}
+  usedForAttack: 0
+  mobAttack: {fileID: 0}
+  ikTargets: []
 --- !u!65 &1989685947640232539
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6710,6 +6701,9 @@ MonoBehaviour:
   au: {fileID: 0}
   deathParticle: {fileID: 0}
   hc: {fileID: 964553168201813282}
+  usedForAttack: 0
+  mobAttack: {fileID: 0}
+  ikTargets: []
 --- !u!1 &3603983201896185833
 GameObject:
   m_ObjectHideFlags: 0
@@ -7086,6 +7080,9 @@ MonoBehaviour:
   au: {fileID: 0}
   deathParticle: {fileID: 0}
   hc: {fileID: 964553168201813282}
+  usedForAttack: 0
+  mobAttack: {fileID: 0}
+  ikTargets: []
 --- !u!1 &4830618937399247140
 GameObject:
   m_ObjectHideFlags: 0
@@ -7158,6 +7155,7 @@ MonoBehaviour:
   dropPosition: {fileID: 0}
   rangeShotParticles: {fileID: 0}
   shotAu: {fileID: 0}
+  gameObjectsToActivate: []
 --- !u!1 &4832349155715886891
 GameObject:
   m_ObjectHideFlags: 0
@@ -7223,6 +7221,9 @@ MonoBehaviour:
   au: {fileID: 0}
   deathParticle: {fileID: 0}
   hc: {fileID: 964553168201813282}
+  usedForAttack: 0
+  mobAttack: {fileID: 0}
+  ikTargets: []
 --- !u!1 &4868643790654006050
 GameObject:
   m_ObjectHideFlags: 0
@@ -7287,6 +7288,9 @@ MonoBehaviour:
   au: {fileID: 0}
   deathParticle: {fileID: 0}
   hc: {fileID: 964553168201813282}
+  usedForAttack: 0
+  mobAttack: {fileID: 0}
+  ikTargets: []
 --- !u!1 &4890821873924573308
 GameObject:
   m_ObjectHideFlags: 0
@@ -7352,6 +7356,9 @@ MonoBehaviour:
   au: {fileID: 0}
   deathParticle: {fileID: 0}
   hc: {fileID: 964553168201813282}
+  usedForAttack: 0
+  mobAttack: {fileID: 0}
+  ikTargets: []
 --- !u!1 &4933349391757978502
 GameObject:
   m_ObjectHideFlags: 0
@@ -7621,7 +7628,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1ae892b86acd424c888e3f737f20f40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  streamingDistance: 50
   streamObjectAboveAnimator: 0
   childObjectToHide: []
 --- !u!1 &5497747247880700473
@@ -7979,6 +7985,9 @@ MonoBehaviour:
   au: {fileID: 0}
   deathParticle: {fileID: 0}
   hc: {fileID: 964553168201813282}
+  usedForAttack: 0
+  mobAttack: {fileID: 0}
+  ikTargets: []
 --- !u!1 &6848475657829826824
 GameObject:
   m_ObjectHideFlags: 0
@@ -8077,6 +8086,9 @@ MonoBehaviour:
   au: {fileID: 0}
   deathParticle: {fileID: 0}
   hc: {fileID: 964553168201813282}
+  usedForAttack: 0
+  mobAttack: {fileID: 0}
+  ikTargets: []
 --- !u!1 &7147456605194387069
 GameObject:
   m_ObjectHideFlags: 0
@@ -8263,6 +8275,9 @@ MonoBehaviour:
   au: {fileID: 0}
   deathParticle: {fileID: 0}
   hc: {fileID: 964553168201813282}
+  usedForAttack: 0
+  mobAttack: {fileID: 0}
+  ikTargets: []
 --- !u!1 &7686001122727992701
 GameObject:
   m_ObjectHideFlags: 0
@@ -8424,6 +8439,9 @@ MonoBehaviour:
   au: {fileID: 0}
   deathParticle: {fileID: 0}
   hc: {fileID: 964553168201813282}
+  usedForAttack: 0
+  mobAttack: {fileID: 0}
+  ikTargets: []
 --- !u!1 &8286627332053544232
 GameObject:
   m_ObjectHideFlags: 0

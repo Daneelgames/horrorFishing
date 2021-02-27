@@ -64,6 +64,8 @@ public class NpcController : MonoBehaviour
     public bool keySold = false;
     public bool setNpcInactiveOnAction = false;
     public bool spiderBossAggressiveOnAction = false;
+    public int startQuestOnAction = -1;
+    public int completeQuestOnAction = -1;
 
     private float inLoveScaler = 1;
     public GameObject gameObjectActivateOnAgree;
@@ -2846,7 +2848,6 @@ public class NpcController : MonoBehaviour
                         toInitOnDialogueAction.Init();
                     hc.mobPartsController.agent.enabled = true;
                     hc.inLove = true;
-                    hc.invincible = false;
                     break;
                 
                 
@@ -3437,6 +3438,12 @@ public class NpcController : MonoBehaviour
             if (setNpcInactiveOnAction)
                 gameObject.SetActive(false);
 
+            if (startQuestOnAction >= 0)
+                QuestManager.instance.StartQuest(startQuestOnAction);
+            
+            if (completeQuestOnAction >= 0)
+                QuestManager.instance.StartQuest(completeQuestOnAction);
+            
             if (spiderBossAggressiveOnAction)
             {
                 LerpMoveToPlayer.instance.SetAggressive();

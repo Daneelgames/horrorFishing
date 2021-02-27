@@ -76,6 +76,8 @@ public class LevelBlockerController : MonoBehaviour
             yield return null;
             for (int i = blockers.Count - 1; i >= 0; i--)
             {
+                
+                
                 if (blockers[i] == null)
                     blockers.RemoveAt(i);
                 yield return null;

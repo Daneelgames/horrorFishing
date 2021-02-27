@@ -4,15 +4,16 @@ using System.Collections.Generic;
 using PlayerControls;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class QuestPortableObjectsPlacer : MonoBehaviour
 {
     public List<Transform> targetParents;
+    [FormerlySerializedAs("completedVisual")] public List<GameObject> completedVisuals;
     public int amount = 3;
     public int questToComplete = -1;
     public PortableObject.QuestPortable questPortableType = PortableObject.QuestPortable.GunnWood;
-    public GameObject completedVisual;
 
     private IEnumerator Start()
     {
@@ -20,7 +21,10 @@ public class QuestPortableObjectsPlacer : MonoBehaviour
         {
             if (QuestManager.instance.completedQuestsIndexes.Contains(questToComplete))
             {
-                 completedVisual.SetActive(true);
+                for (int i = 0; i < completedVisuals.Count; i++)
+                {
+                    completedVisuals[i].SetActive(true);
+                }
                 yield break;
             }
             yield return new WaitForSeconds(0.1f);
@@ -44,7 +48,8 @@ public class QuestPortableObjectsPlacer : MonoBehaviour
         float t = 0;
         float tt = 1;
 
-        Transform currentTarget = targetParents[Random.Range(0, targetParents.Count)];
+        int r = Random.Range(0, targetParents.Count);
+        Transform currentTarget = targetParents[r];
         targetParents.Remove(currentTarget);
         objInHands.UseAsQuestPortable();
         objInHands.transform.parent = currentTarget;
@@ -59,13 +64,19 @@ public class QuestPortableObjectsPlacer : MonoBehaviour
             t += Time.deltaTime;
             yield return null;
         }
+        completedVisuals[r].SetActive(true);
+        Destroy(objInHands.gameObject);
 
         amount--;
 
         if (amount <= 0)
         {
             QuestManager.instance.CompleteQuest(questToComplete);
-            completedVisual.SetActive(true);
+            
+            for (int i = 0; i < completedVisuals.Count; i++)
+            {
+                completedVisuals[i].SetActive(true);
+            }
         }
     }
 }
