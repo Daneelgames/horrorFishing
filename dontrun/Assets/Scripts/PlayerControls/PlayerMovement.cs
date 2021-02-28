@@ -218,6 +218,8 @@ namespace PlayerControls
         
         public void ToggleCrouch(bool c)
         {
+            if (_gameManager.introPassed == false) return;
+            
             if (crouching != c)
             {
                 crouching = c;

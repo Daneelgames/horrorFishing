@@ -33,6 +33,7 @@ public class SavingData
     public bool ladyshoeFound = false;
     public bool revolverFound = false;
     public bool newGamePlus = false;
+    public bool introPassed = false;
     
     public int grain;
     public int bloom;
@@ -147,7 +148,6 @@ public class SavingData
         tapesFoundOfFloors = gm.tapesFoundOfFloors;
         doorsOpenedIndexesInHub = gm.doorsOpenedIndexesInHub;
         rareWindowShown = gm.rareWindowShown;
-        tutorialPassed = gm.tutorialPassed;
         tutorialHints = gm.tutorialHints;
         darkness = gm.darkness;
         coopBiomeCheckpoints = gm.coopBiomeCheckpoints;
@@ -161,7 +161,7 @@ public class SavingData
         edgeDetection = gm.edgeDetection;
 
         newGamePlus = gm.newGamePlus;
-        
+        introPassed = gm.introPassed;
         wasInHub = gm.wasInHub;
         hubVisits = gm.hubVisits;
         resolution = gm.resolution;

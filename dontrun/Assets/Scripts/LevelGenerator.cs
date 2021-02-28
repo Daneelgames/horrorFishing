@@ -229,20 +229,6 @@ public class LevelGenerator : MonoBehaviour
         print ("init level gen");
         rtps.Clear();
 
-        if (gm.arena)
-        {
-            newLevelData = gm.arenaLevel;
-        }
-        else
-        {
-            if (gm.tutorialPassed == 1)
-                newLevelData = gm.level;
-            else if (gm.tutorialPassed == 0)
-            {
-                newLevelData = gm.tutorialLevel;
-            }   
-        }
-
         roomsAmount = newLevelData.roomsAmount;
         maximumHorizontalRoomPos = newLevelData.maximumHorizontalRoomPos;
         maximumVerticalRoomPos = newLevelData.maximumVerticalRoomPos;
@@ -572,27 +558,23 @@ public class LevelGenerator : MonoBehaviour
         {
             RoomFiller filler = roomFillers[index];
 
-            if (gm.tutorialPassed == 1)
+            if (filler.masterRoom == roomsInGame[0])
+                filler.tileIndex = currentMainTile;
+            else
             {
-                if (filler.masterRoom == roomsInGame[0])
-                    filler.tileIndex = currentMainTile;
-                else
+                filler.tileIndex = currentRoomTile;
+                if (!filler.cultTile)
                 {
-                    filler.tileIndex = currentRoomTile;
-                    if (!filler.cultTile)
-                    {
-                        if (filler.tileIndex == 1)
-                            filler.statusEffect = StatusEffects.StatusEffect.Rust;
-                        else if (filler.tileIndex == 2)
-                            filler.statusEffect = StatusEffects.StatusEffect.Poison;
-                        else if (filler.tileIndex == 3)
-                            filler.statusEffect = StatusEffects.StatusEffect.Cold;
-                        else if (filler.tileIndex == 5)
-                            filler.statusEffect = StatusEffects.StatusEffect.Bleed;   
-                    }
-                }   
-            }
-
+                    if (filler.tileIndex == 1)
+                        filler.statusEffect = StatusEffects.StatusEffect.Rust;
+                    else if (filler.tileIndex == 2)
+                        filler.statusEffect = StatusEffects.StatusEffect.Poison;
+                    else if (filler.tileIndex == 3)
+                        filler.statusEffect = StatusEffects.StatusEffect.Cold;
+                    else if (filler.tileIndex == 5)
+                        filler.statusEffect = StatusEffects.StatusEffect.Bleed;   
+                }
+            }   
             Vector3 tilePosition = filler.transform.position;
             for (int i = 0; i < filler.steps; i++)
             {

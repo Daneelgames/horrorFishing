@@ -114,8 +114,9 @@ Transform:
   - {fileID: 7151910085690824898}
   - {fileID: 460662434838852659}
   - {fileID: 4931245092584293259}
+  - {fileID: 1802108981317894506}
   m_Father: {fileID: 2843392609117370925}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!95 &8897190031782811378
 Animator:
@@ -163,14 +164,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1802108981317895223}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalPosition: {x: 0, y: -1.75, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1802108981317901678}
   - {fileID: 1802108981317894367}
-  m_Father: {fileID: 2843392609117370925}
-  m_RootOrder: 0
+  - {fileID: 3394841715437762131}
+  m_Father: {fileID: 111340063715473199}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1802108981317899090
 MonoBehaviour:
@@ -256,7 +258,8 @@ MonoBehaviour:
   inQuest: 0
   order: 0
   dialogues:
-  - dialogueEvent: 0
+  - importantDialogue: 1
+    dialogueEvent: 0
     eventCost: 0
     questToStart: -1
     questToComplete: -1
@@ -299,7 +302,8 @@ MonoBehaviour:
     eventCompleteGer: 
     eventCompleteIT: 
     eventCompleteSPBR: 
-  - dialogueEvent: 0
+  - importantDialogue: 0
+    dialogueEvent: 0
     eventCost: 0
     questToStart: -1
     questToComplete: -1
@@ -353,11 +357,17 @@ MonoBehaviour:
   randomLinesAmountMax: 6
   hc: {fileID: 2843392609117366628}
   keySold: 0
+  setNpcInactiveOnAction: 0
+  spiderBossAggressiveOnAction: 0
+  startQuestOnAction: -1
+  completeQuestOnAction: -1
   gameObjectActivateOnAgree: {fileID: 0}
+  toInitOnDialogueAction: {fileID: 0}
   mementoPrefab: {fileID: 5232096813719522242, guid: 0d1620a94ce53dd41beb0163478c751a,
     type: 3}
   interactableToInteractOnDialogueAction: {fileID: 0}
   snout: 0
+  importantDialogueMark: {fileID: 4470357151952837201}
 --- !u!136 &1802108981317899314
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -876,7 +886,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1802108981317896820}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.209, z: 0.575}
+  m_LocalPosition: {x: 0, y: 1.209, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1802108981317898354}
@@ -908,7 +918,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1802108981317896869}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.53, z: 0.5749998}
+  m_LocalPosition: {x: 0, y: 1.53, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1802108981317894434}
@@ -11394,7 +11404,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1802108981317894506}
   - {fileID: 111340063715473199}
   m_Father: {fileID: 2843392609117365346}
   m_RootOrder: 1
@@ -11729,8 +11738,10 @@ MonoBehaviour:
   addSpawnCooldownOnDeath: 0
   door: {fileID: 0}
   npcInteractor: {fileID: 1802108981317898441}
+  setNpcInteractorToZero: 1
   weaponPickUp: {fileID: 0}
   startQuestOnDeath: -1
+  completeQuestOnDeath: -1
   armor: 0
   wallMasterTile: {fileID: 0}
   usedTile: {fileID: 0}
@@ -17393,3 +17404,124 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1001 &4855124781521899756
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1802108981317894506}
+    m_Modifications:
+    - target: {fileID: 411372033904948013, guid: 23dc4fed13773a74f9f63c6427e42ced,
+        type: 3}
+      propertyPath: m_Name
+      value: ImportantDialogueTooltip
+      objectReference: {fileID: 0}
+    - target: {fileID: 617254021587337304, guid: 23dc4fed13773a74f9f63c6427e42ced,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.6841707
+      objectReference: {fileID: 0}
+    - target: {fileID: 617254021587337304, guid: 23dc4fed13773a74f9f63c6427e42ced,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 617254021587337304, guid: 23dc4fed13773a74f9f63c6427e42ced,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 617254021587337304, guid: 23dc4fed13773a74f9f63c6427e42ced,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.72932196
+      objectReference: {fileID: 0}
+    - target: {fileID: 617254021587337304, guid: 23dc4fed13773a74f9f63c6427e42ced,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -93.659
+      objectReference: {fileID: 0}
+    - target: {fileID: 7817185512025188031, guid: 23dc4fed13773a74f9f63c6427e42ced,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7817185512025188031, guid: 23dc4fed13773a74f9f63c6427e42ced,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7817185512025188031, guid: 23dc4fed13773a74f9f63c6427e42ced,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7817185512025188031, guid: 23dc4fed13773a74f9f63c6427e42ced,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7817185512025188031, guid: 23dc4fed13773a74f9f63c6427e42ced,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.693
+      objectReference: {fileID: 0}
+    - target: {fileID: 7817185512025188031, guid: 23dc4fed13773a74f9f63c6427e42ced,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.975
+      objectReference: {fileID: 0}
+    - target: {fileID: 7817185512025188031, guid: 23dc4fed13773a74f9f63c6427e42ced,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.432
+      objectReference: {fileID: 0}
+    - target: {fileID: 7817185512025188031, guid: 23dc4fed13773a74f9f63c6427e42ced,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7817185512025188031, guid: 23dc4fed13773a74f9f63c6427e42ced,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7817185512025188031, guid: 23dc4fed13773a74f9f63c6427e42ced,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7817185512025188031, guid: 23dc4fed13773a74f9f63c6427e42ced,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7817185512025188031, guid: 23dc4fed13773a74f9f63c6427e42ced,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7817185512025188031, guid: 23dc4fed13773a74f9f63c6427e42ced,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7817185512025188031, guid: 23dc4fed13773a74f9f63c6427e42ced,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 23dc4fed13773a74f9f63c6427e42ced, type: 3}
+--- !u!95 &4470357151952837201 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9036816141985090237, guid: 23dc4fed13773a74f9f63c6427e42ced,
+    type: 3}
+  m_PrefabInstance: {fileID: 4855124781521899756}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3394841715437762131 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7817185512025188031, guid: 23dc4fed13773a74f9f63c6427e42ced,
+    type: 3}
+  m_PrefabInstance: {fileID: 4855124781521899756}
+  m_PrefabAsset: {fileID: 0}

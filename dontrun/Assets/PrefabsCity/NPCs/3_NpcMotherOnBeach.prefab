@@ -5214,6 +5214,7 @@ MonoBehaviour:
   setNpcInteractorToZero: 1
   weaponPickUp: {fileID: 0}
   startQuestOnDeath: -1
+  completeQuestOnDeath: -1
   armor: 0
   wallMasterTile: {fileID: 0}
   usedTile: {fileID: 0}
@@ -11037,6 +11038,7 @@ Transform:
   m_Children:
   - {fileID: 2616221807219918938}
   - {fileID: 2616221807219922411}
+  - {fileID: 1342308896332030376}
   m_Father: {fileID: 1889556697248083737}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50.571, y: -6.552, z: -13.818}
@@ -11124,7 +11126,8 @@ MonoBehaviour:
   inQuest: 0
   order: 0
   dialogues:
-  - dialogueEvent: 0
+  - importantDialogue: 1
+    dialogueEvent: 0
     eventCost: 0
     questToStart: 6
     questToComplete: 5
@@ -11153,7 +11156,8 @@ MonoBehaviour:
     eventCompleteGer: ...
     eventCompleteIT: ...
     eventCompleteSPBR: ...
-  - dialogueEvent: 0
+  - importantDialogue: 0
+    dialogueEvent: 0
     eventCost: 0
     questToStart: -1
     questToComplete: -1
@@ -11198,12 +11202,15 @@ MonoBehaviour:
   keySold: 0
   setNpcInactiveOnAction: 0
   spiderBossAggressiveOnAction: 0
+  startQuestOnAction: -1
+  completeQuestOnAction: -1
   gameObjectActivateOnAgree: {fileID: 0}
   toInitOnDialogueAction: {fileID: 0}
   mementoPrefab: {fileID: 5232096813719522242, guid: 0d1620a94ce53dd41beb0163478c751a,
     type: 3}
   interactableToInteractOnDialogueAction: {fileID: 0}
   snout: 0
+  importantDialogueMark: {fileID: 267355584866110890}
 --- !u!136 &2616221807219917062
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -13095,4 +13102,125 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -2443652682778959223, guid: 3fb4e38a444f4b94aadb91ad2e9242f3,
     type: 3}
   m_PrefabInstance: {fileID: 3583257268430301007}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &9141443139144304407
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2616221807219922014}
+    m_Modifications:
+    - target: {fileID: 411372033904948013, guid: 23dc4fed13773a74f9f63c6427e42ced,
+        type: 3}
+      propertyPath: m_Name
+      value: ImportantDialogueTooltip
+      objectReference: {fileID: 0}
+    - target: {fileID: 617254021587337304, guid: 23dc4fed13773a74f9f63c6427e42ced,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 617254021587337304, guid: 23dc4fed13773a74f9f63c6427e42ced,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 617254021587337304, guid: 23dc4fed13773a74f9f63c6427e42ced,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 617254021587337304, guid: 23dc4fed13773a74f9f63c6427e42ced,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 617254021587337304, guid: 23dc4fed13773a74f9f63c6427e42ced,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7817185512025188031, guid: 23dc4fed13773a74f9f63c6427e42ced,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7817185512025188031, guid: 23dc4fed13773a74f9f63c6427e42ced,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 5.2667
+      objectReference: {fileID: 0}
+    - target: {fileID: 7817185512025188031, guid: 23dc4fed13773a74f9f63c6427e42ced,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 5.2667
+      objectReference: {fileID: 0}
+    - target: {fileID: 7817185512025188031, guid: 23dc4fed13773a74f9f63c6427e42ced,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 5.2667
+      objectReference: {fileID: 0}
+    - target: {fileID: 7817185512025188031, guid: 23dc4fed13773a74f9f63c6427e42ced,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 11.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7817185512025188031, guid: 23dc4fed13773a74f9f63c6427e42ced,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 146.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7817185512025188031, guid: 23dc4fed13773a74f9f63c6427e42ced,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 51.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7817185512025188031, guid: 23dc4fed13773a74f9f63c6427e42ced,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7817185512025188031, guid: 23dc4fed13773a74f9f63c6427e42ced,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7817185512025188031, guid: 23dc4fed13773a74f9f63c6427e42ced,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7817185512025188031, guid: 23dc4fed13773a74f9f63c6427e42ced,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7817185512025188031, guid: 23dc4fed13773a74f9f63c6427e42ced,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7817185512025188031, guid: 23dc4fed13773a74f9f63c6427e42ced,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7817185512025188031, guid: 23dc4fed13773a74f9f63c6427e42ced,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 23dc4fed13773a74f9f63c6427e42ced, type: 3}
+--- !u!95 &267355584866110890 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9036816141985090237, guid: 23dc4fed13773a74f9f63c6427e42ced,
+    type: 3}
+  m_PrefabInstance: {fileID: 9141443139144304407}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1342308896332030376 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7817185512025188031, guid: 23dc4fed13773a74f9f63c6427e42ced,
+    type: 3}
+  m_PrefabInstance: {fileID: 9141443139144304407}
   m_PrefabAsset: {fileID: 0}

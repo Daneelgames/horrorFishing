@@ -37,10 +37,6 @@ public class NoteTextGenerator : MonoBehaviour
         else if (type == NoteType.RandomPoem)
             GeneratePoem();
         
-        if (spellScroll && gm.tutorialPassed == 1 && GutProgressionManager.instance.playerFloor > 1 && Random.value > 0.5f)
-        {
-            spellScroll.GetLines(poemLineFields, textField);
-        }
     }
 
     void GeneratePoem()

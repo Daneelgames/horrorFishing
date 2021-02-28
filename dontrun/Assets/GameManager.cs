@@ -78,8 +78,8 @@ public class GameManager : MonoBehaviour
 
     // 0 - eng, 1 - rus, 2 - esl, 3 - ger, 3 - Ita, 3 - Sp-BR
     public int language = 0;
-    public int tutorialPassed = 0;
     public int resolution = 2;
+    public bool introPassed = false;
 
     public bool readyToStartLevel = false;
 
@@ -231,24 +231,7 @@ public class GameManager : MonoBehaviour
 
     public void PreloadNextLevelRooms()
     {
-        if (loadedRtps.Count > 0)
-        {
-            for (int i = loadedRtps.Count - 1; i >= 0; i--)
-            {
-                if (loadedRtps[i] != null)
-                    Destroy(loadedRtps[i].gameObject);
-                
-                loadedRtps.RemoveAt(i);
-            }
-        }
-        loadedRtps.Clear();
         
-        if (tutorialPassed == 0)
-            StartCoroutine(PreloadRooms(tutorialLevel));
-        else if (arena)
-            StartCoroutine(PreloadRooms(arenaLevel));
-        else
-            StartCoroutine(PreloadRooms(level));
     }
 
     IEnumerator PreloadRooms(LevelData ld)
@@ -376,21 +359,8 @@ public class GameManager : MonoBehaviour
 
             Cursor.visible = false;
             lhc = LoadingHintsController.instance;
-            if (savedOnFloor == 0) // load hub
-                StartCoroutine(StartGame());
-            else // load floor
-            {
-                if (TwitchManager.instance)
-                {
-                    TwitchManager.instance.ToggleCanvasAnim(false);   
-                    TwitchManager.instance.ToggleMeatchImages(false);
-                }
-                player = null;
-                units.Clear();
-                ui = null;
-                
-                StartCoroutine(LoadGameScene(true, 1, true));
-            }
+            
+            StartCoroutine(StartGame());
         }
     }
 
@@ -646,22 +616,6 @@ public class GameManager : MonoBehaviour
 
     public void NextLevel()
     {
-        if (!loading)
-        {
-            if (player && GutProgressionManager.instance.playerFloor > 0 && !hub && tutorialPassed == 1)
-            {
-                // no damage achievement
-                if (player.damagedOnLevel == false && !demo)
-                {
-                    SteamAchievements.instance.UnlockSteamAchievement("NEW_ACHIEVEMENT_2_6");   
-                }   
-            }
-            
-            //next dungeon level is loading
-
-            
-            StartCoroutine(LoadGameScene(false, 1, true));
-        }
     }
 
     public void ReturnToHub(bool forceRareWindow, bool savePlayerStuff)
@@ -781,7 +735,11 @@ public class GameManager : MonoBehaviour
         
         yield return new WaitForEndOfFrame();
         
-        AOfield = SceneManager.LoadSceneAsync(1, LoadSceneMode.Additive); // load hub   
+        if (introPassed)
+            AOfield = SceneManager.LoadSceneAsync(1, LoadSceneMode.Additive); // load city
+        else
+            AOfield = SceneManager.LoadSceneAsync(2, LoadSceneMode.Additive); // load intro
+        
         AOfield.allowSceneActivation = false;
         
         while (!AOfield.isDone)
@@ -800,11 +758,6 @@ public class GameManager : MonoBehaviour
 
         yield return null;
 
-        /*
-        if (tutorialPassed == 0)
-            DeleteLocalSave(false);
-            */
-
         player = PlayerMovement.instance.hc;
         player.transform.position = playerStartPos;
         player.transform.rotation = playerStartRot;
@@ -818,15 +771,11 @@ public class GameManager : MonoBehaviour
         tr = ToolsRandomizer.instance;
         tr.Init();
 
-        if (tutorialPassed == 0)
-            itemList.ResetPlayerInventory();
+        itemList.ResetPlayerInventory();
         
         itemList.Init();
         itemList.keys = 0;
-        if (tutorialPassed == 0)
-            ui.Init(false);
-        else 
-            ui.Init(false);
+        ui.Init(!introPassed);
         
         MoveLoadingAnimToParent(MouseLook.instance.mainCamera.transform);
         loadingAnim.SetBool("Active", false);
@@ -841,13 +790,7 @@ public class GameManager : MonoBehaviour
         print("FIELD LOADED");
         player.playerMovement.StartLevel();
         
-        /*
-        if (tutorialPassed == 0)
-        {
-            qm.StartQuest(0);
-        }*/
-        
-        if (QuestManager.instance)
+        if (QuestManager.instance && introPassed)
             QuestManager.instance.Init();
             
         if (HubProgressionManager.instance)
@@ -863,7 +806,6 @@ public class GameManager : MonoBehaviour
         if (paused) paused = false;
         
         yield return  new WaitForSeconds(0.1f);
-        //PlayerCheckpointsController.instance.Init();
         
         yield return  new WaitForSeconds(1f);
     }
@@ -871,235 +813,7 @@ public class GameManager : MonoBehaviour
     // on player death or when going on deeper level
     public IEnumerator LoadGameScene(bool restart, int returnTo, bool savePlayerStuff) // restart: has player died?;  returnTo: 0 - hub, 1 - level, 2 - arena
     {
-        loading = true;
-        if (returnTo == 1)
-            yield return new WaitForSeconds(3);
-        if (sc)
-            sc.FinishLevel();
-        
-        readyToStartLevel = false;
-        GutQuestsController.instance.ClearQuests();
-        
-        bool bikeInLevel = !restart && player && player.playerMovement.inTransport && returnTo == 1;
-        
-        GutProgressionManager.instance.Init();
-
-        if (restart && returnTo == 1 && savePlayerStuff)
-        {
-            
-        }
-        else
-        {
-            itemList.SaveWeapons();   
-        }
-        
-        SaveGame();
-        mouseLookSpeedCurrent = mouseLookSpeed;
-        
-        yield return null;
-        
-        keysFound = 0;
-        itemList.ClearDataFromLevel();
-        units.Clear();
-        
-        if (loadedRtps.Count > 0)
-        {
-            for (int i = loadedRtps.Count - 1; i >= 0; i--)
-            {
-                if (loadedRtps[i] != null)
-                    Destroy(loadedRtps[i].gameObject);
-                
-                loadedRtps.RemoveAt(i);
-            }
-        }
-        loadedRtps.Clear();
-        
-        if (sc)
-            sc.ClearData();
-        if (lg)
-            lg.ClearData();
-        if (ls)
-            ls.ClearData();
-        
-        if (restart)
-        {
-            arena = false;
-            
-            if (returnTo == 0)
-            {
-                hub = true;
-                wasInHub = 1;
-            }
-            else if (returnTo == 1)
-                hub = false;
-            
-            mouseLookSpeedCurrent = mouseLookSpeed;
-        }
-        else
-        {
-            if (!hub)
-            {
-                if (tutorialPassed == 0)
-                    tutorialPassed = 1;
-            }
-        }
-        
-        yield return null;
-        
-        // UNLOAD SCENE
-        AsyncOperation AOU;
-        AOU = SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().name);
-        yield return AOU;
-        
-        /// LOAD SCENE
-        if (tutorialPassed == 1)
-        {
-            print(returnTo);
-            if (returnTo == 0)
-            {
-                print("load hub");
-                AOlevel = SceneManager.LoadSceneAsync(3, LoadSceneMode.Additive); // load hub
-            }
-            else
-            {
-                AOlevel = SceneManager.LoadSceneAsync(4, LoadSceneMode.Additive); // load game
-            }
-            
-            if (returnTo == 2)
-                arena = true;
-            
-            AOlevel.allowSceneActivation = false;
-        }
-        else if (tutorialPassed == 0)
-        {
-            print(returnTo);
-            
-            if (returnTo == 0)
-            {
-                print("load hub");
-                AOlevel = SceneManager.LoadSceneAsync(3, LoadSceneMode.Additive); // load hub   
-            }
-            else
-            {
-                AOlevel = SceneManager.LoadSceneAsync(2, LoadSceneMode.Additive); // load tutorial   
-            }
-            
-            AOlevel.allowSceneActivation = false;
-        }
-
-        
-        while (!AOlevel.isDone)
-        {
-            if (AOlevel.progress >= 0.9f)
-            {
-                AOlevel.allowSceneActivation = true;
-            }
-
-            yield return null;
-        }
-        SceneManager.SetActiveScene(SceneManager.GetSceneAt(1));
-        
-        PreloadNextLevelRooms();
-
-        ui = UiManager.instance;
-
-        player = PlayerMovement.instance.hc;
-        
-        if (restart) // restart in hub or in level
-        {
-            //player.health = player.healthMax;
-            itemList.Init();
-        }
-        else if (hub) // go from hub to level
-        {
-            player.health = player.healthMax;
-            hub = false;
-            itemList.Init();
-        }
-        else // go on a new floor
-        {
-            itemList.Init();
-        }
-
-        if (!hub)
-        {
-            // LOAD FLASHBACK SCENE
-            flashbackSceneIndex = GetCurrentFlashBackSceneIndex();
-            AOlevel = SceneManager.LoadSceneAsync(flashbackSceneIndex, LoadSceneMode.Additive); // load flashback   
-            AOlevel.allowSceneActivation = false;
-            while (!AOlevel.isDone)
-            {
-                if (AOlevel.progress >= 0.9f)
-                {
-                    AOlevel.allowSceneActivation = true;
-                }
-
-                yield return null;
-            }
-            /////
-        }
-        
-        // GENERATE LEVEL
-        if (lg && !hub)
-        {
-            lg.Init();
-            lg.generating = true;
-        }
-
-        while (lg.generating)
-        {
-            yield return null;
-        }
-        /////////
-
-        if (restart)
-        {
-            tr = ToolsRandomizer.instance;
-            tr.Init();
-            if (hub)
-            {
-                HubProgressionManager.instance.FieldAfterDeath(true);
-            }
-        }
-        
-        itemList.keys = 0;
-
-        readyToStartLevel = true;
-        
-        MoveLoadingAnimToParent(MouseLook.instance.mainCamera.transform);
-        loadingAnim.SetBool("Active", false);
-        loadingCam.gameObject.SetActive(false);
-        
-        yield return  new WaitForSeconds(1f);
-        
-        loading = false;
-
-        if (bikeInLevel && sc.bike) sc.bike.SetActive(true);
-        
-        player.playerMovement.StartLevel();
-        
-        player.wc.FindNewTool();
-        if (ls)
-            ls.Init();
-        
-        SaveGame();
-        
-        if (hub)
-            ui.savedHint.SetBool("Active", true);
-        else
-        {
-            itemList.GenerateAllWeaponsOnFloor();
-        }
-        
-        player.pac.Init();
-        if (paused) paused = false;
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-        QuestManager.instance.Init();
-
-        ui.Init(false);
-        HubItemsSpawner.instance.UpdateHub();
-        StartCoroutine(PlayerCheckpointsController.instance.Init());
+        yield break;
     }
 
     
@@ -1276,9 +990,6 @@ public class GameManager : MonoBehaviour
         //use this for testing flashback rooms
         //return Random.Range(5,16); // random 
 
-        if (tutorialPassed == 0)
-            return 5; // loner flat
-        
         if (gpm.playerFloor == 1)
             return 6; // phone call
         
@@ -1334,38 +1045,29 @@ public class GameManager : MonoBehaviour
             firstMementoToChoose = null;
             secondMementoToChoose = null;
             
-            if (tutorialPassed == 1)
-            {
-                var skillsTemp = new List<SkillInfo>(itemList.skillsPool);
+            var skillsTemp = new List<SkillInfo>(itemList.skillsPool);
 
-                if (GLNetworkWrapper.instance && GLNetworkWrapper.instance.coopIsActive)
+            if (GLNetworkWrapper.instance && GLNetworkWrapper.instance.coopIsActive)
+            {
+                // remove nonCoop mementos
+                for (int i = skillsTemp.Count - 1; i >= 0; i--)
                 {
-                    // remove nonCoop mementos
-                    for (int i = skillsTemp.Count - 1; i >= 0; i--)
-                    {
-                        if (skillsTemp[i].soloOnly) skillsTemp.RemoveAt(i);   
-                    }
+                    if (skillsTemp[i].soloOnly) skillsTemp.RemoveAt(i);   
                 }
-                else
-                {
-                    // remove coop mementos
-                    for (int i = skillsTemp.Count - 1; i >= 0; i--)
-                    {
-                        if (skillsTemp[i].coopOnly) skillsTemp.RemoveAt(i);
-                    }
-                }
-                
-                int r = Random.Range(0, skillsTemp.Count);
-                firstMementoToChoose = skillsTemp[r];
-                skillsTemp.RemoveAt(r);
-                secondMementoToChoose = skillsTemp[Random.Range(0, skillsTemp.Count)];   
             }
             else
             {
-                firstMementoToChoose = itemList.skillsPool[0];
-                secondMementoToChoose = itemList.skillsPool[19];
-            }   
-
+                // remove coop mementos
+                for (int i = skillsTemp.Count - 1; i >= 0; i--)
+                {
+                    if (skillsTemp[i].coopOnly) skillsTemp.RemoveAt(i);
+                }
+            }
+                
+            int r = Random.Range(0, skillsTemp.Count);
+            firstMementoToChoose = skillsTemp[r];
+            skillsTemp.RemoveAt(r);
+            secondMementoToChoose = skillsTemp[Random.Range(0, skillsTemp.Count)];   
             UiManager.instance.ShowMementoChoice(firstMementoToChoose, secondMementoToChoose);
         }
     }
@@ -1390,10 +1092,8 @@ public class GameManager : MonoBehaviour
 
     public void DifficultyUp()
     {
-        if (tutorialPassed == 1 && level.dynamicDifficulty)
-        {
-            SpawnController.instance.DifficultyUp();   
-        }
+        return;
+        SpawnController.instance.DifficultyUp();   
     }
 
     public void MouseSense(float v)
@@ -1419,16 +1119,6 @@ public class GameManager : MonoBehaviour
     
     public void DifficultyDown()
     {
-        if (tutorialPassed == 1 && level.dynamicDifficulty)
-        {
-            // dont up if next diff level isnt dynamic
-            if (GutProgressionManager.instance.currentLevelDifficulty > 0)
-            {
-                //currentLevelDifficulty--;
-                if (sc)
-                    sc.DifficultyDown();   
-            }
-        }
     }
 
     public void OpenSteamPage()
@@ -1526,6 +1216,7 @@ public class GameManager : MonoBehaviour
             hubActiveCheckpointIndex = data.hubActiveCheckpointIndex;
 
             newGamePlus = data.newGamePlus;
+            introPassed = data.introPassed;
             
             levelsOnRun = data.levelsOnRun;
             goldOnRun = data.goldOnRun;
@@ -1535,7 +1226,6 @@ public class GameManager : MonoBehaviour
             savedOnFloor = data.savedOnFloor;
             
             volumeSliderValue = data.volumeSliderValue;
-            tutorialPassed = data.tutorialPassed;
             snoutFound = data.snoutFound;
             itemList.badReputaion = data.badReputaion;
             bloodMist = data.bloodMist;
@@ -1628,7 +1318,7 @@ public class GameManager : MonoBehaviour
             snoutFound = 0;
             lowPitchDamage = 0;
             //rareWindowShown = 0;
-            tutorialPassed = 0;
+            introPassed = false;
             resolution = 2;
             lastTalkedDyk = -1;
             tutorialHints = 0;

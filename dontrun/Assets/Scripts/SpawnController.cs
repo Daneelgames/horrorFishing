@@ -113,23 +113,12 @@ public class SpawnController : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         il = ItemsList.instance;
         
-        if (gm.arena)
-            newLevelData = gm.arenaLevel;
-        else
-        {
-            if (gm.tutorialPassed == 1)
-                newLevelData = gm.level;
-            else if (gm.tutorialPassed == 0)
-                newLevelData = gm.tutorialLevel;   
-        }
         
         trapDoorsAmount = newLevelData.trapDoorsAmount;
         StartCoroutine(SpawnStartEnemies());
         SpawnItemsReworked();
         SpawnNpc(newLevelData);
         SpawnTrapDoors();
-        if (gm.tutorialPassed == 1 && newLevelData.meatHoles > 0)
-            SpawnMeatHoles();
         
         Invoke("RemoveExtraMrWindows", 1);
     }
@@ -212,9 +201,6 @@ public class SpawnController : MonoBehaviour
                 SpawnItemOptimized(hintNotePrefab, spawnProvider, true);
             }
         }
-
-        if (gm.tutorialPassed == 1)
-            SpawnLockpicks(spawnProvider);
         
         var elevator = ElevatorController.instance;
         if (elevator)
@@ -573,13 +559,6 @@ public class SpawnController : MonoBehaviour
         int arenaCurrentPool = 0; 
         while(true)
         {
-            if (gm.tutorialPassed == 0 && (GLNetworkWrapper.instance == null || GLNetworkWrapper.instance.localPlayer == false))
-            {
-                while (il.activeWeapon == WeaponPickUp.Weapon.Null && il.secondWeapon == WeaponPickUp.Weapon.Null)
-                {
-                    yield return new WaitForSeconds(1);
-                }
-            }
             mobSpawnTimer = 0;
 
             if (!gm.arena)
@@ -1083,8 +1062,6 @@ public class SpawnController : MonoBehaviour
     
     public void MoveMobsCloser()
     {
-        if (gm.tutorialPassed == 0) return;
-
         int m = 0;
         gm = GameManager.instance;
 
@@ -1211,71 +1188,16 @@ public class SpawnController : MonoBehaviour
         if (mobsInGame.Count < gm.level.mobsAmount + maximumMobsAliveCurrentBonus)
         {
             MobPartsController.Mob newMobType;
-            if (!gm.arena)
-                newMobType = gm.tutorialPassed == 1 ? gm.level.mobsPool[j] : gm.tutorialLevel.mobsPool[0];
-            else
-                newMobType = gm.arenaLevel.arenaMonsterWaves[Mathf.Clamp(maximumMobsAliveCurrentBonus, 0, gm.arenaLevel.arenaMonsterWaves.Count)].mobsPool[j];
+            newMobType = gm.arenaLevel.arenaMonsterWaves[Mathf.Clamp(maximumMobsAliveCurrentBonus, 0, gm.arenaLevel.arenaMonsterWaves.Count)].mobsPool[j];
 
             SpawnMobByType(newMobType, null);
             
-            if (gm.tutorialPassed == 1)
-            {
-                j++;
-                if (j >= gm.level.mobsPool.Count) j = 0;   
-            }
             yield return _asyncOperationHandle;
         }
     }
     public IEnumerator SpawnMobsToChase()
     {
-        var closestPlayer = PlayerMovement.instance.hc;
-        j = 0;
-        int maxMobs = gm.level.mobsAmount + maximumMobsAliveCurrentBonus;
-        if (gm.tutorialPassed == 0)
-            maxMobs = 1;
-        
-        while (true)
-        {
-           // spawn mobs
-            if (mobsInGame.Count < maxMobs)
-            {
-                if (Random.value > 0.8f && GutProgressionManager.instance.playerFloor > 6)
-                    SpawnMobByType(MobPartsController.Mob.EyeTaker, null);
-                else
-                {
-                    MobPartsController.Mob newMobType = gm.tutorialPassed == 1 ? gm.level.mobsPool[j] : gm.tutorialLevel.mobsPool[0];
-                    SpawnMobByType(newMobType, null);
-                }
-
-                if (gm.tutorialPassed == 1)
-                {
-                    j++;
-                    if (j >= gm.level.mobsPool.Count) j = 0;   
-                }
-                yield return _asyncOperationHandle;
-            }
-            
-            if (gm.tutorialPassed == 0)
-            {
-                yield return new WaitForSeconds(5);
-            }
-            else
-            {
-                if (GLNetworkWrapper.instance && GLNetworkWrapper.instance.coopIsActive)
-                {
-                    yield return new WaitForSeconds(1);
-                }
-                else
-                {
-                    if (closestPlayer.health > closestPlayer.healthMax * 0.75f)
-                        yield return new WaitForSeconds(1);
-                    else if (closestPlayer.health > closestPlayer.healthMax * 0.5f)
-                        yield return new WaitForSeconds(3);
-                    else 
-                        yield return new WaitForSeconds(6);   
-                }   
-            }
-        }
+        yield break;
     }
     
     private void SpawnAdditionalAmmo(int weaponIndex) // 0 - activeWeapon, 1 - secondWeapon
@@ -1355,20 +1277,9 @@ public class SpawnController : MonoBehaviour
 
     public void DifficultyUp()
     {
-        if (gm.tutorialPassed == 1)
-        {
-            maximumMobsAliveCurrentBonus++;
-            mobSpawnTimer += gm.level.mobSpawnDelay / 5;
-            MoveMobsCloser();
-        }
     }
     public void DifficultyDown()
     {
-        if (gm.tutorialPassed == 1)
-        {
-            if (maximumMobsAliveCurrentBonus > 0)
-                maximumMobsAliveCurrentBonus--;
-        }
     }
     
 
@@ -1761,26 +1672,7 @@ public class SpawnController : MonoBehaviour
 
     IEnumerator FinalChase()
     {
-        var pm = PlayerMovement.instance;
-        while (true)
-        {
-            AttractMonsters(gm.player.transform.position, true);
-
-            if (gm.tutorialPassed == 1)
-            {
-                yield return new WaitForSeconds(1);
-                
-                /*
-                if (pm.hc.health > pm.hc.healthMax * 0.5f)
-                    yield return new WaitForSeconds(1);
-                else
-                    yield return new WaitForSeconds(2);   */
-            }
-            else
-            {
-                yield return new WaitForSeconds(2);
-            }
-        }
+        yield return new WaitForSeconds(1);
     }
 
     public void StopSpawningOnLevel()

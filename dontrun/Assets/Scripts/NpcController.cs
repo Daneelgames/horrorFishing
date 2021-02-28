@@ -75,7 +75,7 @@ public class NpcController : MonoBehaviour
     public Interactable interactableToInteractOnDialogueAction;
 
     public bool snout = false;
-    
+    public Animator importantDialogueMark;
     private void Start()
     {
         if (canCreateQuestGiver)
@@ -100,6 +100,19 @@ public class NpcController : MonoBehaviour
         
         if (gm)
             InitPhrases();
+
+        if (importantDialogueMark)
+            StartCoroutine(CheckImportantDialogue());
+    }
+
+    IEnumerator CheckImportantDialogue()
+    {
+        while (true)
+        {
+            importantDialogueMark.SetBool(activeString, dialogues[currentDialog].importantDialogue);
+            
+            yield return new WaitForSeconds(1);
+        }
     }
 
     public void InitPhrases()
@@ -3890,6 +3903,7 @@ public class NpcController : MonoBehaviour
 [Serializable]
 public class Dialogue
 {
+    public bool importantDialogue = false;
     public enum DialogueEvent 
     {Null, FixWeapon, Heal, BuySkill, BuyTool, BuyKey, LoseAnEye, PlaySong, 
         OneLevelBack, GivePlayerWeapon, BuyAmmo, UpgradeWeapon, Warm, 

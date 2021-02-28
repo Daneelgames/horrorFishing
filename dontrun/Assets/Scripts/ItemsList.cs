@@ -542,10 +542,6 @@ public class ItemsList : MonoBehaviour
 
     public void FoundKeyOnClient(int playerId)
     {
-        if (!gm.hub && gm.tutorialPassed == 1)
-        {
-            gm.DifficultyUp();
-        }
         GameManager.instance.keysFound++;
         UiManager.instance.UpdateKeys(keys, playerId);
     }

@@ -38,8 +38,6 @@ public class CultGenerator : MonoBehaviour
         if (PlayerSkillsController.instance.activeCult != PlayerSkillsController.Cult.none) return;
         gm = GameManager.instance;
         var gpm = GutProgressionManager.instance;
-        if (gm.tutorialPassed == 0 || gpm.playerFloor < 5 || gpm.playerFloor == gpm.bossFloor)
-            return;
         
         sc = SpawnController.instance;
 

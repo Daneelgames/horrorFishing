@@ -125,38 +125,31 @@ public class AiDirector : MonoBehaviour
         {
             yield return new WaitForSeconds(Random.Range(20f, 100));
 
-            if (gm.tutorialPassed == 1)
+            // hazards
+            float r = Random.value;
+            if (r > 0.75f)
             {
-                // hazards
-                float r = Random.value;
-                if (r > 0.75f)
+                if (GLNetworkWrapper.instance && GLNetworkWrapper.instance.coopIsActive && LevelGenerator.instance.levelgenOnHost == false) 
                 {
-                    if (GLNetworkWrapper.instance && GLNetworkWrapper.instance.coopIsActive && LevelGenerator.instance.levelgenOnHost == false) 
-                    {
-                        
-                    }
-                    else
-                    {
-                        if (il.badReputaion >= 2)
-                            SpawnController.instance.SpawnFloorBlade(null);   
-                    }
+                    
                 }
-                else if (!MobSoundSource()) // sound
+                else
                 {
-                    if (!SpawnSoundSource())
-                    {
-                        if (r <= 0.33f)
-                        {
-                            StartCoroutine(RotateClosestProp());
-                        }
-                        else if (r <= 0.66f)
-                            BreakLight(0.25f);
-                    }
+                    if (il.badReputaion >= 2)
+                        SpawnController.instance.SpawnFloorBlade(null);   
                 }
             }
-            else
+            else if (!MobSoundSource()) // sound
             {
-                break;
+                if (!SpawnSoundSource())
+                {
+                    if (r <= 0.33f)
+                    {
+                        StartCoroutine(RotateClosestProp());
+                    }
+                    else if (r <= 0.66f)
+                        BreakLight(0.25f);
+                }
             }
         }
     }

@@ -57,6 +57,7 @@ public class QuestManager : MonoBehaviour
             if (!gm) gm = GameManager.instance;
         }
 
+        
         HubItemsSpawner.instance.UpdateHub();
         gm.SaveGame();
     }

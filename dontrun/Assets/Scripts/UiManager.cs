@@ -341,9 +341,11 @@ public class UiManager : MonoBehaviour
         {
             //hide ui
             ToggleGameUi(false, false);
+            eyesHealthbarAnimator.gameObject.SetActive(false);
         }
         else
         {
+            eyesHealthbarAnimator.gameObject.SetActive(true);
             ToggleGameUi(true, false);
             UpdateTools();
             UpdateAmmo();
@@ -375,42 +377,6 @@ public class UiManager : MonoBehaviour
 
     void UpdateFloor()
     {
-        if (gm.hub)
-            floorNumber.text = "";
-        else
-        {
-            int curLevel = GutProgressionManager.instance.playerFloor;
-            if (gm.tutorialPassed == 1)
-            {
-                if (gm.language == 0)
-                    floorNumber.text = "Floor: -" + curLevel;
-                else if (gm.language == 1)
-                    floorNumber.text = "Этаж: -" + curLevel;
-                else if (gm.language == 2)
-                    floorNumber.text = "Piso: -" + curLevel;
-                else if (gm.language == 3)
-                    floorNumber.text = "Etage: -" + curLevel;
-                else if (gm.language == 4)
-                    floorNumber.text = "Pavimento: -" + curLevel;
-                else if (gm.language == 5)
-                    floorNumber.text = "Chão: -" + curLevel;
-            }
-            else if (gm.tutorialPassed == 0)
-            {
-                if (gm.language == 0)
-                    floorNumber.text = "Floor: 0";
-                else if (gm.language == 1)
-                    floorNumber.text = "Этаж: 0";
-                else if (gm.language == 2)
-                    floorNumber.text = "Piso: 0";
-                else if (gm.language == 3)
-                    floorNumber.text = "Etage: 0";
-                else if (gm.language == 4)
-                    floorNumber.text = "Pavimento: 0";
-                else if (gm.language == 5)
-                    floorNumber.text = "Chão: 0";
-            }   
-        }
     }
 
     public void ToggleGameUi(bool active, bool ignoreCrosshair)
@@ -501,56 +467,6 @@ public class UiManager : MonoBehaviour
     
     void UpdateLevel()
     {
-        if (!gm.hub)
-        {
-            var gpm = GutProgressionManager.instance;
-            if (gm.arena)
-            {
-                if (gm.language == 0)
-                    levelText.text = "Survive as long as you can";
-                else if (gm.language == 1)
-                    levelText.text = "Проживи сколько сможешь";
-                else if (gm.language == 2)
-                    levelText.text = "Sobrevive tanto como puedas";
-                else if (gm.language == 3)
-                    levelText.text = "Überlebe so lange du kannst";
-                else if (gm.language == 4)
-                    levelText.text = "Sopravvivi il più a lungo possibile";
-                else if (gm.language == 5)
-                    levelText.text = "sobreviva o máximo que puder";
-            }
-            else if (gm.tutorialPassed == 1)
-            {
-                if (gm.language == 0)
-                    levelText.text = Translator.TranslateText("Floor:")  + (gpm.playerFloor) * -1;
-                else if (gm.language == 1)
-                    levelText.text = Translator.TranslateText("Этаж:")  + (gpm.playerFloor) * -1;
-                else if (gm.language == 2)
-                    levelText.text = Translator.TranslateText("Piso:") + (gpm.playerFloor) * -1;
-                else if (gm.language == 3)
-                    levelText.text = Translator.TranslateText("Etage:") + (gpm.playerFloor) * -1;
-                else if (gm.language == 4)
-                    levelText.text = Translator.TranslateText("Pavimento:") + (gpm.playerFloor) * -1;
-                else if (gm.language == 5)
-                    levelText.text = Translator.TranslateText("Chão:") + (gpm.playerFloor) * -1;
-            }
-            else if (gm.tutorialPassed == 0)
-            {
-                if (gm.language == 0)
-                    levelText.text = Translator.TranslateText("Floor: 0");
-                else if (gm.language == 1)
-                    levelText.text = Translator.TranslateText("Этаж: 0");
-                else if (gm.language == 2)
-                    levelText.text = Translator.TranslateText("Piso: 0");
-                else if (gm.language == 3)
-                    levelText.text = Translator.TranslateText("Etage: 0");
-                else if (gm.language == 4)
-                    levelText.text = Translator.TranslateText("Pavimento: 0");
-                else if (gm.language == 5)
-                    levelText.text = Translator.TranslateText("Chão: 0");
-            }
-            levelHint.SetBool("Active", true);   
-        }
     }
 
     public void UpdateReputation(float addRep)
@@ -1740,37 +1656,7 @@ public class UiManager : MonoBehaviour
             floorNumber.text = "";
         else if (gm.arena)
             floorNumber.text = "???";
-        else if (gm.tutorialPassed == 0)
-        {
-            levCur = 0;
-            if (gm.language == 0)
-                floorNumber.text = "Floor: " + levCur;
-            else if (gm.language == 1)
-                floorNumber.text = "Этаж: " + levCur;
-            else if (gm.language == 2)
-                floorNumber.text = "Piso: " + levCur;
-            else if (gm.language == 3)
-                floorNumber.text = "Etage: " + levCur;
-            else if (gm.language == 4)
-                floorNumber.text = "Pavimento: " + levCur;
-            else if (gm.language == 5)
-                floorNumber.text = "Chão: " + levCur;
-        }
-        else if (gm.tutorialPassed == 1)
-        {
-            if (gm.language == 0)
-                floorNumber.text = "Floor: -" + levCur;
-            else if (gm.language == 1)
-                floorNumber.text = "Этаж: -" + levCur;
-            else if (gm.language == 2)
-                floorNumber.text = "Piso: -" + levCur;
-            else if (gm.language == 3)
-                floorNumber.text = "Etage: -" + levCur;
-            else if (gm.language == 4)
-                floorNumber.text = "Pavimento: -" + levCur;
-            else if (gm.language == 5)
-                floorNumber.text = "Chão: -" + levCur;
-        }
+        
         pauseAnim.gameObject.SetActive(gm.paused);
 
         if (!gm.paused)
@@ -1965,9 +1851,6 @@ public class UiManager : MonoBehaviour
         #endregion
         int level = GutProgressionManager.instance.playerFloor;
         
-        if (gm.tutorialPassed == 1 && gm.difficultyLevel != GameManager.GameMode.MeatZone)
-            _imdead += level * -1;
-        
         imDead.text = _imdead; 
         restartInHubButtonText.text = inHub;
         restartInLevelButtonText.text = onLevel;
@@ -1997,6 +1880,9 @@ public class UiManager : MonoBehaviour
 
     public void ToggleQuestWindow()
     {
+        if (!gm.introPassed)
+            return;
+        
         UpdateFloor();
         pac.ToggleQuests();
         questIcon.SetActive(false);

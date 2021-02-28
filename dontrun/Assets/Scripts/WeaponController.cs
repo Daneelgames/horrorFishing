@@ -741,10 +741,6 @@ public class WeaponController : MonoBehaviour
         
         float durabilityDamage = Random.Range(damageMin, damageMax);
 
-        if (gm.tutorialPassed == 0)
-            durabilityDamage *= 0.5f;
-        else if (psc.horrorMode) durabilityDamage *= 2f;
-        
         if (psc.strongWeapon) durabilityDamage *= 0.75f;
         
         if (gm.difficultyLevel == GameManager.GameMode.StickyMeat)

@@ -14,6 +14,7 @@ public class Interactable : MonoBehaviour,
     public string itemName = "Pistol ammo";
     public List<string> itemNames = new List<string>();
     public ResourcePickUp pickUp;
+    public AnimatedInteraction animatedInteraction;
     public AmmoPickUp ammoPickUp;
     public WeaponPickUp weaponPickUp;
     public LockObject lockObject;
@@ -89,7 +90,7 @@ public class Interactable : MonoBehaviour,
         if (mapMarkerCross)
             mapMarkerCross.transform.parent = null;
 
-        if (!door && !button && !transport && !npc && canvasParent)
+        if (!door && !button && !transport && !npc && canvasParent && !animatedInteraction)
         {
             canvasParent.parent = il.itemCanvasesParent;
             canvasParent.localScale = Vector3.one;
@@ -418,29 +419,10 @@ public class Interactable : MonoBehaviour,
                 if (nameGuiAnim != null)
                     Destroy(nameGuiAnim.gameObject);
                 
-                /*
-                nameGuiAnim.gameObject.SetActive(false);
-                nameGuiAnim.speed = 0;
-                nameGuiAnim.transform.parent = null;
-                */
-                
                 if (!ui.playerInteracted)
                 {
                     ui.playerInteracted = true;
                 }
-                
-                /*
-                if (GLNetworkWrapper.instance && GLNetworkWrapper.instance.coopIsActive)
-                {
-                    GLNetworkWrapper.instance.DestroyInteractable(ItemsList.instance.interactables.IndexOf(this));
-                    gameObject.SetActive(false);
-                }
-                else
-                {
-                    
-                    gm.itemList.interactables.Remove(this);
-                    Destroy(gameObject);
-                }*/
             }
         }
         else if (portable)
@@ -470,13 +452,6 @@ public class Interactable : MonoBehaviour,
             {
                 transport.EnterTransport();
                 ui.EnterBike();   
-            }
-            else
-            {
-                /*
-                transport.ExitTransport();
-                ui.ExitBike();
-                */
             }
         }
         else if (door)
@@ -534,6 +509,10 @@ public class Interactable : MonoBehaviour,
         {
             // change snouts music here
             setRandomTrackOnStart.RandomTrackOnStart();
+        }
+        else if (animatedInteraction)
+        {
+            animatedInteraction.Interact();
         }
         
         if (note) note.Interaction();

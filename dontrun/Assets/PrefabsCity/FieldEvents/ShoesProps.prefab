@@ -68,7 +68,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4178137392729755409}
   - component: {fileID: 7227943670047850308}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: Hint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 6787772040248707466}
   - component: {fileID: 980905507816935005}
   - component: {fileID: 1166475632480738386}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Choice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -258,13 +258,13 @@ GameObject:
   - component: {fileID: 292819215704503128}
   - component: {fileID: 948131560079680917}
   - component: {fileID: 6960569078973035658}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: ShoeNpc (14)
   m_TagString: Untagged
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4795809531791035029
 Transform:
   m_ObjectHideFlags: 0
@@ -407,7 +407,12 @@ MonoBehaviour:
   randomLinesAmountMax: 6
   hc: {fileID: 0}
   keySold: 0
+  setNpcInactiveOnAction: 0
+  spiderBossAggressiveOnAction: 0
+  startQuestOnAction: -1
+  completeQuestOnAction: -1
   gameObjectActivateOnAgree: {fileID: 0}
+  toInitOnDialogueAction: {fileID: 0}
   mementoPrefab: {fileID: 5232096813719522242, guid: 0d1620a94ce53dd41beb0163478c751a,
     type: 3}
   interactableToInteractOnDialogueAction: {fileID: 0}
@@ -641,7 +646,7 @@ GameObject:
   - component: {fileID: 5097965786132801318}
   - component: {fileID: 1318551744999723184}
   - component: {fileID: 4633397382462234150}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: DIaloguePhrase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5586,7 +5591,7 @@ GameObject:
   - component: {fileID: 4594445434849805296}
   - component: {fileID: 4138632059401125750}
   - component: {fileID: 1635655087613410887}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10527,7 +10532,7 @@ GameObject:
   - component: {fileID: 6367684364211860479}
   - component: {fileID: 1416510621176687818}
   - component: {fileID: 524345573435385177}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Choice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10798,7 +10803,8 @@ GameObject:
   - component: {fileID: 624052711937265854}
   - component: {fileID: 4541545113107357467}
   - component: {fileID: 1793057716340272081}
-  m_Layer: 0
+  - component: {fileID: 3876753896033589972}
+  m_Layer: 10
   m_Name: ladyShoe (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10812,14 +10818,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 280001691302201860}
-  m_LocalRotation: {x: 0.14435425, y: -0.98479676, z: 0.0008948793, w: -0.096625276}
+  m_LocalRotation: {x: -0.14888467, y: -0.84739876, z: -0.17145012, w: 0.4799517}
   m_LocalPosition: {x: -21.868774, y: 4.635412, z: -11.310223}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalScale: {x: 18.192001, y: 18.192001, z: 18.192001}
   m_Children:
   - {fileID: 7134970457033565966}
   m_Father: {fileID: 1090906711974406779}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: -1.498, y: -190.99, z: -16.534}
+  m_LocalEulerAnglesHint: {x: -25.689, y: -122.222, z: 5.588}
 --- !u!33 &4541545113107357467
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -10869,6 +10875,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &3876753896033589972
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 280001691302201860}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5124750904865958362, guid: 8ca5dd7f4a05f93449b13deda3afa6ba, type: 3}
 --- !u!1 &280001691402263652
 GameObject:
   m_ObjectHideFlags: 0
@@ -10880,7 +10900,8 @@ GameObject:
   - component: {fileID: 624052711838058206}
   - component: {fileID: 4541545112940120443}
   - component: {fileID: 1793057716506590641}
-  m_Layer: 0
+  - component: {fileID: 1752612230119468836}
+  m_Layer: 10
   m_Name: ladyShoe (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10894,14 +10915,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 280001691402263652}
-  m_LocalRotation: {x: 0.1362744, y: -0.9327591, z: 0.29086843, w: -0.16366234}
+  m_LocalRotation: {x: 0.39478293, y: -0.026561314, z: -0.07569192, w: -0.91526586}
   m_LocalPosition: {x: -56.88121, y: 30.053078, z: -32.34514}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalScale: {x: 15.323, y: 15.323, z: 15.323}
   m_Children:
   - {fileID: 4795809531791035029}
   m_Father: {fileID: 1090906711974406779}
   m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 29.869, y: -206.328, z: -23.763}
+  m_LocalEulerAnglesHint: {x: -46.609, y: -360.929, z: 9.855}
 --- !u!33 &4541545112940120443
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -10951,6 +10972,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &1752612230119468836
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 280001691402263652}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5124750904865958362, guid: 8ca5dd7f4a05f93449b13deda3afa6ba, type: 3}
 --- !u!1 &280001691638670647
 GameObject:
   m_ObjectHideFlags: 0
@@ -10962,7 +10997,8 @@ GameObject:
   - component: {fileID: 624052711734771597}
   - component: {fileID: 4541545112770900008}
   - component: {fileID: 1793057716001703138}
-  m_Layer: 0
+  - component: {fileID: 873227065113886300}
+  m_Layer: 10
   m_Name: ladyShoe (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10976,14 +11012,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 280001691638670647}
-  m_LocalRotation: {x: 0.14425565, y: -0.9880765, z: -0.0054089427, w: -0.053533748}
+  m_LocalRotation: {x: -0.08120842, y: -0.74668473, z: -0.123110116, w: 0.6486225}
   m_LocalPosition: {x: -10.333435, y: 2.6660824, z: -19.567253}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 2314615502620576146}
   m_Father: {fileID: 1090906711974406779}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: -1.498, y: -185.985, z: -16.534}
+  m_LocalEulerAnglesHint: {x: -16.81, y: -97.7, z: -2.301}
 --- !u!33 &4541545112770900008
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -11033,6 +11069,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &873227065113886300
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 280001691638670647}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5124750904865958362, guid: 8ca5dd7f4a05f93449b13deda3afa6ba, type: 3}
 --- !u!1 &280001691740068945
 GameObject:
   m_ObjectHideFlags: 0
@@ -11044,7 +11094,8 @@ GameObject:
   - component: {fileID: 624052711634798315}
   - component: {fileID: 4541545112602380622}
   - component: {fileID: 1793057716168785284}
-  m_Layer: 0
+  - component: {fileID: 5755637303663471678}
+  m_Layer: 10
   m_Name: ladyShoe (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11059,8 +11110,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 280001691740068945}
   m_LocalRotation: {x: 0.28466412, y: -0.481032, z: 0.039016232, w: -0.82828265}
-  m_LocalPosition: {x: -52.85, y: 20.092, z: -36.31}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalPosition: {x: -52.861305, y: 20.791557, z: -37.337162}
+  m_LocalScale: {x: 13.996, y: 13.996, z: 13.996}
   m_Children:
   - {fileID: 7466980555321935273}
   m_Father: {fileID: 1090906711974406779}
@@ -11115,6 +11166,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &5755637303663471678
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 280001691740068945}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5124750904865958362, guid: 8ca5dd7f4a05f93449b13deda3afa6ba, type: 3}
 --- !u!1 &280001691995272614
 GameObject:
   m_ObjectHideFlags: 0
@@ -11126,7 +11191,8 @@ GameObject:
   - component: {fileID: 624052712359767836}
   - component: {fileID: 4541545113529983161}
   - component: {fileID: 1793057715955520627}
-  m_Layer: 0
+  - component: {fileID: 358829773344640542}
+  m_Layer: 10
   m_Name: ladyShoe (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11140,14 +11206,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 280001691995272614}
-  m_LocalRotation: {x: -0.14234832, y: -0.5923108, z: -0.32407618, w: 0.72379524}
+  m_LocalRotation: {x: -0.17787698, y: -0.66992164, z: -0.30601993, w: 0.6526229}
   m_LocalPosition: {x: -39.928, y: 13.938, z: -22.713}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalScale: {x: 29.642, y: 29.642, z: 29.642}
   m_Children:
   - {fileID: 3589716486560370199}
   m_Father: {fileID: 1090906711974406779}
   m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: -36.155, y: -71.379, z: -21.85}
+  m_LocalEulerAnglesHint: {x: -39.955, y: -87.074, z: -12.132}
 --- !u!33 &4541545113529983161
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -11197,6 +11263,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &358829773344640542
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 280001691995272614}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5124750904865958362, guid: 8ca5dd7f4a05f93449b13deda3afa6ba, type: 3}
 --- !u!1 &280001692219791602
 GameObject:
   m_ObjectHideFlags: 0
@@ -11208,7 +11288,8 @@ GameObject:
   - component: {fileID: 624052712135492168}
   - component: {fileID: 4541545113238343149}
   - component: {fileID: 1793057715731003687}
-  m_Layer: 0
+  - component: {fileID: 8827645646789533884}
+  m_Layer: 10
   m_Name: ladyShoe (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11224,7 +11305,7 @@ Transform:
   m_GameObject: {fileID: 280001692219791602}
   m_LocalRotation: {x: 0.14250693, y: -0.9871937, z: -0.023037499, w: 0.06789479}
   m_LocalPosition: {x: -33.399994, y: 2.7446613, z: 42.89}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalScale: {x: 16.210001, y: 16.210001, z: 16.210001}
   m_Children:
   - {fileID: 4161259374382173819}
   m_Father: {fileID: 1090906711974406779}
@@ -11279,6 +11360,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &8827645646789533884
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 280001692219791602}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5124750904865958362, guid: 8ca5dd7f4a05f93449b13deda3afa6ba, type: 3}
 --- !u!1 &280001692286601303
 GameObject:
   m_ObjectHideFlags: 0
@@ -11290,7 +11385,8 @@ GameObject:
   - component: {fileID: 624052712202310381}
   - component: {fileID: 4541545113171467592}
   - component: {fileID: 1793057715664185730}
-  m_Layer: 0
+  - component: {fileID: 52790730051828831}
+  m_Layer: 10
   m_Name: ladyShoe (16)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11304,14 +11400,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 280001692286601303}
-  m_LocalRotation: {x: -0.20006485, y: -0.3064997, z: 0.06934638, w: -0.92802113}
+  m_LocalRotation: {x: -0.07807978, y: 0.3828197, z: 0.19565712, w: -0.89948374}
   m_LocalPosition: {x: -47.528, y: 17.34, z: -31.811}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 6791769545141515852}
   m_Father: {fileID: 1090906711974406779}
   m_RootOrder: 13
-  m_LocalEulerAnglesHint: {x: 24.446, y: -323.529, z: -0.382}
+  m_LocalEulerAnglesHint: {x: -0.535, y: -405.994, z: -24.317}
 --- !u!33 &4541545113171467592
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -11361,6 +11457,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &52790730051828831
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 280001692286601303}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5124750904865958362, guid: 8ca5dd7f4a05f93449b13deda3afa6ba, type: 3}
 --- !u!1 &280001692322138604
 GameObject:
   m_ObjectHideFlags: 0
@@ -11372,7 +11482,8 @@ GameObject:
   - component: {fileID: 624052712168674134}
   - component: {fileID: 4541545113203105011}
   - component: {fileID: 1793057715630712889}
-  m_Layer: 0
+  - component: {fileID: 8230715933781664545}
+  m_Layer: 10
   m_Name: ladyShoe (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11386,14 +11497,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 280001692322138604}
-  m_LocalRotation: {x: -0.08674666, y: -0.20155314, z: 0.0680341, w: -0.97325367}
+  m_LocalRotation: {x: 0.05686065, y: 0.88270706, z: 0.12906584, w: -0.44826016}
   m_LocalPosition: {x: -29.6792, y: 7.1438885, z: -3.5101852}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 8542478165752385672}
   m_Father: {fileID: 1090906711974406779}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 11.319, y: -337.16602, z: -5.704}
+  m_LocalEulerAnglesHint: {x: -16.19, y: -486.025, z: -0.915}
 --- !u!33 &4541545113203105011
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -11443,6 +11554,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &8230715933781664545
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 280001692322138604}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5124750904865958362, guid: 8ca5dd7f4a05f93449b13deda3afa6ba, type: 3}
 --- !u!1 &280001692622686755
 GameObject:
   m_ObjectHideFlags: 0
@@ -11454,7 +11579,8 @@ GameObject:
   - component: {fileID: 624052712806863001}
   - component: {fileID: 4541545111761706812}
   - component: {fileID: 1793057717207116790}
-  m_Layer: 0
+  - component: {fileID: 9219644637524120726}
+  m_Layer: 10
   m_Name: ladyShoe (18)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11468,14 +11594,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 280001692622686755}
-  m_LocalRotation: {x: -0.43079787, y: -0.6485426, z: -0.36495847, w: -0.5105008}
-  m_LocalPosition: {x: -75.999, y: 17.667, z: -32.702}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalRotation: {x: 0.016222175, y: -0.58284974, z: -0.50802445, w: 0.6339828}
+  m_LocalPosition: {x: -76.01, y: 17.563, z: -32.609}
+  m_LocalScale: {x: 15.8029995, y: 15.8029995, z: 15.8029995}
   m_Children:
   - {fileID: 7303853748969166642}
   m_Father: {fileID: 1090906711974406779}
   m_RootOrder: 15
-  m_LocalEulerAnglesHint: {x: -1.922, y: -257.73102, z: 68.738}
+  m_LocalEulerAnglesHint: {x: -34.864, y: -67.042, z: -53.912}
 --- !u!33 &4541545111761706812
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -11525,6 +11651,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &9219644637524120726
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 280001692622686755}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5124750904865958362, guid: 8ca5dd7f4a05f93449b13deda3afa6ba, type: 3}
 --- !u!1 &280001692675464592
 GameObject:
   m_ObjectHideFlags: 0
@@ -11536,7 +11676,8 @@ GameObject:
   - component: {fileID: 624052712855406378}
   - component: {fileID: 4541545111675373711}
   - component: {fileID: 1793057717120826437}
-  m_Layer: 0
+  - component: {fileID: 3026458238497568287}
+  m_Layer: 10
   m_Name: ladyShoe (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11550,14 +11691,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 280001692675464592}
-  m_LocalRotation: {x: -0.045363877, y: 0.07283187, z: -0.14122263, w: -0.9862524}
+  m_LocalRotation: {x: -0.068069324, y: -0.99730605, z: 0.0068837795, w: 0.026456868}
   m_LocalPosition: {x: -27.13913, y: 2.9459782, z: 20.826973}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalScale: {x: 17.237999, y: 17.237999, z: 17.237999}
   m_Children:
   - {fileID: 8764314906887252856}
   m_Father: {fileID: 1090906711974406779}
   m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 6.318, y: -367.565, z: 15.88}
+  m_LocalEulerAnglesHint: {x: 0.58, y: -176.921, z: 7.825}
 --- !u!33 &4541545111675373711
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -11607,6 +11748,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &3026458238497568287
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 280001692675464592}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5124750904865958362, guid: 8ca5dd7f4a05f93449b13deda3afa6ba, type: 3}
 --- !u!1 &280001692749772632
 GameObject:
   m_ObjectHideFlags: 0
@@ -11618,7 +11773,8 @@ GameObject:
   - component: {fileID: 624052712646634978}
   - component: {fileID: 4541545111601078855}
   - component: {fileID: 1793057717317015181}
-  m_Layer: 0
+  - component: {fileID: 1995812247439753869}
+  m_Layer: 10
   m_Name: ladyShoe (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11632,14 +11788,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 280001692749772632}
-  m_LocalRotation: {x: 0.36491963, y: 0.515301, z: 0.13628492, w: -0.76336426}
-  m_LocalPosition: {x: -33.368317, y: 9.719997, z: -23.479385}
+  m_LocalRotation: {x: 0.27385837, y: 0.67804295, z: -0.071200185, w: -0.67837304}
+  m_LocalPosition: {x: -33.384, y: 9.673, z: -23.453}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 549988180445079242}
   m_Father: {fileID: 1090906711974406779}
   m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: -44.234, y: -433.575, z: 13.562}
+  m_LocalEulerAnglesHint: {x: -15.962, y: -454.14398, z: 29.127}
 --- !u!33 &4541545111601078855
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -11689,6 +11845,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &1995812247439753869
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 280001692749772632}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5124750904865958362, guid: 8ca5dd7f4a05f93449b13deda3afa6ba, type: 3}
 --- !u!1 &280001692906292110
 GameObject:
   m_ObjectHideFlags: 0
@@ -11700,7 +11870,8 @@ GameObject:
   - component: {fileID: 624052713553942836}
   - component: {fileID: 4541545112576939665}
   - component: {fileID: 1793057716883661403}
-  m_Layer: 0
+  - component: {fileID: 5562921982460349824}
+  m_Layer: 10
   m_Name: ladyShoe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11771,6 +11942,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &5562921982460349824
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 280001692906292110}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5124750904865958362, guid: 8ca5dd7f4a05f93449b13deda3afa6ba, type: 3}
 --- !u!1 &280001692956647751
 GameObject:
   m_ObjectHideFlags: 0
@@ -11782,7 +11967,8 @@ GameObject:
   - component: {fileID: 624052713671375869}
   - component: {fileID: 4541545112493044824}
   - component: {fileID: 1793057716866891922}
-  m_Layer: 0
+  - component: {fileID: 3729828112662555898}
+  m_Layer: 10
   m_Name: ladyShoe (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11796,14 +11982,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 280001692956647751}
-  m_LocalRotation: {x: 0.02098876, y: -0.17805272, z: 0.20969844, w: -0.9611885}
+  m_LocalRotation: {x: -0.126259, y: -0.9907188, z: -0.04380333, w: -0.02482545}
   m_LocalPosition: {x: -25.36789, y: 1.6917667, z: 31.549725}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 154271794312659738}
   m_Father: {fileID: 1090906711974406779}
   m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 1.967, y: -339.434, z: -24.257}
+  m_LocalEulerAnglesHint: {x: -4.619, y: -183.466, z: 14.665}
 --- !u!33 &4541545112493044824
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -11853,6 +12039,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &3729828112662555898
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 280001692956647751}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5124750904865958362, guid: 8ca5dd7f4a05f93449b13deda3afa6ba, type: 3}
 --- !u!1 &280001693006853299
 GameObject:
   m_ObjectHideFlags: 0
@@ -11864,7 +12064,8 @@ GameObject:
   - component: {fileID: 624052713455234569}
   - component: {fileID: 4541545112409285036}
   - component: {fileID: 1793057717049480550}
-  m_Layer: 0
+  - component: {fileID: 7390395757778603514}
+  m_Layer: 10
   m_Name: ladyShoe (17)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11878,14 +12079,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 280001693006853299}
-  m_LocalRotation: {x: -0.08059224, y: -0.44865125, z: 0.13264301, w: -0.88012654}
+  m_LocalRotation: {x: -0.19335444, y: -0.74173486, z: -0.038460888, w: 0.6410649}
   m_LocalPosition: {x: -59.84, y: 14.96, z: -25.174}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 3040901418738689237}
   m_Father: {fileID: 1090906711974406779}
   m_RootOrder: 14
-  m_LocalEulerAnglesHint: {x: 15.123, y: -307.258, z: -9.611}
+  m_LocalEulerAnglesHint: {x: -17.756, y: -100.595, z: 14.442}
 --- !u!33 &4541545112409285036
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -11935,6 +12136,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &7390395757778603514
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 280001693006853299}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5124750904865958362, guid: 8ca5dd7f4a05f93449b13deda3afa6ba, type: 3}
 --- !u!1 &280001693256355604
 GameObject:
   m_ObjectHideFlags: 0
@@ -11946,7 +12161,8 @@ GameObject:
   - component: {fileID: 624052713373423022}
   - component: {fileID: 4541545112260499979}
   - component: {fileID: 1793057716565061313}
-  m_Layer: 0
+  - component: {fileID: 7372390456274321604}
+  m_Layer: 10
   m_Name: ladyShoe (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11960,14 +12176,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 280001693256355604}
-  m_LocalRotation: {x: -0.016453957, y: 0.6015995, z: 0.083871886, w: -0.7942121}
+  m_LocalRotation: {x: 0.045442373, y: 0.42256942, z: 0.11611896, w: -0.8977119}
   m_LocalPosition: {x: -23.418549, y: 7.124178, z: -29.682014}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 5230945624886443589}
   m_Father: {fileID: 1090906711974406779}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: -4.289, y: -433.95502, z: -8.827}
+  m_LocalEulerAnglesHint: {x: -10.354, y: -409.51, z: -9.956}
 --- !u!33 &4541545112260499979
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -12017,6 +12233,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &7372390456274321604
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 280001693256355604}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5124750904865958362, guid: 8ca5dd7f4a05f93449b13deda3afa6ba, type: 3}
 --- !u!1 &280001693393534403
 GameObject:
   m_ObjectHideFlags: 0
@@ -12028,7 +12258,8 @@ GameObject:
   - component: {fileID: 624052713235867513}
   - component: {fileID: 4541545112123336924}
   - component: {fileID: 1793057716698422294}
-  m_Layer: 0
+  - component: {fileID: 770708285583400006}
+  m_Layer: 10
   m_Name: ladyShoe (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12042,14 +12273,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 280001693393534403}
-  m_LocalRotation: {x: -0.008203515, y: 0.49288198, z: 0.15651526, w: -0.8558639}
+  m_LocalRotation: {x: 0.07613854, y: 0.87205166, z: 0.13699359, w: -0.46363962}
   m_LocalPosition: {x: -11.912506, y: 1.184372, z: 6.6739883}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 9158836673169615441}
   m_Father: {fileID: 1090906711974406779}
   m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: -8.062, y: -418.726, z: -16.186}
+  m_LocalEulerAnglesHint: {x: -18.031, y: -484.059, z: 0.347}
 --- !u!33 &4541545112123336924
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -12099,6 +12330,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &770708285583400006
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 280001693393534403}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5124750904865958362, guid: 8ca5dd7f4a05f93449b13deda3afa6ba, type: 3}
 --- !u!1 &387098814578723882
 GameObject:
   m_ObjectHideFlags: 0
@@ -12112,7 +12357,7 @@ GameObject:
   - component: {fileID: 2847180193363100556}
   - component: {fileID: 5524033177182753811}
   - component: {fileID: 861371359043728830}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12231,7 +12476,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2676101524841884263}
   - component: {fileID: 750042521174944781}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: Hint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12760,7 +13005,7 @@ GameObject:
   - component: {fileID: 4355058163304703031}
   - component: {fileID: 1884122809089547085}
   - component: {fileID: 7098460673844481188}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Choice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12894,7 +13139,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5177580901892009411}
   - component: {fileID: 2623924601015603961}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: TMP SubMeshUI [Oswald-Bold SDF Material + LiberationSans SDF Atlas]
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12938,7 +13183,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5988972571400877268}
   - component: {fileID: 6762633842258959844}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13023,7 +13268,7 @@ GameObject:
   - component: {fileID: 2388893462598706044}
   - component: {fileID: 5157836120654021307}
   - component: {fileID: 5481669632671137409}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13146,13 +13391,13 @@ GameObject:
   - component: {fileID: 3773704012282475443}
   - component: {fileID: 7412272204239841906}
   - component: {fileID: 230933904521680727}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: ShoeNpc (1)
   m_TagString: Untagged
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4161259374382173819
 Transform:
   m_ObjectHideFlags: 0
@@ -13299,7 +13544,12 @@ MonoBehaviour:
   randomLinesAmountMax: 6
   hc: {fileID: 0}
   keySold: 0
+  setNpcInactiveOnAction: 0
+  spiderBossAggressiveOnAction: 0
+  startQuestOnAction: -1
+  completeQuestOnAction: -1
   gameObjectActivateOnAgree: {fileID: 0}
+  toInitOnDialogueAction: {fileID: 0}
   mementoPrefab: {fileID: 5232096813719522242, guid: 0d1620a94ce53dd41beb0163478c751a,
     type: 3}
   interactableToInteractOnDialogueAction: {fileID: 0}
@@ -13440,7 +13690,7 @@ GameObject:
   - component: {fileID: 3262151677388513634}
   - component: {fileID: 5416780659939228670}
   - component: {fileID: 1426705147604073263}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: DIaloguePhrase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13575,7 +13825,7 @@ GameObject:
   - component: {fileID: 5599849010675514088}
   - component: {fileID: 1668371571913917104}
   - component: {fileID: 706013154146721106}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Choice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13773,7 +14023,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8134960211741139015}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: CanvasParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13809,13 +14059,13 @@ GameObject:
   - component: {fileID: 5777591311702198002}
   - component: {fileID: 6650744627583171309}
   - component: {fileID: 5432682860556097743}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: ShoeNpc (7)
   m_TagString: Untagged
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8764314906887252856
 Transform:
   m_ObjectHideFlags: 0
@@ -13964,7 +14214,12 @@ MonoBehaviour:
   randomLinesAmountMax: 6
   hc: {fileID: 0}
   keySold: 0
+  setNpcInactiveOnAction: 0
+  spiderBossAggressiveOnAction: 0
+  startQuestOnAction: -1
+  completeQuestOnAction: -1
   gameObjectActivateOnAgree: {fileID: 0}
+  toInitOnDialogueAction: {fileID: 0}
   mementoPrefab: {fileID: 5232096813719522242, guid: 0d1620a94ce53dd41beb0163478c751a,
     type: 3}
   interactableToInteractOnDialogueAction: {fileID: 0}
@@ -14094,6 +14349,103 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   streamObjectAboveAnimator: 0
   childObjectToHide: []
+--- !u!1 &971176247472137352
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3777407954874577686}
+  - component: {fileID: 2724893891208335192}
+  - component: {fileID: 4667683572242016887}
+  - component: {fileID: 8210973430770173720}
+  m_Layer: 10
+  m_Name: ladyShoe (20)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3777407954874577686
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 971176247472137352}
+  m_LocalRotation: {x: 0.017625906, y: -0.09664341, z: 0.18482576, w: -0.9778491}
+  m_LocalPosition: {x: -56.41696, y: 33.407463, z: -17.313469}
+  m_LocalScale: {x: 15.323, y: 15.323, z: 15.323}
+  m_Children:
+  - {fileID: 7612823795655035769}
+  m_Father: {fileID: 1090906711974406779}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0.072, y: -348.725, z: -21.4}
+--- !u!33 &2724893891208335192
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 971176247472137352}
+  m_Mesh: {fileID: 5124750904865958362, guid: 8ca5dd7f4a05f93449b13deda3afa6ba, type: 3}
+--- !u!23 &4667683572242016887
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 971176247472137352}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 7d481635ccbc79640ad8e41a646db505, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &8210973430770173720
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 971176247472137352}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5124750904865958362, guid: 8ca5dd7f4a05f93449b13deda3afa6ba, type: 3}
 --- !u!1 &987814335618453870
 GameObject:
   m_ObjectHideFlags: 0
@@ -14104,7 +14456,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9167140294224174159}
   - component: {fileID: 984705670252894381}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: Hint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14145,6 +14497,57 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &1003600861316364658
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6411708109298178842}
+  - component: {fileID: 7148525593782934810}
+  m_Layer: 10
+  m_Name: Hint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6411708109298178842
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1003600861316364658}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 5375561386617634909}
+  m_Father: {fileID: 7612823795655035769}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &7148525593782934810
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1003600861316364658}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1d553b1d8ad958a43b9445f01720c537, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1010893354800566113
 GameObject:
   m_ObjectHideFlags: 0
@@ -14155,7 +14558,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1369827299624381699}
   - component: {fileID: 7520301954747497317}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: Hint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14261,13 +14664,13 @@ GameObject:
   - component: {fileID: 2986342167302239178}
   - component: {fileID: 5974777333923715964}
   - component: {fileID: 9057597090494480207}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: ShoeNpc (16)
   m_TagString: Untagged
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6791769545141515852
 Transform:
   m_ObjectHideFlags: 0
@@ -14410,7 +14813,12 @@ MonoBehaviour:
   randomLinesAmountMax: 6
   hc: {fileID: 0}
   keySold: 0
+  setNpcInactiveOnAction: 0
+  spiderBossAggressiveOnAction: 0
+  startQuestOnAction: -1
+  completeQuestOnAction: -1
   gameObjectActivateOnAgree: {fileID: 0}
+  toInitOnDialogueAction: {fileID: 0}
   mementoPrefab: {fileID: 5232096813719522242, guid: 0d1620a94ce53dd41beb0163478c751a,
     type: 3}
   interactableToInteractOnDialogueAction: {fileID: 0}
@@ -14554,13 +14962,13 @@ GameObject:
   - component: {fileID: 103902329641271028}
   - component: {fileID: 8779936591252401130}
   - component: {fileID: 4674742631687241361}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: ShoeNpc (13)
   m_TagString: Untagged
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3589716486560370199
 Transform:
   m_ObjectHideFlags: 0
@@ -14703,7 +15111,12 @@ MonoBehaviour:
   randomLinesAmountMax: 6
   hc: {fileID: 0}
   keySold: 0
+  setNpcInactiveOnAction: 0
+  spiderBossAggressiveOnAction: 0
+  startQuestOnAction: -1
+  completeQuestOnAction: -1
   gameObjectActivateOnAgree: {fileID: 0}
+  toInitOnDialogueAction: {fileID: 0}
   mementoPrefab: {fileID: 5232096813719522242, guid: 0d1620a94ce53dd41beb0163478c751a,
     type: 3}
   interactableToInteractOnDialogueAction: {fileID: 0}
@@ -14844,7 +15257,7 @@ GameObject:
   - component: {fileID: 2859921254469684241}
   - component: {fileID: 3580676452939207836}
   - component: {fileID: 7296357152230225745}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Choice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14979,7 +15392,7 @@ GameObject:
   - component: {fileID: 7884136564416259328}
   - component: {fileID: 1207847232989090332}
   - component: {fileID: 915472343151986317}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: ItemInfo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15148,6 +15561,7 @@ Transform:
   - {fileID: 624052713455234569}
   - {fileID: 624052712806863001}
   - {fileID: 345565799751042021}
+  - {fileID: 3777407954874577686}
   m_Father: {fileID: 1090906712073627209}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -15316,7 +15730,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4145726100710388375}
   - component: {fileID: 7256361676371679699}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: TMP SubMeshUI [Oswald-Bold SDF Material + LiberationSans SDF Atlas]
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15350,6 +15764,142 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1108859126681655739}
   m_CullTransparentMesh: 0
+--- !u!1 &1182134711553394108
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7938754339391860299}
+  - component: {fileID: 579018330875794370}
+  - component: {fileID: 2598679818674968569}
+  m_Layer: 10
+  m_Name: ItemInfo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7938754339391860299
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182134711553394108}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.003, y: 0.003, z: 0.003}
+  m_Children:
+  - {fileID: 5589156158275046269}
+  m_Father: {fileID: 1738541804570459388}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.0115, y: 0.195}
+  m_SizeDelta: {x: 98.3715, y: 42.8204}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &579018330875794370
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182134711553394108}
+  m_CullTransparentMesh: 0
+--- !u!114 &2598679818674968569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182134711553394108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Mr Sun
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: dd9635f5c3f9dd9449d29916b3d304a1, type: 2}
+  m_sharedMaterial: {fileID: 411782785972086242, guid: dd9635f5c3f9dd9449d29916b3d304a1,
+    type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 28.85
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 1
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 1
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &1195857902212350740
 GameObject:
   m_ObjectHideFlags: 0
@@ -15603,11 +16153,13 @@ MonoBehaviour:
   damagedByPlayer: 0
   eyeEater: 0
   dynamicMapMark: {fileID: 0}
-  addBadRepOnDeath: 0.5
+  addSpawnCooldownOnDeath: 0
   door: {fileID: 0}
   npcInteractor: {fileID: 5437780587115917076}
+  setNpcInteractorToZero: 1
   weaponPickUp: {fileID: 0}
   startQuestOnDeath: -1
+  completeQuestOnDeath: -1
   armor: 0
   wallMasterTile: {fileID: 0}
   usedTile: {fileID: 0}
@@ -15702,6 +16254,37 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5034523, y: 0.19834137, z: 0.56654215}
   m_Center: {x: 0.58570004, y: -1.1531897, z: 0.072653055}
+--- !u!1 &1332994081630609780
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7931022052416719644}
+  m_Layer: 10
+  m_Name: CanvasParent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7931022052416719644
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1332994081630609780}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1738541804570459388}
+  m_Father: {fileID: 7612823795655035769}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1335758259613347223
 GameObject:
   m_ObjectHideFlags: 0
@@ -15712,7 +16295,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8968438637629118658}
   - component: {fileID: 5699976152739847933}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: Hint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15763,7 +16346,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4410870996164714557}
   - component: {fileID: 7571219545030150892}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15845,7 +16428,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4820982654861302748}
   - component: {fileID: 1306282894501318623}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: Hint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20845,7 +21428,7 @@ GameObject:
   - component: {fileID: 7184517755757182341}
   - component: {fileID: 5579917932824092527}
   - component: {fileID: 1367430877515941996}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Choice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20987,7 +21570,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7585940019164779950
 Transform:
   m_ObjectHideFlags: 0
@@ -21135,7 +21718,12 @@ MonoBehaviour:
   randomLinesAmountMax: 6
   hc: {fileID: 0}
   keySold: 0
+  setNpcInactiveOnAction: 0
+  spiderBossAggressiveOnAction: 0
+  startQuestOnAction: -1
+  completeQuestOnAction: -1
   gameObjectActivateOnAgree: {fileID: 0}
+  toInitOnDialogueAction: {fileID: 0}
   mementoPrefab: {fileID: 0}
   interactableToInteractOnDialogueAction: {fileID: 0}
   snout: 0
@@ -21153,6 +21741,50 @@ CapsuleCollider:
   m_Height: 3.76
   m_Direction: 1
   m_Center: {x: 0, y: -0.16331542, z: 0}
+--- !u!1 &1576385791239272315
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5589156158275046269}
+  - component: {fileID: 5100862849702588913}
+  m_Layer: 10
+  m_Name: TMP SubMeshUI [Oswald-Bold SDF Material + LiberationSans SDF Atlas]
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &5589156158275046269
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1576385791239272315}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7938754339391860299}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &5100862849702588913
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1576385791239272315}
+  m_CullTransparentMesh: 0
 --- !u!1 &1617576255376111305
 GameObject:
   m_ObjectHideFlags: 0
@@ -21164,7 +21796,7 @@ GameObject:
   - component: {fileID: 8340557742656805098}
   - component: {fileID: 2813623446035398475}
   - component: {fileID: 9222865479061033556}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: DIaloguePhrase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21299,7 +21931,7 @@ GameObject:
   - component: {fileID: 399510604363134644}
   - component: {fileID: 8627850298302655619}
   - component: {fileID: 1297538715237361972}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: ItemInfo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21434,7 +22066,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6802048127761460761}
   - component: {fileID: 3849985640087483695}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: Hint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21550,7 +22182,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2247704641882765771}
   - component: {fileID: 8328942222174970532}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21663,7 +22295,7 @@ GameObject:
   - component: {fileID: 323613138469114209}
   - component: {fileID: 6509451498465629657}
   - component: {fileID: 5844124684120343028}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: ItemInfo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26667,7 +27299,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3622699891912901157}
   - component: {fileID: 3828818837840022427}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26748,7 +27380,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 301140299984496482}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: CanvasParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26781,7 +27413,7 @@ GameObject:
   - component: {fileID: 6976684979454110418}
   - component: {fileID: 3912467228307307284}
   - component: {fileID: 1340120528058741329}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: DIaloguePhrase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26914,7 +27546,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3721212612230260862}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: CanvasParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26946,7 +27578,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3610357580795193815}
   - component: {fileID: 4315498289037396465}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: TMP SubMeshUI [Oswald-Bold SDF Material + LiberationSans SDF Atlas]
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26990,7 +27622,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5175552603523018863}
   - component: {fileID: 4327025571408327730}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: Hint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27040,7 +27672,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2968919018854543063}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: CanvasParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27062,6 +27694,88 @@ Transform:
   m_Father: {fileID: 9158836673169615441}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2520204573767508667
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5375561386617634909}
+  - component: {fileID: 5455214176949935187}
+  m_Layer: 10
+  m_Name: sprite
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5375561386617634909
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2520204573767508667}
+  m_LocalRotation: {x: 0, y: 0, z: -0.27160832, w: 0.9624079}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_Children: []
+  m_Father: {fileID: 6411708109298178842}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -31.52}
+--- !u!212 &5455214176949935187
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2520204573767508667}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 096cffdd46eac014080749737dc8da32, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 2.64, y: 1.98}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &2580173180152823520
 GameObject:
   m_ObjectHideFlags: 0
@@ -31879,6 +32593,128 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!1 &2593732946727751317
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1738541804570459388}
+  - component: {fileID: 3886376146781947213}
+  - component: {fileID: 2348016701661117709}
+  - component: {fileID: 4136079200411398994}
+  - component: {fileID: 7050704270902588046}
+  m_Layer: 10
+  m_Name: Canvas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1738541804570459388
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2593732946727751317}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 4.3482, y: 4.3482, z: 4.3482}
+  m_Children:
+  - {fileID: 7938754339391860299}
+  - {fileID: 3676876086523986233}
+  - {fileID: 4178132206495805835}
+  m_Father: {fileID: 7931022052416719644}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 1, y: 1}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!223 &3886376146781947213
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2593732946727751317}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+--- !u!114 &2348016701661117709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2593732946727751317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 1
+--- !u!114 &4136079200411398994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2593732946727751317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!95 &7050704270902588046
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2593732946727751317}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 53dbda8272f50e74998413d78dc449ff, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2791468578135883440
 GameObject:
   m_ObjectHideFlags: 0
@@ -32018,7 +32854,7 @@ GameObject:
   - component: {fileID: 3511078880461032169}
   - component: {fileID: 6690086757112126229}
   - component: {fileID: 4335880343125944221}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: ItemInfo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32153,7 +32989,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8529396916631827472}
   - component: {fileID: 1881178426972048219}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: TMP SubMeshUI [Oswald-Bold SDF Material + LiberationSans SDF Atlas]
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32201,13 +33037,13 @@ GameObject:
   - component: {fileID: 8993060960318657104}
   - component: {fileID: 5981279063871017542}
   - component: {fileID: 4825081987637248028}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: ShoeNpc (2)
   m_TagString: Untagged
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7134970457033565966
 Transform:
   m_ObjectHideFlags: 0
@@ -32350,7 +33186,12 @@ MonoBehaviour:
   randomLinesAmountMax: 6
   hc: {fileID: 0}
   keySold: 0
+  setNpcInactiveOnAction: 0
+  spiderBossAggressiveOnAction: 0
+  startQuestOnAction: -1
+  completeQuestOnAction: -1
   gameObjectActivateOnAgree: {fileID: 0}
+  toInitOnDialogueAction: {fileID: 0}
   mementoPrefab: {fileID: 5232096813719522242, guid: 0d1620a94ce53dd41beb0163478c751a,
     type: 3}
   interactableToInteractOnDialogueAction: {fileID: 0}
@@ -32658,7 +33499,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6815565760682701873}
   - component: {fileID: 3823872970502008976}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: TMP SubMeshUI [Oswald-Bold SDF Material + LiberationSans SDF Atlas]
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32702,7 +33543,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7430568927223114060}
   - component: {fileID: 4013031859886565353}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: TMP SubMeshUI [Oswald-Bold SDF Material + LiberationSans SDF Atlas]
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32747,7 +33588,7 @@ GameObject:
   - component: {fileID: 1931350295742046984}
   - component: {fileID: 1586585872604262986}
   - component: {fileID: 1785409218464852106}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: DIaloguePhrase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32882,7 +33723,7 @@ GameObject:
   - component: {fileID: 7484934922106314234}
   - component: {fileID: 6954006883485534727}
   - component: {fileID: 4478065342987730247}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Choice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33016,7 +33857,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8591574019812435922}
   - component: {fileID: 6852821300525916033}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: Hint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33067,7 +33908,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1061820056869951985}
   - component: {fileID: 5660624358304223410}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: Hint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33152,7 +33993,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2771158503320501497}
   - component: {fileID: 605873722604632189}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: Hint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33207,13 +34048,13 @@ GameObject:
   - component: {fileID: 4638797174878227677}
   - component: {fileID: 124191754878742395}
   - component: {fileID: 8916409059456293954}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: ShoeNpc (19)
   m_TagString: Untagged
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7365679512937709396
 Transform:
   m_ObjectHideFlags: 0
@@ -33356,7 +34197,12 @@ MonoBehaviour:
   randomLinesAmountMax: 6
   hc: {fileID: 0}
   keySold: 0
+  setNpcInactiveOnAction: 0
+  spiderBossAggressiveOnAction: 0
+  startQuestOnAction: -1
+  completeQuestOnAction: -1
   gameObjectActivateOnAgree: {fileID: 0}
+  toInitOnDialogueAction: {fileID: 0}
   mementoPrefab: {fileID: 5232096813719522242, guid: 0d1620a94ce53dd41beb0163478c751a,
     type: 3}
   interactableToInteractOnDialogueAction: {fileID: 0}
@@ -33500,13 +34346,13 @@ GameObject:
   - component: {fileID: 5627236825581982766}
   - component: {fileID: 455085343783500909}
   - component: {fileID: 8351183858718267855}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: ShoeNpc (3)
   m_TagString: Untagged
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2314615502620576146
 Transform:
   m_ObjectHideFlags: 0
@@ -33649,7 +34495,12 @@ MonoBehaviour:
   randomLinesAmountMax: 6
   hc: {fileID: 0}
   keySold: 0
+  setNpcInactiveOnAction: 0
+  spiderBossAggressiveOnAction: 0
+  startQuestOnAction: -1
+  completeQuestOnAction: -1
   gameObjectActivateOnAgree: {fileID: 0}
+  toInitOnDialogueAction: {fileID: 0}
   mementoPrefab: {fileID: 5232096813719522242, guid: 0d1620a94ce53dd41beb0163478c751a,
     type: 3}
   interactableToInteractOnDialogueAction: {fileID: 0}
@@ -33790,7 +34641,7 @@ GameObject:
   - component: {fileID: 1078110141891468128}
   - component: {fileID: 7002823140795323610}
   - component: {fileID: 8975487502328624766}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Choice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33925,7 +34776,7 @@ GameObject:
   - component: {fileID: 3627822647110006181}
   - component: {fileID: 553767764070262825}
   - component: {fileID: 521731642539768757}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: DIaloguePhrase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34058,7 +34909,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9184662282105652767}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: CanvasParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38907,7 +39758,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4686728706749682750}
   - component: {fileID: 6763957915398424545}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: TMP SubMeshUI [Oswald-Bold SDF Material + LiberationSans SDF Atlas]
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38986,13 +39837,13 @@ GameObject:
   - component: {fileID: 9073324046085884324}
   - component: {fileID: 8463411407105398864}
   - component: {fileID: 5089307417688069112}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: ShoeNpc (15)
   m_TagString: Untagged
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7466980555321935273
 Transform:
   m_ObjectHideFlags: 0
@@ -39135,7 +39986,12 @@ MonoBehaviour:
   randomLinesAmountMax: 6
   hc: {fileID: 0}
   keySold: 0
+  setNpcInactiveOnAction: 0
+  spiderBossAggressiveOnAction: 0
+  startQuestOnAction: -1
+  completeQuestOnAction: -1
   gameObjectActivateOnAgree: {fileID: 0}
+  toInitOnDialogueAction: {fileID: 0}
   mementoPrefab: {fileID: 5232096813719522242, guid: 0d1620a94ce53dd41beb0163478c751a,
     type: 3}
   interactableToInteractOnDialogueAction: {fileID: 0}
@@ -39322,7 +40178,7 @@ GameObject:
   - component: {fileID: 5863040730066360075}
   - component: {fileID: 34001952595457424}
   - component: {fileID: 4529987688632328146}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: DIaloguePhrase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39513,7 +40369,7 @@ GameObject:
   - component: {fileID: 704510631400229643}
   - component: {fileID: 6716503502956951347}
   - component: {fileID: 934310304466375747}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39652,6 +40508,141 @@ Transform:
   m_Father: {fileID: 6113982457366500553}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3748492887507797941
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3676876086523986233}
+  - component: {fileID: 4822377548787283859}
+  - component: {fileID: 2652783599065052362}
+  m_Layer: 10
+  m_Name: DIaloguePhrase
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &3676876086523986233
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3748492887507797941}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.003, y: 0.003, z: 0.003}
+  m_Children: []
+  m_Father: {fileID: 1738541804570459388}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 960.0697, y: 356.5084}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &4822377548787283859
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3748492887507797941}
+  m_CullTransparentMesh: 0
+--- !u!114 &2652783599065052362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3748492887507797941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: dd9635f5c3f9dd9449d29916b3d304a1, type: 2}
+  m_sharedMaterial: {fileID: 411782785972086242, guid: dd9635f5c3f9dd9449d29916b3d304a1,
+    type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: 0
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 36
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 1
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 1
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &3753179175030279895
 GameObject:
   m_ObjectHideFlags: 0
@@ -39663,7 +40654,7 @@ GameObject:
   - component: {fileID: 3747526346758654699}
   - component: {fileID: 8628112412200745680}
   - component: {fileID: 5223354076201054189}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: DIaloguePhrase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39800,7 +40791,7 @@ GameObject:
   - component: {fileID: 7987275410281374295}
   - component: {fileID: 2078737821585430818}
   - component: {fileID: 6211532337687941451}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39920,7 +40911,7 @@ GameObject:
   - component: {fileID: 2000229300253705823}
   - component: {fileID: 5309745501355311590}
   - component: {fileID: 3613187280984995605}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: ItemInfo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40106,7 +41097,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2206321469991156716}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: CanvasParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40142,13 +41133,13 @@ GameObject:
   - component: {fileID: 7337999279564740440}
   - component: {fileID: 1671644194279837831}
   - component: {fileID: 9007515208161339956}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: ShoeNpc (6)
   m_TagString: Untagged
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9158836673169615441
 Transform:
   m_ObjectHideFlags: 0
@@ -40292,7 +41283,12 @@ MonoBehaviour:
   randomLinesAmountMax: 6
   hc: {fileID: 0}
   keySold: 0
+  setNpcInactiveOnAction: 0
+  spiderBossAggressiveOnAction: 0
+  startQuestOnAction: -1
+  completeQuestOnAction: -1
   gameObjectActivateOnAgree: {fileID: 0}
+  toInitOnDialogueAction: {fileID: 0}
   mementoPrefab: {fileID: 5232096813719522242, guid: 0d1620a94ce53dd41beb0163478c751a,
     type: 3}
   interactableToInteractOnDialogueAction: {fileID: 0}
@@ -40433,7 +41429,7 @@ GameObject:
   - component: {fileID: 3428663539855489106}
   - component: {fileID: 9137709646070038674}
   - component: {fileID: 7908951010619121928}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Choice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40566,7 +41562,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6966150501004079881}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: CanvasParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40601,7 +41597,7 @@ GameObject:
   - component: {fileID: 7211984135040724477}
   - component: {fileID: 1837748451951417408}
   - component: {fileID: 2683731703246238620}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40932,7 +41928,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2586278766509198399}
   - component: {fileID: 6988462676574924178}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41015,7 +42011,7 @@ GameObject:
   - component: {fileID: 3253249127041196875}
   - component: {fileID: 7315630513328234550}
   - component: {fileID: 2715946744077708650}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: ItemInfo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41150,7 +42146,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1984541874026992043}
   - component: {fileID: 5618619830859167246}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41233,7 +42229,7 @@ GameObject:
   - component: {fileID: 2458932455962290097}
   - component: {fileID: 2249824317137663799}
   - component: {fileID: 239835713610669243}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Choice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41367,7 +42363,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2946167958473641292}
   - component: {fileID: 5190245600508004678}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41449,7 +42445,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9124073265269157573}
   - component: {fileID: 1698908419428586461}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41532,7 +42528,7 @@ GameObject:
   - component: {fileID: 5769612811665878392}
   - component: {fileID: 2200655799963210410}
   - component: {fileID: 231938524863756078}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: DIaloguePhrase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41666,7 +42662,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4505869555189888799}
   - component: {fileID: 4415593888466084763}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41749,7 +42745,7 @@ GameObject:
   - component: {fileID: 6668019557606609482}
   - component: {fileID: 4699468211063499374}
   - component: {fileID: 8733628763647600120}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: ItemInfo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46711,7 +47707,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3554043040785329495}
   - component: {fileID: 1356226070110942665}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46794,7 +47790,7 @@ GameObject:
   - component: {fileID: 6223885006578424308}
   - component: {fileID: 2481600530586413010}
   - component: {fileID: 9187694037737224753}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: ItemInfo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46974,7 +47970,7 @@ GameObject:
   - component: {fileID: 2685628334856926199}
   - component: {fileID: 5761864185228348963}
   - component: {fileID: 7744817658030987635}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: ItemInfo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47109,7 +48105,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7440394872219170482}
   - component: {fileID: 1484674396052342439}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: Hint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47161,7 +48157,8 @@ GameObject:
   - component: {fileID: 345565799751042021}
   - component: {fileID: 1918447494054282736}
   - component: {fileID: 169146061720790711}
-  m_Layer: 0
+  - component: {fileID: 3408466513003780978}
+  m_Layer: 10
   m_Name: ladyShoe (19)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47175,14 +48172,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4812534883446981062}
-  m_LocalRotation: {x: -0.019699141, y: -0.95447254, z: 0.08316949, w: 0.2857917}
+  m_LocalRotation: {x: -0.20424438, y: -0.7419502, z: -0.10769564, w: 0.62944084}
   m_LocalPosition: {x: -21.481934, y: 4.655012, z: -20.344158}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 7365679512937709396}
   m_Father: {fileID: 1090906711974406779}
   m_RootOrder: 16
-  m_LocalEulerAnglesHint: {x: 8.482, y: -146.296, z: 4.938}
+  m_LocalEulerAnglesHint: {x: -24.641, y: -101.706, z: 10.619}
 --- !u!33 &1918447494054282736
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -47232,6 +48229,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &3408466513003780978
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4812534883446981062}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5124750904865958362, guid: 8ca5dd7f4a05f93449b13deda3afa6ba, type: 3}
 --- !u!1 &4898441822061420712
 GameObject:
   m_ObjectHideFlags: 0
@@ -47242,7 +48253,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6877092273474188911}
   - component: {fileID: 1547858794268253560}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: Hint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47294,7 +48305,7 @@ GameObject:
   - component: {fileID: 8369366594420501822}
   - component: {fileID: 4557848780700682993}
   - component: {fileID: 1357408948097904326}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Choice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47431,7 +48442,7 @@ GameObject:
   - component: {fileID: 6548771410305718138}
   - component: {fileID: 1649248304169493470}
   - component: {fileID: 7026560375779699299}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47550,7 +48561,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6251799478568474230}
   - component: {fileID: 2052897473394335846}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: TMP SubMeshUI [Oswald-Bold SDF Material + LiberationSans SDF Atlas]
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47594,7 +48605,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3231304829390148940}
   - component: {fileID: 8214389779085428735}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47707,7 +48718,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3655499486289235074}
   - component: {fileID: 1817015385508791645}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: TMP SubMeshUI [Oswald-Bold SDF Material + LiberationSans SDF Atlas]
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47755,13 +48766,13 @@ GameObject:
   - component: {fileID: 6832765203546536107}
   - component: {fileID: 1208782057259709226}
   - component: {fileID: 2670750627734983330}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: ShoeNpc (8)
   m_TagString: Untagged
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &154271794312659738
 Transform:
   m_ObjectHideFlags: 0
@@ -47907,7 +48918,12 @@ MonoBehaviour:
   randomLinesAmountMax: 6
   hc: {fileID: 0}
   keySold: 0
+  setNpcInactiveOnAction: 0
+  spiderBossAggressiveOnAction: 0
+  startQuestOnAction: -1
+  completeQuestOnAction: -1
   gameObjectActivateOnAgree: {fileID: 0}
+  toInitOnDialogueAction: {fileID: 0}
   mementoPrefab: {fileID: 5232096813719522242, guid: 0d1620a94ce53dd41beb0163478c751a,
     type: 3}
   interactableToInteractOnDialogueAction: {fileID: 0}
@@ -48046,7 +49062,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6068506692191138575}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: CanvasParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48079,7 +49095,7 @@ GameObject:
   - component: {fileID: 413105784000499232}
   - component: {fileID: 3416585305799370638}
   - component: {fileID: 50285724133858273}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: DIaloguePhrase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48352,13 +49368,13 @@ GameObject:
   - component: {fileID: 5294622213781752518}
   - component: {fileID: 1427041753173411258}
   - component: {fileID: 8240068739361546987}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: ShoeNpc (5)
   m_TagString: Untagged
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5230945624886443589
 Transform:
   m_ObjectHideFlags: 0
@@ -48501,7 +49517,12 @@ MonoBehaviour:
   randomLinesAmountMax: 6
   hc: {fileID: 0}
   keySold: 0
+  setNpcInactiveOnAction: 0
+  spiderBossAggressiveOnAction: 0
+  startQuestOnAction: -1
+  completeQuestOnAction: -1
   gameObjectActivateOnAgree: {fileID: 0}
+  toInitOnDialogueAction: {fileID: 0}
   mementoPrefab: {fileID: 5232096813719522242, guid: 0d1620a94ce53dd41beb0163478c751a,
     type: 3}
   interactableToInteractOnDialogueAction: {fileID: 0}
@@ -53541,7 +54562,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4483568313685536921}
   - component: {fileID: 6886782205616295018}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53624,7 +54645,7 @@ GameObject:
   - component: {fileID: 8558889273928013223}
   - component: {fileID: 6403502855592808937}
   - component: {fileID: 2625862073546746959}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: ItemInfo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53790,7 +54811,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7156230147618239919}
   - component: {fileID: 1066123399882164959}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53875,7 +54896,7 @@ GameObject:
   - component: {fileID: 1031217924144954978}
   - component: {fileID: 6121768561763268340}
   - component: {fileID: 8883744573494909050}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53997,7 +55018,7 @@ GameObject:
   - component: {fileID: 4566129608198252442}
   - component: {fileID: 3200214247767742246}
   - component: {fileID: 7922437288310226094}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54117,7 +55138,7 @@ GameObject:
   - component: {fileID: 3098966247614027188}
   - component: {fileID: 2699425398437306446}
   - component: {fileID: 2722892103757258441}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: DIaloguePhrase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54251,7 +55272,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7502514195429470340}
   - component: {fileID: 2478672752722321264}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: Hint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54303,7 +55324,7 @@ GameObject:
   - component: {fileID: 2309883733439964070}
   - component: {fileID: 6771111066721918236}
   - component: {fileID: 4046956191759192262}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: DIaloguePhrase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54436,7 +55457,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3131025421788522758}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: CanvasParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54469,7 +55490,7 @@ GameObject:
   - component: {fileID: 7638268276708617713}
   - component: {fileID: 2078356553152923184}
   - component: {fileID: 7855138059877319558}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: DIaloguePhrase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59473,7 +60494,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6277133140652316742}
   - component: {fileID: 333633549639838148}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: TMP SubMeshUI [Oswald-Bold SDF Material + LiberationSans SDF Atlas]
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59518,7 +60539,7 @@ GameObject:
   - component: {fileID: 1920070977153583429}
   - component: {fileID: 6560323006143339410}
   - component: {fileID: 2979254929758750749}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: DIaloguePhrase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59653,7 +60674,7 @@ GameObject:
   - component: {fileID: 7005607938890298215}
   - component: {fileID: 5325529931823452305}
   - component: {fileID: 8487292150899213227}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: ItemInfo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59788,7 +60809,7 @@ GameObject:
   m_Component:
   - component: {fileID: 432242862678711806}
   - component: {fileID: 8421775978611338970}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59874,13 +60895,13 @@ GameObject:
   - component: {fileID: 7648080476025740258}
   - component: {fileID: 6483946108824406726}
   - component: {fileID: 6483946108824406727}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: ShoeNpc
   m_TagString: Untagged
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2709683503083643253
 Transform:
   m_ObjectHideFlags: 0
@@ -60024,7 +61045,12 @@ MonoBehaviour:
   randomLinesAmountMax: 6
   hc: {fileID: 0}
   keySold: 0
+  setNpcInactiveOnAction: 0
+  spiderBossAggressiveOnAction: 0
+  startQuestOnAction: -1
+  completeQuestOnAction: -1
   gameObjectActivateOnAgree: {fileID: 0}
+  toInitOnDialogueAction: {fileID: 0}
   mementoPrefab: {fileID: 5232096813719522242, guid: 0d1620a94ce53dd41beb0163478c751a,
     type: 3}
   interactableToInteractOnDialogueAction: {fileID: 0}
@@ -60165,7 +61191,7 @@ GameObject:
   - component: {fileID: 45200761599996456}
   - component: {fileID: 6111321133134257506}
   - component: {fileID: 343495011447638950}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Choice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60300,7 +61326,7 @@ GameObject:
   - component: {fileID: 7247081346429476529}
   - component: {fileID: 8982662644859218106}
   - component: {fileID: 2779211708368113767}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Choice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60437,7 +61463,7 @@ GameObject:
   - component: {fileID: 72311018432748333}
   - component: {fileID: 3570638488921515210}
   - component: {fileID: 2860917712457268456}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60556,7 +61582,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6869145891833968502}
   - component: {fileID: 5739354460951275100}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: TMP SubMeshUI [Oswald-Bold SDF Material + LiberationSans SDF Atlas]
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60599,7 +61625,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2758640058421030651}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: CanvasParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60621,6 +61647,304 @@ Transform:
   m_Father: {fileID: 3589716486560370199}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6682820266702946656
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7612823795655035769}
+  - component: {fileID: 8112801834877173370}
+  - component: {fileID: 6085489423021832855}
+  - component: {fileID: 935597619400706200}
+  - component: {fileID: 1844217732488754086}
+  - component: {fileID: 7068162026879464312}
+  m_Layer: 10
+  m_Name: ShoeNpc (14)
+  m_TagString: Untagged
+  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &7612823795655035769
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6682820266702946656}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.1, y: 0.100000024, z: 0.100000024}
+  m_Children:
+  - {fileID: 6411708109298178842}
+  - {fileID: 7931022052416719644}
+  m_Father: {fileID: 3777407954874577686}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8112801834877173370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6682820266702946656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16c396dbf2b96ec4fba826753d804ca3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canBeInteracted: 1
+  itemName: left shoe
+  itemNames:
+  - left shoe
+  - "\u043B\u0435\u0432\u0430\u044F \u0442\u0443\u0444\u043B\u044F"
+  pickUp: {fileID: 0}
+  ammoPickUp: {fileID: 0}
+  weaponPickUp: {fileID: 0}
+  lockObject: {fileID: 0}
+  door: {fileID: 0}
+  portable: {fileID: 0}
+  transport: {fileID: 0}
+  meatBrain: {fileID: 0}
+  setRandomTrackOnStart: {fileID: 0}
+  note: {fileID: 0}
+  npc: {fileID: 6085489423021832855}
+  button: {fileID: 0}
+  nameGui: {fileID: 2598679818674968569}
+  nameGuiAnim: {fileID: 7050704270902588046}
+  canvasParent: {fileID: 0}
+  light: {fileID: 0}
+  hint: {fileID: 1003600861316364658}
+  visual: {fileID: 0}
+  insideTheProp: 0
+  hintDistance: 200
+  mapMarker: {fileID: 0}
+  mapMarkerCross: {fileID: 0}
+  rb: {fileID: 0}
+  pickedByPlayerMessage: []
+--- !u!114 &6085489423021832855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6682820266702946656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b78d897f0212c2a4991e2d8406a42d5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dykIndex: -1
+  canCreateQuestGiver: 0
+  currentDialog: 0
+  currentLine: 0
+  eventsRepeat: 3
+  currentEventRepeat: 0
+  npcPointerOnPickUp: {fileID: 0}
+  npcSetPhrasesOnLevel: {fileID: 0}
+  randomizedPhrasesData: {fileID: 0}
+  randomizedPhrasesOrder: 0
+  blockingQuest:
+    npc: {fileID: 0}
+    completed: 0
+    failed: 0
+    rewarded: 0
+    killTarget: {fileID: 0}
+    toolTarget: 9
+    weaponTarget: 0
+    poisonTarget: {fileID: 0}
+    bleedTarget: {fileID: 0}
+    fireTarget: {fileID: 0}
+    targetName: 
+    questsDidntFinishedLine: []
+    questsFinishedLine: []
+    questsFailedLine: []
+    getRewardText: []
+    rewardTakenText: []
+    npcThanks: []
+  inQuest: 0
+  order: 0
+  dialogues:
+  - dialogueEvent: 0
+    eventCost: 0
+    questToStart: -1
+    questToComplete: -1
+    phrases:
+    - i am the wrong shoe
+    phrasesRu:
+    - "\u044F \u043D\u0435\u043F\u0440\u0430\u0432\u0438\u043B\u044C\u043D\u0430\u044F
+      \u0442\u0443\u0444\u0435\u043B\u044C\u043A\u0430"
+    phrasesESP: []
+    phrasesGER: []
+    phrasesIT: []
+    phrasesSPBR: []
+    doesntMetRequirementsPhrase: ...
+    doesntMetRequirementsPhraseRu: ...
+    doesntMetRequirementsPhraseEsp: ...
+    doesntMetRequirementsPhraseGer: ...
+    doesntMetRequirementsPhraseIT: ...
+    doesntMetRequirementsPhraseSPBR: ...
+    eventComplete: ...
+    eventCompleteRu: ...
+    eventCompleteEsp: ...
+    eventCompleteGer: ...
+    eventCompleteIT: ...
+    eventCompleteSPBR: ...
+  npcVoice: {fileID: 8300000, guid: af206dca08c55e5478c20a27e59a9725, type: 3}
+  audioSource: {fileID: 1844217732488754086}
+  shuffler: {fileID: 0}
+  speakDelay: 0.01
+  distanceToCloseDialogue: 120
+  phraseGui: {fileID: 2652783599065052362}
+  choiceGui: {fileID: 8625512477422247921}
+  spawnTransform: {fileID: 0}
+  toolsPool: []
+  ammoPool: []
+  interactable: {fileID: 0}
+  randomDialoguesAmountMin: 2
+  randomDialoguesAmountMax: 3
+  randomLinesAmountMin: 3
+  randomLinesAmountMax: 6
+  hc: {fileID: 0}
+  keySold: 0
+  setNpcInactiveOnAction: 0
+  spiderBossAggressiveOnAction: 0
+  startQuestOnAction: -1
+  completeQuestOnAction: -1
+  gameObjectActivateOnAgree: {fileID: 0}
+  toInitOnDialogueAction: {fileID: 0}
+  mementoPrefab: {fileID: 5232096813719522242, guid: 0d1620a94ce53dd41beb0163478c751a,
+    type: 3}
+  interactableToInteractOnDialogueAction: {fileID: 0}
+  snout: 0
+--- !u!136 &935597619400706200
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6682820266702946656}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 1
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!82 &1844217732488754086
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6682820266702946656}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -3329600060583670345, guid: 37f4a131f509ebc40a056587ae8f6728,
+    type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &7068162026879464312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6682820266702946656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1ae892b86acd424c888e3f737f20f40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  streamObjectAboveAnimator: 0
+  childObjectToHide: []
 --- !u!1 &6795986028962639685
 GameObject:
   m_ObjectHideFlags: 0
@@ -60631,7 +61955,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4948201387410349784}
   - component: {fileID: 3077615917133696650}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: Hint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65513,13 +66837,13 @@ GameObject:
   - component: {fileID: 1634790272883210016}
   - component: {fileID: 4782127362581740714}
   - component: {fileID: 3788170912979236442}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: ShoeNpc (4)
   m_TagString: Untagged
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8542478165752385672
 Transform:
   m_ObjectHideFlags: 0
@@ -65662,7 +66986,12 @@ MonoBehaviour:
   randomLinesAmountMax: 6
   hc: {fileID: 0}
   keySold: 0
+  setNpcInactiveOnAction: 0
+  spiderBossAggressiveOnAction: 0
+  startQuestOnAction: -1
+  completeQuestOnAction: -1
   gameObjectActivateOnAgree: {fileID: 0}
+  toInitOnDialogueAction: {fileID: 0}
   mementoPrefab: {fileID: 5232096813719522242, guid: 0d1620a94ce53dd41beb0163478c751a,
     type: 3}
   interactableToInteractOnDialogueAction: {fileID: 0}
@@ -65802,7 +67131,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8763271394227816828}
   - component: {fileID: 4834547899429139438}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65887,7 +67216,7 @@ GameObject:
   - component: {fileID: 8381991014563459162}
   - component: {fileID: 4357463173651039160}
   - component: {fileID: 676198762525669031}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66006,7 +67335,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2872836316471568232}
   - component: {fileID: 3624957400447121679}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: TMP SubMeshUI [Oswald-Bold SDF Material + LiberationSans SDF Atlas]
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66108,7 +67437,7 @@ GameObject:
   - component: {fileID: 6191355496316246590}
   - component: {fileID: 7282642734468229985}
   - component: {fileID: 7728125904597643427}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: DIaloguePhrase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66245,7 +67574,7 @@ GameObject:
   - component: {fileID: 1921333001736906652}
   - component: {fileID: 7407838707758910060}
   - component: {fileID: 4374813705052166767}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66363,7 +67692,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2013360635197808793}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: CanvasParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66395,7 +67724,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6962395848543964246}
   - component: {fileID: 429096357947460213}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: TMP SubMeshUI [Oswald-Bold SDF Material + LiberationSans SDF Atlas]
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66438,7 +67767,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4615583581133519127}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: CanvasParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66473,7 +67802,7 @@ GameObject:
   - component: {fileID: 337656261001380761}
   - component: {fileID: 2793747806718887381}
   - component: {fileID: 8291926297644610233}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66595,7 +67924,7 @@ GameObject:
   - component: {fileID: 3245125443614793092}
   - component: {fileID: 3368846028360849210}
   - component: {fileID: 4755855745792677283}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66713,7 +68042,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2573234938793367285}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: CanvasParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66748,7 +68077,7 @@ GameObject:
   - component: {fileID: 7994640725642557076}
   - component: {fileID: 7191780499401066434}
   - component: {fileID: 5382886963701328888}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66867,7 +68196,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5408849125505566441}
   - component: {fileID: 941542170449355348}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: Hint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66918,7 +68247,7 @@ GameObject:
   m_Component:
   - component: {fileID: 199882181164849719}
   - component: {fileID: 6984053711622539249}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: Hint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66970,7 +68299,7 @@ GameObject:
   - component: {fileID: 2235578554215403536}
   - component: {fileID: 2194422654773040404}
   - component: {fileID: 399824492201413616}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: ItemInfo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67106,7 +68435,7 @@ GameObject:
   - component: {fileID: 273823118934969159}
   - component: {fileID: 8894725261394403822}
   - component: {fileID: 6464784740028648890}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: ItemInfo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67245,13 +68574,13 @@ GameObject:
   - component: {fileID: 9143432250564329444}
   - component: {fileID: 7891389519922596916}
   - component: {fileID: 6827860126926219583}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: ShoeNpc (10)
   m_TagString: Untagged
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &549988180445079242
 Transform:
   m_ObjectHideFlags: 0
@@ -67394,7 +68723,12 @@ MonoBehaviour:
   randomLinesAmountMax: 6
   hc: {fileID: 0}
   keySold: 0
+  setNpcInactiveOnAction: 0
+  spiderBossAggressiveOnAction: 0
+  startQuestOnAction: -1
+  completeQuestOnAction: -1
   gameObjectActivateOnAgree: {fileID: 0}
+  toInitOnDialogueAction: {fileID: 0}
   mementoPrefab: {fileID: 5232096813719522242, guid: 0d1620a94ce53dd41beb0163478c751a,
     type: 3}
   interactableToInteractOnDialogueAction: {fileID: 0}
@@ -67535,7 +68869,7 @@ GameObject:
   - component: {fileID: 4414416291898823648}
   - component: {fileID: 8337255221521727365}
   - component: {fileID: 3221292360369249968}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: ItemInfo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67799,7 +69133,7 @@ GameObject:
   - component: {fileID: 7057665404555819913}
   - component: {fileID: 2267652495747184417}
   - component: {fileID: 4935211299623411506}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Choice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68068,7 +69402,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8552052886884793916}
   - component: {fileID: 199355093555853293}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: TMP SubMeshUI [Oswald-Bold SDF Material + LiberationSans SDF Atlas]
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68112,7 +69446,7 @@ GameObject:
   m_Component:
   - component: {fileID: 92257878767098329}
   - component: {fileID: 3589082740665049313}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: TMP SubMeshUI [Oswald-Bold SDF Material + LiberationSans SDF Atlas]
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68160,13 +69494,13 @@ GameObject:
   - component: {fileID: 862319149578510592}
   - component: {fileID: 4818518081077390481}
   - component: {fileID: 8160316834366949162}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: ShoeNpc (17)
   m_TagString: Untagged
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3040901418738689237
 Transform:
   m_ObjectHideFlags: 0
@@ -68309,7 +69643,12 @@ MonoBehaviour:
   randomLinesAmountMax: 6
   hc: {fileID: 0}
   keySold: 0
+  setNpcInactiveOnAction: 0
+  spiderBossAggressiveOnAction: 0
+  startQuestOnAction: -1
+  completeQuestOnAction: -1
   gameObjectActivateOnAgree: {fileID: 0}
+  toInitOnDialogueAction: {fileID: 0}
   mementoPrefab: {fileID: 5232096813719522242, guid: 0d1620a94ce53dd41beb0163478c751a,
     type: 3}
   interactableToInteractOnDialogueAction: {fileID: 0}
@@ -68483,7 +69822,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5677391156910063732}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: CanvasParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68816,7 +70155,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4347402144372516644}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: CanvasParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68847,7 +70186,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5665414388002883973}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: CanvasParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68912,7 +70251,7 @@ GameObject:
   - component: {fileID: 6544659680784325262}
   - component: {fileID: 7676699518802646153}
   - component: {fileID: 3506889085576601557}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73858,7 +75197,7 @@ GameObject:
   - component: {fileID: 8115746994573079947}
   - component: {fileID: 3516404968691122927}
   - component: {fileID: 4823583280850386455}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: ItemInfo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73993,7 +75332,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8190257108410346920}
   - component: {fileID: 8163116210780753282}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74107,7 +75446,7 @@ GameObject:
   - component: {fileID: 5443155029854061843}
   - component: {fileID: 8188135856706871133}
   - component: {fileID: 6011805984423433043}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Choice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74242,7 +75581,7 @@ GameObject:
   - component: {fileID: 1957415827454457278}
   - component: {fileID: 3178621587081718715}
   - component: {fileID: 5160669974970726199}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: DIaloguePhrase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74411,13 +75750,13 @@ GameObject:
   - component: {fileID: 7978734706342046888}
   - component: {fileID: 1426860518050566426}
   - component: {fileID: 7903067505355185015}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: ShoeNpc (18)
   m_TagString: Untagged
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7303853748969166642
 Transform:
   m_ObjectHideFlags: 0
@@ -74560,7 +75899,12 @@ MonoBehaviour:
   randomLinesAmountMax: 6
   hc: {fileID: 0}
   keySold: 0
+  setNpcInactiveOnAction: 0
+  spiderBossAggressiveOnAction: 0
+  startQuestOnAction: -1
+  completeQuestOnAction: -1
   gameObjectActivateOnAgree: {fileID: 0}
+  toInitOnDialogueAction: {fileID: 0}
   mementoPrefab: {fileID: 5232096813719522242, guid: 0d1620a94ce53dd41beb0163478c751a,
     type: 3}
   interactableToInteractOnDialogueAction: {fileID: 0}
@@ -74703,7 +76047,7 @@ GameObject:
   - component: {fileID: 4106864092957610590}
   - component: {fileID: 3634055219603075554}
   - component: {fileID: 1599655281810175994}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74821,7 +76165,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1403724010938355799}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: CanvasParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74905,7 +76249,7 @@ GameObject:
   m_Component:
   - component: {fileID: 703440507588699096}
   - component: {fileID: 7388272262770829270}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: TMP SubMeshUI [Oswald-Bold SDF Material + LiberationSans SDF Atlas]
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75015,7 +76359,7 @@ GameObject:
   - component: {fileID: 6487389893108810894}
   - component: {fileID: 710180242213095111}
   - component: {fileID: 273134901287975933}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Choice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75202,7 +76546,7 @@ GameObject:
   - component: {fileID: 712574773066625259}
   - component: {fileID: 6455275065049275228}
   - component: {fileID: 5644117109880246930}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Choice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75336,7 +76680,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5823643460197682007}
   - component: {fileID: 740163703775063491}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: TMP SubMeshUI [Oswald-Bold SDF Material + LiberationSans SDF Atlas]
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75381,7 +76725,7 @@ GameObject:
   - component: {fileID: 3840714390940597659}
   - component: {fileID: 7006721212564767946}
   - component: {fileID: 120211976276620268}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: ItemInfo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -80334,7 +81678,7 @@ GameObject:
   - component: {fileID: 3112322921193582236}
   - component: {fileID: 9031410378115136214}
   - component: {fileID: 5930701333149727211}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: ItemInfo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -80552,6 +81896,141 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &9096659028040107787
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4178132206495805835}
+  - component: {fileID: 8717240384352476666}
+  - component: {fileID: 8625512477422247921}
+  m_Layer: 10
+  m_Name: Choice
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &4178132206495805835
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9096659028040107787}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.003, y: 0.003, z: 0.003}
+  m_Children: []
+  m_Father: {fileID: 1738541804570459388}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -0.737}
+  m_SizeDelta: {x: 960.0697, y: 192.7422}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &8717240384352476666
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9096659028040107787}
+  m_CullTransparentMesh: 0
+--- !u!114 &8625512477422247921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9096659028040107787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: dd9635f5c3f9dd9449d29916b3d304a1, type: 2}
+  m_sharedMaterial: {fileID: 411782785972086242, guid: dd9635f5c3f9dd9449d29916b3d304a1,
+    type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4278238975
+  m_fontColor: {r: 1, g: 0.7462256, b: 0, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: 0
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 36
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 1
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 1
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &9185897630477950509
 GameObject:
   m_ObjectHideFlags: 0
@@ -80563,7 +82042,7 @@ GameObject:
   - component: {fileID: 8269705242784665987}
   - component: {fileID: 2911303947955255379}
   - component: {fileID: 9121588175618847686}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: DIaloguePhrase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85546,7 +87025,7 @@ GameObject:
   m_Component:
   - component: {fileID: 984043591692216975}
   - component: {fileID: 3630978486839389678}
-  m_Layer: 13
+  m_Layer: 10
   m_Name: sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}

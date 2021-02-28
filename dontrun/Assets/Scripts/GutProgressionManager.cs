@@ -125,11 +125,7 @@ public class GutProgressionManager : MonoBehaviour
             levelData.currentBoss = -1;
         }
 
-        if (gm.tutorialPassed == 1)
-            levelData.lockedDoorsAmount =
-                Mathf.Clamp(Random.Range(1, 4) + currentLevelDifficulty - playerHandicap, 0, 10);
-        else
-            levelData.lockedDoorsAmount = 0;
+        levelData.lockedDoorsAmount = 0;
         
         //levelData.lockpicksAmount = Random.Range(0, playerHandicap + 1);
         //levelData.regenTilesAmount = 1;
@@ -165,7 +161,6 @@ public class GutProgressionManager : MonoBehaviour
     public void SetFloorToClient(int floor, int _bossFloor)
     {
         print("SET PLAYER FLOOR " + floor + ". Choose rooms rtps");
-        gm.tutorialPassed = 1;
         playerFloor = floor;
         bossFloor = _bossFloor;
 

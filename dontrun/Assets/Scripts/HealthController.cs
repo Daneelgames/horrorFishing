@@ -1071,9 +1071,6 @@ public class HealthController : MonoBehaviour, IUpdatable
                     dmg *= 0.5f;
                 */
                 
-                if (gm.tutorialPassed == 0)
-                    dmg *= 0.66f;
-                
                 if (health <= healthMax * 0.33f)
                     health -= (dmg - dmg * armor) * 0.5f;
                 else if (health <= healthMax * 0.7f)
