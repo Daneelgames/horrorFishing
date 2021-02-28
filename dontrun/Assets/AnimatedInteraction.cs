@@ -20,6 +20,9 @@ public class AnimatedInteraction : MonoBehaviour
     {
         if (!canInteract) return;
 
+        if (objectsToActivate[nextObjectIndex].activeInHierarchy)
+            return;
+        
         anim.SetTrigger(interactionString);
         canInteract = false;
 
@@ -29,12 +32,10 @@ public class AnimatedInteraction : MonoBehaviour
             au.Play();   
         }
         
-        if (objectsToActivate[nextObjectIndex].activeInHierarchy == false)
-        {
-            objectsToActivate[nextObjectIndex].SetActive(true);
-            if (objectsToActivate.Count > nextObjectIndex + 1)
-                nextObjectIndex++;   
-        }
+        objectsToActivate[nextObjectIndex].SetActive(true);
+        
+        if (objectsToActivate.Count > nextObjectIndex + 1)
+            nextObjectIndex++;   
         
         StartCoroutine(Cooldown());
     }
