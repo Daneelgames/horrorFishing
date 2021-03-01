@@ -272,6 +272,7 @@ MonoBehaviour:
   - left shoe
   - "\u043B\u0435\u0432\u0430\u044F \u0442\u0443\u0444\u043B\u044F"
   pickUp: {fileID: 0}
+  animatedInteraction: {fileID: 0}
   ammoPickUp: {fileID: 0}
   weaponPickUp: {fileID: 0}
   lockObject: {fileID: 0}
@@ -338,7 +339,8 @@ MonoBehaviour:
   inQuest: 0
   order: 0
   dialogues:
-  - dialogueEvent: 0
+  - importantDialogue: 0
+    dialogueEvent: 0
     eventCost: 0
     questToStart: -1
     questToComplete: -1
@@ -391,6 +393,7 @@ MonoBehaviour:
     type: 3}
   interactableToInteractOnDialogueAction: {fileID: 0}
   snout: 0
+  importantDialogueMark: {fileID: 0}
 --- !u!136 &6577157375485048394
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1808,6 +1811,7 @@ MonoBehaviour:
   - left shoe
   - "\u043B\u0435\u0432\u0430\u044F \u0442\u0443\u0444\u043B\u044F"
   pickUp: {fileID: 0}
+  animatedInteraction: {fileID: 0}
   ammoPickUp: {fileID: 0}
   weaponPickUp: {fileID: 0}
   lockObject: {fileID: 0}
@@ -1874,7 +1878,8 @@ MonoBehaviour:
   inQuest: 0
   order: 0
   dialogues:
-  - dialogueEvent: 0
+  - importantDialogue: 0
+    dialogueEvent: 0
     eventCost: 0
     questToStart: -1
     questToComplete: -1
@@ -1927,6 +1932,7 @@ MonoBehaviour:
     type: 3}
   interactableToInteractOnDialogueAction: {fileID: 0}
   snout: 0
+  importantDialogueMark: {fileID: 0}
 --- !u!136 &5923746920858653864
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -4727,6 +4733,7 @@ MonoBehaviour:
   - left shoe
   - "\u043B\u0435\u0432\u0430\u044F \u0442\u0443\u0444\u043B\u044F"
   pickUp: {fileID: 0}
+  animatedInteraction: {fileID: 0}
   ammoPickUp: {fileID: 0}
   weaponPickUp: {fileID: 0}
   lockObject: {fileID: 0}
@@ -4793,7 +4800,8 @@ MonoBehaviour:
   inQuest: 0
   order: 0
   dialogues:
-  - dialogueEvent: 0
+  - importantDialogue: 0
+    dialogueEvent: 0
     eventCost: 0
     questToStart: -1
     questToComplete: -1
@@ -4846,6 +4854,7 @@ MonoBehaviour:
     type: 3}
   interactableToInteractOnDialogueAction: {fileID: 0}
   snout: 0
+  importantDialogueMark: {fileID: 0}
 --- !u!136 &8822897325627365535
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -6928,6 +6937,7 @@ MonoBehaviour:
   - left shoe
   - "\u043B\u0435\u0432\u0430\u044F \u0442\u0443\u0444\u043B\u044F"
   pickUp: {fileID: 0}
+  animatedInteraction: {fileID: 0}
   ammoPickUp: {fileID: 0}
   weaponPickUp: {fileID: 0}
   lockObject: {fileID: 0}
@@ -6994,7 +7004,8 @@ MonoBehaviour:
   inQuest: 0
   order: 0
   dialogues:
-  - dialogueEvent: 0
+  - importantDialogue: 0
+    dialogueEvent: 0
     eventCost: 0
     questToStart: -1
     questToComplete: -1
@@ -7047,6 +7058,7 @@ MonoBehaviour:
     type: 3}
   interactableToInteractOnDialogueAction: {fileID: 0}
   snout: 0
+  importantDialogueMark: {fileID: 0}
 --- !u!136 &1969371846472795453
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -8019,6 +8031,7 @@ MonoBehaviour:
   - left shoe
   - "\u043B\u0435\u0432\u0430\u044F \u0442\u0443\u0444\u043B\u044F"
   pickUp: {fileID: 0}
+  animatedInteraction: {fileID: 0}
   ammoPickUp: {fileID: 0}
   weaponPickUp: {fileID: 0}
   lockObject: {fileID: 0}
@@ -8085,7 +8098,8 @@ MonoBehaviour:
   inQuest: 0
   order: 0
   dialogues:
-  - dialogueEvent: 0
+  - importantDialogue: 0
+    dialogueEvent: 0
     eventCost: 0
     questToStart: -1
     questToComplete: -1
@@ -8138,6 +8152,7 @@ MonoBehaviour:
     type: 3}
   interactableToInteractOnDialogueAction: {fileID: 0}
   snout: 0
+  importantDialogueMark: {fileID: 0}
 --- !u!136 &5851684366789425664
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -9432,7 +9447,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3537276098329853424}
   m_LocalRotation: {x: -0, y: 0.7849433, z: -0, w: 0.61956763}
-  m_LocalPosition: {x: 208.90526, y: 64.703064, z: 211.25935}
+  m_LocalPosition: {x: 211.17639, y: 66.17136, z: 213.2664}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7947267880552336132}
@@ -9722,6 +9737,7 @@ MonoBehaviour:
   - left shoe
   - "\u043B\u0435\u0432\u0430\u044F \u0442\u0443\u0444\u043B\u044F"
   pickUp: {fileID: 0}
+  animatedInteraction: {fileID: 0}
   ammoPickUp: {fileID: 0}
   weaponPickUp: {fileID: 0}
   lockObject: {fileID: 0}
@@ -9788,7 +9804,8 @@ MonoBehaviour:
   inQuest: 0
   order: 0
   dialogues:
-  - dialogueEvent: 0
+  - importantDialogue: 0
+    dialogueEvent: 0
     eventCost: 0
     questToStart: -1
     questToComplete: -1
@@ -9841,6 +9858,7 @@ MonoBehaviour:
     type: 3}
   interactableToInteractOnDialogueAction: {fileID: 0}
   snout: 0
+  importantDialogueMark: {fileID: 0}
 --- !u!136 &8803158827376061362
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -10923,6 +10941,7 @@ MonoBehaviour:
   - left shoe
   - "\u043B\u0435\u0432\u0430\u044F \u0442\u0443\u0444\u043B\u044F"
   pickUp: {fileID: 0}
+  animatedInteraction: {fileID: 0}
   ammoPickUp: {fileID: 0}
   weaponPickUp: {fileID: 0}
   lockObject: {fileID: 0}
@@ -10989,7 +11008,8 @@ MonoBehaviour:
   inQuest: 0
   order: 0
   dialogues:
-  - dialogueEvent: 0
+  - importantDialogue: 0
+    dialogueEvent: 0
     eventCost: 0
     questToStart: -1
     questToComplete: -1
@@ -11042,6 +11062,7 @@ MonoBehaviour:
     type: 3}
   interactableToInteractOnDialogueAction: {fileID: 0}
   snout: 0
+  importantDialogueMark: {fileID: 0}
 --- !u!136 &426387051278678476
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -11452,6 +11473,7 @@ MonoBehaviour:
   - left shoe
   - "\u043B\u0435\u0432\u0430\u044F \u0442\u0443\u0444\u043B\u044F"
   pickUp: {fileID: 0}
+  animatedInteraction: {fileID: 0}
   ammoPickUp: {fileID: 0}
   weaponPickUp: {fileID: 0}
   lockObject: {fileID: 0}
@@ -11518,7 +11540,8 @@ MonoBehaviour:
   inQuest: 0
   order: 0
   dialogues:
-  - dialogueEvent: 0
+  - importantDialogue: 0
+    dialogueEvent: 0
     eventCost: 0
     questToStart: -1
     questToComplete: -1
@@ -11571,6 +11594,7 @@ MonoBehaviour:
     type: 3}
   interactableToInteractOnDialogueAction: {fileID: 0}
   snout: 0
+  importantDialogueMark: {fileID: 0}
 --- !u!136 &2109538038822267594
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -12175,6 +12199,7 @@ MonoBehaviour:
   - left shoe
   - "\u043B\u0435\u0432\u0430\u044F \u0442\u0443\u0444\u043B\u044F"
   pickUp: {fileID: 0}
+  animatedInteraction: {fileID: 0}
   ammoPickUp: {fileID: 0}
   weaponPickUp: {fileID: 0}
   lockObject: {fileID: 0}
@@ -12241,7 +12266,8 @@ MonoBehaviour:
   inQuest: 0
   order: 0
   dialogues:
-  - dialogueEvent: 0
+  - importantDialogue: 0
+    dialogueEvent: 0
     eventCost: 0
     questToStart: -1
     questToComplete: -1
@@ -12294,6 +12320,7 @@ MonoBehaviour:
     type: 3}
   interactableToInteractOnDialogueAction: {fileID: 0}
   snout: 0
+  importantDialogueMark: {fileID: 0}
 --- !u!136 &6757274379827035994
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -13157,6 +13184,7 @@ MonoBehaviour:
   - left shoe
   - "\u043B\u0435\u0432\u0430\u044F \u0442\u0443\u0444\u043B\u044F"
   pickUp: {fileID: 0}
+  animatedInteraction: {fileID: 0}
   ammoPickUp: {fileID: 0}
   weaponPickUp: {fileID: 0}
   lockObject: {fileID: 0}
@@ -13223,7 +13251,8 @@ MonoBehaviour:
   inQuest: 0
   order: 0
   dialogues:
-  - dialogueEvent: 0
+  - importantDialogue: 0
+    dialogueEvent: 0
     eventCost: 0
     questToStart: -1
     questToComplete: -1
@@ -13276,6 +13305,7 @@ MonoBehaviour:
     type: 3}
   interactableToInteractOnDialogueAction: {fileID: 0}
   snout: 0
+  importantDialogueMark: {fileID: 0}
 --- !u!136 &7563659303354227784
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -13943,6 +13973,7 @@ MonoBehaviour:
   - left shoe
   - "\u043B\u0435\u0432\u0430\u044F \u0442\u0443\u0444\u043B\u044F"
   pickUp: {fileID: 0}
+  animatedInteraction: {fileID: 0}
   ammoPickUp: {fileID: 0}
   weaponPickUp: {fileID: 0}
   lockObject: {fileID: 0}
@@ -14009,7 +14040,8 @@ MonoBehaviour:
   inQuest: 0
   order: 0
   dialogues:
-  - dialogueEvent: 0
+  - importantDialogue: 0
+    dialogueEvent: 0
     eventCost: 0
     questToStart: -1
     questToComplete: -1
@@ -14062,6 +14094,7 @@ MonoBehaviour:
     type: 3}
   interactableToInteractOnDialogueAction: {fileID: 0}
   snout: 0
+  importantDialogueMark: {fileID: 0}
 --- !u!136 &1779440583181481406
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -14560,6 +14593,7 @@ MonoBehaviour:
   - left shoe
   - "\u043B\u0435\u0432\u0430\u044F \u0442\u0443\u0444\u043B\u044F"
   pickUp: {fileID: 0}
+  animatedInteraction: {fileID: 0}
   ammoPickUp: {fileID: 0}
   weaponPickUp: {fileID: 0}
   lockObject: {fileID: 0}
@@ -14626,7 +14660,8 @@ MonoBehaviour:
   inQuest: 0
   order: 0
   dialogues:
-  - dialogueEvent: 0
+  - importantDialogue: 0
+    dialogueEvent: 0
     eventCost: 0
     questToStart: -1
     questToComplete: -1
@@ -14679,6 +14714,7 @@ MonoBehaviour:
     type: 3}
   interactableToInteractOnDialogueAction: {fileID: 0}
   snout: 0
+  importantDialogueMark: {fileID: 0}
 --- !u!136 &1936649570632807692
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -16673,6 +16709,7 @@ MonoBehaviour:
   - left shoe
   - "\u043B\u0435\u0432\u0430\u044F \u0442\u0443\u0444\u043B\u044F"
   pickUp: {fileID: 0}
+  animatedInteraction: {fileID: 0}
   ammoPickUp: {fileID: 0}
   weaponPickUp: {fileID: 0}
   lockObject: {fileID: 0}
@@ -16739,7 +16776,8 @@ MonoBehaviour:
   inQuest: 0
   order: 0
   dialogues:
-  - dialogueEvent: 0
+  - importantDialogue: 0
+    dialogueEvent: 0
     eventCost: 0
     questToStart: -1
     questToComplete: -1
@@ -16792,6 +16830,7 @@ MonoBehaviour:
     type: 3}
   interactableToInteractOnDialogueAction: {fileID: 0}
   snout: 0
+  importantDialogueMark: {fileID: 0}
 --- !u!136 &7813879320370070700
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -19410,6 +19449,7 @@ MonoBehaviour:
   - left shoe
   - "\u043B\u0435\u0432\u0430\u044F \u0442\u0443\u0444\u043B\u044F"
   pickUp: {fileID: 0}
+  animatedInteraction: {fileID: 0}
   ammoPickUp: {fileID: 0}
   weaponPickUp: {fileID: 0}
   lockObject: {fileID: 0}
@@ -19476,7 +19516,8 @@ MonoBehaviour:
   inQuest: 0
   order: 0
   dialogues:
-  - dialogueEvent: 0
+  - importantDialogue: 0
+    dialogueEvent: 0
     eventCost: 0
     questToStart: -1
     questToComplete: -1
@@ -19529,6 +19570,7 @@ MonoBehaviour:
     type: 3}
   interactableToInteractOnDialogueAction: {fileID: 0}
   snout: 0
+  importantDialogueMark: {fileID: 0}
 --- !u!136 &4445132127772223776
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -20003,6 +20045,7 @@ MonoBehaviour:
   - left shoe
   - "\u043B\u0435\u0432\u0430\u044F \u0442\u0443\u0444\u043B\u044F"
   pickUp: {fileID: 0}
+  animatedInteraction: {fileID: 0}
   ammoPickUp: {fileID: 0}
   weaponPickUp: {fileID: 0}
   lockObject: {fileID: 0}
@@ -20069,7 +20112,8 @@ MonoBehaviour:
   inQuest: 0
   order: 0
   dialogues:
-  - dialogueEvent: 0
+  - importantDialogue: 0
+    dialogueEvent: 0
     eventCost: 0
     questToStart: -1
     questToComplete: -1
@@ -20122,6 +20166,7 @@ MonoBehaviour:
     type: 3}
   interactableToInteractOnDialogueAction: {fileID: 0}
   snout: 0
+  importantDialogueMark: {fileID: 0}
 --- !u!136 &5665327370803536227
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -20634,7 +20679,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7205096106503797655}
   m_LocalRotation: {x: -0, y: 0.7849433, z: -0, w: 0.61956763}
-  m_LocalPosition: {x: 146.99088, y: 73.346115, z: 154.63309}
+  m_LocalPosition: {x: 157.62524, y: 74.4525, z: 142.6864}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7947267880552336132}
@@ -21439,6 +21484,7 @@ MonoBehaviour:
   - left shoe
   - "\u043B\u0435\u0432\u0430\u044F \u0442\u0443\u0444\u043B\u044F"
   pickUp: {fileID: 0}
+  animatedInteraction: {fileID: 0}
   ammoPickUp: {fileID: 0}
   weaponPickUp: {fileID: 0}
   lockObject: {fileID: 0}
@@ -21505,7 +21551,8 @@ MonoBehaviour:
   inQuest: 0
   order: 0
   dialogues:
-  - dialogueEvent: 0
+  - importantDialogue: 0
+    dialogueEvent: 0
     eventCost: 0
     questToStart: -1
     questToComplete: -1
@@ -21558,6 +21605,7 @@ MonoBehaviour:
     type: 3}
   interactableToInteractOnDialogueAction: {fileID: 0}
   snout: 0
+  importantDialogueMark: {fileID: 0}
 --- !u!136 &8074257344056373438
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -21738,7 +21786,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7663640989131937381}
   m_LocalRotation: {x: -0, y: 0.7849433, z: -0, w: 0.61956763}
-  m_LocalPosition: {x: 143.95604, y: 51.2352, z: 193.91177}
+  m_LocalPosition: {x: 73.43118, y: 60.866745, z: 161.9639}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7947267880552336132}
@@ -21913,6 +21961,7 @@ MonoBehaviour:
   - left shoe
   - "\u043B\u0435\u0432\u0430\u044F \u0442\u0443\u0444\u043B\u044F"
   pickUp: {fileID: 0}
+  animatedInteraction: {fileID: 0}
   ammoPickUp: {fileID: 0}
   weaponPickUp: {fileID: 0}
   lockObject: {fileID: 0}
@@ -21979,7 +22028,8 @@ MonoBehaviour:
   inQuest: 0
   order: 0
   dialogues:
-  - dialogueEvent: 0
+  - importantDialogue: 0
+    dialogueEvent: 0
     eventCost: 0
     questToStart: -1
     questToComplete: -1
@@ -22032,6 +22082,7 @@ MonoBehaviour:
     type: 3}
   interactableToInteractOnDialogueAction: {fileID: 0}
   snout: 0
+  importantDialogueMark: {fileID: 0}
 --- !u!136 &697601444489528931
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -22544,6 +22595,7 @@ MonoBehaviour:
   - left shoe
   - "\u043B\u0435\u0432\u0430\u044F \u0442\u0443\u0444\u043B\u044F"
   pickUp: {fileID: 0}
+  animatedInteraction: {fileID: 0}
   ammoPickUp: {fileID: 0}
   weaponPickUp: {fileID: 0}
   lockObject: {fileID: 0}
@@ -22610,7 +22662,8 @@ MonoBehaviour:
   inQuest: 0
   order: 0
   dialogues:
-  - dialogueEvent: 0
+  - importantDialogue: 0
+    dialogueEvent: 0
     eventCost: 0
     questToStart: -1
     questToComplete: -1
@@ -22663,6 +22716,7 @@ MonoBehaviour:
     type: 3}
   interactableToInteractOnDialogueAction: {fileID: 0}
   snout: 0
+  importantDialogueMark: {fileID: 0}
 --- !u!136 &3888392637870131538
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -23340,6 +23394,7 @@ MonoBehaviour:
   - left shoe
   - "\u043B\u0435\u0432\u0430\u044F \u0442\u0443\u0444\u043B\u044F"
   pickUp: {fileID: 0}
+  animatedInteraction: {fileID: 0}
   ammoPickUp: {fileID: 0}
   weaponPickUp: {fileID: 0}
   lockObject: {fileID: 0}
@@ -23406,7 +23461,8 @@ MonoBehaviour:
   inQuest: 0
   order: 0
   dialogues:
-  - dialogueEvent: 0
+  - importantDialogue: 0
+    dialogueEvent: 0
     eventCost: 0
     questToStart: -1
     questToComplete: -1
@@ -23459,6 +23515,7 @@ MonoBehaviour:
     type: 3}
   interactableToInteractOnDialogueAction: {fileID: 0}
   snout: 0
+  importantDialogueMark: {fileID: 0}
 --- !u!136 &5468035318514581827
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -23639,6 +23696,7 @@ MonoBehaviour:
   - left shoe
   - "\u043B\u0435\u0432\u0430\u044F \u0442\u0443\u0444\u043B\u044F"
   pickUp: {fileID: 0}
+  animatedInteraction: {fileID: 0}
   ammoPickUp: {fileID: 0}
   weaponPickUp: {fileID: 0}
   lockObject: {fileID: 0}
@@ -23705,7 +23763,8 @@ MonoBehaviour:
   inQuest: 0
   order: 0
   dialogues:
-  - dialogueEvent: 0
+  - importantDialogue: 0
+    dialogueEvent: 0
     eventCost: 0
     questToStart: -1
     questToComplete: -1
@@ -23758,6 +23817,7 @@ MonoBehaviour:
     type: 3}
   interactableToInteractOnDialogueAction: {fileID: 0}
   snout: 0
+  importantDialogueMark: {fileID: 0}
 --- !u!136 &4900087996412269327
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -25024,6 +25084,7 @@ MonoBehaviour:
   - left shoe
   - "\u043B\u0435\u0432\u0430\u044F \u0442\u0443\u0444\u043B\u044F"
   pickUp: {fileID: 0}
+  animatedInteraction: {fileID: 0}
   ammoPickUp: {fileID: 0}
   weaponPickUp: {fileID: 0}
   lockObject: {fileID: 0}
@@ -25090,7 +25151,8 @@ MonoBehaviour:
   inQuest: 0
   order: 0
   dialogues:
-  - dialogueEvent: 0
+  - importantDialogue: 0
+    dialogueEvent: 0
     eventCost: 0
     questToStart: -1
     questToComplete: -1
@@ -25143,6 +25205,7 @@ MonoBehaviour:
     type: 3}
   interactableToInteractOnDialogueAction: {fileID: 0}
   snout: 0
+  importantDialogueMark: {fileID: 0}
 --- !u!136 &7880402415128064793
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -26186,7 +26249,7 @@ PrefabInstance:
     - target: {fileID: 8343335380335040921, guid: 667ad2a02de28404eb7defac86a18c9b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 67.68561
+      value: 71.4
       objectReference: {fileID: 0}
     - target: {fileID: 8343335380335040921, guid: 667ad2a02de28404eb7defac86a18c9b,
         type: 3}
@@ -27629,32 +27692,32 @@ PrefabInstance:
     - target: {fileID: 8343335380335040921, guid: 667ad2a02de28404eb7defac86a18c9b,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.5973
+      value: 2.707743
       objectReference: {fileID: 0}
     - target: {fileID: 8343335380335040921, guid: 667ad2a02de28404eb7defac86a18c9b,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.5973
+      value: 2.707743
       objectReference: {fileID: 0}
     - target: {fileID: 8343335380335040921, guid: 667ad2a02de28404eb7defac86a18c9b,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.5973
+      value: 2.707743
       objectReference: {fileID: 0}
     - target: {fileID: 8343335380335040921, guid: 667ad2a02de28404eb7defac86a18c9b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 338.5861
+      value: 353.5
       objectReference: {fileID: 0}
     - target: {fileID: 8343335380335040921, guid: 667ad2a02de28404eb7defac86a18c9b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 45.56
+      value: 62.1
       objectReference: {fileID: 0}
     - target: {fileID: 8343335380335040921, guid: 667ad2a02de28404eb7defac86a18c9b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 153.01729
+      value: 138.5
       objectReference: {fileID: 0}
     - target: {fileID: 8343335380335040921, guid: 667ad2a02de28404eb7defac86a18c9b,
         type: 3}
@@ -28675,7 +28738,7 @@ PrefabInstance:
     - target: {fileID: 8343335380335040921, guid: 667ad2a02de28404eb7defac86a18c9b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 58.66
+      value: 62.8
       objectReference: {fileID: 0}
     - target: {fileID: 8343335380335040921, guid: 667ad2a02de28404eb7defac86a18c9b,
         type: 3}
