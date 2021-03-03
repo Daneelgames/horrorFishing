@@ -1641,7 +1641,7 @@ public class UiManager : MonoBehaviour
             GLNetworkWrapper.instance.ReturnToMenu();
         }
         else
-            StartCoroutine(gm.ReturnToMainMenu(false));
+            StartCoroutine(gm.ReturnToMainMenu(false, true));
     }
     
      public void QuitTheGame()

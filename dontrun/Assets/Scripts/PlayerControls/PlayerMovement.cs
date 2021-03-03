@@ -149,9 +149,10 @@ namespace PlayerControls
                 weightSpeedScaler = Mathf.Clamp(weightSpeedScaler + 0.15f, 0.5f, 1);
         }
 
+        public bool canControl = true;
         private void Update()
         {
-            if (hc.health > 0 && controller.enabled && !inTransport && !_gameManager.paused && !teleport/* && !_gameManager.questWindow*/)
+            if (canControl && hc.health > 0 && controller.enabled && !inTransport && !_gameManager.paused && !teleport/* && !_gameManager.questWindow*/)
             {
                 Movement();
             }

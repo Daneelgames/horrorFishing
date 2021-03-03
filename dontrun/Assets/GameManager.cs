@@ -429,7 +429,7 @@ public class GameManager : MonoBehaviour
         
         lg = LevelGenerator.instance;
         
-        if (player && player.health > 0 && (player.playerMovement.controller.enabled || (!player.playerMovement.controller.enabled && player.playerMovement.inTransport)) && (!lg || !lg.generating))
+        if (introPassed && player && player.health > 0 && (player.playerMovement.controller.enabled || (!player.playerMovement.controller.enabled && player.playerMovement.inTransport)) && (!lg || !lg.generating))
         {
             if (Input.GetKeyDown("u"))
                 UiManager.instance.ToggleGameUi(false, true);
@@ -487,24 +487,6 @@ public class GameManager : MonoBehaviour
                 ToggleQuests();
         }
         
-        /*
-        else
-        {
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {/*
-                if (Cursor.lockState != CursorLockMode.None)
-                    Cursor.lockState = CursorLockMode.None;
-                else
-                    Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = !Cursor.visible;
-                #1#
-
-                if (MouseLook.instance)
-                {
-                    MouseLook.instance.debugMap.SetActive(!MouseLook.instance.debugMap.activeInHierarchy);
-                }
-            }
-        }*/
     }
 
     IEnumerator KillAll()
@@ -640,10 +622,10 @@ public class GameManager : MonoBehaviour
 
     public void ReturnToMenu(bool credits)
     {
-        StartCoroutine(ReturnToMainMenu(credits));
+        StartCoroutine(ReturnToMainMenu(credits, true));
     }
     
-    public IEnumerator ReturnToMainMenu(bool showCredits)
+    public IEnumerator ReturnToMainMenu(bool showCredits, bool showMenu)
     {
         SaveGame();
         MoveLoadingAnimToParent(transform);
@@ -669,6 +651,8 @@ public class GameManager : MonoBehaviour
         {
             ToggleCredits();
         }
+        
+        if (!showMenu) yield break;
         
         //menuController.ToggleSettingsWindow( true);
         menuController.menuWindow.SetActive(true);
@@ -791,6 +775,105 @@ public class GameManager : MonoBehaviour
         player.playerMovement.StartLevel();
         
         if (QuestManager.instance && introPassed)
+            QuestManager.instance.Init();
+            
+        if (HubProgressionManager.instance)
+            HubProgressionManager.instance.FieldAfterDeath(true);
+            
+        if (HubItemsSpawner.instance)
+            HubItemsSpawner.instance.UpdateHub();
+            
+        if (PlayerCheckpointsController.instance)
+            StartCoroutine(PlayerCheckpointsController.instance.Init());
+        
+        player.pac.Init();
+        if (paused) paused = false;
+        
+        yield return  new WaitForSeconds(0.1f);
+        
+        yield return  new WaitForSeconds(1f);
+    }
+
+    public IEnumerator IntroCompleted()
+    {
+        introPassed = true;
+        SaveGame();
+        mouseLookSpeedCurrent = mouseLookSpeed;
+        loading = true;
+        
+        MoveLoadingAnimToParent(transform);
+        loadingAnim.SetBool("Active", true);
+        loadingCam.gameObject.SetActive(true);
+        yield return  new WaitForSeconds(1f);
+
+        yield return StartCoroutine(GameManager.instance.ReturnToMainMenu(false, false));
+        StartCoroutine(StartGame());
+        yield break;
+        
+        player = null;
+        units.Clear();
+        ui = null;
+        
+        hub = true;
+        
+        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().name);
+        //SceneManager.UnloadSceneAsync(2);
+        
+        yield return new WaitForEndOfFrame();
+        
+        AOfield = SceneManager.LoadSceneAsync(1, LoadSceneMode.Additive); // load city
+        
+        AOfield.allowSceneActivation = false;
+        
+        while (!AOfield.isDone)
+        {
+            yield return null;
+            if (AOfield.progress >= 0.9f)
+            {
+                AOfield.allowSceneActivation = true;
+            }
+        }
+
+        AOfield.allowSceneActivation = true;
+        AOfield = null;
+        
+        SceneManager.SetActiveScene(SceneManager.GetSceneAt(1));
+
+        yield return null;
+
+        player = PlayerMovement.instance.hc;
+        player.transform.position = playerStartPos;
+        player.transform.rotation = playerStartRot;
+
+        ui = UiManager.instance;
+        WeaponGenerationManager.instance.Init();
+
+        if (lg && !hub)
+            lg.Init();
+        
+        tr = ToolsRandomizer.instance;
+        tr.Init();
+
+        itemList.ResetPlayerInventory();
+        
+        itemList.Init();
+        itemList.keys = 0;
+        ui.Init(false);
+        
+        MoveLoadingAnimToParent(MouseLook.instance.mainCamera.transform);
+        loadingAnim.SetBool("Active", false);
+        loadingCam.gameObject.SetActive(false);
+        
+        yield return  new WaitForSeconds(1f);
+        loading = false;
+        lhc.StopHints();
+        
+        if (ls)
+            ls.Init();
+        print("FIELD LOADED");
+        player.playerMovement.StartLevel();
+        
+        if (QuestManager.instance)
             QuestManager.instance.Init();
             
         if (HubProgressionManager.instance)

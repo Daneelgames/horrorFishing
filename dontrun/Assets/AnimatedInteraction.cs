@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using PlayerControls;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -15,6 +16,8 @@ public class AnimatedInteraction : MonoBehaviour
     
     public List<GameObject> objectsToActivate = new List<GameObject>();
     private int nextObjectIndex = 0;
+
+    public bool disablePlayerInteractionsOnEnd = false;
     
     public void Interact()
     {
@@ -35,8 +38,13 @@ public class AnimatedInteraction : MonoBehaviour
         objectsToActivate[nextObjectIndex].SetActive(true);
         
         if (objectsToActivate.Count > nextObjectIndex + 1)
-            nextObjectIndex++;   
-        
+            nextObjectIndex++;
+        else if (disablePlayerInteractionsOnEnd)
+        {
+            InteractionController.instance.Disable();
+            PlayerMovement.instance.canControl = false;
+        }
+                
         StartCoroutine(Cooldown());
     }
 

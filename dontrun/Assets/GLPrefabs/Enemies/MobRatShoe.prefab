@@ -606,6 +606,7 @@ MonoBehaviour:
   setNpcInteractorToZero: 1
   weaponPickUp: {fileID: 0}
   startQuestOnDeath: -1
+  completeQuestOnDeath: -1
   armor: 0
   wallMasterTile: {fileID: 0}
   usedTile: {fileID: 0}
@@ -637,7 +638,7 @@ MonoBehaviour:
   monsterState: 0
   levels:
   - sightDistance: 1
-    sightDistanceIdleMaximum: 10
+    sightDistanceIdleMaximum: 3
     sightDistanceGrowRate: 1
     sightDistanceChase: 25
     idleSpeed: 1
@@ -653,7 +654,7 @@ MonoBehaviour:
   raycastOrigin: {fileID: 3795010937143427263}
   searchLayerMask:
     serializedVersion: 2
-    m_Bits: 1922371072
+    m_Bits: 1922368000
   mobAu: {fileID: 4503667638567919298}
   coldModifier: 1
   limbsModifier: 1
@@ -695,10 +696,7 @@ MonoBehaviour:
   bodyPartMax: 0
   hc: {fileID: 0}
   bloodFx: {fileID: 7296228066712574396, guid: 8079d28f804b3754fbfc1ce89ba21296, type: 3}
-  drop:
-  - item: {fileID: 2869742328473237117, guid: 4b199b30b53a52e47b346270ba7ec4e5, type: 3}
-    amountMax: 5
-    amountMin: 5
+  drop: []
   dropPosition: {fileID: 8297377300033624818}
   forceDropOnTile: 0
   lookAtPlayer: 0

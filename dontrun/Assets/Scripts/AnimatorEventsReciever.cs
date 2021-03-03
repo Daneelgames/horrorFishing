@@ -59,4 +59,9 @@ public class AnimatorEventsReciever : MonoBehaviour
         bool npcWeapon = Random.value <= 0.5f;
         newDrop.weaponDataRandomier.GenerateOnSpawn(deadWeapon, npcWeapon);
     }
+
+    public void IntroCompleted()
+    {
+        StartCoroutine(GameManager.instance.IntroCompleted());
+    }
 }

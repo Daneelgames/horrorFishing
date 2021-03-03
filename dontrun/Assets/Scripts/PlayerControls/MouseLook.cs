@@ -169,7 +169,7 @@ public class MouseLook : MonoBehaviour
 
     void Looking()
     {
-        if (pm == null || pm.hc.health <= 0)
+        if (gm.player == null || pm == null || pm.hc.health <= 0)
         {
             if (camHolder) camHolder.transform.localRotation = Quaternion.Slerp(camHolder.transform.localRotation, Quaternion.identity, Time.deltaTime * gm.mouseLookSpeedCurrent);
                 
@@ -193,7 +193,7 @@ public class MouseLook : MonoBehaviour
         targetRotation.localRotation = Quaternion.Euler(xRotation, yRotation, 0);
         transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotation.localRotation, Time.deltaTime * gm.mouseLookSpeedCurrent);
         camHolder.transform.localRotation = Quaternion.Slerp(camHolder.transform.localRotation, transform.localRotation, Time.deltaTime * gm.mouseLookSpeedCurrent);
-        gm.player.playerMovement.movementTransform.transform.rotation = camHolder.transform.rotation;
+        pm.movementTransform.transform.rotation = camHolder.transform.rotation;
     }
 
     public void Recoil()

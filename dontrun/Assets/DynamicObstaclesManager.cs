@@ -160,12 +160,12 @@ public class DynamicObstaclesManager : MonoBehaviour
             return 2;
         }
         
-        if (GameManager.instance.lastTalkedDyk == 2 && WeaponControls.instance.activeWeapon == null)
+        if (GameManager.instance.lastTalkedDyk > -1 && WeaponControls.instance.activeWeapon == null)
         {
             return 3;
         }
         
-        if (GameManager.instance.lastTalkedDyk == 3 && WeaponControls.instance.activeWeapon && WeaponControls.instance.activeWeapon.weapon == WeaponPickUp.Weapon.LadyShoe)
+        if (GameManager.instance.lastTalkedDyk >= 2 && WeaponControls.instance.activeWeapon && WeaponControls.instance.activeWeapon.weapon == WeaponPickUp.Weapon.LadyShoe)
         {
             return 4;
         }

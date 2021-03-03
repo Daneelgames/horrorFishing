@@ -28,6 +28,7 @@ public class InteractionController : MonoBehaviour
     public Interactable selectedItem;
 
     private string interactionString = "Interaction";
+    private bool canInteract = true; 
 
     private void Awake()
     {
@@ -46,6 +47,8 @@ public class InteractionController : MonoBehaviour
 
     private void Update()
     {
+        if (!canInteract) return;
+        
         if ((Input.GetButtonDown(interactionString) || KeyBindingManager.GetKeyDown(KeyAction.Interaction)) && !gm.paused &&pm.hc.health > 0)
         {
             if (objectInHands)
@@ -62,12 +65,17 @@ public class InteractionController : MonoBehaviour
                 selectedItem.Interact(false);
             }
             
-            //if (ui.dialogueInteractor != null && (!selectedItem || selectedItem != ui.dialogueInteractor.interactable))
             if (ui.dialogueInteractor && (!selectedItem || (selectedItem && selectedItem != ui.dialogueInteractor.interactable)))
             {
                 ui.dialogueInteractor.HideDialogue();
             }
         }
+    }
+
+    public void Disable()
+    {
+        canInteract = false;
+        StopAllCoroutines();
     }
 
     IEnumerator Raycast()
