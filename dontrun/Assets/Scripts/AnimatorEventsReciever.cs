@@ -13,6 +13,7 @@ public class AnimatorEventsReciever : MonoBehaviour
     public ParticleSystem rangeShotParticles;
     public AudioSource shotAu;
     public List<GameObject> gameObjectsToActivate = new List<GameObject>();
+    public HealthController hcToTurnInvincibilityOff;
     
     public void MobStep(int index)
     {
@@ -34,6 +35,16 @@ public class AnimatorEventsReciever : MonoBehaviour
         shotAu.Play();
     }
 
+    public void TurnInvincibilityOff()
+    {
+        hcToTurnInvincibilityOff.invincible = false;
+    }
+    
+    public void MakeBoss()
+    {
+        hcToTurnInvincibilityOff.boss = true;
+    }
+    
     public void PlaySound()
     {
         if (randomizeOneShot)
@@ -63,5 +74,13 @@ public class AnimatorEventsReciever : MonoBehaviour
     public void IntroCompleted()
     {
         StartCoroutine(GameManager.instance.IntroCompleted());
+    }
+
+    public void KillGunn()
+    {
+        var gunn = HubItemsSpawner.instance.gunnWalkableWithHeads;
+        if (gunn == null) return;
+        gunn.invincible = false;
+        gunn.Kill();
     }
 }

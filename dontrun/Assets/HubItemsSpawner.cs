@@ -23,7 +23,9 @@ public class HubItemsSpawner : MonoBehaviour
     private HealthController gunnWorkingSpawned_1;
     private HealthController gunnOnBeachSpawned;
     private HealthController motherOnBeachSpawned;
+    private HealthController motherOnBeachSpawnedFinal;
     private HealthController gunnWalkable;
+    public HealthController gunnWalkableWithHeads;
     private HealthController headDragonSpawned;
     private GameObject shoesOnBeachSpawned;
     
@@ -96,7 +98,7 @@ public class HubItemsSpawner : MonoBehaviour
                 npcSpawners[0].transform.rotation);
         }
 
-        if (headDragonSpawned == null && (qm.activeQuestsIndexes.Contains(5) || qm.completedQuestsIndexes.Contains(5)))
+        if (headDragonSpawned == null && (qm.activeQuestsIndexes.Contains(5) || qm.completedQuestsIndexes.Contains(5)) && !qm.completedQuestsIndexes.Contains(7))
         {
             RespawnBoss();
         }
@@ -193,7 +195,8 @@ public class HubItemsSpawner : MonoBehaviour
 
         #region quest 5 speak to mother
 
-        if (qm.activeQuestsIndexes.Contains(5) || qm.activeQuestsIndexes.Contains(6))
+        if (qm.activeQuestsIndexes.Contains(5) || qm.activeQuestsIndexes.Contains(6)
+                                               || qm.activeQuestsIndexes.Contains(7))
         {
             //remove shoes
             if (motherOnBeachSpawned == null)
@@ -208,11 +211,36 @@ public class HubItemsSpawner : MonoBehaviour
 
         if (qm.activeQuestsIndexes.Contains(6) || qm.activeQuestsIndexes.Contains(7))
         {
-            //remove shoes
             if (gunnWalkable == null)
             {
                 gunnWalkable = Instantiate(npcSpawners[5].npcsToSpawn[0], npcSpawners[5].transform.position,
                     npcSpawners[5].transform.rotation); 
+            }
+        }
+        #endregion
+        
+        #region quest 8 return the head
+
+        if (qm.activeQuestsIndexes.Contains(8))
+        {
+            if (gunnWalkable != null)
+            {
+                StartCoroutine(DynamicObstaclesManager.instance.DestroyGameObjectAnimated(gunnWalkable.gameObject, gunnWalkable.transform.position, 1));
+            }
+            if (gunnWalkableWithHeads == null)
+            {
+                gunnWalkableWithHeads = Instantiate(npcSpawners[5].npcsToSpawn[1], npcSpawners[5].transform.position,
+                    npcSpawners[5].transform.rotation);
+            }
+            
+            if (motherOnBeachSpawned != null)
+            {
+                Destroy(motherOnBeachSpawned.gameObject); 
+            }
+            if (motherOnBeachSpawnedFinal == null)
+            {
+                motherOnBeachSpawnedFinal = Instantiate(npcSpawners[4].npcsToSpawn[1], npcSpawners[4].transform.position,
+                    npcSpawners[4].transform.rotation); 
             }
         }
         #endregion

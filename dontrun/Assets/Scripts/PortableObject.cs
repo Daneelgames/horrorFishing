@@ -7,7 +7,7 @@ public class PortableObject : MonoBehaviour
 {
     public enum QuestPortable
     {
-        Null, GunnWood
+        Null, GunnWood, Boat
     }
 
     public QuestPortable portableQuestType = QuestPortable.Null;

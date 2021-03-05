@@ -155,7 +155,7 @@ public class UiManager : MonoBehaviour
     [Header("Boss HP")] 
     public GameObject bossHpParent;
     public Image bossHealthbar;
-    public TextMeshProUGUI bossNameText;
+    //public TextMeshProUGUI bossNameText;
     
     [Header ("Memento Choice Window")]
     public Animator mementoChoiceWindow;

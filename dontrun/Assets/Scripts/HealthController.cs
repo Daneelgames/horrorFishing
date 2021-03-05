@@ -57,7 +57,8 @@ public class HealthController : MonoBehaviour, IUpdatable
 
     public bool inLove = false;
 
-    [Header("Monster")] public bool boss = false;
+    [Header("Monster")] 
+    public bool boss = false;
     public BossStateChanger bossStateChanger;
     public PropController propController;
     public string mobKilledAchievementID = "";
@@ -205,12 +206,6 @@ public class HealthController : MonoBehaviour, IUpdatable
         if (deathParticles)
             deathAudioSource = deathParticles.gameObject.GetComponent<AudioSource>();
 
-        if (boss && ui && ui.bossHpParent)
-        {
-            ui.bossHpParent.SetActive(true);
-            ui.bossNameText.text = names[gm.language];
-        }
-
         if (trapController) trapController.ownHc = this;
         if (wallBlockerController) wallBlockerController.hc = this;
 
@@ -319,8 +314,9 @@ public class HealthController : MonoBehaviour, IUpdatable
             GetTileEffect();   
         }
 
-        if (boss && ui && ui.bossHealthbar)
+        if (boss && ui && ui.bossHealthbar && !invincible)
         {
+            ui.bossHpParent.SetActive(true);
             ui.bossHealthbar.fillAmount = health / healthMax;
         }
     }
