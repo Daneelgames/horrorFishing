@@ -3537,7 +3537,7 @@ public class NpcController : MonoBehaviour
                 QuestManager.instance.StartQuest(startQuestOnAction);
             
             if (completeQuestOnAction >= 0)
-                QuestManager.instance.StartQuest(completeQuestOnAction);
+                QuestManager.instance.CompleteQuest(completeQuestOnAction);
             
             if (spiderBossAggressiveOnAction)
             {

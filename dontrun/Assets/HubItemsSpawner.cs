@@ -80,6 +80,16 @@ public class HubItemsSpawner : MonoBehaviour
         return false;
     }
 
+    public void SpawnFinishedBoat()
+    {
+        Instantiate(itemSpawners[2].itemToSpawn, itemSpawners[2].transform.position, itemSpawners[2].transform.rotation);
+        Instantiate(npcSpawners[1].npcsToSpawn[0], npcSpawners[1].transform.position,
+            npcSpawners[1].transform.rotation); 
+        Instantiate(levelBlockersPrefabs[6].gameObject, Vector3.zero, Quaternion.identity);
+        if (ladyOnRoofSpawned_0 != null)
+            Destroy(ladyOnRoofSpawned_0.gameObject);
+    }
+
     public void RespawnBoss()
     {
         headDragonSpawned = Instantiate(npcSpawners[6].npcsToSpawn[0], npcSpawners[6].transform.position,
@@ -103,7 +113,7 @@ public class HubItemsSpawner : MonoBehaviour
             RespawnBoss();
         }
         // spawn lady
-        if (ladyOnRoofSpawned_0 == null)
+        if (ladyOnRoofSpawned_0 == null && !qm.completedQuestsIndexes.Contains(3))
         {
             // nps
             ladyOnRoofSpawned_0 = Instantiate(npcSpawners[1].npcsToSpawn[0], npcSpawners[1].transform.position,

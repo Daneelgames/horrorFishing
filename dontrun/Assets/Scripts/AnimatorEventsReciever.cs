@@ -82,5 +82,7 @@ public class AnimatorEventsReciever : MonoBehaviour
         if (gunn == null) return;
         gunn.invincible = false;
         gunn.Kill();
+        HubItemsSpawner.instance.gunnWalkableWithHeads = null;
+        HubItemsSpawner.instance.SpawnFinishedBoat();
     }
 }

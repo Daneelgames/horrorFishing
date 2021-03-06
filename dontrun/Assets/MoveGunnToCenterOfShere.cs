@@ -5,11 +5,16 @@ using UnityEngine;
 
 public class MoveGunnToCenterOfShere : MonoBehaviour
 {
+    private bool activated = false;
+    public GameObject blocker;
     void OnTriggerEnter(Collider coll)
     {
-        if (coll.gameObject == PlayerMovement.instance.gameObject)
+        if (!activated && coll.gameObject == PlayerMovement.instance.gameObject)
         {
+            activated = true;
+            blocker.SetActive(true);
             var gunn = HubItemsSpawner.instance.gunnWalkableWithHeads;
+            
             if (gunn)
             {
                 gunn.mobGroundMovement.enabled = false;   

@@ -92,7 +92,6 @@ namespace Assets
                             continue;
                         }
 
-                        print(hitColliders[index].gameObject.name);
                         foundGround = true;
                         break;
                     }

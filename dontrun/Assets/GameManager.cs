@@ -360,6 +360,14 @@ public class GameManager : MonoBehaviour
             Cursor.visible = false;
             lhc = LoadingHintsController.instance;
             
+            qm = QuestManager.instance;
+            if (qm.activeQuestsIndexes.Contains(9) && qm.completedQuestsIndexes.Contains(8))
+            {
+                qm.activeQuestsIndexes.Add(8);
+                qm.completedQuestsIndexes.Remove(8);
+                qm.activeQuestsIndexes.Remove(9);
+            }
+            
             StartCoroutine(StartGame());
         }
     }

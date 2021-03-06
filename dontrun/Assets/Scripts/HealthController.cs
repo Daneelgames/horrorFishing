@@ -314,7 +314,7 @@ public class HealthController : MonoBehaviour, IUpdatable
             GetTileEffect();   
         }
 
-        if (boss && ui && ui.bossHealthbar && !invincible)
+        if (boss && ui && ui.bossHealthbar && !invincible && health > 0)
         {
             ui.bossHpParent.SetActive(true);
             ui.bossHealthbar.fillAmount = health / healthMax;
