@@ -80,6 +80,7 @@ public class GameManager : MonoBehaviour
     public int language = 0;
     public int resolution = 2;
     public bool introPassed = false;
+    public bool islandEscaped = false;
 
     public bool readyToStartLevel = false;
 
@@ -706,11 +707,6 @@ public class GameManager : MonoBehaviour
     public IEnumerator StartGame()
     {
         mouseLookSpeedCurrent = mouseLookSpeed;
-        if (TwitchManager.instance)
-        {
-            TwitchManager.instance.ToggleCanvasAnim(false);   
-            TwitchManager.instance.ToggleMeatchImages(false);
-        }
         loading = true;
         
         MoveLoadingAnimToParent(transform);
@@ -727,7 +723,9 @@ public class GameManager : MonoBehaviour
         
         yield return new WaitForEndOfFrame();
         
-        if (introPassed)
+        if (islandEscaped)
+            AOfield = SceneManager.LoadSceneAsync(3, LoadSceneMode.Additive); // load ending
+        else if (introPassed)
             AOfield = SceneManager.LoadSceneAsync(1, LoadSceneMode.Additive); // load city
         else
             AOfield = SceneManager.LoadSceneAsync(2, LoadSceneMode.Additive); // load intro
@@ -779,7 +777,6 @@ public class GameManager : MonoBehaviour
         
         if (ls)
             ls.Init();
-        print("FIELD LOADED");
         player.playerMovement.StartLevel();
         
         if (QuestManager.instance && introPassed)
@@ -814,93 +811,27 @@ public class GameManager : MonoBehaviour
         loadingCam.gameObject.SetActive(true);
         yield return  new WaitForSeconds(1f);
 
-        yield return StartCoroutine(GameManager.instance.ReturnToMainMenu(false, false));
+        yield return StartCoroutine(ReturnToMainMenu(false, false));
         StartCoroutine(StartGame());
-        yield break;
-        
-        player = null;
-        units.Clear();
-        ui = null;
-        
-        hub = true;
-        
-        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().name);
-        //SceneManager.UnloadSceneAsync(2);
-        
-        yield return new WaitForEndOfFrame();
-        
-        AOfield = SceneManager.LoadSceneAsync(1, LoadSceneMode.Additive); // load city
-        
-        AOfield.allowSceneActivation = false;
-        
-        while (!AOfield.isDone)
-        {
-            yield return null;
-            if (AOfield.progress >= 0.9f)
-            {
-                AOfield.allowSceneActivation = true;
-            }
-        }
-
-        AOfield.allowSceneActivation = true;
-        AOfield = null;
-        
-        SceneManager.SetActiveScene(SceneManager.GetSceneAt(1));
-
-        yield return null;
-
-        player = PlayerMovement.instance.hc;
-        player.transform.position = playerStartPos;
-        player.transform.rotation = playerStartRot;
-
-        ui = UiManager.instance;
-        WeaponGenerationManager.instance.Init();
-
-        if (lg && !hub)
-            lg.Init();
-        
-        tr = ToolsRandomizer.instance;
-        tr.Init();
-
-        itemList.ResetPlayerInventory();
-        
-        itemList.Init();
-        itemList.keys = 0;
-        ui.Init(false);
-        
-        MoveLoadingAnimToParent(MouseLook.instance.mainCamera.transform);
-        loadingAnim.SetBool("Active", false);
-        loadingCam.gameObject.SetActive(false);
-        
-        yield return  new WaitForSeconds(1f);
-        loading = false;
-        lhc.StopHints();
-        
-        if (ls)
-            ls.Init();
-        print("FIELD LOADED");
-        player.playerMovement.StartLevel();
-        
-        if (QuestManager.instance)
-            QuestManager.instance.Init();
-            
-        if (HubProgressionManager.instance)
-            HubProgressionManager.instance.FieldAfterDeath(true);
-            
-        if (HubItemsSpawner.instance)
-            HubItemsSpawner.instance.UpdateHub();
-            
-        if (PlayerCheckpointsController.instance)
-            StartCoroutine(PlayerCheckpointsController.instance.Init());
-        
-        player.pac.Init();
-        if (paused) paused = false;
-        
-        yield return  new WaitForSeconds(0.1f);
-        
-        yield return  new WaitForSeconds(1f);
     }
 
+    public IEnumerator IslandEscaped()
+    {
+        islandEscaped = true;
+        introPassed = false;
+        SaveGame();
+        mouseLookSpeedCurrent = mouseLookSpeed;
+        loading = true;
+        
+        MoveLoadingAnimToParent(transform);
+        loadingAnim.SetBool("Active", true);
+        loadingCam.gameObject.SetActive(true);
+        yield return  new WaitForSeconds(1f);
+
+        yield return StartCoroutine(ReturnToMainMenu(false, false));
+        StartCoroutine(StartGame());
+    }
+    
     // on player death or when going on deeper level
     public IEnumerator LoadGameScene(bool restart, int returnTo, bool savePlayerStuff) // restart: has player died?;  returnTo: 0 - hub, 1 - level, 2 - arena
     {
@@ -1308,6 +1239,7 @@ public class GameManager : MonoBehaviour
 
             newGamePlus = data.newGamePlus;
             introPassed = data.introPassed;
+            islandEscaped = data.islandEscaped;
             
             levelsOnRun = data.levelsOnRun;
             goldOnRun = data.goldOnRun;
@@ -1410,6 +1342,7 @@ public class GameManager : MonoBehaviour
             lowPitchDamage = 0;
             //rareWindowShown = 0;
             introPassed = false;
+            islandEscaped = false;
             resolution = 2;
             lastTalkedDyk = -1;
             tutorialHints = 0;

@@ -16,7 +16,7 @@ public class LookAtTarget : MonoBehaviour
     public Vector3 childNewEuler;
     public bool randomizeChildScale = false;
  
-    void Awake()
+    void OnEnable()
     {
         StopAllCoroutines();
         

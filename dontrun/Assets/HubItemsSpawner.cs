@@ -20,6 +20,7 @@ public class HubItemsSpawner : MonoBehaviour
 
     private HealthController worldHolderSpawned;
     private HealthController ladyOnRoofSpawned_0;
+    private HealthController ladyOnRoofSpawned_1;
     private HealthController gunnWorkingSpawned_1;
     private HealthController gunnOnBeachSpawned;
     private HealthController motherOnBeachSpawned;
@@ -135,6 +136,15 @@ public class HubItemsSpawner : MonoBehaviour
                     noteSpawners[i].transform.rotation);
             }
         }
+        else Destroy(ladyOnRoofSpawned_0.gameObject);
+
+        if (ladyOnRoofSpawned_1 == null && qm.completedQuestsIndexes.Contains(3) &&
+            !qm.completedQuestsIndexes.Contains(4))
+        {
+            ladyOnRoofSpawned_1 = Instantiate(npcSpawners[8].npcsToSpawn[0], npcSpawners[8].transform.position,
+                npcSpawners[8].transform.rotation); 
+        }
+        else Destroy(ladyOnRoofSpawned_1.gameObject);
         
         #region Quest 1. Shoes on beach
 

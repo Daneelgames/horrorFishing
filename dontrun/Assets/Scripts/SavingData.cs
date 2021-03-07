@@ -34,6 +34,7 @@ public class SavingData
     public bool revolverFound = false;
     public bool newGamePlus = false;
     public bool introPassed = false;
+    public bool islandEscaped = false;
     
     public int grain;
     public int bloom;
@@ -162,6 +163,7 @@ public class SavingData
 
         newGamePlus = gm.newGamePlus;
         introPassed = gm.introPassed;
+        islandEscaped = gm.islandEscaped;
         wasInHub = gm.wasInHub;
         hubVisits = gm.hubVisits;
         resolution = gm.resolution;
