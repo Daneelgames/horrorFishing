@@ -88,6 +88,11 @@ public class AnimatorEventsReciever : MonoBehaviour
 
     public void CompleteGame()
     {
-        GameManager.instance.GameCompleted();
+        StartCoroutine(GameManager.instance.GameCompleted());
+    }
+
+    public void DisablePlayerInput()
+    {
+        PlayerMovement.instance.canControl = false;
     }
 }

@@ -168,6 +168,8 @@ public class GameManager : MonoBehaviour
 
     public bool revolverFound = false;
     public bool ladyshoeFound = false;
+
+    public AudioSource flashbackOverAu;
     
     void Awake()
     {
@@ -636,6 +638,7 @@ public class GameManager : MonoBehaviour
     
     public IEnumerator ReturnToMainMenu(bool showCredits, bool showMenu)
     {
+        flashbackOverAu.Play();
         SaveGame();
         MoveLoadingAnimToParent(transform);
         StopHostingButton();
@@ -667,6 +670,8 @@ public class GameManager : MonoBehaviour
         menuController.menuWindow.SetActive(true);
         menuController.menuVisuals.SetActive(true);
         menuController.settingsWindow.SetActive(false);
+        
+        loadingAnim.SetBool("Active", false);
     }
 
     public void ToggleCredits()
@@ -826,19 +831,23 @@ public class GameManager : MonoBehaviour
         
         MoveLoadingAnimToParent(transform);
         loadingAnim.SetBool("Active", true);
-        loadingCam.gameObject.SetActive(true);
+        //loadingCam.gameObject.SetActive(true);
         yield return  new WaitForSeconds(1f);
 
         yield return StartCoroutine(ReturnToMainMenu(false, false));
         StartCoroutine(StartGame());
     }
     
-    public void GameCompleted()
+    public IEnumerator GameCompleted()
     {
-        PlayerMovement.instance.controller.enabled = false;
+        //PlayerMovement.instance.controller.enabled = false;
         SaveSecretFile();
         loadingAnim.SetBool("Active", true);
-        loadingCam.gameObject.SetActive(true);
+        //loadingCam.gameObject.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        UiManager.instance.creditsAnim.gameObject.SetActive(true);
+        yield return new WaitForSeconds(10f);
+        ReturnToMenu(false);
     }
     
     // on player death or when going on deeper level

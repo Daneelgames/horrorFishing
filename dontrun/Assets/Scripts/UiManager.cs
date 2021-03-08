@@ -183,6 +183,8 @@ public class UiManager : MonoBehaviour
 
     private bool chaseFeedbackShowed = false;
     public float weaponPhraseCooldown = 0;
+
+    public Animator creditsAnim;
     
     private void Awake()
     {
