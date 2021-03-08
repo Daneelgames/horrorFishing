@@ -815,6 +815,7 @@ public class GameManager : MonoBehaviour
         StartCoroutine(StartGame());
     }
 
+
     public IEnumerator IslandEscaped()
     {
         islandEscaped = true;
@@ -830,6 +831,14 @@ public class GameManager : MonoBehaviour
 
         yield return StartCoroutine(ReturnToMainMenu(false, false));
         StartCoroutine(StartGame());
+    }
+    
+    public void GameCompleted()
+    {
+        PlayerMovement.instance.controller.enabled = false;
+        SaveSecretFile();
+        loadingAnim.SetBool("Active", true);
+        loadingCam.gameObject.SetActive(true);
     }
     
     // on player death or when going on deeper level

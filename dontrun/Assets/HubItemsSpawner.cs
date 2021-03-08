@@ -21,6 +21,7 @@ public class HubItemsSpawner : MonoBehaviour
     private HealthController worldHolderSpawned;
     private HealthController ladyOnRoofSpawned_0;
     private HealthController ladyOnRoofSpawned_1;
+    private HealthController roseBeachSpawned;
     private HealthController gunnWorkingSpawned_1;
     private HealthController gunnOnBeachSpawned;
     private HealthController motherOnBeachSpawned;
@@ -136,7 +137,7 @@ public class HubItemsSpawner : MonoBehaviour
                     noteSpawners[i].transform.rotation);
             }
         }
-        else Destroy(ladyOnRoofSpawned_0.gameObject);
+        else if (ladyOnRoofSpawned_0 != null) Destroy(ladyOnRoofSpawned_0.gameObject);
 
         if (ladyOnRoofSpawned_1 == null && qm.completedQuestsIndexes.Contains(3) &&
             !qm.completedQuestsIndexes.Contains(4))
@@ -144,7 +145,7 @@ public class HubItemsSpawner : MonoBehaviour
             ladyOnRoofSpawned_1 = Instantiate(npcSpawners[8].npcsToSpawn[0], npcSpawners[8].transform.position,
                 npcSpawners[8].transform.rotation); 
         }
-        else Destroy(ladyOnRoofSpawned_1.gameObject);
+        else if (ladyOnRoofSpawned_1 != null) Destroy(ladyOnRoofSpawned_1.gameObject);
         
         #region Quest 1. Shoes on beach
 
@@ -265,6 +266,18 @@ public class HubItemsSpawner : MonoBehaviour
         }
         #endregion
         
+        #region quest 9 escape
+
+        if (qm.activeQuestsIndexes.Contains(9))
+        {
+            if (roseBeachSpawned == null)
+            {
+                roseBeachSpawned = Instantiate(npcSpawners[7].npcsToSpawn[0], npcSpawners[7].transform.position,
+                    npcSpawners[7].transform.rotation);
+            }
+        }
+        #endregion
+        
         UpdateLevelBlockers();
         
         for (int i = 0; i < dialogueOnQuestsChangers.Count; i++)
@@ -365,6 +378,10 @@ public class HubItemsSpawner : MonoBehaviour
         PlayerSkillsController.instance.InstantTeleport(currentSpawner.position);
         PlayerMovement.instance.hc.RespawnPlayer(true);
         spawnersTemp.Remove(currentSpawner);
+        worldHolderSpawned.invincible = false;
+        worldHolderSpawned.Kill();
+        worldHolderSpawned = Instantiate(npcSpawners[0].npcsToSpawn[0], npcSpawners[0].transform.position,
+            npcSpawners[0].transform.rotation);
         
         /*
         if (spawnLeg)

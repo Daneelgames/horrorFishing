@@ -85,4 +85,9 @@ public class AnimatorEventsReciever : MonoBehaviour
         HubItemsSpawner.instance.gunnWalkableWithHeads = null;
         HubItemsSpawner.instance.SpawnFinishedBoat();
     }
+
+    public void CompleteGame()
+    {
+        GameManager.instance.GameCompleted();
+    }
 }

@@ -112,7 +112,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1ae892b86acd424c888e3f737f20f40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  streamingDistance: 100
   streamObjectAboveAnimator: 0
   childObjectToHide: []
 --- !u!1 &1607973357733884
@@ -127,7 +126,6 @@ GameObject:
   - component: {fileID: 33583452096060420}
   - component: {fileID: 23633138223353622}
   - component: {fileID: 95614811015736288}
-  - component: {fileID: 114014159962111316}
   m_Layer: 10
   m_Name: light_cone
   m_TagString: Untagged
@@ -217,19 +215,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114014159962111316
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1607973357733884}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5afb6621d1c032648a014bc1d56d6c22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
 --- !u!1 &1955387955236560
 GameObject:
   m_ObjectHideFlags: 0
@@ -320,5 +305,6 @@ Light:
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0

@@ -3437,17 +3437,17 @@ public class NpcController : MonoBehaviour
                 
                 case Dialogue.DialogueEvent.IDontKnow:
                     if(gm.language == 0)
-                        newPhraseChoice = Translator.TranslateText("I just wanna go home T_T");
+                        newPhraseChoice = Translator.TranslateText("The truth is not what you want to know");
                     else if (gm.language == 1)
-                        newPhraseChoice = Translator.TranslateText("I just wanna go home T_T");
+                        newPhraseChoice = Translator.TranslateText("The truth is not what you want to know");
                     else if (gm.language == 2)
-                        newPhraseChoice = Translator.TranslateText("I just wanna go home T_T");
+                        newPhraseChoice = Translator.TranslateText("The truth is not what you want to know");
                     else if (gm.language == 3)
-                        newPhraseChoice = Translator.TranslateText("I just wanna go home T_T");
+                        newPhraseChoice = Translator.TranslateText("The truth is not what you want to know");
                     else if (gm.language == 4)
-                        newPhraseChoice = Translator.TranslateText("I just wanna go home T_T");
+                        newPhraseChoice = Translator.TranslateText("The truth is not what you want to know");
                     else if (gm.language == 5)
-                        newPhraseChoice = Translator.TranslateText("I just wanna go home T_T");
+                        newPhraseChoice = Translator.TranslateText("The truth is not what you want to know");
 
                     if (animToSetUpdateTriggerOnAction)
                         animToSetUpdateTriggerOnAction.SetTrigger("Update");
