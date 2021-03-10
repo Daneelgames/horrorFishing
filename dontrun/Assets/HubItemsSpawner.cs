@@ -137,7 +137,7 @@ public class HubItemsSpawner : MonoBehaviour
                     noteSpawners[i].transform.rotation);
             }
         }
-        else if (ladyOnRoofSpawned_0 != null) Destroy(ladyOnRoofSpawned_0.gameObject);
+        else if (ladyOnRoofSpawned_0 != null && qm.completedQuestsIndexes.Contains(3)) Destroy(ladyOnRoofSpawned_0.gameObject);
 
         if (ladyOnRoofSpawned_1 == null && qm.completedQuestsIndexes.Contains(3) &&
             !qm.completedQuestsIndexes.Contains(4))
@@ -145,7 +145,7 @@ public class HubItemsSpawner : MonoBehaviour
             ladyOnRoofSpawned_1 = Instantiate(npcSpawners[8].npcsToSpawn[0], npcSpawners[8].transform.position,
                 npcSpawners[8].transform.rotation); 
         }
-        else if (ladyOnRoofSpawned_1 != null) Destroy(ladyOnRoofSpawned_1.gameObject);
+        else if (ladyOnRoofSpawned_1 != null && qm.completedQuestsIndexes.Contains(4)) Destroy(ladyOnRoofSpawned_1.gameObject);
         
         #region Quest 1. Shoes on beach
 
