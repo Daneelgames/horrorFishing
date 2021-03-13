@@ -1970,7 +1970,7 @@ public class HealthController : MonoBehaviour, IUpdatable
         }
         if (completeQuestOnDeath >= 0)
         {
-            QuestManager.instance.CompleteQuest(completeQuestOnDeath);
+            QuestManager.instance.CompleteQuest(completeQuestOnDeath, true);
         }
 
         if (playerMovement || player)

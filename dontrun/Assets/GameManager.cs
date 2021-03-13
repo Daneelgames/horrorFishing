@@ -802,6 +802,9 @@ public class GameManager : MonoBehaviour
         yield return  new WaitForSeconds(0.1f);
         
         yield return  new WaitForSeconds(1f);
+        
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     public IEnumerator IntroCompleted()

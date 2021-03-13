@@ -272,7 +272,7 @@ public class Interactable : MonoBehaviour,
             ui.playerInteracted = true;
         }
         
-        QuestManager.instance.CompleteQuest(weaponPickUp.completeQuestOnPickUp);
+        QuestManager.instance.CompleteQuest(weaponPickUp.completeQuestOnPickUp, true);
         QuestManager.instance.StartQuest(weaponPickUp.startQuestOnPickUp);
         
         if (GLNetworkWrapper.instance && GLNetworkWrapper.instance.coopIsActive)

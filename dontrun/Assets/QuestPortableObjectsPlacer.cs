@@ -65,18 +65,20 @@ public class QuestPortableObjectsPlacer : MonoBehaviour
             yield return null;
         }
         completedVisuals[r].SetActive(true);
+        completedVisuals.RemoveAt(r);
         Destroy(objInHands.gameObject);
 
         amount--;
 
         if (amount <= 0)
         {
-            QuestManager.instance.CompleteQuest(questToComplete);
+            QuestManager.instance.CompleteQuest(questToComplete, true);
             
+            /*
             for (int i = 0; i < completedVisuals.Count; i++)
             {
                 completedVisuals[i].SetActive(true);
-            }
+            }*/
         }
     }
 }

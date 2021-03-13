@@ -43,6 +43,7 @@ public class QuestManager : MonoBehaviour
 
     public void StartQuest(int questIndex)
     {
+        print("start quest " + questIndex);
         if (questIndex == -1 || activeQuestsIndexes.Contains(questIndex) || completedQuestsIndexes.Contains(questIndex)) return;
 
         if (questIndex >= questData.quests.Count)
@@ -62,8 +63,9 @@ public class QuestManager : MonoBehaviour
         gm.SaveGame();
     }
     
-    public void CompleteQuest(int index)
+    public void CompleteQuest(int index, bool updateHub)
     {
+        print("complete quest " + index);
         if (!activeQuestsIndexes.Contains(index))
             return;
         
@@ -72,11 +74,12 @@ public class QuestManager : MonoBehaviour
         {
             completedQuestsIndexes.Add(index);
             
-            if (questData.quests.Count > index)
+            if (questData.quests[index].startQuestOnCompletion > 0 && questData.quests.Count > index)
                 StartQuest(questData.quests[index].startQuestOnCompletion);   
         }
         
-        HubItemsSpawner.instance.UpdateHub();
+        if (updateHub)
+            HubItemsSpawner.instance.UpdateHub();
         gm.SaveGame();
         if (questData.quests[index].npcNameOnCompletion.Count > 0)
         {

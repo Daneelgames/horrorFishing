@@ -2753,13 +2753,14 @@ public class NpcController : MonoBehaviour
                 //ui.dialogueAnim.SetBool("Active", false);
             }
 
+            if (dialogues[currentDialog].questToComplete > 0)
+            {
+                QuestManager.instance.CompleteQuest(dialogues[currentDialog].questToComplete, false);
+            }
+            
             if (dialogues[currentDialog].questToStart > 0)
             {
                 QuestManager.instance.StartQuest(dialogues[currentDialog].questToStart);
-            }
-            if (dialogues[currentDialog].questToComplete > 0)
-            {
-                QuestManager.instance.CompleteQuest(dialogues[currentDialog].questToComplete);
             }
             
             if (!choosing && currentDialog + 1 < dialogues.Count)
@@ -2959,7 +2960,7 @@ public class NpcController : MonoBehaviour
                         newPhraseChoice = Translator.TranslateText("Glutton comeu uma tartaruga chamada Carl");
                     
                     il.savedQuestItems.Remove(5);
-                    gm.qm.CompleteQuest(7);
+                    gm.qm.CompleteQuest(7, true);
                     break;
                 
                 case Dialogue.DialogueEvent.SetNpcInLove:
@@ -3612,11 +3613,11 @@ public class NpcController : MonoBehaviour
             if (setNpcInactiveOnAction)
                 gameObject.SetActive(false);
 
+            if (completeQuestOnAction >= 0)
+                QuestManager.instance.CompleteQuest(completeQuestOnAction, false);
+            
             if (startQuestOnAction >= 0)
                 QuestManager.instance.StartQuest(startQuestOnAction);
-            
-            if (completeQuestOnAction >= 0)
-                QuestManager.instance.CompleteQuest(completeQuestOnAction);
             
             if (spiderBossAggressiveOnAction)
             {
