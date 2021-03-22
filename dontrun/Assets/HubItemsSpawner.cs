@@ -130,12 +130,13 @@ public class HubItemsSpawner : MonoBehaviour
                 Instantiate(fieldEventsSpawners[0].gameObjectToSpawn, fieldEventsSpawners[0].transform.position,
                     fieldEventsSpawners[0].transform.rotation);
             
+            /*
             // spawn notes
             for (int i = 0; i < noteSpawners.Count; i++)
             {
                 Instantiate(noteSpawners[i].itemToSpawn, noteSpawners[i].transform.position,
                     noteSpawners[i].transform.rotation);
-            }
+            }*/
         }
         else if (ladyOnRoofSpawned_0 != null && qm.completedQuestsIndexes.Contains(3)) Destroy(ladyOnRoofSpawned_0.gameObject);
 
@@ -363,6 +364,9 @@ public class HubItemsSpawner : MonoBehaviour
         var sc = SpawnController.instance;
         var spawnersTemp = new List<Transform>(sc.spawners);
         var currentSpawner = spawnersTemp[Random.Range(0, spawnersTemp.Count)];
+
+        if (QuestManager.instance.activeQuestsIndexes.Contains(9) || QuestManager.instance.completedQuestsIndexes.Contains(9))
+            currentSpawner = PlayerCheckpointsController.instance.checkpoints[0].transform;
         
         /*
         bool spawnLeg = HaveLeg();

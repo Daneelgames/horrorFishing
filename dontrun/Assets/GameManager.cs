@@ -440,13 +440,15 @@ public class GameManager : MonoBehaviour
         
         lg = LevelGenerator.instance;
         
-        if (introPassed && player && player.health > 0 && (player.playerMovement.controller.enabled || (!player.playerMovement.controller.enabled && player.playerMovement.inTransport)) && (!lg || !lg.generating))
+        if (player && player.health > 0 && (player.playerMovement.controller.enabled || (!player.playerMovement.controller.enabled && player.playerMovement.inTransport)) && (!lg || !lg.generating))
         {
+            /*
             if (Input.GetKeyDown("u"))
                 UiManager.instance.ToggleGameUi(false, true);
             
             if (Input.GetKeyDown("i"))
                 UiManager.instance.ToggleGameUi(true, true);
+                */
 
             if (cheats && Input.GetKey("g") && Input.GetKey("z"))
             {
