@@ -363,10 +363,9 @@ public class HubItemsSpawner : MonoBehaviour
         wc = WeaponControls.instance;
         var sc = SpawnController.instance;
         var spawnersTemp = new List<Transform>(sc.spawners);
-        var currentSpawner = spawnersTemp[Random.Range(0, spawnersTemp.Count)];
-
-        if (QuestManager.instance.activeQuestsIndexes.Contains(9) || QuestManager.instance.completedQuestsIndexes.Contains(9))
-            currentSpawner = PlayerCheckpointsController.instance.checkpoints[0].transform;
+        
+        //var currentSpawner = spawnersTemp[Random.Range(0, spawnersTemp.Count)];
+        //currentSpawner = PlayerCheckpointsController.instance.checkpoints[0].transform;
         
         /*
         bool spawnLeg = HaveLeg();
@@ -379,9 +378,12 @@ public class HubItemsSpawner : MonoBehaviour
         // death anim is over
         StartCoroutine(GetUpPhraseCoroutine());
         yield return new WaitForSeconds(2.1f);
-        PlayerSkillsController.instance.InstantTeleport(currentSpawner.position);
+        if (QuestManager.instance.activeQuestsIndexes.Contains(9) || QuestManager.instance.completedQuestsIndexes.Contains(9))
+            PlayerSkillsController.instance.InstantTeleport(PlayerCheckpointsController.instance.checkpoints[0].transform.position + Vector3.up * 0.25f);
+        else
+            PlayerSkillsController.instance.InstantTeleport(GetClosestSpawner(PlayerMovement.instance.transform.position, spawnersTemp).position + Vector3.up * 0.25f);
+        
         PlayerMovement.instance.hc.RespawnPlayer(true);
-        spawnersTemp.Remove(currentSpawner);
         worldHolderSpawned.invincible = false;
         worldHolderSpawned.Kill();
         worldHolderSpawned = Instantiate(npcSpawners[0].npcsToSpawn[0], npcSpawners[0].transform.position,
@@ -400,6 +402,7 @@ public class HubItemsSpawner : MonoBehaviour
             DynamicObstaclesManager.instance.spawnedRevolver = sc.InstantiateItem(itemSpawners[1].itemToSpawn, currentSpawner.position + Vector3.up * 0.5f, currentSpawner.rotation, false);
         }*/
     }
+    
     public IEnumerator RespawnPlayerOnContinue(Vector3 newPlayerPos)
     {
         PlayerAudioController.instance.Death();
