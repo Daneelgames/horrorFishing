@@ -55,6 +55,7 @@ MonoBehaviour:
   - Gunn
   - "\u0413\u0430\u043D\u043D"
   pickUp: {fileID: 0}
+  animatedInteraction: {fileID: 0}
   ammoPickUp: {fileID: 0}
   weaponPickUp: {fileID: 0}
   lockObject: {fileID: 0}
@@ -209,6 +210,8 @@ MonoBehaviour:
   interactableToInteractOnDialogueAction: {fileID: 0}
   snout: 0
   importantDialogueMark: {fileID: 1818868854203263628}
+  animToSetUpdateTriggerOnAction: {fileID: 0}
+  setHealthCollidersTriggersOnAction: 1
 --- !u!136 &1318304199361354459
 CapsuleCollider:
   m_ObjectHideFlags: 0

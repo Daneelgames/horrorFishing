@@ -378,6 +378,7 @@ public class HubItemsSpawner : MonoBehaviour
         // death anim is over
         StartCoroutine(GetUpPhraseCoroutine());
         yield return new WaitForSeconds(2.1f);
+        print("RESPAWN PLAYER");
         if (QuestManager.instance.activeQuestsIndexes.Contains(9) || QuestManager.instance.completedQuestsIndexes.Contains(9))
             PlayerSkillsController.instance.InstantTeleport(PlayerCheckpointsController.instance.checkpoints[0].transform.position + Vector3.up * 0.25f);
         else
@@ -514,7 +515,7 @@ public class HubItemsSpawner : MonoBehaviour
 
     Transform GetClosestSpawner(Vector3 originPoint, List<Transform> spawnersTemp)
     {
-        float distance = 1000;
+        float distance = 100000;
         float newDist = 0;
         Transform closestSpawner = null;
         for (int i = 0; i < spawnersTemp.Count; i++)

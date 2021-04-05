@@ -437,10 +437,15 @@ public class GameManager : MonoBehaviour
                 player.playerMovement.inTransport.ExitTransport();   
             }
         }
+        else if (player == null && !Cursor.visible)
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
         
         lg = LevelGenerator.instance;
         
-        if (player && player.health > 0 && (player.playerMovement.controller.enabled || (!player.playerMovement.controller.enabled && player.playerMovement.inTransport)) && (!lg || !lg.generating))
+        if (player && player.health > 0 &&/* (player.playerMovement.controller.enabled || (!player.playerMovement.controller.enabled && player.playerMovement.inTransport)) &&*/ (!lg || !lg.generating))
         {
             /*
             if (Input.GetKeyDown("u"))

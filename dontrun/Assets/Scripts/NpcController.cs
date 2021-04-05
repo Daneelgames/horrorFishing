@@ -77,6 +77,7 @@ public class NpcController : MonoBehaviour
     public bool snout = false;
     public Animator importantDialogueMark;
     public Animator animToSetUpdateTriggerOnAction;
+    public bool setHealthCollidersTriggersOnAction = false;
     private void Start()
     {
         if (canCreateQuestGiver)
@@ -3612,6 +3613,9 @@ public class NpcController : MonoBehaviour
             
             if (setNpcInactiveOnAction)
                 gameObject.SetActive(false);
+
+            if (setHealthCollidersTriggersOnAction)
+                hc.mobPartsController.MakeAllCollidersTriggers();
 
             if (completeQuestOnAction >= 0)
                 QuestManager.instance.CompleteQuest(completeQuestOnAction, false);

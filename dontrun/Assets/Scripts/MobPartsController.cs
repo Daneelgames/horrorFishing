@@ -72,6 +72,14 @@ public class MobPartsController : MonoBehaviour
             StartCoroutine(LookAtPlayerCoroutine());
     }
 
+    public void MakeAllCollidersTriggers()
+    {
+        for (var index = 0; index < bodyParts.Count; index++)
+        {
+            bodyParts[index].coll.isTrigger = true;
+        }
+    }
+
     IEnumerator LookAtPlayerCoroutine()
     {
         var pm = PlayerMovement.instance;
