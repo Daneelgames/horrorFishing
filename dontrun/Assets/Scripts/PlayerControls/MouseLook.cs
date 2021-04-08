@@ -61,6 +61,8 @@ public class MouseLook : MonoBehaviour
     public LayerMask defaultCullingMask;
     public LayerMask coopLoadingCullingMask;
     
+    private PlayerInput playerInput;
+    
     private void Awake()
     {
         instance = this;
@@ -77,6 +79,7 @@ public class MouseLook : MonoBehaviour
         cameraFovAimInit = cameraFovAim;
 
         mainCamera.cullingMask = coopLoadingCullingMask;
+        playerInput = PlayerInputManager.instance.playerInput;
         //activeWeaponHolderAnim = wc.activeWeapon.weaponMovementAnim;
     }
 
@@ -140,11 +143,7 @@ public class MouseLook : MonoBehaviour
 
     void Aiming()
     {
-        if (Math.Abs(Input.GetAxisRaw(aimString)) > 0.1f)
-            aiming = true;
-        else if (Input.GetButton(aimString))
-            aiming = true;
-        else if (KeyBindingManager.GetKey(KeyAction.Aim))
+        if (playerInput.Aim.IsPressed)
             aiming = true;
         else
             aiming = false;
@@ -176,11 +175,17 @@ public class MouseLook : MonoBehaviour
             return;
         }
         
-        mouseX = Input.GetAxis(mouseXstring) * gm.mouseSensitivity;
-        mouseY = Input.GetAxis(mouseYstring) * gm.mouseSensitivity;
+        mouseX = playerInput.Look.X * gm.mouseSensitivity;
+        mouseY = playerInput.Look.Y * gm.mouseSensitivity;
+
         if (gm.mouseInvert == 1) mouseY *= -1;
 
-        if (wc.activeWeapon && wc.activeWeapon.weaponType == WeaponController.Type.Melee && !wc.activeWeapon.canAct)
+        if (aiming)
+        {
+            mouseX /= 3f;
+            mouseY /= 3f;
+        }
+        else if (wc.activeWeapon && wc.activeWeapon.weaponType == WeaponController.Type.Melee && !wc.activeWeapon.canAct)
         {
             mouseX /= 1.5f;
             mouseY /= 1.5f;

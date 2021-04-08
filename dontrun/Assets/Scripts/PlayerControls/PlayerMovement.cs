@@ -93,6 +93,8 @@ namespace PlayerControls
         private Rigidbody rb;
 
         public float weightSpeedScaler = 1;
+
+        private PlayerInputManager pim;
         
         private void Awake()
         {
@@ -104,6 +106,7 @@ namespace PlayerControls
 
         private void Start()
         {
+            pim = PlayerInputManager.instance;
             if (TwitchManager.instance)
             {
                 TwitchManager.instance.ToggleCanvasAnim(false);
@@ -169,18 +172,10 @@ namespace PlayerControls
 
             if (ableToChooseRespawn)
             {
-                if (Input.GetButtonDown(crouchString) || KeyBindingManager.GetKeyDown(KeyAction.Crouch)) // to hub
+                if (pim.playerInput.Dash.WasPressed) // to hub
                 {
                     _gameManager.Restart(0);
                 }
-                /*
-                else if (Input.GetButtonDown(dashString) ||KeyBindingManager.GetKeyDown(KeyAction.Dash)) // to level
-                {
-                    if (_gameManager.wasInHub == 1)
-                    {
-                        _gameManager.Restart(1);
-                    }
-                }*/
             }
         }
 
@@ -332,15 +327,15 @@ namespace PlayerControls
         private float aimingSpeedScaler = 1;
         private void Movement()
         {
-            /*
-            _x = Input.GetAxisRaw(horizontalString);
-            _z = Input.GetAxisRaw(verticalString);
-            */
-            
             if (mouseLook.aiming) 
                 aimingSpeedScaler = 0.3f;
             else 
                 aimingSpeedScaler = 1;
+
+            /*
+            _x = Input.GetAxisRaw(horizontalString);
+            _z = Input.GetAxisRaw(verticalString);
+            
             
             forw = KeyBindingManager.GetKey(KeyAction.Forward);
             back = KeyBindingManager.GetKey(KeyAction.Backwards);
@@ -360,9 +355,11 @@ namespace PlayerControls
                 _z = -1;
             else
                 _z = 0;
-
+            */
+            _x = pim.playerInput.Move.X;
+            _z = pim.playerInput.Move.Y;
             //if ((Input.GetButtonDown(crouchString) || KeyBindingManager.GetKeyDown(KeyAction.Crouch)) && movementStats.movementState != MovementState.Dashing && movementStats.movementState != MovementState.DashingNoStamina)
-            if (KeyBindingManager.GetKeyDown(KeyAction.Crouch) && movementStats.movementState != MovementState.Dashing && movementStats.movementState != MovementState.DashingNoStamina)
+            if (pim.playerInput.Crouch.WasPressed && movementStats.movementState != MovementState.Dashing && movementStats.movementState != MovementState.DashingNoStamina)
             {
                 ToggleCrouch(!crouching);
             }
@@ -377,7 +374,7 @@ namespace PlayerControls
 
             //if (Input.GetButtonDown("Dash") && _dashCooldownCurrent <= 0 && NotAttackingInMelee())
             //if ((Input.GetButtonDown(dashString) || KeyBindingManager.GetKeyDown(KeyAction.Dash)))
-            if (KeyBindingManager.GetKeyDown(KeyAction.Dash))
+            if (pim.playerInput.Dash.WasPressed)
             {
                 Dash();
             }
@@ -502,7 +499,7 @@ namespace PlayerControls
                 // RUNNING
                 //////////
                 //if ((Input.GetAxis(runningString) > 0 || KeyBindingManager.GetKey(KeyAction.Run)) && !mouseLook.aiming)
-                if (KeyBindingManager.GetKey(KeyAction.Run) && !mouseLook.aiming)
+                if (pim.playerInput.Sprint.IsPressed && !mouseLook.aiming)
                 {
                     ToggleCrouch(false);
                     

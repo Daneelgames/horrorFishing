@@ -78,6 +78,8 @@ public class WeaponControls : MonoBehaviour
     private int dPadPreviousFrameY = 0;
     private bool canEatWeapon = true;
     
+    private PlayerInput playerInput;
+    
     private void Awake()
     {
         instance = this;
@@ -93,6 +95,7 @@ public class WeaponControls : MonoBehaviour
         sc = SpawnController.instance;
         pac = PlayerAudioController.instance;
         psc = PlayerSkillsController.instance;
+        playerInput = PlayerInputManager.instance.playerInput;
     }
 
     public void Init()
@@ -174,7 +177,6 @@ public class WeaponControls : MonoBehaviour
              ((Math.Abs(Input.GetAxisRaw(throwToolString)) < 0.1f ||
                Math.Abs(Input.GetAxisRaw(useToolString)) < 0.1f) &&
               dPadPreviousFrameY < -0.1f)))
-              */
         if (KeyBindingManager.GetKeyUp(KeyAction.UseTool) ||
             ((Math.Abs(Input.GetAxisRaw(throwToolString)) < 0.1f ||
               Math.Abs(Input.GetAxisRaw(useToolString)) < 0.1f) &&
@@ -197,10 +199,11 @@ public class WeaponControls : MonoBehaviour
         
             eatWeaponTimeCurrent = 0;  
         }
+              */
     }
 
     void EatWeapon()
-    {
+    {/*
         //if (Input.GetButtonDown(useToolString) || KeyBindingManager.GetKeyDown(KeyAction.UseTool))
         if (KeyBindingManager.GetKeyDown(KeyAction.UseTool))
         {
@@ -231,11 +234,11 @@ public class WeaponControls : MonoBehaviour
                     eatCooldown = eatCooldownMax;
                 }      
             }
-        }
+        }*/
     }
 
     void DropToolInput()
-    {
+    {/*
         // add drop weapon and item here later
         if (KeyBindingManager.GetKeyUp(KeyAction.Drop) ||
             ((Math.Abs(Input.GetAxisRaw(dropString)) < 0.1f ||
@@ -253,7 +256,7 @@ public class WeaponControls : MonoBehaviour
             }
         
             dropWeaponTimeCurrent = 0;  
-        }
+        }*/
     }
 
     IEnumerator DropTool()
@@ -281,7 +284,7 @@ public class WeaponControls : MonoBehaviour
     }
     
     void DropWeaponInput()
-    {
+    {/*
         // add drop weapon and item here later
         //if (Input.GetButtonDown(useToolString) || KeyBindingManager.GetKeyDown(KeyAction.UseTool))
         if (KeyBindingManager.GetKeyDown(KeyAction.Drop))
@@ -315,7 +318,7 @@ public class WeaponControls : MonoBehaviour
                         StartCoroutine(SwitchWeaponOverTime());
                 }      
             }
-        }
+        }*/
     }
     
     IEnumerator EatWeaponOverTime()
@@ -372,7 +375,7 @@ public class WeaponControls : MonoBehaviour
     }
 
     void AttackYourself()
-    {
+    {/*
         if (!usingTool && activeWeapon && ic.objectInHands == null)
         {
             //if (Input.GetButtonDown(selfAttackString) || KeyBindingManager.GetKeyDown(KeyAction.SelfAttack))
@@ -390,14 +393,14 @@ public class WeaponControls : MonoBehaviour
                     ui.WeaponBroke(activeWeapon);   
                 }
             }
-        }
+        }*/
     }
     
     void Attacking()
     {
         // if player holds something - throw it away first
         //if ((Input.GetButtonDown(attackString)  || Input.GetAxis(attackString) > 0.5f || KeyBindingManager.GetKeyDown(KeyAction.Fire1)) && ic.objectInHands)
-        if ((Input.GetAxis(attackString) > 0.5f || KeyBindingManager.GetKeyDown(KeyAction.Fire1)) && ic.objectInHands)
+        if (ic.objectInHands && playerInput.Attack.WasPressed)
         {
             ic.objectInHands.Drop();
         }
@@ -408,7 +411,7 @@ public class WeaponControls : MonoBehaviour
                 if (!activeWeapon.hidden)
                 {
                     //if ((Input.GetButtonDown(attackString) || Input.GetAxis(attackString) > 0.5f || KeyBindingManager.GetKeyDown(KeyAction.Fire1)) && activeWeapon.weaponType != WeaponController.Type.RangeAuto)
-                    if ((Input.GetAxis(attackString) > 0.5f || KeyBindingManager.GetKeyDown(KeyAction.Fire1)) && activeWeapon.weaponType != WeaponController.Type.RangeAuto)
+                    if (playerInput.Attack.WasPressed && activeWeapon.weaponType != WeaponController.Type.RangeAuto)
                     {
                         if (pm.hc.inLove) // if player in love
                         {
@@ -430,8 +433,7 @@ public class WeaponControls : MonoBehaviour
                             }   
                         }
                     }
-                    //else if ((Input.GetButton(attackString) || Input.GetAxis(attackString) > 0.5f || KeyBindingManager.GetKey(KeyAction.Fire1)) && activeWeapon.weaponType == WeaponController.Type.RangeAuto)
-                    else if ((Input.GetAxis(attackString) > 0.5f || KeyBindingManager.GetKey(KeyAction.Fire1)) && activeWeapon.weaponType == WeaponController.Type.RangeAuto)
+                    else if (playerInput.Attack.IsPressed && activeWeapon.weaponType == WeaponController.Type.RangeAuto)
                     {
                         if (pm.hc.inLove) // if player in love
                         {
@@ -457,8 +459,7 @@ public class WeaponControls : MonoBehaviour
                 else
                 {
                     // show weapon
-                    //if (Input.GetButtonDown(attackString) || Input.GetAxis(attackString) > 0.5f || KeyBindingManager.GetKeyDown(KeyAction.Fire1))
-                    if (Input.GetAxis(attackString) > 0.5f || KeyBindingManager.GetKeyDown(KeyAction.Fire1))
+                    if (playerInput.Attack.WasPressed)
                     {
                         if (ic.objectInHands)
                         {
@@ -519,7 +520,6 @@ public class WeaponControls : MonoBehaviour
                            KeyBindingManager.GetKeyDown(KeyAction.ThrowTool)) 
                        && ic.objectInHands == null && (activeWeapon == null || activeWeapon.canAct) 
                        && il.savedTools[currentToolIndex].amount > 0)
-                       */
             
         if (!usingTool && (Input.GetAxisRaw(throwToolString) > 0 || 
                            Input.GetAxisRaw(useToolString) > 0 || 
@@ -537,6 +537,7 @@ public class WeaponControls : MonoBehaviour
             if (activeWeapon)
                 StartCoroutine(activeWeapon.UseTool(1));   
         }
+                       */
     }
 
     IEnumerator UsingTool()
@@ -633,8 +634,7 @@ public class WeaponControls : MonoBehaviour
     
     void Reloading()
     {
-        //if ((Input.GetButtonDown(reloadString) || KeyBindingManager.GetKeyDown(KeyAction.Reload)) && ic.objectInHands == null)
-        if (KeyBindingManager.GetKeyDown(KeyAction.Reload) && ic.objectInHands == null)
+        if (playerInput.Reload.WasPressed && ic.objectInHands == null)
         {
             if (!activeWeapon || activeWeapon.hidden) return;
             if (!(activeWeapon.durability > 0) || !activeWeapon.canAct ||
@@ -685,8 +685,7 @@ public class WeaponControls : MonoBehaviour
 
     void HideWeapon()
     {
-        //if (Input.GetButton(switchWeaponString) || KeyBindingManager.GetKey(KeyAction.SwitchWeapon))
-        if (KeyBindingManager.GetKey(KeyAction.SwitchWeapon))
+        if (playerInput.SwitchWeapon.IsPressed)
         {
             if (hideWeaponTimeCurrent < hideWeaponTime)
             {
@@ -698,19 +697,19 @@ public class WeaponControls : MonoBehaviour
                 {
                     if (activeWeapon && activeWeapon.reloading)
                         activeWeapon.StopReloading();
-        
+
                     StartCoroutine(HideWeaponOverTime());
-                }      
+                }
             }
         }
 
-        //if ((Input.GetButtonUp(switchWeaponString) || KeyBindingManager.GetKeyUp(KeyAction.SwitchWeapon)) && hideWeaponTimeCurrent < hideWeaponTime && activeWeapon && activeWeapon.hidden)
-        if (KeyBindingManager.GetKeyUp(KeyAction.SwitchWeapon) && hideWeaponTimeCurrent < hideWeaponTime && activeWeapon && activeWeapon.hidden)
+        if (playerInput.SwitchWeapon.WasReleased && hideWeaponTimeCurrent < hideWeaponTime && activeWeapon &&
+            activeWeapon.hidden)
         {
             ShowWeapon();
         }
     }
-    
+
     void ShowWeapon()
     {
         if (activeWeapon && activeWeapon.hidden)
@@ -721,13 +720,11 @@ public class WeaponControls : MonoBehaviour
     
     void SwitchWeapon()
     {
-        //if (Input.GetButtonDown(switchWeaponString) || KeyBindingManager.GetKeyDown(KeyAction.SwitchWeapon))
-        if (KeyBindingManager.GetKeyDown(KeyAction.SwitchWeapon))
+        if (playerInput.SwitchWeapon.WasPressed)
         {
             hideWeaponTimeCurrent = 0;
         }
-        //if (Input.GetButtonUp(switchWeaponString) || KeyBindingManager.GetKeyUp(KeyAction.SwitchWeapon) && hideWeaponTimeCurrent < hideWeaponTime)
-        if (KeyBindingManager.GetKeyUp(KeyAction.SwitchWeapon) && hideWeaponTimeCurrent < hideWeaponTime)
+        if (playerInput.SwitchWeapon.WasReleased && hideWeaponTimeCurrent < hideWeaponTime)
         {
             if (secondWeapon && activeWeapon && !activeWeapon.reloading && activeWeapon.canAct && ic.objectInHands == null)
             {

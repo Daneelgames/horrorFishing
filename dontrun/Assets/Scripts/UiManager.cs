@@ -409,7 +409,7 @@ public class UiManager : MonoBehaviour
 
     public void UpdateWeaponSwitchButtonText()
     {
-        switchWeaponButton.text = KeyBindingManager.GetKeyCode(KeyAction.SwitchWeapon).ToString();
+        //switchWeaponButton.text = KeyBindingManager.GetKeyCode(KeyAction.SwitchWeapon).ToString();
     }
 
     public void DamageFeedback()
@@ -499,8 +499,11 @@ public class UiManager : MonoBehaviour
     
     IEnumerator CheckHints()
     {
+        yield break;
+        /*
         while (true)
         {
+            /*
             if (gm.hub)
             {
                 yield return new WaitForSeconds(5);
@@ -527,6 +530,7 @@ public class UiManager : MonoBehaviour
                 
                 continue;
             }
+            #1#
             
             yield return new WaitForSeconds(30f);
             
@@ -705,7 +709,7 @@ public class UiManager : MonoBehaviour
 
                 hintAnim.SetTrigger("Active");
             }
-        }
+        }*/
     }
 
     public void GotItem(Interactable item)

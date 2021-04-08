@@ -16,12 +16,14 @@ public class PlayerSettingsController : MonoBehaviour
     private GameManager gm;
     private string volumeString = "MusicVolume";
     public Slider volume;
+    public Slider mouseSense;
     public GameObject invertMouseFeedback;
 
     private void OnEnable()
     {
         gm = GameManager.instance;
         volume.value = gm.volumeSliderValue;
+        mouseSense.value = gm.mouseSensitivity;
         
         if (gm.mouseInvert == 1)
         {
@@ -91,10 +93,14 @@ public class PlayerSettingsController : MonoBehaviour
         }
     }
 
-    public void SetVolume(float volume)
+    public void SetMouseSense()
     {
-        GameManager.instance.SetVolume(volume);
-        GameManager.instance.volumeSliderValue = volume;
+        GameManager.instance.MouseSense(mouseSense.value);
+    }
+
+    public void SetVolume()
+    {
+        GameManager.instance.SetVolume(volume.value);
     }
 
     public void ToggleInvertMouse()

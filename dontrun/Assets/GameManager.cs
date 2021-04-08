@@ -170,6 +170,8 @@ public class GameManager : MonoBehaviour
     public bool ladyshoeFound = false;
 
     public AudioSource flashbackOverAu;
+
+    private PlayerInputManager pim;
     
     void Awake()
     {
@@ -185,6 +187,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        pim = PlayerInputManager.instance;
         if (procMapMaterialPrefab && renderTexturePrefab)
         {
             procMapMaterialInstance = Instantiate(procMapMaterialPrefab);
@@ -432,7 +435,7 @@ public class GameManager : MonoBehaviour
         
         if (player && player.health > 0)
         {
-            if (player.playerMovement && player.playerMovement.inTransport && (Input.GetButtonDown(dashString) || KeyBindingManager.GetKeyDown(KeyAction.Dash)))
+            if (player.playerMovement && player.playerMovement.inTransport && pim.playerInput.Dash.WasPressed)
             {
                 player.playerMovement.inTransport.ExitTransport();   
             }
@@ -476,7 +479,7 @@ public class GameManager : MonoBehaviour
 
             if (UiManager.instance && !questWindow && !mementoWindow)
             {
-                if (Input.GetButtonDown(cancelString))
+                if (pim.playerInput.Pause.WasPressed)
                 {
                     TogglePause(true);
                 }
@@ -490,18 +493,18 @@ public class GameManager : MonoBehaviour
             
             if (mementoWindow)
             {
-                if (Input.GetButtonDown(dashString) || KeyBindingManager.GetKeyDown(KeyAction.Dash))
+                if (pim.playerInput.Dash.WasPressed)
                 {
                     ui.ChooseMemento(0);
                 }
-                else if (Input.GetButtonDown(crouchString) || KeyBindingManager.GetKeyDown(KeyAction.Crouch))
+                else if (pim.playerInput.Crouch.WasPressed)
                 {
                     ui.ChooseMemento(1);
                 }
             }
 
             if (!ui || paused || mementoWindow) return;
-            if(Input.GetButtonDown(questsString) || KeyBindingManager.GetKeyDown(KeyAction.Quests) || questWindow && Input.GetButtonDown(cancelString))
+            if(pim.playerInput.Journal.WasPressed || questWindow && pim.playerInput.Pause.WasPressed)
                 ToggleQuests();
         }
         
@@ -1255,10 +1258,8 @@ public class GameManager : MonoBehaviour
             itemList.heartContainerAmount = data.heartContainerAmount;
             itemList.gold = data.playersGold;
             mouseInvert = data.invertMouse;
-            /*
             mouseSensitivity = data.mouseSense;
             mouseLookSpeed = data.camSpeed;
-            */
             language = data.language;
             contrast = data.contrast;
             brightness = data.brightness;

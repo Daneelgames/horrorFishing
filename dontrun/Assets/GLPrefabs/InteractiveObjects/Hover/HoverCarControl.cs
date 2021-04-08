@@ -53,7 +53,7 @@ public class HoverCarControl : MonoBehaviour
     }
 
     void Movement()
-    {
+    {/*
         if (transpot.playerInside)
         {
             float vert = 0;
@@ -76,7 +76,7 @@ public class HoverCarControl : MonoBehaviour
             /*
             float aclAxis = Input.GetAxis(verticalString);
             float turning = Input.GetAxis(horizontalString);
-            */
+            #1#
             float aclAxis = vert;
             float turning = hor;
 
@@ -125,7 +125,7 @@ public class HoverCarControl : MonoBehaviour
           au.volume -= Time.deltaTime;
           SetThrust(currentSpeed);
           SetTurning(rotationSpeedCurrent);
-        }
+        }*/
     }
 
     void SetThrust(float newThrust)

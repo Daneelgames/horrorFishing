@@ -1175,7 +1175,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1701840914679967013
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11838,7 +11838,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 5.8767986, y: 0}
   m_SizeDelta: {x: 25.3699, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -12643,7 +12643,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 783706145779536559}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4788024439793052793}
+        m_TargetAssemblyTypeName: KeyRebind, Assembly-CSharp
+        m_MethodName: ActionStartListening
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1526826879159523301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13478,7 +13490,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2268958638076155617}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4788024439793052793}
+        m_TargetAssemblyTypeName: KeyRebind, Assembly-CSharp
+        m_MethodName: ActionStartListening
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 4
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8829397850241473197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14564,8 +14588,8 @@ RectTransform:
   m_Father: {fileID: 5794830695979096252}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 3.4000244, y: 2.9000015}
   m_SizeDelta: {x: 55.403316, y: -73.6675}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -16117,8 +16141,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 4
-    m_WrapAround: 0
+    m_Mode: 2
+    m_WrapAround: 1
     m_SelectOnUp: {fileID: 5773476980583041874}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -16496,7 +16520,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 2
-    m_WrapAround: 0
+    m_WrapAround: 1
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -16848,7 +16872,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 2
-    m_WrapAround: 0
+    m_WrapAround: 1
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -17441,7 +17465,7 @@ MonoBehaviour:
   menuWindow: {fileID: 5385941075251059148}
   menuVisuals: {fileID: 4788024439295715293}
   firstSelectedInMenu: {fileID: 6509375863185541577}
-  firstSelectedInOptions: {fileID: 0}
+  firstSelectedInOptions: {fileID: 4001786177949662928}
   firstSelectedInDifficultyWindow: {fileID: 0}
   menuMusicSource: {fileID: 4788024440308837997}
   rearWindowClip: {fileID: 8300000, guid: d3b9ae20f4317024fb5b3e0f86b6db77, type: 3}
@@ -18489,7 +18513,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5649534054419012579}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4788024439793052793}
+        m_TargetAssemblyTypeName: KeyRebind, Assembly-CSharp
+        m_MethodName: ActionStartListening
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7185720953827185581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19192,9 +19228,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: MouseSens
+      - m_Target: {fileID: 6420951191046073071}
+        m_TargetAssemblyTypeName: PlayerSettingsController, Assembly-CSharp
+        m_MethodName: SetMouseSense
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -19369,7 +19405,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7777837066796994311
 RectTransform:
   m_ObjectHideFlags: 0
@@ -20154,11 +20190,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6259929368213627711}
-  - component: {fileID: 6259929368199442817}
   - component: {fileID: 6259929368199457583}
   - component: {fileID: 6259929368698358799}
   m_Layer: 5
-  m_Name: Backwards
+  m_Name: 02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20185,24 +20220,6 @@ RectTransform:
   m_AnchoredPosition: {x: 30.044, y: -127.99}
   m_SizeDelta: {x: 395.466, y: 45.451}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &6259929368199442817
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6259929368193989295}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99e9ef378784eaf42b8ea4ce5ad86f6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyAction: 15
-  keyCode: 115
-  keyDisplay: {fileID: 1443569686574812942}
-  button: {fileID: 8979682431916653365}
-  toggleColor: {r: 1, g: 1, b: 1, a: 1}
-  allowMouseButtons: 1
 --- !u!114 &6259929368199457583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20395,7 +20412,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6259929368268594804
 RectTransform:
   m_ObjectHideFlags: 0
@@ -20496,6 +20513,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 2244545786103623755}
   volume: {fileID: 2867652289736815595}
+  mouseSense: {fileID: 6591273127989683918}
   invertMouseFeedback: {fileID: 100086682773765067}
 --- !u!1 &6259929368417875244
 GameObject:
@@ -20508,9 +20526,8 @@ GameObject:
   - component: {fileID: 6259929368403995836}
   - component: {fileID: 6259929368404176804}
   - component: {fileID: 6259929368411874476}
-  - component: {fileID: 6259929368418046832}
   m_Layer: 5
-  m_Name: StrafeLeft
+  m_Name: 04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20576,24 +20593,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &6259929368418046832
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6259929368417875244}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99e9ef378784eaf42b8ea4ce5ad86f6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyAction: 16
-  keyCode: 97
-  keyDisplay: {fileID: 3649957781051916326}
-  button: {fileID: 4873290755752318233}
-  toggleColor: {r: 1, g: 1, b: 1, a: 1}
-  allowMouseButtons: 1
 --- !u!1 &6259929368417929750
 GameObject:
   m_ObjectHideFlags: 0
@@ -21010,9 +21009,8 @@ GameObject:
   - component: {fileID: 6259929368451501413}
   - component: {fileID: 6259929368451288701}
   - component: {fileID: 6259929368432117109}
-  - component: {fileID: 6259929368187314119}
   m_Layer: 5
-  m_Name: interaction
+  m_Name: 08
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21078,24 +21076,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &6259929368187314119
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6259929368437593333}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99e9ef378784eaf42b8ea4ce5ad86f6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyAction: 4
-  keyCode: 101
-  keyDisplay: {fileID: 8688037688559021049}
-  button: {fileID: 6259929368437609539}
-  toggleColor: {r: 1, g: 1, b: 1, a: 1}
-  allowMouseButtons: 1
 --- !u!1 &6259929368437609539
 GameObject:
   m_ObjectHideFlags: 0
@@ -21218,7 +21198,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6259929368432205189}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4788024439793052793}
+        m_TargetAssemblyTypeName: KeyRebind, Assembly-CSharp
+        m_MethodName: ActionStartListening
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 7
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &5032852369237018708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21680,9 +21672,8 @@ GameObject:
   - component: {fileID: 6259929368507350199}
   - component: {fileID: 6259929368507662255}
   - component: {fileID: 6259929368509985959}
-  - component: {fileID: 6259929368534879682}
   m_Layer: 5
-  m_Name: dash
+  m_Name: 06
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21747,24 +21738,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &6259929368534879682
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6259929368521221415}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99e9ef378784eaf42b8ea4ce5ad86f6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyAction: 1
-  keyCode: 32
-  keyDisplay: {fileID: 8951968718366827343}
-  button: {fileID: 6259929368521237905}
-  toggleColor: {r: 1, g: 1, b: 1, a: 1}
-  allowMouseButtons: 1
 --- !u!1 &6259929368521237905
 GameObject:
   m_ObjectHideFlags: 0
@@ -21886,7 +21859,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6259929368510065751}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4788024439793052793}
+        m_TargetAssemblyTypeName: KeyRebind, Assembly-CSharp
+        m_MethodName: ActionStartListening
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 5
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &3015606180327642490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22054,7 +22039,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6259929368619165345}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4788024439793052793}
+        m_TargetAssemblyTypeName: KeyRebind, Assembly-CSharp
+        m_MethodName: ActionStartListening
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 11
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &4287304285253635848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22111,9 +22108,8 @@ GameObject:
   - component: {fileID: 6259929368599803457}
   - component: {fileID: 6259929368599491929}
   - component: {fileID: 6259929368619253329}
-  - component: {fileID: 6259929369453756413}
   m_Layer: 5
-  m_Name: reload
+  m_Name: 12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22179,24 +22175,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &6259929369453756413
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6259929368613187537}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99e9ef378784eaf42b8ea4ce5ad86f6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyAction: 5
-  keyCode: 114
-  keyDisplay: {fileID: 7481379002105559078}
-  button: {fileID: 6259929368613171047}
-  toggleColor: {r: 1, g: 1, b: 1, a: 1}
-  allowMouseButtons: 1
 --- !u!1 &6259929368613245163
 GameObject:
   m_ObjectHideFlags: 0
@@ -22611,11 +22589,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6259929368847685855}
-  - component: {fileID: 6259929368840833633}
   - component: {fileID: 6259929368840851663}
   - component: {fileID: 6259929368754480317}
   m_Layer: 5
-  m_Name: StrafeRight
+  m_Name: 03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22642,24 +22619,6 @@ RectTransform:
   m_AnchoredPosition: {x: 30.044, y: -175.8}
   m_SizeDelta: {x: 395.466, y: 45.617}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &6259929368840833633
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6259929368834326863}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99e9ef378784eaf42b8ea4ce5ad86f6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyAction: 14
-  keyCode: 100
-  keyDisplay: {fileID: 7626921098177199279}
-  button: {fileID: 6921075702882722177}
-  toggleColor: {r: 1, g: 1, b: 1, a: 1}
-  allowMouseButtons: 1
 --- !u!114 &6259929368840851663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22707,6 +22666,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6259929368929966302}
+  - component: {fileID: 4788024439793052793}
   m_Layer: 5
   m_Name: Keys
   m_TagString: Untagged
@@ -22746,6 +22706,46 @@ RectTransform:
   m_AnchoredPosition: {x: -22.1, y: 216.03088}
   m_SizeDelta: {x: 341.59143, y: 487.03564}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &4788024439793052793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6259929368929966301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7dca0ef49c8f824d9469fe5c7e7eb2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keysList:
+  - actionText: {fileID: 6875593992391351126}
+    keyText: {fileID: 1600734912513478334}
+  - actionText: {fileID: 7068108534901967461}
+    keyText: {fileID: 1443569686574812942}
+  - actionText: {fileID: 2302223726206045579}
+    keyText: {fileID: 7626921098177199279}
+  - actionText: {fileID: 6054401508414015711}
+    keyText: {fileID: 3649957781051916326}
+  - actionText: {fileID: 2471624489540778039}
+    keyText: {fileID: 5986640214445929095}
+  - actionText: {fileID: 4410954529631478031}
+    keyText: {fileID: 8951968718366827343}
+  - actionText: {fileID: 493100127665745241}
+    keyText: {fileID: 6900868359249413184}
+  - actionText: {fileID: 1717118248264641502}
+    keyText: {fileID: 8688037688559021049}
+  - actionText: {fileID: 4753456471751875515}
+    keyText: {fileID: 7206025571043201943}
+  - actionText: {fileID: 5909287265615423920}
+    keyText: {fileID: 897017602207232341}
+  - actionText: {fileID: 7705646309032831512}
+    keyText: {fileID: 5991578842878007598}
+  - actionText: {fileID: 6790320590262927916}
+    keyText: {fileID: 7481379002105559078}
+  - actionText: {fileID: 4722121018410274896}
+    keyText: {fileID: 1999410969895033823}
+  listening: 0
 --- !u!1 &6259929368944267899
 GameObject:
   m_ObjectHideFlags: 0
@@ -23137,7 +23137,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6259929368934187711}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4788024439793052793}
+        m_TargetAssemblyTypeName: KeyRebind, Assembly-CSharp
+        m_MethodName: ActionStartListening
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 9
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &3205141934006880232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23194,9 +23206,8 @@ GameObject:
   - component: {fileID: 6259929368955589215}
   - component: {fileID: 6259929368955932999}
   - component: {fileID: 6259929368934144591}
-  - component: {fileID: 6259929368533243744}
   m_Layer: 5
-  m_Name: zoom
+  m_Name: 10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23261,24 +23272,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &6259929368533243744
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6259929368944331727}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99e9ef378784eaf42b8ea4ce5ad86f6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyAction: 10
-  keyCode: 324
-  keyDisplay: {fileID: 897017602207232341}
-  button: {fileID: 6259929368944315257}
-  toggleColor: {r: 1, g: 1, b: 1, a: 1}
-  allowMouseButtons: 1
 --- !u!1 &6259929369362617911
 GameObject:
   m_ObjectHideFlags: 0
@@ -23423,11 +23416,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6259929369342619805}
-  - component: {fileID: 6259929369352544803}
   - component: {fileID: 6259929369342833541}
   - component: {fileID: 6259929369352566925}
   m_Layer: 5
-  m_Name: Forward
+  m_Name: 01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23454,24 +23446,6 @@ RectTransform:
   m_AnchoredPosition: {x: 30.044, y: -76.4}
   m_SizeDelta: {x: 395.466, y: 53.188}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &6259929369352544803
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6259929369362819341}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99e9ef378784eaf42b8ea4ce5ad86f6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyAction: 13
-  keyCode: 119
-  keyDisplay: {fileID: 1600734912513478334}
-  button: {fileID: 2200303366995388203}
-  toggleColor: {r: 1, g: 1, b: 1, a: 1}
-  allowMouseButtons: 1
 --- !u!222 &6259929369342833541
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -23522,9 +23496,8 @@ GameObject:
   - component: {fileID: 6259929369594007586}
   - component: {fileID: 6259929369594007613}
   - component: {fileID: 6259929369594007612}
-  - component: {fileID: 6259929369594007587}
   m_Layer: 5
-  m_Name: crouch
+  m_Name: 07
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23589,24 +23562,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &6259929369594007587
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6259929369594007585}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99e9ef378784eaf42b8ea4ce5ad86f6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyAction: 3
-  keyCode: 306
-  keyDisplay: {fileID: 6900868359249413184}
-  button: {fileID: 6259929369976957617}
-  toggleColor: {r: 1, g: 1, b: 1, a: 1}
-  allowMouseButtons: 1
 --- !u!1 &6259929369606634772
 GameObject:
   m_ObjectHideFlags: 0
@@ -23888,9 +23843,8 @@ GameObject:
   - component: {fileID: 6259929369629912873}
   - component: {fileID: 6259929369630092337}
   - component: {fileID: 6259929369602139961}
-  - component: {fileID: 6259929368833366396}
   m_Layer: 5
-  m_Name: run
+  m_Name: 05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23956,24 +23910,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &6259929368833366396
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6259929369608140473}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99e9ef378784eaf42b8ea4ce5ad86f6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyAction: 2
-  keyCode: 304
-  keyDisplay: {fileID: 5986640214445929095}
-  button: {fileID: 2517946118192359883}
-  toggleColor: {r: 1, g: 1, b: 1, a: 1}
-  allowMouseButtons: 1
 --- !u!1 &6259929369686348878
 GameObject:
   m_ObjectHideFlags: 0
@@ -24011,7 +23947,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.82900006}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 390.1, y: -17.6}
+  m_AnchoredPosition: {x: 418.7, y: -17.2}
   m_SizeDelta: {x: 144.93, y: 39.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6259929369672747256
@@ -24095,7 +24031,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6259929369693461896}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4788024439793052793}
+        m_TargetAssemblyTypeName: KeyRebind, Assembly-CSharp
+        m_MethodName: ActionStartListening
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 10
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7363516882254714164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24152,9 +24100,8 @@ GameObject:
   - component: {fileID: 6259929369672977768}
   - component: {fileID: 6259929369672797808}
   - component: {fileID: 6259929369693406584}
-  - component: {fileID: 6259929368682722618}
   m_Layer: 5
-  m_Name: switchWeapon
+  m_Name: 11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24179,8 +24126,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -24.231907, y: -563.99994}
-  m_SizeDelta: {x: 484.715, y: 38.748}
+  m_AnchoredPosition: {x: -32.28871, y: -563.99994}
+  m_SizeDelta: {x: 499.3636, y: 38.748}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6259929369672797808
 CanvasRenderer:
@@ -24220,24 +24167,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &6259929368682722618
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6259929369686365432}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99e9ef378784eaf42b8ea4ce5ad86f6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyAction: 6
-  keyCode: 113
-  keyDisplay: {fileID: 5991578842878007598}
-  button: {fileID: 6259929369686348878}
-  toggleColor: {r: 1, g: 1, b: 1, a: 1}
-  allowMouseButtons: 1
 --- !u!1 &6259929369686560076
 GameObject:
   m_ObjectHideFlags: 0
@@ -24407,8 +24336,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -1.432}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 235.3, y: -18.1}
-  m_SizeDelta: {x: 157.70465, y: 34.748314}
+  m_AnchoredPosition: {x: 222.8, y: -13.4}
+  m_SizeDelta: {x: 272.2438, y: 46.1154}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6259929369672786902
 CanvasRenderer:
@@ -24466,7 +24395,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30.65
+  m_fontSize: 44.4
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -24789,9 +24718,8 @@ GameObject:
   - component: {fileID: 6259929369726046440}
   - component: {fileID: 6259929369725834224}
   - component: {fileID: 6259929369707714808}
-  - component: {fileID: 6259929369734215562}
   m_Layer: 5
-  m_Name: attack
+  m_Name: 09
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24857,24 +24785,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &6259929369734215562
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6259929369714231672}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99e9ef378784eaf42b8ea4ce5ad86f6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyAction: 11
-  keyCode: 323
-  keyDisplay: {fileID: 7206025571043201943}
-  button: {fileID: 6259929369714248142}
-  toggleColor: {r: 1, g: 1, b: 1, a: 1}
-  allowMouseButtons: 1
 --- !u!1 &6259929369714248142
 GameObject:
   m_ObjectHideFlags: 0
@@ -24997,7 +24907,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6259929369707790344}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4788024439793052793}
+        m_TargetAssemblyTypeName: KeyRebind, Assembly-CSharp
+        m_MethodName: ActionStartListening
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 8
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &6586618082580607663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25435,7 +25357,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6259929369826442646}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4788024439793052793}
+        m_TargetAssemblyTypeName: KeyRebind, Assembly-CSharp
+        m_MethodName: ActionStartListening
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 12
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2550379349240839724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25492,9 +25426,8 @@ GameObject:
   - component: {fileID: 6259929369808186742}
   - component: {fileID: 6259929369808399982}
   - component: {fileID: 6259929369826518374}
-  - component: {fileID: 6259929369779185980}
   m_Layer: 5
-  m_Name: journal
+  m_Name: 13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25560,24 +25493,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &6259929369779185980
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6259929369820001510}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99e9ef378784eaf42b8ea4ce5ad86f6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyAction: 12
-  keyCode: 9
-  keyDisplay: {fileID: 1999410969895033823}
-  button: {fileID: 6259929369819984976}
-  toggleColor: {r: 1, g: 1, b: 1, a: 1}
-  allowMouseButtons: 1
 --- !u!1 &6259929369976957617
 GameObject:
   m_ObjectHideFlags: 0
@@ -25699,7 +25614,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6259929369976957516}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4788024439793052793}
+        m_TargetAssemblyTypeName: KeyRebind, Assembly-CSharp
+        m_MethodName: ActionStartListening
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 6
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &4630267920105739891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25777,8 +25704,8 @@ RectTransform:
   m_Father: {fileID: 83728620543834246}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.6, y: 0}
-  m_AnchorMax: {x: 0.6, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 13.24}
   m_SizeDelta: {x: 20, y: 2.197}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -26576,7 +26503,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 2
-    m_WrapAround: 0
+    m_WrapAround: 1
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -27191,7 +27118,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 984150369737663229}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4788024439793052793}
+        m_TargetAssemblyTypeName: KeyRebind, Assembly-CSharp
+        m_MethodName: ActionStartListening
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7465519100754711672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29088,7 +29027,7 @@ GameObject:
   - component: {fileID: 2867652289736815595}
   - component: {fileID: 4605758767410545996}
   m_Layer: 9
-  m_Name: MouseSens
+  m_Name: VolumeSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29171,7 +29110,7 @@ MonoBehaviour:
       - m_Target: {fileID: 6420951191046073071}
         m_TargetAssemblyTypeName: PlayerSettingsController, Assembly-CSharp
         m_MethodName: SetVolume
-        m_Mode: 0
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -29734,7 +29673,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.6, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -30239,7 +30178,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7994801631194932756}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4788024439793052793}
+        m_TargetAssemblyTypeName: KeyRebind, Assembly-CSharp
+        m_MethodName: ActionStartListening
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &5456988397253638939
 MonoBehaviour:
   m_ObjectHideFlags: 0

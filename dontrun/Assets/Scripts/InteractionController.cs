@@ -30,6 +30,8 @@ public class InteractionController : MonoBehaviour
     private string interactionString = "Interaction";
     private bool canInteract = true; 
 
+    private PlayerInput playerInput;
+
     private void Awake()
     {
         if (!instance)
@@ -38,6 +40,7 @@ public class InteractionController : MonoBehaviour
 
     private void Start()
     {
+        playerInput = PlayerInputManager.instance.playerInput;
         gm = GameManager.instance;
         pm = PlayerMovement.instance;
         ui = UiManager.instance;
@@ -49,7 +52,7 @@ public class InteractionController : MonoBehaviour
     {
         if (!canInteract) return;
         
-        if ((Input.GetButtonDown(interactionString) || KeyBindingManager.GetKeyDown(KeyAction.Interaction)) && !gm.paused &&pm.hc.health > 0)
+        if (playerInput.Interaction.WasPressed && !gm.paused && !pm.hc.wc.eatingWeapon && pm.hc.health > 0)
         {
             if (objectInHands)
             {
