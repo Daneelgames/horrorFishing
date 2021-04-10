@@ -859,7 +859,7 @@ public class GameManager : MonoBehaviour
         //loadingCam.gameObject.SetActive(true);
         yield return new WaitForSeconds(1f);
         UiManager.instance.creditsAnim.gameObject.SetActive(true);
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(30f);
         ReturnToMenu(false);
     }
     

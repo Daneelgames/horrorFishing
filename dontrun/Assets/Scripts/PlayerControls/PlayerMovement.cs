@@ -15,6 +15,7 @@ namespace PlayerControls
         public Animator cameraAnimator;
         public Animator crosshairAnimator;
         public CharacterController controller;
+        public bool controllerEnabledOnstart = true;
         
         public float _x = 0;
         public float _z = 0;
@@ -722,7 +723,7 @@ namespace PlayerControls
                 goldenLightAnimator.SetBool("GoldenLight", false);
             
             hc.wc.Init();
-            controller.enabled = true;
+            controller.enabled = controllerEnabledOnstart;
             mouseLook.canControl = true;
             mouseLook.mainCamera.cullingMask = mouseLook.defaultCullingMask;
             

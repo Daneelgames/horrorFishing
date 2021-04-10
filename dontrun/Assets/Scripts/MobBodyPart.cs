@@ -81,7 +81,7 @@ public class MobBodyPart : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (usedForAttack == false || mobAttack.levels[0].attackCooldown > 0 || closeToPlayer == false || !other.gameObject.activeInHierarchy) return;
+        if (usedForAttack == false || mobAttack == null || mobAttack.levels[0].attackCooldown > 0 || closeToPlayer == false || !other.gameObject.activeInHierarchy) return;
         if (!mobAttack || !mobAttack.hc) return;
         if (!mobAttack.gameObject.activeInHierarchy) return;
 
