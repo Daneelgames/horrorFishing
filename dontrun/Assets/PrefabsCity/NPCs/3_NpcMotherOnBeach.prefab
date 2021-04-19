@@ -5211,7 +5211,7 @@ MonoBehaviour:
   addSpawnCooldownOnDeath: 30
   door: {fileID: 0}
   npcInteractor: {fileID: 2616221807219918333}
-  setNpcInteractorToZero: 1
+  setNpcInteractorToZero: 0
   weaponPickUp: {fileID: 0}
   startQuestOnDeath: -1
   completeQuestOnDeath: -1
@@ -10542,7 +10542,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3904885847708827812}
-  - {fileID: 2616221807219922014}
   m_Father: {fileID: 1889556697248084310}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11032,16 +11031,16 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2616221807219921155}
-  m_LocalRotation: {x: 0.42954943, y: -0.00000005960463, z: -0.08435515, w: 0.89909476}
-  m_LocalPosition: {x: -2.5121758, y: 6.4112167, z: -12.79239}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: 0.414, z: 0.695}
+  m_LocalScale: {x: 0.024999999, y: 0.024999995, z: 0.024999999}
   m_Children:
   - {fileID: 2616221807219918938}
   - {fileID: 2616221807219922411}
   - {fileID: 1342308896332030376}
-  m_Father: {fileID: 1889556697248083737}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 50.571, y: -6.552, z: -13.818}
+  m_Father: {fileID: 8046858677113079238}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2616221807219918438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11212,6 +11211,8 @@ MonoBehaviour:
   interactableToInteractOnDialogueAction: {fileID: 0}
   snout: 0
   importantDialogueMark: {fileID: 267355584866110890}
+  animToSetUpdateTriggerOnAction: {fileID: 0}
+  setHealthCollidersTriggersOnAction: 0
 --- !u!136 &2616221807219917062
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -11223,9 +11224,9 @@ CapsuleCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 39.43409
-  m_Height: 107.66733
+  m_Height: 130
   m_Direction: 1
-  m_Center: {x: 7.9341083, y: 110.62895, z: 20.732012}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!82 &2616221807219920776
 AudioSource:
   m_ObjectHideFlags: 0
@@ -11957,8 +11958,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2616221807219924800}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.1, y: 100.1, z: 41.5}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 20, y: 20, z: 20}
   m_Children:
   - {fileID: 2616221807219918150}
   m_Father: {fileID: 2616221807219922014}
@@ -11989,8 +11990,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2616221807219924881}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.1, y: 104.5, z: 41.5}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 20, y: 20, z: 20}
   m_Children:
   - {fileID: 2616221807219921942}
   m_Father: {fileID: 2616221807219922014}
@@ -13164,37 +13165,37 @@ PrefabInstance:
     - target: {fileID: 7817185512025188031, guid: 23dc4fed13773a74f9f63c6427e42ced,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11.7
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 7817185512025188031, guid: 23dc4fed13773a74f9f63c6427e42ced,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 146.8
+      value: 2.9
       objectReference: {fileID: 0}
     - target: {fileID: 7817185512025188031, guid: 23dc4fed13773a74f9f63c6427e42ced,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 51.4
+      value: 24.9
       objectReference: {fileID: 0}
     - target: {fileID: 7817185512025188031, guid: 23dc4fed13773a74f9f63c6427e42ced,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: -0.36497054
       objectReference: {fileID: 0}
     - target: {fileID: 7817185512025188031, guid: 23dc4fed13773a74f9f63c6427e42ced,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: 0.9310113
       objectReference: {fileID: 0}
     - target: {fileID: 7817185512025188031, guid: 23dc4fed13773a74f9f63c6427e42ced,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.0037903306
       objectReference: {fileID: 0}
     - target: {fileID: 7817185512025188031, guid: 23dc4fed13773a74f9f63c6427e42ced,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: 0.00046828663
       objectReference: {fileID: 0}
     - target: {fileID: 7817185512025188031, guid: 23dc4fed13773a74f9f63c6427e42ced,
         type: 3}
